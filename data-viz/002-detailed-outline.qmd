@@ -1,0 +1,53 @@
+# Detailed outline {#outline .unnumbered}
+
+```{r include=FALSE}
+library(tidyverse, quietly = TRUE)  # fussy, but might be useful later on
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(lubridate)
+cal <- read_excel("schedule.xlsx")
+```
+
+Class meeting will be in person in LSC C244 on Tuesday and Thursday 1:00-2:20. If you are unable to attend class in person, you can partcipate live online or watch the recording later. Links to these sessions will be on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-XXXXX). 
+
+Each lesson has written notes, slides, and links to textbook readings in the notes. Some students will prefer to begin by attending class, others will prefer to begin with the written notes and slides. I suggest you learn which you prefer by experimentation. The tasks are designed to help you be sure you know the most important parts of each lesson.
+
+## Course calendar {-}
+
+Tasks are due Saturday at 6:00 pm Atlantic the week they are assigned. Assignment and project component due dates are listed below.
+
+```{r echo=FALSE}
+my_paste = function(a,b) {
+  case_when( is.na(a) | is.na(b) ~ as.character(NA),
+             TRUE ~ paste0("[", a, "](", b, ")")
+  )
+}
+row_packing <- table(cal$Week)
+attr(row_packing, "names") <- paste0("Week ", attr(row_packing, "names"))
+options(knitr.kable.NA = '')
+cal %>% select(-Day, -Week) %>%
+  arrange(Date) %>%
+  mutate(Date = strftime(Date + 12*3600, format = "%a %e %b", 
+                         tz = "America/Halifax"), # timezone error? Excel bug?
+         Notes = my_paste(notes, notes_link),
+         Slides = my_paste(slides, slides_link),
+         Tasks = my_paste(tasks, tasks_link)
+         ) %>%
+  select(-notes, -notes_link, -tasks, -tasks_link,
+         -slides, -slides_link) %>%
+  select(Date, Lesson, everything()) %>%
+  unite("Links", Notes:Tasks, sep = ", ", na.rm = TRUE) %>%
+  kable() %>%
+  pack_rows(index = row_packing) %>%
+  kable_styling() 
+  
+```
+
+## Bonus Material {-}
+
+- [Data sources](#data-sources)
+- [Staying organized](#organization)
+- [Getting help: common problems](#common-problems) with R, Rstudio, and git
+- [A bit more about R](#r-details). 
+

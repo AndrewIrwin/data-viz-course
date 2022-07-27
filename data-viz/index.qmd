@@ -1,0 +1,23 @@
+---
+title: "Data Visualization Course"
+author: "Andrew Irwin"
+format: 
+  html:
+    code-line-numbers: true
+editor: source
+---
+
+Welcome to Data Visualization (STAT 2450) at Dalhousie University for Fall 2022. From this page you can access all the required elements of the course including
+
+* the [syllabus](001-syllabus.qmd) and [detailed outline](002-detailed-outline.qmd) of each class
+* the course [textbook](https://andrewirwin.github.io/data-visualization/) (Presently this links to the course textbook from Winter 2021. I will be updating the book.)
+* details information about all work to be [evaluated](004-evaluation.qmd) 
+* [slides](slides) presented in class
+* [live coding](live-coding) examples presented in class
+
+A few items are located on Brightspace [course page](https://dal.brightspace.com/d2l/home/232100)
+
+* a link to participate in class online, in case you don't come to class,
+* recordings from class,
+* your grades in the course.
+
