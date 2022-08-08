@@ -1,4 +1,4 @@
-# Syllabus {.unnumbered}
+# STAT 2430 Data Visualization {.unnumbered}
 
 ```{r  include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -6,18 +6,18 @@ library(tidyverse)
 library(gt)
 ```
 
-This is the syllabus for the Data Visualization (STAT 2430) course in Fall 2022 at Dalhousie University.
+This is the syllabus for the Data Visualization (STAT 2430) course offered in Fall 2022 at Dalhousie University.
 
 * Instructor: Andrew Irwin, a.irwin@dal.ca
 * Meeting times: Tuesday and Thursday 1:00-2:20 pm Atlantic in LSC-C244 and on Collaborate
-* Office hours: Wednesday XXX pm Atlantic in Chase 225 and on Collaborate
+* Office hours: Wednesday 1:00 pm Atlantic on Collaborate, or by appointment.
 
 ## Course Description {-}
 
 Data visualization is the art and science of turning data into readable graphics. 
 We will explore how to design and create data visualizations.
 This exploration will include both the principles and techniques of data visualization. 
-Students will learn the value of visualization, specific techniques and understand how to select the best visualization method.
+Students will learn the value of visualization, specific techniques, and how to design and improve a data visualization.
 
 ## Course Prerequisites {-}
 
@@ -33,11 +33,10 @@ Course notes:
 Textbooks:
 
 - Kieran Healy (2018) [Data Visualization: A Practical Introduction](https://socviz.co). Princeton University Press. 
-- Garret Grolemund & Hadley Wickham (2017) [R for data science](https://r4ds.had.co.nz/). O'Reilly. 
 - Claus O. Wilke (2019) [Fundamentals of data visualization](https://clauswilke.com/dataviz/). O'Reilly.
+- Garret Grolemund & Hadley Wickham (2017) [R for data science](https://r4ds.had.co.nz/). O'Reilly. 
 
-The textbook and supplemental textbooks are available in printed form and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals.
-
+The textbooks are available in printed form from bookstores and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals.
 The books by Healy and Wilke focus on the design and interpretation of data visualizations. The book by Grolemund and Wickham describes the use of R, particularly the set of packages known as the "tidyverse" for data visualization and the broader tasks of data science.
 
 ## Course Structure {-}
@@ -45,34 +44,43 @@ The books by Healy and Wilke focus on the design and interpretation of data visu
 Each week will be structured around the following components:
 
 - Reading course notes and suggested material from the textbooks.
-- In class meetings which will be a mixture of lectures and demonstrations.
-  - Some class time will be be dedicated to computer exercises, so you should bring your computer to these classes. I will alert you to these activities in the detailed course outline and by making an annoucement in the previous class meeting.
-- Opportunities to develop and demonstrate your knowledge (tasks, assignments, and a term project)
-- Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading.
+- In class meetings which will be a mixture of lectures, demonstrations, and skills practice.
+  - Some class time will be be dedicated to computer exercises, so you should bring your computer to these classes. I will alert you to these activities in the detailed course outline and by making an announcement in the previous class meeting.
+- Opportunities to develop and demonstrate your knowledge in course work to be evaluated (tasks, assignments, and a term project).
+- Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading. If you can't participate in office hours, but you have a question, please get in touch with me and arrange another time to meet.
 
 I recorded mini-lectures for most lessons the last time this course was offered. You don't need to watch these, but if you wish additional material you can find them [here](http://bio.mmab.ca/data-visualization/).
-
 
 **Follow the [detailed outline](002-detailed-outline.qmd) for each week's plan to keep you on track.**
 
 ## Evaluation {-}
 
+Your goal in this course is to learn the principles and skills of data visualization. Most people benefit from a mixture of collaborative and independent work. The general guideline is that work you submit should be your own---your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. When you help another student, be careful you don't help them so much that you inhibit their learning.
+
 _Tasks_ are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete. You are expected to submit one task to be graded each week.
+_Tasks_ are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own.
 
 _Assignments_ combine skills from multiple lessons into a meaningful data visualization activity. These are opportunities to apply the content of lessons in thoughtful and sometimes creative ways.
+_Assignments_ are assessments of your skills and should be done independently.
+ 
+The _Term Project_ is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set.
+The _term project_  is designed to be done collaboratively in a group. The work on the project should be the work of members of the group and not outside collaborators or internet sources.
 
-The _Final Project_ is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a dataset of your choice. Your proposal will select a dataset and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected dataset.
-
-* Tasks for most lessons (30%, 1 per week, due weekly, equally weighted)
+* Tasks (30%, 1 per week, due weekly, equally weighted)
 * Assignments (40%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
-  * Proposal, due Friday 12 March, 5%
-  * Oral presentation, due Thursday 1 April, 10%
-  * Report, due Friday 9 April, 15%
+  * Proposal, due Thursday 27 October, 5%
+  * Oral presentation, due Monday 5 December, 10%
+  * Report, due Wednesday 7 December, 15%
 
-Tasks are due on Friday. Assignments are due on Wednesday. Late work will be accepted without penalty until the work is graded or solutions are posted. After that, no late work will be accepted. If an additional accommodation is requested and granted due to illness or other unforseeable circumstance, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit any component of the term project (proposal, oral presentation, or report) on time, please contact me by email.*
+Tasks are due on Friday. Assignments are due on Wednesday. (Office hours are also on Wednesday for last-minute question.) 
+
+Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to **learn** from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
+
+_Late policy._ Tasks will not be accepted late, but you can submit two "catch-up" tasks to replace any tasks you may have missed, or if you want to improve your grade on a submitted task. Assignments will be accepted without penalty until the work is graded or solutions are posted. After that, no late assignments will be accepted. If an additional accommodation is requested and granted due to illness or other unforeseeable circumstance, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit any component of the term project (proposal, oral presentation, or report) on time, please contact me by email.*
 
 Grades will be reported on [Brightspace](https://dal.brightspace.com/d2l/home/232100)
+
 
 ## Software {#syllabus_software .unnumbered}
 
@@ -87,20 +95,20 @@ R, RStudio or git is assumed. We will take class time to learn the software.
 
 These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/project/1998812). Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
 
-R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login.
+R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login. For this reason, I don't recommend using Dalhousie computer labs for this course, unless you are using rstudio.cloud.
 
-You should install this software on your computer very early in the course. 
+You should install this software on your computer during the first week of the course. 
 If you are unable to install the software, get in touch with me for assistance.
 
 ## Course Policies {-}
 
 ### COVID-19 
 
-**Please do not come on campus if you have symptoms similar to COVID-19 such as a fever or cough or if you have had a close contact with someone who has COVID-19.**
+**Please do not come on campus if you have symptoms similar to COVID-19 such as a fever or cough, if you have had a close contact with someone who has COVID-19, or if you have COVID-19.**
 
 The course is intended to be delivered in person, on campus at Dalhousie. 
 I hope that most of you will be physically present in the classroom for most classes.
-Since you can be infected and tranmit the virus without experiencing any symptoms, I encourage everyone to wear a high-quality mask while on campus to reduce the probability of virus transmission.
+Since you can be infected and transmit the virus without experiencing any symptoms, I encourage everyone to wear a high-quality mask while on campus to reduce the probability of virus transmission.
 I anticipate that some students will need to miss some classes following a close contact with an infected person, developing symptoms similar to COVID-19, or contracting COVID-19.
 All course meetings will be available live on Brightspace and recorded for watching later.
 This means that you can participate in the whole course even if you can't attend a particular class. 
@@ -109,15 +117,6 @@ This design is to keep you safe and to help you keep your classmates safe.
 
 If I am unable to be on campus, the class will be delivered remotely.
 
-### Evaluation
-
-I will not mark or give course credit for coursework submitted after grading is complete or the solutions are posted. If you miss an assignment due to illness or other event outside your control, contact me for an accommodation. If an accommodation is granted, the value of the coursework will be shifted to other elements of the course. You may submit two late _tasks_, so I will be unlikely to offer accommodation for more than two late or missed tasks.
-
-Your goal in this course is to learn the principles and skills of data visualization. Most people benefit from a mixture of collaborative and independent work. The general guideline is that work you submit should be your own---your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. When you help another student, be careful you don't help them so much that you inhibit their learning.
-
-_Tasks_ are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own. _Assignments_ are assessments of your skills and should be done independently. The _final project_ and its components may be done in groups, but the work on the project should only be the work of members of the group.
-
-Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to learn from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
 
 ## Data retention policy
 
@@ -131,7 +130,7 @@ During the course you will create work on a third-party website (github). These 
 * Fri 11 November: Remembrance Day
 * Tue 6 December: Last Tuesday/Thursday class
 
-If you know you will be unable to meet certain deadlines in advance, for bona fide reasons such as scheduled medical appointments or religious observances, please contact me as soon as pratical.
+If you know you will be unable to meet certain deadlines in advance, for _bona fide_ reasons such as scheduled medical appointments or religious observances, please contact me as soon as practical.
 
 I will never require you to provide a medical note or to use the Student Declaration of Absence form.
 

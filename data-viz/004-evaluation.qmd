@@ -13,7 +13,11 @@ Tasks will usually be evaluated on a 0-10 scale on the following rubric:
 * 8: Complete and meets expectations.
 * 9-10: Complete and excels in some respect: organization, clarity, creativity. 
 
-### Task 1 (Lesson 1) {#task-1 .unnumbered}
+Tasks are grouped by week below. While I encourage you to work on all the tasks, you are only required to submit one task for grading each week. If you miss a week or want to improve your grade from an evaluated tasks, I will accept two tasks in up to two weeks of your choosing. Simply submit two tasks those weeks and I will drop the lower grades from your other tasks.
+
+### Week 1
+
+#### Task 1 (Lesson 1) {#task-1 .unnumbered}
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
@@ -29,11 +33,11 @@ Submit your work as a single PDF on Brightspace.
 
 Due Monday 11 January at 9:00 am Atlantic.
 
-### Bonus task (Lesson 2)  {#task-b1 .unnumbered}
+#### Bonus task (Lesson 2)  {#task-b1 .unnumbered}
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted). There is nothing to submit for this task.
 
-### Task 2 (Lesson 3) {#task-2 .unnumbered}
+#### Task 2 (Lesson 3) {#task-2 .unnumbered}
 
 See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes](#setup)
 
@@ -47,7 +51,9 @@ Answer the quiz on Brightspace which will ask if you were successful with each t
 
 Due Monday 18 January at 9:00 am Atlantic.
 
-### Task 3 (Lesson 4) {#task-3 .unnumbered}
+### Week 2
+
+#### Task 3 (Lesson 4) {#task-3 .unnumbered}
 
 1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in [Lesson 1](#ch-invitation). The vertical scale does not start at 0. Use the ideas in [Healy Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
 
@@ -61,13 +67,13 @@ Write answers for these two questions in a word processor (we'll start using R m
 
 Due Monday 18 January at 9:00 am Atlantic.
 
-### Bonus task (Lesson 5) {#task-b2 .unnumbered}
+#### Bonus task (Lesson 5) {#task-b2 .unnumbered}
 
 Repeat the examples from Lesson 5 and/or the accompanying video in Rstudio until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. 
 
 There is nothing to submit for this task.
 
-### Task 4 (Lesson 6) {#task-4 .unnumbered}
+#### Task 4 (Lesson 6) {#task-4 .unnumbered}
 
 Use Rstudio to create a new project from the github repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
 
@@ -79,7 +85,7 @@ There is a [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7
 
 There is nothing to submit for this task, but please complete it by Monday 18 January or ask questions at office hours on Tuesday 19 January if you are having trouble. Everyone who *submits* Assignment 1 on time will get 10/10 for this task.
 
-### Bonus task (Lesson 7) {#task-b3 .unnumbered}
+#### Bonus task (Lesson 7) {#task-b3 .unnumbered}
 
 Answer the questions at the end of the mini-lecture video. 
 
@@ -88,23 +94,23 @@ In addition, I suggest the following reading with nothing to submit:
 * Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
 * Read through the ggplot [cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
 
-### Bonus task (Lesson 8) {#task-b4 .unnumbered}
+#### Bonus task (Lesson 8) {#task-b4 .unnumbered}
 
 Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
 
 There is nothing to submit for this task.
 
-### Task 5 (Lesson 9) {#task-5 .unnumbered}
+#### Task 5 (Lesson 9) {#task-5 .unnumbered}
 
 Exercises to practice filter, group_by, summarize, and mutate.
 
 I will add the repository for tasks 5 and 6 to your github account. Start by creating a new R project on your computer using the link to your repository you get from github. Edit the file task-5.rmd. When you are done, knit the file and commit the .rmd and .html files to your repository.
 
-### Task 6 (Lesson 10) {#task-6 .unnumbered}
+#### Task 6 (Lesson 10) {#task-6 .unnumbered}
 
 Exercises to practice making facetted plots. The questions are in the repository for tasks 5 and 6. Edit the file task-6.rmd. When you are done, knit the file and commit the .rmd and .html files to your repository. Push the changes to github to submit your work.
 
-### Bonus task (Lesson 11) {#task-b5 .unnumbered}
+#### Bonus task (Lesson 11) {#task-b5 .unnumbered}
 
 I will get you to practice reading files later on in the course. For now, 
 
@@ -114,56 +120,56 @@ I will get you to practice reading files later on in the course. For now,
 You will want to practice this a bit over reading week or just after when you are looking for data to be used in your term project.
 
 
-### Task 7 (Lesson 12) {#task-7 .unnumbered}
+#### Task 7 (Lesson 12) {#task-7 .unnumbered}
 
 Reshaping data practice. The tasks are in the repository for task 7 and 8.
 
-### Task 8 (Lesson 13) {#task-8 .unnumbered}
+#### Task 8 (Lesson 13) {#task-8 .unnumbered}
 
 Displaying tables practice. The tasks are in the repository for task 7 and 8.
 
-### Bonus task (Lesson 14) {#task-b6 .unnumbered}
+#### Bonus task (Lesson 14) {#task-b6 .unnumbered}
 
 The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
 
-### Bonus task (Lesson 15) {#task-b7 .unnumbered}
+#### Bonus task (Lesson 15) {#task-b7 .unnumbered}
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Esperiment with colors and facets. 
 
-### Task 9 (Lesson 16) {#task-9 .unnumbered}
+#### Task 9 (Lesson 16) {#task-9 .unnumbered}
 
 Exercises on linear models. See the file `task-9.rmd` in the repository for task 9 and 10.
 
-### Task 10 (Lesson 17) {#task-10 .unnumbered}
+#### Task 10 (Lesson 17) {#task-10 .unnumbered}
 
 Exercises on LOESS and GAM smooths. 
 See the file `task-10.rmd` in the repository for task 9 and 10.
 
-### Task 11 (Lesson 18) {#task-11 .unnumbered}
+#### Task 11 (Lesson 18) {#task-11 .unnumbered}
 
 Clone the GitHub project "team-planning" to your computer (or rstudio.cloud workspace). Edit the file "team-planning.Rmd" to add your name and GitHub user ID to the teams table. If you want to work with someone as a team, add both team mates to the same line. If you want to be assigned a random team mate, add your name on a line by yourself.
 
-### Bonus task (Lesson 19) {#task-b8 .unnumbered}
+#### Bonus task (Lesson 19) {#task-b8 .unnumbered}
 
 Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
 You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
-### Task 12 (Lesson 20) {#task-12 .unnumbered}
+#### Task 12 (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
 
 This task is in the repository for task 12, 13, and 14.
 
-### Task 13 (Lesson 21) {#task-13 .unnumbered}
+#### Task 13 (Lesson 21) {#task-13 .unnumbered}
 
 Create a PCA and MDS plot as described in the task-13.rmd file. This task is in the repository for task 12, 13, and 14.
 
-### Task 14 (Lesson 23) {#task-14 .unnumbered}
+#### Task 14 (Lesson 23) {#task-14 .unnumbered}
 
 Create a K-means analysis and accompanying visualization as described in the task-14.rmd file. This task is in the repository for task 12, 13, and 14.
 
-### Bonus task (Lesson 24) {#task-b9 .unnumbered}
+#### Bonus task (Lesson 24) {#task-b9 .unnumbered}
 
 Create and modify an "R presentation" slide presentation as described in the lesson. Ensure you know how to 
 
@@ -171,27 +177,27 @@ Create and modify an "R presentation" slide presentation as described in the les
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-### Bonus task (Lesson 27) {#task-b10 .unnumbered}
+#### Bonus task (Lesson 27) {#task-b10 .unnumbered}
 
 Practice making a map from the lesson
 
-### Task 15 (Lesson 28) {#task-15 .unnumbered}
+#### Task 15 (Lesson 28) {#task-15 .unnumbered}
 
 Make maps described in the task markdown file in the repository.
 
-### Task 16 (Lesson 29) {#task-16 .unnumbered}
+#### Task 16 (Lesson 29) {#task-16 .unnumbered}
 
 Show geographic data without maps as described in the repository.
 
-### Task 17 (Lesson 30) {#task-17 .unnumbered}
+#### Task 17 (Lesson 30) {#task-17 .unnumbered}
 
 Exercises with strings, factors, dates, and times.
 
-### Bonus task (Lesson 31) {#task-b11 .unnumbered}
+#### Bonus task (Lesson 31) {#task-b11 .unnumbered}
 
 Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
 
-### Task 18 (Lesson 32) {#task-18 .unnumbered}
+#### Task 18 (Lesson 32) {#task-18 .unnumbered}
 
 Learn to use theme elements as described in the repository.
 
@@ -208,9 +214,7 @@ Assignments should be submitted to the relevant github repository, generally as 
 
 Make a  markdown document with a figure and commit to a github repository. Ensures you know the foundation of  using git, github, R markdown, and ggplot to build new knowledge and skills on top.
 
-Use the repository you created in Task 4.
-
-Due Wednesday 27 January at 6:00 pm Atlantic time.
+Use the assignment repository for this work and all assignments in the course.
 
 If, when you go to push your work back to github, you get an error about "Author identity unknown". you need to type the following two commands into the R terminal window:
 
@@ -225,7 +229,7 @@ There are so many packages and functions to make visualizations, that its really
 
 The purpose of this assignment is for you to practice this sort of learning. I've picked out a few functions that work much like the examples we've looked at already. Your assignment is to pick out two of these and make a R markdown document describing how they work. This is the sort of practice I do all the time when I learn a new R skill.
 
-Look in the repository `assignment-2` for a template for this assignment.
+Look in the directory `assignment-2` for a template for this assignment.
 
 ### Assignment 3 {#assignment-3 .unnumbered}
 
@@ -268,29 +272,25 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 ### Deliverables {-}
 
-* Proposal - due Friday 12 March at 6:00 pm
-* Presentation - due Thursday 1 April or Tuesday 6 April during synchronous meeting.
-* Report - due Friday 9 April at 6:00 pm
-
-Work in groups of 2 according to the assignments made in the team planning repository. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2 or 3 according to the assignments made in the team planning repository. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on [collaboration with GitHub](#collaboration) for guidance. Contact me if you have trouble.
 
 ### Team creation {-}
 
-Teams will be created in late February. I will add everyone to a repository called `team-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
+Teams will be created in October. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. The deadline for selecting teammates will be Tuesday 18 October. I will review this list, finalize the team assignments, create the presentation schedule and peer-evaluation assignments later that week.
 
-If you would like to form a team with someone else in the class, edit the rmd document to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. This process will also introduce you to some collaboration features of github. The deadline for selecting teammates will be Monday 1 March. I will review this list and finalize the assignments on Tuesday 2 March. I will create the presentation schedule and peer-evaluation assignments later that week.
+**If you withdraw from the course once you have been assigned to a team for the term project, please let your teammates and me know.**
 
 ### Proposal {-}
 
-Your main task for the proposal is to find a dataset to analyze for your project and describe at least one question you can address with data visualizations.
+Your main task for the proposal is to find a data set to analyze for your project and describe at least one question you can address with data visualizations.
 
-It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. If you find a bigger dataset, you can make a subset to work with for your project. The dataset should include categorical and quantiative variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+It is important that you choose a readily accessible data set that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your data set should have at least 50 observations and about 10 variables. If you find a bigger data set, you can make a subset to work with for your project. The data set should include categorical and quantitative variables. If you plan to use a data set that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
 
-Do not reuse datasets from any part of the course.
+Do not reuse data sets from any part of the course.
 
-Here is list of data repositories containing many interesting datasets. Feel free to use data from other sources if you prefer.
+Here is list of data repositories containing many interesting data sets. Feel free to use data from other sources if you prefer.
 
 * [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
 * [Kaggle](https://www.kaggle.com/datasets) 
@@ -303,7 +303,7 @@ Here is list of data repositories containing many interesting datasets. Feel fre
 * Other sources listed in the [Data sources](#data-sources) section of these notes
 * Data you find on your own may be suitable too.
 
-Describe a dataset and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
+Describe a data set and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
 
 The repository contains a template for your proposal called proposal.rmd. Write your proposal by revising this file and using this template.
 
@@ -339,7 +339,7 @@ Presentation schedule: Presentations will take place during the last two synchro
 
 *Assessment*. See the file grade-presentation.rmd for the assessment guidelines.
 
-**Pratice your presentation, as a team, using the course collaborate room or other videoconferencing tool!**
+**Practice your presentation, as a team, using the course collaborate room or other videoconferencing tool!**
  
 ### Written report {-}
 

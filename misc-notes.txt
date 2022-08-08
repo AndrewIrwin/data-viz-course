@@ -1,0 +1,10 @@
+# misc notes removed from other files
+
+
+## Bonus Material {-}
+
+- [Data sources](#data-sources)
+- [Staying organized](#organization)
+- [Getting help: common problems](#common-problems) with R, Rstudio, and git
+- [A bit more about R](#r-details). 
+
