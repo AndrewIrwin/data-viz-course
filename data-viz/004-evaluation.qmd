@@ -2,6 +2,8 @@
 
 All the work you will complete for evaluation and credit in the course is described below.
 
+**This document is in draft form and will be revised before the course begins.**
+
 ## Tasks {-}
 
 Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
@@ -272,7 +274,7 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 ### Deliverables {-}
 
-Work in groups of 2 or 3 according to the assignments made in the team planning repository. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2 or 3 according to the assignments made in [late October](teams.qmd). You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on [collaboration with GitHub](#collaboration) for guidance. Contact me if you have trouble.
 

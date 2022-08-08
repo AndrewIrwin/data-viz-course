@@ -11,6 +11,10 @@ website:
         text: Syllabus
       - href: 002-detailed-outline.qmd
         text: Details
+      - href: 004-evaluation.qmd
+        text: Evaluation
+      - href: teams.qmd
+        text: Teams
         
 format:
   html:
