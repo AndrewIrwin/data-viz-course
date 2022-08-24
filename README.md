@@ -8,7 +8,7 @@ The course web page is at
 
 The course textbook is at
 
-* TBA
+* https://andrewirwin.github.io/data-viz-notes/
 
-Other information about the course can be accessed by registered student through Brightspace at Dalhousie.
+Other information about the course can be accessed by registered student through [Brightspace](https://dal.brightspace.com/d2l/home/232100) at Dalhousie.
 
