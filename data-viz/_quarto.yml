@@ -10,7 +10,7 @@ website:
       - href: 001-syllabus.qmd
         text: Syllabus
       - href: 002-detailed-outline.qmd
-        text: Details
+        text: Schedule
       - href: 004-evaluation.qmd
         text: Evaluation
       - href: teams.qmd

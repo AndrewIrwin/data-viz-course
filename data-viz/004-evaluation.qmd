@@ -13,15 +13,15 @@ Tasks will usually be evaluated on a 0-10 scale on the following rubric:
 * 0-5: Work missing or mostly incomplete.
 * 6-7: Mostly complete or complete with major deficiencies.
 * 8: Complete and meets expectations.
-* 9-10: Complete and excels in some respect: engagement with the task, creativity, and organization of your work. 
+* 9-10: Complete and excels in some respect: engagement with the task, creativity in the thoughtful application of course skills and ideas, and organization of your work. 
 
-Tasks are grouped by week below. I encourage you to work on all the tasks. You are only required to submit one task for grading each week (except for week 1 which has two tasks). If you miss a week or want to improve your grade from an evaluated task, I will accept two tasks in up to two weeks of your choosing, starting in week 3. Simply submit two tasks those weeks and I will drop the lower grades from your other tasks.
+Tasks are grouped by week below. I encourage you to work on all the tasks. You are only required to submit one task for grading each week (except for week 1 which has two tasks and week 3 which has no tasks). If you miss a week or want to improve your grade from an evaluated task, I will accept two tasks in up to two weeks of your choosing, starting in week 4. Simply submit two tasks those weeks and I will drop the lower grades from your other tasks.
 
 ### Week 1
 
-The tasks for this week are to be submitted on Brightspace.
+There are two tasks this week (Invitation, Setting Up). Both are to be submitted on Brightspace.
 
-#### Task 1 (Lesson 1) {#task-1 .unnumbered}
+#### Task: Invitation (Lesson 1) {#task-1 .unnumbered}
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
@@ -46,7 +46,7 @@ Make a list of about 10 key takeaway messages from the reading. For example, I w
 - Do all my learning and work in R in R markdown documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don't use a word processor. Don't cut and paste code and results from the R console into a document. It's too easy to make mistakes this way and will take longer.
 - Take notes about what I learn (for ggplot and other skills). I'll write these in a private Rmd document called data-viz-notes.Rmd (or something like that)
 
-#### Task 2 (Lesson 3) {#task-2 .unnumbered}
+#### Task: Setting up (Lesson 3) {#task-2 .unnumbered}
 
 See the instructions in the syllabus or in Lesson 3 notes.
 
@@ -60,19 +60,18 @@ Answer the quiz on Brightspace which will ask if you were successful with each t
 
 ### Week 2
 
-The tasks for this week are to be submitted on Brightspace.
+Task 3 should be submitted on Brightspace this week.
 
-#### Task 3 (Lesson 4) {#task-3 .unnumbered}
+#### Task: Look at data (Lesson 4) {#task-3 .unnumbered}
 
 Your task for this lesson is to answer two specific questions about choices made when visualizing data, drawing on your own experience and the ideas presented below. You should also become familiar with [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which contains much more on these topics.
 
 1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in Lesson 1. The vertical scale does not start at 0. Use the ideas in [Healy, Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
 
 2. Hans Rosling's visualizations (as shown in Lesson 1) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
-
-a. For Rosling's plot show in in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
-b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
-c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
+   a. For Rosling's plot show in in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
+   b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
+   c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
 
 Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
 
@@ -84,18 +83,7 @@ There is nothing to submit for this task.
 
 ### Week 3
 
-The tasks for this week and the rest of the course are to be submitted using GitHub.
-
-#### Task 4 (Lesson 6) {#task-4 .unnumbered}
-
-Your task for this lesson is to get the repository (see below for what this means) for the rest of the Tasks and the Assignments on to your computer.
-
-Use Rstudio to create a new project from the github repository for your Tasks, then edit task-06.Rmd following the instructions in that file. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
-
-* Go to your [github](https://github.com) account and look for a repository called "data-viz-tasks-" followed by your github user name. Get the link by clicking the green button labeled "Code". It should look like this: `https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-tasks-<your github name>.git` 
-* Using Rstudio on your computer, select menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer.
-* If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignment-1.Rproj" link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories. 
-
+No assigned tasks this week. Work on Assignment 1 instead.
 
 #### Bonus task (Lesson 7) {#task-b3 .unnumbered}
 
@@ -114,16 +102,18 @@ There is nothing to submit for this task.
 
 ### Week 4
 
-#### Task 5 (Lesson 9) {#task-5 .unnumbered}
+The tasks for this week and the rest of the course are to be submitted using GitHub.
 
-Exercises to practice filter, group_by, summarize, and mutate.
+#### Task: Summarizing data (Lesson 9) {#task-5 .unnumbered}
 
-Edit the file task-5.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
-Commit the .rmd file to your repository and push the changes to GitHub. There is no need to commit the html file; I will knit your file on my computer to be sure there are no errors.
+Exercises to practice filter, group_by, summarize, and mutate. File `task-summarize.Rmd`.
 
-#### Task 6 (Lesson 10) {#task-6 .unnumbered}
+Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
+Commit the .Rmd file to your repository and push the changes to GitHub. There is no need to commit the html file; I will knit your file on my computer to be sure there are no errors.
 
-Exercises to practice making facetted plots in task-6.Rmd. When you are done, knit the file and commit the .Rmd file to your repository. Push the changes to github to submit your work.
+#### Task: Facetted plots (Lesson 10) {#task-6 .unnumbered}
+
+Exercises to practice making faceted plots. When you are done, knit the file and commit the `tasks-facets.Rmd` file to your repository. Push the changes to github to submit your work.
 
 #### Bonus task (Lesson 11) {#task-b5 .unnumbered}
 
@@ -134,13 +124,13 @@ I will get you to practice reading files later on in the course. For now,
 
 ### Week 5
 
-#### Task 7 (Lesson 12) {#task-7 .unnumbered}
+#### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 
-Reshaping data practice. 
+Reshaping data practice. File: `task-reshape.Rmd`.
 
-#### Task 8 (Lesson 13) {#task-8 .unnumbered}
+#### Task: Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
-Displaying tables practice. 
+Displaying tables practice. File: `task-tables.Rmd`
 
 #### Bonus task (Lesson 14) {#task-b6 .unnumbered}
 
@@ -152,22 +142,25 @@ The material in this lesson should be helpful if you run into challenges while w
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
 
-#### Task 9 (Lesson 16) {#task-9 .unnumbered}
+#### Task: Linear models (Lesson 16) {#task-9 .unnumbered}
 
-Exercises on linear models. See the file `task-9.Rmd`.
+Exercises on linear models. File: `task-linear-models.Rmd`.
 
-#### Task 10 (Lesson 17) {#task-10 .unnumbered}
+#### Task: LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
 
-Exercises on LOESS and GAM smooths. 
-See the file `task-10.Rmd`.
+Exercises on LOESS and GAM smooths. File: `task-LOESS-GAM.Rmd`.
+
+#### Team Planning {#task-planning .unnumbered}
+
+If you would like to work in a team with specific classmates, edit the file `team-planning.Rmd` in the Task repository. Write the GitHub user ID of the one or two students you would like to work with to the file. If you want to be assigned a random team mate, you don't need to do anything.
+
+To have your preferences recorded, commit the .Rmd file to the repository and push the repository to github by October 16, 2022. Otherwise I will assign you to a team at random.
 
 ### Week 7
 
-#### Task 11 (Lesson 18) {#task-11 .unnumbered}
+#### Task: Collaboration (Lesson 18) {#task-11 .unnumbered}
 
-**FIX ME**
-
-Clone the GitHub project "team-planning" to your computer (or rstudio.cloud workspace). Edit the file "team-planning.Rmd" to add your name and GitHub user ID to the teams table. If you want to work with someone as a team, add both team mates to the same line. If you want to be assigned a random team mate, add your name on a line by yourself.
+Practice skills associated with collaborating on GitHub. File `task-collaboration.Rmd`.
 
 #### Bonus task (Lesson 19) {#task-b8 .unnumbered}
 
@@ -175,59 +168,63 @@ Look for some data on the internet. Download the data to your computer. Read the
 
 You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
-#### Task 12 (Lesson 20) {#task-12 .unnumbered}
+#### Task: Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
 
 ### Week 8
 
-#### Task 13 (Lesson 21) {#task-13 .unnumbered}
+#### Task: PCA (Lesson 21) {#task-13 .unnumbered}
 
-Create a PCA and MDS plot as described in the task-13.rmd file. This task is in the repository for task 12, 13, and 14.
+Create a PCA and MDS plot as described in the file `task-PCA.Rmd`. 
 
-#### Task 14 (Lesson 23) {#task-14 .unnumbered}
+#### Task: K-means (Lesson 23) {#task-14 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the task-14.rmd file. This task is in the repository for task 12, 13, and 14.
+Create a K-means analysis and accompanying visualization as described in the file `task-kmeans.Rmd`. This task is in the repository for task 12, 13, and 14.
 
 ### Week 9
 
-#### Bonus task (Lesson 24) {#task-b9 .unnumbered}
+#### Task: Presentations (Lesson 24) {#task-14a .unnumbered}
 
-Create and modify an "R presentation" slide presentation as described in the lesson. Ensure you know how to 
+Create and modify a Quarto presentation as described in the lesson. Ensure you know how to 
 
 * show graphics output, but not the code that generated it,
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-**FIX ME MISSING TASKS**
+File: `task-presentation.qmd`.
 
 ### Week 10
+
+This is the fall break. No tasks this week.
+
+### Week 11
 
 #### Bonus task (Lesson 27) {#task-b10 .unnumbered}
 
 Practice making a map from the lesson
 
-#### Task 15 (Lesson 28) {#task-15 .unnumbered}
+#### Task: Maps (Lesson 28) {#task-15 .unnumbered}
 
-Make maps described in the task markdown file in the repository.
+Make maps described in the file `task-maps.Rmd`.
 
-#### Task 16 (Lesson 29) {#task-16 .unnumbered}
+#### Task: Map alternatives (Lesson 29) {#task-16 .unnumbered}
 
-Show geographic data without maps as described in the repository.
+Show geographic data without maps as described in `task-map-alternatives.Rmd`.
 
 ### Week 12
 
-#### Task 17 (Lesson 30) {#task-17 .unnumbered}
+#### Task: Factors and Dates (Lesson 30) {#task-17 .unnumbered}
 
-Exercises with strings, factors, dates, and times.
+Exercises with strings, factors, dates, and times. See `task-factors-dates.Rmd`.
 
 #### Bonus task (Lesson 31) {#task-b11 .unnumbered}
 
 Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
 
-#### Task 18 (Lesson 32) {#task-18 .unnumbered}
+#### Task: Themes (Lesson 32) {#task-18 .unnumbered}
 
-Learn to use theme elements as described in the repository.
+Learn to use theme elements as described in the repository. See `task-themes.Rmd`.
 
 That is the last task for the course!
 
@@ -237,11 +234,19 @@ Assignments are opportunities to apply and combine the skills from several lesso
 
 ### Assignment 1 {#assignment-1 .unnumbered}
 
-Make a  markdown document with a figure and commit to a github repository. Ensures you know the foundation of  using git, github, R markdown, and ggplot to build new knowledge and skills on top.
+Your assignment is to get the repositories for Assignments and Tasks on to your computer.
+
+* Go to your [github](https://github.com) account and look for a repository called `data-viz-assignments-` followed by your github user name. Get the link by clicking the green button labeled "Code". It should look like this: `https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-assignments-<your github name>.git` 
+* Using Rstudio on your computer, select menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer.
+* If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignments.Rproj" link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories. 
+
+Repeat these steps, changing `assignments` to `tasks` to get the repository with your Tasks.
+
+Open the Assignments project and edit `assignment-1.Rmd`. Follow the instructions in that file. If you have trouble with this assignment, ask for help. It's very important.
 
 Use the assignment repository for this work and all assignments in the course.
 
-If, when you go to push your work back to github, you get an error about "Author identity unknown". you need to type the following two commands into the R Terminal window:
+If, when you try to push your work back to github, you get an error "Author identity unknown", you need to type the following two commands into the R Terminal window:
 
 ```
 git config --global user.email "you@example.com"
@@ -256,7 +261,7 @@ There are so many packages and functions to make visualizations, that its really
 
 The purpose of this assignment is for you to practice this sort of learning. I've picked out a few functions that work much like the examples we've looked at already. Your assignment is to pick out two of these and make a R markdown document describing how they work. This is the sort of practice I do all the time when I learn a new R skill.
 
-Look in the directory `assignment-2` for a template for this assignment.
+Look in the file `assignment-2.Rmd` for a template for this assignment.
 
 ### Assignment 3 {#assignment-3 .unnumbered}
 
@@ -301,11 +306,11 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 Work in groups of 2 or 3 according to the assignments made in [late October](teams.qmd). You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
-Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on [collaboration with GitHub](#collaboration) for guidance. Contact me if you have trouble.
+Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.
 
 ### Team creation {-}
 
-Teams will be created in October. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. The deadline for selecting teammates will be Tuesday 18 October. I will review this list, finalize the team assignments, create the presentation schedule and peer-evaluation assignments later that week.
+Teams will be created in October. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. The deadline for selecting teammates will be Sunday 16 October. I will review this list, finalize the team assignments, create the presentation schedule and peer-evaluation assignments later that week.
 
 **If you withdraw from the course once you have been assigned to a team for the term project, please let your teammates and me know as soon as possible.**
 
@@ -374,7 +379,7 @@ Follow the template provided for your written report (report.rmd) to present you
 
 Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.
 
-You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck. Look at the lesson on [collaboration](#collaboration) for help.
+You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck. Look at the lesson on collaboration for help.
 
 In your knitted report your R code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you're welcome to show that portion.
 

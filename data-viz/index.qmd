@@ -13,16 +13,15 @@ Welcome to Data Visualization (STAT 2430) at Dalhousie University for Fall 2022.
 
 * the [syllabus](001-syllabus.qmd) for the whole course,
 * the course [textbook](https://andrewirwin.github.io/data-viz-notes/),
-* the [detailed outline](002-detailed-outline.qmd) with a plan for each class (subject to change!),
-* detailed information about all work to be [evaluated](004-evaluation.qmd), 
-* [slides](slides) presented in class (will appear as the term progresses), and
-* [live coding](live-coding) examples presented in class (will appear as the term progresses).
+* the [detailed outline](002-detailed-outline.qmd) with a plan for each class (subject to change!) and a link to slides and other materials presented in class, and
+* detailed information about all work to be [evaluated](004-evaluation.qmd).
 
 A few items are located on [Brightspace course page](https://dal.brightspace.com/d2l/home/232100)
 
 * a link to participate online through Collaborate, in case you can't come to a class,
 * recordings from class,
-* course work for the first two weeks of term,
+* course work to be submitted during the first two weeks of term,
+* term project information: team membership, presentation schedule, and peer-evaluation schedule,
 * your grades in the course.
 
 If you have questions about the course, please ask in class, or contact me by [email](mailto:a.irwin@dal.ca).
