@@ -1,0 +1,127 @@
+---
+title: "STAT 2430<br/>Data Visualization"
+subtitle: "Course Mechanics"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Mathematics & Statistics,<br/>Dalhousie University"
+date: "2022-09-06"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+---
+
+
+##  Syllabus
+
+:::: {.columns}
+::: {.column width="40%"}
+* Goals
+
+* Resources
+
+* Evaluation
+
+* Weekly plan
+:::
+
+::: {.column width="50%"}
+![Claus Wilke's take on data visualization](static/L01-wilke-Data_science_venn.svg)
+:::
+::::
+
+
+## Goals
+
+* Characteristics of a good data visualization?
+
+* Design, edit, and communicate with data visualizations.
+
+* Learn computer skills needed to create visualizations.
+
+## Learning outcomes
+
+### Visual impact and aesthetic aspects of graphics
+
+- Connect data to perceptual features of your graphics.
+
+- Describe aesthetic features of good plots. 
+
+- Use length, shape, size, colour, annotations, and other features to enable comparative visual interpretation.
+
+## Learning outcomes
+
+### Visualization as communication
+
+- Visualization as a tool for communication.
+- Iterative process similar to editing text.
+- Choose the right format for your audience and communications goals.
+- Evaluate effectiveness by peer-review and constructive feedback.
+
+## Learning outcomes {.smaller}
+
+### Computing skills
+
+- Create graphs with continuous and categorical variables with informative legends.
+- Add error bars, linear models, smooths, labels, and other annotations to a graph.
+- Use the principles of tidy data to help with transformation and analysis of data.
+- Summarize and transform data using dplyr.
+- Write reproducible reports to document your analysis process and present your results.
+- Distribute data, code, and results using git and github.
+- Develop skills for independently learning new data visualization methods and software.
+
+## Learning outcomes
+
+### Statistical models
+
+- Approximate data with LOESS, OLS, robust regression, polynomial regression.
+- Extract information from statistical models.
+- PCA to reduce the dimensionality of complex datasets.
+- MDS to visualize and compare similarities and dissimilarities between variables.
+- Divide observations into homogeneous and distinct groups using K-means.
+
+## Tools
+
+* R - software for statistics
+* Rstudio - a graphical interface to make using R easier
+* R markdown - write reports that combine computations, results, and natural language
+* ggplot - a tool for plotting data 
+* git - a tool for managing your work and collaborating
+
+## Weekly Plan
+
+* Course notes online
+
+* In-class meetings
+  * Remote participation possible
+  
+* Evaluation
+  
+* Office hours for individual discussion
+
+## Evaluation
+
+* Tasks (weekly)
+
+* Assignments (every two weeks)
+
+* Project (Proposal, Presentation, Report)
+  
+**All work to be evaluated is described on a [single course page](https://andrewirwin.github.io/data-viz-2022-course/004-evaluation.html).**
+
+
+## Course Resources
+
+* [Course web page](https://andrewirwin.github.io/data-viz-2022-course/)
+
+* [Course Notes](https://andrewirwin.github.io/data-viz-notes/)
+
+* Textbooks
+  * Healy. Data Visualization.
+  * Wilke. Fundamentals of Data Visualization
+  * Grolemund & Wickham. R for Data Science
+
+* Software: R, Rstudio, git
+  
+* Brightspace
+
+  

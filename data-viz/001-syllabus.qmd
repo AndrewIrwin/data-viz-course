@@ -129,8 +129,8 @@ The course is intended to be delivered in person, on campus at Dalhousie.
 I hope that most of you will be physically present in the classroom for most classes.
 Since you can be infected and transmit the virus without experiencing any symptoms, I encourage everyone to wear a high-quality mask while on campus to reduce the probability of virus transmission. _Dalhousie [policy](https://www.dal.ca/covid-19-information-and-updates.html) requires you to wear a mask when you are in our classroom._
 I anticipate that some students will need to miss some classes following a close contact with an infected person, developing symptoms similar to COVID-19, or contracting COVID-19.
-All course meetings will be available live on Brightspace and recorded for watching later.
-This means that you can participate in the whole course even if you can't attend a particular class. 
+I plan to make all course meetings available live and recorded on Brightspace using Collaborate Ultra.
+This means that you can participate in the whole course even if you can't attend a particular class. I expect the online experience will not be as good as the in-person class. 
 You are not required to be physically present on campus for classes, tests, or a final exam.
 This design is to keep you safe and to help you keep your classmates safe.
 

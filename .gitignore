@@ -2,10 +2,15 @@
 .Rhistory
 *.RData
 .Ruserdata
-DS_Store
+.DS_Store
 /.quarto/
 /_site/
 *.html
 /*chunk*/
 html/
 figure-html/
+~*xlsx
+*_files/
+*.key
+live-coding-old
+slides-old

@@ -1,0 +1,193 @@
+---
+title: "Summarizing data (dplyr)"
+author: "Andrew Irwin, a.irwin@dal.ca"
+date: "2021-09-27"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+    chalkboard: true
+    auto-animate: true
+    scrollable: true
+    code-block-border-left: true
+    code-copy: false
+    code-link: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(rmarkdown)
+library(knitr)
+library(kableExtra)
+```
+
+# Transforming data
+
+How can we  
+  * transform data, or 
+  * reduce a large number of observations to a smaller number?
+
+* Compute derived quanties (ratios, change units) 
+
+* Count observations in categories
+
+* Compute means and standard deviations 
+  * Combine replicates
+  * Average over cateogories
+
+* Highlight special cases
+
+
+# dplyr examples
+
+Transforming and reducing observations using 
+
+* `mutate`
+
+* `filter`
+
+* `group_by`
+
+* `summarize`
+
+We will use the `ChickWeight` data in the `datasets` package.
+
+
+
+# Data
+
+```{r}
+glimpse(ChickWeight)
+```
+
+# Use summarize to count observations
+
+```{r}
+ChickWeight |> summarize(count = n()) |> kable()
+```
+
+# Count observations in groups
+
+```{r}
+ChickWeight |>
+  group_by(Diet) |> #<<
+  summarize(count = n(), .groups="drop") |>
+  kable()
+```
+
+
+## Two grouping factors
+
+```{r}
+ChickWeight |>
+  group_by(Diet, Chick) |> #<<
+  summarize(count = n(), .groups = "drop") |>
+  paged_table()
+```
+
+### Compute any function you want
+
+```{r}
+ChickWeight |>
+  group_by(Chick, Diet) |> 
+  summarize(count = n(), 
+            max_time = max(Time), 
+            median_weight = median(weight),
+            increase_weight = max(weight) - min(weight),
+            .groups="drop") |>
+    paged_table()
+```
+
+### Use mutate to create new columns for each observation
+
+```{r}
+ChickWeight |> as_tibble() |>
+  mutate(growth = weight / Time) |>
+  paged_table()
+```
+
+### Use mutate to create new columns for each observation
+
+```{r}
+ChickWeight |> as_tibble() |>
+  mutate(growth = (weight-min(weight)) / Time) |>
+  paged_table()
+```
+
+### Exclude observations with filter
+
+```{r}
+ChickWeight |> as_tibble() |>
+  filter(Time >= 10) |> 
+  arrange(Time) |>
+  paged_table()
+```
+
+
+### Exclude observations with filter
+
+```{r}
+ChickWeight |> as_tibble() |>
+  filter(Time == 10) |> 
+  group_by(Diet) |> 
+  summarize(weight_10 = mean(weight), .groups = "drop") |>
+  kable()
+```
+
+# Combine all three
+
+* Compute max weight for each chick and diet over all time.
+* Filter out chicks that reach a target weight
+* Count the number of observations per chick and diet treatment
+
+```{r eval=FALSE}
+ChickWeight |> as_tibble() |>
+  group_by(Diet, Chick) |>
+  mutate(max_weight = max(weight)) |>
+  filter(max_weight > 110) |>
+  group_by(Diet, Chick) |>
+  summarize(n = n()) |>
+  summarize(count_chicks = n(), .groups = "drop") |>
+  kable()
+```
+
+# Combine all three
+
+* Compute max weight for each chick and diet over all time.
+* Filter out chicks that reach a target weight
+* Count the number of observations per chick and diet treatment
+
+```{r echo=FALSE, message=FALSE}
+ChickWeight |> as_tibble() |>
+  group_by(Diet, Chick) |>
+  mutate(max_weight = max(weight)) |>
+  filter(max_weight > 110) |>
+  group_by(Diet, Chick) |>
+  summarize(n = n()) |>
+  summarize(count_chicks = n(), .groups = "drop") |>
+  kable()
+```
+
+
+# Summary
+
+* Use `mutate` to define a new variable for all observations
+
+* Use `summarize` to compute functions (count, mean, ...) to reduce many observations to one
+
+* Use `group_by` to split, summarize, and combine data
+
+* Use `filter` to select observations
+
+
+# Further reading
+
+* Lots more examples with different data in the course notes
+
+* R4DS [Chapter 5 Data transformations](https://r4ds.had.co.nz/transform.html)
+
+
+# Task
+
+Practice these skills by doing the calculations in Task 5.
+

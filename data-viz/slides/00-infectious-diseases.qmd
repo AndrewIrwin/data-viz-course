@@ -1,0 +1,51 @@
+---
+title: "Data visualization: infectious diseases"
+author: "Andrew Irwin"
+format: revealjs
+date: "2022-09-06"
+---
+
+## London, 185x
+### Cholera epidemic
+
+## The Ghost Map
+
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Miasma
+
+
+
+## Droplets vs Aerosols
+
+
+
+## SARS-CoV-2
+
+Trasmission
+Mask utility
+
+
+## COVID in 2022
+
+:::: {.columns}
+
+::: {.column width="40%"}
+### Total deaths since start of pandemic
+
+All of Canada: 
+25% in first 6 months of 2022
+
+Maritime provinces:
+65-100% in first 6 months of 2022
+:::
+
+::: {.column width="60%"}
+![COVID deaths since start of pandemic](static/01-cumulative-deaths-to-2022-06.png){#fig-covid-deaths}
+:::
+
+::::
+
+
+

@@ -1,0 +1,82 @@
+---
+title: "Computer Tools"
+author: "Andrew Irwin, a.irwin@dal.ca"
+date: "2022-09-08"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+---
+
+```{r setup, include=FALSE}
+course <- function(static_file) knitr::include_graphics(paste0("https://andrewirwin.github.io/data-viz-notes/lessons/static/", static_file))
+```
+
+## What computing tools will we learn?
+
+* R
+
+* Rstudio
+
+* ggplot
+
+* tidyverse
+
+* Rmarkdown
+
+* git
+
+* github
+
+
+## Why are we learning to use these tools?
+
+* Powerful set of tools for data analysis and visualization, communication, maintenance and dissemination
+
+* Widely used and actively developed
+
+* Will eventually be displaced by new methods
+
+* Core principles are long-lived and will be useful for decades
+
+
+## R
+
+![[R](https://www.r-project.org) screenshot](static/L02-R.png){#fig-R}
+
+## Rstudio
+
+![[Rstudio](https://www.rstudio.com/products/rstudio/) screenshot](static/L02-Rstudio.png){#fig-Rstudio}
+
+
+## Grammar of Graphics
+
+![[ggplot2](https://ggplot2.tidyverse.org/) screenshot](static/L02-ggplot.png){#fig-ggplot}
+
+
+## tidyverse
+
+![[tidyverse](https://tidyverse.org/) screenshot](static/L02-tidyverse.png){#fig-tidyverse}
+
+## R markdown
+
+![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot](static/L02-Rmarkdown.png){#fig-tidyverse}
+
+## git
+
+![[git](https://git-scm.com/) screenshot](static/L02-git.png){#fig-git}
+
+## github
+
+![[github](https://github.com/) screenshot](static/L02-github.png){#fig-github}
+
+
+## Task
+
+Read Healy, Sections 2.1-2.4: 
+
+* why and how to use R markdown, R/Rstudio, projects. 
+* the basics of R and being patient as you learn computing tasks.
+
+Make a list of about 10 key takeaway messages from the reading. 
+

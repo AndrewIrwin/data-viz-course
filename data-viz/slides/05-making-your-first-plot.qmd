@@ -1,0 +1,222 @@
+---
+title: "Making your first plot"
+author: "Andrew Irwin, a.irwin@dal.ca"
+date: "2021-09-13"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+    chalkboard: true
+    auto-animate: true
+    scrollable: true
+    code-block-border-left: true
+    code-copy: false
+    code-link: true
+
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(patchwork)
+library(kableExtra)
+```
+
+# Use the ggplot2 library
+
+Do this once (if you haven't done it already):
+
+```
+install.packages("tidyverse")
+```
+
+Add this line to every R markdown document:
+
+```
+install.packages("tidyverse")
+```
+
+## Get some data {.smaller}
+
+```{r echo=TRUE}
+glimpse(mtcars)
+```
+
+Also try `mtcars` or `str(mtcars)` or `View(mtcars)`.
+
+## First plot
+
+```{r fig0, fig.show="hide", warning=FALSE, fig.height=6, fig.width=6, echo=TRUE}
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg)) +
+  geom_point()
+```
+
+
+- The _pipe_ symbol (`|>`) is function composition. 
+    - `f(g(x))` can be written `x |> g |> f`.
+- `aes` is a function to define **aes**thetic associations between features of your plot and variables in the dataset.
+- Parts of a ggplot are added togther with `+`
+- The kind of plot is called its _geometry_. 
+    - `geom_point` makes a scatterplot.
+
+---
+
+```{r fig.align="center", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig0", "png"))
+```
+
+
+## What if you forget ... ?
+
+```{r fig1, fig.show="hide", warning=FALSE, fig.height=6, fig.width=6, echo=TRUE}
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg))
+```
+
+Try "forgetting" other parts of the code to see what goes wrong.
+
+---
+
+```{r fig.align="center", out.height="80%", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig1", "png"))
+```
+
+
+## Add some colour
+
+```{r fig2, fig.show="hide", warning=FALSE, fig.height=6, fig.width=8, echo=TRUE}
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + #<<
+  geom_point()
+```
+
+
+`cyl` is a number, so I must turn it into a categorical variable (factor) to get a discrete colour scale.
+
+Try using `cyl` instead of `factor(cyl)`.
+
+---
+
+```{r fig.align="center", out.height="80%", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig2", "png"))
+```
+
+
+## Make the text larger
+
+```{r fig3, fig.show="hide", warning=FALSE, fig.width=7, fig.height=6, echo=TRUE}
+#| code-line-numbers: 6
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+  geom_point() +
+  theme(text = element_text(size = 28))
+```
+
+## Make the text larger
+
+```{r fig.align="center", out.width="80%", out.height="80%", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig3", "png"))
+```
+
+
+## Make the symbols larger
+
+```{r fig3b, fig.show="hide", warning=FALSE, fig.width=7, fig.height=5, echo=TRUE}
+#| code-line-numbers: 5
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+  geom_point(size=3) + 
+  theme(text = element_text(size = 28)) 
+```
+
+
+I'm setting the size of all the symbols, not connecting a variable to the size aesthetic. So don't use `aes`.
+
+
+`geom_point` (and any other geom) _inherits_ the aesthetics from `ggplot`.
+
+## Make the symbols larger
+
+```{r fig.align="center", out.width="80%", out.height="80%", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig3b", "png"))
+```
+
+
+
+## Customize the labels
+
+```{r fig4, fig.show="hide", warning=FALSE, fig.width=7, fig.height=5, echo=TRUE}
+#| code-line-numbers: 7-11
+mtcars |>
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+  geom_point(size=3) +
+  theme(text = element_text(size = 28)) +
+  labs(x = "Car mass (x 1000 pounds)", 
+       y = "Fuel consumption (mpg)", 
+       color = "Number of\nCylinders", 
+       title = "Car road test results", 
+       caption = "from Motor Trend magazine") 
+```
+
+
+## Customize the labels
+
+```{r fig.align="center", out.width="80%", out.height="80%", echo=FALSE}
+knitr::include_graphics(knitr::fig_chunk("fig4", "png"))
+```
+
+
+## Summary
+
+* Start with data
+
+* Pipe (`|>`) into `ggplot`
+
+* Define the aesthetics: `aes(x = ..., y = ..., color = ..., shape = ...)`
+
+* Define the geometry: `geom_point` shown here, but there are [lots more](https://ggplot2.tidyverse.org/reference/index.html#geoms)
+
+* Customize text
+
+
+## Suggested reading
+
+* Course notes: Making your first plot
+
+* Healy. Section 2.6. Make your first figure
+
+* R4DS. Chapter 3: Data visualization
+
+* Lots more detail: The [ggplot2 book](https://ggplot2-book.org/index.html)
+
+## Task and Assignment
+
+* Try these plotting commands on your own 
+
+* Assignment 1: Your first plotting exercises
+
+
+
+## Datasets to experiment with
+
+* mtcars, iris and many other well-known data in datasets package
+* penguins in palmerpenguins package
+* gapminder in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* diamonds in ggplot2 package
+* nycflights13 in dbplyr package
+
+Use `glimpse(mtcars)` (or other dataset) and `View(mtcars)` to look at the data.
+
+Use ?mtcars to get documentation for the dataset, or use the search in the "Help" panel.
+

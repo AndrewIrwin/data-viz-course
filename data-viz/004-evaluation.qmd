@@ -2,8 +2,6 @@
 
 All the work you will complete for evaluation and credit in the course is described below.
 
-**This document is in draft form and will be revised before the course begins.**
-
 ## Tasks {-}
 
 Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
@@ -337,7 +335,7 @@ Here is list of data repositories containing many interesting data sets. Feel fr
 
 Describe a data set and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
 
-The repository contains a template for your proposal called proposal.rmd. Write your proposal by revising this file and using this template.
+The repository contains a template for your proposal called `proposal.Rmd`. Write your proposal by revising this file and using this template.
 
 * Questions: The introduction should introduce your research questions
 * Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.).  Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal.
@@ -353,7 +351,7 @@ The repository contains a template for your proposal called proposal.rmd. Write 
 
 The oral presentation should be about 5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.
 
-You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.rpres`. I suggest a format such as the following:
+You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.qmd`. I suggest a format such as the following:
 
 * A title with team members' names
 * A description of the data you are analyzing
@@ -369,13 +367,13 @@ Your presentation should not just be an account of everything you tried ("then w
 
 Presentation schedule: Presentations will take place during the last two synchronous sessions of the course. You can choose to do your presentation live or pre-record it. You will watch presentations from other teams and provide feedback on one each day in the form of peer evaluations. The presentation schedule will be generated randomly.
 
-*Assessment*. See the file grade-presentation.rmd for the assessment guidelines.
+*Assessment*. See the file `grade-presentation.Rmd` for the assessment guidelines.
 
 **Practice your presentation, as a team, using the course collaborate room or other videoconferencing tool!**
  
 ### Written report {-}
 
-Follow the template provided for your written report (report.rmd) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.
+Follow the template provided for your written report (`report.Rmd`) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.
 
 Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.
 
