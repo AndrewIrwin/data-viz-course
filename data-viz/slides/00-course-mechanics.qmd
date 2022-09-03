@@ -8,13 +8,14 @@ format:
   revealjs:
     slide-number: true
     theme:  default
+    history: false
 ---
 
 
 ##  Syllabus
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="50%"}
 * Goals
 
 * Resources
@@ -32,7 +33,7 @@ format:
 
 ## Goals
 
-* Characteristics of a good data visualization?
+* Identify characteristics of a good data visualization.
 
 * Design, edit, and communicate with data visualizations.
 
@@ -40,7 +41,7 @@ format:
 
 ## Learning outcomes
 
-### Visual impact and aesthetic aspects of graphics
+### Visual impact and aesthetics of graphics
 
 - Connect data to perceptual features of your graphics.
 

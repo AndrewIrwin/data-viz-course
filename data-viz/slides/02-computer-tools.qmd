@@ -6,6 +6,7 @@ format:
   revealjs:
     slide-number: true
     theme:  default
+    history: false
 ---
 
 ```{r setup, include=FALSE}

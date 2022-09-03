@@ -10,6 +10,7 @@ format:
     chalkboard: true
     auto-animate: true
     scrollable: true
+    history: false
 ---
 
 ```{r setup, include=FALSE}
@@ -18,13 +19,13 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 ```
 
 
-## {background-image="static/L01-mlo_two_years.png"}
+## {background-image="static/L01-mlo_two_years.png" background-size="contain" background-repeat="no-repeat" }
 
-## {background-image="static/L01-mlo_full_record.png"}
+## {background-image="static/L01-mlo_full_record.png" background-size="contain" background-repeat="no-repeat" }
 
-## {background-image="static/L01-mlo_co2_800k.png"}
+## {background-image="static/L01-mlo_co2_800k.png" background-size="contain" background-repeat="no-repeat"}
 
-## {background-image="static/L01-sea-ice-volume.png" background-size="contain" background-repeat="no-repeat" }
+## {background-image="static/L01-sea-ice-volume.png" background-size="contain" background-repeat="no-repeat" background-color="black" }
 
 ## {background-image="static/L01-gapminder-fertility-income.png" background-size="contain" background-repeat="no-repeat" }
 
@@ -38,11 +39,10 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ## {background-image="static/L01-snow-cholera-map-1.png" background-size="contain" background-repeat="no-repeat" }
 
-## {background-image="static/L01-covariants-org-2022-08-29.png" background-size="contain" background-repeat="no-repeat"}
+## SARS CoV-19 variant community structure {.smaller}
 
-::: footer
-Each color is a variant. Data from covariants.org
-:::
+![Each color is a variant. Data from [covariants.org](https://covariants.org/)](static/L01-covariants-org-2022-08-29.png)
+
 
 # {background-color="black" visibility="uncounted"}
 ::: {.r-fit-text}
@@ -55,16 +55,17 @@ What stories were told in those images?
 * CO<sub>2</sub> in the atmosphere varies through the year, has increased 100 ppm over 60 years and is higher than it has been for 800,000 years
 * Arctic sea ice volume has shrunk by more than 50% and the fall will be ice-free soon
 * Fertility decreases as income increases, regardless of the country
+* Is it going to rain? Turn cooler?
 :::
 
 ## Stories
 
 ::: {.incremental}
-* Is it going to rain? Turn cooler?
 * Annual cycle of temperature is about 24°C. Daily range is about 8°C. Daily variation over years is 7-14°C.
 * Napoleon's army shrunk by 99% in their Russian campaign
 * Military deaths in the Crimean war were largely from preventable causes
 * Deaths from cholera were centred on one location in Broad St.
+* There have been at least 7 major covid variants, persisting for 4-6 months each
 :::
 
 # {background-color="black" visibility="uncounted"}

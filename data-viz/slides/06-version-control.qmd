@@ -1,7 +1,7 @@
 ---
 title: "Version control"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-01-15 (updated: `r Sys.Date()`)"
+date: "2022-09-15"
 format:
   revealjs:
     slide-number: true
@@ -12,6 +12,7 @@ format:
     code-block-border-left: true
     code-copy: false
     code-link: true
+    history: false
 ---
 
 # What is version control software for?
@@ -89,6 +90,6 @@ format:
 
 * Practice this skill in Assignment 1
 
-* [Demo](06-demo-assignment-github.qmd)
+* [Demo](06-demo-assignment-github.html)
 
 

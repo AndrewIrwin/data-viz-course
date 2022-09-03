@@ -13,6 +13,7 @@ format:
     code-block-border-left: true
     code-copy: false
     code-link: true
+    history: false
 ---
 
 # Getting started with Assigment 1
