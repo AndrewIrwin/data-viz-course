@@ -39,7 +39,7 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ## {background-image="static/L01-snow-cholera-map-1.png" background-size="contain" background-repeat="no-repeat" }
 
-## SARS CoV-19 variant community structure {.smaller}
+## SARS-CoV-2 variants {.smaller}
 
 ![Each color is a variant. Data from [covariants.org](https://covariants.org/)](static/L01-covariants-org-2022-08-29.png)
 

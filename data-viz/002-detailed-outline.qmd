@@ -32,6 +32,13 @@ my_paste = function(a,b, page = "004-evaluation.qmd") {
              # TRUE ~ paste0("[", a, "](", page, b, ")")
   )
 }
+my_paste2 <- function(a,b) {
+  case_when(is.na(a) ~ " ",
+            is.na(b) ~ a,
+            TRUE ~ paste0(a, " (<a href='https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/slides/", b, ".Rmd'>Rmd</a>) ",
+                          "(<a href='live-coding/", b, ".html'>html</a>)")
+  )
+}
 row_packing <- table(cal$Week)
 attr(row_packing, "names") <- paste0("Week ", attr(row_packing, "names"))
 options(knitr.kable.NA = '')
@@ -42,9 +49,10 @@ cal |> select(-Day) |>
          # Notes = my_paste(notes, notes_link),
          Slides = my_paste(slides, slides_link, "/slides/"),
          Evaluation = my_paste(evaluation, evaluation_link),
+         Demo = my_paste2(demo, demo_link),
          Title = my_paste(title, title_link, "https://andrewirwin.github.io/data-viz-notes/")
          ) |>
-  select(-evaluation, -evaluation_link,
+  select(-evaluation, -evaluation_link, -demo, -demo_link,
          -slides, -slides_link, -title, -title_link) |>
   select( -Week) |> 
   select(Date, Lesson, Title, everything()) |>

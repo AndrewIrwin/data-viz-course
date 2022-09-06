@@ -6,7 +6,7 @@ editor: source
 
 The term project is to be completed in teams.
 
-If you know who you want to form a team with (2 or 3 people per team), enter this information in the task repository, file `team-planning.Rmd` before October 18. You will need to wait until the second week of term to learn how to do this!
+If you know who you want to form a team with (2 or 3 people per team), enter this information in the task repository, file `team-planning.Rmd` before October 16. You will need to wait until the second week of term to learn how to do this!
 
 By October 24, a document on Brightspace will list
 

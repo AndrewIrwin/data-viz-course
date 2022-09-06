@@ -149,6 +149,13 @@ Healy. Fig. 1.24.
 
 ![The checker shadow illusion.](static/L04-checker-shadow-illusion-C.jpg){#fig-checker-illusion}
 
+### Bars or dots?
+
+![Healy. Fig. 1.26.](https://andrewirwin.github.io/data-viz-notes/lessons/104-look-at-data_files/figure-html/fig-bar-dot-simple-1.png)
+
+## Aspect ratio
+
+![Healy. Fig. 1.12.](https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-perception-curves-1.png)
 
 ## Where to put 0?
 
@@ -160,6 +167,15 @@ Healy. Fig. 1.24.
 ![Healy. Fig. 1.27.](static/L04-ch-01-law-enrollments-2.png){#fig-law-enrol-2}
 
 
+## How to make a good visualization
+
+* Think about your goals.
+* What is the best choice to highlight the most important feature of the dataset? 
+* How will your reader interpret your visualization? 
+* Does your picture represent the data fairly? 
+* Are there perceptual problems that make the picture easy to misinterpret or difficult to understand? 
+* Revise and edit your graphs.
+* Practice thinking about the effectiveness ofvisual elements.
 
 ## Suggested reading
 

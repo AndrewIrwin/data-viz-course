@@ -61,7 +61,7 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ## R markdown
 
-![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot](static/L02-Rmarkdown.png){#fig-tidyverse}
+![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot](static/L02-rmarkdown.png){#fig-tidyverse}
 
 ## git
 

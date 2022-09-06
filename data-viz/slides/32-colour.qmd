@@ -1,0 +1,36 @@
+---
+title: "Colour"
+format: revealjs
+---
+
+
+Photo of rainbow
+
+Visible spectrum colour swatch
+
+Absorption ratios for human eye
+
+Photosynthetic pigment absorption spectrum
+
+Picture of crayola crayons
+
+RGB triangle in CIE space
+
+HSV
+
+HCL
+
+Names
+
+what use colour
+highlight
+categorical
+gradient (0-1), (-1-0-1)
+more complex (diatom map follows)
+viridis
+colour deficiencies - simulator
+
+make your own palette
+e.g. from conrad beach photo and online tool
+
+
