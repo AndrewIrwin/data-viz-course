@@ -1,0 +1,20 @@
+---
+title: "Version control"
+author: "Andrew Irwin"
+date: "2022-09-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A demonstration of using version control software with Rstudio.
+
+* Go to github web page
+* Find your assignment repository
+* Create a new project on your computer using Rstudio and this repository
+* Edit a file
+* Stage and commit the changes
+* Push the changes to github
+* See that the changes have appeared on the github website

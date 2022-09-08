@@ -63,7 +63,7 @@ If you are unable to install the software, get in touch with me for assistance.
 Each week will be structured around the following components:
 
 - Reading course notes and suggested material from the textbooks.
-- In class meetings which will be a mixture of lectures, demonstrations, and skills practice. Some class time will be be dedicated to computer exercises, so you should bring your computer to these classes. I will alert you to these activities by making an announcement in the previous class meeting.
+- In class meetings which will be a mixture of lectures, demonstrations, and skills practice. Some class time will be be dedicated to computer demonstrations and exercises; these times will be identified by a file describing the demonstration (marked Demo in the detailed outline). You are encouraged to bring your computer to these classes.
 - Opportunities to develop and demonstrate your knowledge in course work to be evaluated (tasks, assignments, and a term project).
 - Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading. If you can't participate in office hours, but you have a question, please get in touch with me and arrange another time to meet.
 
@@ -132,10 +132,15 @@ I anticipate that some students will need to miss some classes following a close
 I plan to make all course meetings available live and recorded on Brightspace using Collaborate Ultra.
 This means that you can participate in the whole course even if you can't attend a particular class. I expect the online experience will not be as good as the in-person class. 
 You are not required to be physically present on campus for classes, tests, or a final exam.
+Oral presentations for the term project will be synchronous but online -- you need to be available during class time on these days, but not physically present in the classroom.
 This design is to keep you safe and to help you keep your classmates safe.
 
 If I am unable to be on campus, the class will be delivered remotely.
 
+Covid data:
+
+* Nova Scotia provincial government [dashboard](https://experience.arcgis.com/experience/204d6ed723244dfbb763ca3f913c5cad) and monthly [epidemiologic summaries](https://novascotia.ca/coronavirus/alerts-notices/#epidemiologic-summaries).
+* [Wastewater virus monitoring](https://health-infobase.canada.ca/covid-19/wastewater/) collected by the federal government.
 
 ### Data retention policy
 

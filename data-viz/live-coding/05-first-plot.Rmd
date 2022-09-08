@@ -1,0 +1,29 @@
+---
+title: "First Plot demonstration"
+author: "Andrew Irwin"
+date: "2022-09-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+This is a demonstration showing how to make your first plot using R, Rstudio, and ggplot.
+
+Steps:
+
+* Be sure you are using the `tidyverse` and `gapminder` libraries (and that they are installed on your computer).
+* Create a ggplot using the data `gapminder` and a mapping between data and aesthetic features. For example put GDP per capita on the x axis and life expectancy on the y axis.
+* Make a scatterplot using `geom_point`
+
+Refine your plot:
+
+* Add axis labels using `labs` and the arguments `x`, `y`, `title`, `subtitle`, `caption`, `tag` (some of these are optional and not always needed.)
+* Use `theme` to make the text bigger by setting the `size` property of `text` with the `element_text` function.
+* Add colour to the plot. Change the label for your colour scale.
+* Transform the x axis to be on a log scale using `scale_x_log10`
+
+Repeat:
+
+* Do this exercise with another dataset such as `mtcars` or `palmerpenguins`.
