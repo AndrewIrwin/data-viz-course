@@ -64,7 +64,7 @@ knitr::include_graphics("static/git-demo/step-2a-get-repo-url.png")
 knitr::include_graphics("static/git-demo/windows-git-not-installed.png")
 ```
 
-Go back to Syllabus or Lesson 3: Version Control for instructions.
+Go back to Syllabus or Lesson 6: Version Control for instructions.
 
 ## Check git is installed
 
@@ -126,23 +126,5 @@ knitr::include_graphics("static/git-demo/cloud-2-finished.png")
 # Push the changes to github
   
 
-# Pull my changes to get your assessment
-
-* Wait a few days! (I will send a notification email.)
-* Grades will also appear on Brightspace
-  
-  
-
-Prompt to "sign in with your browser" (authorize credential manager from browser)
-
-
-
-Use PAT (personal access token) system.
-https://github.com/settings/tokens/new
-Later
-
-
-# All done!
-
-# Congratulations
+# All done! Congratulations
 

@@ -15,7 +15,7 @@ format:
     history: false
 ---
 
-# What is version control software for?
+## What is version control software for?
 
 * Managing changes to files
 
@@ -26,7 +26,7 @@ format:
 * Sharing data, code, and results with the world 
 
 
-# Why is version control software important for visualizations?
+## Why is version control software important for visualizations?
 
 * Manage changes to data
 
@@ -39,20 +39,20 @@ format:
 * Distribute data, methods and results
 
 
-# Core git concepts
+## Core git concepts
 
 * Working directory
 
 * Repository
 
-* stage (add) files
+* Stage (add) files
 
-* commit to repository
+* Commit to repository
 
 * Commit messages
 
 
-# What is github?
+## What is github?
 
 * Internet service to manage repository in remote location ("remotes")
 
@@ -63,19 +63,19 @@ format:
 * _Need a free account_. Sign up at github.com
 
 
-# How to use git and github with Rstudio?
+## How to use git and github with Rstudio?
 
 * Create a project with a git repository
 
 * Use the "git" pane to stage, commit, and push to remote (github)
 
 
-# Demonstrations
+## Demonstrations
 
-* See step-by-step instructions in lesson
+* See step-by-step instructions in lesson 6
 
 
-# Suggested reading
+## Suggested reading
 
 * Course notes: Version control
 
@@ -90,6 +90,5 @@ format:
 
 * Practice this skill in Assignment 1
 
-* [Demo](06-demo-assignment-github.html)
-
+* Live demo in class (I'll write the time that the demo starts in the recording once class is over.)
 

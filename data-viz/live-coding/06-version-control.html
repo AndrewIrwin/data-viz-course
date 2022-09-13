@@ -372,10 +372,34 @@ pre code {
 
 <p>A demonstration of using version control software with Rstudio.</p>
 <ul>
+<li>Test git is working by typing <code>git</code> in the Terminal
+window</li>
+<li>Introduce yourself to git if you haven’t done this before by typing
+these lines in the Terminal window
+<ul>
+<li>git config –global user.email “you@example.com”</li>
+<li>git config –global user.name “Your Name”</li>
+</ul></li>
 <li>Go to github web page</li>
 <li>Find your assignment repository</li>
 <li>Create a new project on your computer using Rstudio and this
-repository</li>
+repository
+<ul>
+<li>At some point in this process you need to create a github personal
+access token (PAT) and tell R about it</li>
+<li>In the R console, type <code>usethis::create_github_token()</code>.
+This will open up a web browser. You will be asked to login and perhaps
+use two factor authentication. Eventually you will get a page that looks
+like the figure below. Enter a note to describe the token and pick an
+expiry date (my suggestions are shown in the screenshot.) Make sure you
+have at least the boxes shown below checked (repo, user, workflow).
+Click the green generate token at the bottom of the screen.</li>
+<li>Copy the random numbers and letters that make up your token by
+clicking the two overlapping blue boxes (or highlight and select copy
+from the menu).</li>
+<li>In the R console, type <code>gitcreds::gitcreds_set()</code> and
+then enter the PAT by pasting it into the console.</li>
+</ul></li>
 <li>Edit a file</li>
 <li>Stage and commit the changes</li>
 <li>Push the changes to github</li>
