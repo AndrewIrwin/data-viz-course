@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(gapminder)
 ```
 
 This is a demonstration showing how to make your first plot using R, Rstudio, and ggplot.
@@ -17,6 +18,18 @@ Steps:
 * Create a ggplot using the data `gapminder` and a mapping between data and aesthetic features. For example put GDP per capita on the x axis and life expectancy on the y axis.
 * Make a scatterplot using `geom_point`
 
+```{r}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+```
+
+
+```{r}
+ggplot(gapminder, aes(y = gdpPercap, x = lifeExp)) + geom_point()
+```
+
+
+
+
 Refine your plot:
 
 * Add axis labels using `labs` and the arguments `x`, `y`, `title`, `subtitle`, `caption`, `tag` (some of these are optional and not always needed.)
@@ -24,6 +37,51 @@ Refine your plot:
 * Add colour to the plot. Change the label for your colour scale.
 * Transform the x axis to be on a log scale using `scale_x_log10`
 
+```{r}
+ggplot(gapminder, aes(y = gdpPercap, 
+                      x = lifeExp)) + 
+  geom_point() +
+  labs(x = "GDP per capita (US$, inflation adjusted",
+       y = "Life expectancy (years, at birth)",
+       title = "Life expectancy varies with national income",
+       subtitle = "Something more here",
+       caption = "Source: gapminder")
+
+```
+
+```{r}
+ggplot(gapminder, aes(y = gdpPercap, 
+                      x = lifeExp,
+                      color = continent),
+       ) + 
+  geom_point() +
+  labs(y = "GDP per capita (US$, inflation adjusted",
+       x = "Life expectancy (years, at birth)",
+       title = "Life expectancy varies with national income",
+       subtitle = "Something more here",
+       caption = "Source: gapminder")
+
+```
+
+```{r}
+ggplot(gapminder, aes(y = gdpPercap, 
+                      x = lifeExp,
+                      color = continent),
+       ) + 
+  geom_point() +
+  labs(y = "GDP per capita (US$, inflation adjusted",
+       x = "Life expectancy (years, at birth)",
+       title = "Life expectancy varies with national income",
+       subtitle = "Something more here",
+       caption = "Source: gapminder") +
+  scale_y_log10() +
+  theme(text = element_text(size=14))
+
+```
+
+
 Repeat:
 
 * Do this exercise with another dataset such as `mtcars` or `palmerpenguins`.
+
+Refer to the slides for this lesson for more ideas and examples.

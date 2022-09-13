@@ -36,7 +36,7 @@ my_paste2 <- function(a,b) {
   case_when(is.na(a) ~ " ",
             is.na(b) ~ a,
             TRUE ~ paste0("<a href='live-coding/", b, ".html'>", a, "</a> ",
-                          "(<a href='https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/live-coding/", b, ".Rmd'>Rmd</a>)")
+                          "(<a href='https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/live-coding/", b, ".Rmd'>Rmd</a>)")
   )
 }
 row_packing <- table(cal$Week)

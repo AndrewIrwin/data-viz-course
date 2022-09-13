@@ -33,7 +33,7 @@ install.packages("tidyverse")
 Add this line to every R markdown document:
 
 ```
-install.packages("tidyverse")
+library(tidyverse)
 ```
 
 ## Get some data {.smaller}
@@ -88,10 +88,11 @@ knitr::include_graphics(knitr::fig_chunk("fig1", "png"))
 ## Add some colour
 
 ```{r fig2, fig.show="hide", warning=FALSE, fig.height=6, fig.width=8, echo=TRUE}
+#| code-line-numbers: 4
 mtcars |>
   ggplot(aes(x = wt,
              y = mpg,
-             color = factor(cyl))) + #<<
+             color = factor(cyl))) + 
   geom_point()
 ```
 
@@ -109,7 +110,7 @@ knitr::include_graphics(knitr::fig_chunk("fig2", "png"))
 
 ## Make the text larger
 
-```{r fig3, fig.show="hide", warning=FALSE, fig.width=7, fig.height=6, echo=TRUE}
+```{r fig3, fig.show="hide", warning=FALSE, fig.width=8, fig.height=5, echo=TRUE}
 #| code-line-numbers: 6
 mtcars |>
   ggplot(aes(x = wt,
@@ -128,7 +129,7 @@ knitr::include_graphics(knitr::fig_chunk("fig3", "png"))
 
 ## Make the symbols larger
 
-```{r fig3b, fig.show="hide", warning=FALSE, fig.width=7, fig.height=5, echo=TRUE}
+```{r fig3b, fig.show="hide", warning=FALSE, fig.width=8, fig.height=5, echo=TRUE}
 #| code-line-numbers: 5
 mtcars |>
   ggplot(aes(x = wt,
@@ -210,11 +211,10 @@ knitr::include_graphics(knitr::fig_chunk("fig4", "png"))
 
 ## Datasets to experiment with
 
-* mtcars, iris and many other well-known data in datasets package
-* penguins in palmerpenguins package
-* gapminder in gapminder package  (but see website too [Gapminder](https://gapminder.org))
-* diamonds in ggplot2 package
-* nycflights13 in dbplyr package
+* `mtcars`, `iris` and many other well-known data in datasets package
+* `penguins` in palmerpenguins package
+* `gapminder` in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* `diamonds` in ggplot2 package
 
 Use `glimpse(mtcars)` (or other dataset) and `View(mtcars)` to look at the data.
 
