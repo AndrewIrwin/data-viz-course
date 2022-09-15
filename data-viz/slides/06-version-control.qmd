@@ -60,7 +60,7 @@ format:
 
 * Many other services (error checking, websites, teams, feedback)
 
-* _Need a free account_. Sign up at github.com
+* _Need a free account_. Sign up at github.com. Send me your github ID.
 
 
 ## How to use git and github with Rstudio?
@@ -79,16 +79,19 @@ format:
 
 * Course notes: Version control
 
+Similar presentations from other courses:
+
 * [Intro to Data Science](https://www.introds.org/) course slides on [version control](https://ids-s1-20.github.io/slides/week-01/w1-d06-toolkit-git/w1-d06-toolkit-git.html#1)
 
-* [Data science in a box](https://datasciencebox.org/) chapter on [version control](https://datasciencebox.org/version-control.html)
+* [Data science in a box](https://datasciencebox.org/) chapter on [version control](https://datasciencebox.org/03-version-control.html)
+
+More advanced material: 
 
 * Bryan and others. [Happy git with R](https://happygitwithr.com/)
 
 
-# Task
-
-* Practice this skill in Assignment 1
+## Demo + Practice
 
 * Live demo in class (I'll write the time that the demo starts in the recording once class is over.)
 
+* Practice this skill in Assignment 1

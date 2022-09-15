@@ -377,16 +377,17 @@ window</li>
 <li>Introduce yourself to git if you haven’t done this before by typing
 these lines in the Terminal window
 <ul>
-<li>git config –global user.email “you@example.com”</li>
-<li>git config –global user.name “Your Name”</li>
+<li><code>git config --global user.email &quot;you\@example.com&quot;</code></li>
+<li><code>git config --global user.name &quot;Your Name&quot;</code></li>
 </ul></li>
-<li>Go to github web page</li>
+<li>Go to github web page: <a href="https://github.com/">github.com</a></li>
 <li>Find your assignment repository</li>
 <li>Create a new project on your computer using Rstudio and this
-repository
+repository</li>
+<li>At some point in this process you need to get Rstudio and GitHub to
+communicate with each other. You need to create a GitHub personal access
+token (PAT) and tell R about it.
 <ul>
-<li>At some point in this process you need to create a github personal
-access token (PAT) and tell R about it</li>
 <li>In the R console, type <code>usethis::create_github_token()</code>.
 This will open up a web browser. You will be asked to login and perhaps
 use two factor authentication. Eventually you will get a page that looks
