@@ -17,28 +17,28 @@ format:
 ---
 
 
-# What is the grammar of graphics?
+## What is the grammar of graphics?
 
 * A way of describing a visualization 
 
   * Data
   * Mapping from data to aesthetic features
-  * Geometry for representing data
+  * Geometry
   * Scales
   * Facets
   * Statistics
   * Coordinates
   * Themes
   
----
+## What is the grammar of graphics?
 
-```{r echo=FALSE, out.width="80%", fig.align="center"}
+```{r echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("static/L07/ggplot-layers.png")
 ```
 
 ## Data
 
-We will always be using "tidy data" arranged in an array
+We will use "tidy data" arranged in an array
 
   * columns are variable
   * rows are observations
@@ -49,25 +49,22 @@ This arrangement makes it easy to use one variable for each aesthetic feature of
 
 We map variables to features of the graph
 
-  * x axis position
-  * y axis position
+  * x, y axis position
   * colour (outline, fill)
-  * shape
+  * symbol shape, size
   * line type
-  * size
-  * error bar extent
+  * error bars
   * many more used less frequently, depending on the geometry
 
-Discrete and quantitative variables are handled the same way. The details of the scale and geometry will determine their interprettion.
+Discrete and quantitative variables are handled the same way. The details of the scale and geometry will determine their interpretation.
 
 ## Scales
 
-* range of values on x or y axis; formatting of axis labels
+* Range of values on x or y axis; formatting of axis labels
 
-* mapping from values to a discrete or continuous colour scale; choice of colours
+* Mapping from values to a discrete or continuous colour scale; choice of colours
 
-* mapping from values to a shape, or line thickness, or symbol size
-
+* Mapping from values to a shape, or line thickness, or symbol size
 
 
 ## Geometry
@@ -106,13 +103,12 @@ knitr::include_graphics("static/L07/ggplot-facet.png")
   
 * What coordinate system do you want to use?
 
-  * Cartesian (x-y) 
-    * Fixed aspect ratio
+  * Cartesian (x-y)
   * Polar (r, $\theta$)
   * Map projections
 
 
-## Theme
+## Annotation & Theme
 
 All the "non-data ink":
 
@@ -121,20 +117,20 @@ All the "non-data ink":
 * How and where the legend (colour, shape) is displayed
 * Other annotations - shading, text
 
-# Summary
+## Summary
 
-The grammar of graphics is a way of describing a visulization. 
+The grammar of graphics is a way of describing a visualization. 
 
 `ggplot2` is a computer implementation of this idea.
 
-(Also implemented in python (plotnine), javascript (D3), julia (Gadfly).)
+Other implementations are available for python (plotnine), javascript (D3), julia (Gadfly).
 
 
-# Suggested reading
+## Suggested reading
 
 * Course notes
 
-# Self-quiz / Bonus task
+## Self-quiz / Bonus task
 
 Aesthetics are mappings between variables in your dataset and your visualization, defined using the `aes` function.
 
@@ -144,7 +140,7 @@ Which of the following is a possible aesthetic mapping for the `gapminder` data 
 2. `aes(x = country, y = pop)`
 3. `aes(x <- country, y <- pop)`
 
-# Self-quiz / Bonus task
+## Self-quiz / Bonus task
 
 The geometry (or geom) of a plot determines how the data are displayed in your visualization. 
 
@@ -154,7 +150,7 @@ Select the true statement.
 2. You can use mutiple geoms per plot, for example combining both `geom_plot` and `geom_line`.
 
 
-# Self-quiz / Bonus task
+## Self-quiz / Bonus task
 
 True or false: To change all the points in a scatterplot to red circles, you need to add variables to your data frame with values "red" and "circle" and map those variables to the colour and shape aesthetic.
 
