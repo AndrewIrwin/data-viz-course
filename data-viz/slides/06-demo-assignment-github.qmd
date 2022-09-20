@@ -41,8 +41,8 @@ format:
 
 # Copy the link provided by github
 
-```{r echo=FALSE}
-knitr::include_graphics("static/git-demo/step-2a-get-repo-url.png")
+```{r echo=FALSE, include=FALSE}
+# knitr::include_graphics("static/git-demo/step-2a-get-repo-url.png")
 ```
 
 
