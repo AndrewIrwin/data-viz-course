@@ -2,6 +2,7 @@ project:
   type: website
   render: 
     - "*.qmd"
+    - "!06-demo-assignment-github.qmd"
 
 website:
   title: "data-viz"

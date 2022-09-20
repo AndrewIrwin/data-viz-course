@@ -41,7 +41,7 @@ format:
 ## What is the grammar of graphics?
 
 ```{r echo=FALSE, out.width="100%", fig.align="center"}
-knitr::include_graphics("static/L07/ggplot-layers.png")
+knitr::include_graphics(here::here("data-viz/slides/static/L07", "ggplot-layers.png"))
 ```
 
 ## Data
@@ -83,7 +83,7 @@ What kind of plot do you want?
 :::: {.columns}
 ::: {.column width="50%"}
 ```{r echo=FALSE, out.width="80%", fig.align="center"}
-knitr::include_graphics("static/L07/geoms-1.png")
+knitr::include_graphics(here::here("data-viz/slides/static/L07", "geoms-1.png"))
 ```
 :::
 ::: {.column width="50%"}
