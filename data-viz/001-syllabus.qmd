@@ -88,7 +88,7 @@ The term project  is designed to be done collaboratively in a group. The work on
 * Assignments (40%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
   * Proposal, due Thursday 27 October, 5%
-  * Oral presentation, due Monday 5 December, 10%
+  * Oral presentation, due Tuesday 29 November, 10%
   * Report, due Wednesday 7 December, 15%
 
 Tasks are due on Friday. Assignments are due on Wednesday. (Office hours are also on Wednesday for last-minute question.) 
@@ -152,7 +152,7 @@ During the course you will create work on a third-party website (github.com). Th
 * Monday 10 October: Thanksgiving day, University closed
 * November 7-11: Study break
 * Fri 11 November: Remembrance Day
-* Tue 6 December: Last Tuesday/Thursday class
+* Thursday 1 December: Last Tuesday/Thursday class
 
 If you know you will be unable to meet certain deadlines in advance, for _bona fide_ reasons such as scheduled medical appointments or religious observances, please contact me as soon as practical.
 

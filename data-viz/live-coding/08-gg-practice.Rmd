@@ -13,20 +13,27 @@ library(palmerpenguins) # data
 ```
 
 Practice making plots of these data: `gss_sm`, `gss_lon`, `penguins`, 
-`penguins_raw`, and many others in the `datasets` package.
+`penguins_raw`, `gapminder`, and many others in the `datasets` package.
 
 Examine the data using `View`, `glimpse`.
 
 ## Aesthetic mappings to use
 
-x, y, color, fill, shape, size
+x, y, color, fill, shape, size, group
 
 ## Geometries to try
 
-geom_point, geom_line, geom_boxplot, geom_jitter, geom_histogram, geom_density
+geom_point, geom_line, geom_boxplot, geom_jitter, geom_histogram, geom_density,
+geom_function, geom_bar, geom_hline, geom_vline, geom_count, geom_rug,
+stat_summary
 
 Which should you use with categorical data? quantitative data? A mixture? What happens
 if you use the wrong kind of data?
+
+Take a look at the help for each geom using the Help panel in Rstudio or on the ggplot
+[website](https://ggplot2.tidyverse.org/index.html).
+
+As we practice, we will describe each geom here and provide some examples.
 
 ## An example to warm up with
 
@@ -36,7 +43,7 @@ penguins |> ggplot(aes(y = flipper_length_mm)) + geom_histogram()
 
 ## Make the plots look better
 
-Add labels with `labs(x = "...", y = "...", title = "...")`.
+Add labels with `labs(x = "...", y = "...", title = "...", color = "...", fill = "...")`.
 
 Make the text bigger with `theme(text = element_text(size = 15))`.
 

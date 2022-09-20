@@ -16,8 +16,16 @@ format:
     history: false
 ---
 
+## Development
 
-## What is the grammar of graphics?
+::: {layout-ncol=2}
+![[Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson)](static/Leland_Wilkinson.png){width=100% fig-align="left"}
+
+![[Hadley Wickham](https://en.wikipedia.org/wiki/Hadley_Wickham)](static/Hadley-wickham2016-02-04.jpeg){width=100% fig-align="left"}
+:::
+
+
+## What is the grammar of graphics? {.smaller}
 
 * A way of describing a visualization 
 
@@ -38,14 +46,15 @@ knitr::include_graphics("static/L07/ggplot-layers.png")
 
 ## Data
 
-We will use "tidy data" arranged in an array
+We will use "tidy data" arranged in a table
 
   * columns are variable
   * rows are observations
 
 This arrangement makes it easy to use one variable for each aesthetic feature of a plot (axis position, colour, facet, text labels, ...)
 
-## Aesthetic mappings
+
+## Aesthetic mappings {.smaller}
 
 We map variables to features of the graph
 
@@ -93,7 +102,7 @@ knitr::include_graphics("static/L07/ggplot-facet.png")
 ```
 
 
-## Statistics & Coordinates
+## Statistics & Coordinates {.smaller}
 
 * Do you want to perform calculations on your data before plotting?
 
@@ -119,11 +128,11 @@ All the "non-data ink":
 
 ## Summary
 
-The grammar of graphics is a way of describing a visualization. 
+- The grammar of graphics is a way of describing a visualization. 
 
-`ggplot2` is a computer implementation of this idea.
+- `ggplot2` is a computer implementation of this idea.
 
-Other implementations are available for python (plotnine), javascript (D3), julia (Gadfly).
+- Other implementations are available for python (plotnine), javascript (D3), julia (Gadfly).
 
 
 ## Suggested reading
