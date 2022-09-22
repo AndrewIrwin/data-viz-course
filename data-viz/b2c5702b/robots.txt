@@ -1,1 +1,0 @@
-Sitemap: https://AndrewIrwin.github.io/data-viz-2022-course/sitemap.xml
