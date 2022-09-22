@@ -10,7 +10,7 @@ This is the syllabus for the Data Visualization (STAT 2430) course offered in Fa
 
 * Instructor: Andrew Irwin, a.irwin@dal.ca
 * Meeting times: Tuesday and Thursday 1:00-2:20 pm Atlantic in LSC-C338 and on Collaborate
-* Office hours: Wednesday 1:00 pm Atlantic on Collaborate, or by appointment.
+* Office hours: Monday and Wednesday 3:30 pm Atlantic on Collaborate, in Chase 225, or by appointment.
 
 ## Course Description {-}
 
