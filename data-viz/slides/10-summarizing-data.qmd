@@ -1,7 +1,7 @@
 ---
-title: "Summarizing data (dplyr)"
+title: "Summarizing data with dplyr"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-09-27"
+date: "2021-09-29"
 format:
   revealjs:
     slide-number: true
@@ -20,28 +20,24 @@ library(tidyverse)
 library(rmarkdown)
 library(knitr)
 library(kableExtra)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Transforming data
+## Transforming data
 
-How can we  
-  * transform data, or 
-  * reduce a large number of observations to a smaller number?
-
-* Compute derived quanties (ratios, change units) 
+With a large dataset we commonly want to 
 
 * Count observations in categories
 
-* Compute means and standard deviations 
-  * Combine replicates
-  * Average over cateogories
+* Compute means, standard deviations, and other statistics
 
-* Highlight special cases
+* Compute derived quantities (ratios, change units) 
 
 
-# dplyr examples
 
-Transforming and reducing observations using 
+## dplyr examples
+
+We will transform and reduce observations using 
 
 * `mutate`
 
@@ -53,40 +49,38 @@ Transforming and reducing observations using
 
 We will use the `ChickWeight` data in the `datasets` package.
 
-
-
-# Data
+## Data {.smaller}
 
 ```{r}
 glimpse(ChickWeight)
 ```
 
-# Use summarize to count observations
+## Use summarize to count observations
 
 ```{r}
 ChickWeight |> summarize(count = n()) |> kable()
 ```
 
-# Count observations in groups
+## Count observations in groups
 
 ```{r}
 ChickWeight |>
-  group_by(Diet) |> #<<
+  group_by(Diet) |> 
   summarize(count = n(), .groups="drop") |>
   kable()
 ```
 
 
-## Two grouping factors
+## Two grouping factors {.smaller}
 
 ```{r}
 ChickWeight |>
-  group_by(Diet, Chick) |> #<<
+  group_by(Diet, Chick) |> 
   summarize(count = n(), .groups = "drop") |>
   paged_table()
 ```
 
-### Compute any function you want
+## Compute any function you want {.smaller}
 
 ```{r}
 ChickWeight |>
@@ -99,7 +93,7 @@ ChickWeight |>
     paged_table()
 ```
 
-### Use mutate to create new columns for each observation
+## Use mutate to create new columns for each observation {.smaller}
 
 ```{r}
 ChickWeight |> as_tibble() |>
@@ -107,7 +101,7 @@ ChickWeight |> as_tibble() |>
   paged_table()
 ```
 
-### Use mutate to create new columns for each observation
+## Use mutate to create new columns for each observation {.smaller}
 
 ```{r}
 ChickWeight |> as_tibble() |>
@@ -115,7 +109,7 @@ ChickWeight |> as_tibble() |>
   paged_table()
 ```
 
-### Exclude observations with filter
+## Exclude observations with filter {.smaller}
 
 ```{r}
 ChickWeight |> as_tibble() |>
@@ -125,7 +119,7 @@ ChickWeight |> as_tibble() |>
 ```
 
 
-### Exclude observations with filter
+## Exclude observations with filter {.smaller}
 
 ```{r}
 ChickWeight |> as_tibble() |>
@@ -135,7 +129,7 @@ ChickWeight |> as_tibble() |>
   kable()
 ```
 
-# Combine all three
+## Combine all three
 
 * Compute max weight for each chick and diet over all time.
 * Filter out chicks that reach a target weight
@@ -152,7 +146,7 @@ ChickWeight |> as_tibble() |>
   kable()
 ```
 
-# Combine all three
+## Combine all three
 
 * Compute max weight for each chick and diet over all time.
 * Filter out chicks that reach a target weight
@@ -170,7 +164,7 @@ ChickWeight |> as_tibble() |>
 ```
 
 
-# Summary
+## Summary
 
 * Use `mutate` to define a new variable for all observations
 
@@ -181,14 +175,14 @@ ChickWeight |> as_tibble() |>
 * Use `filter` to select observations
 
 
-# Further reading
+## Further reading
 
 * Lots more examples with different data in the course notes
 
 * R4DS [Chapter 5 Data transformations](https://r4ds.had.co.nz/transform.html)
 
 
-# Task
+## Task
 
-Practice these skills by doing the calculations in Task 5.
+Practice these skills by doing the calculations in the associated Task.
 

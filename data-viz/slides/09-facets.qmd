@@ -19,9 +19,10 @@ format:
 library(tidyverse)
 library(palmerpenguins)
 library(gapminder)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Splitting a plot into facets
+## Splitting a plot into facets
 
 * Using one categorical variable
 
@@ -29,20 +30,20 @@ library(gapminder)
 
 * Using quantitative variables
 
-# One categorical variable
+## One categorical variable
 
 * `facet_wrap( ~ variable)`
 
 ---
 
 ```{r}
-mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point()
+mtcars |> ggplot(aes(x=wt, y=mpg)) + geom_point()
 ```
 
 ---
 
 ```{r}
-mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point() +
+mtcars |> ggplot(aes(x=wt, y=mpg)) + geom_point() +
   facet_wrap(~cyl)
 ```
 
@@ -50,14 +51,13 @@ mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point() +
 
 ```{r warning=FALSE}
 penguins |>
-  ggplot(aes(x=body_mass_g, y= flipper_length_mm, color = sex)) +
+  ggplot(aes(x=body_mass_g, y=flipper_length_mm, color=sex)) +
   geom_point() + 
   facet_wrap( ~ species)
 ```
 
 
-
-# Using two categorical variables
+## Using two categorical variables
 
 * `facet_grid( y ~ x)`
 * `facet_wrap( ~ x + y)`
@@ -85,7 +85,17 @@ mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point() +
 
 ```{r warning=FALSE}
 penguins |>
-  ggplot(aes(x=body_mass_g, y= flipper_length_mm, color = sex)) +
+  ggplot(aes(x=body_mass_g, y=flipper_length_mm, color=sex)) +
+  geom_point() + 
+  facet_grid(species ~ island)
+```
+
+---
+
+
+```{r warning=FALSE}
+penguins |>
+  ggplot(aes(x=body_mass_g, y=flipper_length_mm, color=sex)) +
   geom_point() + 
   facet_wrap(~ species + island)
 ```
@@ -105,15 +115,15 @@ gapminder |>
 gapminder |>
   ggplot(aes(x=year, y = lifeExp)) + 
   geom_line(aes(group = country), color = "gray40", size=0.25) +
-  geom_smooth(method = "lm", color = "blue", se=FALSE) + 
+  stat_summary(fun.data = "mean_cl_normal", color = "blue") + 
   facet_grid( continent ~ . )
 ```
 
 ---
 
-# Splitting on a quantitative variable
+## Splitting on a quantitative variable {.smaller}
 
-* Start by converting the quantitative variable into a cateogorical one
+* Start by converting the quantitative variable into a categorical one
 
 For example:
 
@@ -135,7 +145,7 @@ penguins |>
 
 ---
 
-# Summary
+## Summary
 
 * `facet_wrap()`, `facet_grid()`
 
@@ -144,7 +154,7 @@ penguins |>
 * You can label facets with both the variable and value using `labeller = labeller(.rows = label_both)`
 
 
-# Further reading
+## Further reading
 
 * More examples with different data in the course notes
 
@@ -155,7 +165,7 @@ penguins |>
 * Healy [Section 4.3](https://socviz.co/groupfacettx.html#facet-to-make-small-multiples)
 
 
-# Task
+## Task
 
-Practice these skills by making the plots in Task 6.
+Practice these skills by making the plots in the assigned Task.
 

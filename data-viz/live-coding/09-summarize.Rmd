@@ -1,0 +1,73 @@
+---
+title: "Summarizing data practice"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+Use the dplyr functions: mutate, filter, group_by, summarize, select, arrange to answer the following questions.
+
+How many kinds of species of penguin are in the `penguins`? How many observations of each species?
+
+```{r}
+
+```
+
+What is the maximum and minimum flipper length?
+
+```{r}
+
+```
+
+Find the observation with the largest flipper length.
+
+```{r}
+
+```
+
+Make a table showing the number of observations of each combination of species and island.
+
+```{r}
+
+```
+
+Compute the ratio of the bill length to bill depth and make a histogram with these data.
+
+```{r}
+
+```
+
+Repeat that calculation for each species.
+
+```{r}
+
+```
+
+Compute the mean and stanard deviation of body mass for each species and sex.
+
+```{r}
+
+```
+
+Decode this complex calculation from the course notes by executing just one line at a time, making a prediction about the result, and checking your understanding. Change the calculation to make it do something similar but different to test your understanding. (For example, try using `slice_tail` instead of `slice_head`, or remove the `-` in the `arrange` function.)
+
+```{r}
+diamonds |>
+  mutate(price_per_carat = price / carat) |>
+  group_by(color, clarity, cut) |>
+  summarise(median_price_per_carat = median(price_per_carat), 
+            n = n(),
+            .groups = "drop") |>
+  arrange(-median_price_per_carat) |>
+  group_by(cut) |>
+  slice_head(n=2) |>
+  arrange(-median_price_per_carat)
+```
+
