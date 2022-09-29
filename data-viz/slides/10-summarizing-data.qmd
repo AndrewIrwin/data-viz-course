@@ -96,7 +96,7 @@ ChickWeight |>
 ## Use mutate to create new columns for each observation {.smaller}
 
 ```{r}
-ChickWeight |> as_tibble() |>
+ChickWeight |> 
   mutate(growth = weight / Time) |>
   paged_table()
 ```
@@ -104,7 +104,7 @@ ChickWeight |> as_tibble() |>
 ## Use mutate to create new columns for each observation {.smaller}
 
 ```{r}
-ChickWeight |> as_tibble() |>
+ChickWeight |>
   mutate(growth = (weight-min(weight)) / Time) |>
   paged_table()
 ```
@@ -112,7 +112,7 @@ ChickWeight |> as_tibble() |>
 ## Exclude observations with filter {.smaller}
 
 ```{r}
-ChickWeight |> as_tibble() |>
+ChickWeight |> 
   filter(Time >= 10) |> 
   arrange(Time) |>
   paged_table()
@@ -122,7 +122,7 @@ ChickWeight |> as_tibble() |>
 ## Exclude observations with filter {.smaller}
 
 ```{r}
-ChickWeight |> as_tibble() |>
+ChickWeight |> 
   filter(Time == 10) |> 
   group_by(Diet) |> 
   summarize(weight_10 = mean(weight), .groups = "drop") |>
@@ -132,11 +132,11 @@ ChickWeight |> as_tibble() |>
 ## Combine all three
 
 * Compute max weight for each chick and diet over all time.
-* Filter out chicks that reach a target weight
+* Filter to retain chicks that reach a target weight
 * Count the number of observations per chick and diet treatment
 
 ```{r eval=FALSE}
-ChickWeight |> as_tibble() |>
+ChickWeight |>
   group_by(Diet, Chick) |>
   mutate(max_weight = max(weight)) |>
   filter(max_weight > 110) |>
@@ -153,7 +153,7 @@ ChickWeight |> as_tibble() |>
 * Count the number of observations per chick and diet treatment
 
 ```{r echo=FALSE, message=FALSE}
-ChickWeight |> as_tibble() |>
+ChickWeight |> 
   group_by(Diet, Chick) |>
   mutate(max_weight = max(weight)) |>
   filter(max_weight > 110) |>
@@ -166,11 +166,11 @@ ChickWeight |> as_tibble() |>
 
 ## Summary
 
-* Use `mutate` to define a new variable for all observations
-
 * Use `summarize` to compute functions (count, mean, ...) to reduce many observations to one
 
 * Use `group_by` to split, summarize, and combine data
+
+* Use `mutate` to define a new variable for all observations
 
 * Use `filter` to select observations
 
