@@ -16,7 +16,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-options(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
 ```
@@ -107,7 +107,7 @@ df1 |> select(-cases) |>
 
 # Pivoting
 
-### Step by step examples of the transformations shown above
+Step by step examples of the transformations shown above
 
 ## Pivot longer {.smaller}
 

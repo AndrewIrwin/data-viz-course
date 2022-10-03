@@ -109,6 +109,8 @@ Exercises to practice filter, group_by, summarize, and mutate. File `task-summar
 Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
 Commit the .Rmd file to your repository and push the changes to GitHub. There is no need to commit the html file; I will knit your file on my computer to be sure there are no errors.
 
+### Week 5
+
 #### Task: Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
 Exercises to practice making faceted plots. When you are done, knit the file and commit the `tasks-facets.Rmd` file to your repository. Push the changes to github to submit your work.
@@ -120,7 +122,6 @@ I will get you to practice reading files later on in the course. For now,
 * pay attention to the code I use in future lessons for reading files, and
 * download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
 
-### Week 5
 
 #### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 

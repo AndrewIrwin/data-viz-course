@@ -16,15 +16,16 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-options(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(readxl)
 library(rmarkdown)
+library(kableExtra)
 ```
 
 ## Reading data
 
-* Most data originates outide of R
+* Most data originates outside of R
 
 * To use the data with R, you must
 
@@ -46,50 +47,39 @@ library(rmarkdown)
 
 * An almost infinite variety of custom formats 
 
-## Examples
+## Examples {.smaller}
 
 * Create your own excel worksheet
 
-* Environment Canada weather: https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=50620
+* Environment Canada weather: [https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=50620](https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=50620)
 
-* CO2: https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt
+* CO2: [https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt](https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt)
 
-# Spreadsheet
+## Spreadsheet {.smaller}
 
 ```{r}
 library(readxl)
 dt1 <- read_excel("static/L11/test-data.xlsx", sheet=1)
-dt1 
+dt1 |> kable()
 ```
 
-## Comma separated values
+## Comma separated values {.smaller}
 
 ```{r}
 library(tidyverse)
 dt2 <- read_csv("static/L11/en_climate_daily_NS_8202251_2020_P1D.csv")
-```
----
-
-```{r}
 dt2 |> paged_table()
 ```
 
-## Tab separated values
+## Tab separated values {.smaller}
 
 With a header
 
 ```{r}
-dt3 <- read_delim("static/L11/co2_mm_mlo.txt", delim=" ", 
+dt3 <- read_table("static/L11/co2_mm_mlo.txt", 
                   comment="#", col_names = FALSE)
-```
-
----
-
-```{r}
 dt3 |> paged_table()
 ```
-
-
 
 ## Clean-up
 
@@ -135,7 +125,7 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 * Missing data coded in an "interesting" way
 
-* Multiple tabs in a spreadsheet
+* Multiple tabs (sheets) in a spreadsheet
 
 * Date formats
 
@@ -164,5 +154,5 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 ## Task
 
-Practice these skills by performing the tasks in this lesson's task.
+Practice these skills by performing the tasks in this lesson's Task.
 
