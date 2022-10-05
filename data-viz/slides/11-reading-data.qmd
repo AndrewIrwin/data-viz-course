@@ -37,7 +37,7 @@ library(kableExtra)
 
 ## What formats do data come in?
 
-* Spreadsheet (Excel, Numbers, LibreOffice Calc)
+* Spreadsheet (Excel, Google Sheets, Numbers, LibreOffice Calc)
 
 * Text files (csv, tab separated, delimited)
 
@@ -87,15 +87,15 @@ dt3 |> paged_table()
 names(dt3) <- c("year", "month", "decimal_year", "co2_monthly", 
                 "co2_deseasoned", "n_days", "sdev_days", "uncertainty_mean")
 dt3 <- dt3 |> 
-  mutate(across(everything(), as.numeric)) |>
   mutate(n_days = na_if(n_days, -1), 
          sdev_days = na_if(sdev_days, -9.99),
          uncertainty_mean = na_if(uncertainty_mean, -0.99))
 ```
 
----
+--- 
 
-```{r}
+```{r echo=FALSE}
+#| smaller: true
 dt3 |> paged_table()
 ```
 
@@ -103,7 +103,9 @@ dt3 |> paged_table()
 
 ```{r}
 library(hablar)
-dt3 <- dt3 |> convert(int(year), int(month), num(decimal_year:uncertainty_mean) ) 
+dt3 <- dt3 |> convert(int(year), 
+                      int(month), 
+                      num(decimal_year:uncertainty_mean) ) 
 ```
 
 Warning, `hablar` has some functions with same names as functions in `dplyr`. For example, need to use `dplyr::na_if` to use the masked `na_if` function.
@@ -140,7 +142,7 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 * Try the Rstudio data import tool. Notice the R code generated for you.
 
-* **Always check your data table**
+* **Always check your data table in R**
 
 * Lots of ways to get trouble
 

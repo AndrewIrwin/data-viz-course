@@ -21,7 +21,7 @@ library(tidyverse)
 library(kableExtra)
 ```
 
-## Wide and Long data
+## Overview
 
 * What is tidy data?
 
@@ -77,8 +77,6 @@ df1 |> select(-population) |>
   pivot_wider(names_from = "year", values_from = "cases") |>
   kable(caption="Cases") |> kable_styling(full_width = FALSE)
 ```
-
----
 
 ```{r echo=FALSE}
 df1 |> select(-cases) |>
@@ -155,7 +153,7 @@ df1A |> kable(caption="Cases") |> kable_styling(full_width = FALSE)
 
 ---
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 df1B <- df1 |> select(-cases) |>
   pivot_wider(names_from = "year", values_from = "population") 
 df1B |> kable(caption="Population") |> kable_styling(full_width = FALSE)
@@ -164,14 +162,16 @@ df1B |> kable(caption="Population") |> kable_styling(full_width = FALSE)
 ## Combine two tables into one
 
 ```{r}
-bind_rows(bind_cols(type = "cases", df1A),
-          bind_cols(type = "population", df1B)) |>
+bind_rows(mutate(df1A, type = "cases"),
+          mutate(df1B, type = "population")) |>
   kable() |> kable_styling(full_width = FALSE)
 ```
 
 ## Summary
 
-* What and why of tidy data, longer vs wider format
+* What and why of tidy data
+
+* Longer vs wider format
 
 * Common reshaping tasks
 
@@ -179,6 +179,7 @@ bind_rows(bind_cols(type = "cases", df1A),
 ## Further reading
 
 * Tidy Data (Chapter 12) in R4DS
+* More examples in course notes
 
 ## Task
 

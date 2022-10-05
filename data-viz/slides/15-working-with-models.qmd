@@ -1,0 +1,186 @@
+---
+title: "Working with models"
+author: "Andrew Irwin, a.irwin@dal.ca"
+date: "2022-10-06"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+    chalkboard: true
+    auto-animate: true
+    scrollable: true
+    code-block-border-left: true
+    code-copy: false
+    code-link: true
+    history: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+## Models and visualizations
+
+* Adding regression and smoothing lines to ggplot visualizations
+
+* Describing, fitting, and using models
+
+  * Linear regression
+  
+  * Other regression
+  
+  * Generalized additive models
+  
+  * LOESS smooths
+
+
+
+##  Examples
+
+* Linear regression
+
+* Polynomial model
+
+* Quantile regression (fitting line to medians or other quantiles)
+
+* Generalized additive model (piecewise splines)
+
+* LOESS (local linear and quadratic regression)
+
+* Putting multiple smooths on one plot
+
+* Smooths on facetted plots
+
+
+##  Start with a basic graph
+
+```{r, fig.height=4.5, fig.align="center"}
+mpg |> mutate(city_l100km = 235.214583 / cty) |>
+   ggplot(aes(x =displ, y= city_l100km)) + geom_point() +
+   labs(x = "Engine displacement (L)",
+        y = "Fuel economy, city (L/100km)") + my_theme
+```
+```{r include = FALSE}
+p <- mpg |> mutate(city_l100km = 235.214583 / cty) |>
+       ggplot(aes(x =displ, y= city_l100km)) + geom_point() +
+       labs(x = "Engine displacement (L)",
+            y = "Fuel economy, city (L/100km)") +
+       my_theme
+```
+
+## Add a regression line
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "lm", formula = y ~ x)
+```
+
+## Add a regression line for each group
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(aes(color = factor(cyl)), method = "lm", formula = y ~ x)
+```
+
+
+
+##  Polynomial regression 
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "lm", formula = y ~ poly(x,2))
+```
+
+## Quantile regression
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_quantile(method = "rqss", formula = y ~ x,
+                  quantiles = c(0.1, 0.5, 0.9))
+```
+
+## Generalized additive model 
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "lm", 
+                formula = y ~ splines::bs(x, df = 5))
+```
+
+## Generalized additive model 
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "gam", 
+                formula = y ~ s(x, bs="cs"))
+```
+
+## LOESS
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "loess", 
+                formula = y ~ x) 
+```
+
+## LOESS
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "loess", formula = y ~ x,
+                span = 0.3) 
+```
+
+## Putting multiple smooths on one plot
+
+```{r, fig.height=5, fig.align="center", message=FALSE}
+p + geom_smooth(aes(color = "Linear"), method = "lm", se=FALSE) +
+    geom_smooth(aes(color = "GAM"), method = "gam", se=FALSE) +
+    geom_smooth(aes(color = "LOESS"), method = "loess", formula = y ~ x, se=FALSE) +
+    labs(color = "Type")
+```
+
+## Smooths on facetted plots
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "lm", se=FALSE, formula = y ~ x) +
+  facet_wrap( ~ class)
+```
+
+## Other customizations
+
+```{r, fig.height=5, fig.align="center", message=FALSE}
+p + geom_smooth(method = "lm", se=TRUE, 
+                fullrange = TRUE, level = 0.50) + xlim(1,8)
+```
+
+## Modelling x as a function of y
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "loess", formula = y ~ x, orientation = "y")
+```
+
+## Modelling x as a function of y
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_smooth(method = "lm", formula = y ~ x, orientation = "y") +
+  geom_smooth(method = "lm", formula = y ~ x, color = "red")
+```
+
+## Summary
+
+* Regression lines (based on a model) and "smooths" (no simple model) can be used to draw attention to patterns in data
+
+* We are using smooths for their visual effect
+
+* Logical reasoning for the lines you draw is important (next lessons)
+
+## Further reading
+
+* Course notes
+
+* Healy Chapter 6. Work with models.
+
+
+## Task
+
+Bonus task for this lesson to practice these functions. Nothing to hand in.
+
+
+
+

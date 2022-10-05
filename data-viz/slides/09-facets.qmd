@@ -75,7 +75,7 @@ mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point() +
 ```{r}
 mtcars |> ggplot(aes(x =wt, y=mpg)) + geom_point() +
   facet_grid(gear~cyl, 
-             labeller = labeller(.cols = function(x) paste(x, " cylinders"),
+             labeller = labeller(.cols = function(x) paste(x, "cylinders"),
                                  .rows = label_both))
 ```
 
@@ -129,18 +129,19 @@ For example:
 
 ```{r}
 penguins |> 
-  mutate(bill_categories = cut_number(bill_length_mm, n = 4)) |>
-  select(species, bill_length_mm, bill_categories, everything())
+  filter(!is.na(bill_length_mm)) |>
+  mutate(bill_category = cut_number(bill_length_mm, n = 4)) |>
+  select(species, bill_length_mm, bill_category, everything())
 ```
 
 ---
 
 ```{r warning=FALSE}
-penguins |> 
-  mutate(bill_categories = cut_number(bill_length_mm, n = 3)) |>
+penguins |> filter(!is.na(bill_length_mm)) |>
+  mutate(bill_category = cut_number(bill_length_mm, n = 4)) |>
   ggplot(aes(x= body_mass_g, y = flipper_length_mm, color = species)) + 
   geom_point() + 
-  facet_wrap( ~ bill_categories)
+  facet_wrap( ~ bill_category, label = labeller(.rows = label_both))
 ```
 
 ---
