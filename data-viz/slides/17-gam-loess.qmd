@@ -18,7 +18,6 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(mgcv)
 library(broom)
 library(gratia)
 library(kableExtra)
@@ -54,6 +53,7 @@ p
 ## Fit a cubic spline
 
 ```{r, fig.height=5, fig.align="center"}
+library(mgcv)
 m1 <- gam( mean_temp ~ s(year_day, bs="cs"), data = hfx)
 summary(m1)
 ```

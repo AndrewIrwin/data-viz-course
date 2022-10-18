@@ -1,7 +1,7 @@
 ---
 title: "Collaboration with GitHub"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-06"
+date: "2022-10-18"
 format:
   revealjs:
     slide-number: true
@@ -32,7 +32,7 @@ my_theme = theme_classic() +
 
 * Other workflows
 
-## Using the team-planning repository
+## Using a shared repository
 
 ```{r echo=FALSE, fig.align="center", out.width='90%'}
 knitr::include_graphics("static/L18/collaboration-01.png")
@@ -117,7 +117,8 @@ knitr::include_graphics("static/L18/collaboration-07-resolution.png")
   * Pull remote changes
   * Resolve conflicts
   * Stage, commit, and push changes
-  
+
+* When you start to work on a project, begin by "pull"ing any changes made by someone else
 
 ## Further reading
 
@@ -131,7 +132,8 @@ knitr::include_graphics("static/L18/collaboration-07-resolution.png")
 ## Task
 
 * Task: 
-  * Add your name to the collaboration list, as part of a team, or by yourself. 
-  * People not in teams will be assigned teams randomly. 
+  * Clone your project repository to your computer.
+  * Edit your project proposal. 
+  * Stage, commit, and push your changes.
   * Resolve any conflicts that arise -- for example, two people using the same line of the table.
 

@@ -1,7 +1,7 @@
 ---
 title: "Reproducible reports"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-06"
+date: "2022-10-20"
 format:
   revealjs:
     slide-number: true
@@ -116,9 +116,9 @@ Adapted from Sandve et al. 10.1371/journal.pcbi.1003285
 
 ## Further reading
 
-The course notes are quite different from this mini-lecture. They emphasize practical skills and tips. 
+The **course notes** are quite different from these slides. They emphasize practical skills and tips. 
 
-The notes contain specific suggestions for using R markdown which will be explored in the task for this lesson.
+The **course notes** contain specific suggestions for using R markdown which will be explored in the task for this lesson.
 
 
 ## Task

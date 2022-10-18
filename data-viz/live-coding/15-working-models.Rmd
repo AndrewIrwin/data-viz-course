@@ -1,0 +1,134 @@
+---
+title: "Working with models"
+author: "Andrew Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(gapminder)
+library(tidyverse)
+library(lubridate)
+```
+
+
+In this demonstration, we will practice adding smooths (regression lines) to plots, including using colour and facets to create multiple lines.
+
+## Life expectancy by year
+
+Build up a complex plot piece by piece.
+
+```{r}
+gapminder |> ggplot(aes(year, lifeExp)) + geom_point()
+gapminder |> ggplot(aes(year, lifeExp)) + geom_point() + 
+  facet_grid(continent ~ .)
+gapminder |> ggplot(aes(year, lifeExp)) + 
+  geom_smooth() + 
+  facet_grid(continent ~ .)
+gapminder |> ggplot(aes(year, lifeExp)) + 
+  geom_smooth(method = "lm") + 
+  facet_grid(continent ~ .)
+gapminder |> ggplot(aes(year, lifeExp)) + 
+  geom_smooth(aes(group = country), se = FALSE, color = "#00000040", size = 0.4) + 
+  geom_smooth(color = "blue") + 
+  facet_grid(continent ~ .) + 
+  theme_bw()
+
+```
+
+Quantile regression
+
+```{r}
+gapminder |> ggplot(aes(year, lifeExp)) + 
+  geom_quantile() + 
+  facet_grid(continent ~ .)
+gapminder |> ggplot(aes(year, lifeExp)) + 
+  geom_quantile(quantiles = c(0.1, 0.5, 0.9), formula = y ~ poly(x,2)) + 
+  facet_grid(continent ~ .)
+```
+
+## CO2
+
+Get data from previous lesson (reading data):
+
+```{r}
+co2 <- read_table("https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt",
+                  comment = "#", col_names = FALSE)
+co2 |> ggplot(aes(X3, X4)) + geom_point(size = 0.4) + 
+  labs(x = "Year", y = "Atmospheric pCO2 (ppmv)")
+co2 |> ggplot(aes(X3, X4)) + geom_point(size = 0.4) +
+  geom_smooth() + 
+  labs(x = "Year", y = "Atmospheric pCO2 (ppmv)")
+co2 |> ggplot(aes(X3, X4)) +
+  geom_smooth() + 
+  labs(x = "Year", y = "Atmospheric pCO2 (ppmv)")
+```
+
+What's the annual cycle?
+Subtract the mean CO2 computed from each year. Compute the fractional part of th e year.
+
+```{r}
+co2 |> group_by(X1) |>
+  mutate(fractional_year = X3 - X1, 
+         mean_co2 = mean(X4),
+         co2_deviation = X4 - mean_co2) |>
+  ungroup() |>
+  ggplot(aes(fractional_year, co2_deviation)) + 
+  geom_point()
+```
+
+
+```{r}
+co2_modified <- co2 |> group_by(X1) |>
+  mutate(fractional_year = X3 - X1, 
+         mean_co2 = mean(X4),
+         co2_deviation = X4 - mean_co2) |>
+  ungroup() 
+co2_modified |>
+  ggplot(aes(factor(X2), co2_deviation)) + 
+  geom_boxplot()
+co2_modified |>
+  ggplot(aes(fractional_year, co2_deviation)) + 
+  geom_smooth() + theme_bw()
+lubridate::date_decimal(2022.10)
+lubridate::date_decimal(2022.77)
+lubridate::decimal_date(ymd("2022-10-11"))
+```
+
+Make a decade by decade plot
+
+```{r}
+co2 |> mutate(decade = 10*floor(X1/10),
+              decimal_decade = X3 - decade) |>
+  ggplot(aes(decimal_decade, X4)) + 
+  geom_point() + 
+  facet_grid(decade ~ . , scale = "free_y")
+```
+
+
+```{r}
+co2 |> mutate(decade = 10*floor(X1/10),
+              decimal_decade = X3 - decade) |>
+  ggplot(aes(decimal_decade, X4)) + 
+  geom_smooth(method = "loess", span = 0.1) + 
+  geom_point(size = 0.2) + 
+  facet_grid(decade ~ . , scale = "free_y")
+```
+
+```{r}
+co2 |> mutate(decade = 10*floor(X1/10),
+              decimal_decade = X3 - decade) |>
+  ggplot(aes(decimal_decade, X4)) + 
+  geom_quantile(quantiles = c(0.1, 0.9)) + 
+  geom_point(size = 0.2) + 
+  facet_grid(decade ~ . , scale = "free_y")
+```
+
+## GAM is just linear regression
+
+```{r}
+co2 |> filter(X1 > 2019) |>
+  ggplot(aes(X3, X4)) + 
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs")) +
+  geom_point()
+```

@@ -13,6 +13,7 @@ format:
     code-copy: false
     code-link: true
     history: false
+    margin: 0.05
 ---
 
 ```{r setup, include=FALSE}
