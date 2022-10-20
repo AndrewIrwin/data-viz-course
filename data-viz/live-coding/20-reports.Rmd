@@ -1,8 +1,9 @@
 ---
 title: "Reports"
 author: "Andrew Irwin"
-date: "`r Sys.Date()`"
-output: html_document
+date: "Thursday 20 October, 2022"
+output:
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,69 +12,120 @@ library(tidyverse)
 
 In this live demonstration I'll review many important features of R markdown reports and give tips for how to work productively while writing reports you can reproduce later.
 
+```{r}
+library(palmerpenguins)
+peng_subset <- penguins |> filter(species == "Adelie")
+peng_subset |> ggplot(aes(bill_depth_mm)) + geom_histogram()
+```
+
 ## Templates
 
-* From course: tasks, assignments, projects
-* R studio standard template
-* Quarto alternative (need to maintain compatibility for Rmd users, need for innovation and improvements)
+-   From course: tasks, assignments, projects
+-   R studio standard template
+-   Quarto alternative (need to maintain compatibility for Rmd users, need for innovation and improvements)
 
 ## Parts of an R markdown document
 
-* header material (between three minus signs)
-* text
-* R code
+-   header material (between three minus signs)
+-   text
+-   R code
 
 ## Formatting
 
-* Headings (hash marks)
-* Paragraphs
-* Lists (numbered, bullets)
-* bold, italics
-* hyperlinks
-* spell check
-* outline menu (far right)
-* code block menu (bottom left)
+-   Headings (hash marks)
+-   Paragraphs
+-   Lists (numbered, bullets)
+-   **bold**, *italics*
+-   hyperlinks
+-   spell check
+-   outline menu (far right)
+-   code block menu (bottom left)
+-   more bullets.
 
-## Visual mode 
+```{r penguin_plot}
+library(palmerpenguins)
+penguins |> ggplot(aes(bill_length_mm)) + geom_histogram()
+peng_subset <- penguins |> filter(species == "Adelie")
+```
+
+## Visual mode
 
 Contrast with 'source' mode
 
+```{r}
+
+```
+
 ## Code blocks or chunks
 
-* names
-* options: fig.cap="", echo=FALSE, message=FALSE and many more
-* [code chunk option tutorial](https://rmarkdown.rstudio.com/lesson-3.html) and [reference](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html)
+-   names
+-   options: fig.cap="", echo=FALSE, message=FALSE and many more
+-   [code chunk option tutorial](https://rmarkdown.rstudio.com/lesson-3.html) and [reference](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html)
 
 ## Computation model
 
-* Work as you go and develop
-  * Play button, command/control enter, typing in console
-* Knitting to ensure everything "works"
-* Output formats (HTML, MS Word, PDF, slides)
+-   Work as you go and develop
+    -   Play button, command/control enter, typing in console
+-   Knitting to ensure everything "works"
+-   Output formats (HTML, MS Word, PDF, slides)
 
 ## Common mistakes
 
-* forget a library function call (`library(tidyverse)`)
-* read data from a path that exists only on your computer (projects and `here::here()` function)
-* Computations out of sequence
-* Leave R errors in your Rmd document
+-   forget a library function call (`library(tidyverse)`)
+-   read data from a path that exists only on your computer (projects and `here::here()` function)
+-   Computations out of sequence
+-   Leave R errors in your Rmd document
+
+```{r}
+# read_csv("data.csv")
+# read_csv("/Users/airwin/Dropbox/data.csv")
+# read_csv(here::here("data.csv"))
+```
 
 ## How Rstudio tries to help
 
-* Red stop sign
-* underlines
-* Environment viewer
+-   Red X sign
+-   underlines
+-   Environment viewer
+
+```{r}
+model1 <- lm(body_mass_g ~ species, 
+             data = penguins)  # delete bracket to see red X
+summary(model1)
+p1 <- penguins |> ggplot(aes(body_mass_g)) + geom_histogram()
+```
+
 
 ## Concepts to reinforce and reexplain
 
-* Objects come in different types
-  * numbers, text, dates
-  * tables
-  * plots
-  * models (of various kinds)
-  * many more
-* How to learn about the object you've created
-  * type name in console
-  * look in environment tab
-* Chain commands together with pipes (`|>` or `%>%`) vs. assigning objects to temporary names to break down computations into component parts
+-   Objects come in different types
+    -   numbers, text, dates
+    -   tables
+    -   plots
+    -   models (of various kinds)
+    -   many more
+-   How to learn about the object you've created
+    -   type name in console
+    -   look in environment tab
+-   Chain commands together with pipes (`|>` or `%>%`) vs. assigning objects to temporary names to break down computations into component parts
+
+
+Do a calculation two ways: with just pipes, and then in a series of steps with named objects I'll create.
+
+```{r}
+penguins |> na.omit() |>
+  group_by(species) |>
+  summarize(mean_body_mass = mean(body_mass_g))
+```
+
+"step-by-step"
+
+```{r}
+penguins_no_na <- penguins |> na.omit()
+penguins_group <- penguins_no_na |> group_by(species)
+penguins_group |> summarize(mean_body_mass = mean(body_mass_g))
+```
+
+
+
 
