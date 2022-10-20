@@ -11,9 +11,9 @@
 
 <meta name="author" content="Andrew Irwin" />
 
-<meta name="date" content="2022-09-08" />
+<meta name="date" content="2022-10-20" />
 
-<title>Demo</title>
+<title>Reports</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,74 +363,108 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Demo</h1>
+<h1 class="title toc-ignore">Reports</h1>
 <h4 class="author">Andrew Irwin</h4>
-<h4 class="date">2022-09-08</h4>
+<h4 class="date">2022-10-20</h4>
 
 </div>
 
 
+<p>In this live demonstration I’ll review many important features of R
+markdown reports and give tips for how to work productively while
+writing reports you can reproduce later.</p>
+<div id="templates" class="section level2">
+<h2>Templates</h2>
 <ul>
-<li>Overview of main components of Rstudio
-<ul>
-<li>Editing window</li>
-<li>Console</li>
-<li>Terminal</li>
-<li>Files</li>
-<li>Plots</li>
-<li>Help</li>
-<li>Environment</li>
-<li>Packages</li>
-</ul></li>
-<li>Overview of Markdown
-<ul>
-<li>Headings</li>
-<li>Code blocks</li>
-<li>Knitting</li>
-<li>Quarto</li>
-</ul></li>
-<li>R projects
-<ul>
-<li>What’s a file?</li>
-<li>How to name files</li>
-</ul></li>
-<li>Making and revising notes. Learning and not getting lost.</li>
-</ul>
-<div id="installing-packages" class="section level3">
-<h3>Installing packages</h3>
-<pre class="r"><code>my_packages &lt;- c(&quot;tidyverse&quot;, &quot;broom&quot;, &quot;coefplot&quot;, &quot;cowplot&quot;,
-                 &quot;gapminder&quot;, &quot;GGally&quot;, &quot;ggrepel&quot;, &quot;ggridges&quot;, &quot;gridExtra&quot;,
-                 &quot;here&quot;, &quot;interplot&quot;, &quot;margins&quot;, &quot;maps&quot;, &quot;mapproj&quot;,
-                 &quot;mapdata&quot;, &quot;MASS&quot;, &quot;quantreg&quot;, &quot;rlang&quot;, &quot;scales&quot;,
-                 &quot;survey&quot;, &quot;srvyr&quot;, &quot;viridis&quot;, &quot;viridisLite&quot;, 
-                 &quot;socviz&quot;, &quot;devtools&quot;, &quot;patchwork&quot;, &quot;usethis&quot;, &quot;gitcreds&quot;,
-                 &quot;remotes&quot;, &quot;paletteer&quot;, &quot;ggthemes&quot;, &quot;ggtext&quot;)
-
-install.packages(my_packages)</code></pre>
-</div>
-<div id="cloud-services" class="section level2">
-<h2>Cloud services</h2>
-<ul>
-<li><a href="https://rstudio.cloud/">rstudio.cloud</a></li>
+<li>From course: tasks, assignments, projects</li>
+<li>R studio standard template</li>
+<li>Quarto alternative (need to maintain compatibility for Rmd users,
+need for innovation and improvements)</li>
 </ul>
 </div>
-<div id="why-these-tools-and-not-some-others" class="section level2">
-<h2>Why these tools and not some others?</h2>
+<div id="parts-of-an-r-markdown-document" class="section level2">
+<h2>Parts of an R markdown document</h2>
 <ul>
-<li>Python</li>
-<li>JavaScript</li>
-<li>Excel, Office suite</li>
+<li>header material (between three minus signs)</li>
+<li>text</li>
+<li>R code</li>
 </ul>
-<p>Why is programming a computer worth the effort to learn, to use?</p>
-<p>What about learning fundamentals instead of the specifics of one
-particular software package?</p>
 </div>
-<div id="other-topics-get-their-own-lessons" class="section level2">
-<h2>Other topics get their own lessons</h2>
+<div id="formatting" class="section level2">
+<h2>Formatting</h2>
 <ul>
-<li>Grammar of Graphics &amp; ggplot2</li>
-<li>Tidy data: dplyr, tidyverse packages</li>
-<li>Version control: git and github</li>
+<li>Headings (hash marks)</li>
+<li>Paragraphs</li>
+<li>Lists (numbered, bullets)</li>
+<li>bold, italics</li>
+<li>hyperlinks</li>
+<li>spell check</li>
+<li>outline menu (far right)</li>
+<li>code block menu (bottom left)</li>
+</ul>
+</div>
+<div id="visual-mode" class="section level2">
+<h2>Visual mode</h2>
+<p>Contrast with ‘source’ mode</p>
+</div>
+<div id="code-blocks-or-chunks" class="section level2">
+<h2>Code blocks or chunks</h2>
+<ul>
+<li>names</li>
+<li>options: fig.cap=““, echo=FALSE, message=FALSE and many more</li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-3.html">code chunk
+option tutorial</a> and <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">reference</a></li>
+</ul>
+</div>
+<div id="computation-model" class="section level2">
+<h2>Computation model</h2>
+<ul>
+<li>Work as you go and develop
+<ul>
+<li>Play button, command/control enter, typing in console</li>
+</ul></li>
+<li>Knitting to ensure everything “works”</li>
+<li>Output formats (HTML, MS Word, PDF, slides)</li>
+</ul>
+</div>
+<div id="common-mistakes" class="section level2">
+<h2>Common mistakes</h2>
+<ul>
+<li>forget a library function call
+(<code>library(tidyverse)</code>)</li>
+<li>read data from a path that exists only on your computer (projects
+and <code>here::here()</code> function)</li>
+<li>Computations out of sequence</li>
+<li>Leave R errors in your Rmd document</li>
+</ul>
+</div>
+<div id="how-rstudio-tries-to-help" class="section level2">
+<h2>How Rstudio tries to help</h2>
+<ul>
+<li>Red stop sign</li>
+<li>underlines</li>
+<li>Environment viewer</li>
+</ul>
+</div>
+<div id="concepts-to-reinforce-and-reexplain" class="section level2">
+<h2>Concepts to reinforce and reexplain</h2>
+<ul>
+<li>Objects come in different types
+<ul>
+<li>numbers, text, dates</li>
+<li>tables</li>
+<li>plots</li>
+<li>models (of various kinds)</li>
+<li>many more</li>
+</ul></li>
+<li>How to learn about the object you’ve created
+<ul>
+<li>type name in console</li>
+<li>look in environment tab</li>
+</ul></li>
+<li>Chain commands together with pipes (<code>|&gt;</code> or
+<code>%&gt;%</code>) vs. assigning objects to temporary names to break
+down computations into component parts</li>
 </ul>
 </div>
 

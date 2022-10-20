@@ -1,0 +1,79 @@
+---
+title: "Reports"
+author: "Andrew Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+In this live demonstration I'll review many important features of R markdown reports and give tips for how to work productively while writing reports you can reproduce later.
+
+## Templates
+
+* From course: tasks, assignments, projects
+* R studio standard template
+* Quarto alternative (need to maintain compatibility for Rmd users, need for innovation and improvements)
+
+## Parts of an R markdown document
+
+* header material (between three minus signs)
+* text
+* R code
+
+## Formatting
+
+* Headings (hash marks)
+* Paragraphs
+* Lists (numbered, bullets)
+* bold, italics
+* hyperlinks
+* spell check
+* outline menu (far right)
+* code block menu (bottom left)
+
+## Visual mode 
+
+Contrast with 'source' mode
+
+## Code blocks or chunks
+
+* names
+* options: fig.cap="", echo=FALSE, message=FALSE and many more
+* [code chunk option tutorial](https://rmarkdown.rstudio.com/lesson-3.html) and [reference](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html)
+
+## Computation model
+
+* Work as you go and develop
+  * Play button, command/control enter, typing in console
+* Knitting to ensure everything "works"
+* Output formats (HTML, MS Word, PDF, slides)
+
+## Common mistakes
+
+* forget a library function call (`library(tidyverse)`)
+* read data from a path that exists only on your computer (projects and `here::here()` function)
+* Computations out of sequence
+* Leave R errors in your Rmd document
+
+## How Rstudio tries to help
+
+* Red stop sign
+* underlines
+* Environment viewer
+
+## Concepts to reinforce and reexplain
+
+* Objects come in different types
+  * numbers, text, dates
+  * tables
+  * plots
+  * models (of various kinds)
+  * many more
+* How to learn about the object you've created
+  * type name in console
+  * look in environment tab
+* Chain commands together with pipes (`|>` or `%>%`) vs. assigning objects to temporary names to break down computations into component parts
+

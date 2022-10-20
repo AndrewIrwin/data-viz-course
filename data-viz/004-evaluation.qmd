@@ -157,9 +157,9 @@ To have your preferences recorded, commit the .Rmd file to the repository and pu
 
 ### Week 7
 
-#### Task: Collaboration (Lesson 18) {#task-11 .unnumbered}
+#### Bonus task (Lesson 18) {#task-11 .unnumbered}
 
-Practice skills associated with collaborating on GitHub. File `task-collaboration.Rmd`.
+Practice skills associated with collaborating on GitHub using the project repository for your team.
 
 #### Bonus task (Lesson 19) {#task-b8 .unnumbered}
 
@@ -170,6 +170,7 @@ You can use any data you like for this task. If you want a specific suggestion, 
 #### Task: Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
+ File `task-collaboration.Rmd`.
 
 ### Week 8
 
