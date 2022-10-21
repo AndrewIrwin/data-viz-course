@@ -59,7 +59,7 @@ m  # Print the map
 ## Adding points
 
 ```{r message=FALSE, warning=FALSE}
-cities <- read_csv("../static/selected_cities.csv")
+cities <- read_csv("static/L28/selected_cities.csv")
 m2 <- leaflet(data = cities) %>%
   addTiles() %>%
   addCircleMarkers(~ lng, ~lat, label = ~city)
