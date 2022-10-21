@@ -1,0 +1,119 @@
+---
+title: "MDS: Multidimensional scaling"
+author: "Andrew Irwin, a.irwin@dal.ca"
+date: "2022-10-27"
+format:
+  revealjs:
+    slide-number: true
+    theme:  default
+    chalkboard: true
+    auto-animate: true
+    scrollable: true
+    code-block-border-left: true
+    code-copy: false
+    code-link: true
+    history: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+#library(GGally)
+#library(ggfortify)
+library(kableExtra)
+# library(broom)
+# library(vegan)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+## Plan
+
+* What is MDS and why do we use it?
+
+* Demonstration 
+
+* Comparison with PCA
+
+## What is MDS?
+
+* A tool to convert a distance or dissimilarity matrix into a set of points in a plane
+
+* Can be based on distances (using one of many metrics) or ranks of dissimilarities, when it is called non-metric MDS (NMDS)
+
+* NMDS suitable if you can rank objects as being closer or farther away, by the scale of the quantification is skewed or not important
+
+## Cites on a map
+
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "mds-map-cache-1.png"))
+knitr::include_graphics("static/L22/mds-map-cache-1.png")
+```
+
+## MDS analysis
+
+* Use latitude and longitude of cities to compute distance between each pair
+
+* Use MDS on distance matrix to reconstruct relative positions
+
+## Cites on a map
+
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-5-1.png"))
+knitr::include_graphics("static/L22/unnamed-chunk-5-1.png")
+```
+
+
+## MDS analysis
+
+* Use latitude and longitude of cities to compute distance between each pair
+
+  * **How do we compute that distance? Euclidean? Great circle?**
+  
+* Use MDS on distance matrix to reconstruct relative positions
+
+## Cites on a map
+
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-6-1.png"))
+knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
+```
+
+## How and when to use MDS?
+
+* When you can similar pairs of objects are
+
+  * How similar are the species in two communities?
+  
+  * How similar are two countries based on economic development?
+  
+* Columns are objects (sample locations, countries)
+
+* Be sure the observations (rows) are all measured in the same units
+
+  * Abundance
+  * Proportions
+  * Scaling or transformation may be required
+
+## How is MDS different from PCA?
+
+* PCA is a rotation and projection of data to select linear combinations of original variables that highlight variation
+
+* MDS converts pairwise distance or dissimilarity matrix into relative positions
+
+* Both make plots of points on abstract axes
+
+  * Possibly with arrows showing direction of change of other variables
+
+
+## Further reading
+
+* Course notes
+
+
+## Task
+
+* Practice PCA and MDS methods
+
+

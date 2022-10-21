@@ -42,7 +42,7 @@ peng_subset |> ggplot(aes(bill_depth_mm)) + geom_histogram()
 -   code block menu (bottom left)
 -   more bullets.
 
-```{r penguin_plot}
+```{r penguin_plot, warning=FALSE}
 library(palmerpenguins)
 penguins |> ggplot(aes(bill_length_mm)) + geom_histogram()
 peng_subset <- penguins |> filter(species == "Adelie")
