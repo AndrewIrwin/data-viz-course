@@ -87,9 +87,9 @@ dt3 |> paged_table()
 names(dt3) <- c("year", "month", "decimal_year", "co2_monthly", 
                 "co2_deseasoned", "n_days", "sdev_days", "uncertainty_mean")
 dt3 <- dt3 |> 
-  mutate(n_days = na_if(n_days, -1), 
-         sdev_days = na_if(sdev_days, -9.99),
-         uncertainty_mean = na_if(uncertainty_mean, -0.99))
+  mutate(n_days = dplyr::na_if(n_days, -1), 
+         sdev_days = dplyr::na_if(sdev_days, -9.99),
+         uncertainty_mean = dplyr::na_if(uncertainty_mean, -0.99))
 ```
 
 --- 
@@ -101,7 +101,7 @@ dt3 |> paged_table()
 
 ## Another way to convert columns
 
-```{r}
+```{r eval=FALSE}
 library(hablar)
 dt3 <- dt3 |> convert(int(year), 
                       int(month), 
