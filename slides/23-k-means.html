@@ -1128,7 +1128,11 @@
 </table>
 </div>
 </div>
-</section><section id="data-preprocessing" class="slide level2"><h2>Data preprocessing</h2>
+</section><section id="distribution-of-data" class="slide level2"><h2>Distribution of data</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="distribution-of-data-1" class="slide level2"><h2>Distribution of data</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="data-preprocessing" class="slide level2"><h2>Data preprocessing</h2>
 <ul>
 <li>Approximately normally distributed, same variance</li>
 </ul>
@@ -1139,7 +1143,7 @@
 <span id="cb2-4"><a href="#cb2-4"></a>         <span class="at">s_lifeExp =</span> <span class="fu">scale</span>(lifeExp))</span></code></pre></div>
 </div>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means" class="slide level2"><h2>Perform k-means</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means" class="slide level2"><h2>Perform k-means</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(gapminder_scaled <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>                    <span class="fu">select</span>(s_lifeExp, s_logGDP, s_logPop),</span>
@@ -1158,27 +1162,27 @@
   </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;"> 0.9461979 </td>
-   <td style="text-align:right;"> 1.2280926 </td>
-   <td style="text-align:right;"> -0.5749544 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 12.83856 </td>
+<td style="text-align:right;"> -1.0586255 </td>
+   <td style="text-align:right;"> -0.5008071 </td>
+   <td style="text-align:right;"> -1.4819352 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 16.45012 </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -1.4490956 </td>
-   <td style="text-align:right;"> -1.3247869 </td>
-   <td style="text-align:right;"> -0.0726005 </td>
+<td style="text-align:right;"> 0.7638392 </td>
+   <td style="text-align:right;"> 0.8192481 </td>
+   <td style="text-align:right;"> 0.9287450 </td>
    <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 16.19462 </td>
+   <td style="text-align:right;"> 13.00813 </td>
    <td style="text-align:left;"> 2 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -1.0045199 </td>
-   <td style="text-align:right;"> -0.4040133 </td>
-   <td style="text-align:right;"> -1.4921501 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 14.51559 </td>
+<td style="text-align:right;"> -1.2980325 </td>
+   <td style="text-align:right;"> -1.2650327 </td>
+   <td style="text-align:right;"> 0.0975166 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 20.50259 </td>
    <td style="text-align:left;"> 3 </td>
   </tr>
 <tr>
@@ -1190,19 +1194,19 @@
    <td style="text-align:left;"> 4 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.6827965 </td>
-   <td style="text-align:right;"> 0.5895457 </td>
-   <td style="text-align:right;"> 1.0778552 </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:right;"> 24.17034 </td>
+<td style="text-align:right;"> 0.9372647 </td>
+   <td style="text-align:right;"> 1.2233902 </td>
+   <td style="text-align:right;"> -0.6111037 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 11.84966 </td>
    <td style="text-align:left;"> 5 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -0.6438534 </td>
-   <td style="text-align:right;"> -0.8334311 </td>
-   <td style="text-align:right;"> 0.9062631 </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:right;"> 16.23589 </td>
+<td style="text-align:right;"> -0.2079756 </td>
+   <td style="text-align:right;"> -0.5280597 </td>
+   <td style="text-align:right;"> 1.3114717 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 20.07085 </td>
    <td style="text-align:left;"> 6 </td>
   </tr>
 </tbody>
@@ -1216,9 +1220,11 @@
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
 </div>
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering" class="slide level2"><h2>How good is the clustering?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering" class="slide level2"><h2>How good is the clustering?</h2>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="second-example-penguins" class="slide level2"><h2>Second example: penguins</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="second-example-penguins" class="slide level2"><h2>Second example: penguins</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="second-example-penguins-1" class="slide level2"><h2>Second example: penguins</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>penguins_scaled <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(<span class="at">s_flipper_length =</span> <span class="fu">scale</span>(flipper_length_mm), </span>
@@ -1227,12 +1233,13 @@
 <span id="cb5-5"><a href="#cb5-5"></a>         <span class="at">s_body_mass =</span> <span class="fu">scale</span>(body_mass_g))</span></code></pre></div>
 </div>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means-1" class="slide level2"><h2>Perform k-means</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means-1" class="slide level2"><h2>Perform k-means</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>                    <span class="fu">select</span>(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),</span>
-<span id="cb6-3"><a href="#cb6-3"></a>                  <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>                    <span class="fu">select</span>(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>                  <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -1247,30 +1254,30 @@
   </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;"> 0.854 </td>
-   <td style="text-align:right;"> 0.612 </td>
-   <td style="text-align:right;"> 0.280 </td>
-   <td style="text-align:right;"> -1.447 </td>
-   <td style="text-align:right;"> 62 </td>
-   <td style="text-align:right;"> 25.489 </td>
+<td style="text-align:right;"> -0.289 </td>
+   <td style="text-align:right;"> -0.384 </td>
+   <td style="text-align:right;"> 0.671 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> 85 </td>
+   <td style="text-align:right;"> 109.481 </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 1.480 </td>
-   <td style="text-align:right;"> 1.615 </td>
-   <td style="text-align:right;"> 1.068 </td>
-   <td style="text-align:right;"> -0.681 </td>
-   <td style="text-align:right;"> 58 </td>
-   <td style="text-align:right;"> 45.242 </td>
+<td style="text-align:right;"> 1.161 </td>
+   <td style="text-align:right;"> 1.100 </td>
+   <td style="text-align:right;"> 0.654 </td>
+   <td style="text-align:right;"> -1.101 </td>
+   <td style="text-align:right;"> 119 </td>
+   <td style="text-align:right;"> 139.468 </td>
    <td style="text-align:left;"> 2 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -0.652 </td>
-   <td style="text-align:right;"> -0.618 </td>
-   <td style="text-align:right;"> -0.372 </td>
-   <td style="text-align:right;"> 0.607 </td>
-   <td style="text-align:right;"> 213 </td>
-   <td style="text-align:right;"> 403.284 </td>
+<td style="text-align:right;"> -0.880 </td>
+   <td style="text-align:right;"> -0.762 </td>
+   <td style="text-align:right;"> -1.045 </td>
+   <td style="text-align:right;"> 0.486 </td>
+   <td style="text-align:right;"> 129 </td>
+   <td style="text-align:right;"> 120.703 </td>
    <td style="text-align:left;"> 3 </td>
   </tr>
 </tbody>
@@ -1284,11 +1291,11 @@
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
 </div>
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering-1" class="slide level2"><h2>How good is the clustering?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-13-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering-1" class="slide level2"><h2>How good is the clustering?</h2>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="four-species-of-penguins" class="slide level2"><h2>Four species of penguins?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-14-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="four-species-of-penguins" class="slide level2"><h2>Four species of penguins?</h2>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section><section id="when-to-use-k-means" class="slide level2"><h2>When to use k-means?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section><section id="when-to-use-k-means" class="slide level2"><h2>When to use k-means?</h2>
 <ul>
 <li><p>When the goal is to make categories from continuous variables</p></li>
 <li><p>Each observation is placed in a cluster</p></li>
@@ -1301,7 +1308,8 @@
 <li><p>Select the number of clusters based on partitioning of “sums of squares”</p></li>
 </ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
-<li>Course notes</li>
+<li><p>Course notes</p></li>
+<li><p><a href="https://towardsdatascience.com/how-does-k-means-clustering-in-machine-learning-work-fdaaaf5acfa0">How does k-means clustering work?</a></p></li>
 </ul></section><section id="task" class="slide level2"><h2>Task</h2>
 <ul>
 <li>Practice k-means</li>

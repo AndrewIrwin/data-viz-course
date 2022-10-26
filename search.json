@@ -2065,6 +2065,20 @@
     "text": "Sample data\n\ngapminder_ss <- gapminder %>%\n  filter(year == 2007) %>% select(-year)\ngapminder_ss %>% select(-country, -continent) %>% arrange(-lifeExp) %>%\n  kable() %>% kable_styling(full_width = FALSE)\n\n\n\n\n lifeExp \n    pop \n    gdpPercap \n  \n\n\n 82.603 \n    127467972 \n    31656.0681 \n  \n\n 82.208 \n    6980412 \n    39724.9787 \n  \n\n 81.757 \n    301931 \n    36180.7892 \n  \n\n 81.701 \n    7554661 \n    37506.4191 \n  \n\n 81.235 \n    20434176 \n    34435.3674 \n  \n\n 80.941 \n    40448191 \n    28821.0637 \n  \n\n 80.884 \n    9031088 \n    33859.7484 \n  \n\n 80.745 \n    6426679 \n    25523.2771 \n  \n\n 80.657 \n    61083916 \n    30470.0167 \n  \n\n 80.653 \n    33390141 \n    36319.2350 \n  \n\n 80.546 \n    58147733 \n    28569.7197 \n  \n\n 80.204 \n    4115771 \n    25185.0091 \n  \n\n 80.196 \n    4627926 \n    49357.1902 \n  \n\n 79.972 \n    4553009 \n    47143.1796 \n  \n\n 79.829 \n    8199783 \n    36126.4927 \n  \n\n 79.762 \n    16570613 \n    36797.9333 \n  \n\n 79.483 \n    10706290 \n    27538.4119 \n  \n\n 79.441 \n    10392226 \n    33692.6051 \n  \n\n 79.425 \n    60776238 \n    33203.2613 \n  \n\n 79.406 \n    82400996 \n    32170.3744 \n  \n\n 79.313 \n    5238460 \n    33207.0844 \n  \n\n 78.885 \n    4109086 \n    40675.9964 \n  \n\n 78.782 \n    4133884 \n    9645.0614 \n  \n\n 78.746 \n    3942491 \n    19328.7090 \n  \n\n 78.623 \n    49044790 \n    23348.1397 \n  \n\n 78.553 \n    16284741 \n    13171.6388 \n  \n\n 78.400 \n    23174294 \n    28718.2768 \n  \n\n 78.332 \n    5468120 \n    35278.4187 \n  \n\n 78.273 \n    11416987 \n    8948.1029 \n  \n\n 78.242 \n    301139947 \n    42951.6531 \n  \n\n 78.098 \n    10642836 \n    20509.6478 \n  \n\n 77.926 \n    2009245 \n    25768.2576 \n  \n\n 77.588 \n    2505559 \n    47306.9898 \n  \n\n 76.486 \n    10228744 \n    22833.3085 \n  \n\n 76.442 \n    798094 \n    7670.1226 \n  \n\n 76.423 \n    3600523 \n    5937.0295 \n  \n\n 76.384 \n    3447496 \n    10611.4630 \n  \n\n 76.195 \n    108700891 \n    11977.5750 \n  \n\n 75.748 \n    4493312 \n    14619.2227 \n  \n\n 75.640 \n    3204897 \n    22316.1929 \n  \n\n 75.635 \n    708573 \n    29796.0483 \n  \n\n 75.563 \n    38518241 \n    15389.9247 \n  \n\n 75.537 \n    3242173 \n    9809.1856 \n  \n\n 75.320 \n    40301927 \n    12779.3796 \n  \n\n 74.994 \n    13755680 \n    6873.2623 \n  \n\n 74.852 \n    4552198 \n    7446.2988 \n  \n\n 74.663 \n    5447502 \n    18678.3144 \n  \n\n 74.543 \n    684736 \n    9253.8961 \n  \n\n 74.249 \n    85262356 \n    2441.5764 \n  \n\n 74.241 \n    24821286 \n    12451.6558 \n  \n\n 74.143 \n    19314747 \n    4184.5481 \n  \n\n 74.002 \n    10150265 \n    9786.5347 \n  \n\n 73.952 \n    6036914 \n    12057.4993 \n  \n\n 73.923 \n    10276158 \n    7092.9230 \n  \n\n 73.747 \n    26084662 \n    11415.8057 \n  \n\n 73.422 \n    4018332 \n    3025.3498 \n  \n\n 73.338 \n    9956108 \n    18008.9444 \n  \n\n 73.005 \n    7322858 \n    10680.7928 \n  \n\n 72.961 \n    1318683096 \n    4959.1149 \n  \n\n 72.899 \n    5675356 \n    2749.3210 \n  \n\n 72.889 \n    44227550 \n    7006.5804 \n  \n\n 72.801 \n    1250882 \n    10956.9911 \n  \n\n 72.777 \n    27601038 \n    21654.8319 \n  \n\n 72.567 \n    2780132 \n    7320.8803 \n  \n\n 72.535 \n    6053193 \n    4519.4612 \n  \n\n 72.476 \n    22276056 \n    10808.4756 \n  \n\n 72.396 \n    20378239 \n    3970.0954 \n  \n\n 72.390 \n    190010647 \n    9065.8008 \n  \n\n 72.301 \n    33333216 \n    6223.3675 \n  \n\n 72.235 \n    9319622 \n    6025.3748 \n  \n\n 71.993 \n    3921278 \n    10461.0587 \n  \n\n 71.878 \n    6939688 \n    5728.3535 \n  \n\n 71.777 \n    71158647 \n    8458.2764 \n  \n\n 71.752 \n    6667147 \n    4172.8385 \n  \n\n 71.688 \n    91077287 \n    3190.4810 \n  \n\n 71.421 \n    28674757 \n    7408.9056 \n  \n\n 71.338 \n    80264543 \n    5581.1810 \n  \n\n 71.164 \n    33757175 \n    3820.1752 \n  \n\n 70.964 \n    69453570 \n    11605.7145 \n  \n\n 70.650 \n    223547000 \n    3540.6516 \n  \n\n 70.616 \n    65068149 \n    7458.3963 \n  \n\n 70.259 \n    12572928 \n    5186.0500 \n  \n\n 70.198 \n    7483763 \n    3548.3308 \n  \n\n 69.819 \n    1056608 \n    18008.5092 \n  \n\n 67.297 \n    23301725 \n    1593.0655 \n  \n\n 66.803 \n    2874127 \n    3095.7723 \n  \n\n 65.554 \n    9119152 \n    3822.1371 \n  \n\n 65.528 \n    199579 \n    1598.4351 \n  \n\n 65.483 \n    169270617 \n    2605.9476 \n  \n\n 65.152 \n    710960 \n    986.1479 \n  \n\n 64.698 \n    1110396331 \n    2452.2104 \n  \n\n 64.164 \n    3270065 \n    1803.1515 \n  \n\n 64.062 \n    150448339 \n    1391.2538 \n  \n\n 63.785 \n    28901790 \n    1091.3598 \n  \n\n 63.062 \n    12267493 \n    1712.4721 \n  \n\n 62.698 \n    22211743 \n    2280.7699 \n  \n\n 62.069 \n    47761980 \n    944.0000 \n  \n\n 60.916 \n    8502814 \n    1201.6372 \n  \n\n 60.022 \n    22873338 \n    1327.6089 \n  \n\n 59.723 \n    14131858 \n    1713.7787 \n  \n\n 59.545 \n    27499638 \n    4471.0619 \n  \n\n 59.448 \n    1688359 \n    752.7497 \n  \n\n 59.443 \n    19167654 \n    1044.7701 \n  \n\n 58.556 \n    42292929 \n    2602.3950 \n  \n\n 58.420 \n    5701579 \n    882.9699 \n  \n\n 58.040 \n    4906585 \n    641.3695 \n  \n\n 56.867 \n    12894865 \n    619.6769 \n  \n\n 56.735 \n    1454867 \n    13206.4845 \n  \n\n 56.728 \n    8078314 \n    1441.2849 \n  \n\n 56.007 \n    9947814 \n    942.6542 \n  \n\n 55.322 \n    3800610 \n    3632.5578 \n  \n\n 54.791 \n    496374 \n    2082.4816 \n  \n\n 54.467 \n    12031795 \n    1042.5816 \n  \n\n 54.110 \n    35610177 \n    1463.2493 \n  \n\n 52.947 \n    76511887 \n    690.8056 \n  \n\n 52.906 \n    2055080 \n    4811.0604 \n  \n\n 52.517 \n    38139640 \n    1107.4822 \n  \n\n 52.295 \n    14326203 \n    1217.0330 \n  \n\n 51.579 \n    551201 \n    12154.0897 \n  \n\n 51.542 \n    29170398 \n    1056.3801 \n  \n\n 50.728 \n    1639131 \n    12569.8518 \n  \n\n 50.651 \n    10238807 \n    1704.0637 \n  \n\n 50.430 \n    17696293 \n    2042.0952 \n  \n\n 49.580 \n    8390505 \n    430.0707 \n  \n\n 49.339 \n    43997828 \n    9269.6578 \n  \n\n 48.328 \n    18013409 \n    1544.7501 \n  \n\n 48.303 \n    13327079 \n    759.3499 \n  \n\n 48.159 \n    9118773 \n    926.1411 \n  \n\n 46.859 \n    135031164 \n    2013.9773 \n  \n\n 46.462 \n    64606759 \n    277.5519 \n  \n\n 46.388 \n    1472041 \n    579.2317 \n  \n\n 46.242 \n    8860588 \n    863.0885 \n  \n\n 45.678 \n    3193942 \n    414.5073 \n  \n\n 44.741 \n    4369038 \n    706.0165 \n  \n\n 43.828 \n    31889923 \n    974.5803 \n  \n\n 43.487 \n    12311143 \n    469.7093 \n  \n\n 42.731 \n    12420476 \n    4797.2313 \n  \n\n 42.592 \n    2012649 \n    1569.3314 \n  \n\n 42.568 \n    6144562 \n    862.5408 \n  \n\n 42.384 \n    11746035 \n    1271.2116 \n  \n\n 42.082 \n    19951656 \n    823.6856 \n  \n\n 39.613 \n    1133066 \n    4513.4806"
   },
   {
+    "objectID": "slides/23-k-means.html#distribution-of-data",
+    "href": "slides/23-k-means.html#distribution-of-data",
+    "title": "k-means clustering",
+    "section": "Distribution of data",
+    "text": "Distribution of data"
+  },
+  {
+    "objectID": "slides/23-k-means.html#distribution-of-data-1",
+    "href": "slides/23-k-means.html#distribution-of-data-1",
+    "title": "k-means clustering",
+    "section": "Distribution of data",
+    "text": "Distribution of data"
+  },
+  {
     "objectID": "slides/23-k-means.html#data-preprocessing",
     "href": "slides/23-k-means.html#data-preprocessing",
     "title": "k-means clustering",
@@ -2076,7 +2090,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 6)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.9461979 \n    1.2280926 \n    -0.5749544 \n    27 \n    12.83856 \n    1 \n  \n\n -1.4490956 \n    -1.3247869 \n    -0.0726005 \n    26 \n    16.19462 \n    2 \n  \n\n -1.0045199 \n    -0.4040133 \n    -1.4921501 \n    12 \n    14.51559 \n    3 \n  \n\n 0.5216447 \n    0.1021414 \n    -0.5146094 \n    28 \n    12.75726 \n    4 \n  \n\n 0.6827965 \n    0.5895457 \n    1.0778552 \n    31 \n    24.17034 \n    5 \n  \n\n -0.6438534 \n    -0.8334311 \n    0.9062631 \n    18 \n    16.23589 \n    6"
+    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 6)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    1 \n  \n\n 0.7638392 \n    0.8192481 \n    0.9287450 \n    26 \n    13.00813 \n    2 \n  \n\n -1.2980325 \n    -1.2650327 \n    0.0975166 \n    32 \n    20.50259 \n    3 \n  \n\n 0.5216447 \n    0.1021414 \n    -0.5146094 \n    28 \n    12.75726 \n    4 \n  \n\n 0.9372647 \n    1.2233902 \n    -0.6111037 \n    26 \n    11.84966 \n    5 \n  \n\n -0.2079756 \n    -0.5280597 \n    1.3114717 \n    17 \n    20.07085 \n    6"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -2097,6 +2111,13 @@
     "href": "slides/23-k-means.html#second-example-penguins",
     "title": "k-means clustering",
     "section": "Second example: penguins",
+    "text": "Second example: penguins"
+  },
+  {
+    "objectID": "slides/23-k-means.html#second-example-penguins-1",
+    "href": "slides/23-k-means.html#second-example-penguins-1",
+    "title": "k-means clustering",
+    "section": "Second example: penguins",
     "text": "Second example: penguins\n\npenguins_scaled <- penguins |> na.omit() |>\n  mutate(s_flipper_length = scale(flipper_length_mm), \n         s_bill_length = scale(bill_length_mm),\n         s_bill_depth = scale(bill_depth_mm),\n         s_body_mass = scale(body_mass_g))"
   },
   {
@@ -2104,7 +2125,7 @@
     "href": "slides/23-k-means.html#perform-k-means-1",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(penguins_scaled %>%\n                    select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),\n                  centers = 3)\ntidy(kclust1) %>% kable(digits = 3)\n\n\n\n\n s_flipper_length \n    s_body_mass \n    s_bill_length \n    s_bill_depth \n    size \n    withinss \n    cluster \n  \n\n\n 0.854 \n    0.612 \n    0.280 \n    -1.447 \n    62 \n    25.489 \n    1 \n  \n\n 1.480 \n    1.615 \n    1.068 \n    -0.681 \n    58 \n    45.242 \n    2 \n  \n\n -0.652 \n    -0.618 \n    -0.372 \n    0.607 \n    213 \n    403.284 \n    3"
+    "text": "Perform k-means\n\nset.seed(1)\nkclust1 <- kmeans(penguins_scaled %>%\n                    select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),\n                  centers = 3)\ntidy(kclust1) %>% kable(digits = 3)\n\n\n\n\n s_flipper_length \n    s_body_mass \n    s_bill_length \n    s_bill_depth \n    size \n    withinss \n    cluster \n  \n\n\n -0.289 \n    -0.384 \n    0.671 \n    0.804 \n    85 \n    109.481 \n    1 \n  \n\n 1.161 \n    1.100 \n    0.654 \n    -1.101 \n    119 \n    139.468 \n    2 \n  \n\n -0.880 \n    -0.762 \n    -1.045 \n    0.486 \n    129 \n    120.703 \n    3"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering-1",
@@ -2139,7 +2160,7 @@
     "href": "slides/23-k-means.html#further-reading",
     "title": "k-means clustering",
     "section": "Further reading",
-    "text": "Further reading\n\nCourse notes"
+    "text": "Further reading\n\nCourse notes\nHow does k-means clustering work?"
   },
   {
     "objectID": "slides/23-k-means.html#task",
