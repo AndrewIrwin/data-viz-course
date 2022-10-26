@@ -96,7 +96,7 @@ data.frame(covid_ss4 %>% select(-`Age group`),
 
 ```{r}
 library(statebins)
-load("../static/election.rda")
+load("static/L29/election.rda")
 m4 <- election %>% ggplot(aes(state = state, fill = pct_trump)) +
   geom_statebins() +
   theme_statebins() +

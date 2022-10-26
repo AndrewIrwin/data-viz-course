@@ -42,7 +42,7 @@ my_theme = theme_classic() +
 
 * Can be based on distances (using one of many metrics) or ranks of dissimilarities, when it is called non-metric MDS (NMDS)
 
-* NMDS suitable if you can rank objects as being closer or farther away, by the scale of the quantification is skewed or not important
+* NMDS suitable if you can rank objects as being closer or farther away, but the scale of the quantification is skewed or not important
 
 ## Cites on a map
 
@@ -80,9 +80,9 @@ knitr::include_graphics("static/L22/unnamed-chunk-5-1.png")
 knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
 ```
 
-## How and when to use MDS?
+## How and when to use MDS? {.smaller}
 
-* When you can similar pairs of objects are
+* When you can compute the similarity of pairs of objects (or distance between pairs).
 
   * How similar are the species in two communities?
   
@@ -109,7 +109,9 @@ knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
 
 ## Further reading
 
-* Course notes
+* Code for plots shown here are in the course notes
+* An additional example based on Morse code is in the notes
+  * Data and analysis shows combinations of dots and dashes that are likely to be misinterpreted by recipient
 
 
 ## Task

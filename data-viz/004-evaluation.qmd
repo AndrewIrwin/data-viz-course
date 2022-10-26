@@ -174,9 +174,13 @@ We've been using R markdown to make reproducible reports throughout the course. 
 
 ### Week 8
 
-#### Task: PCA (Lesson 21) {#task-13 .unnumbered}
+#### PCA (Lesson 21)
 
-Create a PCA and MDS plot as described in the file `task-PCA.Rmd`. 
+The task for this lesson is grouped with the MDS task.
+
+#### Task: MDS (Lesson 22) {#task-13 .unnumbered}
+
+Create a PCA and MDS plot as described in the file `task-mds.Rmd`. 
 
 #### Task: K-means (Lesson 23) {#task-14 .unnumbered}
 

@@ -39,16 +39,16 @@ my_theme = theme_classic() +
 * More demonstrations
 
 
-## What is PCA?
+## What is PCA? {.smaller}
 
 * A tool for simplifying data sets with many variables down to a small number
 
 * Works best with quantitative variables that are partially correlated
 
-* Usually used in combination with one or more categorical variables to identify subgroups
+* Can be used with one or more categorical variables to identify subgroups
 
 * Main results are
-  * Spatial pattern of points
+  * Spatial pattern of points (with categorical labels)
   * Directions of principal components along original axes (loadings)
   * Amount of variation along each PC axis
 
@@ -76,6 +76,9 @@ knitr::include_graphics("static/L21/plotly-1.png")
 ```
 
 
+::: footer
+Plot made with `plot_ly` function in `plotly` package.
+:::
 
 ## Pairs plot
 
@@ -83,6 +86,9 @@ knitr::include_graphics("static/L21/plotly-1.png")
 my_gapminder %>% select(-year) %>% ggpairs(aes(color = continent))
 ```
 
+::: footer
+`ggpairs` is in the `GGally` package.
+:::
 
 ## PCA: 2007 data only
 ```{r include=FALSE, warning=FALSE, message=FALSE}
@@ -129,17 +135,13 @@ pca2 %>% tidy(matrix="loadings") %>%
 
 ## Summary
 
-* PCA to reduce the number of dimensions (variables) in your data
+* Use PCA to reduce the number of dimensions (variables) in your data
 
-* Interpreting loadings (arrows and numeric vectors)
+* Interpret loadings (arrows and numeric vectors)
 
-* Interpreting proportion of variance along each principal component
+* Pay attention to the proportion of variance along each principal component
 
 * Consequences of scaling variables (or not scaling them)
-
-## Further reading
-
-* Course notes
 
 
 ## Task

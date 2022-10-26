@@ -25,6 +25,7 @@ library(kableExtra)
 library(gapminder)
 library(broom)
 library(plotly)
+library(palmerpenguins)
 # library(vegan)
 my_theme = theme_classic() + 
   theme(text = element_text(size=18))
@@ -109,6 +110,74 @@ clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
   ggplot(aes(x = k, y = proportion_within)) + 
   geom_line() + geom_point() + theme_bw() +
   scale_x_continuous(breaks = 1:9) + ylim(0,1)
+```
+
+## Second example: penguins
+
+```{r}
+penguins_scaled <- penguins |> na.omit() |>
+  mutate(s_flipper_length = scale(flipper_length_mm), 
+         s_bill_length = scale(bill_length_mm),
+         s_bill_depth = scale(bill_depth_mm),
+         s_body_mass = scale(body_mass_g))
+```
+```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
+penguins_scaled %>% ggplot() +
+  geom_density(aes(s_flipper_length, color = "Flipper length")) + 
+  geom_density(aes(s_bill_length, color = "Bill length")) + 
+  geom_density(aes(s_bill_depth, color = "Bill depth")) + 
+  geom_density(aes(s_body_mass, color = "Body mass")) + 
+  theme(aspect.ratio = .6)
+```
+
+## Perform k-means
+
+```{r}
+kclust1 <- kmeans(penguins_scaled %>%
+                    select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),
+                  centers = 3)
+tidy(kclust1) %>% kable(digits = 3)
+```
+
+## Display clustering
+
+```{r fig.align="center", out.width="60%", fig.asp=0.8}
+kclust1 %>% augment(penguins_scaled) %>%
+  ggplot(aes(y = s_bill_depth, x = s_bill_length, color = .cluster, shape = species)) + 
+  geom_point() + theme(aspect.ratio = .8)
+```
+
+## How good is the clustering?
+
+```{r echo = FALSE, out.width="60%", fig.align="center"}
+kclusts2 <- 
+  tibble(k = 1:9) %>%
+  mutate(
+    kclust = map(k, ~kmeans(penguins_scaled %>% select(s_bill_depth, s_bill_length, s_body_mass, s_flipper_length),
+                            centers = .x)),
+    tidied = map(kclust, tidy),
+    glanced = map(kclust, glance),
+    augmented = map(kclust, augment, penguins_scaled)
+  )
+clusters2    <- kclusts2 %>% unnest(cols = c(tidied))
+assignments2 <- kclusts2 %>% unnest(cols = c(augmented))
+clusterings2 <- kclusts2 %>% unnest(cols = c(glanced))
+clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
+  ggplot(aes(x = k, y = proportion_within)) + 
+  geom_line() + geom_point() + theme_bw() +
+  scale_x_continuous(breaks = 1:9) + ylim(0,1)
+```
+
+## Four species of penguins?
+
+```{r echo = FALSE}
+kclust1 <- kmeans(penguins_scaled %>%
+                    select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),
+                  centers = 4)
+# tidy(kclust1) %>% kable(digits = 3)
+kclust1 %>% augment(penguins_scaled) %>%
+  ggplot(aes(y = s_bill_depth, x = s_bill_length, color = .cluster, shape = species)) + 
+  geom_point() + theme(aspect.ratio = .8)
 ```
 
 ## When to use k-means?
