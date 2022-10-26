@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+<meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
+<meta name="dcterms.date" content="2022-10-27">
+<title>data-viz - k-means clustering</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center"><h1 class="title">k-means clustering</h1>
+  <p class="author">Andrew Irwin, a.irwin@dal.ca</p>
+  <p class="date">2022-10-27</p>
+</section><section id="plan" class="slide level2"><h2>Plan</h2>
+<ul>
+<li><p>What is k-means clustering and why do we use it?</p></li>
+<li><p>Demonstration</p></li>
+</ul></section><section id="what-is-k-means" class="slide level2"><h2>What is k-means?</h2>
+<ul>
+<li><p>A tool to place observations in discrete groups</p></li>
+<li><p>Based on a distance calculated on several variables</p></li>
+<li><p>You decide how many groups to use (but there is guidance)</p></li>
+<li><p>There are variations on the algorithm and other methods (not discussed in this course)</p></li>
+</ul></section><section id="sample-data" class="slide level2"><h2>Sample data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>gapminder_ss <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>year)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>gapminder_ss <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>country, <span class="sc">-</span>continent) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:right;"> lifeExp </th>
+   <th style="text-align:right;"> pop </th>
+   <th style="text-align:right;"> gdpPercap </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;"> 82.603 </td>
+   <td style="text-align:right;"> 127467972 </td>
+   <td style="text-align:right;"> 31656.0681 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 82.208 </td>
+   <td style="text-align:right;"> 6980412 </td>
+   <td style="text-align:right;"> 39724.9787 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 81.757 </td>
+   <td style="text-align:right;"> 301931 </td>
+   <td style="text-align:right;"> 36180.7892 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 81.701 </td>
+   <td style="text-align:right;"> 7554661 </td>
+   <td style="text-align:right;"> 37506.4191 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 81.235 </td>
+   <td style="text-align:right;"> 20434176 </td>
+   <td style="text-align:right;"> 34435.3674 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.941 </td>
+   <td style="text-align:right;"> 40448191 </td>
+   <td style="text-align:right;"> 28821.0637 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.884 </td>
+   <td style="text-align:right;"> 9031088 </td>
+   <td style="text-align:right;"> 33859.7484 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.745 </td>
+   <td style="text-align:right;"> 6426679 </td>
+   <td style="text-align:right;"> 25523.2771 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.657 </td>
+   <td style="text-align:right;"> 61083916 </td>
+   <td style="text-align:right;"> 30470.0167 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.653 </td>
+   <td style="text-align:right;"> 33390141 </td>
+   <td style="text-align:right;"> 36319.2350 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.546 </td>
+   <td style="text-align:right;"> 58147733 </td>
+   <td style="text-align:right;"> 28569.7197 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.204 </td>
+   <td style="text-align:right;"> 4115771 </td>
+   <td style="text-align:right;"> 25185.0091 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 80.196 </td>
+   <td style="text-align:right;"> 4627926 </td>
+   <td style="text-align:right;"> 49357.1902 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.972 </td>
+   <td style="text-align:right;"> 4553009 </td>
+   <td style="text-align:right;"> 47143.1796 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.829 </td>
+   <td style="text-align:right;"> 8199783 </td>
+   <td style="text-align:right;"> 36126.4927 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.762 </td>
+   <td style="text-align:right;"> 16570613 </td>
+   <td style="text-align:right;"> 36797.9333 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.483 </td>
+   <td style="text-align:right;"> 10706290 </td>
+   <td style="text-align:right;"> 27538.4119 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.441 </td>
+   <td style="text-align:right;"> 10392226 </td>
+   <td style="text-align:right;"> 33692.6051 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.425 </td>
+   <td style="text-align:right;"> 60776238 </td>
+   <td style="text-align:right;"> 33203.2613 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.406 </td>
+   <td style="text-align:right;"> 82400996 </td>
+   <td style="text-align:right;"> 32170.3744 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 79.313 </td>
+   <td style="text-align:right;"> 5238460 </td>
+   <td style="text-align:right;"> 33207.0844 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.885 </td>
+   <td style="text-align:right;"> 4109086 </td>
+   <td style="text-align:right;"> 40675.9964 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.782 </td>
+   <td style="text-align:right;"> 4133884 </td>
+   <td style="text-align:right;"> 9645.0614 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.746 </td>
+   <td style="text-align:right;"> 3942491 </td>
+   <td style="text-align:right;"> 19328.7090 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.623 </td>
+   <td style="text-align:right;"> 49044790 </td>
+   <td style="text-align:right;"> 23348.1397 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.553 </td>
+   <td style="text-align:right;"> 16284741 </td>
+   <td style="text-align:right;"> 13171.6388 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.400 </td>
+   <td style="text-align:right;"> 23174294 </td>
+   <td style="text-align:right;"> 28718.2768 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.332 </td>
+   <td style="text-align:right;"> 5468120 </td>
+   <td style="text-align:right;"> 35278.4187 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.273 </td>
+   <td style="text-align:right;"> 11416987 </td>
+   <td style="text-align:right;"> 8948.1029 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.242 </td>
+   <td style="text-align:right;"> 301139947 </td>
+   <td style="text-align:right;"> 42951.6531 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 78.098 </td>
+   <td style="text-align:right;"> 10642836 </td>
+   <td style="text-align:right;"> 20509.6478 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 77.926 </td>
+   <td style="text-align:right;"> 2009245 </td>
+   <td style="text-align:right;"> 25768.2576 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 77.588 </td>
+   <td style="text-align:right;"> 2505559 </td>
+   <td style="text-align:right;"> 47306.9898 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 76.486 </td>
+   <td style="text-align:right;"> 10228744 </td>
+   <td style="text-align:right;"> 22833.3085 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 76.442 </td>
+   <td style="text-align:right;"> 798094 </td>
+   <td style="text-align:right;"> 7670.1226 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 76.423 </td>
+   <td style="text-align:right;"> 3600523 </td>
+   <td style="text-align:right;"> 5937.0295 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 76.384 </td>
+   <td style="text-align:right;"> 3447496 </td>
+   <td style="text-align:right;"> 10611.4630 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 76.195 </td>
+   <td style="text-align:right;"> 108700891 </td>
+   <td style="text-align:right;"> 11977.5750 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.748 </td>
+   <td style="text-align:right;"> 4493312 </td>
+   <td style="text-align:right;"> 14619.2227 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.640 </td>
+   <td style="text-align:right;"> 3204897 </td>
+   <td style="text-align:right;"> 22316.1929 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.635 </td>
+   <td style="text-align:right;"> 708573 </td>
+   <td style="text-align:right;"> 29796.0483 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.563 </td>
+   <td style="text-align:right;"> 38518241 </td>
+   <td style="text-align:right;"> 15389.9247 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.537 </td>
+   <td style="text-align:right;"> 3242173 </td>
+   <td style="text-align:right;"> 9809.1856 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 75.320 </td>
+   <td style="text-align:right;"> 40301927 </td>
+   <td style="text-align:right;"> 12779.3796 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.994 </td>
+   <td style="text-align:right;"> 13755680 </td>
+   <td style="text-align:right;"> 6873.2623 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.852 </td>
+   <td style="text-align:right;"> 4552198 </td>
+   <td style="text-align:right;"> 7446.2988 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.663 </td>
+   <td style="text-align:right;"> 5447502 </td>
+   <td style="text-align:right;"> 18678.3144 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.543 </td>
+   <td style="text-align:right;"> 684736 </td>
+   <td style="text-align:right;"> 9253.8961 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.249 </td>
+   <td style="text-align:right;"> 85262356 </td>
+   <td style="text-align:right;"> 2441.5764 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.241 </td>
+   <td style="text-align:right;"> 24821286 </td>
+   <td style="text-align:right;"> 12451.6558 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.143 </td>
+   <td style="text-align:right;"> 19314747 </td>
+   <td style="text-align:right;"> 4184.5481 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 74.002 </td>
+   <td style="text-align:right;"> 10150265 </td>
+   <td style="text-align:right;"> 9786.5347 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.952 </td>
+   <td style="text-align:right;"> 6036914 </td>
+   <td style="text-align:right;"> 12057.4993 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.923 </td>
+   <td style="text-align:right;"> 10276158 </td>
+   <td style="text-align:right;"> 7092.9230 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.747 </td>
+   <td style="text-align:right;"> 26084662 </td>
+   <td style="text-align:right;"> 11415.8057 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.422 </td>
+   <td style="text-align:right;"> 4018332 </td>
+   <td style="text-align:right;"> 3025.3498 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.338 </td>
+   <td style="text-align:right;"> 9956108 </td>
+   <td style="text-align:right;"> 18008.9444 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 73.005 </td>
+   <td style="text-align:right;"> 7322858 </td>
+   <td style="text-align:right;"> 10680.7928 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.961 </td>
+   <td style="text-align:right;"> 1318683096 </td>
+   <td style="text-align:right;"> 4959.1149 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.899 </td>
+   <td style="text-align:right;"> 5675356 </td>
+   <td style="text-align:right;"> 2749.3210 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.889 </td>
+   <td style="text-align:right;"> 44227550 </td>
+   <td style="text-align:right;"> 7006.5804 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.801 </td>
+   <td style="text-align:right;"> 1250882 </td>
+   <td style="text-align:right;"> 10956.9911 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.777 </td>
+   <td style="text-align:right;"> 27601038 </td>
+   <td style="text-align:right;"> 21654.8319 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.567 </td>
+   <td style="text-align:right;"> 2780132 </td>
+   <td style="text-align:right;"> 7320.8803 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.535 </td>
+   <td style="text-align:right;"> 6053193 </td>
+   <td style="text-align:right;"> 4519.4612 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.476 </td>
+   <td style="text-align:right;"> 22276056 </td>
+   <td style="text-align:right;"> 10808.4756 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.396 </td>
+   <td style="text-align:right;"> 20378239 </td>
+   <td style="text-align:right;"> 3970.0954 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.390 </td>
+   <td style="text-align:right;"> 190010647 </td>
+   <td style="text-align:right;"> 9065.8008 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.301 </td>
+   <td style="text-align:right;"> 33333216 </td>
+   <td style="text-align:right;"> 6223.3675 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 72.235 </td>
+   <td style="text-align:right;"> 9319622 </td>
+   <td style="text-align:right;"> 6025.3748 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.993 </td>
+   <td style="text-align:right;"> 3921278 </td>
+   <td style="text-align:right;"> 10461.0587 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.878 </td>
+   <td style="text-align:right;"> 6939688 </td>
+   <td style="text-align:right;"> 5728.3535 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.777 </td>
+   <td style="text-align:right;"> 71158647 </td>
+   <td style="text-align:right;"> 8458.2764 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.752 </td>
+   <td style="text-align:right;"> 6667147 </td>
+   <td style="text-align:right;"> 4172.8385 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.688 </td>
+   <td style="text-align:right;"> 91077287 </td>
+   <td style="text-align:right;"> 3190.4810 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.421 </td>
+   <td style="text-align:right;"> 28674757 </td>
+   <td style="text-align:right;"> 7408.9056 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.338 </td>
+   <td style="text-align:right;"> 80264543 </td>
+   <td style="text-align:right;"> 5581.1810 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 71.164 </td>
+   <td style="text-align:right;"> 33757175 </td>
+   <td style="text-align:right;"> 3820.1752 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 70.964 </td>
+   <td style="text-align:right;"> 69453570 </td>
+   <td style="text-align:right;"> 11605.7145 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 70.650 </td>
+   <td style="text-align:right;"> 223547000 </td>
+   <td style="text-align:right;"> 3540.6516 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 70.616 </td>
+   <td style="text-align:right;"> 65068149 </td>
+   <td style="text-align:right;"> 7458.3963 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 70.259 </td>
+   <td style="text-align:right;"> 12572928 </td>
+   <td style="text-align:right;"> 5186.0500 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 70.198 </td>
+   <td style="text-align:right;"> 7483763 </td>
+   <td style="text-align:right;"> 3548.3308 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 69.819 </td>
+   <td style="text-align:right;"> 1056608 </td>
+   <td style="text-align:right;"> 18008.5092 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 67.297 </td>
+   <td style="text-align:right;"> 23301725 </td>
+   <td style="text-align:right;"> 1593.0655 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 66.803 </td>
+   <td style="text-align:right;"> 2874127 </td>
+   <td style="text-align:right;"> 3095.7723 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 65.554 </td>
+   <td style="text-align:right;"> 9119152 </td>
+   <td style="text-align:right;"> 3822.1371 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 65.528 </td>
+   <td style="text-align:right;"> 199579 </td>
+   <td style="text-align:right;"> 1598.4351 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 65.483 </td>
+   <td style="text-align:right;"> 169270617 </td>
+   <td style="text-align:right;"> 2605.9476 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 65.152 </td>
+   <td style="text-align:right;"> 710960 </td>
+   <td style="text-align:right;"> 986.1479 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 64.698 </td>
+   <td style="text-align:right;"> 1110396331 </td>
+   <td style="text-align:right;"> 2452.2104 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 64.164 </td>
+   <td style="text-align:right;"> 3270065 </td>
+   <td style="text-align:right;"> 1803.1515 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 64.062 </td>
+   <td style="text-align:right;"> 150448339 </td>
+   <td style="text-align:right;"> 1391.2538 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 63.785 </td>
+   <td style="text-align:right;"> 28901790 </td>
+   <td style="text-align:right;"> 1091.3598 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 63.062 </td>
+   <td style="text-align:right;"> 12267493 </td>
+   <td style="text-align:right;"> 1712.4721 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 62.698 </td>
+   <td style="text-align:right;"> 22211743 </td>
+   <td style="text-align:right;"> 2280.7699 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 62.069 </td>
+   <td style="text-align:right;"> 47761980 </td>
+   <td style="text-align:right;"> 944.0000 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 60.916 </td>
+   <td style="text-align:right;"> 8502814 </td>
+   <td style="text-align:right;"> 1201.6372 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 60.022 </td>
+   <td style="text-align:right;"> 22873338 </td>
+   <td style="text-align:right;"> 1327.6089 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 59.723 </td>
+   <td style="text-align:right;"> 14131858 </td>
+   <td style="text-align:right;"> 1713.7787 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 59.545 </td>
+   <td style="text-align:right;"> 27499638 </td>
+   <td style="text-align:right;"> 4471.0619 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 59.448 </td>
+   <td style="text-align:right;"> 1688359 </td>
+   <td style="text-align:right;"> 752.7497 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 59.443 </td>
+   <td style="text-align:right;"> 19167654 </td>
+   <td style="text-align:right;"> 1044.7701 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 58.556 </td>
+   <td style="text-align:right;"> 42292929 </td>
+   <td style="text-align:right;"> 2602.3950 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 58.420 </td>
+   <td style="text-align:right;"> 5701579 </td>
+   <td style="text-align:right;"> 882.9699 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 58.040 </td>
+   <td style="text-align:right;"> 4906585 </td>
+   <td style="text-align:right;"> 641.3695 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 56.867 </td>
+   <td style="text-align:right;"> 12894865 </td>
+   <td style="text-align:right;"> 619.6769 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 56.735 </td>
+   <td style="text-align:right;"> 1454867 </td>
+   <td style="text-align:right;"> 13206.4845 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 56.728 </td>
+   <td style="text-align:right;"> 8078314 </td>
+   <td style="text-align:right;"> 1441.2849 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 56.007 </td>
+   <td style="text-align:right;"> 9947814 </td>
+   <td style="text-align:right;"> 942.6542 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 55.322 </td>
+   <td style="text-align:right;"> 3800610 </td>
+   <td style="text-align:right;"> 3632.5578 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 54.791 </td>
+   <td style="text-align:right;"> 496374 </td>
+   <td style="text-align:right;"> 2082.4816 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 54.467 </td>
+   <td style="text-align:right;"> 12031795 </td>
+   <td style="text-align:right;"> 1042.5816 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 54.110 </td>
+   <td style="text-align:right;"> 35610177 </td>
+   <td style="text-align:right;"> 1463.2493 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 52.947 </td>
+   <td style="text-align:right;"> 76511887 </td>
+   <td style="text-align:right;"> 690.8056 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 52.906 </td>
+   <td style="text-align:right;"> 2055080 </td>
+   <td style="text-align:right;"> 4811.0604 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 52.517 </td>
+   <td style="text-align:right;"> 38139640 </td>
+   <td style="text-align:right;"> 1107.4822 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 52.295 </td>
+   <td style="text-align:right;"> 14326203 </td>
+   <td style="text-align:right;"> 1217.0330 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 51.579 </td>
+   <td style="text-align:right;"> 551201 </td>
+   <td style="text-align:right;"> 12154.0897 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 51.542 </td>
+   <td style="text-align:right;"> 29170398 </td>
+   <td style="text-align:right;"> 1056.3801 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 50.728 </td>
+   <td style="text-align:right;"> 1639131 </td>
+   <td style="text-align:right;"> 12569.8518 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 50.651 </td>
+   <td style="text-align:right;"> 10238807 </td>
+   <td style="text-align:right;"> 1704.0637 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 50.430 </td>
+   <td style="text-align:right;"> 17696293 </td>
+   <td style="text-align:right;"> 2042.0952 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 49.580 </td>
+   <td style="text-align:right;"> 8390505 </td>
+   <td style="text-align:right;"> 430.0707 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 49.339 </td>
+   <td style="text-align:right;"> 43997828 </td>
+   <td style="text-align:right;"> 9269.6578 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 48.328 </td>
+   <td style="text-align:right;"> 18013409 </td>
+   <td style="text-align:right;"> 1544.7501 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 48.303 </td>
+   <td style="text-align:right;"> 13327079 </td>
+   <td style="text-align:right;"> 759.3499 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 48.159 </td>
+   <td style="text-align:right;"> 9118773 </td>
+   <td style="text-align:right;"> 926.1411 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 46.859 </td>
+   <td style="text-align:right;"> 135031164 </td>
+   <td style="text-align:right;"> 2013.9773 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 46.462 </td>
+   <td style="text-align:right;"> 64606759 </td>
+   <td style="text-align:right;"> 277.5519 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 46.388 </td>
+   <td style="text-align:right;"> 1472041 </td>
+   <td style="text-align:right;"> 579.2317 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 46.242 </td>
+   <td style="text-align:right;"> 8860588 </td>
+   <td style="text-align:right;"> 863.0885 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 45.678 </td>
+   <td style="text-align:right;"> 3193942 </td>
+   <td style="text-align:right;"> 414.5073 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 44.741 </td>
+   <td style="text-align:right;"> 4369038 </td>
+   <td style="text-align:right;"> 706.0165 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 43.828 </td>
+   <td style="text-align:right;"> 31889923 </td>
+   <td style="text-align:right;"> 974.5803 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 43.487 </td>
+   <td style="text-align:right;"> 12311143 </td>
+   <td style="text-align:right;"> 469.7093 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 42.731 </td>
+   <td style="text-align:right;"> 12420476 </td>
+   <td style="text-align:right;"> 4797.2313 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 42.592 </td>
+   <td style="text-align:right;"> 2012649 </td>
+   <td style="text-align:right;"> 1569.3314 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 42.568 </td>
+   <td style="text-align:right;"> 6144562 </td>
+   <td style="text-align:right;"> 862.5408 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 42.384 </td>
+   <td style="text-align:right;"> 11746035 </td>
+   <td style="text-align:right;"> 1271.2116 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 42.082 </td>
+   <td style="text-align:right;"> 19951656 </td>
+   <td style="text-align:right;"> 823.6856 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 39.613 </td>
+   <td style="text-align:right;"> 1133066 </td>
+   <td style="text-align:right;"> 4513.4806 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="data-preprocessing" class="slide level2"><h2>Data preprocessing</h2>
+<ul>
+<li>Approximately normally distributed, same variance</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>gapminder_scaled <span class="ot">&lt;-</span> gapminder_ss <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">s_logPop =</span> <span class="fu">scale</span>(<span class="fu">log10</span>(pop)), </span>
+<span id="cb2-3"><a href="#cb2-3"></a>         <span class="at">s_logGDP =</span> <span class="fu">scale</span>(<span class="fu">log10</span>(gdpPercap)),</span>
+<span id="cb2-4"><a href="#cb2-4"></a>         <span class="at">s_lifeExp =</span> <span class="fu">scale</span>(lifeExp))</span></code></pre></div>
+</div>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means" class="slide level2"><h2>Perform k-means</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(gapminder_scaled <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>                    <span class="fu">select</span>(s_lifeExp, s_logGDP, s_logPop),</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                  <span class="at">centers =</span> <span class="dv">6</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:right;"> s_lifeExp </th>
+   <th style="text-align:right;"> s_logGDP </th>
+   <th style="text-align:right;"> s_logPop </th>
+   <th style="text-align:right;"> size </th>
+   <th style="text-align:right;"> withinss </th>
+   <th style="text-align:left;"> cluster </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;"> 0.9461979 </td>
+   <td style="text-align:right;"> 1.2280926 </td>
+   <td style="text-align:right;"> -0.5749544 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 12.83856 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> -1.4490956 </td>
+   <td style="text-align:right;"> -1.3247869 </td>
+   <td style="text-align:right;"> -0.0726005 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 16.19462 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> -1.0045199 </td>
+   <td style="text-align:right;"> -0.4040133 </td>
+   <td style="text-align:right;"> -1.4921501 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 14.51559 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 0.5216447 </td>
+   <td style="text-align:right;"> 0.1021414 </td>
+   <td style="text-align:right;"> -0.5146094 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 12.75726 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 0.6827965 </td>
+   <td style="text-align:right;"> 0.5895457 </td>
+   <td style="text-align:right;"> 1.0778552 </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 24.17034 </td>
+   <td style="text-align:left;"> 5 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> -0.6438534 </td>
+   <td style="text-align:right;"> -0.8334311 </td>
+   <td style="text-align:right;"> 0.9062631 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 16.23589 </td>
+   <td style="text-align:left;"> 6 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="display-clustering" class="slide level2"><h2>Display clustering</h2>
+<div class="cell" data-layout-align="center" data-fig.asp="0.8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>kclust1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>(gapminder_scaled) <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> lifeExp, <span class="at">x =</span> <span class="fu">log10</span>(pop), <span class="at">color =</span> .cluster, <span class="at">shape =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
+
+</div>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering" class="slide level2"><h2>How good is the clustering?</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="second-example-penguins" class="slide level2"><h2>Second example: penguins</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>penguins_scaled <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(<span class="at">s_flipper_length =</span> <span class="fu">scale</span>(flipper_length_mm), </span>
+<span id="cb5-3"><a href="#cb5-3"></a>         <span class="at">s_bill_length =</span> <span class="fu">scale</span>(bill_length_mm),</span>
+<span id="cb5-4"><a href="#cb5-4"></a>         <span class="at">s_bill_depth =</span> <span class="fu">scale</span>(bill_depth_mm),</span>
+<span id="cb5-5"><a href="#cb5-5"></a>         <span class="at">s_body_mass =</span> <span class="fu">scale</span>(body_mass_g))</span></code></pre></div>
+</div>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means-1" class="slide level2"><h2>Perform k-means</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>                    <span class="fu">select</span>(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),</span>
+<span id="cb6-3"><a href="#cb6-3"></a>                  <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:right;"> s_flipper_length </th>
+   <th style="text-align:right;"> s_body_mass </th>
+   <th style="text-align:right;"> s_bill_length </th>
+   <th style="text-align:right;"> s_bill_depth </th>
+   <th style="text-align:right;"> size </th>
+   <th style="text-align:right;"> withinss </th>
+   <th style="text-align:left;"> cluster </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;"> 0.854 </td>
+   <td style="text-align:right;"> 0.612 </td>
+   <td style="text-align:right;"> 0.280 </td>
+   <td style="text-align:right;"> -1.447 </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 25.489 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> 1.480 </td>
+   <td style="text-align:right;"> 1.615 </td>
+   <td style="text-align:right;"> 1.068 </td>
+   <td style="text-align:right;"> -0.681 </td>
+   <td style="text-align:right;"> 58 </td>
+   <td style="text-align:right;"> 45.242 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+<tr>
+<td style="text-align:right;"> -0.652 </td>
+   <td style="text-align:right;"> -0.618 </td>
+   <td style="text-align:right;"> -0.372 </td>
+   <td style="text-align:right;"> 0.607 </td>
+   <td style="text-align:right;"> 213 </td>
+   <td style="text-align:right;"> 403.284 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="display-clustering-1" class="slide level2"><h2>Display clustering</h2>
+<div class="cell" data-layout-align="center" data-fig.asp="0.8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>kclust1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>(penguins_scaled) <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_bill_depth, <span class="at">x =</span> s_bill_length, <span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
+
+</div>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering-1" class="slide level2"><h2>How good is the clustering?</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="four-species-of-penguins" class="slide level2"><h2>Four species of penguins?</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section><section id="when-to-use-k-means" class="slide level2"><h2>When to use k-means?</h2>
+<ul>
+<li><p>When the goal is to make categories from continuous variables</p></li>
+<li><p>Each observation is placed in a cluster</p></li>
+<li>
+<p>Based on distance between observations, calculated across all variables</p>
+<ul>
+<li>Usually best to scale (and maybe transform in other ways) each variable</li>
+</ul>
+</li>
+<li><p>Select the number of clusters based on partitioning of “sums of squares”</p></li>
+</ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<ul>
+<li>Course notes</li>
+</ul></section><section id="task" class="slide level2"><h2>Task</h2>
+<ul>
+<li>Practice k-means</li>
+</ul>
+
+<div class="footer footer-default">
+
+</div>
+</section>
+</div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+<meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
+<meta name="dcterms.date" content="2021-09-29">
+<title>data-viz - Summarizing data with dplyr</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center"><h1 class="title">Summarizing data with dplyr</h1>
+  <p class="author">Andrew Irwin, a.irwin@dal.ca</p>
+  <p class="date">2021-09-29</p>
+</section><section id="transforming-data" class="slide level2"><h2>Transforming data</h2>
+<p>With a large dataset we commonly want to</p>
+<ul>
+<li><p>Count observations in categories</p></li>
+<li><p>Compute means, standard deviations, and other statistics</p></li>
+<li><p>Compute derived quantities (ratios, change units)</p></li>
+</ul></section><section id="dplyr-examples" class="slide level2"><h2>dplyr examples</h2>
+<p>We will transform and reduce observations using</p>
+<ul>
+<li><p><code>mutate</code></p></li>
+<li><p><code>filter</code></p></li>
+<li><p><code>group_by</code></p></li>
+<li><p><code>summarize</code></p></li>
+</ul>
+<p>We will use the <code>ChickWeight</code> data in the <code>datasets</code> package.</p>
+</section><section id="data" class="slide level2 smaller"><h2>Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">glimpse</span>(ChickWeight)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 578
+Columns: 4
+$ weight &lt;dbl&gt; 42, 51, 59, 64, 76, 93, 106, 125, 149, 171, 199, 205, 40, 49, 5…
+$ Time   &lt;dbl&gt; 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 0, 2, 4, 6, 8, 10, 1…
+$ Chick  &lt;ord&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
+$ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+</div>
+</div>
+</section><section id="use-summarize-to-count-observations" class="slide level2"><h2>Use summarize to count observations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>ChickWeight <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:right;"> count </th>
+  </tr></thead>
+<tbody><tr>
+<td style="text-align:right;"> 578 </td>
+  </tr></tbody>
+</table>
+</div>
+</div>
+</section><section id="count-observations-in-groups" class="slide level2"><h2>Count observations in groups</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:left;"> Diet </th>
+   <th style="text-align:right;"> count </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 220 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 120 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 120 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> 118 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="two-grouping-factors" class="slide level2 smaller"><h2>Two grouping factors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Diet"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Chick"],"name":[2],"type":["ord"],"align":["right"]},{"label":["count"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"18","3":"2"},{"1":"1","2":"16","3":"7"},{"1":"1","2":"15","3":"8"},{"1":"1","2":"13","3":"12"},{"1":"1","2":"9","3":"12"},{"1":"1","2":"20","3":"12"},{"1":"1","2":"10","3":"12"},{"1":"1","2":"8","3":"11"},{"1":"1","2":"17","3":"12"},{"1":"1","2":"19","3":"12"},{"1":"1","2":"4","3":"12"},{"1":"1","2":"6","3":"12"},{"1":"1","2":"11","3":"12"},{"1":"1","2":"3","3":"12"},{"1":"1","2":"1","3":"12"},{"1":"1","2":"12","3":"12"},{"1":"1","2":"2","3":"12"},{"1":"1","2":"5","3":"12"},{"1":"1","2":"14","3":"12"},{"1":"1","2":"7","3":"12"},{"1":"2","2":"24","3":"12"},{"1":"2","2":"30","3":"12"},{"1":"2","2":"22","3":"12"},{"1":"2","2":"23","3":"12"},{"1":"2","2":"27","3":"12"},{"1":"2","2":"28","3":"12"},{"1":"2","2":"26","3":"12"},{"1":"2","2":"25","3":"12"},{"1":"2","2":"29","3":"12"},{"1":"2","2":"21","3":"12"},{"1":"3","2":"33","3":"12"},{"1":"3","2":"37","3":"12"},{"1":"3","2":"36","3":"12"},{"1":"3","2":"31","3":"12"},{"1":"3","2":"39","3":"12"},{"1":"3","2":"38","3":"12"},{"1":"3","2":"32","3":"12"},{"1":"3","2":"40","3":"12"},{"1":"3","2":"34","3":"12"},{"1":"3","2":"35","3":"12"},{"1":"4","2":"44","3":"10"},{"1":"4","2":"45","3":"12"},{"1":"4","2":"43","3":"12"},{"1":"4","2":"41","3":"12"},{"1":"4","2":"47","3":"12"},{"1":"4","2":"49","3":"12"},{"1":"4","2":"46","3":"12"},{"1":"4","2":"50","3":"12"},{"1":"4","2":"42","3":"12"},{"1":"4","2":"48","3":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="compute-any-function-you-want" class="slide level2 smaller"><h2>Compute any function you want</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">group_by</span>(Chick, Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), </span>
+<span id="cb6-4"><a href="#cb6-4"></a>            <span class="at">max_time =</span> <span class="fu">max</span>(Time), </span>
+<span id="cb6-5"><a href="#cb6-5"></a>            <span class="at">median_weight =</span> <span class="fu">median</span>(weight),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>            <span class="at">increase_weight =</span> <span class="fu">max</span>(weight) <span class="sc">-</span> <span class="fu">min</span>(weight),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>            <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Chick"],"name":[1],"type":["ord"],"align":["right"]},{"label":["Diet"],"name":[2],"type":["fct"],"align":["left"]},{"label":["count"],"name":[3],"type":["int"],"align":["right"]},{"label":["max_time"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median_weight"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["increase_weight"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"18","2":"1","3":"2","4":"2","5":"37.0","6":"4"},{"1":"16","2":"1","3":"7","4":"12","5":"51.0","6":"16"},{"1":"15","2":"1","3":"8","4":"14","5":"65.5","6":"27"},{"1":"13","2":"1","3":"12","4":"21","5":"68.5","6":"55"},{"1":"9","2":"1","3":"12","4":"21","5":"91.0","6":"58"},{"1":"20","2":"1","3":"12","4":"21","5":"75.0","6":"76"},{"1":"10","2":"1","3":"12","4":"21","5":"85.0","6":"83"},{"1":"8","2":"1","3":"11","4":"20","5":"93.0","6":"92"},{"1":"17","2":"1","3":"12","4":"21","5":"93.5","6":"100"},{"1":"19","2":"1","3":"12","4":"21","5":"76.5","6":"114"},{"1":"4","2":"1","3":"12","4":"21","5":"94.5","6":"118"},{"1":"6","2":"1","3":"12","4":"21","5":"132.5","6":"119"},{"1":"11","2":"1","3":"12","4":"21","5":"153.5","6":"141"},{"1":"3","2":"1","3":"12","4":"21","5":"107.0","6":"163"},{"1":"1","2":"1","3":"12","4":"21","5":"99.5","6":"163"},{"1":"12","2":"1","3":"12","4":"21","5":"103.5","6":"164"},{"1":"2","2":"1","3":"12","4":"21","5":"112.5","6":"175"},{"1":"5","2":"1","3":"12","4":"21","5":"123.5","6":"182"},{"1":"14","2":"1","3":"12","4":"21","5":"146.0","6":"225"},{"1":"7","2":"1","3":"12","4":"21","5":"129.0","6":"264"},{"1":"24","2":"2","3":"12","4":"21","5":"70.5","6":"34"},{"1":"30","2":"2","3":"12","4":"21","5":"106.5","6":"115"},{"1":"22","2":"2","3":"12","4":"21","5":"101.5","6":"126"},{"1":"23","2":"2","3":"12","4":"21","5":"115.0","6":"132"},{"1":"27","2":"2","3":"12","4":"21","5":"107.5","6":"153"},{"1":"28","2":"2","3":"12","4":"21","5":"129.5","6":"194"},{"1":"26","2":"2","3":"12","4":"21","5":"125.0","6":"209"},{"1":"25","2":"2","3":"12","4":"21","5":"135.0","6":"225"},{"1":"29","2":"2","3":"12","4":"21","5":"120.0","6":"270"},{"1":"21","2":"2","3":"12","4":"21","5":"190.0","6":"291"},{"1":"33","2":"3","3":"12","4":"21","5":"124.0","6":"117"},{"1":"37","2":"3","3":"12","4":"21","5":"93.0","6":"137"},{"1":"36","2":"3","3":"12","4":"21","5":"130.5","6":"188"},{"1":"31","2":"3","3":"12","4":"21","5":"112.5","6":"214"},{"1":"39","2":"3","3":"12","4":"21","5":"119.5","6":"230"},{"1":"38","2":"3","3":"12","4":"21","5":"118.5","6":"249"},{"1":"32","2":"3","3":"12","4":"21","5":"144.0","6":"264"},{"1":"40","2":"3","3":"12","4":"21","5":"137.0","6":"280"},{"1":"34","2":"3","3":"12","4":"21","5":"149.0","6":"300"},{"1":"35","2":"3","3":"12","4":"21","5":"179.5","6":"332"},{"1":"44","2":"4","3":"10","4":"18","5":"110.5","6":"104"},{"1":"45","2":"4","3":"12","4":"21","5":"126.0","6":"156"},{"1":"43","2":"4","3":"12","4":"21","5":"170.5","6":"158"},{"1":"41","2":"4","3":"12","4":"21","5":"138.5","6":"162"},{"1":"47","2":"4","3":"12","4":"21","5":"135.5","6":"169"},{"1":"49","2":"4","3":"12","4":"21","5":"140.0","6":"197"},{"1":"46","2":"4","3":"12","4":"21","5":"132.0","6":"198"},{"1":"50","2":"4","3":"12","4":"21","5":"138.5","6":"223"},{"1":"42","2":"4","3":"12","4":"21","5":"143.0","6":"239"},{"1":"48","2":"4","3":"12","4":"21","5":"139.5","6":"283"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="use-mutate-to-create-new-columns-for-each-observation" class="slide level2 smaller"><h2>Use mutate to create new columns for each observation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> weight <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["weight"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Time"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chick"],"name":[3],"type":["ord"],"align":["right"]},{"label":["Diet"],"name":[4],"type":["fct"],"align":["left"]},{"label":["growth"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"42","2":"0","3":"1","4":"1","5":"Inf","_rn_":"1"},{"1":"51","2":"2","3":"1","4":"1","5":"25.500000","_rn_":"2"},{"1":"59","2":"4","3":"1","4":"1","5":"14.750000","_rn_":"3"},{"1":"64","2":"6","3":"1","4":"1","5":"10.666667","_rn_":"4"},{"1":"76","2":"8","3":"1","4":"1","5":"9.500000","_rn_":"5"},{"1":"93","2":"10","3":"1","4":"1","5":"9.300000","_rn_":"6"},{"1":"106","2":"12","3":"1","4":"1","5":"8.833333","_rn_":"7"},{"1":"125","2":"14","3":"1","4":"1","5":"8.928571","_rn_":"8"},{"1":"149","2":"16","3":"1","4":"1","5":"9.312500","_rn_":"9"},{"1":"171","2":"18","3":"1","4":"1","5":"9.500000","_rn_":"10"},{"1":"199","2":"20","3":"1","4":"1","5":"9.950000","_rn_":"11"},{"1":"205","2":"21","3":"1","4":"1","5":"9.761905","_rn_":"12"},{"1":"40","2":"0","3":"2","4":"1","5":"Inf","_rn_":"13"},{"1":"49","2":"2","3":"2","4":"1","5":"24.500000","_rn_":"14"},{"1":"58","2":"4","3":"2","4":"1","5":"14.500000","_rn_":"15"},{"1":"72","2":"6","3":"2","4":"1","5":"12.000000","_rn_":"16"},{"1":"84","2":"8","3":"2","4":"1","5":"10.500000","_rn_":"17"},{"1":"103","2":"10","3":"2","4":"1","5":"10.300000","_rn_":"18"},{"1":"122","2":"12","3":"2","4":"1","5":"10.166667","_rn_":"19"},{"1":"138","2":"14","3":"2","4":"1","5":"9.857143","_rn_":"20"},{"1":"162","2":"16","3":"2","4":"1","5":"10.125000","_rn_":"21"},{"1":"187","2":"18","3":"2","4":"1","5":"10.388889","_rn_":"22"},{"1":"209","2":"20","3":"2","4":"1","5":"10.450000","_rn_":"23"},{"1":"215","2":"21","3":"2","4":"1","5":"10.238095","_rn_":"24"},{"1":"43","2":"0","3":"3","4":"1","5":"Inf","_rn_":"25"},{"1":"39","2":"2","3":"3","4":"1","5":"19.500000","_rn_":"26"},{"1":"55","2":"4","3":"3","4":"1","5":"13.750000","_rn_":"27"},{"1":"67","2":"6","3":"3","4":"1","5":"11.166667","_rn_":"28"},{"1":"84","2":"8","3":"3","4":"1","5":"10.500000","_rn_":"29"},{"1":"99","2":"10","3":"3","4":"1","5":"9.900000","_rn_":"30"},{"1":"115","2":"12","3":"3","4":"1","5":"9.583333","_rn_":"31"},{"1":"138","2":"14","3":"3","4":"1","5":"9.857143","_rn_":"32"},{"1":"163","2":"16","3":"3","4":"1","5":"10.187500","_rn_":"33"},{"1":"187","2":"18","3":"3","4":"1","5":"10.388889","_rn_":"34"},{"1":"198","2":"20","3":"3","4":"1","5":"9.900000","_rn_":"35"},{"1":"202","2":"21","3":"3","4":"1","5":"9.619048","_rn_":"36"},{"1":"42","2":"0","3":"4","4":"1","5":"Inf","_rn_":"37"},{"1":"49","2":"2","3":"4","4":"1","5":"24.500000","_rn_":"38"},{"1":"56","2":"4","3":"4","4":"1","5":"14.000000","_rn_":"39"},{"1":"67","2":"6","3":"4","4":"1","5":"11.166667","_rn_":"40"},{"1":"74","2":"8","3":"4","4":"1","5":"9.250000","_rn_":"41"},{"1":"87","2":"10","3":"4","4":"1","5":"8.700000","_rn_":"42"},{"1":"102","2":"12","3":"4","4":"1","5":"8.500000","_rn_":"43"},{"1":"108","2":"14","3":"4","4":"1","5":"7.714286","_rn_":"44"},{"1":"136","2":"16","3":"4","4":"1","5":"8.500000","_rn_":"45"},{"1":"154","2":"18","3":"4","4":"1","5":"8.555556","_rn_":"46"},{"1":"160","2":"20","3":"4","4":"1","5":"8.000000","_rn_":"47"},{"1":"157","2":"21","3":"4","4":"1","5":"7.476190","_rn_":"48"},{"1":"41","2":"0","3":"5","4":"1","5":"Inf","_rn_":"49"},{"1":"42","2":"2","3":"5","4":"1","5":"21.000000","_rn_":"50"},{"1":"48","2":"4","3":"5","4":"1","5":"12.000000","_rn_":"51"},{"1":"60","2":"6","3":"5","4":"1","5":"10.000000","_rn_":"52"},{"1":"79","2":"8","3":"5","4":"1","5":"9.875000","_rn_":"53"},{"1":"106","2":"10","3":"5","4":"1","5":"10.600000","_rn_":"54"},{"1":"141","2":"12","3":"5","4":"1","5":"11.750000","_rn_":"55"},{"1":"164","2":"14","3":"5","4":"1","5":"11.714286","_rn_":"56"},{"1":"197","2":"16","3":"5","4":"1","5":"12.312500","_rn_":"57"},{"1":"199","2":"18","3":"5","4":"1","5":"11.055556","_rn_":"58"},{"1":"220","2":"20","3":"5","4":"1","5":"11.000000","_rn_":"59"},{"1":"223","2":"21","3":"5","4":"1","5":"10.619048","_rn_":"60"},{"1":"41","2":"0","3":"6","4":"1","5":"Inf","_rn_":"61"},{"1":"49","2":"2","3":"6","4":"1","5":"24.500000","_rn_":"62"},{"1":"59","2":"4","3":"6","4":"1","5":"14.750000","_rn_":"63"},{"1":"74","2":"6","3":"6","4":"1","5":"12.333333","_rn_":"64"},{"1":"97","2":"8","3":"6","4":"1","5":"12.125000","_rn_":"65"},{"1":"124","2":"10","3":"6","4":"1","5":"12.400000","_rn_":"66"},{"1":"141","2":"12","3":"6","4":"1","5":"11.750000","_rn_":"67"},{"1":"148","2":"14","3":"6","4":"1","5":"10.571429","_rn_":"68"},{"1":"155","2":"16","3":"6","4":"1","5":"9.687500","_rn_":"69"},{"1":"160","2":"18","3":"6","4":"1","5":"8.888889","_rn_":"70"},{"1":"160","2":"20","3":"6","4":"1","5":"8.000000","_rn_":"71"},{"1":"157","2":"21","3":"6","4":"1","5":"7.476190","_rn_":"72"},{"1":"41","2":"0","3":"7","4":"1","5":"Inf","_rn_":"73"},{"1":"49","2":"2","3":"7","4":"1","5":"24.500000","_rn_":"74"},{"1":"57","2":"4","3":"7","4":"1","5":"14.250000","_rn_":"75"},{"1":"71","2":"6","3":"7","4":"1","5":"11.833333","_rn_":"76"},{"1":"89","2":"8","3":"7","4":"1","5":"11.125000","_rn_":"77"},{"1":"112","2":"10","3":"7","4":"1","5":"11.200000","_rn_":"78"},{"1":"146","2":"12","3":"7","4":"1","5":"12.166667","_rn_":"79"},{"1":"174","2":"14","3":"7","4":"1","5":"12.428571","_rn_":"80"},{"1":"218","2":"16","3":"7","4":"1","5":"13.625000","_rn_":"81"},{"1":"250","2":"18","3":"7","4":"1","5":"13.888889","_rn_":"82"},{"1":"288","2":"20","3":"7","4":"1","5":"14.400000","_rn_":"83"},{"1":"305","2":"21","3":"7","4":"1","5":"14.523810","_rn_":"84"},{"1":"42","2":"0","3":"8","4":"1","5":"Inf","_rn_":"85"},{"1":"50","2":"2","3":"8","4":"1","5":"25.000000","_rn_":"86"},{"1":"61","2":"4","3":"8","4":"1","5":"15.250000","_rn_":"87"},{"1":"71","2":"6","3":"8","4":"1","5":"11.833333","_rn_":"88"},{"1":"84","2":"8","3":"8","4":"1","5":"10.500000","_rn_":"89"},{"1":"93","2":"10","3":"8","4":"1","5":"9.300000","_rn_":"90"},{"1":"110","2":"12","3":"8","4":"1","5":"9.166667","_rn_":"91"},{"1":"116","2":"14","3":"8","4":"1","5":"8.285714","_rn_":"92"},{"1":"126","2":"16","3":"8","4":"1","5":"7.875000","_rn_":"93"},{"1":"134","2":"18","3":"8","4":"1","5":"7.444444","_rn_":"94"},{"1":"125","2":"20","3":"8","4":"1","5":"6.250000","_rn_":"95"},{"1":"42","2":"0","3":"9","4":"1","5":"Inf","_rn_":"96"},{"1":"51","2":"2","3":"9","4":"1","5":"25.500000","_rn_":"97"},{"1":"59","2":"4","3":"9","4":"1","5":"14.750000","_rn_":"98"},{"1":"68","2":"6","3":"9","4":"1","5":"11.333333","_rn_":"99"},{"1":"85","2":"8","3":"9","4":"1","5":"10.625000","_rn_":"100"},{"1":"96","2":"10","3":"9","4":"1","5":"9.600000","_rn_":"101"},{"1":"90","2":"12","3":"9","4":"1","5":"7.500000","_rn_":"102"},{"1":"92","2":"14","3":"9","4":"1","5":"6.571429","_rn_":"103"},{"1":"93","2":"16","3":"9","4":"1","5":"5.812500","_rn_":"104"},{"1":"100","2":"18","3":"9","4":"1","5":"5.555556","_rn_":"105"},{"1":"100","2":"20","3":"9","4":"1","5":"5.000000","_rn_":"106"},{"1":"98","2":"21","3":"9","4":"1","5":"4.666667","_rn_":"107"},{"1":"41","2":"0","3":"10","4":"1","5":"Inf","_rn_":"108"},{"1":"44","2":"2","3":"10","4":"1","5":"22.000000","_rn_":"109"},{"1":"52","2":"4","3":"10","4":"1","5":"13.000000","_rn_":"110"},{"1":"63","2":"6","3":"10","4":"1","5":"10.500000","_rn_":"111"},{"1":"74","2":"8","3":"10","4":"1","5":"9.250000","_rn_":"112"},{"1":"81","2":"10","3":"10","4":"1","5":"8.100000","_rn_":"113"},{"1":"89","2":"12","3":"10","4":"1","5":"7.416667","_rn_":"114"},{"1":"96","2":"14","3":"10","4":"1","5":"6.857143","_rn_":"115"},{"1":"101","2":"16","3":"10","4":"1","5":"6.312500","_rn_":"116"},{"1":"112","2":"18","3":"10","4":"1","5":"6.222222","_rn_":"117"},{"1":"120","2":"20","3":"10","4":"1","5":"6.000000","_rn_":"118"},{"1":"124","2":"21","3":"10","4":"1","5":"5.904762","_rn_":"119"},{"1":"43","2":"0","3":"11","4":"1","5":"Inf","_rn_":"120"},{"1":"51","2":"2","3":"11","4":"1","5":"25.500000","_rn_":"121"},{"1":"63","2":"4","3":"11","4":"1","5":"15.750000","_rn_":"122"},{"1":"84","2":"6","3":"11","4":"1","5":"14.000000","_rn_":"123"},{"1":"112","2":"8","3":"11","4":"1","5":"14.000000","_rn_":"124"},{"1":"139","2":"10","3":"11","4":"1","5":"13.900000","_rn_":"125"},{"1":"168","2":"12","3":"11","4":"1","5":"14.000000","_rn_":"126"},{"1":"177","2":"14","3":"11","4":"1","5":"12.642857","_rn_":"127"},{"1":"182","2":"16","3":"11","4":"1","5":"11.375000","_rn_":"128"},{"1":"184","2":"18","3":"11","4":"1","5":"10.222222","_rn_":"129"},{"1":"181","2":"20","3":"11","4":"1","5":"9.050000","_rn_":"130"},{"1":"175","2":"21","3":"11","4":"1","5":"8.333333","_rn_":"131"},{"1":"41","2":"0","3":"12","4":"1","5":"Inf","_rn_":"132"},{"1":"49","2":"2","3":"12","4":"1","5":"24.500000","_rn_":"133"},{"1":"56","2":"4","3":"12","4":"1","5":"14.000000","_rn_":"134"},{"1":"62","2":"6","3":"12","4":"1","5":"10.333333","_rn_":"135"},{"1":"72","2":"8","3":"12","4":"1","5":"9.000000","_rn_":"136"},{"1":"88","2":"10","3":"12","4":"1","5":"8.800000","_rn_":"137"},{"1":"119","2":"12","3":"12","4":"1","5":"9.916667","_rn_":"138"},{"1":"135","2":"14","3":"12","4":"1","5":"9.642857","_rn_":"139"},{"1":"162","2":"16","3":"12","4":"1","5":"10.125000","_rn_":"140"},{"1":"185","2":"18","3":"12","4":"1","5":"10.277778","_rn_":"141"},{"1":"195","2":"20","3":"12","4":"1","5":"9.750000","_rn_":"142"},{"1":"205","2":"21","3":"12","4":"1","5":"9.761905","_rn_":"143"},{"1":"41","2":"0","3":"13","4":"1","5":"Inf","_rn_":"144"},{"1":"48","2":"2","3":"13","4":"1","5":"24.000000","_rn_":"145"},{"1":"53","2":"4","3":"13","4":"1","5":"13.250000","_rn_":"146"},{"1":"60","2":"6","3":"13","4":"1","5":"10.000000","_rn_":"147"},{"1":"65","2":"8","3":"13","4":"1","5":"8.125000","_rn_":"148"},{"1":"67","2":"10","3":"13","4":"1","5":"6.700000","_rn_":"149"},{"1":"71","2":"12","3":"13","4":"1","5":"5.916667","_rn_":"150"},{"1":"70","2":"14","3":"13","4":"1","5":"5.000000","_rn_":"151"},{"1":"71","2":"16","3":"13","4":"1","5":"4.437500","_rn_":"152"},{"1":"81","2":"18","3":"13","4":"1","5":"4.500000","_rn_":"153"},{"1":"91","2":"20","3":"13","4":"1","5":"4.550000","_rn_":"154"},{"1":"96","2":"21","3":"13","4":"1","5":"4.571429","_rn_":"155"},{"1":"41","2":"0","3":"14","4":"1","5":"Inf","_rn_":"156"},{"1":"49","2":"2","3":"14","4":"1","5":"24.500000","_rn_":"157"},{"1":"62","2":"4","3":"14","4":"1","5":"15.500000","_rn_":"158"},{"1":"79","2":"6","3":"14","4":"1","5":"13.166667","_rn_":"159"},{"1":"101","2":"8","3":"14","4":"1","5":"12.625000","_rn_":"160"},{"1":"128","2":"10","3":"14","4":"1","5":"12.800000","_rn_":"161"},{"1":"164","2":"12","3":"14","4":"1","5":"13.666667","_rn_":"162"},{"1":"192","2":"14","3":"14","4":"1","5":"13.714286","_rn_":"163"},{"1":"227","2":"16","3":"14","4":"1","5":"14.187500","_rn_":"164"},{"1":"248","2":"18","3":"14","4":"1","5":"13.777778","_rn_":"165"},{"1":"259","2":"20","3":"14","4":"1","5":"12.950000","_rn_":"166"},{"1":"266","2":"21","3":"14","4":"1","5":"12.666667","_rn_":"167"},{"1":"41","2":"0","3":"15","4":"1","5":"Inf","_rn_":"168"},{"1":"49","2":"2","3":"15","4":"1","5":"24.500000","_rn_":"169"},{"1":"56","2":"4","3":"15","4":"1","5":"14.000000","_rn_":"170"},{"1":"64","2":"6","3":"15","4":"1","5":"10.666667","_rn_":"171"},{"1":"68","2":"8","3":"15","4":"1","5":"8.500000","_rn_":"172"},{"1":"68","2":"10","3":"15","4":"1","5":"6.800000","_rn_":"173"},{"1":"67","2":"12","3":"15","4":"1","5":"5.583333","_rn_":"174"},{"1":"68","2":"14","3":"15","4":"1","5":"4.857143","_rn_":"175"},{"1":"41","2":"0","3":"16","4":"1","5":"Inf","_rn_":"176"},{"1":"45","2":"2","3":"16","4":"1","5":"22.500000","_rn_":"177"},{"1":"49","2":"4","3":"16","4":"1","5":"12.250000","_rn_":"178"},{"1":"51","2":"6","3":"16","4":"1","5":"8.500000","_rn_":"179"},{"1":"57","2":"8","3":"16","4":"1","5":"7.125000","_rn_":"180"},{"1":"51","2":"10","3":"16","4":"1","5":"5.100000","_rn_":"181"},{"1":"54","2":"12","3":"16","4":"1","5":"4.500000","_rn_":"182"},{"1":"42","2":"0","3":"17","4":"1","5":"Inf","_rn_":"183"},{"1":"51","2":"2","3":"17","4":"1","5":"25.500000","_rn_":"184"},{"1":"61","2":"4","3":"17","4":"1","5":"15.250000","_rn_":"185"},{"1":"72","2":"6","3":"17","4":"1","5":"12.000000","_rn_":"186"},{"1":"83","2":"8","3":"17","4":"1","5":"10.375000","_rn_":"187"},{"1":"89","2":"10","3":"17","4":"1","5":"8.900000","_rn_":"188"},{"1":"98","2":"12","3":"17","4":"1","5":"8.166667","_rn_":"189"},{"1":"103","2":"14","3":"17","4":"1","5":"7.357143","_rn_":"190"},{"1":"113","2":"16","3":"17","4":"1","5":"7.062500","_rn_":"191"},{"1":"123","2":"18","3":"17","4":"1","5":"6.833333","_rn_":"192"},{"1":"133","2":"20","3":"17","4":"1","5":"6.650000","_rn_":"193"},{"1":"142","2":"21","3":"17","4":"1","5":"6.761905","_rn_":"194"},{"1":"39","2":"0","3":"18","4":"1","5":"Inf","_rn_":"195"},{"1":"35","2":"2","3":"18","4":"1","5":"17.500000","_rn_":"196"},{"1":"43","2":"0","3":"19","4":"1","5":"Inf","_rn_":"197"},{"1":"48","2":"2","3":"19","4":"1","5":"24.000000","_rn_":"198"},{"1":"55","2":"4","3":"19","4":"1","5":"13.750000","_rn_":"199"},{"1":"62","2":"6","3":"19","4":"1","5":"10.333333","_rn_":"200"},{"1":"65","2":"8","3":"19","4":"1","5":"8.125000","_rn_":"201"},{"1":"71","2":"10","3":"19","4":"1","5":"7.100000","_rn_":"202"},{"1":"82","2":"12","3":"19","4":"1","5":"6.833333","_rn_":"203"},{"1":"88","2":"14","3":"19","4":"1","5":"6.285714","_rn_":"204"},{"1":"106","2":"16","3":"19","4":"1","5":"6.625000","_rn_":"205"},{"1":"120","2":"18","3":"19","4":"1","5":"6.666667","_rn_":"206"},{"1":"144","2":"20","3":"19","4":"1","5":"7.200000","_rn_":"207"},{"1":"157","2":"21","3":"19","4":"1","5":"7.476190","_rn_":"208"},{"1":"41","2":"0","3":"20","4":"1","5":"Inf","_rn_":"209"},{"1":"47","2":"2","3":"20","4":"1","5":"23.500000","_rn_":"210"},{"1":"54","2":"4","3":"20","4":"1","5":"13.500000","_rn_":"211"},{"1":"58","2":"6","3":"20","4":"1","5":"9.666667","_rn_":"212"},{"1":"65","2":"8","3":"20","4":"1","5":"8.125000","_rn_":"213"},{"1":"73","2":"10","3":"20","4":"1","5":"7.300000","_rn_":"214"},{"1":"77","2":"12","3":"20","4":"1","5":"6.416667","_rn_":"215"},{"1":"89","2":"14","3":"20","4":"1","5":"6.357143","_rn_":"216"},{"1":"98","2":"16","3":"20","4":"1","5":"6.125000","_rn_":"217"},{"1":"107","2":"18","3":"20","4":"1","5":"5.944444","_rn_":"218"},{"1":"115","2":"20","3":"20","4":"1","5":"5.750000","_rn_":"219"},{"1":"117","2":"21","3":"20","4":"1","5":"5.571429","_rn_":"220"},{"1":"40","2":"0","3":"21","4":"2","5":"Inf","_rn_":"221"},{"1":"50","2":"2","3":"21","4":"2","5":"25.000000","_rn_":"222"},{"1":"62","2":"4","3":"21","4":"2","5":"15.500000","_rn_":"223"},{"1":"86","2":"6","3":"21","4":"2","5":"14.333333","_rn_":"224"},{"1":"125","2":"8","3":"21","4":"2","5":"15.625000","_rn_":"225"},{"1":"163","2":"10","3":"21","4":"2","5":"16.300000","_rn_":"226"},{"1":"217","2":"12","3":"21","4":"2","5":"18.083333","_rn_":"227"},{"1":"240","2":"14","3":"21","4":"2","5":"17.142857","_rn_":"228"},{"1":"275","2":"16","3":"21","4":"2","5":"17.187500","_rn_":"229"},{"1":"307","2":"18","3":"21","4":"2","5":"17.055556","_rn_":"230"},{"1":"318","2":"20","3":"21","4":"2","5":"15.900000","_rn_":"231"},{"1":"331","2":"21","3":"21","4":"2","5":"15.761905","_rn_":"232"},{"1":"41","2":"0","3":"22","4":"2","5":"Inf","_rn_":"233"},{"1":"55","2":"2","3":"22","4":"2","5":"27.500000","_rn_":"234"},{"1":"64","2":"4","3":"22","4":"2","5":"16.000000","_rn_":"235"},{"1":"77","2":"6","3":"22","4":"2","5":"12.833333","_rn_":"236"},{"1":"90","2":"8","3":"22","4":"2","5":"11.250000","_rn_":"237"},{"1":"95","2":"10","3":"22","4":"2","5":"9.500000","_rn_":"238"},{"1":"108","2":"12","3":"22","4":"2","5":"9.000000","_rn_":"239"},{"1":"111","2":"14","3":"22","4":"2","5":"7.928571","_rn_":"240"},{"1":"131","2":"16","3":"22","4":"2","5":"8.187500","_rn_":"241"},{"1":"148","2":"18","3":"22","4":"2","5":"8.222222","_rn_":"242"},{"1":"164","2":"20","3":"22","4":"2","5":"8.200000","_rn_":"243"},{"1":"167","2":"21","3":"22","4":"2","5":"7.952381","_rn_":"244"},{"1":"43","2":"0","3":"23","4":"2","5":"Inf","_rn_":"245"},{"1":"52","2":"2","3":"23","4":"2","5":"26.000000","_rn_":"246"},{"1":"61","2":"4","3":"23","4":"2","5":"15.250000","_rn_":"247"},{"1":"73","2":"6","3":"23","4":"2","5":"12.166667","_rn_":"248"},{"1":"90","2":"8","3":"23","4":"2","5":"11.250000","_rn_":"249"},{"1":"103","2":"10","3":"23","4":"2","5":"10.300000","_rn_":"250"},{"1":"127","2":"12","3":"23","4":"2","5":"10.583333","_rn_":"251"},{"1":"135","2":"14","3":"23","4":"2","5":"9.642857","_rn_":"252"},{"1":"145","2":"16","3":"23","4":"2","5":"9.062500","_rn_":"253"},{"1":"163","2":"18","3":"23","4":"2","5":"9.055556","_rn_":"254"},{"1":"170","2":"20","3":"23","4":"2","5":"8.500000","_rn_":"255"},{"1":"175","2":"21","3":"23","4":"2","5":"8.333333","_rn_":"256"},{"1":"42","2":"0","3":"24","4":"2","5":"Inf","_rn_":"257"},{"1":"52","2":"2","3":"24","4":"2","5":"26.000000","_rn_":"258"},{"1":"58","2":"4","3":"24","4":"2","5":"14.500000","_rn_":"259"},{"1":"74","2":"6","3":"24","4":"2","5":"12.333333","_rn_":"260"},{"1":"66","2":"8","3":"24","4":"2","5":"8.250000","_rn_":"261"},{"1":"68","2":"10","3":"24","4":"2","5":"6.800000","_rn_":"262"},{"1":"70","2":"12","3":"24","4":"2","5":"5.833333","_rn_":"263"},{"1":"71","2":"14","3":"24","4":"2","5":"5.071429","_rn_":"264"},{"1":"72","2":"16","3":"24","4":"2","5":"4.500000","_rn_":"265"},{"1":"72","2":"18","3":"24","4":"2","5":"4.000000","_rn_":"266"},{"1":"76","2":"20","3":"24","4":"2","5":"3.800000","_rn_":"267"},{"1":"74","2":"21","3":"24","4":"2","5":"3.523810","_rn_":"268"},{"1":"40","2":"0","3":"25","4":"2","5":"Inf","_rn_":"269"},{"1":"49","2":"2","3":"25","4":"2","5":"24.500000","_rn_":"270"},{"1":"62","2":"4","3":"25","4":"2","5":"15.500000","_rn_":"271"},{"1":"78","2":"6","3":"25","4":"2","5":"13.000000","_rn_":"272"},{"1":"102","2":"8","3":"25","4":"2","5":"12.750000","_rn_":"273"},{"1":"124","2":"10","3":"25","4":"2","5":"12.400000","_rn_":"274"},{"1":"146","2":"12","3":"25","4":"2","5":"12.166667","_rn_":"275"},{"1":"164","2":"14","3":"25","4":"2","5":"11.714286","_rn_":"276"},{"1":"197","2":"16","3":"25","4":"2","5":"12.312500","_rn_":"277"},{"1":"231","2":"18","3":"25","4":"2","5":"12.833333","_rn_":"278"},{"1":"259","2":"20","3":"25","4":"2","5":"12.950000","_rn_":"279"},{"1":"265","2":"21","3":"25","4":"2","5":"12.619048","_rn_":"280"},{"1":"42","2":"0","3":"26","4":"2","5":"Inf","_rn_":"281"},{"1":"48","2":"2","3":"26","4":"2","5":"24.000000","_rn_":"282"},{"1":"57","2":"4","3":"26","4":"2","5":"14.250000","_rn_":"283"},{"1":"74","2":"6","3":"26","4":"2","5":"12.333333","_rn_":"284"},{"1":"93","2":"8","3":"26","4":"2","5":"11.625000","_rn_":"285"},{"1":"114","2":"10","3":"26","4":"2","5":"11.400000","_rn_":"286"},{"1":"136","2":"12","3":"26","4":"2","5":"11.333333","_rn_":"287"},{"1":"147","2":"14","3":"26","4":"2","5":"10.500000","_rn_":"288"},{"1":"169","2":"16","3":"26","4":"2","5":"10.562500","_rn_":"289"},{"1":"205","2":"18","3":"26","4":"2","5":"11.388889","_rn_":"290"},{"1":"236","2":"20","3":"26","4":"2","5":"11.800000","_rn_":"291"},{"1":"251","2":"21","3":"26","4":"2","5":"11.952381","_rn_":"292"},{"1":"39","2":"0","3":"27","4":"2","5":"Inf","_rn_":"293"},{"1":"46","2":"2","3":"27","4":"2","5":"23.000000","_rn_":"294"},{"1":"58","2":"4","3":"27","4":"2","5":"14.500000","_rn_":"295"},{"1":"73","2":"6","3":"27","4":"2","5":"12.166667","_rn_":"296"},{"1":"87","2":"8","3":"27","4":"2","5":"10.875000","_rn_":"297"},{"1":"100","2":"10","3":"27","4":"2","5":"10.000000","_rn_":"298"},{"1":"115","2":"12","3":"27","4":"2","5":"9.583333","_rn_":"299"},{"1":"123","2":"14","3":"27","4":"2","5":"8.785714","_rn_":"300"},{"1":"144","2":"16","3":"27","4":"2","5":"9.000000","_rn_":"301"},{"1":"163","2":"18","3":"27","4":"2","5":"9.055556","_rn_":"302"},{"1":"185","2":"20","3":"27","4":"2","5":"9.250000","_rn_":"303"},{"1":"192","2":"21","3":"27","4":"2","5":"9.142857","_rn_":"304"},{"1":"39","2":"0","3":"28","4":"2","5":"Inf","_rn_":"305"},{"1":"46","2":"2","3":"28","4":"2","5":"23.000000","_rn_":"306"},{"1":"58","2":"4","3":"28","4":"2","5":"14.500000","_rn_":"307"},{"1":"73","2":"6","3":"28","4":"2","5":"12.166667","_rn_":"308"},{"1":"92","2":"8","3":"28","4":"2","5":"11.500000","_rn_":"309"},{"1":"114","2":"10","3":"28","4":"2","5":"11.400000","_rn_":"310"},{"1":"145","2":"12","3":"28","4":"2","5":"12.083333","_rn_":"311"},{"1":"156","2":"14","3":"28","4":"2","5":"11.142857","_rn_":"312"},{"1":"184","2":"16","3":"28","4":"2","5":"11.500000","_rn_":"313"},{"1":"207","2":"18","3":"28","4":"2","5":"11.500000","_rn_":"314"},{"1":"212","2":"20","3":"28","4":"2","5":"10.600000","_rn_":"315"},{"1":"233","2":"21","3":"28","4":"2","5":"11.095238","_rn_":"316"},{"1":"39","2":"0","3":"29","4":"2","5":"Inf","_rn_":"317"},{"1":"48","2":"2","3":"29","4":"2","5":"24.000000","_rn_":"318"},{"1":"59","2":"4","3":"29","4":"2","5":"14.750000","_rn_":"319"},{"1":"74","2":"6","3":"29","4":"2","5":"12.333333","_rn_":"320"},{"1":"87","2":"8","3":"29","4":"2","5":"10.875000","_rn_":"321"},{"1":"106","2":"10","3":"29","4":"2","5":"10.600000","_rn_":"322"},{"1":"134","2":"12","3":"29","4":"2","5":"11.166667","_rn_":"323"},{"1":"150","2":"14","3":"29","4":"2","5":"10.714286","_rn_":"324"},{"1":"187","2":"16","3":"29","4":"2","5":"11.687500","_rn_":"325"},{"1":"230","2":"18","3":"29","4":"2","5":"12.777778","_rn_":"326"},{"1":"279","2":"20","3":"29","4":"2","5":"13.950000","_rn_":"327"},{"1":"309","2":"21","3":"29","4":"2","5":"14.714286","_rn_":"328"},{"1":"42","2":"0","3":"30","4":"2","5":"Inf","_rn_":"329"},{"1":"48","2":"2","3":"30","4":"2","5":"24.000000","_rn_":"330"},{"1":"59","2":"4","3":"30","4":"2","5":"14.750000","_rn_":"331"},{"1":"72","2":"6","3":"30","4":"2","5":"12.000000","_rn_":"332"},{"1":"85","2":"8","3":"30","4":"2","5":"10.625000","_rn_":"333"},{"1":"98","2":"10","3":"30","4":"2","5":"9.800000","_rn_":"334"},{"1":"115","2":"12","3":"30","4":"2","5":"9.583333","_rn_":"335"},{"1":"122","2":"14","3":"30","4":"2","5":"8.714286","_rn_":"336"},{"1":"143","2":"16","3":"30","4":"2","5":"8.937500","_rn_":"337"},{"1":"151","2":"18","3":"30","4":"2","5":"8.388889","_rn_":"338"},{"1":"157","2":"20","3":"30","4":"2","5":"7.850000","_rn_":"339"},{"1":"150","2":"21","3":"30","4":"2","5":"7.142857","_rn_":"340"},{"1":"42","2":"0","3":"31","4":"3","5":"Inf","_rn_":"341"},{"1":"53","2":"2","3":"31","4":"3","5":"26.500000","_rn_":"342"},{"1":"62","2":"4","3":"31","4":"3","5":"15.500000","_rn_":"343"},{"1":"73","2":"6","3":"31","4":"3","5":"12.166667","_rn_":"344"},{"1":"85","2":"8","3":"31","4":"3","5":"10.625000","_rn_":"345"},{"1":"102","2":"10","3":"31","4":"3","5":"10.200000","_rn_":"346"},{"1":"123","2":"12","3":"31","4":"3","5":"10.250000","_rn_":"347"},{"1":"138","2":"14","3":"31","4":"3","5":"9.857143","_rn_":"348"},{"1":"170","2":"16","3":"31","4":"3","5":"10.625000","_rn_":"349"},{"1":"204","2":"18","3":"31","4":"3","5":"11.333333","_rn_":"350"},{"1":"235","2":"20","3":"31","4":"3","5":"11.750000","_rn_":"351"},{"1":"256","2":"21","3":"31","4":"3","5":"12.190476","_rn_":"352"},{"1":"41","2":"0","3":"32","4":"3","5":"Inf","_rn_":"353"},{"1":"49","2":"2","3":"32","4":"3","5":"24.500000","_rn_":"354"},{"1":"65","2":"4","3":"32","4":"3","5":"16.250000","_rn_":"355"},{"1":"82","2":"6","3":"32","4":"3","5":"13.666667","_rn_":"356"},{"1":"107","2":"8","3":"32","4":"3","5":"13.375000","_rn_":"357"},{"1":"129","2":"10","3":"32","4":"3","5":"12.900000","_rn_":"358"},{"1":"159","2":"12","3":"32","4":"3","5":"13.250000","_rn_":"359"},{"1":"179","2":"14","3":"32","4":"3","5":"12.785714","_rn_":"360"},{"1":"221","2":"16","3":"32","4":"3","5":"13.812500","_rn_":"361"},{"1":"263","2":"18","3":"32","4":"3","5":"14.611111","_rn_":"362"},{"1":"291","2":"20","3":"32","4":"3","5":"14.550000","_rn_":"363"},{"1":"305","2":"21","3":"32","4":"3","5":"14.523810","_rn_":"364"},{"1":"39","2":"0","3":"33","4":"3","5":"Inf","_rn_":"365"},{"1":"50","2":"2","3":"33","4":"3","5":"25.000000","_rn_":"366"},{"1":"63","2":"4","3":"33","4":"3","5":"15.750000","_rn_":"367"},{"1":"77","2":"6","3":"33","4":"3","5":"12.833333","_rn_":"368"},{"1":"96","2":"8","3":"33","4":"3","5":"12.000000","_rn_":"369"},{"1":"111","2":"10","3":"33","4":"3","5":"11.100000","_rn_":"370"},{"1":"137","2":"12","3":"33","4":"3","5":"11.416667","_rn_":"371"},{"1":"144","2":"14","3":"33","4":"3","5":"10.285714","_rn_":"372"},{"1":"151","2":"16","3":"33","4":"3","5":"9.437500","_rn_":"373"},{"1":"146","2":"18","3":"33","4":"3","5":"8.111111","_rn_":"374"},{"1":"156","2":"20","3":"33","4":"3","5":"7.800000","_rn_":"375"},{"1":"147","2":"21","3":"33","4":"3","5":"7.000000","_rn_":"376"},{"1":"41","2":"0","3":"34","4":"3","5":"Inf","_rn_":"377"},{"1":"49","2":"2","3":"34","4":"3","5":"24.500000","_rn_":"378"},{"1":"63","2":"4","3":"34","4":"3","5":"15.750000","_rn_":"379"},{"1":"85","2":"6","3":"34","4":"3","5":"14.166667","_rn_":"380"},{"1":"107","2":"8","3":"34","4":"3","5":"13.375000","_rn_":"381"},{"1":"134","2":"10","3":"34","4":"3","5":"13.400000","_rn_":"382"},{"1":"164","2":"12","3":"34","4":"3","5":"13.666667","_rn_":"383"},{"1":"186","2":"14","3":"34","4":"3","5":"13.285714","_rn_":"384"},{"1":"235","2":"16","3":"34","4":"3","5":"14.687500","_rn_":"385"},{"1":"294","2":"18","3":"34","4":"3","5":"16.333333","_rn_":"386"},{"1":"327","2":"20","3":"34","4":"3","5":"16.350000","_rn_":"387"},{"1":"341","2":"21","3":"34","4":"3","5":"16.238095","_rn_":"388"},{"1":"41","2":"0","3":"35","4":"3","5":"Inf","_rn_":"389"},{"1":"53","2":"2","3":"35","4":"3","5":"26.500000","_rn_":"390"},{"1":"64","2":"4","3":"35","4":"3","5":"16.000000","_rn_":"391"},{"1":"87","2":"6","3":"35","4":"3","5":"14.500000","_rn_":"392"},{"1":"123","2":"8","3":"35","4":"3","5":"15.375000","_rn_":"393"},{"1":"158","2":"10","3":"35","4":"3","5":"15.800000","_rn_":"394"},{"1":"201","2":"12","3":"35","4":"3","5":"16.750000","_rn_":"395"},{"1":"238","2":"14","3":"35","4":"3","5":"17.000000","_rn_":"396"},{"1":"287","2":"16","3":"35","4":"3","5":"17.937500","_rn_":"397"},{"1":"332","2":"18","3":"35","4":"3","5":"18.444444","_rn_":"398"},{"1":"361","2":"20","3":"35","4":"3","5":"18.050000","_rn_":"399"},{"1":"373","2":"21","3":"35","4":"3","5":"17.761905","_rn_":"400"},{"1":"39","2":"0","3":"36","4":"3","5":"Inf","_rn_":"401"},{"1":"48","2":"2","3":"36","4":"3","5":"24.000000","_rn_":"402"},{"1":"61","2":"4","3":"36","4":"3","5":"15.250000","_rn_":"403"},{"1":"76","2":"6","3":"36","4":"3","5":"12.666667","_rn_":"404"},{"1":"98","2":"8","3":"36","4":"3","5":"12.250000","_rn_":"405"},{"1":"116","2":"10","3":"36","4":"3","5":"11.600000","_rn_":"406"},{"1":"145","2":"12","3":"36","4":"3","5":"12.083333","_rn_":"407"},{"1":"166","2":"14","3":"36","4":"3","5":"11.857143","_rn_":"408"},{"1":"198","2":"16","3":"36","4":"3","5":"12.375000","_rn_":"409"},{"1":"227","2":"18","3":"36","4":"3","5":"12.611111","_rn_":"410"},{"1":"225","2":"20","3":"36","4":"3","5":"11.250000","_rn_":"411"},{"1":"220","2":"21","3":"36","4":"3","5":"10.476190","_rn_":"412"},{"1":"41","2":"0","3":"37","4":"3","5":"Inf","_rn_":"413"},{"1":"48","2":"2","3":"37","4":"3","5":"24.000000","_rn_":"414"},{"1":"56","2":"4","3":"37","4":"3","5":"14.000000","_rn_":"415"},{"1":"68","2":"6","3":"37","4":"3","5":"11.333333","_rn_":"416"},{"1":"80","2":"8","3":"37","4":"3","5":"10.000000","_rn_":"417"},{"1":"83","2":"10","3":"37","4":"3","5":"8.300000","_rn_":"418"},{"1":"103","2":"12","3":"37","4":"3","5":"8.583333","_rn_":"419"},{"1":"112","2":"14","3":"37","4":"3","5":"8.000000","_rn_":"420"},{"1":"135","2":"16","3":"37","4":"3","5":"8.437500","_rn_":"421"},{"1":"157","2":"18","3":"37","4":"3","5":"8.722222","_rn_":"422"},{"1":"169","2":"20","3":"37","4":"3","5":"8.450000","_rn_":"423"},{"1":"178","2":"21","3":"37","4":"3","5":"8.476190","_rn_":"424"},{"1":"41","2":"0","3":"38","4":"3","5":"Inf","_rn_":"425"},{"1":"49","2":"2","3":"38","4":"3","5":"24.500000","_rn_":"426"},{"1":"61","2":"4","3":"38","4":"3","5":"15.250000","_rn_":"427"},{"1":"74","2":"6","3":"38","4":"3","5":"12.333333","_rn_":"428"},{"1":"98","2":"8","3":"38","4":"3","5":"12.250000","_rn_":"429"},{"1":"109","2":"10","3":"38","4":"3","5":"10.900000","_rn_":"430"},{"1":"128","2":"12","3":"38","4":"3","5":"10.666667","_rn_":"431"},{"1":"154","2":"14","3":"38","4":"3","5":"11.000000","_rn_":"432"},{"1":"192","2":"16","3":"38","4":"3","5":"12.000000","_rn_":"433"},{"1":"232","2":"18","3":"38","4":"3","5":"12.888889","_rn_":"434"},{"1":"280","2":"20","3":"38","4":"3","5":"14.000000","_rn_":"435"},{"1":"290","2":"21","3":"38","4":"3","5":"13.809524","_rn_":"436"},{"1":"42","2":"0","3":"39","4":"3","5":"Inf","_rn_":"437"},{"1":"50","2":"2","3":"39","4":"3","5":"25.000000","_rn_":"438"},{"1":"61","2":"4","3":"39","4":"3","5":"15.250000","_rn_":"439"},{"1":"78","2":"6","3":"39","4":"3","5":"13.000000","_rn_":"440"},{"1":"89","2":"8","3":"39","4":"3","5":"11.125000","_rn_":"441"},{"1":"109","2":"10","3":"39","4":"3","5":"10.900000","_rn_":"442"},{"1":"130","2":"12","3":"39","4":"3","5":"10.833333","_rn_":"443"},{"1":"146","2":"14","3":"39","4":"3","5":"10.428571","_rn_":"444"},{"1":"170","2":"16","3":"39","4":"3","5":"10.625000","_rn_":"445"},{"1":"214","2":"18","3":"39","4":"3","5":"11.888889","_rn_":"446"},{"1":"250","2":"20","3":"39","4":"3","5":"12.500000","_rn_":"447"},{"1":"272","2":"21","3":"39","4":"3","5":"12.952381","_rn_":"448"},{"1":"41","2":"0","3":"40","4":"3","5":"Inf","_rn_":"449"},{"1":"55","2":"2","3":"40","4":"3","5":"27.500000","_rn_":"450"},{"1":"66","2":"4","3":"40","4":"3","5":"16.500000","_rn_":"451"},{"1":"79","2":"6","3":"40","4":"3","5":"13.166667","_rn_":"452"},{"1":"101","2":"8","3":"40","4":"3","5":"12.625000","_rn_":"453"},{"1":"120","2":"10","3":"40","4":"3","5":"12.000000","_rn_":"454"},{"1":"154","2":"12","3":"40","4":"3","5":"12.833333","_rn_":"455"},{"1":"182","2":"14","3":"40","4":"3","5":"13.000000","_rn_":"456"},{"1":"215","2":"16","3":"40","4":"3","5":"13.437500","_rn_":"457"},{"1":"262","2":"18","3":"40","4":"3","5":"14.555556","_rn_":"458"},{"1":"295","2":"20","3":"40","4":"3","5":"14.750000","_rn_":"459"},{"1":"321","2":"21","3":"40","4":"3","5":"15.285714","_rn_":"460"},{"1":"42","2":"0","3":"41","4":"4","5":"Inf","_rn_":"461"},{"1":"51","2":"2","3":"41","4":"4","5":"25.500000","_rn_":"462"},{"1":"66","2":"4","3":"41","4":"4","5":"16.500000","_rn_":"463"},{"1":"85","2":"6","3":"41","4":"4","5":"14.166667","_rn_":"464"},{"1":"103","2":"8","3":"41","4":"4","5":"12.875000","_rn_":"465"},{"1":"124","2":"10","3":"41","4":"4","5":"12.400000","_rn_":"466"},{"1":"155","2":"12","3":"41","4":"4","5":"12.916667","_rn_":"467"},{"1":"153","2":"14","3":"41","4":"4","5":"10.928571","_rn_":"468"},{"1":"175","2":"16","3":"41","4":"4","5":"10.937500","_rn_":"469"},{"1":"184","2":"18","3":"41","4":"4","5":"10.222222","_rn_":"470"},{"1":"199","2":"20","3":"41","4":"4","5":"9.950000","_rn_":"471"},{"1":"204","2":"21","3":"41","4":"4","5":"9.714286","_rn_":"472"},{"1":"42","2":"0","3":"42","4":"4","5":"Inf","_rn_":"473"},{"1":"49","2":"2","3":"42","4":"4","5":"24.500000","_rn_":"474"},{"1":"63","2":"4","3":"42","4":"4","5":"15.750000","_rn_":"475"},{"1":"84","2":"6","3":"42","4":"4","5":"14.000000","_rn_":"476"},{"1":"103","2":"8","3":"42","4":"4","5":"12.875000","_rn_":"477"},{"1":"126","2":"10","3":"42","4":"4","5":"12.600000","_rn_":"478"},{"1":"160","2":"12","3":"42","4":"4","5":"13.333333","_rn_":"479"},{"1":"174","2":"14","3":"42","4":"4","5":"12.428571","_rn_":"480"},{"1":"204","2":"16","3":"42","4":"4","5":"12.750000","_rn_":"481"},{"1":"234","2":"18","3":"42","4":"4","5":"13.000000","_rn_":"482"},{"1":"269","2":"20","3":"42","4":"4","5":"13.450000","_rn_":"483"},{"1":"281","2":"21","3":"42","4":"4","5":"13.380952","_rn_":"484"},{"1":"42","2":"0","3":"43","4":"4","5":"Inf","_rn_":"485"},{"1":"55","2":"2","3":"43","4":"4","5":"27.500000","_rn_":"486"},{"1":"69","2":"4","3":"43","4":"4","5":"17.250000","_rn_":"487"},{"1":"96","2":"6","3":"43","4":"4","5":"16.000000","_rn_":"488"},{"1":"131","2":"8","3":"43","4":"4","5":"16.375000","_rn_":"489"},{"1":"157","2":"10","3":"43","4":"4","5":"15.700000","_rn_":"490"},{"1":"184","2":"12","3":"43","4":"4","5":"15.333333","_rn_":"491"},{"1":"188","2":"14","3":"43","4":"4","5":"13.428571","_rn_":"492"},{"1":"197","2":"16","3":"43","4":"4","5":"12.312500","_rn_":"493"},{"1":"198","2":"18","3":"43","4":"4","5":"11.000000","_rn_":"494"},{"1":"199","2":"20","3":"43","4":"4","5":"9.950000","_rn_":"495"},{"1":"200","2":"21","3":"43","4":"4","5":"9.523810","_rn_":"496"},{"1":"42","2":"0","3":"44","4":"4","5":"Inf","_rn_":"497"},{"1":"51","2":"2","3":"44","4":"4","5":"25.500000","_rn_":"498"},{"1":"65","2":"4","3":"44","4":"4","5":"16.250000","_rn_":"499"},{"1":"86","2":"6","3":"44","4":"4","5":"14.333333","_rn_":"500"},{"1":"103","2":"8","3":"44","4":"4","5":"12.875000","_rn_":"501"},{"1":"118","2":"10","3":"44","4":"4","5":"11.800000","_rn_":"502"},{"1":"127","2":"12","3":"44","4":"4","5":"10.583333","_rn_":"503"},{"1":"138","2":"14","3":"44","4":"4","5":"9.857143","_rn_":"504"},{"1":"145","2":"16","3":"44","4":"4","5":"9.062500","_rn_":"505"},{"1":"146","2":"18","3":"44","4":"4","5":"8.111111","_rn_":"506"},{"1":"41","2":"0","3":"45","4":"4","5":"Inf","_rn_":"507"},{"1":"50","2":"2","3":"45","4":"4","5":"25.000000","_rn_":"508"},{"1":"61","2":"4","3":"45","4":"4","5":"15.250000","_rn_":"509"},{"1":"78","2":"6","3":"45","4":"4","5":"13.000000","_rn_":"510"},{"1":"98","2":"8","3":"45","4":"4","5":"12.250000","_rn_":"511"},{"1":"117","2":"10","3":"45","4":"4","5":"11.700000","_rn_":"512"},{"1":"135","2":"12","3":"45","4":"4","5":"11.250000","_rn_":"513"},{"1":"141","2":"14","3":"45","4":"4","5":"10.071429","_rn_":"514"},{"1":"147","2":"16","3":"45","4":"4","5":"9.187500","_rn_":"515"},{"1":"174","2":"18","3":"45","4":"4","5":"9.666667","_rn_":"516"},{"1":"197","2":"20","3":"45","4":"4","5":"9.850000","_rn_":"517"},{"1":"196","2":"21","3":"45","4":"4","5":"9.333333","_rn_":"518"},{"1":"40","2":"0","3":"46","4":"4","5":"Inf","_rn_":"519"},{"1":"52","2":"2","3":"46","4":"4","5":"26.000000","_rn_":"520"},{"1":"62","2":"4","3":"46","4":"4","5":"15.500000","_rn_":"521"},{"1":"82","2":"6","3":"46","4":"4","5":"13.666667","_rn_":"522"},{"1":"101","2":"8","3":"46","4":"4","5":"12.625000","_rn_":"523"},{"1":"120","2":"10","3":"46","4":"4","5":"12.000000","_rn_":"524"},{"1":"144","2":"12","3":"46","4":"4","5":"12.000000","_rn_":"525"},{"1":"156","2":"14","3":"46","4":"4","5":"11.142857","_rn_":"526"},{"1":"173","2":"16","3":"46","4":"4","5":"10.812500","_rn_":"527"},{"1":"210","2":"18","3":"46","4":"4","5":"11.666667","_rn_":"528"},{"1":"231","2":"20","3":"46","4":"4","5":"11.550000","_rn_":"529"},{"1":"238","2":"21","3":"46","4":"4","5":"11.333333","_rn_":"530"},{"1":"41","2":"0","3":"47","4":"4","5":"Inf","_rn_":"531"},{"1":"53","2":"2","3":"47","4":"4","5":"26.500000","_rn_":"532"},{"1":"66","2":"4","3":"47","4":"4","5":"16.500000","_rn_":"533"},{"1":"79","2":"6","3":"47","4":"4","5":"13.166667","_rn_":"534"},{"1":"100","2":"8","3":"47","4":"4","5":"12.500000","_rn_":"535"},{"1":"123","2":"10","3":"47","4":"4","5":"12.300000","_rn_":"536"},{"1":"148","2":"12","3":"47","4":"4","5":"12.333333","_rn_":"537"},{"1":"157","2":"14","3":"47","4":"4","5":"11.214286","_rn_":"538"},{"1":"168","2":"16","3":"47","4":"4","5":"10.500000","_rn_":"539"},{"1":"185","2":"18","3":"47","4":"4","5":"10.277778","_rn_":"540"},{"1":"210","2":"20","3":"47","4":"4","5":"10.500000","_rn_":"541"},{"1":"205","2":"21","3":"47","4":"4","5":"9.761905","_rn_":"542"},{"1":"39","2":"0","3":"48","4":"4","5":"Inf","_rn_":"543"},{"1":"50","2":"2","3":"48","4":"4","5":"25.000000","_rn_":"544"},{"1":"62","2":"4","3":"48","4":"4","5":"15.500000","_rn_":"545"},{"1":"80","2":"6","3":"48","4":"4","5":"13.333333","_rn_":"546"},{"1":"104","2":"8","3":"48","4":"4","5":"13.000000","_rn_":"547"},{"1":"125","2":"10","3":"48","4":"4","5":"12.500000","_rn_":"548"},{"1":"154","2":"12","3":"48","4":"4","5":"12.833333","_rn_":"549"},{"1":"170","2":"14","3":"48","4":"4","5":"12.142857","_rn_":"550"},{"1":"222","2":"16","3":"48","4":"4","5":"13.875000","_rn_":"551"},{"1":"261","2":"18","3":"48","4":"4","5":"14.500000","_rn_":"552"},{"1":"303","2":"20","3":"48","4":"4","5":"15.150000","_rn_":"553"},{"1":"322","2":"21","3":"48","4":"4","5":"15.333333","_rn_":"554"},{"1":"40","2":"0","3":"49","4":"4","5":"Inf","_rn_":"555"},{"1":"53","2":"2","3":"49","4":"4","5":"26.500000","_rn_":"556"},{"1":"64","2":"4","3":"49","4":"4","5":"16.000000","_rn_":"557"},{"1":"85","2":"6","3":"49","4":"4","5":"14.166667","_rn_":"558"},{"1":"108","2":"8","3":"49","4":"4","5":"13.500000","_rn_":"559"},{"1":"128","2":"10","3":"49","4":"4","5":"12.800000","_rn_":"560"},{"1":"152","2":"12","3":"49","4":"4","5":"12.666667","_rn_":"561"},{"1":"166","2":"14","3":"49","4":"4","5":"11.857143","_rn_":"562"},{"1":"184","2":"16","3":"49","4":"4","5":"11.500000","_rn_":"563"},{"1":"203","2":"18","3":"49","4":"4","5":"11.277778","_rn_":"564"},{"1":"233","2":"20","3":"49","4":"4","5":"11.650000","_rn_":"565"},{"1":"237","2":"21","3":"49","4":"4","5":"11.285714","_rn_":"566"},{"1":"41","2":"0","3":"50","4":"4","5":"Inf","_rn_":"567"},{"1":"54","2":"2","3":"50","4":"4","5":"27.000000","_rn_":"568"},{"1":"67","2":"4","3":"50","4":"4","5":"16.750000","_rn_":"569"},{"1":"84","2":"6","3":"50","4":"4","5":"14.000000","_rn_":"570"},{"1":"105","2":"8","3":"50","4":"4","5":"13.125000","_rn_":"571"},{"1":"122","2":"10","3":"50","4":"4","5":"12.200000","_rn_":"572"},{"1":"155","2":"12","3":"50","4":"4","5":"12.916667","_rn_":"573"},{"1":"175","2":"14","3":"50","4":"4","5":"12.500000","_rn_":"574"},{"1":"205","2":"16","3":"50","4":"4","5":"12.812500","_rn_":"575"},{"1":"234","2":"18","3":"50","4":"4","5":"13.000000","_rn_":"576"},{"1":"264","2":"20","3":"50","4":"4","5":"13.200000","_rn_":"577"},{"1":"264","2":"21","3":"50","4":"4","5":"12.571429","_rn_":"578"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="use-mutate-to-create-new-columns-for-each-observation-1" class="slide level2 smaller"><h2>Use mutate to create new columns for each observation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> (weight<span class="sc">-</span><span class="fu">min</span>(weight)) <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["weight"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Time"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chick"],"name":[3],"type":["ord"],"align":["right"]},{"label":["Diet"],"name":[4],"type":["fct"],"align":["left"]},{"label":["growth"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"42","2":"0","3":"1","4":"1","5":"Inf","_rn_":"1"},{"1":"51","2":"2","3":"1","4":"1","5":"8.000000","_rn_":"2"},{"1":"59","2":"4","3":"1","4":"1","5":"6.000000","_rn_":"3"},{"1":"64","2":"6","3":"1","4":"1","5":"4.833333","_rn_":"4"},{"1":"76","2":"8","3":"1","4":"1","5":"5.125000","_rn_":"5"},{"1":"93","2":"10","3":"1","4":"1","5":"5.800000","_rn_":"6"},{"1":"106","2":"12","3":"1","4":"1","5":"5.916667","_rn_":"7"},{"1":"125","2":"14","3":"1","4":"1","5":"6.428571","_rn_":"8"},{"1":"149","2":"16","3":"1","4":"1","5":"7.125000","_rn_":"9"},{"1":"171","2":"18","3":"1","4":"1","5":"7.555556","_rn_":"10"},{"1":"199","2":"20","3":"1","4":"1","5":"8.200000","_rn_":"11"},{"1":"205","2":"21","3":"1","4":"1","5":"8.095238","_rn_":"12"},{"1":"40","2":"0","3":"2","4":"1","5":"Inf","_rn_":"13"},{"1":"49","2":"2","3":"2","4":"1","5":"7.000000","_rn_":"14"},{"1":"58","2":"4","3":"2","4":"1","5":"5.750000","_rn_":"15"},{"1":"72","2":"6","3":"2","4":"1","5":"6.166667","_rn_":"16"},{"1":"84","2":"8","3":"2","4":"1","5":"6.125000","_rn_":"17"},{"1":"103","2":"10","3":"2","4":"1","5":"6.800000","_rn_":"18"},{"1":"122","2":"12","3":"2","4":"1","5":"7.250000","_rn_":"19"},{"1":"138","2":"14","3":"2","4":"1","5":"7.357143","_rn_":"20"},{"1":"162","2":"16","3":"2","4":"1","5":"7.937500","_rn_":"21"},{"1":"187","2":"18","3":"2","4":"1","5":"8.444444","_rn_":"22"},{"1":"209","2":"20","3":"2","4":"1","5":"8.700000","_rn_":"23"},{"1":"215","2":"21","3":"2","4":"1","5":"8.571429","_rn_":"24"},{"1":"43","2":"0","3":"3","4":"1","5":"Inf","_rn_":"25"},{"1":"39","2":"2","3":"3","4":"1","5":"2.000000","_rn_":"26"},{"1":"55","2":"4","3":"3","4":"1","5":"5.000000","_rn_":"27"},{"1":"67","2":"6","3":"3","4":"1","5":"5.333333","_rn_":"28"},{"1":"84","2":"8","3":"3","4":"1","5":"6.125000","_rn_":"29"},{"1":"99","2":"10","3":"3","4":"1","5":"6.400000","_rn_":"30"},{"1":"115","2":"12","3":"3","4":"1","5":"6.666667","_rn_":"31"},{"1":"138","2":"14","3":"3","4":"1","5":"7.357143","_rn_":"32"},{"1":"163","2":"16","3":"3","4":"1","5":"8.000000","_rn_":"33"},{"1":"187","2":"18","3":"3","4":"1","5":"8.444444","_rn_":"34"},{"1":"198","2":"20","3":"3","4":"1","5":"8.150000","_rn_":"35"},{"1":"202","2":"21","3":"3","4":"1","5":"7.952381","_rn_":"36"},{"1":"42","2":"0","3":"4","4":"1","5":"Inf","_rn_":"37"},{"1":"49","2":"2","3":"4","4":"1","5":"7.000000","_rn_":"38"},{"1":"56","2":"4","3":"4","4":"1","5":"5.250000","_rn_":"39"},{"1":"67","2":"6","3":"4","4":"1","5":"5.333333","_rn_":"40"},{"1":"74","2":"8","3":"4","4":"1","5":"4.875000","_rn_":"41"},{"1":"87","2":"10","3":"4","4":"1","5":"5.200000","_rn_":"42"},{"1":"102","2":"12","3":"4","4":"1","5":"5.583333","_rn_":"43"},{"1":"108","2":"14","3":"4","4":"1","5":"5.214286","_rn_":"44"},{"1":"136","2":"16","3":"4","4":"1","5":"6.312500","_rn_":"45"},{"1":"154","2":"18","3":"4","4":"1","5":"6.611111","_rn_":"46"},{"1":"160","2":"20","3":"4","4":"1","5":"6.250000","_rn_":"47"},{"1":"157","2":"21","3":"4","4":"1","5":"5.809524","_rn_":"48"},{"1":"41","2":"0","3":"5","4":"1","5":"Inf","_rn_":"49"},{"1":"42","2":"2","3":"5","4":"1","5":"3.500000","_rn_":"50"},{"1":"48","2":"4","3":"5","4":"1","5":"3.250000","_rn_":"51"},{"1":"60","2":"6","3":"5","4":"1","5":"4.166667","_rn_":"52"},{"1":"79","2":"8","3":"5","4":"1","5":"5.500000","_rn_":"53"},{"1":"106","2":"10","3":"5","4":"1","5":"7.100000","_rn_":"54"},{"1":"141","2":"12","3":"5","4":"1","5":"8.833333","_rn_":"55"},{"1":"164","2":"14","3":"5","4":"1","5":"9.214286","_rn_":"56"},{"1":"197","2":"16","3":"5","4":"1","5":"10.125000","_rn_":"57"},{"1":"199","2":"18","3":"5","4":"1","5":"9.111111","_rn_":"58"},{"1":"220","2":"20","3":"5","4":"1","5":"9.250000","_rn_":"59"},{"1":"223","2":"21","3":"5","4":"1","5":"8.952381","_rn_":"60"},{"1":"41","2":"0","3":"6","4":"1","5":"Inf","_rn_":"61"},{"1":"49","2":"2","3":"6","4":"1","5":"7.000000","_rn_":"62"},{"1":"59","2":"4","3":"6","4":"1","5":"6.000000","_rn_":"63"},{"1":"74","2":"6","3":"6","4":"1","5":"6.500000","_rn_":"64"},{"1":"97","2":"8","3":"6","4":"1","5":"7.750000","_rn_":"65"},{"1":"124","2":"10","3":"6","4":"1","5":"8.900000","_rn_":"66"},{"1":"141","2":"12","3":"6","4":"1","5":"8.833333","_rn_":"67"},{"1":"148","2":"14","3":"6","4":"1","5":"8.071429","_rn_":"68"},{"1":"155","2":"16","3":"6","4":"1","5":"7.500000","_rn_":"69"},{"1":"160","2":"18","3":"6","4":"1","5":"6.944444","_rn_":"70"},{"1":"160","2":"20","3":"6","4":"1","5":"6.250000","_rn_":"71"},{"1":"157","2":"21","3":"6","4":"1","5":"5.809524","_rn_":"72"},{"1":"41","2":"0","3":"7","4":"1","5":"Inf","_rn_":"73"},{"1":"49","2":"2","3":"7","4":"1","5":"7.000000","_rn_":"74"},{"1":"57","2":"4","3":"7","4":"1","5":"5.500000","_rn_":"75"},{"1":"71","2":"6","3":"7","4":"1","5":"6.000000","_rn_":"76"},{"1":"89","2":"8","3":"7","4":"1","5":"6.750000","_rn_":"77"},{"1":"112","2":"10","3":"7","4":"1","5":"7.700000","_rn_":"78"},{"1":"146","2":"12","3":"7","4":"1","5":"9.250000","_rn_":"79"},{"1":"174","2":"14","3":"7","4":"1","5":"9.928571","_rn_":"80"},{"1":"218","2":"16","3":"7","4":"1","5":"11.437500","_rn_":"81"},{"1":"250","2":"18","3":"7","4":"1","5":"11.944444","_rn_":"82"},{"1":"288","2":"20","3":"7","4":"1","5":"12.650000","_rn_":"83"},{"1":"305","2":"21","3":"7","4":"1","5":"12.857143","_rn_":"84"},{"1":"42","2":"0","3":"8","4":"1","5":"Inf","_rn_":"85"},{"1":"50","2":"2","3":"8","4":"1","5":"7.500000","_rn_":"86"},{"1":"61","2":"4","3":"8","4":"1","5":"6.500000","_rn_":"87"},{"1":"71","2":"6","3":"8","4":"1","5":"6.000000","_rn_":"88"},{"1":"84","2":"8","3":"8","4":"1","5":"6.125000","_rn_":"89"},{"1":"93","2":"10","3":"8","4":"1","5":"5.800000","_rn_":"90"},{"1":"110","2":"12","3":"8","4":"1","5":"6.250000","_rn_":"91"},{"1":"116","2":"14","3":"8","4":"1","5":"5.785714","_rn_":"92"},{"1":"126","2":"16","3":"8","4":"1","5":"5.687500","_rn_":"93"},{"1":"134","2":"18","3":"8","4":"1","5":"5.500000","_rn_":"94"},{"1":"125","2":"20","3":"8","4":"1","5":"4.500000","_rn_":"95"},{"1":"42","2":"0","3":"9","4":"1","5":"Inf","_rn_":"96"},{"1":"51","2":"2","3":"9","4":"1","5":"8.000000","_rn_":"97"},{"1":"59","2":"4","3":"9","4":"1","5":"6.000000","_rn_":"98"},{"1":"68","2":"6","3":"9","4":"1","5":"5.500000","_rn_":"99"},{"1":"85","2":"8","3":"9","4":"1","5":"6.250000","_rn_":"100"},{"1":"96","2":"10","3":"9","4":"1","5":"6.100000","_rn_":"101"},{"1":"90","2":"12","3":"9","4":"1","5":"4.583333","_rn_":"102"},{"1":"92","2":"14","3":"9","4":"1","5":"4.071429","_rn_":"103"},{"1":"93","2":"16","3":"9","4":"1","5":"3.625000","_rn_":"104"},{"1":"100","2":"18","3":"9","4":"1","5":"3.611111","_rn_":"105"},{"1":"100","2":"20","3":"9","4":"1","5":"3.250000","_rn_":"106"},{"1":"98","2":"21","3":"9","4":"1","5":"3.000000","_rn_":"107"},{"1":"41","2":"0","3":"10","4":"1","5":"Inf","_rn_":"108"},{"1":"44","2":"2","3":"10","4":"1","5":"4.500000","_rn_":"109"},{"1":"52","2":"4","3":"10","4":"1","5":"4.250000","_rn_":"110"},{"1":"63","2":"6","3":"10","4":"1","5":"4.666667","_rn_":"111"},{"1":"74","2":"8","3":"10","4":"1","5":"4.875000","_rn_":"112"},{"1":"81","2":"10","3":"10","4":"1","5":"4.600000","_rn_":"113"},{"1":"89","2":"12","3":"10","4":"1","5":"4.500000","_rn_":"114"},{"1":"96","2":"14","3":"10","4":"1","5":"4.357143","_rn_":"115"},{"1":"101","2":"16","3":"10","4":"1","5":"4.125000","_rn_":"116"},{"1":"112","2":"18","3":"10","4":"1","5":"4.277778","_rn_":"117"},{"1":"120","2":"20","3":"10","4":"1","5":"4.250000","_rn_":"118"},{"1":"124","2":"21","3":"10","4":"1","5":"4.238095","_rn_":"119"},{"1":"43","2":"0","3":"11","4":"1","5":"Inf","_rn_":"120"},{"1":"51","2":"2","3":"11","4":"1","5":"8.000000","_rn_":"121"},{"1":"63","2":"4","3":"11","4":"1","5":"7.000000","_rn_":"122"},{"1":"84","2":"6","3":"11","4":"1","5":"8.166667","_rn_":"123"},{"1":"112","2":"8","3":"11","4":"1","5":"9.625000","_rn_":"124"},{"1":"139","2":"10","3":"11","4":"1","5":"10.400000","_rn_":"125"},{"1":"168","2":"12","3":"11","4":"1","5":"11.083333","_rn_":"126"},{"1":"177","2":"14","3":"11","4":"1","5":"10.142857","_rn_":"127"},{"1":"182","2":"16","3":"11","4":"1","5":"9.187500","_rn_":"128"},{"1":"184","2":"18","3":"11","4":"1","5":"8.277778","_rn_":"129"},{"1":"181","2":"20","3":"11","4":"1","5":"7.300000","_rn_":"130"},{"1":"175","2":"21","3":"11","4":"1","5":"6.666667","_rn_":"131"},{"1":"41","2":"0","3":"12","4":"1","5":"Inf","_rn_":"132"},{"1":"49","2":"2","3":"12","4":"1","5":"7.000000","_rn_":"133"},{"1":"56","2":"4","3":"12","4":"1","5":"5.250000","_rn_":"134"},{"1":"62","2":"6","3":"12","4":"1","5":"4.500000","_rn_":"135"},{"1":"72","2":"8","3":"12","4":"1","5":"4.625000","_rn_":"136"},{"1":"88","2":"10","3":"12","4":"1","5":"5.300000","_rn_":"137"},{"1":"119","2":"12","3":"12","4":"1","5":"7.000000","_rn_":"138"},{"1":"135","2":"14","3":"12","4":"1","5":"7.142857","_rn_":"139"},{"1":"162","2":"16","3":"12","4":"1","5":"7.937500","_rn_":"140"},{"1":"185","2":"18","3":"12","4":"1","5":"8.333333","_rn_":"141"},{"1":"195","2":"20","3":"12","4":"1","5":"8.000000","_rn_":"142"},{"1":"205","2":"21","3":"12","4":"1","5":"8.095238","_rn_":"143"},{"1":"41","2":"0","3":"13","4":"1","5":"Inf","_rn_":"144"},{"1":"48","2":"2","3":"13","4":"1","5":"6.500000","_rn_":"145"},{"1":"53","2":"4","3":"13","4":"1","5":"4.500000","_rn_":"146"},{"1":"60","2":"6","3":"13","4":"1","5":"4.166667","_rn_":"147"},{"1":"65","2":"8","3":"13","4":"1","5":"3.750000","_rn_":"148"},{"1":"67","2":"10","3":"13","4":"1","5":"3.200000","_rn_":"149"},{"1":"71","2":"12","3":"13","4":"1","5":"3.000000","_rn_":"150"},{"1":"70","2":"14","3":"13","4":"1","5":"2.500000","_rn_":"151"},{"1":"71","2":"16","3":"13","4":"1","5":"2.250000","_rn_":"152"},{"1":"81","2":"18","3":"13","4":"1","5":"2.555556","_rn_":"153"},{"1":"91","2":"20","3":"13","4":"1","5":"2.800000","_rn_":"154"},{"1":"96","2":"21","3":"13","4":"1","5":"2.904762","_rn_":"155"},{"1":"41","2":"0","3":"14","4":"1","5":"Inf","_rn_":"156"},{"1":"49","2":"2","3":"14","4":"1","5":"7.000000","_rn_":"157"},{"1":"62","2":"4","3":"14","4":"1","5":"6.750000","_rn_":"158"},{"1":"79","2":"6","3":"14","4":"1","5":"7.333333","_rn_":"159"},{"1":"101","2":"8","3":"14","4":"1","5":"8.250000","_rn_":"160"},{"1":"128","2":"10","3":"14","4":"1","5":"9.300000","_rn_":"161"},{"1":"164","2":"12","3":"14","4":"1","5":"10.750000","_rn_":"162"},{"1":"192","2":"14","3":"14","4":"1","5":"11.214286","_rn_":"163"},{"1":"227","2":"16","3":"14","4":"1","5":"12.000000","_rn_":"164"},{"1":"248","2":"18","3":"14","4":"1","5":"11.833333","_rn_":"165"},{"1":"259","2":"20","3":"14","4":"1","5":"11.200000","_rn_":"166"},{"1":"266","2":"21","3":"14","4":"1","5":"11.000000","_rn_":"167"},{"1":"41","2":"0","3":"15","4":"1","5":"Inf","_rn_":"168"},{"1":"49","2":"2","3":"15","4":"1","5":"7.000000","_rn_":"169"},{"1":"56","2":"4","3":"15","4":"1","5":"5.250000","_rn_":"170"},{"1":"64","2":"6","3":"15","4":"1","5":"4.833333","_rn_":"171"},{"1":"68","2":"8","3":"15","4":"1","5":"4.125000","_rn_":"172"},{"1":"68","2":"10","3":"15","4":"1","5":"3.300000","_rn_":"173"},{"1":"67","2":"12","3":"15","4":"1","5":"2.666667","_rn_":"174"},{"1":"68","2":"14","3":"15","4":"1","5":"2.357143","_rn_":"175"},{"1":"41","2":"0","3":"16","4":"1","5":"Inf","_rn_":"176"},{"1":"45","2":"2","3":"16","4":"1","5":"5.000000","_rn_":"177"},{"1":"49","2":"4","3":"16","4":"1","5":"3.500000","_rn_":"178"},{"1":"51","2":"6","3":"16","4":"1","5":"2.666667","_rn_":"179"},{"1":"57","2":"8","3":"16","4":"1","5":"2.750000","_rn_":"180"},{"1":"51","2":"10","3":"16","4":"1","5":"1.600000","_rn_":"181"},{"1":"54","2":"12","3":"16","4":"1","5":"1.583333","_rn_":"182"},{"1":"42","2":"0","3":"17","4":"1","5":"Inf","_rn_":"183"},{"1":"51","2":"2","3":"17","4":"1","5":"8.000000","_rn_":"184"},{"1":"61","2":"4","3":"17","4":"1","5":"6.500000","_rn_":"185"},{"1":"72","2":"6","3":"17","4":"1","5":"6.166667","_rn_":"186"},{"1":"83","2":"8","3":"17","4":"1","5":"6.000000","_rn_":"187"},{"1":"89","2":"10","3":"17","4":"1","5":"5.400000","_rn_":"188"},{"1":"98","2":"12","3":"17","4":"1","5":"5.250000","_rn_":"189"},{"1":"103","2":"14","3":"17","4":"1","5":"4.857143","_rn_":"190"},{"1":"113","2":"16","3":"17","4":"1","5":"4.875000","_rn_":"191"},{"1":"123","2":"18","3":"17","4":"1","5":"4.888889","_rn_":"192"},{"1":"133","2":"20","3":"17","4":"1","5":"4.900000","_rn_":"193"},{"1":"142","2":"21","3":"17","4":"1","5":"5.095238","_rn_":"194"},{"1":"39","2":"0","3":"18","4":"1","5":"Inf","_rn_":"195"},{"1":"35","2":"2","3":"18","4":"1","5":"0.000000","_rn_":"196"},{"1":"43","2":"0","3":"19","4":"1","5":"Inf","_rn_":"197"},{"1":"48","2":"2","3":"19","4":"1","5":"6.500000","_rn_":"198"},{"1":"55","2":"4","3":"19","4":"1","5":"5.000000","_rn_":"199"},{"1":"62","2":"6","3":"19","4":"1","5":"4.500000","_rn_":"200"},{"1":"65","2":"8","3":"19","4":"1","5":"3.750000","_rn_":"201"},{"1":"71","2":"10","3":"19","4":"1","5":"3.600000","_rn_":"202"},{"1":"82","2":"12","3":"19","4":"1","5":"3.916667","_rn_":"203"},{"1":"88","2":"14","3":"19","4":"1","5":"3.785714","_rn_":"204"},{"1":"106","2":"16","3":"19","4":"1","5":"4.437500","_rn_":"205"},{"1":"120","2":"18","3":"19","4":"1","5":"4.722222","_rn_":"206"},{"1":"144","2":"20","3":"19","4":"1","5":"5.450000","_rn_":"207"},{"1":"157","2":"21","3":"19","4":"1","5":"5.809524","_rn_":"208"},{"1":"41","2":"0","3":"20","4":"1","5":"Inf","_rn_":"209"},{"1":"47","2":"2","3":"20","4":"1","5":"6.000000","_rn_":"210"},{"1":"54","2":"4","3":"20","4":"1","5":"4.750000","_rn_":"211"},{"1":"58","2":"6","3":"20","4":"1","5":"3.833333","_rn_":"212"},{"1":"65","2":"8","3":"20","4":"1","5":"3.750000","_rn_":"213"},{"1":"73","2":"10","3":"20","4":"1","5":"3.800000","_rn_":"214"},{"1":"77","2":"12","3":"20","4":"1","5":"3.500000","_rn_":"215"},{"1":"89","2":"14","3":"20","4":"1","5":"3.857143","_rn_":"216"},{"1":"98","2":"16","3":"20","4":"1","5":"3.937500","_rn_":"217"},{"1":"107","2":"18","3":"20","4":"1","5":"4.000000","_rn_":"218"},{"1":"115","2":"20","3":"20","4":"1","5":"4.000000","_rn_":"219"},{"1":"117","2":"21","3":"20","4":"1","5":"3.904762","_rn_":"220"},{"1":"40","2":"0","3":"21","4":"2","5":"Inf","_rn_":"221"},{"1":"50","2":"2","3":"21","4":"2","5":"7.500000","_rn_":"222"},{"1":"62","2":"4","3":"21","4":"2","5":"6.750000","_rn_":"223"},{"1":"86","2":"6","3":"21","4":"2","5":"8.500000","_rn_":"224"},{"1":"125","2":"8","3":"21","4":"2","5":"11.250000","_rn_":"225"},{"1":"163","2":"10","3":"21","4":"2","5":"12.800000","_rn_":"226"},{"1":"217","2":"12","3":"21","4":"2","5":"15.166667","_rn_":"227"},{"1":"240","2":"14","3":"21","4":"2","5":"14.642857","_rn_":"228"},{"1":"275","2":"16","3":"21","4":"2","5":"15.000000","_rn_":"229"},{"1":"307","2":"18","3":"21","4":"2","5":"15.111111","_rn_":"230"},{"1":"318","2":"20","3":"21","4":"2","5":"14.150000","_rn_":"231"},{"1":"331","2":"21","3":"21","4":"2","5":"14.095238","_rn_":"232"},{"1":"41","2":"0","3":"22","4":"2","5":"Inf","_rn_":"233"},{"1":"55","2":"2","3":"22","4":"2","5":"10.000000","_rn_":"234"},{"1":"64","2":"4","3":"22","4":"2","5":"7.250000","_rn_":"235"},{"1":"77","2":"6","3":"22","4":"2","5":"7.000000","_rn_":"236"},{"1":"90","2":"8","3":"22","4":"2","5":"6.875000","_rn_":"237"},{"1":"95","2":"10","3":"22","4":"2","5":"6.000000","_rn_":"238"},{"1":"108","2":"12","3":"22","4":"2","5":"6.083333","_rn_":"239"},{"1":"111","2":"14","3":"22","4":"2","5":"5.428571","_rn_":"240"},{"1":"131","2":"16","3":"22","4":"2","5":"6.000000","_rn_":"241"},{"1":"148","2":"18","3":"22","4":"2","5":"6.277778","_rn_":"242"},{"1":"164","2":"20","3":"22","4":"2","5":"6.450000","_rn_":"243"},{"1":"167","2":"21","3":"22","4":"2","5":"6.285714","_rn_":"244"},{"1":"43","2":"0","3":"23","4":"2","5":"Inf","_rn_":"245"},{"1":"52","2":"2","3":"23","4":"2","5":"8.500000","_rn_":"246"},{"1":"61","2":"4","3":"23","4":"2","5":"6.500000","_rn_":"247"},{"1":"73","2":"6","3":"23","4":"2","5":"6.333333","_rn_":"248"},{"1":"90","2":"8","3":"23","4":"2","5":"6.875000","_rn_":"249"},{"1":"103","2":"10","3":"23","4":"2","5":"6.800000","_rn_":"250"},{"1":"127","2":"12","3":"23","4":"2","5":"7.666667","_rn_":"251"},{"1":"135","2":"14","3":"23","4":"2","5":"7.142857","_rn_":"252"},{"1":"145","2":"16","3":"23","4":"2","5":"6.875000","_rn_":"253"},{"1":"163","2":"18","3":"23","4":"2","5":"7.111111","_rn_":"254"},{"1":"170","2":"20","3":"23","4":"2","5":"6.750000","_rn_":"255"},{"1":"175","2":"21","3":"23","4":"2","5":"6.666667","_rn_":"256"},{"1":"42","2":"0","3":"24","4":"2","5":"Inf","_rn_":"257"},{"1":"52","2":"2","3":"24","4":"2","5":"8.500000","_rn_":"258"},{"1":"58","2":"4","3":"24","4":"2","5":"5.750000","_rn_":"259"},{"1":"74","2":"6","3":"24","4":"2","5":"6.500000","_rn_":"260"},{"1":"66","2":"8","3":"24","4":"2","5":"3.875000","_rn_":"261"},{"1":"68","2":"10","3":"24","4":"2","5":"3.300000","_rn_":"262"},{"1":"70","2":"12","3":"24","4":"2","5":"2.916667","_rn_":"263"},{"1":"71","2":"14","3":"24","4":"2","5":"2.571429","_rn_":"264"},{"1":"72","2":"16","3":"24","4":"2","5":"2.312500","_rn_":"265"},{"1":"72","2":"18","3":"24","4":"2","5":"2.055556","_rn_":"266"},{"1":"76","2":"20","3":"24","4":"2","5":"2.050000","_rn_":"267"},{"1":"74","2":"21","3":"24","4":"2","5":"1.857143","_rn_":"268"},{"1":"40","2":"0","3":"25","4":"2","5":"Inf","_rn_":"269"},{"1":"49","2":"2","3":"25","4":"2","5":"7.000000","_rn_":"270"},{"1":"62","2":"4","3":"25","4":"2","5":"6.750000","_rn_":"271"},{"1":"78","2":"6","3":"25","4":"2","5":"7.166667","_rn_":"272"},{"1":"102","2":"8","3":"25","4":"2","5":"8.375000","_rn_":"273"},{"1":"124","2":"10","3":"25","4":"2","5":"8.900000","_rn_":"274"},{"1":"146","2":"12","3":"25","4":"2","5":"9.250000","_rn_":"275"},{"1":"164","2":"14","3":"25","4":"2","5":"9.214286","_rn_":"276"},{"1":"197","2":"16","3":"25","4":"2","5":"10.125000","_rn_":"277"},{"1":"231","2":"18","3":"25","4":"2","5":"10.888889","_rn_":"278"},{"1":"259","2":"20","3":"25","4":"2","5":"11.200000","_rn_":"279"},{"1":"265","2":"21","3":"25","4":"2","5":"10.952381","_rn_":"280"},{"1":"42","2":"0","3":"26","4":"2","5":"Inf","_rn_":"281"},{"1":"48","2":"2","3":"26","4":"2","5":"6.500000","_rn_":"282"},{"1":"57","2":"4","3":"26","4":"2","5":"5.500000","_rn_":"283"},{"1":"74","2":"6","3":"26","4":"2","5":"6.500000","_rn_":"284"},{"1":"93","2":"8","3":"26","4":"2","5":"7.250000","_rn_":"285"},{"1":"114","2":"10","3":"26","4":"2","5":"7.900000","_rn_":"286"},{"1":"136","2":"12","3":"26","4":"2","5":"8.416667","_rn_":"287"},{"1":"147","2":"14","3":"26","4":"2","5":"8.000000","_rn_":"288"},{"1":"169","2":"16","3":"26","4":"2","5":"8.375000","_rn_":"289"},{"1":"205","2":"18","3":"26","4":"2","5":"9.444444","_rn_":"290"},{"1":"236","2":"20","3":"26","4":"2","5":"10.050000","_rn_":"291"},{"1":"251","2":"21","3":"26","4":"2","5":"10.285714","_rn_":"292"},{"1":"39","2":"0","3":"27","4":"2","5":"Inf","_rn_":"293"},{"1":"46","2":"2","3":"27","4":"2","5":"5.500000","_rn_":"294"},{"1":"58","2":"4","3":"27","4":"2","5":"5.750000","_rn_":"295"},{"1":"73","2":"6","3":"27","4":"2","5":"6.333333","_rn_":"296"},{"1":"87","2":"8","3":"27","4":"2","5":"6.500000","_rn_":"297"},{"1":"100","2":"10","3":"27","4":"2","5":"6.500000","_rn_":"298"},{"1":"115","2":"12","3":"27","4":"2","5":"6.666667","_rn_":"299"},{"1":"123","2":"14","3":"27","4":"2","5":"6.285714","_rn_":"300"},{"1":"144","2":"16","3":"27","4":"2","5":"6.812500","_rn_":"301"},{"1":"163","2":"18","3":"27","4":"2","5":"7.111111","_rn_":"302"},{"1":"185","2":"20","3":"27","4":"2","5":"7.500000","_rn_":"303"},{"1":"192","2":"21","3":"27","4":"2","5":"7.476190","_rn_":"304"},{"1":"39","2":"0","3":"28","4":"2","5":"Inf","_rn_":"305"},{"1":"46","2":"2","3":"28","4":"2","5":"5.500000","_rn_":"306"},{"1":"58","2":"4","3":"28","4":"2","5":"5.750000","_rn_":"307"},{"1":"73","2":"6","3":"28","4":"2","5":"6.333333","_rn_":"308"},{"1":"92","2":"8","3":"28","4":"2","5":"7.125000","_rn_":"309"},{"1":"114","2":"10","3":"28","4":"2","5":"7.900000","_rn_":"310"},{"1":"145","2":"12","3":"28","4":"2","5":"9.166667","_rn_":"311"},{"1":"156","2":"14","3":"28","4":"2","5":"8.642857","_rn_":"312"},{"1":"184","2":"16","3":"28","4":"2","5":"9.312500","_rn_":"313"},{"1":"207","2":"18","3":"28","4":"2","5":"9.555556","_rn_":"314"},{"1":"212","2":"20","3":"28","4":"2","5":"8.850000","_rn_":"315"},{"1":"233","2":"21","3":"28","4":"2","5":"9.428571","_rn_":"316"},{"1":"39","2":"0","3":"29","4":"2","5":"Inf","_rn_":"317"},{"1":"48","2":"2","3":"29","4":"2","5":"6.500000","_rn_":"318"},{"1":"59","2":"4","3":"29","4":"2","5":"6.000000","_rn_":"319"},{"1":"74","2":"6","3":"29","4":"2","5":"6.500000","_rn_":"320"},{"1":"87","2":"8","3":"29","4":"2","5":"6.500000","_rn_":"321"},{"1":"106","2":"10","3":"29","4":"2","5":"7.100000","_rn_":"322"},{"1":"134","2":"12","3":"29","4":"2","5":"8.250000","_rn_":"323"},{"1":"150","2":"14","3":"29","4":"2","5":"8.214286","_rn_":"324"},{"1":"187","2":"16","3":"29","4":"2","5":"9.500000","_rn_":"325"},{"1":"230","2":"18","3":"29","4":"2","5":"10.833333","_rn_":"326"},{"1":"279","2":"20","3":"29","4":"2","5":"12.200000","_rn_":"327"},{"1":"309","2":"21","3":"29","4":"2","5":"13.047619","_rn_":"328"},{"1":"42","2":"0","3":"30","4":"2","5":"Inf","_rn_":"329"},{"1":"48","2":"2","3":"30","4":"2","5":"6.500000","_rn_":"330"},{"1":"59","2":"4","3":"30","4":"2","5":"6.000000","_rn_":"331"},{"1":"72","2":"6","3":"30","4":"2","5":"6.166667","_rn_":"332"},{"1":"85","2":"8","3":"30","4":"2","5":"6.250000","_rn_":"333"},{"1":"98","2":"10","3":"30","4":"2","5":"6.300000","_rn_":"334"},{"1":"115","2":"12","3":"30","4":"2","5":"6.666667","_rn_":"335"},{"1":"122","2":"14","3":"30","4":"2","5":"6.214286","_rn_":"336"},{"1":"143","2":"16","3":"30","4":"2","5":"6.750000","_rn_":"337"},{"1":"151","2":"18","3":"30","4":"2","5":"6.444444","_rn_":"338"},{"1":"157","2":"20","3":"30","4":"2","5":"6.100000","_rn_":"339"},{"1":"150","2":"21","3":"30","4":"2","5":"5.476190","_rn_":"340"},{"1":"42","2":"0","3":"31","4":"3","5":"Inf","_rn_":"341"},{"1":"53","2":"2","3":"31","4":"3","5":"9.000000","_rn_":"342"},{"1":"62","2":"4","3":"31","4":"3","5":"6.750000","_rn_":"343"},{"1":"73","2":"6","3":"31","4":"3","5":"6.333333","_rn_":"344"},{"1":"85","2":"8","3":"31","4":"3","5":"6.250000","_rn_":"345"},{"1":"102","2":"10","3":"31","4":"3","5":"6.700000","_rn_":"346"},{"1":"123","2":"12","3":"31","4":"3","5":"7.333333","_rn_":"347"},{"1":"138","2":"14","3":"31","4":"3","5":"7.357143","_rn_":"348"},{"1":"170","2":"16","3":"31","4":"3","5":"8.437500","_rn_":"349"},{"1":"204","2":"18","3":"31","4":"3","5":"9.388889","_rn_":"350"},{"1":"235","2":"20","3":"31","4":"3","5":"10.000000","_rn_":"351"},{"1":"256","2":"21","3":"31","4":"3","5":"10.523810","_rn_":"352"},{"1":"41","2":"0","3":"32","4":"3","5":"Inf","_rn_":"353"},{"1":"49","2":"2","3":"32","4":"3","5":"7.000000","_rn_":"354"},{"1":"65","2":"4","3":"32","4":"3","5":"7.500000","_rn_":"355"},{"1":"82","2":"6","3":"32","4":"3","5":"7.833333","_rn_":"356"},{"1":"107","2":"8","3":"32","4":"3","5":"9.000000","_rn_":"357"},{"1":"129","2":"10","3":"32","4":"3","5":"9.400000","_rn_":"358"},{"1":"159","2":"12","3":"32","4":"3","5":"10.333333","_rn_":"359"},{"1":"179","2":"14","3":"32","4":"3","5":"10.285714","_rn_":"360"},{"1":"221","2":"16","3":"32","4":"3","5":"11.625000","_rn_":"361"},{"1":"263","2":"18","3":"32","4":"3","5":"12.666667","_rn_":"362"},{"1":"291","2":"20","3":"32","4":"3","5":"12.800000","_rn_":"363"},{"1":"305","2":"21","3":"32","4":"3","5":"12.857143","_rn_":"364"},{"1":"39","2":"0","3":"33","4":"3","5":"Inf","_rn_":"365"},{"1":"50","2":"2","3":"33","4":"3","5":"7.500000","_rn_":"366"},{"1":"63","2":"4","3":"33","4":"3","5":"7.000000","_rn_":"367"},{"1":"77","2":"6","3":"33","4":"3","5":"7.000000","_rn_":"368"},{"1":"96","2":"8","3":"33","4":"3","5":"7.625000","_rn_":"369"},{"1":"111","2":"10","3":"33","4":"3","5":"7.600000","_rn_":"370"},{"1":"137","2":"12","3":"33","4":"3","5":"8.500000","_rn_":"371"},{"1":"144","2":"14","3":"33","4":"3","5":"7.785714","_rn_":"372"},{"1":"151","2":"16","3":"33","4":"3","5":"7.250000","_rn_":"373"},{"1":"146","2":"18","3":"33","4":"3","5":"6.166667","_rn_":"374"},{"1":"156","2":"20","3":"33","4":"3","5":"6.050000","_rn_":"375"},{"1":"147","2":"21","3":"33","4":"3","5":"5.333333","_rn_":"376"},{"1":"41","2":"0","3":"34","4":"3","5":"Inf","_rn_":"377"},{"1":"49","2":"2","3":"34","4":"3","5":"7.000000","_rn_":"378"},{"1":"63","2":"4","3":"34","4":"3","5":"7.000000","_rn_":"379"},{"1":"85","2":"6","3":"34","4":"3","5":"8.333333","_rn_":"380"},{"1":"107","2":"8","3":"34","4":"3","5":"9.000000","_rn_":"381"},{"1":"134","2":"10","3":"34","4":"3","5":"9.900000","_rn_":"382"},{"1":"164","2":"12","3":"34","4":"3","5":"10.750000","_rn_":"383"},{"1":"186","2":"14","3":"34","4":"3","5":"10.785714","_rn_":"384"},{"1":"235","2":"16","3":"34","4":"3","5":"12.500000","_rn_":"385"},{"1":"294","2":"18","3":"34","4":"3","5":"14.388889","_rn_":"386"},{"1":"327","2":"20","3":"34","4":"3","5":"14.600000","_rn_":"387"},{"1":"341","2":"21","3":"34","4":"3","5":"14.571429","_rn_":"388"},{"1":"41","2":"0","3":"35","4":"3","5":"Inf","_rn_":"389"},{"1":"53","2":"2","3":"35","4":"3","5":"9.000000","_rn_":"390"},{"1":"64","2":"4","3":"35","4":"3","5":"7.250000","_rn_":"391"},{"1":"87","2":"6","3":"35","4":"3","5":"8.666667","_rn_":"392"},{"1":"123","2":"8","3":"35","4":"3","5":"11.000000","_rn_":"393"},{"1":"158","2":"10","3":"35","4":"3","5":"12.300000","_rn_":"394"},{"1":"201","2":"12","3":"35","4":"3","5":"13.833333","_rn_":"395"},{"1":"238","2":"14","3":"35","4":"3","5":"14.500000","_rn_":"396"},{"1":"287","2":"16","3":"35","4":"3","5":"15.750000","_rn_":"397"},{"1":"332","2":"18","3":"35","4":"3","5":"16.500000","_rn_":"398"},{"1":"361","2":"20","3":"35","4":"3","5":"16.300000","_rn_":"399"},{"1":"373","2":"21","3":"35","4":"3","5":"16.095238","_rn_":"400"},{"1":"39","2":"0","3":"36","4":"3","5":"Inf","_rn_":"401"},{"1":"48","2":"2","3":"36","4":"3","5":"6.500000","_rn_":"402"},{"1":"61","2":"4","3":"36","4":"3","5":"6.500000","_rn_":"403"},{"1":"76","2":"6","3":"36","4":"3","5":"6.833333","_rn_":"404"},{"1":"98","2":"8","3":"36","4":"3","5":"7.875000","_rn_":"405"},{"1":"116","2":"10","3":"36","4":"3","5":"8.100000","_rn_":"406"},{"1":"145","2":"12","3":"36","4":"3","5":"9.166667","_rn_":"407"},{"1":"166","2":"14","3":"36","4":"3","5":"9.357143","_rn_":"408"},{"1":"198","2":"16","3":"36","4":"3","5":"10.187500","_rn_":"409"},{"1":"227","2":"18","3":"36","4":"3","5":"10.666667","_rn_":"410"},{"1":"225","2":"20","3":"36","4":"3","5":"9.500000","_rn_":"411"},{"1":"220","2":"21","3":"36","4":"3","5":"8.809524","_rn_":"412"},{"1":"41","2":"0","3":"37","4":"3","5":"Inf","_rn_":"413"},{"1":"48","2":"2","3":"37","4":"3","5":"6.500000","_rn_":"414"},{"1":"56","2":"4","3":"37","4":"3","5":"5.250000","_rn_":"415"},{"1":"68","2":"6","3":"37","4":"3","5":"5.500000","_rn_":"416"},{"1":"80","2":"8","3":"37","4":"3","5":"5.625000","_rn_":"417"},{"1":"83","2":"10","3":"37","4":"3","5":"4.800000","_rn_":"418"},{"1":"103","2":"12","3":"37","4":"3","5":"5.666667","_rn_":"419"},{"1":"112","2":"14","3":"37","4":"3","5":"5.500000","_rn_":"420"},{"1":"135","2":"16","3":"37","4":"3","5":"6.250000","_rn_":"421"},{"1":"157","2":"18","3":"37","4":"3","5":"6.777778","_rn_":"422"},{"1":"169","2":"20","3":"37","4":"3","5":"6.700000","_rn_":"423"},{"1":"178","2":"21","3":"37","4":"3","5":"6.809524","_rn_":"424"},{"1":"41","2":"0","3":"38","4":"3","5":"Inf","_rn_":"425"},{"1":"49","2":"2","3":"38","4":"3","5":"7.000000","_rn_":"426"},{"1":"61","2":"4","3":"38","4":"3","5":"6.500000","_rn_":"427"},{"1":"74","2":"6","3":"38","4":"3","5":"6.500000","_rn_":"428"},{"1":"98","2":"8","3":"38","4":"3","5":"7.875000","_rn_":"429"},{"1":"109","2":"10","3":"38","4":"3","5":"7.400000","_rn_":"430"},{"1":"128","2":"12","3":"38","4":"3","5":"7.750000","_rn_":"431"},{"1":"154","2":"14","3":"38","4":"3","5":"8.500000","_rn_":"432"},{"1":"192","2":"16","3":"38","4":"3","5":"9.812500","_rn_":"433"},{"1":"232","2":"18","3":"38","4":"3","5":"10.944444","_rn_":"434"},{"1":"280","2":"20","3":"38","4":"3","5":"12.250000","_rn_":"435"},{"1":"290","2":"21","3":"38","4":"3","5":"12.142857","_rn_":"436"},{"1":"42","2":"0","3":"39","4":"3","5":"Inf","_rn_":"437"},{"1":"50","2":"2","3":"39","4":"3","5":"7.500000","_rn_":"438"},{"1":"61","2":"4","3":"39","4":"3","5":"6.500000","_rn_":"439"},{"1":"78","2":"6","3":"39","4":"3","5":"7.166667","_rn_":"440"},{"1":"89","2":"8","3":"39","4":"3","5":"6.750000","_rn_":"441"},{"1":"109","2":"10","3":"39","4":"3","5":"7.400000","_rn_":"442"},{"1":"130","2":"12","3":"39","4":"3","5":"7.916667","_rn_":"443"},{"1":"146","2":"14","3":"39","4":"3","5":"7.928571","_rn_":"444"},{"1":"170","2":"16","3":"39","4":"3","5":"8.437500","_rn_":"445"},{"1":"214","2":"18","3":"39","4":"3","5":"9.944444","_rn_":"446"},{"1":"250","2":"20","3":"39","4":"3","5":"10.750000","_rn_":"447"},{"1":"272","2":"21","3":"39","4":"3","5":"11.285714","_rn_":"448"},{"1":"41","2":"0","3":"40","4":"3","5":"Inf","_rn_":"449"},{"1":"55","2":"2","3":"40","4":"3","5":"10.000000","_rn_":"450"},{"1":"66","2":"4","3":"40","4":"3","5":"7.750000","_rn_":"451"},{"1":"79","2":"6","3":"40","4":"3","5":"7.333333","_rn_":"452"},{"1":"101","2":"8","3":"40","4":"3","5":"8.250000","_rn_":"453"},{"1":"120","2":"10","3":"40","4":"3","5":"8.500000","_rn_":"454"},{"1":"154","2":"12","3":"40","4":"3","5":"9.916667","_rn_":"455"},{"1":"182","2":"14","3":"40","4":"3","5":"10.500000","_rn_":"456"},{"1":"215","2":"16","3":"40","4":"3","5":"11.250000","_rn_":"457"},{"1":"262","2":"18","3":"40","4":"3","5":"12.611111","_rn_":"458"},{"1":"295","2":"20","3":"40","4":"3","5":"13.000000","_rn_":"459"},{"1":"321","2":"21","3":"40","4":"3","5":"13.619048","_rn_":"460"},{"1":"42","2":"0","3":"41","4":"4","5":"Inf","_rn_":"461"},{"1":"51","2":"2","3":"41","4":"4","5":"8.000000","_rn_":"462"},{"1":"66","2":"4","3":"41","4":"4","5":"7.750000","_rn_":"463"},{"1":"85","2":"6","3":"41","4":"4","5":"8.333333","_rn_":"464"},{"1":"103","2":"8","3":"41","4":"4","5":"8.500000","_rn_":"465"},{"1":"124","2":"10","3":"41","4":"4","5":"8.900000","_rn_":"466"},{"1":"155","2":"12","3":"41","4":"4","5":"10.000000","_rn_":"467"},{"1":"153","2":"14","3":"41","4":"4","5":"8.428571","_rn_":"468"},{"1":"175","2":"16","3":"41","4":"4","5":"8.750000","_rn_":"469"},{"1":"184","2":"18","3":"41","4":"4","5":"8.277778","_rn_":"470"},{"1":"199","2":"20","3":"41","4":"4","5":"8.200000","_rn_":"471"},{"1":"204","2":"21","3":"41","4":"4","5":"8.047619","_rn_":"472"},{"1":"42","2":"0","3":"42","4":"4","5":"Inf","_rn_":"473"},{"1":"49","2":"2","3":"42","4":"4","5":"7.000000","_rn_":"474"},{"1":"63","2":"4","3":"42","4":"4","5":"7.000000","_rn_":"475"},{"1":"84","2":"6","3":"42","4":"4","5":"8.166667","_rn_":"476"},{"1":"103","2":"8","3":"42","4":"4","5":"8.500000","_rn_":"477"},{"1":"126","2":"10","3":"42","4":"4","5":"9.100000","_rn_":"478"},{"1":"160","2":"12","3":"42","4":"4","5":"10.416667","_rn_":"479"},{"1":"174","2":"14","3":"42","4":"4","5":"9.928571","_rn_":"480"},{"1":"204","2":"16","3":"42","4":"4","5":"10.562500","_rn_":"481"},{"1":"234","2":"18","3":"42","4":"4","5":"11.055556","_rn_":"482"},{"1":"269","2":"20","3":"42","4":"4","5":"11.700000","_rn_":"483"},{"1":"281","2":"21","3":"42","4":"4","5":"11.714286","_rn_":"484"},{"1":"42","2":"0","3":"43","4":"4","5":"Inf","_rn_":"485"},{"1":"55","2":"2","3":"43","4":"4","5":"10.000000","_rn_":"486"},{"1":"69","2":"4","3":"43","4":"4","5":"8.500000","_rn_":"487"},{"1":"96","2":"6","3":"43","4":"4","5":"10.166667","_rn_":"488"},{"1":"131","2":"8","3":"43","4":"4","5":"12.000000","_rn_":"489"},{"1":"157","2":"10","3":"43","4":"4","5":"12.200000","_rn_":"490"},{"1":"184","2":"12","3":"43","4":"4","5":"12.416667","_rn_":"491"},{"1":"188","2":"14","3":"43","4":"4","5":"10.928571","_rn_":"492"},{"1":"197","2":"16","3":"43","4":"4","5":"10.125000","_rn_":"493"},{"1":"198","2":"18","3":"43","4":"4","5":"9.055556","_rn_":"494"},{"1":"199","2":"20","3":"43","4":"4","5":"8.200000","_rn_":"495"},{"1":"200","2":"21","3":"43","4":"4","5":"7.857143","_rn_":"496"},{"1":"42","2":"0","3":"44","4":"4","5":"Inf","_rn_":"497"},{"1":"51","2":"2","3":"44","4":"4","5":"8.000000","_rn_":"498"},{"1":"65","2":"4","3":"44","4":"4","5":"7.500000","_rn_":"499"},{"1":"86","2":"6","3":"44","4":"4","5":"8.500000","_rn_":"500"},{"1":"103","2":"8","3":"44","4":"4","5":"8.500000","_rn_":"501"},{"1":"118","2":"10","3":"44","4":"4","5":"8.300000","_rn_":"502"},{"1":"127","2":"12","3":"44","4":"4","5":"7.666667","_rn_":"503"},{"1":"138","2":"14","3":"44","4":"4","5":"7.357143","_rn_":"504"},{"1":"145","2":"16","3":"44","4":"4","5":"6.875000","_rn_":"505"},{"1":"146","2":"18","3":"44","4":"4","5":"6.166667","_rn_":"506"},{"1":"41","2":"0","3":"45","4":"4","5":"Inf","_rn_":"507"},{"1":"50","2":"2","3":"45","4":"4","5":"7.500000","_rn_":"508"},{"1":"61","2":"4","3":"45","4":"4","5":"6.500000","_rn_":"509"},{"1":"78","2":"6","3":"45","4":"4","5":"7.166667","_rn_":"510"},{"1":"98","2":"8","3":"45","4":"4","5":"7.875000","_rn_":"511"},{"1":"117","2":"10","3":"45","4":"4","5":"8.200000","_rn_":"512"},{"1":"135","2":"12","3":"45","4":"4","5":"8.333333","_rn_":"513"},{"1":"141","2":"14","3":"45","4":"4","5":"7.571429","_rn_":"514"},{"1":"147","2":"16","3":"45","4":"4","5":"7.000000","_rn_":"515"},{"1":"174","2":"18","3":"45","4":"4","5":"7.722222","_rn_":"516"},{"1":"197","2":"20","3":"45","4":"4","5":"8.100000","_rn_":"517"},{"1":"196","2":"21","3":"45","4":"4","5":"7.666667","_rn_":"518"},{"1":"40","2":"0","3":"46","4":"4","5":"Inf","_rn_":"519"},{"1":"52","2":"2","3":"46","4":"4","5":"8.500000","_rn_":"520"},{"1":"62","2":"4","3":"46","4":"4","5":"6.750000","_rn_":"521"},{"1":"82","2":"6","3":"46","4":"4","5":"7.833333","_rn_":"522"},{"1":"101","2":"8","3":"46","4":"4","5":"8.250000","_rn_":"523"},{"1":"120","2":"10","3":"46","4":"4","5":"8.500000","_rn_":"524"},{"1":"144","2":"12","3":"46","4":"4","5":"9.083333","_rn_":"525"},{"1":"156","2":"14","3":"46","4":"4","5":"8.642857","_rn_":"526"},{"1":"173","2":"16","3":"46","4":"4","5":"8.625000","_rn_":"527"},{"1":"210","2":"18","3":"46","4":"4","5":"9.722222","_rn_":"528"},{"1":"231","2":"20","3":"46","4":"4","5":"9.800000","_rn_":"529"},{"1":"238","2":"21","3":"46","4":"4","5":"9.666667","_rn_":"530"},{"1":"41","2":"0","3":"47","4":"4","5":"Inf","_rn_":"531"},{"1":"53","2":"2","3":"47","4":"4","5":"9.000000","_rn_":"532"},{"1":"66","2":"4","3":"47","4":"4","5":"7.750000","_rn_":"533"},{"1":"79","2":"6","3":"47","4":"4","5":"7.333333","_rn_":"534"},{"1":"100","2":"8","3":"47","4":"4","5":"8.125000","_rn_":"535"},{"1":"123","2":"10","3":"47","4":"4","5":"8.800000","_rn_":"536"},{"1":"148","2":"12","3":"47","4":"4","5":"9.416667","_rn_":"537"},{"1":"157","2":"14","3":"47","4":"4","5":"8.714286","_rn_":"538"},{"1":"168","2":"16","3":"47","4":"4","5":"8.312500","_rn_":"539"},{"1":"185","2":"18","3":"47","4":"4","5":"8.333333","_rn_":"540"},{"1":"210","2":"20","3":"47","4":"4","5":"8.750000","_rn_":"541"},{"1":"205","2":"21","3":"47","4":"4","5":"8.095238","_rn_":"542"},{"1":"39","2":"0","3":"48","4":"4","5":"Inf","_rn_":"543"},{"1":"50","2":"2","3":"48","4":"4","5":"7.500000","_rn_":"544"},{"1":"62","2":"4","3":"48","4":"4","5":"6.750000","_rn_":"545"},{"1":"80","2":"6","3":"48","4":"4","5":"7.500000","_rn_":"546"},{"1":"104","2":"8","3":"48","4":"4","5":"8.625000","_rn_":"547"},{"1":"125","2":"10","3":"48","4":"4","5":"9.000000","_rn_":"548"},{"1":"154","2":"12","3":"48","4":"4","5":"9.916667","_rn_":"549"},{"1":"170","2":"14","3":"48","4":"4","5":"9.642857","_rn_":"550"},{"1":"222","2":"16","3":"48","4":"4","5":"11.687500","_rn_":"551"},{"1":"261","2":"18","3":"48","4":"4","5":"12.555556","_rn_":"552"},{"1":"303","2":"20","3":"48","4":"4","5":"13.400000","_rn_":"553"},{"1":"322","2":"21","3":"48","4":"4","5":"13.666667","_rn_":"554"},{"1":"40","2":"0","3":"49","4":"4","5":"Inf","_rn_":"555"},{"1":"53","2":"2","3":"49","4":"4","5":"9.000000","_rn_":"556"},{"1":"64","2":"4","3":"49","4":"4","5":"7.250000","_rn_":"557"},{"1":"85","2":"6","3":"49","4":"4","5":"8.333333","_rn_":"558"},{"1":"108","2":"8","3":"49","4":"4","5":"9.125000","_rn_":"559"},{"1":"128","2":"10","3":"49","4":"4","5":"9.300000","_rn_":"560"},{"1":"152","2":"12","3":"49","4":"4","5":"9.750000","_rn_":"561"},{"1":"166","2":"14","3":"49","4":"4","5":"9.357143","_rn_":"562"},{"1":"184","2":"16","3":"49","4":"4","5":"9.312500","_rn_":"563"},{"1":"203","2":"18","3":"49","4":"4","5":"9.333333","_rn_":"564"},{"1":"233","2":"20","3":"49","4":"4","5":"9.900000","_rn_":"565"},{"1":"237","2":"21","3":"49","4":"4","5":"9.619048","_rn_":"566"},{"1":"41","2":"0","3":"50","4":"4","5":"Inf","_rn_":"567"},{"1":"54","2":"2","3":"50","4":"4","5":"9.500000","_rn_":"568"},{"1":"67","2":"4","3":"50","4":"4","5":"8.000000","_rn_":"569"},{"1":"84","2":"6","3":"50","4":"4","5":"8.166667","_rn_":"570"},{"1":"105","2":"8","3":"50","4":"4","5":"8.750000","_rn_":"571"},{"1":"122","2":"10","3":"50","4":"4","5":"8.700000","_rn_":"572"},{"1":"155","2":"12","3":"50","4":"4","5":"10.000000","_rn_":"573"},{"1":"175","2":"14","3":"50","4":"4","5":"10.000000","_rn_":"574"},{"1":"205","2":"16","3":"50","4":"4","5":"10.625000","_rn_":"575"},{"1":"234","2":"18","3":"50","4":"4","5":"11.055556","_rn_":"576"},{"1":"264","2":"20","3":"50","4":"4","5":"11.450000","_rn_":"577"},{"1":"264","2":"21","3":"50","4":"4","5":"10.904762","_rn_":"578"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="exclude-observations-with-filter" class="slide level2 smaller"><h2>Exclude observations with filter</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(Time <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">arrange</span>(Time) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["weight"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Time"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chick"],"name":[3],"type":["ord"],"align":["right"]},{"label":["Diet"],"name":[4],"type":["fct"],"align":["left"]}],"data":[{"1":"93","2":"10","3":"1","4":"1"},{"1":"103","2":"10","3":"2","4":"1"},{"1":"99","2":"10","3":"3","4":"1"},{"1":"87","2":"10","3":"4","4":"1"},{"1":"106","2":"10","3":"5","4":"1"},{"1":"124","2":"10","3":"6","4":"1"},{"1":"112","2":"10","3":"7","4":"1"},{"1":"93","2":"10","3":"8","4":"1"},{"1":"96","2":"10","3":"9","4":"1"},{"1":"81","2":"10","3":"10","4":"1"},{"1":"139","2":"10","3":"11","4":"1"},{"1":"88","2":"10","3":"12","4":"1"},{"1":"67","2":"10","3":"13","4":"1"},{"1":"128","2":"10","3":"14","4":"1"},{"1":"68","2":"10","3":"15","4":"1"},{"1":"51","2":"10","3":"16","4":"1"},{"1":"89","2":"10","3":"17","4":"1"},{"1":"71","2":"10","3":"19","4":"1"},{"1":"73","2":"10","3":"20","4":"1"},{"1":"163","2":"10","3":"21","4":"2"},{"1":"95","2":"10","3":"22","4":"2"},{"1":"103","2":"10","3":"23","4":"2"},{"1":"68","2":"10","3":"24","4":"2"},{"1":"124","2":"10","3":"25","4":"2"},{"1":"114","2":"10","3":"26","4":"2"},{"1":"100","2":"10","3":"27","4":"2"},{"1":"114","2":"10","3":"28","4":"2"},{"1":"106","2":"10","3":"29","4":"2"},{"1":"98","2":"10","3":"30","4":"2"},{"1":"102","2":"10","3":"31","4":"3"},{"1":"129","2":"10","3":"32","4":"3"},{"1":"111","2":"10","3":"33","4":"3"},{"1":"134","2":"10","3":"34","4":"3"},{"1":"158","2":"10","3":"35","4":"3"},{"1":"116","2":"10","3":"36","4":"3"},{"1":"83","2":"10","3":"37","4":"3"},{"1":"109","2":"10","3":"38","4":"3"},{"1":"109","2":"10","3":"39","4":"3"},{"1":"120","2":"10","3":"40","4":"3"},{"1":"124","2":"10","3":"41","4":"4"},{"1":"126","2":"10","3":"42","4":"4"},{"1":"157","2":"10","3":"43","4":"4"},{"1":"118","2":"10","3":"44","4":"4"},{"1":"117","2":"10","3":"45","4":"4"},{"1":"120","2":"10","3":"46","4":"4"},{"1":"123","2":"10","3":"47","4":"4"},{"1":"125","2":"10","3":"48","4":"4"},{"1":"128","2":"10","3":"49","4":"4"},{"1":"122","2":"10","3":"50","4":"4"},{"1":"106","2":"12","3":"1","4":"1"},{"1":"122","2":"12","3":"2","4":"1"},{"1":"115","2":"12","3":"3","4":"1"},{"1":"102","2":"12","3":"4","4":"1"},{"1":"141","2":"12","3":"5","4":"1"},{"1":"141","2":"12","3":"6","4":"1"},{"1":"146","2":"12","3":"7","4":"1"},{"1":"110","2":"12","3":"8","4":"1"},{"1":"90","2":"12","3":"9","4":"1"},{"1":"89","2":"12","3":"10","4":"1"},{"1":"168","2":"12","3":"11","4":"1"},{"1":"119","2":"12","3":"12","4":"1"},{"1":"71","2":"12","3":"13","4":"1"},{"1":"164","2":"12","3":"14","4":"1"},{"1":"67","2":"12","3":"15","4":"1"},{"1":"54","2":"12","3":"16","4":"1"},{"1":"98","2":"12","3":"17","4":"1"},{"1":"82","2":"12","3":"19","4":"1"},{"1":"77","2":"12","3":"20","4":"1"},{"1":"217","2":"12","3":"21","4":"2"},{"1":"108","2":"12","3":"22","4":"2"},{"1":"127","2":"12","3":"23","4":"2"},{"1":"70","2":"12","3":"24","4":"2"},{"1":"146","2":"12","3":"25","4":"2"},{"1":"136","2":"12","3":"26","4":"2"},{"1":"115","2":"12","3":"27","4":"2"},{"1":"145","2":"12","3":"28","4":"2"},{"1":"134","2":"12","3":"29","4":"2"},{"1":"115","2":"12","3":"30","4":"2"},{"1":"123","2":"12","3":"31","4":"3"},{"1":"159","2":"12","3":"32","4":"3"},{"1":"137","2":"12","3":"33","4":"3"},{"1":"164","2":"12","3":"34","4":"3"},{"1":"201","2":"12","3":"35","4":"3"},{"1":"145","2":"12","3":"36","4":"3"},{"1":"103","2":"12","3":"37","4":"3"},{"1":"128","2":"12","3":"38","4":"3"},{"1":"130","2":"12","3":"39","4":"3"},{"1":"154","2":"12","3":"40","4":"3"},{"1":"155","2":"12","3":"41","4":"4"},{"1":"160","2":"12","3":"42","4":"4"},{"1":"184","2":"12","3":"43","4":"4"},{"1":"127","2":"12","3":"44","4":"4"},{"1":"135","2":"12","3":"45","4":"4"},{"1":"144","2":"12","3":"46","4":"4"},{"1":"148","2":"12","3":"47","4":"4"},{"1":"154","2":"12","3":"48","4":"4"},{"1":"152","2":"12","3":"49","4":"4"},{"1":"155","2":"12","3":"50","4":"4"},{"1":"125","2":"14","3":"1","4":"1"},{"1":"138","2":"14","3":"2","4":"1"},{"1":"138","2":"14","3":"3","4":"1"},{"1":"108","2":"14","3":"4","4":"1"},{"1":"164","2":"14","3":"5","4":"1"},{"1":"148","2":"14","3":"6","4":"1"},{"1":"174","2":"14","3":"7","4":"1"},{"1":"116","2":"14","3":"8","4":"1"},{"1":"92","2":"14","3":"9","4":"1"},{"1":"96","2":"14","3":"10","4":"1"},{"1":"177","2":"14","3":"11","4":"1"},{"1":"135","2":"14","3":"12","4":"1"},{"1":"70","2":"14","3":"13","4":"1"},{"1":"192","2":"14","3":"14","4":"1"},{"1":"68","2":"14","3":"15","4":"1"},{"1":"103","2":"14","3":"17","4":"1"},{"1":"88","2":"14","3":"19","4":"1"},{"1":"89","2":"14","3":"20","4":"1"},{"1":"240","2":"14","3":"21","4":"2"},{"1":"111","2":"14","3":"22","4":"2"},{"1":"135","2":"14","3":"23","4":"2"},{"1":"71","2":"14","3":"24","4":"2"},{"1":"164","2":"14","3":"25","4":"2"},{"1":"147","2":"14","3":"26","4":"2"},{"1":"123","2":"14","3":"27","4":"2"},{"1":"156","2":"14","3":"28","4":"2"},{"1":"150","2":"14","3":"29","4":"2"},{"1":"122","2":"14","3":"30","4":"2"},{"1":"138","2":"14","3":"31","4":"3"},{"1":"179","2":"14","3":"32","4":"3"},{"1":"144","2":"14","3":"33","4":"3"},{"1":"186","2":"14","3":"34","4":"3"},{"1":"238","2":"14","3":"35","4":"3"},{"1":"166","2":"14","3":"36","4":"3"},{"1":"112","2":"14","3":"37","4":"3"},{"1":"154","2":"14","3":"38","4":"3"},{"1":"146","2":"14","3":"39","4":"3"},{"1":"182","2":"14","3":"40","4":"3"},{"1":"153","2":"14","3":"41","4":"4"},{"1":"174","2":"14","3":"42","4":"4"},{"1":"188","2":"14","3":"43","4":"4"},{"1":"138","2":"14","3":"44","4":"4"},{"1":"141","2":"14","3":"45","4":"4"},{"1":"156","2":"14","3":"46","4":"4"},{"1":"157","2":"14","3":"47","4":"4"},{"1":"170","2":"14","3":"48","4":"4"},{"1":"166","2":"14","3":"49","4":"4"},{"1":"175","2":"14","3":"50","4":"4"},{"1":"149","2":"16","3":"1","4":"1"},{"1":"162","2":"16","3":"2","4":"1"},{"1":"163","2":"16","3":"3","4":"1"},{"1":"136","2":"16","3":"4","4":"1"},{"1":"197","2":"16","3":"5","4":"1"},{"1":"155","2":"16","3":"6","4":"1"},{"1":"218","2":"16","3":"7","4":"1"},{"1":"126","2":"16","3":"8","4":"1"},{"1":"93","2":"16","3":"9","4":"1"},{"1":"101","2":"16","3":"10","4":"1"},{"1":"182","2":"16","3":"11","4":"1"},{"1":"162","2":"16","3":"12","4":"1"},{"1":"71","2":"16","3":"13","4":"1"},{"1":"227","2":"16","3":"14","4":"1"},{"1":"113","2":"16","3":"17","4":"1"},{"1":"106","2":"16","3":"19","4":"1"},{"1":"98","2":"16","3":"20","4":"1"},{"1":"275","2":"16","3":"21","4":"2"},{"1":"131","2":"16","3":"22","4":"2"},{"1":"145","2":"16","3":"23","4":"2"},{"1":"72","2":"16","3":"24","4":"2"},{"1":"197","2":"16","3":"25","4":"2"},{"1":"169","2":"16","3":"26","4":"2"},{"1":"144","2":"16","3":"27","4":"2"},{"1":"184","2":"16","3":"28","4":"2"},{"1":"187","2":"16","3":"29","4":"2"},{"1":"143","2":"16","3":"30","4":"2"},{"1":"170","2":"16","3":"31","4":"3"},{"1":"221","2":"16","3":"32","4":"3"},{"1":"151","2":"16","3":"33","4":"3"},{"1":"235","2":"16","3":"34","4":"3"},{"1":"287","2":"16","3":"35","4":"3"},{"1":"198","2":"16","3":"36","4":"3"},{"1":"135","2":"16","3":"37","4":"3"},{"1":"192","2":"16","3":"38","4":"3"},{"1":"170","2":"16","3":"39","4":"3"},{"1":"215","2":"16","3":"40","4":"3"},{"1":"175","2":"16","3":"41","4":"4"},{"1":"204","2":"16","3":"42","4":"4"},{"1":"197","2":"16","3":"43","4":"4"},{"1":"145","2":"16","3":"44","4":"4"},{"1":"147","2":"16","3":"45","4":"4"},{"1":"173","2":"16","3":"46","4":"4"},{"1":"168","2":"16","3":"47","4":"4"},{"1":"222","2":"16","3":"48","4":"4"},{"1":"184","2":"16","3":"49","4":"4"},{"1":"205","2":"16","3":"50","4":"4"},{"1":"171","2":"18","3":"1","4":"1"},{"1":"187","2":"18","3":"2","4":"1"},{"1":"187","2":"18","3":"3","4":"1"},{"1":"154","2":"18","3":"4","4":"1"},{"1":"199","2":"18","3":"5","4":"1"},{"1":"160","2":"18","3":"6","4":"1"},{"1":"250","2":"18","3":"7","4":"1"},{"1":"134","2":"18","3":"8","4":"1"},{"1":"100","2":"18","3":"9","4":"1"},{"1":"112","2":"18","3":"10","4":"1"},{"1":"184","2":"18","3":"11","4":"1"},{"1":"185","2":"18","3":"12","4":"1"},{"1":"81","2":"18","3":"13","4":"1"},{"1":"248","2":"18","3":"14","4":"1"},{"1":"123","2":"18","3":"17","4":"1"},{"1":"120","2":"18","3":"19","4":"1"},{"1":"107","2":"18","3":"20","4":"1"},{"1":"307","2":"18","3":"21","4":"2"},{"1":"148","2":"18","3":"22","4":"2"},{"1":"163","2":"18","3":"23","4":"2"},{"1":"72","2":"18","3":"24","4":"2"},{"1":"231","2":"18","3":"25","4":"2"},{"1":"205","2":"18","3":"26","4":"2"},{"1":"163","2":"18","3":"27","4":"2"},{"1":"207","2":"18","3":"28","4":"2"},{"1":"230","2":"18","3":"29","4":"2"},{"1":"151","2":"18","3":"30","4":"2"},{"1":"204","2":"18","3":"31","4":"3"},{"1":"263","2":"18","3":"32","4":"3"},{"1":"146","2":"18","3":"33","4":"3"},{"1":"294","2":"18","3":"34","4":"3"},{"1":"332","2":"18","3":"35","4":"3"},{"1":"227","2":"18","3":"36","4":"3"},{"1":"157","2":"18","3":"37","4":"3"},{"1":"232","2":"18","3":"38","4":"3"},{"1":"214","2":"18","3":"39","4":"3"},{"1":"262","2":"18","3":"40","4":"3"},{"1":"184","2":"18","3":"41","4":"4"},{"1":"234","2":"18","3":"42","4":"4"},{"1":"198","2":"18","3":"43","4":"4"},{"1":"146","2":"18","3":"44","4":"4"},{"1":"174","2":"18","3":"45","4":"4"},{"1":"210","2":"18","3":"46","4":"4"},{"1":"185","2":"18","3":"47","4":"4"},{"1":"261","2":"18","3":"48","4":"4"},{"1":"203","2":"18","3":"49","4":"4"},{"1":"234","2":"18","3":"50","4":"4"},{"1":"199","2":"20","3":"1","4":"1"},{"1":"209","2":"20","3":"2","4":"1"},{"1":"198","2":"20","3":"3","4":"1"},{"1":"160","2":"20","3":"4","4":"1"},{"1":"220","2":"20","3":"5","4":"1"},{"1":"160","2":"20","3":"6","4":"1"},{"1":"288","2":"20","3":"7","4":"1"},{"1":"125","2":"20","3":"8","4":"1"},{"1":"100","2":"20","3":"9","4":"1"},{"1":"120","2":"20","3":"10","4":"1"},{"1":"181","2":"20","3":"11","4":"1"},{"1":"195","2":"20","3":"12","4":"1"},{"1":"91","2":"20","3":"13","4":"1"},{"1":"259","2":"20","3":"14","4":"1"},{"1":"133","2":"20","3":"17","4":"1"},{"1":"144","2":"20","3":"19","4":"1"},{"1":"115","2":"20","3":"20","4":"1"},{"1":"318","2":"20","3":"21","4":"2"},{"1":"164","2":"20","3":"22","4":"2"},{"1":"170","2":"20","3":"23","4":"2"},{"1":"76","2":"20","3":"24","4":"2"},{"1":"259","2":"20","3":"25","4":"2"},{"1":"236","2":"20","3":"26","4":"2"},{"1":"185","2":"20","3":"27","4":"2"},{"1":"212","2":"20","3":"28","4":"2"},{"1":"279","2":"20","3":"29","4":"2"},{"1":"157","2":"20","3":"30","4":"2"},{"1":"235","2":"20","3":"31","4":"3"},{"1":"291","2":"20","3":"32","4":"3"},{"1":"156","2":"20","3":"33","4":"3"},{"1":"327","2":"20","3":"34","4":"3"},{"1":"361","2":"20","3":"35","4":"3"},{"1":"225","2":"20","3":"36","4":"3"},{"1":"169","2":"20","3":"37","4":"3"},{"1":"280","2":"20","3":"38","4":"3"},{"1":"250","2":"20","3":"39","4":"3"},{"1":"295","2":"20","3":"40","4":"3"},{"1":"199","2":"20","3":"41","4":"4"},{"1":"269","2":"20","3":"42","4":"4"},{"1":"199","2":"20","3":"43","4":"4"},{"1":"197","2":"20","3":"45","4":"4"},{"1":"231","2":"20","3":"46","4":"4"},{"1":"210","2":"20","3":"47","4":"4"},{"1":"303","2":"20","3":"48","4":"4"},{"1":"233","2":"20","3":"49","4":"4"},{"1":"264","2":"20","3":"50","4":"4"},{"1":"205","2":"21","3":"1","4":"1"},{"1":"215","2":"21","3":"2","4":"1"},{"1":"202","2":"21","3":"3","4":"1"},{"1":"157","2":"21","3":"4","4":"1"},{"1":"223","2":"21","3":"5","4":"1"},{"1":"157","2":"21","3":"6","4":"1"},{"1":"305","2":"21","3":"7","4":"1"},{"1":"98","2":"21","3":"9","4":"1"},{"1":"124","2":"21","3":"10","4":"1"},{"1":"175","2":"21","3":"11","4":"1"},{"1":"205","2":"21","3":"12","4":"1"},{"1":"96","2":"21","3":"13","4":"1"},{"1":"266","2":"21","3":"14","4":"1"},{"1":"142","2":"21","3":"17","4":"1"},{"1":"157","2":"21","3":"19","4":"1"},{"1":"117","2":"21","3":"20","4":"1"},{"1":"331","2":"21","3":"21","4":"2"},{"1":"167","2":"21","3":"22","4":"2"},{"1":"175","2":"21","3":"23","4":"2"},{"1":"74","2":"21","3":"24","4":"2"},{"1":"265","2":"21","3":"25","4":"2"},{"1":"251","2":"21","3":"26","4":"2"},{"1":"192","2":"21","3":"27","4":"2"},{"1":"233","2":"21","3":"28","4":"2"},{"1":"309","2":"21","3":"29","4":"2"},{"1":"150","2":"21","3":"30","4":"2"},{"1":"256","2":"21","3":"31","4":"3"},{"1":"305","2":"21","3":"32","4":"3"},{"1":"147","2":"21","3":"33","4":"3"},{"1":"341","2":"21","3":"34","4":"3"},{"1":"373","2":"21","3":"35","4":"3"},{"1":"220","2":"21","3":"36","4":"3"},{"1":"178","2":"21","3":"37","4":"3"},{"1":"290","2":"21","3":"38","4":"3"},{"1":"272","2":"21","3":"39","4":"3"},{"1":"321","2":"21","3":"40","4":"3"},{"1":"204","2":"21","3":"41","4":"4"},{"1":"281","2":"21","3":"42","4":"4"},{"1":"200","2":"21","3":"43","4":"4"},{"1":"196","2":"21","3":"45","4":"4"},{"1":"238","2":"21","3":"46","4":"4"},{"1":"205","2":"21","3":"47","4":"4"},{"1":"322","2":"21","3":"48","4":"4"},{"1":"237","2":"21","3":"49","4":"4"},{"1":"264","2":"21","3":"50","4":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="exclude-observations-with-filter-1" class="slide level2 smaller"><h2>Exclude observations with filter</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(Time <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">summarize</span>(<span class="at">weight_10 =</span> <span class="fu">mean</span>(weight), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:left;"> Diet </th>
+   <th style="text-align:right;"> weight_10 </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 93.05263 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 108.50000 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 117.10000 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> 126.00000 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="combine-all-three" class="slide level2"><h2>Combine all three</h2>
+<ul>
+<li>Compute max weight for each chick and diet over all time.</li>
+<li>Filter to retain chicks that reach a target weight</li>
+<li>Count the number of observations per chick and diet treatment</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">mutate</span>(<span class="at">max_weight =</span> <span class="fu">max</span>(weight)) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">filter</span>(max_weight <span class="sc">&gt;</span> <span class="dv">110</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">summarize</span>(<span class="at">count_chicks =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">kable</span>()</span></code></pre></div>
+</div>
+</section><section id="combine-all-three-1" class="slide level2"><h2>Combine all three</h2>
+<ul>
+<li>Compute max weight for each chick and diet over all time.</li>
+<li>Filter out chicks that reach a target weight</li>
+<li>Count the number of observations per chick and diet treatment</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+
+<table>
+<thead><tr>
+<th style="text-align:left;"> Diet </th>
+   <th style="text-align:right;"> count_chicks </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 15 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="summary" class="slide level2"><h2>Summary</h2>
+<ul>
+<li><p>Use <code>summarize</code> to compute functions (count, mean, …) to reduce many observations to one</p></li>
+<li><p>Use <code>group_by</code> to split, summarize, and combine data</p></li>
+<li><p>Use <code>mutate</code> to define a new variable for all observations</p></li>
+<li><p>Use <code>filter</code> to select observations</p></li>
+</ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<ul>
+<li><p>Lots more examples with different data in the course notes</p></li>
+<li><p>R4DS <a href="https://r4ds.had.co.nz/transform.html">Chapter 5 Data transformations</a></p></li>
+</ul></section><section id="task" class="slide level2"><h2>Task</h2>
+<p>Practice these skills by doing the calculations in the associated Task.</p>
+
+<div class="footer footer-default">
+
+</div>
+</section>
+</div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+
+
+</body></html>
