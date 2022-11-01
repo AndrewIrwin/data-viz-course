@@ -31,7 +31,8 @@ library(kableExtra)
 ## Goals
 
 - Why we make slides for data visualization
-- How to make slides using "R presentation" format
+- Visualizations on slides differ from reports
+- How to make slides using "Quarto presentation" format
 
 ## Create a template
 
@@ -59,8 +60,9 @@ cars %>% ggplot(aes(speed, dist)) + geom_point(size=4) +
 
 ## Show computer code
 
+Use `echo=TRUE`.
 
-```{r eval=FALSE}
+```{r eval=TRUE, echo=TRUE}
 cars %>% ggplot(aes(speed, dist)) + geom_point()
 ```
 
@@ -71,7 +73,7 @@ All markdown formatting for *italics*, **bold**, [hyperlinks](https://www.r-proj
 
 You can include images from the internet or your own computer.
 
-![A kitten](https://placekitten.com/200/300)
+![A kitten](kitten.jpeg)
 
 ## Two column format
 

@@ -102,11 +102,10 @@ animate(anim1)
 
 * Use sparingly! Think of your audience and goals
 
-* Best example: animation of gapminder data over years
+* Good examples: 
+  * animation of gapminder data over years
+  * [blue whale avoiding ships](https://www.theverge.com/2021/2/3/22265059/animation-blue-whales-ship-strikes)
 
-## Task
-
-* No task for this lesson
 
 
 

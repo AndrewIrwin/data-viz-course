@@ -1,0 +1,208 @@
+---
+title: "Slide presentations"
+author: "Andrew Irwin"
+date: "2022-11-01"
+format: revealjs
+---
+
+
+# First slide
+
+* Try the demo document from File > New File ... > Quarto presentation ...
+
+## Second slide
+
+Title at the top of the page
+
+Add code just like in regular markdown. Hide a code block with `echo = FALSE`.
+
+[Many other options are available.](https://quarto.org/docs/computations/execution-options.html): eval, echo, output, warning, error.
+
+```{r include = FALSE}
+library(palmerpenguins)
+library(tidyverse)
+```
+
+
+```{r echo = FALSE}
+penguins |> count(species) |> kableExtra::kbl()
+```
+
+## Linear model formula
+
+Make a linear model that predicts flipper length from bill length.
+
+```{r echo = FALSE, warning=FALSE}
+penguins |> ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species, shape = sex)) + geom_point()
+```
+
+## Linear model formula
+
+```{r echo = TRUE}
+m1 <- lm( bill_length_mm ~ flipper_length_mm, data = penguins)
+broom::tidy(m1, conf.int = TRUE) |> knitr::kable(digits = 3)
+```
+
+## Linear model formula
+
+```{r echo = TRUE}
+m2 <- lm( flipper_length_mm ~ bill_length_mm, data = penguins)
+broom::tidy(m2, conf.int = TRUE) |> knitr::kable(digits = 3)
+```
+
+
+## Comparisons
+
+You can compare numbers and "text numbers" (numbers in quotation marks) but you shouldn't make a habit of it.
+
+
+```{r echo=TRUE}
+library(gapminder)
+gapminder |> filter(country == "Canada", year == 2007)
+gapminder |> filter(country == "Canada", year == "2007")
+gapminder |> filter(country == "Canada", lifeExp == "80.653")
+```
+
+## Comparions
+
+Some surprises exist out there...
+
+```{r echo=TRUE}
+4 == 4
+4 == "4"
+TRUE == 1
+TRUE == "1"
+3E4
+3E4 == "30000"
+3E4 == "3E4"
+```
+
+## More comparisons
+
+```{r echo=TRUE}
+2/10 - 1/10 == 0.1
+3/10 - 1/10 == 0.2
+3/10 - 1/10
+```
+
+## Comparions
+
+What if you really want to know if two things are the same?
+
+```{r echo=TRUE}
+identical(4, "4")
+identical(4, 4)
+near(2/10 - 1/10, 0.1)
+near(3/10 - 1/10, 0.2)
+near(pi, 22/7)
+near(pi, 355/113, tol = 1e-6)
+pi - 355/113
+```
+
+
+## Combining two tables
+
+```{r echo=TRUE}
+t1 <- gapminder |> group_by(country) |> summarize(max_life_exp = max(lifeExp)) 
+t1
+country_codes |> head()
+```
+
+
+## Combining two tables
+
+```{r echo=TRUE}
+left_join(t1, country_codes, by = "country") |> DT::datatable()
+```
+
+## Combining two tables
+
+```{r echo=TRUE}
+left_join(t1, rgbif::isocodes, by = c("country" = "name")) |> DT::datatable()
+```
+
+## Other kinds of joins
+
+* full_join: all rows in both tables are kept
+* left_join: all rows from left table
+* right_join: all rows from right table
+* inner_join: only rows in both tables
+* anti_join: filter rows in left that are missing from right table
+* semi_join: filter rows in left that are present in right table
+
+Animated versions of [joins](https://github.com/gadenbuie/tidyexplain)
+
+R4DS textbook explanation of [joins](https://r4ds.hadley.nz/joins.html)
+
+## Change background colour { background-color="black" }
+
+And the text changes color too
+
+
+## Make large text
+
+::: {.r-fit-text}
+What is data visualization?
+:::
+
+## Two columns
+
+:::: {.columns}
+::: {.column width="40%"}
+Stuff on the left
+:::
+::: {.column width="60%"}
+Stuff on the right
+:::
+::::
+
+## Another way to do 2 columns
+
+::: {layout-ncol=2}
+### List One
+- Item A
+- Item B
+- Item C
+
+### List Two
+- Item X
+- Item Y
+- Item Z
+:::
+
+## Translating English to dplyr
+
+Make a table that counts the number of observations per country.
+
+```{r echo=TRUE}
+
+```
+
+## Translating English to dplyr
+
+Find the country with the highest and lowest life expectancy in each year.
+
+```{r echo=TRUE}
+
+
+```
+
+
+## Translating English to dplyr
+
+Graph these data.
+
+```{r echo=TRUE}
+
+```
+
+
+## Translating English to dplyr
+
+Make a table showing the number of missing data for each penguin species.
+
+```{r echo=TRUE}
+
+```
+
+

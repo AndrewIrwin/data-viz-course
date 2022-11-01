@@ -57,6 +57,23 @@ gapminder_ss %>% select(-country, -continent) %>% arrange(-lifeExp) %>%
   kable() %>% kable_styling(full_width = FALSE)
 ```
 
+## Distribution of data
+
+```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
+gapminder_ss |> pivot_longer(lifeExp:gdpPercap, names_to = "variable", values_to = "value") |>
+  ggplot() +
+  geom_density(aes(value)) + facet_wrap(variable ~ ., scales="free", ncol=1) + theme(aspect.ratio = .6)
+```
+
+## Distribution of data
+
+```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
+gapminder_ss |> mutate(logGDP = log10(gdpPercap), logPop = log10(pop)) |> select(lifeExp, logGDP, logPop, everything()) |>
+  pivot_longer(lifeExp:logPop, names_to = "variable", values_to = "value") |>
+  ggplot() +
+  geom_density(aes(value)) + facet_wrap(variable ~ ., scales="free", ncol=1) + theme(aspect.ratio = .6)
+```
+
 ## Data preprocessing
 
 * Approximately normally distributed, same variance
@@ -79,7 +96,7 @@ gapminder_scaled %>% ggplot() +
 ```{r}
 kclust1 <- kmeans(gapminder_scaled %>%
                     select(s_lifeExp, s_logGDP, s_logPop),
-                  centers = 6)
+                  centers = 5)
 tidy(kclust1) %>% kable()
 ```
 
@@ -88,7 +105,7 @@ tidy(kclust1) %>% kable()
 ```{r fig.align="center", out.width="60%", fig.asp=0.8}
 kclust1 %>% augment(gapminder_scaled) %>%
   ggplot(aes(y = lifeExp, x = log10(pop), color = .cluster, shape = continent)) + 
-  geom_point() + theme(aspect.ratio = .8)
+  geom_point(size=2) + theme(aspect.ratio = .8)
 ```
 
 ## How good is the clustering?
@@ -114,6 +131,17 @@ clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
 
 ## Second example: penguins
 
+```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
+penguins |> na.omit() |>
+  pivot_longer(bill_length_mm:body_mass_g) |>
+  ggplot() +
+  geom_density(aes(value, color = species)) + facet_wrap(~ name, scales= "free") + 
+  theme(aspect.ratio = .6)
+```
+
+
+## Second example: penguins
+
 ```{r}
 penguins_scaled <- penguins |> na.omit() |>
   mutate(s_flipper_length = scale(flipper_length_mm), 
@@ -133,6 +161,7 @@ penguins_scaled %>% ggplot() +
 ## Perform k-means
 
 ```{r}
+set.seed(1)
 kclust1 <- kmeans(penguins_scaled %>%
                     select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),
                   centers = 3)
@@ -196,6 +225,8 @@ kclust1 %>% augment(penguins_scaled) %>%
 ## Further reading
 
 * Course notes
+
+* [How does k-means clustering work?](https://towardsdatascience.com/how-does-k-means-clustering-in-machine-learning-work-fdaaaf5acfa0)
 
 
 ## Task

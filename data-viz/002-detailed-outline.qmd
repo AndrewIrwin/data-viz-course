@@ -35,6 +35,8 @@ my_paste = function(a,b, page = "004-evaluation.qmd") {
 my_paste2 <- function(a,b) {
   case_when(is.na(a) ~ " ",
             is.na(b) ~ a,
+            b == "24-slides" ~ paste0("<a href='live-coding/", b, ".html'>", a, "</a> ",
+                          "(<a href='https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/live-coding/", b, ".qmd'>qmd</a>)"),  # special case
             TRUE ~ paste0("<a href='live-coding/", b, ".html'>", a, "</a> ",
                           "(<a href='https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/live-coding/", b, ".Rmd'>Rmd</a>)")
   )
