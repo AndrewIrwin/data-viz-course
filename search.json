@@ -2230,7 +2230,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    1 \n  \n\n 0.5939644 \n    0.4625594 \n    1.2265903 \n    30 \n    28.33482 \n    2 \n  \n\n -1.1522049 \n    -1.1373776 \n    0.2695103 \n    41 \n    36.88434 \n    3 \n  \n\n 0.5116874 \n    0.1286984 \n    -0.5512334 \n    29 \n    14.49961 \n    4 \n  \n\n 0.9774023 \n    1.2253082 \n    -0.4343692 \n    29 \n    14.26527 \n    5"
+    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.5939644 \n    0.4625594 \n    1.2265903 \n    30 \n    28.33482 \n    1 \n  \n\n -1.1522049 \n    -1.1373776 \n    0.2695103 \n    41 \n    36.88434 \n    2 \n  \n\n 0.9774023 \n    1.2253082 \n    -0.4343692 \n    29 \n    14.26527 \n    3 \n  \n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    4 \n  \n\n 0.5116874 \n    0.1286984 \n    -0.5512334 \n    29 \n    14.49961 \n    5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -2342,7 +2342,7 @@
     "href": "slides/24-slide-presentation.html#show-computer-code",
     "title": "Making slide presentations",
     "section": "Show computer code",
-    "text": "Show computer code\n::: {.cell}\n\n```{.r .cell-code}\ncars %>% ggplot(aes(speed, dist)) + geom_point()\n```\n:::\n\ncars %>% ggplot(aes(speed, dist)) + geom_point()"
+    "text": "Show computer code\nUse echo=TRUE.\n\ncars %>% ggplot(aes(speed, dist)) + geom_point()"
   },
   {
     "objectID": "slides/24-slide-presentation.html#formatting-text-and-adding-images",
