@@ -2,166 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/001-syllabus.html</loc>
-    <lastmod>2022-10-26T17:26:16.021Z</lastmod>
+    <lastmod>2022-11-01T14:40:04.819Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/002-detailed-outline.html</loc>
-    <lastmod>2022-10-26T17:26:19.928Z</lastmod>
+    <lastmod>2022-11-01T14:40:08.676Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/004-evaluation.html</loc>
-    <lastmod>2022-10-26T17:26:20.765Z</lastmod>
+    <lastmod>2022-11-01T14:40:09.523Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/index.html</loc>
-    <lastmod>2022-10-26T17:26:22.083Z</lastmod>
+    <lastmod>2022-11-01T14:40:10.850Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AndrewIrwin.github.io/data-viz-2022-course/live-coding/24-slides.html</loc>
+    <lastmod>2022-11-01T14:40:16.142Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/00-course-mechanics.html</loc>
-    <lastmod>2022-10-26T17:26:22.771Z</lastmod>
+    <lastmod>2022-11-01T14:40:16.577Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/00-infectious-diseases.html</loc>
-    <lastmod>2022-10-26T17:26:23.144Z</lastmod>
+    <lastmod>2022-11-01T14:40:16.945Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/01-invitation.html</loc>
-    <lastmod>2022-10-26T17:26:24.617Z</lastmod>
+    <lastmod>2022-11-01T14:40:18.362Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/02-computer-tools.html</loc>
-    <lastmod>2022-10-26T17:26:25.995Z</lastmod>
+    <lastmod>2022-11-01T14:40:19.762Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/04-look-at-data.html</loc>
-    <lastmod>2022-10-26T17:26:33.105Z</lastmod>
+    <lastmod>2022-11-01T14:40:26.808Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/05-making-your-first-plot.html</loc>
-    <lastmod>2022-10-26T17:26:40.729Z</lastmod>
+    <lastmod>2022-11-01T14:40:34.135Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/06-version-control.html</loc>
-    <lastmod>2022-10-26T17:26:41.115Z</lastmod>
+    <lastmod>2022-11-01T14:40:34.512Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/07-grammar-graphics.html</loc>
-    <lastmod>2022-10-26T17:26:43.649Z</lastmod>
+    <lastmod>2022-11-01T14:40:36.988Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/08-ggplot-intro.html</loc>
-    <lastmod>2022-10-26T17:26:57.219Z</lastmod>
+    <lastmod>2022-11-01T14:40:49.816Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/09-facets.html</loc>
-    <lastmod>2022-10-26T17:27:11.952Z</lastmod>
+    <lastmod>2022-11-01T14:41:04.225Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/10-summarizing-data.html</loc>
-    <lastmod>2022-10-26T17:27:16.732Z</lastmod>
+    <lastmod>2022-11-01T14:41:09.222Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/11-reading-data.html</loc>
-    <lastmod>2022-10-26T17:27:22.630Z</lastmod>
+    <lastmod>2022-11-01T14:41:15.485Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/12-reshaping-data.html</loc>
-    <lastmod>2022-10-26T17:27:27.419Z</lastmod>
+    <lastmod>2022-11-01T14:41:20.188Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/13-displaying-tables.html</loc>
-    <lastmod>2022-10-26T17:27:32.509Z</lastmod>
+    <lastmod>2022-11-01T14:41:25.186Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/14-getting-help.html</loc>
-    <lastmod>2022-10-26T17:27:39.012Z</lastmod>
+    <lastmod>2022-11-01T14:41:31.338Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/15-working-with-models.html</loc>
-    <lastmod>2022-10-26T17:27:51.747Z</lastmod>
+    <lastmod>2022-11-01T14:41:43.851Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/16-linear-models.html</loc>
-    <lastmod>2022-10-26T17:28:11.371Z</lastmod>
+    <lastmod>2022-11-01T14:42:03.740Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/17-gam-loess.html</loc>
-    <lastmod>2022-10-26T17:28:39.165Z</lastmod>
+    <lastmod>2022-11-01T14:42:31.724Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/18-collaboration.html</loc>
-    <lastmod>2022-10-26T17:28:43.191Z</lastmod>
+    <lastmod>2022-11-01T14:42:35.868Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/19-finding-data.html</loc>
-    <lastmod>2022-10-26T17:28:49.153Z</lastmod>
+    <lastmod>2022-11-01T14:42:42.030Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/20-reproducible-reports.html</loc>
-    <lastmod>2022-10-26T17:28:52.672Z</lastmod>
+    <lastmod>2022-11-01T14:42:45.605Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/21-PCA.html</loc>
-    <lastmod>2022-10-26T17:29:05.526Z</lastmod>
+    <lastmod>2022-11-01T14:42:58.738Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/22-MDS.html</loc>
-    <lastmod>2022-10-26T17:29:09.559Z</lastmod>
+    <lastmod>2022-11-01T14:43:02.836Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/23-k-means.html</loc>
-    <lastmod>2022-10-26T17:29:22.259Z</lastmod>
+    <lastmod>2022-11-01T14:43:15.311Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/24-slide-presentation.html</loc>
-    <lastmod>2022-10-26T17:29:27.453Z</lastmod>
+    <lastmod>2022-11-01T14:43:20.497Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/25-testing.html</loc>
-    <lastmod>2022-10-26T17:29:33.075Z</lastmod>
+    <lastmod>2022-11-01T14:43:30.915Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/26-dynamic-graphics.html</loc>
-    <lastmod>2022-10-26T17:30:03.437Z</lastmod>
+    <lastmod>2022-11-01T14:44:00.972Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/27-making-maps.html</loc>
-    <lastmod>2022-10-26T17:30:21.353Z</lastmod>
+    <lastmod>2022-11-01T14:44:18.608Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/28-sliding-maps.html</loc>
-    <lastmod>2022-10-26T17:30:32.897Z</lastmod>
+    <lastmod>2022-11-01T14:44:30.155Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/29-map-alternatives.html</loc>
-    <lastmod>2022-10-26T17:30:38.908Z</lastmod>
+    <lastmod>2022-11-01T14:44:36.146Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/30-factors-dates.html</loc>
-    <lastmod>2022-10-26T17:30:44.894Z</lastmod>
+    <lastmod>2022-11-01T14:44:41.987Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/31-colour-new ideas.html</loc>
-    <lastmod>2022-10-26T17:30:45.328Z</lastmod>
+    <lastmod>2022-11-01T14:44:42.378Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/31-colour.html</loc>
-    <lastmod>2022-10-26T17:30:51.437Z</lastmod>
+    <lastmod>2022-11-01T14:44:48.375Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/32-theme.html</loc>
-    <lastmod>2022-10-26T17:31:01.051Z</lastmod>
+    <lastmod>2022-11-01T14:44:57.882Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/33-graphics-output.html</loc>
-    <lastmod>2022-10-26T17:31:10.098Z</lastmod>
+    <lastmod>2022-11-01T14:45:06.793Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/slides/34-step-by-step.html</loc>
-    <lastmod>2022-10-26T17:32:21.910Z</lastmod>
+    <lastmod>2022-11-01T14:46:17.833Z</lastmod>
   </url>
   <url>
     <loc>https://AndrewIrwin.github.io/data-viz-2022-course/teams.html</loc>
-    <lastmod>2022-10-26T17:32:22.269Z</lastmod>
+    <lastmod>2022-11-01T14:46:18.206Z</lastmod>
   </url>
 </urlset>

@@ -392,7 +392,8 @@
 </section><section id="goals" class="slide level2"><h2>Goals</h2>
 <ul>
 <li>Why we make slides for data visualization</li>
-<li>How to make slides using “R presentation” format</li>
+<li>Visualizations on slides differ from reports</li>
+<li>How to make slides using “Quarto presentation” format</li>
 </ul></section><section id="create-a-template" class="slide level2"><h2>Create a template</h2>
 <p>Rstudio menu:</p>
 <ul>
@@ -415,8 +416,14 @@
 </section><section id="stopping-distance-increases-with-car-speed" class="slide level2"><h2>Stopping distance increases with car speed</h2>
 
 <img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:40.0%" class="r-stretch quarto-figure-center"></section><section id="show-computer-code" class="slide level2"><h2>Show computer code</h2>
+<pre><code>::: {.cell}
+
+```{.r .cell-code}
+cars %&gt;% ggplot(aes(speed, dist)) + geom_point()
+```
+:::</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>cars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(speed, dist)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>cars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(speed, dist)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 </div>
 </section><section id="formatting-text-and-adding-images" class="slide level2"><h2>Formatting text and adding images</h2>
 <p>All markdown formatting for <em>italics</em>, <strong>bold</strong>, <a href="https://www.r-project.org/">hyperlinks</a> are available.</p>
@@ -426,7 +433,7 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(class)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(class)</span></code></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -472,7 +479,7 @@
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 </div>

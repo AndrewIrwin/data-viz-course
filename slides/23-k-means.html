@@ -1147,7 +1147,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(gapminder_scaled <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>                    <span class="fu">select</span>(s_lifeExp, s_logGDP, s_logPop),</span>
-<span id="cb3-3"><a href="#cb3-3"></a>                  <span class="at">centers =</span> <span class="dv">6</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                  <span class="at">centers =</span> <span class="dv">5</span>)</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 
@@ -1170,44 +1170,36 @@
    <td style="text-align:left;"> 1 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.7638392 </td>
-   <td style="text-align:right;"> 0.8192481 </td>
-   <td style="text-align:right;"> 0.9287450 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 13.00813 </td>
+<td style="text-align:right;"> 0.5939644 </td>
+   <td style="text-align:right;"> 0.4625594 </td>
+   <td style="text-align:right;"> 1.2265903 </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 28.33482 </td>
    <td style="text-align:left;"> 2 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -1.2980325 </td>
-   <td style="text-align:right;"> -1.2650327 </td>
-   <td style="text-align:right;"> 0.0975166 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> 20.50259 </td>
+<td style="text-align:right;"> -1.1522049 </td>
+   <td style="text-align:right;"> -1.1373776 </td>
+   <td style="text-align:right;"> 0.2695103 </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:right;"> 36.88434 </td>
    <td style="text-align:left;"> 3 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.5216447 </td>
-   <td style="text-align:right;"> 0.1021414 </td>
-   <td style="text-align:right;"> -0.5146094 </td>
-   <td style="text-align:right;"> 28 </td>
-   <td style="text-align:right;"> 12.75726 </td>
+<td style="text-align:right;"> 0.5116874 </td>
+   <td style="text-align:right;"> 0.1286984 </td>
+   <td style="text-align:right;"> -0.5512334 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 14.49961 </td>
    <td style="text-align:left;"> 4 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.9372647 </td>
-   <td style="text-align:right;"> 1.2233902 </td>
-   <td style="text-align:right;"> -0.6111037 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 11.84966 </td>
+<td style="text-align:right;"> 0.9774023 </td>
+   <td style="text-align:right;"> 1.2253082 </td>
+   <td style="text-align:right;"> -0.4343692 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 14.26527 </td>
    <td style="text-align:left;"> 5 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> -0.2079756 </td>
-   <td style="text-align:right;"> -0.5280597 </td>
-   <td style="text-align:right;"> 1.3114717 </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 20.07085 </td>
-   <td style="text-align:left;"> 6 </td>
   </tr>
 </tbody>
 </table>
@@ -1217,7 +1209,7 @@
 <div class="cell" data-layout-align="center" data-fig.asp="0.8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>kclust1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>(gapminder_scaled) <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> lifeExp, <span class="at">x =</span> <span class="fu">log10</span>(pop), <span class="at">color =</span> .cluster, <span class="at">shape =</span> continent)) <span class="sc">+</span> </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
 </div>
 <img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="how-good-is-the-clustering" class="slide level2"><h2>How good is the clustering?</h2>
