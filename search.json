@@ -144,14 +144,14 @@
     "href": "live-coding/24-slides.html#translating-english-to-dplyr",
     "title": "Slide presentations",
     "section": "Translating English to dplyr",
-    "text": "Translating English to dplyr\nMake a table that counts the number of observations per country."
+    "text": "Translating English to dplyr\nMake a table that counts the number of observations per country.\n\nlibrary(gapminder)\ngapminder |> group_by(country) |> summarize(n_observations = n())\n\n# A tibble: 142 × 2\n   country     n_observations\n   <fct>                <int>\n 1 Afghanistan             12\n 2 Albania                 12\n 3 Algeria                 12\n 4 Angola                  12\n 5 Argentina               12\n 6 Australia               12\n 7 Austria                 12\n 8 Bahrain                 12\n 9 Bangladesh              12\n10 Belgium                 12\n# … with 132 more rows\n\ngapminder |> count(country)\n\n# A tibble: 142 × 2\n   country         n\n   <fct>       <int>\n 1 Afghanistan    12\n 2 Albania        12\n 3 Algeria        12\n 4 Angola         12\n 5 Argentina      12\n 6 Australia      12\n 7 Austria        12\n 8 Bahrain        12\n 9 Bangladesh     12\n10 Belgium        12\n# … with 132 more rows\n\ngapminder |> count(is.na(country))\n\n# A tibble: 1 × 2\n  `is.na(country)`     n\n  <lgl>            <int>\n1 FALSE             1704\n\ngapminder |> group_by(country) |> \n  summarize(n_missing_lifeExp = sum(is.na(lifeExp)) )\n\n# A tibble: 142 × 2\n   country     n_missing_lifeExp\n   <fct>                   <int>\n 1 Afghanistan                 0\n 2 Albania                     0\n 3 Algeria                     0\n 4 Angola                      0\n 5 Argentina                   0\n 6 Australia                   0\n 7 Austria                     0\n 8 Bahrain                     0\n 9 Bangladesh                  0\n10 Belgium                     0\n# … with 132 more rows"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr-1",
     "href": "live-coding/24-slides.html#translating-english-to-dplyr-1",
     "title": "Slide presentations",
     "section": "Translating English to dplyr",
-    "text": "Translating English to dplyr\nFind the country with the highest and lowest life expectancy in each year."
+    "text": "Translating English to dplyr\nFind the country with the highest and lowest life expectancy in each year.\n\ngapminder |> group_by(year) |> mutate(max_life_exp = max(lifeExp),\n                                      min_life_exp = min(lifeExp)) |>\n  filter(near(lifeExp, max_life_exp) | near(lifeExp, min_life_exp)) \n\n# A tibble: 24 × 8\n# Groups:   year [12]\n   country    continent  year lifeExp    pop gdpPercap max_life_exp min_life_exp\n   <fct>      <fct>     <int>   <dbl>  <int>     <dbl>        <dbl>        <dbl>\n 1 Afghanist… Asia       1952    28.8 8.43e6      779.         72.7         28.8\n 2 Afghanist… Asia       1957    30.3 9.24e6      821.         73.5         30.3\n 3 Afghanist… Asia       1962    32.0 1.03e7      853.         73.7         32.0\n 4 Afghanist… Asia       1967    34.0 1.15e7      836.         74.2         34.0\n 5 Angola     Africa     1987    39.9 7.87e6     2430.         78.7         39.9\n 6 Cambodia   Asia       1977    31.2 6.98e6      525.         76.1         31.2\n 7 Iceland    Europe     1957    73.5 1.65e5     9244.         73.5         30.3\n 8 Iceland    Europe     1962    73.7 1.82e5    10350.         73.7         32.0\n 9 Iceland    Europe     1977    76.1 2.22e5    19655.         76.1         31.2\n10 Japan      Asia       1982    77.1 1.18e8    19384.         77.1         38.4\n# … with 14 more rows"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr-2",
@@ -2230,7 +2230,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.6476207 \n    0.5439807 \n    1.3631592 \n    25 \n    25.48083 \n    1 \n  \n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    2 \n  \n\n 0.9069094 \n    1.0830377 \n    -0.6614696 \n    34 \n    21.36312 \n    3 \n  \n\n 0.4667027 \n    0.0601317 \n    -0.0974258 \n    30 \n    13.05070 \n    4 \n  \n\n -1.1816097 \n    -1.1429065 \n    0.2649730 \n    40 \n    35.38243 \n    5"
+    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled %>%\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) %>% kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.7535204 \n    0.7453651 \n    0.8252914 \n    29 \n    16.744315 \n    1 \n  \n\n -1.1749108 \n    -1.1404092 \n    0.2344096 \n    40 \n    34.003173 \n    2 \n  \n\n 0.2250399 \n    -0.3560400 \n    1.9079736 \n    9 \n    5.915561 \n    3 \n  \n\n -0.9842188 \n    -0.4954821 \n    -1.4418523 \n    14 \n    17.755300 \n    4 \n  \n\n 0.7379609 \n    0.6828378 \n    -0.6059133 \n    50 \n    37.453269 \n    5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -2314,7 +2314,7 @@
     "href": "slides/24-slide-presentation.html#goals",
     "title": "Making slide presentations",
     "section": "Goals",
-    "text": "Goals\n\nWhy we make slides for data visualization\nVisualizations on slides differ from reports\nHow to make slides using “Quarto presentation” format"
+    "text": "Goals\n\nWhy we make slides for data visualization\n\nAs an aid to oral communication\n\n\nVisualizations on slides differ from reports\n\nLarger text, brighter colours, material tailored to presentation\n\n\nHow to make slides using “Quarto presentation” format\n\nLike regular R markdown documents, with a few variations"
   },
   {
     "objectID": "slides/24-slide-presentation.html#create-a-template",
@@ -2363,7 +2363,7 @@
     "href": "slides/24-slide-presentation.html#summary",
     "title": "Making slide presentations",
     "section": "Summary",
-    "text": "Summary\n\nI’ve shown a simple set of slides you can easily make using Rstudio and R markdown\nRemember, you generally want to make your slides quite simple and use large text and images\nYou can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed\nA link to the full code for these slides is provided in the detailed outline"
+    "text": "Summary\n\nI’ve shown a simple set of slides you can easily make using Rstudio and R markdown\nRemember, you generally want to make your slides quite simple and use large text and images\nYou can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed\nA link to the full code for these slides"
   },
   {
     "objectID": "slides/25-testing.html#plan",
