@@ -2230,7 +2230,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled |>\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |> kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.6015865 \n    0.3950819 \n    -0.7349266 \n    36 \n    25.17109 \n    1 \n  \n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    2 \n  \n\n -1.1749108 \n    -1.1404092 \n    0.2344096 \n    40 \n    34.00317 \n    3 \n  \n\n 0.9603031 \n    1.1567821 \n    0.2600862 \n    33 \n    17.03363 \n    4 \n  \n\n 0.3705723 \n    -0.0134949 \n    1.3881644 \n    20 \n    18.32172 \n    5"
+    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled |>\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |> kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n -1.1522049 \n    -1.1373776 \n    0.2695103 \n    41 \n    36.88434 \n    1 \n  \n\n 0.5116874 \n    0.1286984 \n    -0.5512334 \n    29 \n    14.49961 \n    2 \n  \n\n 0.9774023 \n    1.2253082 \n    -0.4343692 \n    29 \n    14.26527 \n    3 \n  \n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    4 \n  \n\n 0.5939644 \n    0.4625594 \n    1.2265903 \n    30 \n    28.33482 \n    5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -2531,7 +2531,7 @@
     "href": "slides/26-dynamic-graphics.html#a-version-of-roslings-graph",
     "title": "Dynamic graphics",
     "section": "A version of Rosling’s graph",
-    "text": "A version of Rosling’s graph\n\nanimation <- gapminder::gapminder |> \n  ggplot() +\n  geom_text(aes(label = format(round(year))), \n            x = 3.8, y = 50, \n            size = 40, color = \"lightgray\") +\n  geom_point(aes(x = gdpPercap,\n             y = lifeExp,\n             size = pop,\n             color = continent)) +\n  theme_bw() +\n  scale_x_continuous(trans = \"log2\") +\n  scale_size_continuous(trans = \"log10\") +\n  transition_time(year) +\n  labs(title = \"Animation frame {frame} of {nframes}\")"
+    "text": "A version of Rosling’s graph\n\nanimation <- gapminder::gapminder |> \n  ggplot() +\n  geom_text(aes(label = format(round(year))), \n            x = 3.8, y = 50, \n            size = 40, color = \"lightgray\") +\n  geom_point(aes(x = gdpPercap,\n             y = lifeExp,\n             size = pop,\n             color = continent)) +\n  theme_bw() +\n  scale_x_continuous(trans = \"log2\") +\n  scale_size_continuous(trans = \"log10\") +\n  transition_time(year) +\n  labs(title = \"Year {frame_time}\", x = \"GDP per capita ($, log scale)\", y = \"Life Expectancy\", size = \"Population\", color = \"Continent\")"
   },
   {
     "objectID": "slides/26-dynamic-graphics.html#a-version-of-roslings-graph-1",
