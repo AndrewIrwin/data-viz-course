@@ -401,10 +401,10 @@
 <li><p>There are variations on the algorithm and other methods (not discussed in this course)</p></li>
 </ul></section><section id="sample-data" class="slide level2"><h2>Sample data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>gapminder_ss <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>year)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>gapminder_ss <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>country, <span class="sc">-</span>continent) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>gapminder_ss <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>year)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>gapminder_ss <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>country, <span class="sc">-</span>continent) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>lifeExp) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1137,7 +1137,7 @@
 <li>Approximately normally distributed, same variance</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>gapminder_scaled <span class="ot">&lt;-</span> gapminder_ss <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>gapminder_scaled <span class="ot">&lt;-</span> gapminder_ss <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">s_logPop =</span> <span class="fu">scale</span>(<span class="fu">log10</span>(pop)), </span>
 <span id="cb2-3"><a href="#cb2-3"></a>         <span class="at">s_logGDP =</span> <span class="fu">scale</span>(<span class="fu">log10</span>(gdpPercap)),</span>
 <span id="cb2-4"><a href="#cb2-4"></a>         <span class="at">s_lifeExp =</span> <span class="fu">scale</span>(lifeExp))</span></code></pre></div>
@@ -1145,10 +1145,10 @@
 
 <img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means" class="slide level2"><h2>Perform k-means</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(gapminder_scaled <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(gapminder_scaled <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>                    <span class="fu">select</span>(s_lifeExp, s_logGDP, s_logPop),</span>
 <span id="cb3-3"><a href="#cb3-3"></a>                  <span class="at">centers =</span> <span class="dv">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">tidy</span>(kclust1) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -1162,43 +1162,43 @@
   </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;"> 0.9119480 </td>
-   <td style="text-align:right;"> 1.0413977 </td>
-   <td style="text-align:right;"> -0.4596503 </td>
+<td style="text-align:right;"> 0.6015865 </td>
+   <td style="text-align:right;"> 0.3950819 </td>
+   <td style="text-align:right;"> -0.7349266 </td>
    <td style="text-align:right;"> 36 </td>
-   <td style="text-align:right;"> 18.48695 </td>
+   <td style="text-align:right;"> 25.17109 </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -1.4670833 </td>
-   <td style="text-align:right;"> -1.2431472 </td>
-   <td style="text-align:right;"> -0.2800012 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 20.06632 </td>
+<td style="text-align:right;"> -1.0586255 </td>
+   <td style="text-align:right;"> -0.5008071 </td>
+   <td style="text-align:right;"> -1.4819352 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 16.45012 </td>
    <td style="text-align:left;"> 2 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.6551759 </td>
-   <td style="text-align:right;"> 0.5041549 </td>
-   <td style="text-align:right;"> 1.0483312 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> 25.79484 </td>
+<td style="text-align:right;"> -1.1749108 </td>
+   <td style="text-align:right;"> -1.1404092 </td>
+   <td style="text-align:right;"> 0.2344096 </td>
+   <td style="text-align:right;"> 40 </td>
+   <td style="text-align:right;"> 34.00317 </td>
    <td style="text-align:left;"> 3 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> 0.0143558 </td>
-   <td style="text-align:right;"> -0.0604618 </td>
-   <td style="text-align:right;"> -1.0173923 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 31.53864 </td>
+<td style="text-align:right;"> 0.9603031 </td>
+   <td style="text-align:right;"> 1.1567821 </td>
+   <td style="text-align:right;"> 0.2600862 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 17.03363 </td>
    <td style="text-align:left;"> 4 </td>
   </tr>
 <tr>
-<td style="text-align:right;"> -0.7286058 </td>
-   <td style="text-align:right;"> -0.9212916 </td>
-   <td style="text-align:right;"> 0.9015219 </td>
+<td style="text-align:right;"> 0.3705723 </td>
+   <td style="text-align:right;"> -0.0134949 </td>
+   <td style="text-align:right;"> 1.3881644 </td>
    <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 19.63254 </td>
+   <td style="text-align:right;"> 18.32172 </td>
    <td style="text-align:left;"> 5 </td>
   </tr>
 </tbody>
@@ -1207,7 +1207,7 @@
 </div>
 </section><section id="display-clustering" class="slide level2"><h2>Display clustering</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>kclust1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>(gapminder_scaled) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>kclust1 <span class="sc">|&gt;</span> <span class="fu">augment</span>(gapminder_scaled) <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> lifeExp, <span class="at">x =</span> <span class="fu">log10</span>(pop), <span class="at">color =</span> .cluster, <span class="at">shape =</span> continent)) <span class="sc">+</span> </span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
@@ -1228,10 +1228,10 @@
 <img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="perform-k-means-1" class="slide level2"><h2>Perform k-means</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>kclust1 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>                    <span class="fu">select</span>(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),</span>
 <span id="cb6-4"><a href="#cb6-4"></a>                  <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tidy</span>(kclust1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tidy</span>(kclust1) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -1278,7 +1278,7 @@
 </div>
 </section><section id="display-clustering-1" class="slide level2"><h2>Display clustering</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>kclust1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>(penguins_scaled) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>kclust1 <span class="sc">|&gt;</span> <span class="fu">augment</span>(penguins_scaled) <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_bill_depth, <span class="at">x =</span> s_bill_length, <span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
