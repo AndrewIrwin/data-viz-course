@@ -432,7 +432,7 @@
 </ul></section><section id="example-jelly-bean-data" class="slide level2 smaller"><h2>Example: Jelly bean data</h2>
 <p>Key variables: treatment, flavour, reaction time, accuracy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>jelly <span class="sc">%&gt;%</span> <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -7084,7 +7084,7 @@
 </div>
 </section><section id="example-jelly-bean-data-1" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>jelly <span class="sc">%&gt;%</span> <span class="fu">count</span>(treatment) <span class="sc">%&gt;%</span> <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(treatment) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -7115,7 +7115,7 @@
 </div>
 </section><section id="example-jelly-bean-data-2" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>jelly <span class="sc">%&gt;%</span> <span class="fu">count</span>(flavour) <span class="sc">%&gt;%</span> <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(flavour) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -7302,7 +7302,7 @@
 </div>
 </section><section id="example-jelly-bean-data-3" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>jelly <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -7437,8 +7437,8 @@
 </div>
 </section><section id="example-sorting" class="slide level2"><h2>Example: Sorting</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>jelly <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -7571,7 +7571,38 @@
 </table>
 </div>
 </div>
-</section><section id="summary-testing-in-this-course" class="slide level2"><h2>Summary: testing in this course</h2>
+</section><section id="example-histogram" class="slide level2"><h2>Example: Histogram</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> <span class="fu">factor</span>(accuracy_0_incorrect_1_correct))) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+
+</div>
+<img data-src="25-testing_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section><section id="example-histogram-1" class="slide level2"><h2>Example: Histogram</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+
+</div>
+<img data-src="25-testing_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section><section id="example-counts" class="slide level2"><h2>Example: Counts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(accuracy_0_incorrect_1_correct, treatment)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  accuracy_0_incorrect_1_correct treatment        n
+                           &lt;dbl&gt; &lt;chr&gt;        &lt;int&gt;
+1                              0 control         45
+2                              0 experimental    87
+3                              1 control         67
+4                              1 Control          1
+5                              1 experimental    26
+6                              1 &lt;NA&gt;             1
+7                             NA experimental     1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">factor</span>(accuracy_0_incorrect_1_correct), treatment)) <span class="sc">+</span> <span class="fu">geom_count</span>()</span></code></pre></div>
+
+</div>
+<img data-src="25-testing_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section><section id="summary-testing-in-this-course" class="slide level2"><h2>Summary: testing in this course</h2>
 <ul>
 <li><p>We are not routinely testing data or code in this course</p></li>
 <li><p>You should be aware of the way errors get into analyses and that there are methods for guarding against them</p></li>
