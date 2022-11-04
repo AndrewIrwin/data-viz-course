@@ -24,7 +24,7 @@ library(tidyverse)
 ```
 
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning=FALSE}
 penguins |> count(species) |> kableExtra::kbl()
 ```
 
@@ -33,7 +33,10 @@ penguins |> count(species) |> kableExtra::kbl()
 Make a linear model that predicts flipper length from bill length.
 
 ```{r echo = FALSE, warning=FALSE}
-penguins |> ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species, shape = sex)) + geom_point()
+penguins |> 
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(aes(color = species, shape = sex)) + 
+  geom_smooth(method = "lm")
 ```
 
 ## Linear model formula
@@ -175,7 +178,12 @@ Stuff on the right
 Make a table that counts the number of observations per country.
 
 ```{r echo=TRUE}
-
+library(gapminder)
+gapminder |> group_by(country) |> summarize(n_observations = n())
+gapminder |> count(country)
+gapminder |> count(is.na(country))
+gapminder |> group_by(country) |> 
+  summarize(n_missing_lifeExp = sum(is.na(lifeExp)) )
 ```
 
 ## Translating English to dplyr
@@ -183,8 +191,10 @@ Make a table that counts the number of observations per country.
 Find the country with the highest and lowest life expectancy in each year.
 
 ```{r echo=TRUE}
-
-
+table3 <- gapminder |> group_by(year) |> mutate(max_life_exp = max(lifeExp),
+                                      min_life_exp = min(lifeExp)) |>
+  filter(near(lifeExp, max_life_exp) | near(lifeExp, min_life_exp)) 
+table3
 ```
 
 
@@ -193,16 +203,42 @@ Find the country with the highest and lowest life expectancy in each year.
 Graph these data.
 
 ```{r echo=TRUE}
-
+table3 |> ggplot(aes(y = country, x = lifeExp, color = year)) + geom_point()
 ```
 
+---
+
+Looking ahead to the lesson on factors, we can make this plot look a bit nicer by rearranging the countries according to lifeExpectancy:
+
+```{r echo=TRUE}
+table3 |> ggplot(aes(y = fct_reorder(country, lifeExp),
+                     x = lifeExp, 
+                     color = year)) +
+  geom_point()
+```
 
 ## Translating English to dplyr
 
 Make a table showing the number of missing data for each penguin species.
 
-```{r echo=TRUE}
+There are missing data for sex and four quantitative variables:
 
+```{r echo=TRUE}
+penguins |> group_by(species) |>
+  summarize(bill_length_na = sum(is.na(bill_length_mm)),
+            bill_depth_na = sum(is.na(bill_depth_mm)),
+            flipper_length_na = sum(is.na(flipper_length_mm)),
+            body_mass_na = sum(is.na(body_mass_g))
+            )
+```
+
+---
+
+The `naniar` package has a nice function to show this too:
+
+```{r warning=FALSE, echo=TRUE}
+library(naniar)
+gg_miss_var(penguins)
 ```
 
 

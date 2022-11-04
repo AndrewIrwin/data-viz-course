@@ -54,7 +54,7 @@ my_theme = theme_classic() +
 [Link to interactive graphic](dynamic-graphics-1.html)
 
 ```{r warning=FALSE}
-p1 <- penguins %>% plot_ly(x = ~ body_mass_g, y = ~ bill_length_mm) %>%
+p1 <- penguins |> plot_ly(x = ~ body_mass_g, y = ~ bill_length_mm) |>
   add_markers(color = ~ species)
 p1
 htmlwidgets::saveWidget(as_widget(p1), "dynamic-graphics-1.html")
@@ -65,7 +65,7 @@ htmlwidgets::saveWidget(as_widget(p1), "dynamic-graphics-1.html")
 Easy to create with `gganimate`. Make a regular ggplot, then use a variable to show how it changes over time.
 
 ```{r warning=FALSE, fig.align="center", out.height="50%", out.width="50%"}
-penguins %>% ggplot(aes(bill_length_mm, bill_depth_mm,
+penguins |> ggplot(aes(bill_length_mm, bill_depth_mm,
                         color = species)) + geom_point() + my_theme
 ```
 
@@ -76,10 +76,10 @@ Easy to create with `gganimate`. Make a regular ggplot, then use a variable to s
 Shown on next slide.
 
 ```{r warning=FALSE}
-b = seq(2500, 6500, by = 500)
-anim1 <- penguins %>% mutate(size_class = cut(body_mass_g, 
-                                              breaks=b, dig.lab=4),
-                    group=1:n()) %>%
+b = seq(from = 2500, to = 6500, by = 500)
+anim1 <- penguins |> 
+  mutate(size_class = cut(body_mass_g, breaks=b, dig.lab=4),
+         group=1:n()) |>
   ggplot(aes(bill_length_mm, bill_depth_mm,
              color = species, group=group)) + 
   geom_point() + 
@@ -103,9 +103,33 @@ animate(anim1)
 * Use sparingly! Think of your audience and goals
 
 * Good examples: 
-  * animation of gapminder data over years
+  * Rosling's animation of gapminder data over years
   * [blue whale avoiding ships](https://www.theverge.com/2021/2/3/22265059/animation-blue-whales-ship-strikes)
 
+## A version of Rosling's graph
+
+```{r}
+animation <- gapminder::gapminder |> 
+  ggplot() +
+  geom_text(aes(label = format(round(year))), 
+            x = 3.8, y = 50, 
+            size = 40, color = "lightgray") +
+  geom_point(aes(x = gdpPercap,
+             y = lifeExp,
+             size = pop,
+             color = continent)) +
+  theme_bw() +
+  scale_x_continuous(trans = "log2") +
+  scale_size_continuous(trans = "log10") +
+  transition_time(year) +
+  labs(title = "Year {frame_time}", x = "GDP per capita ($, log scale)", y = "Life Expectancy", size = "Population", color = "Continent")
+```
+
+## A version of Rosling's graph
+
+```{r echo=FALSE, warning=FALSE, fig.align="center", fig.asp=0.65}
+animate(animation, nframes = 75)
+```
 
 
 

@@ -51,10 +51,10 @@ my_theme = theme_classic() +
 ## Sample data
 
 ```{r}
-gapminder_ss <- gapminder %>%
-  filter(year == 2007) %>% select(-year)
-gapminder_ss %>% select(-country, -continent) %>% arrange(-lifeExp) %>%
-  kable() %>% kable_styling(full_width = FALSE)
+gapminder_ss <- gapminder |>
+  filter(year == 2007) |> select(-year)
+gapminder_ss |> select(-country, -continent) |> arrange(-lifeExp) |>
+  kable() |> kable_styling(full_width = FALSE)
 ```
 
 ## Distribution of data
@@ -79,13 +79,13 @@ gapminder_ss |> mutate(logGDP = log10(gdpPercap), logPop = log10(pop)) |> select
 * Approximately normally distributed, same variance
 
 ```{r}
-gapminder_scaled <- gapminder_ss %>% 
+gapminder_scaled <- gapminder_ss |> 
   mutate(s_logPop = scale(log10(pop)), 
          s_logGDP = scale(log10(gdpPercap)),
          s_lifeExp = scale(lifeExp))
 ```
 ```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
-gapminder_scaled %>% ggplot() +
+gapminder_scaled |> ggplot() +
   geom_density(aes(s_logPop, color = "Population")) + 
   geom_density(aes(s_logGDP, color = "GDP")) + 
   geom_density(aes(s_lifeExp, color = "Life Expectancy")) + theme(aspect.ratio = .6)
@@ -94,16 +94,16 @@ gapminder_scaled %>% ggplot() +
 ## Perform k-means
 
 ```{r}
-kclust1 <- kmeans(gapminder_scaled %>%
+kclust1 <- kmeans(gapminder_scaled |>
                     select(s_lifeExp, s_logGDP, s_logPop),
                   centers = 5)
-tidy(kclust1) %>% kable()
+tidy(kclust1) |> kable()
 ```
 
 ## Display clustering
 
 ```{r fig.align="center", out.width="60%", fig.asp=0.8}
-kclust1 %>% augment(gapminder_scaled) %>%
+kclust1 |> augment(gapminder_scaled) |>
   ggplot(aes(y = lifeExp, x = log10(pop), color = .cluster, shape = continent)) + 
   geom_point(size=2) + theme(aspect.ratio = .8)
 ```
@@ -112,18 +112,18 @@ kclust1 %>% augment(gapminder_scaled) %>%
 
 ```{r echo = FALSE, out.width="60%", fig.align="center"}
 kclusts2 <- 
-  tibble(k = 1:9) %>%
+  tibble(k = 1:9) |>
   mutate(
-    kclust = map(k, ~kmeans(gapminder_scaled %>% select(s_lifeExp, s_logGDP, s_logPop),
+    kclust = map(k, ~kmeans(gapminder_scaled |> select(s_lifeExp, s_logGDP, s_logPop),
                             centers = .x)),
     tidied = map(kclust, tidy),
     glanced = map(kclust, glance),
     augmented = map(kclust, augment, gapminder_scaled)
   )
-clusters2    <- kclusts2 %>% unnest(cols = c(tidied))
-assignments2 <- kclusts2 %>% unnest(cols = c(augmented))
-clusterings2 <- kclusts2 %>% unnest(cols = c(glanced))
-clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
+clusters2    <- kclusts2 |> unnest(cols = c(tidied))
+assignments2 <- kclusts2 |> unnest(cols = c(augmented))
+clusterings2 <- kclusts2 |> unnest(cols = c(glanced))
+clusterings2 |> mutate(proportion_within = tot.withinss / totss) |>
   ggplot(aes(x = k, y = proportion_within)) + 
   geom_line() + geom_point() + theme_bw() +
   scale_x_continuous(breaks = 1:9) + ylim(0,1)
@@ -150,7 +150,7 @@ penguins_scaled <- penguins |> na.omit() |>
          s_body_mass = scale(body_mass_g))
 ```
 ```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
-penguins_scaled %>% ggplot() +
+penguins_scaled |> ggplot() +
   geom_density(aes(s_flipper_length, color = "Flipper length")) + 
   geom_density(aes(s_bill_length, color = "Bill length")) + 
   geom_density(aes(s_bill_depth, color = "Bill depth")) + 
@@ -162,16 +162,16 @@ penguins_scaled %>% ggplot() +
 
 ```{r}
 set.seed(1)
-kclust1 <- kmeans(penguins_scaled %>%
+kclust1 <- kmeans(penguins_scaled |>
                     select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),
                   centers = 3)
-tidy(kclust1) %>% kable(digits = 3)
+tidy(kclust1) |> kable(digits = 3)
 ```
 
 ## Display clustering
 
 ```{r fig.align="center", out.width="60%", fig.asp=0.8}
-kclust1 %>% augment(penguins_scaled) %>%
+kclust1 |> augment(penguins_scaled) |>
   ggplot(aes(y = s_bill_depth, x = s_bill_length, color = .cluster, shape = species)) + 
   geom_point() + theme(aspect.ratio = .8)
 ```
@@ -180,18 +180,18 @@ kclust1 %>% augment(penguins_scaled) %>%
 
 ```{r echo = FALSE, out.width="60%", fig.align="center"}
 kclusts2 <- 
-  tibble(k = 1:9) %>%
+  tibble(k = 1:9) |>
   mutate(
-    kclust = map(k, ~kmeans(penguins_scaled %>% select(s_bill_depth, s_bill_length, s_body_mass, s_flipper_length),
+    kclust = map(k, ~kmeans(penguins_scaled |> select(s_bill_depth, s_bill_length, s_body_mass, s_flipper_length),
                             centers = .x)),
     tidied = map(kclust, tidy),
     glanced = map(kclust, glance),
     augmented = map(kclust, augment, penguins_scaled)
   )
-clusters2    <- kclusts2 %>% unnest(cols = c(tidied))
-assignments2 <- kclusts2 %>% unnest(cols = c(augmented))
-clusterings2 <- kclusts2 %>% unnest(cols = c(glanced))
-clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
+clusters2    <- kclusts2 |> unnest(cols = c(tidied))
+assignments2 <- kclusts2 |> unnest(cols = c(augmented))
+clusterings2 <- kclusts2 |> unnest(cols = c(glanced))
+clusterings2 |> mutate(proportion_within = tot.withinss / totss) |>
   ggplot(aes(x = k, y = proportion_within)) + 
   geom_line() + geom_point() + theme_bw() +
   scale_x_continuous(breaks = 1:9) + ylim(0,1)
@@ -200,11 +200,11 @@ clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
 ## Four species of penguins?
 
 ```{r echo = FALSE}
-kclust1 <- kmeans(penguins_scaled %>%
+kclust1 <- kmeans(penguins_scaled |>
                     select(s_flipper_length, s_body_mass, s_bill_length, s_bill_depth),
                   centers = 4)
-# tidy(kclust1) %>% kable(digits = 3)
-kclust1 %>% augment(penguins_scaled) %>%
+# tidy(kclust1) |> kable(digits = 3)
+kclust1 |> augment(penguins_scaled) |>
   ggplot(aes(y = s_bill_depth, x = s_bill_length, color = .cluster, shape = species)) + 
   geom_point() + theme(aspect.ratio = .8)
 ```

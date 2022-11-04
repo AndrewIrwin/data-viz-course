@@ -31,8 +31,11 @@ library(kableExtra)
 ## Goals
 
 - Why we make slides for data visualization
+  * As an aid to oral communication
 - Visualizations on slides differ from reports
+  * Larger text, brighter colours, material tailored to presentation
 - How to make slides using "Quarto presentation" format
+  * Like regular R markdown documents, with a few variations
 
 ## Create a template
 
@@ -53,7 +56,7 @@ Just just three minus signs (`---`) to start a new slide with no title.
 ## Stopping distance increases with car speed
 
 ```{r, echo=FALSE, fig.align="center", out.width="40%"}
-cars %>% ggplot(aes(speed, dist)) + geom_point(size=4) +
+cars |> ggplot(aes(speed, dist)) + geom_point(size=4) +
     theme_bw() + theme(text=element_text(size=30)) 
 ```
 
@@ -63,7 +66,7 @@ cars %>% ggplot(aes(speed, dist)) + geom_point(size=4) +
 Use `echo=TRUE`.
 
 ```{r eval=TRUE, echo=TRUE}
-cars %>% ggplot(aes(speed, dist)) + geom_point()
+cars |> ggplot(aes(speed, dist)) + geom_point()
 ```
 
 ## Formatting text and adding images
@@ -80,16 +83,16 @@ You can include images from the internet or your own computer.
 :::: {.columns}
 ::: {.column width="50%"}
 ```{r eval=FALSE}
-mpg %>% count(class)
+mpg |> count(class)
 ```
 
 ```{r echo=FALSE}
-mpg %>% count(class) %>% kable() %>% kable_styling()
+mpg |> count(class) |> kable() |> kable_styling()
 ```
 :::
 ::: {.column width="50%"}
 ```{r echo=FALSE}
-mpg %>% count(class) %>% ggplot(aes(x = class, y = n)) + geom_col() + 
+mpg |> count(class) |> ggplot(aes(x = class, y = n)) + geom_col() + 
   theme_bw() + theme(text=element_text(size=30)) +
   theme(axis.text.x = element_text(angle=90))
 ```
@@ -105,5 +108,5 @@ mpg %>% count(class) %>% ggplot(aes(x = class, y = n)) + geom_col() +
 
 * You can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed
 
-* A link to the full code for these slides is provided in the detailed outline
+* [A link to the full code for these slides](https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/slides/24-slide-presentation.qmd) 
 

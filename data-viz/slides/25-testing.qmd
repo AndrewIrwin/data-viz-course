@@ -109,40 +109,59 @@ Check the "obvious" things.
 Key variables: treatment, flavour, reaction time, accuracy.
 
 ```{r include=FALSE}
-jelly <- read_csv("static/L25/jelly-bean-data.csv") %>% clean_names() %>% filter(!is.na(flavour)) %>%
+jelly <- read_csv("static/L25/jelly-bean-data.csv") |> clean_names() |> filter(!is.na(flavour)) |>
   rename(treatment = group_choose_from_drop_down)
 ```
 
 ```{r}
-jelly %>% kable() %>% kable_styling(full_width = FALSE)
-```
-
-## Example: Jelly bean data
-
-
-
-
-```{r}
-jelly %>% count(treatment) %>% kable() %>% kable_styling(full_width = FALSE)
+jelly |> kable() |> kable_styling(full_width = FALSE)
 ```
 
 ## Example: Jelly bean data
 
 ```{r}
-jelly %>% count(flavour) %>% kable() %>% kable_styling(full_width = FALSE)
+jelly |> count(treatment) |> kable() |> kable_styling(full_width = FALSE)
 ```
 
 ## Example: Jelly bean data
 
 ```{r}
-jelly %>% count(tolower(flavour)) %>% kable() %>% kable_styling(full_width = FALSE)
+jelly |> count(flavour) |> kable() |> kable_styling(full_width = FALSE)
+```
+
+## Example: Jelly bean data
+
+```{r}
+jelly |> count(tolower(flavour)) |> kable() |> kable_styling(full_width = FALSE)
 ```
 
 ## Example: Sorting
 
 ```{r}
-jelly %>% count(tolower(flavour)) %>% arrange(n) %>%
-  kable() %>% kable_styling(full_width = FALSE)
+jelly |> count(tolower(flavour)) |> arrange(n) |>
+  kable() |> kable_styling(full_width = FALSE)
+```
+
+## Example: Histogram
+
+```{r error=TRUE}
+jelly |> mutate(reaction_time_s = as.numeric(reaction_time_in_sec)) |>
+  ggplot(aes(reaction_time_s, fill = factor(accuracy_0_incorrect_1_correct))) + geom_histogram(binwidth = 1)
+```
+
+## Example: Histogram
+
+```{r error=TRUE}
+jelly |> mutate(reaction_time_s = as.numeric(reaction_time_in_sec)) |>
+  ggplot(aes(reaction_time_s, fill = treatment)) + geom_histogram(binwidth = 1)
+```
+
+## Example: Counts
+
+```{r}
+jelly |> count(accuracy_0_incorrect_1_correct, treatment) |> kable() |> kable_styling(full_width = FALSE)
+jelly |> mutate(reaction_time_s = as.numeric(reaction_time_in_sec)) |>
+  ggplot(aes(factor(accuracy_0_incorrect_1_correct), treatment)) + geom_count()
 ```
 
 ## Summary: testing in this course
