@@ -1,0 +1,162 @@
+---
+title: "Vector maps"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Vector maps
+
+* Packages
+* Key functions
+* Data for maps
+* Coloring regions
+* Adding points
+* Projections
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(ggmap)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
+```
+
+Lots of other packages in examples (notes and wider internet): `sf` (simple features), `rgdal` (geographic data abstraction library), and many more.
+
+## Functions
+
+* `map_data` (get data for a map, part of ggplot2)
+* `geom_map` (draw a map)
+  * aesthetics: `map_id` (column with names for each region to be plotted), required argument: `map` (a data frame with the map data)
+* `expand_limits` (if part of your map is not showing)
+* `coord_map` (projections, mercator is default)
+
+## Data for map
+
+```{r}
+m1 <- map_data("world")
+# france, italy, lakes, nz, county (USA), state (USA), usa (coastline), world, world2 (centered on Pacific Ocean)
+# canada.cities, world.cities
+# see: help(package = "maps") for details
+```
+
+There are many "regions" and "subregions" within some of these maps:
+
+```{r}
+count(m1, region) |> head()
+m1 |> filter(region == "Canada") |> head()
+```
+
+Political borders and territorial disputes: maps will undoubtedly be incomplete, inaccurate, or conflict with some people's political views whether in Canada (Québec, Labrador), France (St Pierre & Miquelon), China, Palestine, Russia, etc.
+
+## Make a map
+
+```{r}
+ggplot(m1, aes(map_id = region, x = long, y = lat, group=group)) +
+    geom_map(fill = "white", color = "black", size = 0.5, map = m1) 
+```
+
+Show just one region
+
+```{r}
+m2 <- m1 |> filter(region == "Canada") 
+ggplot(m2, aes(map_id = region, x = long, y = lat)) +
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
+  coord_map("albers", 60, 90)
+```
+
+```{r}
+m2 <- m1 |> filter(region == "Ukraine") 
+m2 <- m1 |> filter(region == "Iran")
+m2 <- m1 |> filter(region == "Chile")
+m2 <- m1 |> filter(region == "China")
+m2 <- m1 |> filter(region == "France") # m2 <- map_data("france") # more detail
+ggplot(m2, aes(map_id = region, x = long, y = lat)) +
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
+  coord_map("mollweide")
+```
+
+```{r}
+m2 <- map_data("world2")
+ggplot(m2, aes(map_id = region, x = long, y = lat)) +
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
+  # coord_map("gilbert") 
+  coord_map("mollweide")
+  # coord_map("lambert", -25, 25) # not good for the whole globe
+  # coord_map("albers", -25, 25)
+
+```
+
+Get a list of projections from help("mapproject") (in `mapproj` package).
+
+
+
+## Colouring regions
+
+```{r}
+values <- tibble( region = m1 %>% pull(region) %>% unique())
+values <- values %>% mutate(value = runif(nrow(values)))
+map2 <- ggplot(values, aes(map_id = region)) + 
+        geom_map(aes(fill = value),
+                 map = m1,
+                 colour = "white", 
+                 alpha = 1, size=0.2) +
+   expand_limits(x = c(-180,180), y = c(-80,80)) +
+   theme_bw() +
+  coord_map("mollweide")
+map2
+map2 + theme_void() # removes axes, labels; leaves legend
+```
+
+Show just a few regions
+
+```{r}
+map2 <- ggplot(m1, aes(map_id = region)) + 
+  geom_map(fill = "gray", color = "white", map = m1) + 
+  geom_map(aes(fill = value),
+           data = values |> slice_sample(n = 50),
+           map = m1,
+           colour = "white", alpha = 1, size=0.2) +
+   expand_limits(x = c(-180,180), y = c(-80,80)) +
+   theme_bw() +
+  coord_map("mollweide")
+map2 + theme_void()
+```
+
+
+## Adding points
+
+Start with some data:
+
+```{r}
+library(maps)
+canada.cities |> head()
+```
+
+Add points to a map:
+
+```{r}
+library(ggrepel)
+m2 <- m1 |> filter(region == "Canada") 
+ggplot(m2) +
+  geom_map(aes(map_id = region),
+           fill = "white", color = "black", size = 0.5, map = m2) +
+  geom_point(data = canada.cities,
+             aes(x = long, y = lat),
+             size = 0.25) +
+  geom_label_repel(data = canada.cities |> filter(pop > 500000),
+             aes(x = long, y = lat, label = name),
+             size = 3) +
+  geom_point(data = canada.cities |> filter(pop > 500000),
+             aes(x = long, y = lat),
+             size = 0.25, color = "red") +
+  coord_map("albers", 60, 90)
+```
+
