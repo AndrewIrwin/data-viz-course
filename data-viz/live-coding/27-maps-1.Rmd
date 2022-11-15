@@ -42,6 +42,8 @@ Lots of other packages in examples (notes and wider internet): `sf` (simple feat
 
 ```{r}
 m1 <- map_data("world")
+m1lake <- map_data("lakes")
+# m1 |> filter(region == "Canada")
 # france, italy, lakes, nz, county (USA), state (USA), usa (coastline), world, world2 (centered on Pacific Ocean)
 # canada.cities, world.cities
 # see: help(package = "maps") for details
@@ -59,8 +61,22 @@ Political borders and territorial disputes: maps will undoubtedly be incomplete,
 ## Make a map
 
 ```{r}
-ggplot(m1, aes(map_id = region, x = long, y = lat, group=group)) +
-    geom_map(fill = "white", color = "black", size = 0.5, map = m1) 
+ggplot(m1, aes(map_id = region, 
+               x = long, y = lat)) +
+    geom_map(fill = "transparent", color = "black", 
+             size = 0.5, map = m1)
+```
+
+
+Try to overlay two maps. I made a mistake in class by not specifying both "map" and "data" in the second geom_map layer (with the lake data).
+
+```{r}
+ggplot(m1, aes(map_id = region, 
+               x = long, y = lat)) +
+  geom_map(fill = "transparent", color = "black", 
+           size = 0.1, map = m1) +
+  geom_map(data = m1lake, fill = "blue", color = "transparent",
+           map = m1lake)
 ```
 
 Show just one region
@@ -68,8 +84,11 @@ Show just one region
 ```{r}
 m2 <- m1 |> filter(region == "Canada") 
 ggplot(m2, aes(map_id = region, x = long, y = lat)) +
-  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
-  coord_map("albers", 60, 90)
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2)  +
+  coord_map("albers", 60, 90) +
+  theme(axis.title = element_blank(), axis.text = element_blank(),
+        axis.ticks = element_blank())
+  # theme_void()
 ```
 
 ```{r}
@@ -119,7 +138,7 @@ Show just a few regions
 
 ```{r}
 map2 <- ggplot(m1, aes(map_id = region)) + 
-  geom_map(fill = "gray", color = "white", map = m1) + 
+  geom_map(fill = "gray", color = "white", map = m1, size= 0.2) + 
   geom_map(aes(fill = value),
            data = values |> slice_sample(n = 50),
            map = m1,
