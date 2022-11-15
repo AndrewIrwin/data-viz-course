@@ -23,9 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(ggmap)
-library(rnaturalearth)
-library(rnaturalearthdata)
-library(rnaturalearthhires)
+# library(rnaturalearth)
+# library(rnaturalearthdata) # devtools::install_github("ropensci/rnaturalearthdata")
+# library(rnaturalearthhires) # devtools::install_github("ropensci/rnaturalearthhires")
 ```
 
 Lots of other packages in examples (notes and wider internet): `sf` (simple features), `rgdal` (geographic data abstraction library), and many more.
