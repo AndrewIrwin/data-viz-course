@@ -2230,7 +2230,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled |>\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |> kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n -1.3092703 \n    -1.2492232 \n    0.1431273 \n    33 \n    23.096735 \n    1 \n  \n\n 0.8802513 \n    1.0149662 \n    0.8617957 \n    21 \n    8.730738 \n    2 \n  \n\n -0.9842188 \n    -0.4954821 \n    -1.4418523 \n    14 \n    17.755300 \n    3 \n  \n\n 0.0673307 \n    -0.2927558 \n    1.0593589 \n    26 \n    27.383777 \n    4 \n  \n\n 0.7656064 \n    0.7178849 \n    -0.6287148 \n    48 \n    34.314870 \n    5"
+    "text": "Perform k-means\n\nkclust1 <- kmeans(gapminder_scaled |>\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |> kable()\n\n\n\n\n s_lifeExp \n    s_logGDP \n    s_logPop \n    size \n    withinss \n    cluster \n  \n\n\n 0.5116874 \n    0.1286984 \n    -0.5512334 \n    29 \n    14.49961 \n    1 \n  \n\n 0.9774023 \n    1.2253082 \n    -0.4343692 \n    29 \n    14.26527 \n    2 \n  \n\n -1.0586255 \n    -0.5008071 \n    -1.4819352 \n    13 \n    16.45012 \n    3 \n  \n\n -1.1522049 \n    -1.1373776 \n    0.2695103 \n    41 \n    36.88434 \n    4 \n  \n\n 0.5939644 \n    0.4625594 \n    1.2265903 \n    30 \n    28.33482 \n    5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -2678,14 +2678,14 @@
     "href": "slides/28-sliding-maps.html#plan",
     "title": "Making sliding maps",
     "section": "Plan",
-    "text": "Plan\n\nKinds of maps\nBasic maps\nAdding points\nShading areas\nTile service providers"
+    "text": "Plan\n\nKinds of maps (outline vs. tiles; interactive vs. static)\nCreating basic maps\nAdding points\nShading areas\nTile service providers"
   },
   {
     "objectID": "slides/28-sliding-maps.html#map-libraries",
     "href": "slides/28-sliding-maps.html#map-libraries",
     "title": "Making sliding maps",
     "section": "Map libraries",
-    "text": "Map libraries\n\nDynamic: leaflet for drawing raster or tiled maps (leafletjs.com)\nStatic: ggmap (part of tidyverse, has stamen map functions)"
+    "text": "Map libraries\n\nDynamic: leaflet for drawing raster or tiled maps (leafletjs.com)\nStatic: ggmap (part of tidyverse, tiles from several services)\n\nBoth rely on internet services such as:\n\nOpenStreetMap\nStamen Maps\nGoogle Maps"
   },
   {
     "objectID": "slides/28-sliding-maps.html#a-basic-map",
@@ -2706,7 +2706,7 @@
     "href": "slides/28-sliding-maps.html#adding-points",
     "title": "Making sliding maps",
     "section": "Adding points",
-    "text": "Adding points\n\ncities <- read_csv(\"static/L28/selected_cities.csv\")\nm2 <- leaflet(data = cities) %>%\n  addTiles() %>%\n  addCircleMarkers(~ lng, ~lat, label = ~city)"
+    "text": "Adding points\n\ncities <- read_csv(\"static/L28/selected_cities.csv\")\nhead(cities) |> kable() |> kable_styling()\n\n\n\n\n city \n    city_ascii \n    lat \n    lng \n    country \n    iso2 \n    iso3 \n    admin_name \n    capital \n    population \n    id \n  \n\n\n Tokyo \n    Tokyo \n    35.6897 \n    139.6922 \n    Japan \n    JP \n    JPN \n    Tōkyō \n    primary \n    37977000 \n    1392685764 \n  \n\n Jakarta \n    Jakarta \n    -6.2146 \n    106.8451 \n    Indonesia \n    ID \n    IDN \n    Jakarta \n    primary \n    34540000 \n    1360771077 \n  \n\n Delhi \n    Delhi \n    28.6600 \n    77.2300 \n    India \n    IN \n    IND \n    Delhi \n    admin \n    29617000 \n    1356872604 \n  \n\n Mumbai \n    Mumbai \n    18.9667 \n    72.8333 \n    India \n    IN \n    IND \n    Mahārāshtra \n    admin \n    23355000 \n    1356226629 \n  \n\n Manila \n    Manila \n    14.5958 \n    120.9772 \n    Philippines \n    PH \n    PHL \n    Manila \n    primary \n    23088000 \n    1608618140 \n  \n\n Shanghai \n    Shanghai \n    31.1667 \n    121.4667 \n    China \n    CN \n    CHN \n    Shanghai \n    admin \n    22120000 \n    1156073548 \n  \n\n\n\nm2 <- leaflet(data = cities) %>%\n  addTiles() %>%\n  addCircleMarkers(~ lng, ~lat, label = ~city)"
   },
   {
     "objectID": "slides/28-sliding-maps.html#adding-points-1",
@@ -2734,7 +2734,7 @@
     "href": "slides/28-sliding-maps.html#other-tiled-map-services",
     "title": "Making sliding maps",
     "section": "Other tiled map services",
-    "text": "Other tiled map services\n\nmymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, \n                                        right = -50, top = 66), \n                               zoom=5, maptype = \"terrain\")\nm4 <- ggmap(mymap_terrain)"
+    "text": "Other tiled map services\n\nmymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, \n                                        right = -50, top = 66), \n                               zoom=5, maptype = \"terrain\")\nm4 <- ggmap(mymap_terrain)  \n\nSee help for the package ggmap for more services (google maps, open street maps).\nStart with a small integer for zoom and increase it if your map is fuzzy. (Don’t burden yourself or a free service by downloading unnecessary data.)"
   },
   {
     "objectID": "slides/28-sliding-maps.html#other-tiled-map-services-1",
@@ -2762,7 +2762,7 @@
     "href": "slides/28-sliding-maps.html#summary",
     "title": "Making sliding maps",
     "section": "Summary",
-    "text": "Summary\n\nMake a basic map\nAdd points and labels\nFill regions with colour (requires polygons)\nThere are several tile services"
+    "text": "Summary\n\nOutline vs tiled (image) maps\nMake a basic map\nAdd points and labels\nFill regions with colour (requires polygons)\nThere are several tile services"
   },
   {
     "objectID": "slides/28-sliding-maps.html#task",
@@ -2784,6 +2784,20 @@
     "title": "Alternatives to maps",
     "section": "Why shouldn’t I use a map?",
     "text": "Why shouldn’t I use a map?\n\nAlways think about the purpose\nIs geography the most important feature?\nAre you showing points or areas?\nWill the area of a region complicate interpretation?\nIs the spatial extent one dimensional? What could you do with the other dimension?"
+  },
+  {
+    "objectID": "slides/29-map-alternatives.html#examples",
+    "href": "slides/29-map-alternatives.html#examples",
+    "title": "Alternatives to maps",
+    "section": "Examples",
+    "text": "Examples\n\n2020 population density. census.gov"
+  },
+  {
+    "objectID": "slides/29-map-alternatives.html#usa-elections",
+    "href": "slides/29-map-alternatives.html#usa-elections",
+    "title": "Alternatives to maps",
+    "section": "USA elections",
+    "text": "USA elections\n\n2022 US House of representatives"
   },
   {
     "objectID": "slides/29-map-alternatives.html#summary",
@@ -2839,7 +2853,7 @@
     "href": "slides/29-map-alternatives.html#task",
     "title": "Alternatives to maps",
     "section": "Task",
-    "text": "Task\n\nTask on map alteratives in repository"
+    "text": "Task\n\nTask on map alternatives in repository"
   },
   {
     "objectID": "slides/30-factors-dates.html#plan",
@@ -2909,7 +2923,7 @@
     "href": "slides/30-factors-dates.html#custom-order",
     "title": "Text, Factors, Dates, and Times",
     "section": "Custom order",
-    "text": "Custom order\nOrder from smallest to largest, top to bottom. Watch out for NAs.\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, \n             y = fct_relevel(species, \"Gentoo\", \"Adelie\"))) + \n  stat_summary() + my_theme"
+    "text": "Custom order\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, \n             y = fct_relevel(species, \"Gentoo\", \"Adelie\"))) + \n  stat_summary() + my_theme"
   },
   {
     "objectID": "slides/30-factors-dates.html#challenges-that-arise-with-dates-and-times",
@@ -3000,7 +3014,7 @@
     "href": "slides/31-colour.html#what-your-eye-sees",
     "title": "Colour",
     "section": "What your eye sees",
-    "text": "What your eye sees\n\nFigure 1: LED emission spectrum"
+    "text": "What your eye sees\n\nFigure 1: Response of cones in your eyes"
   },
   {
     "objectID": "slides/31-colour.html#colors-that-exist-in-nature",
@@ -3021,21 +3035,21 @@
     "href": "slides/31-colour.html#colors-on-a-computer-screen",
     "title": "Colour",
     "section": "Colors on a computer screen",
-    "text": "Colors on a computer screen\n{#fig-create on computer}"
+    "text": "Colors on a computer screen\n\nFigure 4: CIE model"
   },
   {
     "objectID": "slides/31-colour.html#two-models-for-creating-colour",
     "href": "slides/31-colour.html#two-models-for-creating-colour",
     "title": "Colour",
     "section": "Two models for creating colour",
-    "text": "Two models for creating colour\n\nFigure 4: Creating colour models"
+    "text": "Two models for creating colour\n\nFigure 5: Creating colour models"
   },
   {
     "objectID": "slides/31-colour.html#additive-and-subtractive-models",
     "href": "slides/31-colour.html#additive-and-subtractive-models",
     "title": "Colour",
     "section": "Additive and subtractive models",
-    "text": "Additive and subtractive models\n\n\nFigure 5: Additive\n\n\n\n\nFigure 6: Subtractive"
+    "text": "Additive and subtractive models\n\n\nFigure 6: Additive\n\n\n\n\nFigure 7: Subtractive"
   },
   {
     "objectID": "slides/31-colour.html#colour-guidelines---discrete",
@@ -3204,20 +3218,6 @@
     "title": "Theme",
     "section": "Formatting numbers on scales",
     "text": "Formatting numbers on scales\n\np1 + scale_x_continuous(labels = scales::dollar) +\n  scale_y_continuous(labels = scales::percent) + # also comma\n  theme(axis.text = element_text(size=14))"
-  },
-  {
-    "objectID": "slides/32-theme.html#further-reading",
-    "href": "slides/32-theme.html#further-reading",
-    "title": "Theme",
-    "section": "Further reading",
-    "text": "Further reading\n\nCourse notes\nHealy and Wilke sections on colour"
-  },
-  {
-    "objectID": "slides/32-theme.html#task",
-    "href": "slides/32-theme.html#task",
-    "title": "Theme",
-    "section": "Task",
-    "text": "Task\n\nPractice using colour\nNo assigned task"
   },
   {
     "objectID": "slides/33-graphics-output.html#plan",

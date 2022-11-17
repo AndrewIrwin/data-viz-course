@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.38">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-20">
+<meta name="dcterms.date" content="2022-11-22">
 <title>data-viz - Text, Factors, Dates, and Times</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -387,7 +387,7 @@
 
 <section id="title-slide" class="center"><h1 class="title">Text, Factors, Dates, and Times</h1>
   <p class="author">Andrew Irwin, a.irwin@dal.ca</p>
-  <p class="date">2022-10-20</p>
+  <p class="date">2022-11-22</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>Tools to help you work with data that are not numbers</p></li>
@@ -410,7 +410,7 @@
 <pre><code>[1] "a crazy sentence with too many spaces in strange places."</code></pre>
 </div>
 </div>
-</section><section id="letter-case" class="slide level2"><h2>Letter case</h2>
+</section><section id="letter-case" class="slide level2 smaller"><h2>Letter case</h2>
 <p>Upper and lower case differences are often not noticed by humans, but matter to a computer. One solution is to convert all text to upper, lower, or title case.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">tibble</span>(<span class="at">original =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"apple"</span>, <span class="st">"APPLE"</span>, <span class="st">"aPpLe"</span>),</span>
@@ -531,7 +531,7 @@
 <li><p>Plot order on scales (axes, color scale)</p></li>
 <li><p>Too many factors</p></li>
 <li><p>Mapping colours to specific levels (later lesson on colour)</p></li>
-</ul></section><section id="plot-order" class="slide level2"><h2>Plot order</h2>
+</ul></section><section id="plot-order" class="slide level2 smaller"><h2>Plot order</h2>
 <p>Here’s a plot of mean penguin body mass by species and sex. What’s the order?</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> island)) <span class="sc">+</span> </span>
@@ -539,7 +539,7 @@
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-6-1.svg" style="width:90.0%" class="r-stretch quarto-figure-center"></section><section id="plot-order-1" class="slide level2"><h2>Plot order</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-6-1.svg" style="width:90.0%" class="r-stretch quarto-figure-center"></section><section id="plot-order-1" class="slide level2 smaller"><h2>Plot order</h2>
 <p>Order from smallest to largest, top to bottom. Watch out for NAs.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
@@ -549,8 +549,7 @@
 <span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-7-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="custom-order" class="slide level2"><h2>Custom order</h2>
-<p>Order from smallest to largest, top to bottom. Watch out for NAs.</p>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-7-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="custom-order" class="slide level2 smaller"><h2>Custom order</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>penguins <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
@@ -628,7 +627,7 @@
 <span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">scale_y_datetime</span>(<span class="at">date_labels =</span> <span class="st">"%H:%M"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="time-arithmetic" class="slide level2"><h2>Time arithmetic</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="time-arithmetic" class="slide level2 smaller"><h2>Time arithmetic</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
 <span id="cb12-2"><a href="#cb12-2"></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
