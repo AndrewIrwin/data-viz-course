@@ -58,7 +58,8 @@ knitr::opts_chunk$set(
 
 ## What your eye sees
 
-![LED emission spectrum](static/L31/RGB_LED_Spectrum.svg){#fig-LED}
+![Response of cones in your eyes](static/L31/cones-response-curves.svg){#fig-cones}
+
 
 ## Colors that exist in nature
 
@@ -66,16 +67,18 @@ knitr::opts_chunk$set(
 
 ## What a computer screen creates
 
-![LED emission spectrum](static/L31/cones-response-curves.svg){#fig-cones}
+![LED emission spectrum](static/L31/RGB_LED_Spectrum.svg){#fig-LED}
+
 
 ## Colors on a computer screen
 
-![CIE model](static/L31/CIExy1931_sRGB_gamut_D65-wikimedia.png){#fig-create on computer}
+![CIE model](static/L31/CIExy1931_sRGB_gamut_D65-wikimedia.png){#fig-create-on-computer}
 
 
 ## Two models for creating colour 
 
 ![Creating colour models](static/L31/rgb-cmyk.webp){#fig-create-colour}
+
 
 ## Additive and subtractive models
 
@@ -167,7 +170,7 @@ p1 + my_theme +
 ## coolors.co palette maker { background-image="static/L31/palette.png" }
 
 
-## Further reading
+## Further reading {.smaller}
 
 * Course notes
 

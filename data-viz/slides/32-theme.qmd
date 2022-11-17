@@ -1,7 +1,7 @@
 ---
 title: "Theme"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2022-11-24"
 format:
   revealjs:
     slide-number: true
@@ -145,20 +145,6 @@ p1 + scale_x_continuous(labels = scales::dollar) +
   scale_y_continuous(labels = scales::percent) + # also comma
   theme(axis.text = element_text(size=14))
 ```
-
-
-## Further reading
-
-* Course notes
-
-* Healy and Wilke sections on colour
-
-
-## Task
-
-* Practice using colour
-
-* No assigned task
 
 
 

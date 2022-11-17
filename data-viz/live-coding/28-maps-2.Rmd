@@ -1,0 +1,125 @@
+---
+title: "Tile maps and alternatives"
+author: "Andrew Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(ggmap)
+library(leaflet)
+# more
+```
+
+
+## Leaflet map
+
+```{r}
+m <- leaflet() |>
+  addTiles()  # Add default OpenStreetMap map tiles
+m
+```
+
+## Adding points
+
+```{r}
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-63.5932, lat=44.63697, popup="Math & Stats, Dalhousie U")
+m
+```
+
+Generate some data at random
+
+```{r}
+N <- 10 # no more than 26 please
+cities <- tibble(
+  lat = runif(N, -80, 80),
+  lng = runif(N, -180, 180),
+  city = sample(LETTERS, N)
+)
+m2 <- leaflet(data = cities) %>%
+  addTiles() %>%
+  addCircleMarkers(~ lng, ~lat, label = ~city)
+m2
+```
+
+## ggmap with Stamen map
+
+Can't use openstreetmap -- too easy to overload their computers. Can get an "API key" to obtain google maps.
+
+```{r}
+mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, 
+                                        right = -50, top = 66), 
+                               zoom=5, maptype = "terrain")
+m4 <- ggmap(mymap_terrain)
+m4
+```
+
+## Heatmaps
+
+Heatmaps can be used to show three variables. If the heatmap is to replace a map, typically one is geographic (shown on the x- or y-axis), 
+one is another categorical variable (such as age group), and the third is a quantitative variable shown in colour brightness.
+
+Here I'll take the census data by county from the USA in the `socviz` package (`county_data`).
+
+I'll aggregate the population by country region (north, south, etc) and the party that won the vote in the 2016 region.
+
+```{r}
+library(socviz)
+s1 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
+  group_by(partywinner16, census_region) |> summarize(pop = sum(pop))
+s1 |> ggplot(aes(y = census_region, x = partywinner16, fill = log10(pop))) + geom_tile() 
+s1 <- county_data |> filter(!is.na(census_region)) |>
+  group_by(pop_dens, census_region) |> summarize(pop = sum(pop), n = n())
+s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = log10(pop))) + geom_tile() 
+s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = n)) + geom_tile() 
+s1 |> group_by(census_region) |> mutate(percent = n/sum(n)*100) |>
+  ggplot(aes(y = census_region, x = pop_dens, fill = percent)) + geom_tile() 
+s1 |> group_by(census_region) |> mutate(percent_pop = pop/sum(pop)*100) |>
+  ggplot(aes(y = census_region, x = pop_dens, fill = percent_pop)) + geom_tile() 
+s1 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
+  group_by(partywinner16, state) |> summarize(pop = sum(pop))
+s1 |> ggplot(aes(y = fct_reorder(state, pop), x = partywinner16, fill = log10(pop))) + geom_tile() 
+```
+
+## USA state map
+
+Many true geographic maps of the USA are strongly influenced by population density:
+
+* [USA population density](https://www.census.gov/library/visualizations/2021/geo/population-distribution-2020.html)
+* [Power plant locations](https://www.visualcapitalist.com/mapped-every-power-plant-in-the-united-states/)
+* Even rates (numbers scaled by population) can show the influence of population density: [Influenza cases by state](https://www.cdc.gov/flu/weekly/usmap.htm)
+
+Sometimes a different geographic scale is warranted such as state or county level political influence.
+
+
+```{r}
+library(statebins)
+s2 <- county_data |> filter(!is.na(state), !is.na(per_dem_2012), !is.na(pop)) |> 
+  mutate(state = as.character(state)) |>
+  group_by(state) |> 
+  summarize(pop_sum = sum(pop),
+            percent_dem_2012 = weighted.mean(per_dem_2012, pop)) 
+m4 <- s2 %>% ggplot(aes(state = state, fill = log10(pop_sum))) +
+  geom_statebins() +
+  theme_statebins() +
+  labs(fill="log10 population")
+m4
+m5 <- s2 %>% ggplot(aes(state = state, fill = percent_dem_2012)) +
+  geom_statebins() +
+  theme_statebins() +
+  labs(fill="Percent Democratic vote in 2012")
+m5
+```
+
+Maps can easily distort your data and their interpretation. They are best used when the underlying information is truely related to geography and area. Always consider the possible interpretations (and misinterpretations) of a map you draw.
+
+## Maps for other regions
+
+* Binned maps in [Africa](https://github.com/delabj/AfricaCountryBins)
+* [Statebins](https://github.com/hrbrmstr/statebins)
+* Global map showing [counties as squares](https://www.maartenlambrechts.com/2017/10/22/tutorial-a-worldtilegrid-with-ggplot2.html)
+

@@ -1,7 +1,7 @@
 ---
 title: "Making sliding maps"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2022-11-17"
 format:
   revealjs:
     slide-number: true
@@ -25,9 +25,9 @@ library(ggmap)
 
 ## Plan
 
-* Kinds of maps
+* Kinds of maps (outline vs. tiles; interactive vs. static)
 
-* Basic maps
+* Creating basic maps
 
 * Adding points
 
@@ -39,7 +39,12 @@ library(ggmap)
 
 * Dynamic: `leaflet` for drawing raster or tiled maps (leafletjs.com)
 
-* Static: `ggmap` (part of tidyverse, has stamen map functions)
+* Static: `ggmap` (part of tidyverse, tiles from several services)
+
+* Both rely on internet services such as:
+  * [OpenStreetMap](https://www.openstreetmap.org/#map=5/44.653/-63.413) 
+  * [Stamen Maps](http://maps.stamen.com/terrain/#12/44.6453/-63.5724)
+  * [Google Maps](https://mapsplatform.google.com/maps-products/#static-maps)
 
 ## A basic map
 
@@ -60,6 +65,7 @@ m  # Print the map
 
 ```{r message=FALSE, warning=FALSE}
 cities <- read_csv("static/L28/selected_cities.csv")
+head(cities) |> kable() |> kable_styling()
 m2 <- leaflet(data = cities) %>%
   addTiles() %>%
   addCircleMarkers(~ lng, ~lat, label = ~city)
@@ -102,6 +108,10 @@ mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41,
 m4 <- ggmap(mymap_terrain)  
 ```
 
+See help for the package `ggmap` for more services (google maps, open street maps).
+
+Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don't burden yourself or a free service by downloading unnecessary data.)
+
 ## Other tiled map services
 
 ```{r message=FALSE, fig.align="center", out.width="90%", fig.retina=2, echo=FALSE}
@@ -132,6 +142,8 @@ m5
 ```
 
 ## Summary
+
+* Outline vs tiled (image) maps
 
 * Make a basic map
 

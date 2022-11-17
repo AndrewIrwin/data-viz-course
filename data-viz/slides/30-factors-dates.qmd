@@ -1,7 +1,7 @@
 ---
 title: "Text, Factors, Dates, and Times"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2022-11-22"
 format:
   revealjs:
     slide-number: true
@@ -62,7 +62,7 @@ str_squish(" a crazy sentence   with
            too many spaces in    strange places.     ")
 ```
 
-## Letter case
+## Letter case {.smaller}
 
 Upper and lower case differences are often not noticed by humans, but matter to a computer. One solution is to convert all text to upper, lower, or title case.
 
@@ -105,7 +105,7 @@ t0 %>% select(sentence) %>%
 * Mapping colours to specific levels (later lesson on colour)
 
 
-## Plot order
+## Plot order {.smaller}
 
 Here's a plot of mean penguin body mass by species and sex. What's the order?
 
@@ -116,7 +116,7 @@ penguins %>% ggplot(aes(x = body_mass_g, y = island)) +
 ```
 
 
-## Plot order
+## Plot order {.smaller}
 
 Order from smallest to largest, top to bottom. Watch out for NAs.
 
@@ -129,9 +129,8 @@ penguins %>% na.omit() %>%
 ```
 
 
-## Custom order
+## Custom order {.smaller}
 
-Order from smallest to largest, top to bottom. Watch out for NAs.
 
 ```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
 penguins %>%
@@ -183,7 +182,7 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
   scale_y_datetime(date_labels = "%H:%M") + my_theme
 ```
 
-## Time arithmetic
+## Time arithmetic {.smaller}
 
 ```{r}
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
