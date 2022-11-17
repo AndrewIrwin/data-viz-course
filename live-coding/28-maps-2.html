@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Andrew Irwin">
+<meta name="dcterms.date" content="2022-11-17">
+
+<title>Tile maps and alternatives</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="28-maps-2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="28-maps-2_files/libs/quarto-html/quarto.js"></script>
+<script src="28-maps-2_files/libs/quarto-html/popper.min.js"></script>
+<script src="28-maps-2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="28-maps-2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="28-maps-2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="28-maps-2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="28-maps-2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="28-maps-2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="28-maps-2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="28-maps-2_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="28-maps-2_files/libs/jquery-1.12.4/jquery.min.js"></script>
+<link href="28-maps-2_files/libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="28-maps-2_files/libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="28-maps-2_files/libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="28-maps-2_files/libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="28-maps-2_files/libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="28-maps-2_files/libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="28-maps-2_files/libs/leaflet-binding-2.1.1/leaflet.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tile maps and alternatives</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andrew Irwin </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 17, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="leaflet-map" class="level2">
+<h2 class="anchored" data-anchor-id="leaflet-map">Leaflet map</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>()  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-746788a315941848d4e1" style="width:100%;height:464px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-746788a315941848d4e1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="adding-points" class="level2">
+<h2 class="anchored" data-anchor-id="adding-points">Adding points</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="sc">-</span><span class="fl">63.5932</span>, <span class="at">lat=</span><span class="fl">44.63697</span>, <span class="at">popup=</span><span class="st">"Math &amp; Stats, Dalhousie U"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-be96e38cccd4b0c2454e" style="width:100%;height:464px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be96e38cccd4b0c2454e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[44.63697,-63.5932,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Math & Stats, Dalhousie U",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[44.63697,44.63697],"lng":[-63.5932,-63.5932]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Generate some data at random</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># no more than 26 please</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lat =</span> <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">80</span>, <span class="dv">80</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lng =</span> <span class="fu">runif</span>(N, <span class="sc">-</span><span class="dv">180</span>, <span class="dv">180</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">city =</span> <span class="fu">sample</span>(LETTERS, N)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(<span class="at">data =</span> cities) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="sc">~</span> lng, <span class="sc">~</span>lat, <span class="at">label =</span> <span class="sc">~</span>city)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>m2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-0e482a7476f2a2c2a6ef" style="width:100%;height:464px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0e482a7476f2a2c2a6ef">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-58.0160757154226,-69.5698744431138,-18.9151376113296,45.7433729246259,40.3268579766154,-78.4151195734739,-46.9545601680875,-73.2333378493786,7.33578734099865,11.2840372696519],[174.916125442833,-41.1857510078698,93.2005638442934,-108.915149280801,-70.8757070638239,179.850060157478,-12.650795057416,-159.183443561196,-152.583278277889,118.359959078953],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,null,["G","E","Q","T","J","A","L","B","M","N"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-78.4151195734739,45.7433729246259],"lng":[-159.183443561196,179.850060157478]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="ggmap-with-stamen-map" class="level2">
+<h2 class="anchored" data-anchor-id="ggmap-with-stamen-map">ggmap with Stamen map</h2>
+<p>Can’t use openstreetmap – too easy to overload their computers. Can get an “API key” to obtain google maps.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mymap_terrain <span class="ot">&lt;-</span> <span class="fu">get_stamenmap</span>(<span class="at">bbox =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="sc">-</span><span class="dv">130</span>, <span class="at">bottom =</span> <span class="dv">41</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">right =</span> <span class="sc">-</span><span class="dv">50</span>, <span class="at">top =</span> <span class="dv">66</span>), </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">zoom=</span><span class="dv">5</span>, <span class="at">maptype =</span> <span class="st">"terrain"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/4/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/5/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/6/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/7/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/8/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/9/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/10/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/11/8.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/4/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/5/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/6/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/7/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/8/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/9/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/10/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/11/9.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/4/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/5/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/6/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/7/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/8/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/9/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/10/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/11/10.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/4/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/5/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/6/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/7/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/8/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/9/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/10/11.png</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Source : http://tile.stamen.com/terrain/5/11/11.png</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">ggmap</span>(mymap_terrain)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>m4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="heatmaps" class="level2">
+<h2 class="anchored" data-anchor-id="heatmaps">Heatmaps</h2>
+<p>Heatmaps can be used to show three variables. If the heatmap is to replace a map, typically one is geographic (shown on the x- or y-axis), one is another categorical variable (such as age group), and the third is a quantitative variable shown in colour brightness.</p>
+<p>Here I’ll take the census data by county from the USA in the <code>socviz</code> package (<code>county_data</code>).</p>
+<p>I’ll aggregate the population by country region (north, south, etc) and the party that won the vote in the 2016 region.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> county_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(census_region), <span class="sc">!</span><span class="fu">is.na</span>(partywinner16)) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(partywinner16, census_region) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pop =</span> <span class="fu">sum</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'partywinner16'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> census_region, <span class="at">x =</span> partywinner16, <span class="at">fill =</span> <span class="fu">log10</span>(pop))) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> county_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(census_region)) <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_dens, census_region) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pop =</span> <span class="fu">sum</span>(pop), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'pop_dens'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> census_region, <span class="at">x =</span> pop_dens, <span class="at">fill =</span> <span class="fu">log10</span>(pop))) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> census_region, <span class="at">x =</span> pop_dens, <span class="at">fill =</span> n)) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">group_by</span>(census_region) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">percent =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> census_region, <span class="at">x =</span> pop_dens, <span class="at">fill =</span> percent)) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">group_by</span>(census_region) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">percent_pop =</span> pop<span class="sc">/</span><span class="fu">sum</span>(pop)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> census_region, <span class="at">x =</span> pop_dens, <span class="at">fill =</span> percent_pop)) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> county_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(census_region), <span class="sc">!</span><span class="fu">is.na</span>(partywinner16)) <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(partywinner16, state) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pop =</span> <span class="fu">sum</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'partywinner16'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fct_reorder</span>(state, pop), <span class="at">x =</span> partywinner16, <span class="at">fill =</span> <span class="fu">log10</span>(pop))) <span class="sc">+</span> <span class="fu">geom_tile</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="usa-state-map" class="level2">
+<h2 class="anchored" data-anchor-id="usa-state-map">USA state map</h2>
+<p>Many true geographic maps of the USA are strongly influenced by population density:</p>
+<ul>
+<li><a href="https://www.census.gov/library/visualizations/2021/geo/population-distribution-2020.html">USA population density</a></li>
+<li><a href="https://www.visualcapitalist.com/mapped-every-power-plant-in-the-united-states/">Power plant locations</a></li>
+<li>Even rates (numbers scaled by population) can show the influence of population density: <a href="https://www.cdc.gov/flu/weekly/usmap.htm">Influenza cases by state</a></li>
+</ul>
+<p>Sometimes a different geographic scale is warranted such as state or county level political influence.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(statebins)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> county_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(state), <span class="sc">!</span><span class="fu">is.na</span>(per_dem_2012), <span class="sc">!</span><span class="fu">is.na</span>(pop)) <span class="sc">|&gt;</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">as.character</span>(state)) <span class="sc">|&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pop_sum =</span> <span class="fu">sum</span>(pop),</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_dem_2012 =</span> <span class="fu">weighted.mean</span>(per_dem_2012, pop)) </span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> s2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">state =</span> state, <span class="at">fill =</span> <span class="fu">log10</span>(pop_sum))) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_statebins</span>() <span class="sc">+</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_statebins</span>() <span class="sc">+</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill=</span><span class="st">"log10 population"</span>)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>m4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> s2 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">state =</span> state, <span class="at">fill =</span> percent_dem_2012)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_statebins</span>() <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_statebins</span>() <span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill=</span><span class="st">"Percent Democratic vote in 2012"</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>m5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="28-maps-2_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Maps can easily distort your data and their interpretation. They are best used when the underlying information is truely related to geography and area. Always consider the possible interpretations (and misinterpretations) of a map you draw.</p>
+</section>
+<section id="maps-for-other-regions" class="level2">
+<h2 class="anchored" data-anchor-id="maps-for-other-regions">Maps for other regions</h2>
+<ul>
+<li>Binned maps in <a href="https://github.com/delabj/AfricaCountryBins">Africa</a></li>
+<li><a href="https://github.com/hrbrmstr/statebins">Statebins</a></li>
+<li>Global map showing <a href="https://www.maartenlambrechts.com/2017/10/22/tutorial-a-worldtilegrid-with-ggplot2.html">counties as squares</a></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
