@@ -469,20 +469,20 @@
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">select</span>(species, bill_length_mm, bill_category, <span class="fu">everything</span>())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 342 × 9
-   species bill_length_mm bill_category island    bill_depth_mm flipper_length_…
-   &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;         &lt;fct&gt;             &lt;dbl&gt;            &lt;int&gt;
- 1 Adelie            39.1 [32.1,39.2]   Torgersen          18.7              181
- 2 Adelie            39.5 (39.2,44.5]   Torgersen          17.4              186
- 3 Adelie            40.3 (39.2,44.5]   Torgersen          18                195
- 4 Adelie            36.7 [32.1,39.2]   Torgersen          19.3              193
- 5 Adelie            39.3 (39.2,44.5]   Torgersen          20.6              190
- 6 Adelie            38.9 [32.1,39.2]   Torgersen          17.8              181
- 7 Adelie            39.2 [32.1,39.2]   Torgersen          19.6              195
- 8 Adelie            34.1 [32.1,39.2]   Torgersen          18.1              193
- 9 Adelie            42   (39.2,44.5]   Torgersen          20.2              190
-10 Adelie            37.8 [32.1,39.2]   Torgersen          17.1              186
-# … with 332 more rows, and 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;,
-#   year &lt;int&gt;</code></pre>
+   species bill_length_mm bill_cate…¹ island bill_…² flipp…³ body_…⁴ sex    year
+   &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie            39.1 [32.1,39.2] Torge…    18.7     181    3750 male   2007
+ 2 Adelie            39.5 (39.2,44.5] Torge…    17.4     186    3800 fema…  2007
+ 3 Adelie            40.3 (39.2,44.5] Torge…    18       195    3250 fema…  2007
+ 4 Adelie            36.7 [32.1,39.2] Torge…    19.3     193    3450 fema…  2007
+ 5 Adelie            39.3 (39.2,44.5] Torge…    20.6     190    3650 male   2007
+ 6 Adelie            38.9 [32.1,39.2] Torge…    17.8     181    3625 fema…  2007
+ 7 Adelie            39.2 [32.1,39.2] Torge…    19.6     195    4675 male   2007
+ 8 Adelie            34.1 [32.1,39.2] Torge…    18.1     193    3475 &lt;NA&gt;   2007
+ 9 Adelie            42   (39.2,44.5] Torge…    20.2     190    4250 &lt;NA&gt;   2007
+10 Adelie            37.8 [32.1,39.2] Torge…    17.1     186    3300 &lt;NA&gt;   2007
+# … with 332 more rows, and abbreviated variable names ¹​bill_category,
+#   ²​bill_depth_mm, ³​flipper_length_mm, ⁴​body_mass_g</code></pre>
 </div>
 </div>
 </section><section class="slide level2"><div class="cell">

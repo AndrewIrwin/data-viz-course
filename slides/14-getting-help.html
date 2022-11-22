@@ -445,11 +445,14 @@
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> LifeExp, <span class="at">color =</span> Country)) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in FUN(X[[i]], ...): object 'Year' not found</code></pre>
+<pre><code>Error in `geom_point()`:
+! Problem while computing aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `FUN()`:
+! object 'Year' not found</code></pre>
 </div>
-
 </div>
-<img data-src="14-getting-help_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section class="slide level2"><div class="cell">
+</section><section class="slide level2"><div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gapminder <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Canada"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Iran"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> country)) <span class="sc">+</span></span>

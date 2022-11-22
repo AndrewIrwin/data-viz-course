@@ -421,9 +421,11 @@
 <rect x='274.42' y='157.72' width='17.28' height='21.60' style='stroke-width: 0.75; stroke: none; fill: #92C5DE;' />
 <rect x='274.42' y='136.12' width='17.28' height='21.60' style='stroke-width: 0.75; stroke: none; fill: #F4A582;' />
 <rect x='274.42' y='114.52' width='17.28' height='21.60' style='stroke-width: 0.75; stroke: none; fill: #CA0020;' />
+<text x='306.65' y='208.10' style='font-size: 20.00px; font-family: "Arial";' textLength='51.16px' lengthAdjust='spacingAndGlyphs'>-2000</text>
 <text x='306.65' y='186.50' style='font-size: 20.00px; font-family: "Arial";' textLength='51.16px' lengthAdjust='spacingAndGlyphs'>-1000</text>
 <text x='306.65' y='164.90' style='font-size: 20.00px; font-family: "Arial";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>0</text>
 <text x='306.65' y='143.30' style='font-size: 20.00px; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>1000</text>
+<text x='306.65' y='121.70' style='font-size: 20.00px; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>2000</text>
 <text x='274.42' y='72.31' style='font-size: 25.00px; font-family: "Arial";' textLength='147.25px' lengthAdjust='spacingAndGlyphs'>Mass relative</text>
 <text x='274.42' y='99.31' style='font-size: 25.00px; font-family: "Arial";' textLength='127.83px' lengthAdjust='spacingAndGlyphs'>to mean (g)</text>
 </g>
