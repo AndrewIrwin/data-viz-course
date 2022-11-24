@@ -10,7 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse, quietly = TRUE)
 library(ggmap)
 library(leaflet)
-# more
 ```
 
 
@@ -73,9 +72,10 @@ s1 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
   group_by(partywinner16, census_region) |> summarize(pop = sum(pop))
 s1 |> ggplot(aes(y = census_region, x = partywinner16, fill = log10(pop))) + geom_tile() 
 s1 <- county_data |> filter(!is.na(census_region)) |>
-  group_by(pop_dens, census_region) |> summarize(pop = sum(pop), n = n())
+  group_by(pop_dens, census_region) |> summarize(pop = sum(pop), n = n(), land = sum(land_area))
 s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = log10(pop))) + geom_tile() 
 s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = n)) + geom_tile() 
+s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = land)) + geom_tile() 
 s1 |> group_by(census_region) |> mutate(percent = n/sum(n)*100) |>
   ggplot(aes(y = census_region, x = pop_dens, fill = percent)) + geom_tile() 
 s1 |> group_by(census_region) |> mutate(percent_pop = pop/sum(pop)*100) |>

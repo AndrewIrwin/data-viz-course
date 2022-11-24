@@ -1,0 +1,73 @@
+---
+title: "Theme"
+author: "Andrew Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(palmerpenguins)
+```
+
+## Make a reference figure
+
+```{r}
+p1 <- penguins |> na.omit() |>
+  ggplot(aes(body_mass_g, 
+             flipper_length_mm,
+             color = species,
+             shape = island)) +
+  geom_point()
+p1
+```
+
+## Built-in themes
+
+Try some of: 
+
+* theme_bw, theme_void, theme_dark, theme_classic
+
+```{r}
+p1 + theme_bw()
+```
+
+Try themes from the ggthemes package
+* theme_wsj, theme_tufte, theme_economist, theme_fivethirtyeight, theme_clean
+
+```{r}
+library(ggthemes)
+p1 + theme_wsj()
+```
+
+## Text size
+
+```{r}
+p1 + theme(text = element_text(size = 20))
+p1 + theme(legend.text = element_text(color = "green"),
+           legend.title = element_text(color = "blue"))
+```
+
+Read  (some of the) help page for theme! At least enough to see what is there for future reference.
+
+## Change some of the "boxes" in the theme
+
+```{r}
+p1 + theme(plot.background = element_rect(color = "orange",
+                                          fill = "yellow"),
+           legend.background = element_rect(color = "black",
+                                            size = 0.2,
+                                            linetype = "dotted"),
+           panel.background = element_rect(color = "blue",
+                                           fill = "#FF88FF"),
+           panel.grid = element_blank(),
+           axis.ticks.length = unit(1, "cm"))
+```
+
+## Change the aspect ratio
+
+```{r}
+p1 + theme(aspect.ratio = 0.4)
+```
+

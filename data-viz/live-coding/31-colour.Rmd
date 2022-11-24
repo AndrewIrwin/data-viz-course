@@ -1,0 +1,75 @@
+---
+title: "Colour"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+```
+
+Data to help with plots
+
+```{r}
+dt1 <- expand.grid(x = 1:5, y = 1:5) |>
+  mutate(A = sample(letters[1:5], 25, replace = TRUE),
+         B = runif(25))
+p1 <- dt1 |> ggplot(aes(x, y, color = A)) + geom_point(size = 10)
+p1
+p2 <- dt1 |> ggplot(aes(x, y, color = B)) + geom_point(size = 10)
+p2
+```
+
+## Generate some RGB colours
+
+```{r}
+rgb(0.9, 0.1, 0.5, 1.0)
+rgb(1,1,1,0.5)
+rgb(0,1,1,1)
+colours_rgb <- c(rgb(1, 0, 0), rgb(0.5, 0.5, 0), rgb(0, 1, 0), rgb(0, 0.5, 0.5), rgb(0, 0, 1) )
+p1 + scale_color_manual(values = colours_rgb)
+# p2 + scale_color_manual(values = colours_rgb, breaks = (0:5)/5) # error
+```
+
+
+## Generate some HCL colours
+
+See: https://hclwizard.org/why-hcl/
+
+```{r}
+hcl(0, 35, 85)
+hcl(50, 0, 85)
+colours_hcl <- hcl((0:4)*360/5, 40, 85) # h is 0-360, c and l are 0-100, but not all values correspond to colours the computer can display
+p1 + scale_color_manual(values = colours_hcl)
+```
+
+
+
+## Get colours from a palette
+
+```{r}
+p1 + scale_color_brewer(palette = "Greens")  # discrete colours, dicrete data
+p2 + scale_color_fermenter(palette = "Greens") # discrete colours, continuous data
+p2 + scale_color_distiller(palette = "Greens") # continuous colours, continuous data
+```
+
+```{r}
+p1 + scale_color_brewer(palette = "Set1")  # discrete colours, dicrete data
+p2 + scale_color_fermenter(palette = "Set1") # discrete colours, continuous data
+p2 + scale_color_distiller(palette = "Set1") # continuous colours, continuous data
+```
+
+More palettes: see help for scale_colour_brewer and pick among: diverging, qualitative, sequential
+
+## Easy recommendation
+
+Viridis
+
+```{r}
+# library(viridisLite)
+p1 + scale_color_viridis_d(begin = 0, end = 1)  # discrete
+p2 + scale_color_viridis_b(begin = 0, end = 1)  # binned
+p2 + scale_color_viridis_c(begin = 0, end = 1)  # continuous
+```

@@ -1,0 +1,153 @@
+---
+title: "Factors Dates"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+```
+
+## Text
+
+### Cleaning up input, for example for data entered in a spreadsheet.
+
+```{r}
+my_string <- "   A cat  is a small 
+                    and furry animal.  "
+my_string2 <- str_squish(my_string)
+my_string2
+str_to_lower(my_string2)
+str_to_upper(my_string2)
+str_to_sentence(my_string2)
+str_to_title(my_string2)
+```
+
+
+### Converting text to numbers
+
+```{r}
+text_and_numbers <- tibble( text = c("Andrew", "33", "12.45", 
+                                     "-1.00", "Inf"))
+text_and_numbers %>% mutate(numbers = as.numeric(text), 
+                            integers = as.integer(text)) %>% kable()
+```
+
+### Extracting information from longer labels
+
+```{r}
+sets <- c("A1", "A2", "B1", "B4", "C5")
+str_extract(sets, "[0-9]")
+str_extract(sets, "[A-Z]")
+```
+
+### Inserting and extrating data from longer messages
+
+```{r}
+library(glue)
+library(unglue)
+a <- 1
+b <- 6
+c <- 15.63
+my_string3 <- glue("The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {a+b+c}.")
+my_string3
+unglue(my_string3, "The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {d}.")
+my_strings1 <- tibble(greeting = c("My name is Andrew.", 
+                                   "My name is Li.", 
+                                   "My name is Emily."))
+unglue_unnest(my_strings1, 
+              greeting, 
+              "My name is {name}.", 
+              remove=FALSE) %>% kable()
+```
+
+
+## Plots and text labels (factors)
+
+```{r}
+mpg %>% ggplot(aes(x = cty,
+                   y = trans)) +
+  geom_boxplot()
+```
+
+```{r}
+mpg %>% ggplot(aes(x = cty,
+                   y = fct_reorder(trans, hwy, median, .desc=TRUE))) +
+  geom_boxplot() 
+```
+
+Simplify the number of categories
+
+```{r}
+mpg %>% 
+  ggplot(aes(x = cty,
+             y = fct_lump(trans, 4))) +
+  geom_boxplot() 
+```
+
+
+## Dates and times
+
+Using lubridate package
+
+```{r}
+library(lubridate)
+today()
+now()
+now(tz = "UTC")
+now(tz = "America/Toronto")
+now(tz = "Asia/Shanghai")
+```
+
+List of timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+### Text to date
+
+```{r}
+dt1 <- tibble(text_date = c("1999-01-31", "2000-02-28", "2010-06-28",
+                            "2024-03-14", "2021-02-29"),
+             date = ymd(text_date))
+dt1
+```
+
+Crazy formats!
+
+```{r}
+tibble(date = c("Jan 5, 1999", "Saturday May 16, 70", "8-8-88",
+               "December 31/99", "Jan 1, 01"),
+      decoded = mdy(date)) %>% kable()
+```
+
+With times
+
+
+```{r}
+dt2 <- tibble(text_date = c("1999-01-31 09:14", "2000-02-28 12:15",
+                            "2010-06-28 23:45", 
+                            "2024-03-14 07:00 AM", "2021-03-01 6:16 PM"),
+             date_time = ymd_hm(text_date, tz="America/Halifax"))
+dt2 %>% kable()
+```
+
+### Converting dates to numbers
+
+```{r}
+t1 <- now()
+year(t1)
+day(t1)
+hour(t1)
+decimal_date(t1)
+date_decimal(2022.95)
+```
+
+## Plotting with dates and times
+
+```{r}
+dt2 %>% mutate(r = rnorm(n(), 20, 3)) %>%
+  ggplot(aes(x = date_time, y = r)) + 
+  geom_point() +
+  scale_x_datetime(date_labels = "%Y\n%b-%d")
+```
