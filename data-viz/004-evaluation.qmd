@@ -4,20 +4,13 @@ All the work you will complete for evaluation and credit in the course is descri
 
 ## Tasks {-}
 
-Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
+I have created a tasks to give you practice with the main skills and ideas from each lesson.
 
-Tasks will usually be evaluated on a 0-10 scale on the following rubric:
-
-* 0-5: Work missing or mostly incomplete.
-* 6-7: Mostly complete or complete with major deficiencies.
-* 8: Complete and meets expectations.
-* 9-10: Complete and excels in some respect: engagement with the task, creativity in the thoughtful application of course skills and ideas, and organization of your work. 
-
-Tasks are grouped by week below. I encourage you to work on all the tasks. You are only required to submit one task for grading each week (except for week 1 which has two tasks and week 3 which has no tasks). If you miss a week or want to improve your grade from an evaluated task, I will accept two tasks in up to two weeks of your choosing, starting in week 4. Simply submit two tasks those weeks and I will drop the lower grades from your other tasks.
+After the first week, most tasks have work for you to do in R. After you have done the task, go to Brightspace to answer questions associated with each task. Only these questions will be graded. Save your completed work in R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
 
 ### Week 1
 
-There are two tasks this week (Invitation, Setting Up). Both are to be submitted on Brightspace.
+There are two tasks this week (Invitation, Setting Up). See Brightspace for more information.
 
 #### Task: Invitation (Lesson 1) {#task-1 .unnumbered}
 
@@ -34,8 +27,6 @@ The goal of this task isn't to be right or wrong in your assessment, but rather 
 Submit your work as a single PDF on Brightspace.
 
 #### Bonus task (Lesson 2)  {#task-b1 .unnumbered}
-
-(Not to be handed in for marks.)
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
 
