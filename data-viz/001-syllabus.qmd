@@ -9,8 +9,8 @@ library(gt)
 This is the syllabus for the Data Visualization (STAT 2430) course offered in Winter 2024 at Dalhousie University.
 
 * Instructor: Andrew Irwin, a.irwin@dal.ca
-* Meeting times: Tuesday and Thursday 10:05-11:25 pm Atlantic in Henry Hicks (HH) 212
-* Office hours: Tuesday 3:30 pm Atlantic in Chase 225, or by appointment.
+* Meeting times: Tuesday and Thursday 10:05-11:25 pm  in Henry Hicks (HH) 212
+* Office hours: Tuesday 3:30 pm  in Chase 225, or by appointment.
 
 ## Course Description {-}
 
@@ -82,14 +82,16 @@ Assignments are assessments of your skills and should be done independently.
 The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set.
 The term project is designed to be done collaboratively with a partner. The work on the project should be the work of members of the group and not outside collaborators or internet sources.
 
-* Tasks (30%, 1-2 per week, due weekly, equally weighted)
-* Assignments (40%, roughly 1 every two weeks, equally weighted)
+* Tasks (30%, due weekly, equally weighted)
+* Assignments (30%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
-  * Proposal, due Thursday 15 February, 5%
-  * Oral presentation, due at the time of the final exam, 10%
+  * Proposal, due Thursday 7 March, 5%
   * Report, due Thursday 4 April, 15%
-
-Tasks are due by the end of the day on Monday. Assignments are due on Friday. 
+* Final exam, with two components
+  * Oral presentation, due one day before the final exam, 10%
+  * Peer evaluation of presentations, 10%
+  
+Tasks are due by the end of the day on Monday. Assignments are due on Friday, approximately one week after they are assigned. If Friday is a holiday (Feb 2, March 29) the assignment will be due the following Monday. 
 
 Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to *learn* from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
 

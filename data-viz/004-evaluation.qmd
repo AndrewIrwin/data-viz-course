@@ -26,7 +26,7 @@ The goal of this task isn't to be right or wrong in your assessment, but rather 
 
 Submit your work as a single PDF on Brightspace.
 
-#### Bonus task (Lesson 2)  {#task-b1 .unnumbered}
+#### Task (Lesson 2)  {#task-b1 .unnumbered}
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
 
@@ -49,8 +49,6 @@ Answer the quiz on Brightspace which will ask if you were successful with each t
 
 ### Week 2
 
-Task 3 should be submitted on Brightspace this week.
-
 #### Task: Look at data (Lesson 4) {#task-3 .unnumbered}
 
 Your task for this lesson is to answer two specific questions about choices made when visualizing data, drawing on your own experience and the ideas presented below. You should also become familiar with [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which contains much more on these topics.
@@ -64,17 +62,18 @@ Your task for this lesson is to answer two specific questions about choices made
 
 Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
 
-#### Bonus task (Lesson 5) {#task-b2 .unnumbered}
+#### Task (Lesson 5) {#task-b2 .unnumbered}
 
 Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot.
 
-There is nothing to submit for this task.
+#### Task (Lesson 6) {#task-b2b .unnumbered}
+
+Get the software `git` working on your computer by following the steps in Lesson 6.
+
 
 ### Week 3
 
-No assigned tasks this week. Work on Assignment 1 instead.
-
-#### Bonus task (Lesson 7) {#task-b3 .unnumbered}
+#### Task (Lesson 7) {#task-b3 .unnumbered}
 
 Your task for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task repository.
 
@@ -87,7 +86,6 @@ In addition, I suggest the following reading with nothing to submit:
 
 Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
 
-There is nothing to submit for this task.
 
 ### Week 4
 
@@ -278,18 +276,6 @@ This is the second Tidy Tuesday assignment. Create maps as described in the repo
 
 Organize your work as a slide presentation. A template with instructions is in the repository.
 
-### Assignment 6 {#assignment-6 .unnumbered}
-
-This is a peer evaluation assignment. You should provide, in separate documents as described in the repository,
-
-* confidential feedback on your team mates' work for the term project
-* a peer evaluation of two oral presentations from other teams.
-
-You should provide thoughtful and constructive feedback on the work of your classmates. Everyone's work has good aspects and areas where there could be improvement; you should aim to provide useful feedback in both areas.
-
-Your assignment for the peer evaluation is in the Teams tab of this website. 
-
-A rubric and guide for your evaluations is in the repository for this assignment.
 
 ## Term project {- #project-description}
 
@@ -299,13 +285,13 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 ### Deliverables {-}
 
-Work in groups of 2 or 3 according to the assignments made in [late October](teams.qmd). You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.
 
 ### Team creation {-}
 
-Teams will be created in October. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. The deadline for selecting teammates will be Sunday 16 October. I will review this list, finalize the team assignments, create the presentation schedule and peer-evaluation assignments later that week.
+Teams will be created in early March. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. I will review this list and finalize the team assignments in early March.
 
 **If you withdraw from the course once you have been assigned to a team for the term project, please let your teammates and me know as soon as possible.**
 
@@ -320,7 +306,6 @@ Do not reuse data sets from any part of the course.
 Here is list of data repositories containing many interesting data sets. Feel free to use data from other sources if you prefer.
 
 * [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
-* [Kaggle](https://www.kaggle.com/datasets) 
 * [OpenIntro](https://www.openintro.org/book/statdata/index.php) 
 * [Awesome public](https://github.com/awesomedata/awesome-public-datasets) datasets
 * [Bikeshare](https://www.bikeshare.com/data/) data portal
@@ -331,6 +316,8 @@ Here is list of data repositories containing many interesting data sets. Feel fr
 * Data you find on your own may be suitable too.
 
 Describe a data set and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
+
+Many data sets on [Kaggle](https://www.kaggle.com/datasets) are simulated data -- generated by a computer with randomization and not the result of a real-life data gathering process. You can recognize these data because there is no clear explanation of how the data were collected. **Do not use simulated data. Do not use data if you can't explain how it was collected.**
 
 The repository contains a template for your proposal called `proposal.Rmd`. Write your proposal by revising this file and using this template.
 
@@ -344,30 +331,6 @@ The repository contains a template for your proposal called `proposal.Rmd`. Writ
 
 *Assessment*. See the file grade-proposal.rmd for the assessment guidelines and rubric.
 
-### Oral presentation {-}
-
-The oral presentation should be about 5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.
-
-You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.qmd`. I suggest a format such as the following:
-
-* A title with team members' names
-* A description of the data you are analyzing
-* At least one question you can investigate with your data visualization
-* At least two data visualizations
-* A conclusion
-
-For suggestions on making slide presentations see the lesson on slides.
-
-Don't show your R code; the focus should be on your results and visualizations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
-
-Your presentation should not just be an account of everything you tried ("then we did this, then we did this, etc."), instead it should convey what choices you made, and why, and what you found.
-
-Presentation schedule: Presentations will take place during the last two synchronous sessions of the course. You can choose to do your presentation live or pre-record it. You will watch presentations from other teams and provide feedback on one each day in the form of peer evaluations. The presentation schedule will be generated randomly.
-
-*Assessment*. See the file `grade-presentation.Rmd` for the assessment guidelines.
-
-**Practice your presentation, as a team, using the course collaborate room or other videoconferencing tool!**
- 
 ### Written report {-}
 
 Follow the template provided for your written report (`report.Rmd`) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.
@@ -384,4 +347,40 @@ General criteria for evaluation:
 * Correctness - Are visualization procedures carried out and explained correctly?
 * Writing and Presentation - What is the quality of the visualizations, writing, and explanations?
 * Creativity and Critical Thought - Is the project carefully thought out?  Does it appear that time and effort went into the planning and implementation of the project?
+
+## Final exam
+
+The final exam has three components:
+
+* The oral presentation, which must be completed before the time of the exam.
+* You will be assigned 5 presentations to watch as part of the final exam. You should plan to watch these during the assigned time for the final exam.
+* You will complete a peer evaluation of the presentations you watch. This will be an assignment on Brightspace to be done during the final exam.
+* You will have an opportunity to provide feedback on your project partner's contribution to the project.
+
+
+### Oral presentation {-}
+
+The oral presentation should be 5-10 minutes long (at least 5, no more than 10). Your goal is to present the highlights of your project.
+
+You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.qmd`. I suggest a format such as the following:
+
+* A title with team members' names
+* A description of the data you are analyzing
+* At least one question you can investigate with your data visualization
+* At least two data visualizations
+* A conclusion
+
+For suggestions on making slide presentations see the lesson on slides.
+
+Don't show your R code; the focus should be on your results and visualizations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
+
+Your presentation should convey what you learned from your analysis and the choices you made when constructing your visualizations.
+Be careful not to simply describe a list of visualizations and analyses ("then we did this, then we did this, etc.").
+
+Presentation schedule: You should record your presentation as part of the exam preparation period. You must upload your recorded presentation at least 1 day before the scheduled final exam.
+During the exam period you will watch presentations from other teams I assign to you and provide feedback in the form of a peer evaluation.
+
+*Assessment*. See the file `grade-presentation.Rmd` for the assessment guidelines.
+
+
 

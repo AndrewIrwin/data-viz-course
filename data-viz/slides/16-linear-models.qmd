@@ -19,7 +19,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(broom)
-library(equatiomatic)
+# library(equatiomatic)
 library(kableExtra)
 library(gapminder)
 my_theme = theme_classic() + 

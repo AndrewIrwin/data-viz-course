@@ -34,7 +34,7 @@ I'll develop the plot step-by-step, changing just a bit of code each time, to hi
 library(ggrepel)
 library(rnaturalearth)
 library(rnaturalearthdata)
-library(rgeos)
+# library(rgeos)
 library(tidyverse)
 # opts_chunk$set(cache=TRUE)
 ```
