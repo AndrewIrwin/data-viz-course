@@ -79,7 +79,7 @@ Tasks are primarily designed to help you learn and you are encouraged to seek as
 **Assignments** combine skills from multiple lessons into a meaningful data visualization activity. These are opportunities to apply the content of lessons in thoughtful and sometimes creative ways.
 Assignments are assessments of your skills and should be done independently.
  
-The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set.
+The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set.
 The term project is designed to be done collaboratively with a partner. The work on the project should be the work of members of the group and not outside collaborators or internet sources.
 
 * Tasks (30%, due weekly, equally weighted)

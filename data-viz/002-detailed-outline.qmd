@@ -1,5 +1,6 @@
 # Detailed schedule {#outline .unnumbered}
 
+
 ```{r include=FALSE}
 library(tidyverse, quietly = TRUE)  # fussy, but might be useful later on
 library(knitr)
