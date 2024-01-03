@@ -10,7 +10,7 @@ After the first week, most tasks have work for you to do in R. After you have do
 
 ### Week 1
 
-There are two tasks this week (Invitation, Setting Up). See Brightspace for more information.
+There are three tasks this week (Invitation, Setting Up). See Brightspace for more information.
 
 #### Task: Invitation (Lesson 1) {#task-1 .unnumbered}
 
@@ -24,7 +24,7 @@ Create a document that shows each visualization (the figure, or a snapshot of a 
 
 The goal of this task isn't to be right or wrong in your assessment, but rather to develop a practice of looking at data visualizations through the perspective of creator, designer, and critic. It's okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualizations.
 
-Submit your work as a single PDF on Brightspace.
+Submit your work by answering questions in the quiz on Brightspace.
 
 #### Task (Lesson 2)  {#task-b1 .unnumbered}
 
@@ -60,7 +60,7 @@ Your task for this lesson is to answer two specific questions about choices made
    b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
    c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
 
-Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
+Write answers for these two questions in a word processor. Submit your responses in the Task Quiz for week 2 on Brightspace.
 
 #### Task (Lesson 5) {#task-b2 .unnumbered}
 
@@ -75,14 +75,14 @@ Get the software `git` working on your computer by following the steps in Lesson
 
 #### Task (Lesson 7) {#task-b3 .unnumbered}
 
-Your task for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task repository.
+Your task for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task quiz
 
 In addition, I suggest the following reading with nothing to submit:
 
 * Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
 * Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
 
-#### Bonus task (Lesson 8) {#task-b4 .unnumbered}
+#### Task (Lesson 8) {#task-b4 .unnumbered}
 
 Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
 
@@ -93,18 +93,18 @@ The tasks for this week and the rest of the course are to be submitted using Git
 
 #### Task: Summarizing data (Lesson 9) {#task-5 .unnumbered}
 
-Exercises to practice filter, group_by, summarize, and mutate. File `task-summarize.Rmd`.
+Exercises to practice filter, group_by, summarize, and mutate. File `task-L09-summarize.Rmd`.
 
 Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
-Commit the .Rmd file to your repository and push the changes to GitHub. There is no need to commit the html file; I will knit your file on my computer to be sure there are no errors.
+Answer questions in the Brightspace Task quiz.
 
 ### Week 5
 
 #### Task: Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
-Exercises to practice making faceted plots. When you are done, knit the file and commit the `tasks-facets.Rmd` file to your repository. Push the changes to github to submit your work.
+Exercises to practice making faceted plots. File `task-L10-facets.Rmd`.
 
-#### Bonus task (Lesson 11) {#task-b5 .unnumbered}
+#### Task (Lesson 11) {#task-b5 .unnumbered}
 
 I will get you to practice reading files later on in the course. For now, 
 
@@ -114,43 +114,46 @@ I will get you to practice reading files later on in the course. For now,
 
 #### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 
-Reshaping data practice. File: `task-reshape.Rmd`.
+Reshaping data practice. File: `task-L12-reshape.Rmd`.
 
 #### Task: Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
-Displaying tables practice. File: `task-tables.Rmd`
+Displaying tables practice. File: `task-L13-tables.Rmd`
 
-#### Bonus task (Lesson 14) {#task-b6 .unnumbered}
+#### Task (Lesson 14) {#task-b6 .unnumbered}
 
 The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
 
 ### Week 6
 
-#### Bonus task (Lesson 15) {#task-b7 .unnumbered}
+#### Task (Lesson 15) {#task-b7 .unnumbered}
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
 
 #### Task: Linear models (Lesson 16) {#task-9 .unnumbered}
 
-Exercises on linear models. File: `task-linear-models.Rmd`.
+Exercises on linear models. File: `task-L16-linear-models.Rmd`.
 
 #### Task: LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
 
-Exercises on LOESS and GAM smooths. File: `task-LOESS-GAM.Rmd`.
+Exercises on LOESS and GAM smooths. File: `task-L17-LOESS-GAM.Rmd`.
 
 #### Team Planning {#task-planning .unnumbered}
 
-If you would like to work in a team with specific classmates, edit the file `team-planning.Rmd` in the Task repository. Write the GitHub user ID of the one or two students you would like to work with to the file. If you want to be assigned a random team mate, you don't need to do anything.
+If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You'll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don't need to do anything.
 
-To have your preferences recorded, commit the .Rmd file to the repository and push the repository to github by October 16, 2022. Otherwise I will assign you to a team at random.
 
 ### Week 7
 
-#### Bonus task (Lesson 18) {#task-11 .unnumbered}
+Reading week. No classes or course work due.
+
+### Week 8
+
+#### Task (Lesson 18) {#task-11 .unnumbered}
 
 Practice skills associated with collaborating on GitHub using the project repository for your team.
 
-#### Bonus task (Lesson 19) {#task-b8 .unnumbered}
+#### Task (Lesson 19) {#task-b8 .unnumbered}
 
 Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
@@ -159,9 +162,9 @@ You can use any data you like for this task. If you want a specific suggestion, 
 #### Task: Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
- File `task-collaboration.Rmd`.
+ File `task-L20-collaboration.Rmd`.
 
-### Week 8
+### Week 9
 
 #### PCA (Lesson 21)
 
@@ -169,13 +172,13 @@ The task for this lesson is grouped with the MDS task.
 
 #### Task: MDS (Lesson 22) {#task-13 .unnumbered}
 
-Create a PCA and MDS plot as described in the file `task-mds.Rmd`. 
+Create a PCA and MDS plot as described in the file `task-L22-mds.Rmd`. 
 
 #### Task: K-means (Lesson 23) {#task-14 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the file `task-kmeans.Rmd`. This task is in the repository for task 12, 13, and 14.
+Create a K-means analysis and accompanying visualization as described in the file `task-L23-k-means.Rmd`. 
 
-### Week 9
+### Week 10
 
 #### Task: Presentations (Lesson 24) {#task-14a .unnumbered}
 
@@ -187,13 +190,9 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 
 File: `task-presentation.qmd`.
 
-### Week 10
-
-This is the fall break. No tasks this week.
-
 ### Week 11
 
-#### Bonus task (Lesson 27) {#task-b10 .unnumbered}
+#### Task (Lesson 27) {#task-b10 .unnumbered}
 
 Practice making a map from the lesson
 
@@ -211,13 +210,13 @@ Show geographic data without maps as described in `task-map-alternatives.Rmd`.
 
 Exercises with strings, factors, dates, and times. See `task-factors-dates.Rmd`.
 
-#### Bonus task (Lesson 31) {#task-b11 .unnumbered}
+#### Task (Lesson 31) {#task-b11 .unnumbered}
 
 Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
 
 #### Task: Themes (Lesson 32) {#task-18 .unnumbered}
 
-Learn to use theme elements as described in the repository. See `task-themes.Rmd`.
+See `task-themes.Rmd`.
 
 That is the last task for the course!
 
