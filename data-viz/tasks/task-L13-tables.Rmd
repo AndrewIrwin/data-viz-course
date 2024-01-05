@@ -1,0 +1,51 @@
+---
+title: "Task: Formatting tables"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gapminder)
+library(knitr)
+library(kableExtra)
+library(janitor)
+library(here)
+```
+
+The goal of this task is to practice the formatting of tables in an R markdown document.
+
+## Question 1
+
+Display the table of population for countries in Oceania in three years (from task 7, question 3). Round the population to the nearest 1000 (3 places before the decimal place) and add a separator between every three digits to make the numbers easier to read (a comma or space). Add a header row over the three years that says "Year". Capitalize the heading "country" as "Country". Add a brief but informative caption.
+
+```{r}
+
+
+```
+
+
+## Question 2
+
+Compute a total score for tasks 1-4 for each student using the grades from the file `data/question-2.csv` and the `adorn_totals` function from `janitor`. Assume the maximum scores are all the same for each task, so you don't need to weight the scores when you add them.
+
+Make a `kable` formatted table with an informative caption. 
+
+```{r message=FALSE}
+scores <- read_csv(here("data/question-2.csv"))
+
+```
+
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+

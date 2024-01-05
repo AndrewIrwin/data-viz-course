@@ -1,0 +1,62 @@
+---
+title: "Task: Linear models"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(broom)
+library(kableExtra)
+library(quantreg)
+```
+
+In this task you will practice fitting linear models and adding them to visualizations.
+
+## Question 1
+
+The `economics` dataset in the `ggplot2` package reports several economic indicators for the USA monthly from 1967-07-01 to 2015-04-01. The data include `pop` (total population, in thousands), `unemploy` (the number of unemployed persons, in thousands), `uempmed` (median duration of unemployment in weeks), and `psavert` (the personal savings rate). For more information, see the help page.
+
+Plot the personal savings rate as a function of time. Add a regression line (straight line, `y ~ x`).
+
+```{r}
+
+```
+
+I have computed the time since the start of the time series and called it `years`. Use `lm` to create a straight line regression line. Display a table showing the intercept and slope of the regression line, with a confidence interval on these parameters.
+
+```{r}
+my_econ <- economics %>% mutate(dd = decimal_date(date),
+                                years = dd - min(dd))
+
+```
+
+**How well does a straight line represent this data? Describe any concerns you have about this representation of the data.**
+
+Write your response here.
+
+## Question 2
+
+Sometimes economists report a "seasonally adjusted" rate of unemployment, in recognition that there are seasonal patterns of employment in some sectors of the economy that cause regular, predictable fluctuations in employment and unemployment.
+
+Below I compute the day of the year for each observation (discarding the actual year) and the unemployment rate. Plot the unemployment rate as a function of the day of the year. Add quantile regression lines for the 25, 50, and 75th quantiles.
+
+```{r}
+my_econ2 <- my_econ |> mutate(yday = yday(date),
+                              urate = unemploy/pop)
+
+
+```
+
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```

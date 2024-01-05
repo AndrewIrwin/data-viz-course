@@ -1,0 +1,63 @@
+---
+title: "Task: Factors and Dates"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(COVID19)
+library(lubridate)
+```
+
+In this task you will practice ordering factors on plots and working with dates.
+
+## Question 1
+
+Make a boxplot of the `diamonds` data. Show the distribution of the quantitative data carat for each of the levels of the cut categorical variable. Order the cut categorical variable using `fct_reorder` according to the median of the price.
+
+```{r}
+
+
+```
+
+
+## Question 2
+
+The `COVID19` package provides access to data from many countries. The second variable is `date`. You can use the function `wdoy` from the lubridate package to determine the day of week for each observation (Sunday = 1).
+
+For example,
+
+```{r}
+covid_canada <- covid19("CA", start = "2022-01-01", verbose=FALSE)
+wday(today())
+wday(today(), label=TRUE)
+```
+
+Add a new variable to `covid_canada` equal to the day of the week. Filter the data to only include observations with the day of the week equal to 1 (or any other day you choose). Make a bar chart (`geom_col`) of the cumulative number of cases (`confirmed`) with a bar for each week of the year in the dataset.
+
+```{r}
+
+
+```
+
+The "epidemiological week" begins on Saturday. The function `epiweek` gives you a value from 1-53 for any date. Compute and plot the median number of people hospitalized (`hosp`) reported in each epidemiological week.
+
+```{r}
+
+
+```
+
+**In what week after the January wave did the number of people hospitalized reach a minimum?**
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+

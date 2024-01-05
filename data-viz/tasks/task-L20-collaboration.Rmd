@@ -1,0 +1,118 @@
+---
+title: "Task: Collaboration"
+author: "Your name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    self_contained: false  # can change this to false to keep figure output
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(styler)
+library(palmerpenguins)
+library(here)
+```
+
+_Task: Read the document and follow the instructions._
+
+## Use the here package to find a file
+
+When you want to read a file, you need to tell R the file name and where it can be found (if its not in the current directory). Our repository contains a directory called data. In the code below I refer to a file by its "absolute path", which won't work on your computer.
+
+```{r error=TRUE}
+my_data <- read_csv("/Users/airwin/Dropbox/Stats-data-visualization/Tasks/data/test-data.csv")
+```
+
+You can use the `here` function to get the path of this file. This result will be different on your computer than it is on mine!
+
+```{r}
+here("data/test-data.csv")
+```
+
+`here` searches in [several places](https://github.com/jennybc/here_here) to find the file. Rewrite the `read_csv` function call above to use `here`, the directory name `data` and the filename. Don't include the part of the path that has your name, or "My Computer" or "Users" in it, because those folders will not exist on someone else's computer. Delete the reference to the file that does not exist on your computer.
+
+
+Headings
+
+Revise this document to use headings. Insert at least two "level two" headings by starting an appropriate line with two hash marks: `##`. You need to leave a blank line before and after the heading for it to be formatted correctly when you click "knit". Insert at least one "level three" heading by starting a line with three hash marks. Find the "Outline" menu in the upper right of the markdown editing window and learn how to use it to navigate your document. Find the "chunk menu" in the lower left of the editing window and learn to use it to navigate your document.
+
+Bullet list
+
+List 3-5 skills you've learned about R in this course in a bulletted list. Use `* ` at the start of each line to add bullets. You need a blank line before and after the list for the formatting to work properly.
+
+Numbered list
+
+List 3-5 cities or towns you have lived in or visited in a numbered list.  Use `1. ` at the start of each line to create a numbered list. You need a blank line before and after the list for the formatting to work properly.
+
+Spelling
+
+Notice that Rstudio will check speling (at least English spelling if it is using English locales) and underline misspelled words with a thin, wavy, red line. Find the two mispelled words in this paragraph and correct them. (If your copy of Rstudio is set up to use a different language, check to see if spell check works and tell me the language and result. See the menu item: Tools > Global Options > Spelling.)
+
+Code formatting
+
+A part of communicating clearly is writing your code according to conventions others expect. 
+This makes your work easier to read. There are style guides for R code written in the [tidyverse]() style and 
+a more general guide from [google](https://google.github.io/styleguide/Rguide.html).
+
+Use `tidy='styler'` as a chunk option to change the formatting of the next R code chunk. You will need to install the `styler` R package. The code _will not_ be reformatted in the editing window; the formatting will only change in the HTML output. Compare the knitted appearance to the way the code is typed below and the way it is formatted above.
+
+```{r}
+p <- penguins |>ggplot(aes(x=flipper_length_mm,y =bill_length_mm, 
+                             color=species)) + geom_point()
+p
+```
+
+
+Use `fig.height=3` or other size to change the size of the next figure. Compare the size (in the knitted document) to the previous figure, which used the default settings.
+
+```{r}
+p
+```
+
+Use `out.width="50%"` or other size to change the size of the next figure. Compare the size (in the knitted document) to the previous figures, which used the default settings.
+
+```{r}
+p
+```
+
+Use `warnings=FALSE` to hide the warning message that is displayed above the next figure.
+
+```{r}
+p
+```
+
+Add a caption (using `fig.cap="XXX"`) and set the alignment to left, centre, or right (using `fig.align-"XXXX"`):
+
+```{r}
+p
+```
+
+A new style of writing chunk options is starting. You can write a special comment inside the code block to create a figure caption and add a numbered "Figure" label. Compare the result below with the results of your edits above.
+
+```{r}
+#| fig-cap: "The correlation between penguin flipper and bill length for three species observed on islands along the Antarctic peninsula."
+#| label: fig-test-figure
+#| fig-align: center
+p
+```
+
+The next chunk will generate a "png" and "pdf" file.
+
+```{r figure-1, dev=c("png", "pdf", "svglite"), cache=TRUE}
+p
+```
+
+After you knit the document, find the PDF version of this figure in the "task-presentation_files/figure-html" folder. The files are called: **write the names of the files here**. Don't add the files to your repository. (In order to retain these files, you need to set the `self-contained: false` option in the document metadata at the start of the file.)
+
+You can name code chunks, to help you navigate the document (see the menu in the bottom left of this editing window). I've added a name for the previous chunk. Add a name for at least one other chunk in your document. Confirm this worked by looking in the "chunk menu".
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```

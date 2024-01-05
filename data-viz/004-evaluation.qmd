@@ -89,20 +89,18 @@ Practice using ggplot to make graphs by reproducing examples from mini-lecture o
 
 ### Week 4
 
-The tasks for this week and the rest of the course are to be submitted using GitHub.
-
 #### Task: Summarizing data (Lesson 9) {#task-5 .unnumbered}
 
-Exercises to practice filter, group_by, summarize, and mutate. File `task-L09-summarize.Rmd`.
+Exercises to practice filter, group_by, summarize, and mutate. File [task-L09-summarize](tasks/task-L09-summarize.Rmd). (Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio.)
 
-Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
+Follow the instructions in the file. When you are done, knit the file to be sure there are no errors.
 Answer questions in the Brightspace Task quiz.
 
 ### Week 5
 
 #### Task: Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
-Exercises to practice making faceted plots. File `task-L10-facets.Rmd`.
+Exercises to practice making faceted plots. File [task-L10-facets](tasks/task-L10-facets.Rmd).
 
 #### Task (Lesson 11) {#task-b5 .unnumbered}
 
@@ -114,11 +112,11 @@ I will get you to practice reading files later on in the course. For now,
 
 #### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 
-Reshaping data practice. File: `task-L12-reshape.Rmd`.
+Reshaping data practice. File: [task-L12-reshape](tasks/task-L12-reshape.Rmd).
 
 #### Task: Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
-Displaying tables practice. File: `task-L13-tables.Rmd`
+Displaying tables practice. File: [task-L13-tables](tasks/task-L13-tables.Rmd)
 
 #### Task (Lesson 14) {#task-b6 .unnumbered}
 
@@ -132,11 +130,11 @@ Practice adding linear models and smooths to visualizations. Reproduce some of t
 
 #### Task: Linear models (Lesson 16) {#task-9 .unnumbered}
 
-Exercises on linear models. File: `task-L16-linear-models.Rmd`.
+Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
 
 #### Task: LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
 
-Exercises on LOESS and GAM smooths. File: `task-L17-LOESS-GAM.Rmd`.
+Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
 
 #### Team Planning {#task-planning .unnumbered}
 
@@ -162,7 +160,7 @@ You can use any data you like for this task. If you want a specific suggestion, 
 #### Task: Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
- File `task-L20-collaboration.Rmd`.
+ File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
 
 ### Week 9
 
@@ -172,11 +170,11 @@ The task for this lesson is grouped with the MDS task.
 
 #### Task: MDS (Lesson 22) {#task-13 .unnumbered}
 
-Create a PCA and MDS plot as described in the file `task-L22-mds.Rmd`. 
+Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
 
 #### Task: K-means (Lesson 23) {#task-14 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the file `task-L23-k-means.Rmd`. 
+Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
 
 ### Week 10
 
@@ -188,7 +186,7 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-File: `task-presentation.qmd`.
+File: [task-presentation](tasks/task-presentation.qmd).
 
 ### Week 11
 
@@ -198,17 +196,17 @@ Practice making a map from the lesson
 
 #### Task: Maps (Lesson 28) {#task-15 .unnumbered}
 
-Make maps described in the file `task-maps.Rmd`.
+Make maps described in the file [task-maps](tasks/task-maps.Rmd).
 
 #### Task: Map alternatives (Lesson 29) {#task-16 .unnumbered}
 
-Show geographic data without maps as described in `task-map-alternatives.Rmd`.
+Show geographic data without maps as described in [task-map-alternatives](tasks/task-map-alternatives.Rmd).
 
 ### Week 12
 
 #### Task: Factors and Dates (Lesson 30) {#task-17 .unnumbered}
 
-Exercises with strings, factors, dates, and times. See `task-factors-dates.Rmd`.
+Exercises with strings, factors, dates, and times. See [task-factors-dates](tasks/task-factors-dates.Rmd).
 
 #### Task (Lesson 31) {#task-b11 .unnumbered}
 
@@ -216,7 +214,7 @@ Make a custom color scale using a web interactive tool and then use those colour
 
 #### Task: Themes (Lesson 32) {#task-18 .unnumbered}
 
-See `task-themes.Rmd`.
+See [task-themes](tasks/task-factors-dates.Rmd).
 
 That is the last task for the course!
 
@@ -226,13 +224,11 @@ Assignments are opportunities to apply and combine the skills from several lesso
 
 ### Assignment 1 {#assignment-1 .unnumbered}
 
-Your assignment is to get the repositories for Assignments and Tasks on to your computer.
+Your assignment is to get the repositories for Assignments on to your computer.
 
 * Go to your [github](https://github.com) account and look for a repository called `data-viz-assignments-` followed by your github user name. Get the link by clicking the green button labeled "Code". It should look like this: `https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-assignments-<your github name>.git` 
 * Using Rstudio on your computer, select menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer.
 * If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignments.Rproj" link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories. 
-
-Repeat these steps, changing `assignments` to `tasks` to get the repository with your Tasks.
 
 Open the Assignments project and edit `assignment-1.Rmd`. Follow the instructions in that file. If you have trouble with this assignment, ask for help. It's very important.
 

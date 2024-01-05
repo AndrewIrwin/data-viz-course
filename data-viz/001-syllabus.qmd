@@ -9,8 +9,12 @@ library(gt)
 This is the syllabus for the Data Visualization (STAT 2430) course offered in Winter 2024 at Dalhousie University.
 
 * Instructor: Andrew Irwin, a.irwin@dal.ca
-* Meeting times: Tuesday and Thursday 10:05-11:25 pm  in Henry Hicks (HH) 212
-* Office hours: Tuesday 3:30 pm  in Chase 225, or by appointment.
+* Meeting times: Tuesday and Thursday 10:05-11:25 am, Henry Hicks (HH) 212
+* Office hours: Tuesday and Thursday 2:30-3:30 pm  in Chase 225, or by appointment.
+* Math & Stats Learning Centre: Mohammad Amirian, Chase 119
+  * Tuesday 11:30a-12:30p
+  * Wednesday 1:30-2:30p
+  * Thursday 1:30-2:30p
 
 ## Course Description {-}
 

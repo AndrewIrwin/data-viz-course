@@ -1,0 +1,78 @@
+---
+title: "Task: Themes"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+In this task you will practice working with theme elements on plots.
+
+## Question 1
+
+Work with background, grid lines, and text labels.
+
+I'll create a graph for you to work with.
+
+```{r}
+p1 <- penguins |> ggplot(aes(body_mass_g, flipper_length_mm, color = island)) + 
+  geom_point()
+p1
+```
+
+Set the following elements to values of your choosing:
+
+* axis.title = element_text(size = XX)
+* axis.text: a smaller value than used for titles
+* legend.title: a value of your choosing
+* legend.text: a value of your choosing
+* panel.background = element_rect(color = XXX, fill = XXX); you choose colours for the XXXX
+* plot.background = element_rect(color = XXX, fill = XXX); you choose colours for the XXXX
+* panel.grid.major = element_line(linetype = YY, color = XXX, size = YY); a colour for XXX and a number for YYY
+* panel.grid.minor = element_line(linetype = YY, color = XXX, size = YY); a colour for XXX and a number for YYY
+
+```{r}
+p1 + theme()
+```
+
+## Question 2
+
+Work with the "strip" labels on a facetted plot.
+
+Work with this plot.
+
+```{r}
+p2 <- penguins |> ggplot(aes(bill_length_mm, bill_depth_mm, color = island)) + 
+  geom_point() + 
+  facet_grid(sex ~ species, switch="y")  # try switch = "x", "y", or "both"; this controls where the strip labels are shown
+p2
+```
+
+Set the following elements of the theme:
+
+* strip.placement = "inside" or "outside"
+* strip.background = element_rect(), with properties as used in question 1
+* strip.text = element_text(), with properties as used in question 1
+* panel.spacing = unit(0.2, "cm"), or other value
+
+
+```{r}
+p2 + theme()
+```
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+
+
