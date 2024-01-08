@@ -3,7 +3,7 @@ title: "STAT 2430<br/>Data Visualization"
 subtitle: "Course Mechanics"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Mathematics & Statistics,<br/>Dalhousie University"
-date: "2022-09-06"
+date: "2024-01-09"
 format:
   revealjs:
     slide-number: true
@@ -93,8 +93,7 @@ format:
 * Course notes online
 
 * In-class meetings
-  * Remote participation possible
-  
+
 * Evaluation
   
 * Office hours for individual discussion
@@ -107,12 +106,12 @@ format:
 
 * Project (Proposal, Presentation, Report)
   
-**All work to be evaluated is described on a [single course page](https://andrewirwin.github.io/data-viz-2022-course/004-evaluation.html).**
+**All work to be evaluated is described on a [single course page](https://andrewirwin.github.io/data-viz-course/004-evaluation.html).**
 
 
 ## Course Resources
 
-* [Course web page](https://andrewirwin.github.io/data-viz-2022-course/)
+* [Course web page](https://andrewirwin.github.io/data-viz-course/)
 
 * [Course Notes](https://andrewirwin.github.io/data-viz-notes/)
 

@@ -1,7 +1,7 @@
 ---
 title: "Computer Tools"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-09-08"
+date: "2024-01-11"
 format:
   revealjs:
     slide-number: true
@@ -61,7 +61,7 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ## R markdown
 
-![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot](static/L02-rmarkdown.png){#fig-tidyverse}
+![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot. Can also use [Quarto](https://quarto.org/).](static/L02-rmarkdown.png){#fig-tidyverse}
 
 ## git
 

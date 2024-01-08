@@ -10,7 +10,7 @@ After the first week, most tasks have work for you to do in R. After you have do
 
 ### Week 1
 
-There are three tasks this week (Invitation, Setting Up). See Brightspace for more information.
+There are three tasks this week. See Brightspace to submit your work for these tasks.
 
 #### Task: Invitation (Lesson 1) {#task-1 .unnumbered}
 
@@ -24,7 +24,7 @@ Create a document that shows each visualization (the figure, or a snapshot of a 
 
 The goal of this task isn't to be right or wrong in your assessment, but rather to develop a practice of looking at data visualizations through the perspective of creator, designer, and critic. It's okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualizations.
 
-Submit your work by answering questions in the quiz on Brightspace.
+Submit your work by answering questions about one of these visualizations in the quiz on Brightspace.
 
 #### Task (Lesson 2)  {#task-b1 .unnumbered}
 
@@ -35,6 +35,8 @@ Make a list of about 10 key takeaway messages from the reading. For example, I w
 - Do all my learning and work in R in R markdown documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don't use a word processor. Don't cut and paste code and results from the R console into a document. It's too easy to make mistakes this way and will take longer.
 - Take notes about what I learn (for ggplot and other skills). I'll write these in a private Rmd document called data-viz-notes.Rmd (or something like that)
 
+Write about two takeaway messages in the Brightspace quiz.
+  
 #### Task: Setting up (Lesson 3) {#task-2 .unnumbered}
 
 See the instructions in the syllabus or in Lesson 3 notes.
@@ -45,7 +47,7 @@ See the instructions in the syllabus or in Lesson 3 notes.
 2. Login to [rstudio.cloud](https://rstudio.cloud/). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.
 5. Ask for help with any of these tasks if you need it. 
 
-Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name in one of the quiz questions. 
+The Brightspace quiz asks if you were successful with each task or if you need help. Provide your GitHub ID in one of the quiz questions. 
 
 ### Week 2
 
@@ -60,11 +62,11 @@ Your task for this lesson is to answer two specific questions about choices made
    b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
    c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
 
-Write answers for these two questions in a word processor. Submit your responses in the Task Quiz for week 2 on Brightspace.
+Write answers for these  questions in a word processor. Answer the questions in the Task Quiz for week 2 on Brightspace.
 
 #### Task (Lesson 5) {#task-b2 .unnumbered}
 
-Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot.
+Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. The Brightspace quiz asks you a couple of questions about making plots.
 
 #### Task (Lesson 6) {#task-b2b .unnumbered}
 
@@ -75,7 +77,7 @@ Get the software `git` working on your computer by following the steps in Lesson
 
 #### Task (Lesson 7) {#task-b3 .unnumbered}
 
-Your task for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task quiz
+Your task for this lesson is to review some material on ggplot to connect the ideas from  to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task quiz
 
 In addition, I suggest the following reading with nothing to submit:
 
@@ -84,25 +86,23 @@ In addition, I suggest the following reading with nothing to submit:
 
 #### Task (Lesson 8) {#task-b4 .unnumbered}
 
-Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
+Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
 
 
 ### Week 4
 
-The tasks for this week and the rest of the course are to be submitted using GitHub.
-
 #### Task: Summarizing data (Lesson 9) {#task-5 .unnumbered}
 
-Exercises to practice filter, group_by, summarize, and mutate. File `task-L09-summarize.Rmd`.
+Work through the exercises to practice filter, group_by, summarize, and mutate provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. 
 
-Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors.
+Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
 Answer questions in the Brightspace Task quiz.
 
 ### Week 5
 
 #### Task: Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
-Exercises to practice making faceted plots. File `task-L10-facets.Rmd`.
+Exercises to practice making faceted plots. File [task-L10-facets](tasks/task-L10-facets.Rmd).
 
 #### Task (Lesson 11) {#task-b5 .unnumbered}
 
@@ -114,11 +114,11 @@ I will get you to practice reading files later on in the course. For now,
 
 #### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 
-Reshaping data practice. File: `task-L12-reshape.Rmd`.
+Reshaping data practice. File: [task-L12-reshape](tasks/task-L12-reshape.Rmd).
 
 #### Task: Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
-Displaying tables practice. File: `task-L13-tables.Rmd`
+Displaying tables practice. File: [task-L13-tables](tasks/task-L13-tables.Rmd)
 
 #### Task (Lesson 14) {#task-b6 .unnumbered}
 
@@ -132,11 +132,11 @@ Practice adding linear models and smooths to visualizations. Reproduce some of t
 
 #### Task: Linear models (Lesson 16) {#task-9 .unnumbered}
 
-Exercises on linear models. File: `task-L16-linear-models.Rmd`.
+Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
 
 #### Task: LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
 
-Exercises on LOESS and GAM smooths. File: `task-L17-LOESS-GAM.Rmd`.
+Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
 
 #### Team Planning {#task-planning .unnumbered}
 
@@ -162,7 +162,7 @@ You can use any data you like for this task. If you want a specific suggestion, 
 #### Task: Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
- File `task-L20-collaboration.Rmd`.
+ File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
 
 ### Week 9
 
@@ -172,11 +172,11 @@ The task for this lesson is grouped with the MDS task.
 
 #### Task: MDS (Lesson 22) {#task-13 .unnumbered}
 
-Create a PCA and MDS plot as described in the file `task-L22-mds.Rmd`. 
+Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
 
 #### Task: K-means (Lesson 23) {#task-14 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the file `task-L23-k-means.Rmd`. 
+Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
 
 ### Week 10
 
@@ -188,7 +188,7 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-File: `task-presentation.qmd`.
+File: [task-L24-presentation](tasks/task-L24-presentation.qmd).
 
 ### Week 11
 
@@ -198,17 +198,17 @@ Practice making a map from the lesson
 
 #### Task: Maps (Lesson 28) {#task-15 .unnumbered}
 
-Make maps described in the file `task-maps.Rmd`.
+Make maps described in the file [task-L28-maps](tasks/task-L28-maps.Rmd).
 
 #### Task: Map alternatives (Lesson 29) {#task-16 .unnumbered}
 
-Show geographic data without maps as described in `task-map-alternatives.Rmd`.
+Show geographic data without maps as described in [task-L29-map-alternatives](tasks/task-L29-map-alternatives.Rmd).
 
 ### Week 12
 
 #### Task: Factors and Dates (Lesson 30) {#task-17 .unnumbered}
 
-Exercises with strings, factors, dates, and times. See `task-factors-dates.Rmd`.
+Exercises with strings, factors, dates, and times. See [task-L30-factors-dates](tasks/task-L30-factors-dates.Rmd).
 
 #### Task (Lesson 31) {#task-b11 .unnumbered}
 
@@ -216,7 +216,7 @@ Make a custom color scale using a web interactive tool and then use those colour
 
 #### Task: Themes (Lesson 32) {#task-18 .unnumbered}
 
-See `task-themes.Rmd`.
+See [task-themes](tasks/task-L32-themes.Rmd).
 
 That is the last task for the course!
 
@@ -226,13 +226,13 @@ Assignments are opportunities to apply and combine the skills from several lesso
 
 ### Assignment 1 {#assignment-1 .unnumbered}
 
-Your assignment is to get the repositories for Assignments and Tasks on to your computer.
+Your assignment is to get the repositories for Assignments on to your computer, make a few edits to the file, and push your changes back to GitHub. I will let the class know when the repositories have been created.
+
+Before you begin this assignment, be sure you have completed the process of getting git working on your computer described in Lesson 6.
 
 * Go to your [github](https://github.com) account and look for a repository called `data-viz-assignments-` followed by your github user name. Get the link by clicking the green button labeled "Code". It should look like this: `https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-assignments-<your github name>.git` 
 * Using Rstudio on your computer, select menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer.
 * If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignments.Rproj" link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories. 
-
-Repeat these steps, changing `assignments` to `tasks` to get the repository with your Tasks.
 
 Open the Assignments project and edit `assignment-1.Rmd`. Follow the instructions in that file. If you have trouble with this assignment, ask for help. It's very important.
 
@@ -278,27 +278,27 @@ Organize your work as a slide presentation. A template with instructions is in t
 
 ## Term project {- #project-description}
 
-Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
+Your term project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
 
 You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio using R.
 
 ### Deliverables {-}
 
-Work in groups of 2. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2. Most teams will produce one of each component (proposal, report, presentation) per team member. If you prefer, each person on the team can make their own documents (proposal, report, presentation). Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.
 
 ### Team creation {-}
 
-Teams will be created in early March. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. I will review this list and finalize the team assignments in early March.
+Teams will be created shortly after the mid-term break. If you would like to form a team with a specific person in the class, answer the Brightspace quiz in the "project" section. If you would like to be assigned a randomly selected team mate, you don't need to complete the form. I will finalize the team assignments during the break week.
 
-**If you withdraw from the course once you have been assigned to a team for the term project, please let your teammates and me know as soon as possible.**
+**If you withdraw from the course once you have been assigned to a team for the term project, please let your teammate and me know as soon as possible.**
 
 ### Proposal {-}
 
 Your main task for the proposal is to find a data set to analyze for your project and describe at least one question you can address with data visualizations.
 
-It is important that you choose a readily accessible data set that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your data set should have at least 50 observations and about 10 variables. If you find a bigger data set, you can make a subset to work with for your project. The data set should include categorical and quantitative variables. If you plan to use a data set that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+It is important that you choose a readily accessible data set that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your data set should have at least 50 observations and about 10 variables. If you find a very large data set, you can make a subset to work with for your project. The data set must include categorical and quantitative variables. If you plan to use a data set that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be a challenging task. If you are having trouble ask for help before it is too late.
 
 Do not reuse data sets from any part of the course.
 
@@ -314,29 +314,29 @@ Here is list of data repositories containing many interesting data sets. Feel fr
 * Other sources listed in the Data sources section of the course notes
 * Data you find on your own may be suitable too.
 
-Describe a data set and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
+Describe a data set and question you can address with the data for your proposal. Outline a plan to use about five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
 
-Many data sets on [Kaggle](https://www.kaggle.com/datasets) are simulated data -- generated by a computer with randomization and not the result of a real-life data gathering process. You can recognize these data because there is no clear explanation of how the data were collected. **Do not use simulated data. Do not use data if you can't explain how it was collected.**
+Many data sets on [Kaggle](https://www.kaggle.com/datasets) are simulated data -- generated by a computer with randomization and not the result of a real-life data-gathering process. You can recognize these data because there is no clear explanation of how the data were collected. **Do not use simulated data. Do not use data if you can't explain how it was collected.**
 
 The repository contains a template for your proposal called `proposal.Rmd`. Write your proposal by revising this file and using this template.
 
 * Questions: The introduction should introduce your research questions
-* Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.).  Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal.
+* Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.).  Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal. Do not show the entire dataset.
 * Visualization plan:
   * The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.
   * Ideas for at least two possible visualizations for exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data.
   * An idea of how at least one statistical method described in the course (smoothing, PCA, k-means) could be useful in analyzing your data
 * Team planning: briefly describe how members of your team will divide the tasks to be performed.
 
-*Assessment*. See the file grade-proposal.rmd for the assessment guidelines and rubric.
+*Assessment*. See the file `grade-proposal.Rmd` for the assessment guidelines and rubric.
 
 ### Written report {-}
 
-Follow the template provided for your written report (`report.Rmd`) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.
+Follow the template provided for your written report (`report.Rmd`) to present your visualizations and insights about your data. Review the marking guidelines in `grade-report.Rmd` and ask questions if any of the expectations are unclear.
 
 Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.
 
-You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck. Look at the lesson on collaboration for help.
+You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! **Pull work from github before you start, commit your changes, and push often.** Ask questions when stuck. Look at the lesson on collaboration for help.
 
 In your knitted report your R code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you're welcome to show that portion.
 
@@ -353,8 +353,7 @@ The final exam has three components:
 
 * The oral presentation, which must be completed before the time of the exam.
 * You will be assigned 5 presentations to watch as part of the final exam. You should plan to watch these during the assigned time for the final exam.
-* You will complete a peer evaluation of the presentations you watch. This will be an assignment on Brightspace to be done during the final exam.
-* You will have an opportunity to provide feedback on your project partner's contribution to the project.
+* You will complete a peer evaluation of the presentations you watch. This will be an assignment on Brightspace to be done during the final exam. You will also be asked to provide feedback on your partner's contribution to the project. You should find a quiet place to write the exam. You do not need to come to the exam room.
 
 
 ### Oral presentation {-}
@@ -363,10 +362,10 @@ The oral presentation should be 5-10 minutes long (at least 5, no more than 10).
 
 You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.qmd`. I suggest a format such as the following:
 
-* A title with team members' names
+* A title for your project and your team members' names
 * A description of the data you are analyzing
 * At least one question you can investigate with your data visualization
-* At least two data visualizations
+* At least two data visualizations that help answer this question
 * A conclusion
 
 For suggestions on making slide presentations see the lesson on slides.
@@ -374,7 +373,7 @@ For suggestions on making slide presentations see the lesson on slides.
 Don't show your R code; the focus should be on your results and visualizations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
 
 Your presentation should convey what you learned from your analysis and the choices you made when constructing your visualizations.
-Be careful not to simply describe a list of visualizations and analyses ("then we did this, then we did this, etc.").
+Be careful not to simply describe a list of visualizations and analyses ("then we did this, then we did this, etc."). You must tie the visualizations you show to the questions you are investigating.
 
 Presentation schedule: You should record your presentation as part of the exam preparation period. You must upload your recorded presentation at least 1 day before the scheduled final exam.
 During the exam period you will watch presentations from other teams I assign to you and provide feedback in the form of a peer evaluation.

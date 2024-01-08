@@ -179,7 +179,7 @@ ChickWeight |>
 
 * Lots more examples with different data in the course notes
 
-* R4DS [Chapter 5 Data transformations](https://r4ds.had.co.nz/transform.html)
+* R4DS [Chapter 5 Data transformations](https://r4ds.hadley.nz/data-transform)
 
 
 ## Task
