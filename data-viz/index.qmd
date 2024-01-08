@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization"
-subtitle: "STAT 2430 at Dalhousie University, Winter 2024"
+subtitle: "STAT 2430 at Dalhousie University, Fall 2022"
 author: "Andrew Irwin"
 date: "2024-01-09"
 format: 

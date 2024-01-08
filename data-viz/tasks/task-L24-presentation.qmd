@@ -1,0 +1,103 @@
+---
+title: "Write a title here"
+author: "Your name"
+date: "`r Sys.Date()`"
+format:
+  revealjs:
+    slide-number: true
+---
+
+```{r include=FALSE}
+# load libraries here, but show no output
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# Instructions
+
+* Modify this file to be a short collection of slides for a presentation
+* Follow the instructions on the rest of the slides
+* Delete this slide of instructions
+* If you get stuck, review the [overview of making presentation slides](https://quarto.org/docs/presentations/revealjs/)
+
+## Headings
+
+Learn, by experimentation, the difference between a heading with one (`#`) or two (`##`) hash marks.
+
+**Describe the difference here.**
+
+## Images
+
+Find a small graphic (photo, drawing, etc.). Add it to this repository. Make it appear on this slide.
+
+Follow the instructions [here](https://quarto.org/docs/authoring/figures.html).
+
+::: footer
+Learn how to put an image in the [background](https://quarto.org/docs/presentations/revealjs/#image-backgrounds).
+:::
+
+# Visualization {.smaller}
+
+Change the ggplot graphic here to something of your choosing. 
+
+(You can create a new one, or use something from earlier in the course.)
+
+Create a caption for the figure. 
+
+```{r echo=FALSE}
+#| label: fig-one
+#| fig-cap: "A descriptive caption."
+#| fig-width: 9
+palmerpenguins::penguins |> 
+  filter(!is.na(flipper_length_mm)) |>
+  ggplot(aes(flipper_length_mm)) +
+  geom_density() +
+  theme_minimal() +
+  theme(text = element_text(size = 18))
+```
+
+# Another slide {background-color="gray"}
+
+Set the background to black, or another color.
+
+
+::: footer
+Learn more: [Slide Backgrounds](https://quarto.org/docs/presentations/revealjs/#color-backgrounds)
+:::
+
+
+# View the slides in a browser
+
+* Click: Render.
+* Open the slides in a web browser. (Click Present, or find the html file and open it.)
+* Hit ? for help.
+* Click on the menu in the lower left to see what options are available in presentation mode.
+
+## Two columns
+
+:::: {.columns}
+
+::: {.column width="30%"}
+Put an image or figure in this column
+:::
+
+::: {.column width="70%"}
+- Write a sentence about the graphic here.
+- Adjust the column widths to make good use of space.
+:::
+
+::::
+
+## Submit
+
+Do you want this Task to be graded? If yes, change `FALSE` to `TRUE` below:
+
+```{r echo=TRUE}
+#| code-fold: true
+#| code-summary: "Show the code"
+assess_task = FALSE
+```
+
+
+Learn how to show code and how to "fold" code [here](https://quarto.org/docs/get-started/computations/rstudio.html#code-folding).
+
