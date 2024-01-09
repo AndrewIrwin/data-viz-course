@@ -8,6 +8,9 @@ Install packages: palmerpenguins, gapminder, DT, rgbif, datasauRus, GGally, ggfo
 gganimate, rnaturalearth, rnaturalearthdata, mapproj, ggmap, leaflet, kableExtra, geojsonio,
 paletteer, unglue, cansim, ggheatmap, statebins, ggtext, rgeos
 
+pkg <- c("palmerpenguins", "gapminder", "DT", "rgbif", "datasauRus", "GGally", "ggfortify", "plotly", "gganimate", "rnaturalearth", "rnaturalearthdata", "mapproj", "ggmap", "leaflet", "kableExtra", "geojsonio", "socviz", "paletteer", "unglue", "cansim", "ggheatmap", "statebins", "ggtext", "rgeos", "devtools")
+install.packages(pkg)
+
 Install quarto command line tools from https://quarto.org/docs/get-started/
 
 quarto preview data-viz

@@ -21,6 +21,7 @@ Add code just like in regular markdown. Hide a code block with `echo = FALSE`.
 ```{r include = FALSE}
 library(palmerpenguins)
 library(tidyverse)
+library(DT)
 ```
 
 
