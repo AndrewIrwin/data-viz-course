@@ -1,0 +1,64 @@
+---
+title: "Task: Reshaping data"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(gapminder)
+library(knitr)
+library(here)
+```
+
+The goal of this task is to practice the use of pivots, both longer and wider. 
+
+## Question 1
+
+Here is a long format table of the number of each species of penguin sampled on each island. Reshape the table into wide format, with species in rows and islands in columns. The function `pivot_wider` will put an `NA` in for the entries missing from the long table. That's fine. If you like, replace them with 0 using `values_fill=0`.
+
+```{r}
+penguin_counts <- penguins |> count(species, island)
+penguin_counts |> kable()
+```
+
+
+## Question 2
+
+Read the data from the file `data/question-2.csv`. This is a wide format table reporting grades for 4 students on 4 tasks. Use `pivot_longer` to make a three column long table: Student, Task_number, Grade. You can leave the Task_number formatted as it comes from `pivot_longer`, or you may want to try using `separate` or `str_remove` to clean up the task number to be just the number.
+
+```{r message=FALSE}
+wide_table <- read_csv(here("data/question-2.csv"))
+```
+
+Make a facetted plot of grade on the y-axis, task on the x-axis with each facet corresponding to a different student.
+
+```{r warning=FALSE}
+
+
+```
+
+## Question 3
+
+Make a wide table from the `gapminder` data. Use `filter` to include only countries from Oceania and only the years 1997, 2002, and 2007. Then use `pivot_wider` to make a wide table with countries in rows and population in the entries under the columns named with the year.
+
+```{r}
+
+
+```
+
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+
+

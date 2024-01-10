@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.4.538">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data-viz – syllabus</title>
+<title>data-viz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
 
 
@@ -40,7 +45,13 @@ ul.task-list{list-style: none;}
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -49,8 +60,10 @@ ul.task-list{list-style: none;}
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -62,34 +75,39 @@ ul.task-list{list-style: none;}
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">data-viz</span>
-  </a>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Welcome</a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./001-syllabus.html" aria-current="page">Syllabus</a>
+    <a class="nav-link active" href="./001-syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./002-detailed-outline.html">Schedule</a>
+    <a class="nav-link" href="./002-detailed-outline.html"> 
+<span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./004-evaluation.html">Evaluation</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./teams.html">Teams</a>
+    <a class="nav-link" href="./004-evaluation.html"> 
+<span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -98,7 +116,7 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -119,13 +137,11 @@ ul.task-list{list-style: none;}
   </ul></li>
   <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course Policies</a>
   <ul class="collapse">
-  <li><a href="#covid-19" id="toc-covid-19" class="nav-link" data-scroll-target="#covid-19">COVID-19</a></li>
   <li><a href="#data-retention-policy" id="toc-data-retention-policy" class="nav-link" data-scroll-target="#data-retention-policy">Data retention policy</a></li>
   </ul></li>
   <li><a href="#important-dates" id="toc-important-dates" class="nav-link" data-scroll-target="#important-dates">Important dates</a></li>
   <li><a href="#territorial-acknowledgement" id="toc-territorial-acknowledgement" class="nav-link" data-scroll-target="#territorial-acknowledgement">Territorial Acknowledgement</a></li>
   <li><a href="#university-policies-and-statements" id="toc-university-policies-and-statements" class="nav-link" data-scroll-target="#university-policies-and-statements">University Policies and Statements</a></li>
-  <li><a href="#student-resources-and-support" id="toc-student-resources-and-support" class="nav-link" data-scroll-target="#student-resources-and-support">Student Resources and Support</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -135,13 +151,20 @@ ul.task-list{list-style: none;}
 
 
 
+
 <section id="stat-2430-data-visualization" class="level1 unnumbered">
 <h1 class="unnumbered">STAT 2430 Data Visualization</h1>
-<p>This is the syllabus for the Data Visualization (STAT 2430) course offered in Fall 2022 at Dalhousie University.</p>
+<p>This is the syllabus for the Data Visualization (STAT 2430) course offered in Winter 2024 at Dalhousie University.</p>
 <ul>
 <li>Instructor: Andrew Irwin, a.irwin@dal.ca</li>
-<li>Meeting times: Tuesday and Thursday 1:00-2:20 pm Atlantic in LSC-C338 and on Collaborate</li>
-<li>Office hours: Monday and Wednesday 3:30 pm Atlantic on Collaborate, in Chase 225, or by appointment.</li>
+<li>Meeting times: Tuesday and Thursday 10:05-11:25 am, Henry Hicks (HH) 212</li>
+<li>Office hours: Tuesday and Thursday 2:30-3:30 pm in Chase 225, or by appointment.</li>
+<li>Math &amp; Stats Learning Centre: Mohammad Amirian, Chase 119
+<ul>
+<li>Tuesday 11:30a-12:30p</li>
+<li>Wednesday 1:30-2:30p</li>
+<li>Thursday 1:30-2:30p</li>
+</ul></li>
 </ul>
 <section id="course-description" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="course-description">Course Description</h2>
@@ -161,7 +184,7 @@ ul.task-list{list-style: none;}
 <ul>
 <li>Kieran Healy (2018) <a href="https://socviz.co">Data Visualization: A Practical Introduction</a>. Princeton University Press.</li>
 <li>Claus O. Wilke (2019) <a href="https://clauswilke.com/dataviz/">Fundamentals of data visualization</a>. O’Reilly.</li>
-<li>Garret Grolemund &amp; Hadley Wickham (2017) <a href="https://r4ds.had.co.nz/">R for data science</a>. O’Reilly.</li>
+<li>Garret Grolemund &amp; Hadley Wickham (2017) <a href="https://r4ds.hadley.nz/">R for data science</a>. O’Reilly.</li>
 </ul>
 <p>The textbooks are available in printed form from bookstores and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals. The books by Healy and Wilke focus on the design and interpretation of data visualizations. The book by Grolemund and Wickham describes the use of R, particularly the set of packages known as the “tidyverse” for data visualization and the broader tasks of data science.</p>
 <section id="syllabus_software" class="level3 unnumbered">
@@ -190,44 +213,58 @@ ul.task-list{list-style: none;}
 <li>Opportunities to develop and demonstrate your knowledge in course work to be evaluated (tasks, assignments, and a term project).</li>
 <li>Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading. If you can’t participate in office hours, but you have a question, please get in touch with me and arrange another time to meet.</li>
 </ul>
-<p>I recorded mini-lectures for most lessons the last time this course was offered. You don’t need to watch these, but if you wish additional material you can find them <a href="http://bio.mmab.ca/data-visualization/">here</a>.</p>
 <p><strong>Follow the <a href="./002-detailed-outline.html">detailed outline</a> for each week’s plan to keep you on track.</strong></p>
 </section>
 <section id="evaluation" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="evaluation">Evaluation</h2>
 <p>Your goal in this course is to learn the principles and skills of data visualization. Most people learn best using a combination of collaborative and independent work. The general guideline is that work you submit should be your own—your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. When you help another student, be careful you don’t help them so much that you inhibit their learning.</p>
-<p><strong>Tasks</strong> are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete. You are expected to submit approximately one task to be graded each week. Tasks are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own.</p>
+<p><strong>Tasks</strong> are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete. After you work on the task with R, go to Brightspace to answer some questions about the task. Tasks are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own.</p>
 <p><strong>Assignments</strong> combine skills from multiple lessons into a meaningful data visualization activity. These are opportunities to apply the content of lessons in thoughtful and sometimes creative ways. Assignments are assessments of your skills and should be done independently.</p>
-<p>The <strong>Term Project</strong> is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set. The term project is designed to be done collaboratively in a group. The work on the project should be the work of members of the group and not outside collaborators or internet sources.</p>
+<p>The <strong>Term Project</strong> is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set. The term project is designed to be done collaboratively with a partner. The work on the project should be the work of members of the group and not outside collaborators or internet sources.</p>
 <ul>
-<li>Tasks (30%, approximately 1 per week, due weekly, equally weighted)</li>
-<li>Assignments (40%, roughly 1 every two weeks, equally weighted)</li>
+<li>Tasks (30%, due weekly, equally weighted)</li>
+<li>Assignments (30%, roughly 1 every two weeks, equally weighted)</li>
 <li>Term project, divided into three components
 <ul>
-<li>Proposal, due Thursday 27 October, 5%</li>
-<li>Oral presentation, due Tuesday 29 November, 10%</li>
-<li>Report, due Wednesday 7 December, 15%</li>
+<li>Proposal, due Thursday 7 March, 5%</li>
+<li>Report, due Thursday 4 April, 15%</li>
+</ul></li>
+<li>Final exam, with two components
+<ul>
+<li>Oral presentation, due one day before the final exam, 10%</li>
+<li>Peer evaluation of presentations, 10%</li>
 </ul></li>
 </ul>
-<p>Tasks are due on Friday. Assignments are due on Wednesday. (Office hours are also on Wednesday for last-minute question.)</p>
+<p>Tasks are due by the end of the day on Monday. Assignments are due on Friday, approximately one week after they are assigned. If Friday is a holiday (Feb 2, March 29) the assignment will be due the following Monday.</p>
 <p>Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to <em>learn</em> from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a “Sources used” section at the end of your work.</p>
-<p><em>Late policy.</em> Tasks will not be accepted late, but you can submit two “catch-up” tasks to replace any tasks you may have missed, or if you want to improve your grade on a submitted task. Assignments will be accepted without penalty until the work is graded or solutions are posted. After that, no late assignments will be accepted. If an additional accommodation is requested and granted due to illness or other unforeseeable circumstance, the value of that work will be redistributed to other tasks or assignments. <em>If you anticipate not being able to submit any component of the term project (proposal, oral presentation, or report) on time, please contact me by email.</em></p>
-<p>Grades will be reported on <a href="https://dal.brightspace.com/d2l/home/232100">Brightspace</a></p>
+<p><em>Late policy.</em> Tasks will not be accepted late, but I will drop your two lowest grades. Late assignments will be penalized 10% per day. If an accommodation is requested and granted due to illness or other unforeseeable circumstance, the value of that work will be redistributed to other tasks or assignments. <em>If you anticipate not being able to submit any component of the term project (proposal, oral presentation, or report) on time, please contact me by email.</em></p>
+<p>Grades will be reported on Brightspace.</p>
 <section id="letter-grades" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="letter-grades">Letter grades</h3>
 <p>Your numerical grade will be converted to a <a href="https://www.dal.ca/campus_life/academic-support/grades-and-student-records/grade-scale-and-definitions.html">letter grade for the course</a> using the Dalhousie Common Grade Scale.</p>
 <p>First your numerical grade will be rounded up to the nearest integer, then it will be converted to a letter using this table.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div id="mtuhqwoagr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="yqmxnmyqvn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yqmxnmyqvn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#mtuhqwoagr .gt_table {
+#yqmxnmyqvn thead, #yqmxnmyqvn tbody, #yqmxnmyqvn tfoot, #yqmxnmyqvn tr, #yqmxnmyqvn td, #yqmxnmyqvn th {
+  border-style: none;
+}
+
+#yqmxnmyqvn p {
+  margin: 0;
+  padding: 0;
+}
+
+#yqmxnmyqvn .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -250,19 +287,12 @@ ul.task-list{list-style: none;}
   border-left-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#yqmxnmyqvn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#mtuhqwoagr .gt_title {
+#yqmxnmyqvn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -274,25 +304,37 @@ ul.task-list{list-style: none;}
   border-bottom-width: 0;
 }
 
-#mtuhqwoagr .gt_subtitle {
+#yqmxnmyqvn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#mtuhqwoagr .gt_bottom_border {
+#yqmxnmyqvn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yqmxnmyqvn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_col_headings {
+#yqmxnmyqvn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -307,7 +349,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_col_heading {
+#yqmxnmyqvn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -327,7 +369,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#mtuhqwoagr .gt_column_spanner_outer {
+#yqmxnmyqvn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -339,15 +381,15 @@ ul.task-list{list-style: none;}
   padding-right: 4px;
 }
 
-#mtuhqwoagr .gt_column_spanner_outer:first-child {
+#yqmxnmyqvn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mtuhqwoagr .gt_column_spanner_outer:last-child {
+#yqmxnmyqvn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mtuhqwoagr .gt_column_spanner {
+#yqmxnmyqvn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -359,7 +401,11 @@ ul.task-list{list-style: none;}
   width: 100%;
 }
 
-#mtuhqwoagr .gt_group_heading {
+#yqmxnmyqvn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yqmxnmyqvn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -382,9 +428,10 @@ ul.task-list{list-style: none;}
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#mtuhqwoagr .gt_empty_group_heading {
+#yqmxnmyqvn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -399,15 +446,15 @@ ul.task-list{list-style: none;}
   vertical-align: middle;
 }
 
-#mtuhqwoagr .gt_from_md > :first-child {
+#yqmxnmyqvn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mtuhqwoagr .gt_from_md > :last-child {
+#yqmxnmyqvn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mtuhqwoagr .gt_row {
+#yqmxnmyqvn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -426,7 +473,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#mtuhqwoagr .gt_stub {
+#yqmxnmyqvn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,7 +486,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#mtuhqwoagr .gt_stub_row_group {
+#yqmxnmyqvn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -453,11 +500,15 @@ ul.task-list{list-style: none;}
   vertical-align: top;
 }
 
-#mtuhqwoagr .gt_row_group_first td {
+#yqmxnmyqvn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mtuhqwoagr .gt_summary_row {
+#yqmxnmyqvn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yqmxnmyqvn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -467,16 +518,16 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#mtuhqwoagr .gt_first_summary_row {
+#yqmxnmyqvn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_first_summary_row.thick {
+#yqmxnmyqvn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mtuhqwoagr .gt_last_summary_row {
+#yqmxnmyqvn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -486,7 +537,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_grand_summary_row {
+#yqmxnmyqvn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -496,7 +547,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#mtuhqwoagr .gt_first_grand_summary_row {
+#yqmxnmyqvn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,11 +557,21 @@ ul.task-list{list-style: none;}
   border-top-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_striped {
+#yqmxnmyqvn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yqmxnmyqvn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mtuhqwoagr .gt_table_body {
+#yqmxnmyqvn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -519,7 +580,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_footnotes {
+#yqmxnmyqvn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -533,30 +594,8 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#mtuhqwoagr .gt_footnote {
+#yqmxnmyqvn .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#mtuhqwoagr .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#mtuhqwoagr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -564,120 +603,135 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#mtuhqwoagr .gt_left {
+#yqmxnmyqvn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yqmxnmyqvn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yqmxnmyqvn .gt_left {
   text-align: left;
 }
 
-#mtuhqwoagr .gt_center {
+#yqmxnmyqvn .gt_center {
   text-align: center;
 }
 
-#mtuhqwoagr .gt_right {
+#yqmxnmyqvn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mtuhqwoagr .gt_font_normal {
+#yqmxnmyqvn .gt_font_normal {
   font-weight: normal;
 }
 
-#mtuhqwoagr .gt_font_bold {
+#yqmxnmyqvn .gt_font_bold {
   font-weight: bold;
 }
 
-#mtuhqwoagr .gt_font_italic {
+#yqmxnmyqvn .gt_font_italic {
   font-style: italic;
 }
 
-#mtuhqwoagr .gt_super {
+#yqmxnmyqvn .gt_super {
   font-size: 65%;
 }
 
-#mtuhqwoagr .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
-#mtuhqwoagr .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#yqmxnmyqvn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#mtuhqwoagr .gt_asterisk {
+#yqmxnmyqvn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mtuhqwoagr .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#yqmxnmyqvn .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#mtuhqwoagr .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#yqmxnmyqvn .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#mtuhqwoagr .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#yqmxnmyqvn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yqmxnmyqvn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yqmxnmyqvn .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 100%">
-  <colgroup>
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-    <col style="width:120%;">
-  </colgroup>
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">A+</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">A</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">A-</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">B+</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">B</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">B-</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">C+</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">C</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">C-</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">D</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">F</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_center">90-100</td>
-<td class="gt_row gt_center">85-89</td>
-<td class="gt_row gt_center">80-84</td>
-<td class="gt_row gt_center">77-79</td>
-<td class="gt_row gt_center">73-76</td>
-<td class="gt_row gt_center">70-72</td>
-<td class="gt_row gt_center">65-69</td>
-<td class="gt_row gt_center">60-64</td>
-<td class="gt_row gt_center">55-59</td>
-<td class="gt_row gt_center">50-54</td>
-<td class="gt_row gt_center">0-49</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+<col style="width: 120%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="A+" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">A+</th>
+<th id="A" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">A</th>
+<th id="A-" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">A-</th>
+<th id="B+" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">B+</th>
+<th id="B" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">B</th>
+<th id="B-" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">B-</th>
+<th id="C+" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">C+</th>
+<th id="C" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">C</th>
+<th id="C-" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">C-</th>
+<th id="D" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">D</th>
+<th id="F" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">F</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="A+">90-100</td>
+<td class="gt_row gt_center" headers="A">85-89</td>
+<td class="gt_row gt_center" headers="A-">80-84</td>
+<td class="gt_row gt_center" headers="B+">77-79</td>
+<td class="gt_row gt_center" headers="B">73-76</td>
+<td class="gt_row gt_center" headers="B-">70-72</td>
+<td class="gt_row gt_center" headers="C+">65-69</td>
+<td class="gt_row gt_center" headers="C">60-64</td>
+<td class="gt_row gt_center" headers="C-">55-59</td>
+<td class="gt_row gt_center" headers="D">50-54</td>
+<td class="gt_row gt_center" headers="F">0-49</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -685,17 +739,6 @@ ul.task-list{list-style: none;}
 </section>
 <section id="course-policies" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="course-policies">Course Policies</h2>
-<section id="covid-19" class="level3">
-<h3 class="anchored" data-anchor-id="covid-19">COVID-19</h3>
-<p><strong>Please do not come on campus if you have symptoms similar to COVID-19 such as a fever or cough, if you have had a close contact with someone who has COVID-19, or if you have COVID-19.</strong></p>
-<p>The course is intended to be delivered in person, on campus at Dalhousie. I hope that most of you will be physically present in the classroom for most classes. Since you can be infected and transmit the virus without experiencing any symptoms, I encourage everyone to wear a high-quality mask while on campus to reduce the probability of virus transmission. <em>Dalhousie <a href="https://www.dal.ca/covid-19-information-and-updates.html">policy</a> requires you to wear a mask when you are in our classroom.</em> I anticipate that some students will need to miss some classes following a close contact with an infected person, developing symptoms similar to COVID-19, or contracting COVID-19. I plan to make all course meetings available live and recorded on Brightspace using Collaborate Ultra. This means that you can participate in the whole course even if you can’t attend a particular class. I expect the online experience will not be as good as the in-person class. You are not required to be physically present on campus for classes, tests, or a final exam. Oral presentations for the term project will be synchronous but online – you need to be available during class time on these days, but not physically present in the classroom. This design is to keep you safe and to help you keep your classmates safe.</p>
-<p>If I am unable to be on campus, the class will be delivered remotely.</p>
-<p>Covid data:</p>
-<ul>
-<li>Nova Scotia provincial government <a href="https://experience.arcgis.com/experience/204d6ed723244dfbb763ca3f913c5cad">dashboard</a> and monthly <a href="https://novascotia.ca/coronavirus/alerts-notices/#epidemiologic-summaries">epidemiologic summaries</a>.</li>
-<li><a href="https://health-infobase.canada.ca/covid-19/wastewater/">Wastewater virus monitoring</a> collected by the federal government.</li>
-</ul>
-</section>
 <section id="data-retention-policy" class="level3">
 <h3 class="anchored" data-anchor-id="data-retention-policy">Data retention policy</h3>
 <p>During the course you will create work on a third-party website (github.com). These files will be shared only with the instructor, TAs, and student team members. All files will be kept for 6 months after the end of the course. Repositories will be deleted after that time. If you wish to keep files after that date, either clone the repositories to your computer or fork them to your own GitHub account separate from the course.</p>
@@ -704,14 +747,12 @@ ul.task-list{list-style: none;}
 <section id="important-dates" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="important-dates">Important dates</h2>
 <ul>
-<li>Tuesday 6 September: Term begins</li>
-<li>Monday 10 October: Thanksgiving day, University closed</li>
-<li>November 7-11: Study break</li>
-<li>Fri 11 November: Remembrance Day</li>
-<li>Thursday 1 December: Last Tuesday/Thursday class</li>
+<li>Tuesday 9 January: Term begins</li>
+<li>February 19-23: Study break</li>
+<li>Thursday 4 April: Last Tuesday/Thursday class</li>
 </ul>
 <p>If you know you will be unable to meet certain deadlines in advance, for <em>bona fide</em> reasons such as scheduled medical appointments or religious observances, please contact me as soon as practical.</p>
-<p>I will never require you to provide a medical note or to use the Student Declaration of Absence form.</p>
+<p>I will not require you to provide a medical note or to use the Student Declaration of Absence form.</p>
 <p>For due dates for evaluations, see the detailed course outline and evaluation schedule.</p>
 </section>
 <section id="territorial-acknowledgement" class="level2">
@@ -722,25 +763,7 @@ ul.task-list{list-style: none;}
 <section id="university-policies-and-statements" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="university-policies-and-statements">University Policies and Statements</h2>
 <p>This course is governed by the academic rules and regulations set forth in the University Calendar and by Senate.</p>
-<p><em>Missed or Late Academic Requirements due to Student Absence</em>. Information on the university policy, including the use of the Student Declaration of Absence can be found <a href="https://www.dal.ca/dept/university_secretariat/policies/academic/missed-or-late-academic-requirements-due-to-student-absence.html">here</a>.</p>
-<p><em>Academic Integrity</em>. At Dalhousie University, we are guided in all of our work by the values of academic integrity: honesty, trust, fairness, responsibility and respect (The Center for Academic Integrity, Duke University, 1999). As a student, you are required to demonstrate these values in all of the work you do. The University provides policies and procedures that every member of the university community is required to follow to ensure academic integrity. <a href="https://www.dal.ca/dept/university_secretariat/academic-integrity.html">More information</a>.</p>
-<p><em>Accessibility</em>. The Advising and Access Services Centre is Dalhousie’s centre of expertise for student accessibility and accommodation. The advising team works with students who request accommodation as a result of a disability, religious obligation, or any barrier related to any other characteristic protected under Human Rights legislation (Canada and Nova Scotia). <a href="https://www.dal.ca/campus_life/academic-support/accessibility.html">More information</a>.</p>
-<p><em>Student Code of Conduct</em>. Everyone at Dalhousie is expected to treat others with dignity and respect. The Code of Student Conduct allows Dalhousie to take disciplinary action if students don’t follow this community expectation. When appropriate, violations of the code can be resolved in a reasonable and informal manner—perhaps through a restorative justice process. If an informal resolution can’t be reached, or would be inappropriate, procedures exist for formal dispute resolution. <a href="https://www.dal.ca/dept/university_secretariat/policies/student-life/code-of-student-conduct.html">Code</a>.</p>
-<p><em>Diversity and Inclusion - Culture of Respect</em>. Every person at Dalhousie has a right to be respected and safe. We believe inclusiveness is fundamental to education. We stand for equality. Dalhousie is strengthened in our diversity. We are a respectful and inclusive community. We are committed to being a place where everyone feels welcome and supported, which is why our Strategic Direction prioritizes fostering a culture of diversity and inclusiveness. <a href="http://www.dal.ca/cultureofrespect.html">Statement</a>.</p>
-<p><em>Elders in Residence</em>. The Elders in Residence program provides students with access to First Nations elders for guidance, counsel and support. Visit or e-mail the Indigenous Student Centre (1321 Edward St) (elders@dal.ca). <a href="https://www.dal.ca/campus_life/communities/indigenous.html">Information</a>.</p>
-<p><em>Originality Checking Software</em>. I do not use any third-party software to systematically evaluate student work for originality. I may use Google or other searches to check the originality of any work submitted for credit, in accordance with the Student Submission of Assignments and Use of Originality Checking Software Policy. Students are free, without penalty of grade, to choose an alternative method of attesting to the authenticity of their work, and must inform the instructor no later than the last day to add/drop classes of their intent to choose an alternate method. <a href="https://www.dal.ca/dept/university_secretariat/policies/academic/student-submission-of-assignments-and-use-of-originality-checking-software-policy-.html">Read the policy here</a>.</p>
-<ul>
-<li><a href="https://www.dal.ca/academics/important_dates.html">Important Dates in the Academic Year (including add/drop dates)</a></li>
-<li><a href="https://www.dal.ca/dept/university_secretariat/policies/academic/grading-practices-policy.html">University Grading Practices</a></li>
-</ul>
-</section>
-<section id="student-resources-and-support" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="student-resources-and-support">Student Resources and Support</h2>
-<p>Please follow the following links for additional resources and support.</p>
-<p><em>Advising</em>: <a href="https://www.dal.ca/campus_life/academic-support/advising.html">General Advising</a>, <a href="https://www.dal.ca/faculty/science/current-students/academic-advising.html">Science Program Advisors</a>, <a href="https://www.dal.ca/campus_life/communities/indigenous.html">Indigenous Student Centre</a>, <a href="https://www.dal.ca/campus_life/communities/black-student-advising.html">Black Advising Centre</a>, <a href="https://www.dal.ca/campus_life/international-centre/current-students.html">International Centre</a></p>
-<p><em>Academic supports</em>: <a href="https://libraries.dal.ca/">Library</a>, <a href="https://www.dal.ca/campus_life/academic-support/writing-and-study-skills.html">Writing Centre</a>, <a href="https://www.dal.ca/campus_life/academic-support/study-skills-and-tutoring.html">Studying for Success</a>, <a href="https://libraries.dal.ca/services/copyright-office.html">Copyright Office</a>, <a href="https://libraries.dal.ca/services/copyright-office/fair-dealing.html">Fair Dealing Guidelines</a></p>
-<p><em>Other supports and services</em>: <a href="https://www.dal.ca/campus_life/health-and-wellness/services-support/student-health-and-wellness.html">Student Health &amp; Wellness Centre</a>, <a href="https://dsu.ca/dsas">Student Advocacy</a>, <a href="https://www.dal.ca/campus_life/safety-respect/student-rights-and-responsibilities/where-to-get-help/ombudsperson.html">Ombudsperson</a></p>
-<p><em>Safety</em>: <a href="https://www.dal.ca/dept/safety/programs-services/biosafety.html">Biosafety</a>, <a href="https://www.dal.ca/dept/safety/programs-services/chemical-safety.html">Chemical Safety</a>, <a href="https://www.dal.ca/dept/safety/programs-services/radiation-safety.html">Radiation Safety</a>, <a href="https://www.dal.ca/dept/safety/programs-services/occupational-safety/scent-free.html">Scent‐Free Program</a></p>
+<p>Please see the supplement to the syllabus on Brightspace for important statements, policies, and resources provided by the Faculty of Science and the University.</p>
 
 
 </section>
@@ -774,9 +797,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -788,17 +825,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -808,43 +861,299 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.4.538">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data-viz – evaluation</title>
+<title>data-viz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
 
 
@@ -40,7 +45,13 @@ ul.task-list{list-style: none;}
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -49,8 +60,10 @@ ul.task-list{list-style: none;}
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -62,34 +75,39 @@ ul.task-list{list-style: none;}
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">data-viz</span>
-  </a>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Welcome</a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./001-syllabus.html">Syllabus</a>
+    <a class="nav-link" href="./001-syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./002-detailed-outline.html">Schedule</a>
+    <a class="nav-link" href="./002-detailed-outline.html"> 
+<span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./004-evaluation.html" aria-current="page">Evaluation</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./teams.html">Teams</a>
+    <a class="nav-link active" href="./004-evaluation.html" aria-current="page"> 
+<span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -98,7 +116,7 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -126,15 +144,17 @@ ul.task-list{list-style: none;}
   <li><a href="#assignment-3" id="toc-assignment-3" class="nav-link" data-scroll-target="#assignment-3">Assignment 3</a></li>
   <li><a href="#assignment-4" id="toc-assignment-4" class="nav-link" data-scroll-target="#assignment-4">Assignment 4</a></li>
   <li><a href="#assignment-5" id="toc-assignment-5" class="nav-link" data-scroll-target="#assignment-5">Assignment 5</a></li>
-  <li><a href="#assignment-6" id="toc-assignment-6" class="nav-link" data-scroll-target="#assignment-6">Assignment 6</a></li>
   </ul></li>
   <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Term project</a>
   <ul class="collapse">
   <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables</a></li>
   <li><a href="#team-creation" id="toc-team-creation" class="nav-link" data-scroll-target="#team-creation">Team creation</a></li>
   <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a></li>
-  <li><a href="#oral-presentation" id="toc-oral-presentation" class="nav-link" data-scroll-target="#oral-presentation">Oral presentation</a></li>
   <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written report</a></li>
+  </ul></li>
+  <li><a href="#final-exam" id="toc-final-exam" class="nav-link" data-scroll-target="#final-exam">Final exam</a>
+  <ul class="collapse">
+  <li><a href="#oral-presentation" id="toc-oral-presentation" class="nav-link" data-scroll-target="#oral-presentation">Oral presentation</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -145,23 +165,17 @@ ul.task-list{list-style: none;}
 
 
 
+
 <section id="evaluation" class="level1 unnumbered">
 <h1 class="unnumbered">Evaluation</h1>
 <p>All the work you will complete for evaluation and credit in the course is described below.</p>
 <section id="tasks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="tasks">Tasks</h2>
-<p>Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.</p>
-<p>Tasks will usually be evaluated on a 0-10 scale on the following rubric:</p>
-<ul>
-<li>0-5: Work missing or mostly incomplete.</li>
-<li>6-7: Mostly complete or complete with major deficiencies.</li>
-<li>8: Complete and meets expectations.</li>
-<li>9-10: Complete and excels in some respect: engagement with the task, creativity in the thoughtful application of course skills and ideas, and organization of your work.</li>
-</ul>
-<p>Tasks are grouped by week below. I encourage you to work on all the tasks. You are only required to submit one task for grading each week (except for week 1 which has two tasks and week 3 which has no tasks). If you miss a week or want to improve your grade from an evaluated task, I will accept two tasks in up to two weeks of your choosing, starting in week 4. Simply submit two tasks those weeks and I will drop the lower grades from your other tasks.</p>
+<p>I have created a tasks to give you practice with the main skills and ideas from each lesson.</p>
+<p>After the first week, most tasks have work for you to do in R. After you have done the task, go to Brightspace to answer questions associated with each task. Only these questions will be graded. Save your completed work in R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.</p>
 <section id="week-1" class="level3">
 <h3 class="anchored" data-anchor-id="week-1">Week 1</h3>
-<p>There are two tasks this week (Invitation, Setting Up). Both are to be submitted on Brightspace.</p>
+<p>There are three tasks this week. See Brightspace to submit your work for these tasks.</p>
 <section id="task-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-1">Task: Invitation (Lesson 1)</h4>
 <p>Find two data visualizations that you find informative, compelling, or in need of improvement.</p>
@@ -172,17 +186,17 @@ ul.task-list{list-style: none;}
 <li>one or two features of the visualization that make it effective or provide suggestions for improvement.</li>
 </ol>
 <p>The goal of this task isn’t to be right or wrong in your assessment, but rather to develop a practice of looking at data visualizations through the perspective of creator, designer, and critic. It’s okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualizations.</p>
-<p>Submit your work as a single PDF on Brightspace.</p>
+<p>Submit your work by answering questions about one of these visualizations in the quiz on Brightspace.</p>
 </section>
 <section id="task-b1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b1">Bonus task (Lesson 2)</h4>
-<p>(Not to be handed in for marks.)</p>
+<h4 class="unnumbered anchored" data-anchor-id="task-b1">Task (Lesson 2)</h4>
 <p>Read <a href="https://socviz.co/gettingstarted.html#gettingstarted">Healy, Sections 2.1-2.4</a>, which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.</p>
 <p>Make a list of about 10 key takeaway messages from the reading. For example, I would start with</p>
 <ul>
 <li>Do all my learning and work in R in R markdown documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don’t use a word processor. Don’t cut and paste code and results from the R console into a document. It’s too easy to make mistakes this way and will take longer.</li>
 <li>Take notes about what I learn (for ggplot and other skills). I’ll write these in a private Rmd document called data-viz-notes.Rmd (or something like that)</li>
 </ul>
+<p>Write about two takeaway messages in the Brightspace quiz.</p>
 </section>
 <section id="task-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-2">Task: Setting up (Lesson 3)</h4>
@@ -194,12 +208,11 @@ ul.task-list{list-style: none;}
 <li>Login to <a href="https://rstudio.cloud/">rstudio.cloud</a>. This is a complete R, Rstudio, and git setup “in the cloud” that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.</li>
 <li>Ask for help with any of these tasks if you need it.</li>
 </ol>
-<p>Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name in one of the quiz questions.</p>
+<p>The Brightspace quiz asks if you were successful with each task or if you need help. Provide your GitHub ID in one of the quiz questions.</p>
 </section>
 </section>
 <section id="week-2" class="level3">
 <h3 class="anchored" data-anchor-id="week-2">Week 2</h3>
-<p>Task 3 should be submitted on Brightspace this week.</p>
 <section id="task-3" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-3">Task: Look at data (Lesson 4)</h4>
 <p>Your task for this lesson is to answer two specific questions about choices made when visualizing data, drawing on your own experience and the ideas presented below. You should also become familiar with <a href="https://socviz.co/lookatdata.html#lookatdata">Healy, Chapter 1</a> which contains much more on these topics.</p>
@@ -212,20 +225,22 @@ ul.task-list{list-style: none;}
 <li>In your judgment, is this visualization effective or too complex? Watch the <a href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen">TED talk</a> or experiment with the <a href="https://www.gapminder.org/tools/">interactive version</a> before answering the question. Does the live explanation provided in Rosling’s oral presentation help you interpret the plot?</li>
 </ol></li>
 </ol>
-<p>Write answers for these two questions in a word processor (we’ll start using R markdown soon) and submit as a single PDF on Brightspace.</p>
+<p>Write answers for these questions in a word processor. Answer the questions in the Task Quiz for week 2 on Brightspace.</p>
 </section>
 <section id="task-b2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b2">Bonus task (Lesson 5)</h4>
-<p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot.</p>
-<p>There is nothing to submit for this task.</p>
+<h4 class="unnumbered anchored" data-anchor-id="task-b2">Task (Lesson 5)</h4>
+<p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot. The Brightspace quiz asks you a couple of questions about making plots.</p>
+</section>
+<section id="task-b2b" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="task-b2b">Task (Lesson 6)</h4>
+<p>Get the software <code>git</code> working on your computer by following the steps in Lesson 6.</p>
 </section>
 </section>
 <section id="week-3" class="level3">
 <h3 class="anchored" data-anchor-id="week-3">Week 3</h3>
-<p>No assigned tasks this week. Work on Assignment 1 instead.</p>
 <section id="task-b3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b3">Bonus task (Lesson 7)</h4>
-<p>Your task for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week’s task repository.</p>
+<h4 class="unnumbered anchored" data-anchor-id="task-b3">Task (Lesson 7)</h4>
+<p>Your task for this lesson is to review some material on ggplot to connect the ideas from to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week’s task quiz</p>
 <p>In addition, I suggest the following reading with nothing to submit:</p>
 <ul>
 <li>Browse the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.</li>
@@ -233,28 +248,26 @@ ul.task-list{list-style: none;}
 </ul>
 </section>
 <section id="task-b4" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b4">Bonus task (Lesson 8)</h4>
-<p>Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in “Data Sources” chapter in course notes.</p>
-<p>There is nothing to submit for this task.</p>
+<h4 class="unnumbered anchored" data-anchor-id="task-b4">Task (Lesson 8)</h4>
+<p>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in “Data Sources” chapter in course notes.</p>
 </section>
 </section>
 <section id="week-4" class="level3">
 <h3 class="anchored" data-anchor-id="week-4">Week 4</h3>
-<p>The tasks for this week and the rest of the course are to be submitted using GitHub.</p>
 <section id="task-5" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-5">Task: Summarizing data (Lesson 9)</h4>
-<p>Exercises to practice filter, group_by, summarize, and mutate. File <code>task-summarize.Rmd</code>.</p>
-<p>Edit the file task-summarize.Rmd following the instructions in the file. When you are done, knit the file to be sure there are no errors. Commit the .Rmd file to your repository and push the changes to GitHub. There is no need to commit the html file; I will knit your file on my computer to be sure there are no errors.</p>
+<p>Work through the exercises to practice filter, group_by, summarize, and mutate provided in the file <a href="tasks/task-L09-summarize.Rmd">task-L09-summarize</a>. Right click the link and select “save as” to get the file on your computer. Then open it with Rstudio.</p>
+<p>Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference. Answer questions in the Brightspace Task quiz.</p>
 </section>
 </section>
 <section id="week-5" class="level3">
 <h3 class="anchored" data-anchor-id="week-5">Week 5</h3>
 <section id="task-6" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-6">Task: Facetted plots (Lesson 10)</h4>
-<p>Exercises to practice making faceted plots. When you are done, knit the file and commit the <code>tasks-facets.Rmd</code> file to your repository. Push the changes to github to submit your work.</p>
+<p>Exercises to practice making faceted plots. File <a href="tasks/task-L10-facets.Rmd">task-L10-facets</a>.</p>
 </section>
 <section id="task-b5" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b5">Bonus task (Lesson 11)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b5">Task (Lesson 11)</h4>
 <p>I will get you to practice reading files later on in the course. For now,</p>
 <ul>
 <li>pay attention to the code I use in future lessons for reading files, and</li>
@@ -263,70 +276,73 @@ ul.task-list{list-style: none;}
 </section>
 <section id="task-7" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-7">Task: Reshaping data (Lesson 12)</h4>
-<p>Reshaping data practice. File: <code>task-reshape.Rmd</code>.</p>
+<p>Reshaping data practice. File: <a href="tasks/task-L12-reshape.Rmd">task-L12-reshape</a>.</p>
 </section>
 <section id="task-8" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-8">Task: Formatting tables (Lesson 13)</h4>
-<p>Displaying tables practice. File: <code>task-tables.Rmd</code></p>
+<p>Displaying tables practice. File: <a href="tasks/task-L13-tables.Rmd">task-L13-tables</a></p>
 </section>
 <section id="task-b6" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b6">Bonus task (Lesson 14)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b6">Task (Lesson 14)</h4>
 <p>The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.</p>
 </section>
 </section>
 <section id="week-6" class="level3">
 <h3 class="anchored" data-anchor-id="week-6">Week 6</h3>
 <section id="task-b7" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b7">Bonus task (Lesson 15)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b7">Task (Lesson 15)</h4>
 <p>Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets.</p>
 </section>
 <section id="task-9" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-9">Task: Linear models (Lesson 16)</h4>
-<p>Exercises on linear models. File: <code>task-linear-models.Rmd</code>.</p>
+<p>Exercises on linear models. File: <a href="tasks/task-L16-linear-models.Rmd">task-L16-linear-models</a>.</p>
 </section>
 <section id="task-10" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-10">Task: LOESS and GAM (Lesson 17)</h4>
-<p>Exercises on LOESS and GAM smooths. File: <code>task-LOESS-GAM.Rmd</code>.</p>
+<p>Exercises on LOESS and GAM smooths. File: <a href="tasks/task-L17-LOESS-GAM.Rmd">task-L17-LOESS-GAM</a>.</p>
 </section>
 <section id="task-planning" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-planning">Team Planning</h4>
-<p>If you would like to work in a team with specific classmates, edit the file <code>team-planning.Rmd</code> in the Task repository. Write the GitHub user ID of the one or two students you would like to work with to the file. If you want to be assigned a random team mate, you don’t need to do anything.</p>
-<p>To have your preferences recorded, commit the .Rmd file to the repository and push the repository to github by October 16, 2022. Otherwise I will assign you to a team at random.</p>
+<p>If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You’ll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don’t need to do anything.</p>
 </section>
 </section>
 <section id="week-7" class="level3">
 <h3 class="anchored" data-anchor-id="week-7">Week 7</h3>
+<p>Reading week. No classes or course work due.</p>
+</section>
+<section id="week-8" class="level3">
+<h3 class="anchored" data-anchor-id="week-8">Week 8</h3>
 <section id="task-11" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-11">Bonus task (Lesson 18)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-11">Task (Lesson 18)</h4>
 <p>Practice skills associated with collaborating on GitHub using the project repository for your team.</p>
 </section>
 <section id="task-b8" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b8">Bonus task (Lesson 19)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b8">Task (Lesson 19)</h4>
 <p>Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?</p>
 <p>You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.</p>
 </section>
 <section id="task-12" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-12">Task: Reports (Lesson 20)</h4>
-<p>We’ve been using R markdown to make reproducible reports throughout the course. In this task, practice using <code>here</code> and chunk options. File <code>task-collaboration.Rmd</code>.</p>
+<p>We’ve been using R markdown to make reproducible reports throughout the course. In this task, practice using <code>here</code> and chunk options. File <a href="tasks/task-L20-collaboration.Rmd">task-L20-collaboration</a>.</p>
 </section>
 </section>
-<section id="week-8" class="level3">
-<h3 class="anchored" data-anchor-id="week-8">Week 8</h3>
+<section id="week-9" class="level3">
+<h3 class="anchored" data-anchor-id="week-9">Week 9</h3>
 <section id="pca-lesson-21" class="level4">
 <h4 class="anchored" data-anchor-id="pca-lesson-21">PCA (Lesson 21)</h4>
 <p>The task for this lesson is grouped with the MDS task.</p>
 </section>
 <section id="task-13" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-13">Task: MDS (Lesson 22)</h4>
-<p>Create a PCA and MDS plot as described in the file <code>task-mds.Rmd</code>.</p>
+<p>Create a PCA and MDS plot as described in the file <a href="tasks/task-L22-mds.Rmd">task-L22-mds</a>.</p>
 </section>
 <section id="task-14" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-14">Task: K-means (Lesson 23)</h4>
-<p>Create a K-means analysis and accompanying visualization as described in the file <code>task-kmeans.Rmd</code>. This task is in the repository for task 12, 13, and 14.</p>
+<p>Create a K-means analysis and accompanying visualization as described in the file <a href="tasks/task-L23-k-means.Rmd">task-L23-k-means</a>.</p>
 </section>
 </section>
-<section id="week-9" class="level3">
-<h3 class="anchored" data-anchor-id="week-9">Week 9</h3>
+<section id="week-10" class="level3">
+<h3 class="anchored" data-anchor-id="week-10">Week 10</h3>
 <section id="task-14a" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-14a">Task: Presentations (Lesson 24)</h4>
 <p>Create and modify a Quarto presentation as described in the lesson. Ensure you know how to</p>
@@ -335,41 +351,37 @@ ul.task-list{list-style: none;}
 <li>make the graphic the right size to fit on the slide,</li>
 <li>open the HTML version in your web browser.</li>
 </ul>
-<p>File: <code>task-presentation.qmd</code>.</p>
+<p>File: <a href="./tasks/task-L24-presentation.html">task-L24-presentation</a>.</p>
 </section>
-</section>
-<section id="week-10" class="level3">
-<h3 class="anchored" data-anchor-id="week-10">Week 10</h3>
-<p>This is the fall break. No tasks this week.</p>
 </section>
 <section id="week-11" class="level3">
 <h3 class="anchored" data-anchor-id="week-11">Week 11</h3>
 <section id="task-b10" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b10">Bonus task (Lesson 27)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b10">Task (Lesson 27)</h4>
 <p>Practice making a map from the lesson</p>
 </section>
 <section id="task-15" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-15">Task: Maps (Lesson 28)</h4>
-<p>Make maps described in the file <code>task-maps.Rmd</code>.</p>
+<p>Make maps described in the file <a href="tasks/task-L28-maps.Rmd">task-L28-maps</a>.</p>
 </section>
 <section id="task-16" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-16">Task: Map alternatives (Lesson 29)</h4>
-<p>Show geographic data without maps as described in <code>task-map-alternatives.Rmd</code>.</p>
+<p>Show geographic data without maps as described in <a href="tasks/task-L29-map-alternatives.Rmd">task-L29-map-alternatives</a>.</p>
 </section>
 </section>
 <section id="week-12" class="level3">
 <h3 class="anchored" data-anchor-id="week-12">Week 12</h3>
 <section id="task-17" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-17">Task: Factors and Dates (Lesson 30)</h4>
-<p>Exercises with strings, factors, dates, and times. See <code>task-factors-dates.Rmd</code>.</p>
+<p>Exercises with strings, factors, dates, and times. See <a href="tasks/task-L30-factors-dates.Rmd">task-L30-factors-dates</a>.</p>
 </section>
 <section id="task-b11" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b11">Bonus task (Lesson 31)</h4>
+<h4 class="unnumbered anchored" data-anchor-id="task-b11">Task (Lesson 31)</h4>
 <p>Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.</p>
 </section>
 <section id="task-18" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="task-18">Task: Themes (Lesson 32)</h4>
-<p>Learn to use theme elements as described in the repository. See <code>task-themes.Rmd</code>.</p>
+<p>See <a href="tasks/task-L32-themes.Rmd">task-themes</a>.</p>
 <p>That is the last task for the course!</p>
 </section>
 </section>
@@ -379,13 +391,13 @@ ul.task-list{list-style: none;}
 <p>Assignments are opportunities to apply and combine the skills from several lessons. They are both structured, in that you are asked to use specific skills to accomplish a task, and creative in that you have some flexibility in the product you produce. You will be assessed on your use of technical skills and your judgement in making well-designed and effective visualizations, following the principles explored in the course.</p>
 <section id="assignment-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="assignment-1">Assignment 1</h3>
-<p>Your assignment is to get the repositories for Assignments and Tasks on to your computer.</p>
+<p>Your assignment is to get the repositories for Assignments on to your computer, make a few edits to the file, and push your changes back to GitHub. I will let the class know when the repositories have been created.</p>
+<p>Before you begin this assignment, be sure you have completed the process of getting git working on your computer described in Lesson 6.</p>
 <ul>
 <li>Go to your <a href="https://github.com">github</a> account and look for a repository called <code>data-viz-assignments-</code> followed by your github user name. Get the link by clicking the green button labeled “Code”. It should look like this: <code>https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-assignments-&lt;your github name&gt;.git</code></li>
 <li>Using Rstudio on your computer, select menu File &gt; New Project &gt; From repository… &gt; Git. Insert the link to the repository and tell R where to put the repository on your computer.</li>
 <li>If you use rstudio.cloud, start at the <a href="https://rstudio.cloud/projects">projects</a> page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command <code>git clone &lt;link from github&gt;</code>. Finally, open the new folder in the Files pane and click on the “assignments.Rproj” link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories.</li>
 </ul>
-<p>Repeat these steps, changing <code>assignments</code> to <code>tasks</code> to get the repository with your Tasks.</p>
 <p>Open the Assignments project and edit <code>assignment-1.Rmd</code>. Follow the instructions in that file. If you have trouble with this assignment, ask for help. It’s very important.</p>
 <p>Use the assignment repository for this work and all assignments in the course.</p>
 <p>If, when you try to push your work back to github, you get an error “Author identity unknown”, you need to type the following two commands into the R Terminal window:</p>
@@ -415,41 +427,29 @@ git config --global user.name "Your Name"</code></pre>
 <p>This is the second Tidy Tuesday assignment. Create maps as described in the repository.</p>
 <p>Organize your work as a slide presentation. A template with instructions is in the repository.</p>
 </section>
-<section id="assignment-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="assignment-6">Assignment 6</h3>
-<p>This is a peer evaluation assignment. You should provide, in separate documents as described in the repository,</p>
-<ul>
-<li>confidential feedback on your team mates’ work for the term project</li>
-<li>a peer evaluation of two oral presentations from other teams.</li>
-</ul>
-<p>You should provide thoughtful and constructive feedback on the work of your classmates. Everyone’s work has good aspects and areas where there could be improvement; you should aim to provide useful feedback in both areas.</p>
-<p>Your assignment for the peer evaluation is in the Teams tab of this website.</p>
-<p>A rubric and guide for your evaluations is in the repository for this assignment.</p>
-</section>
 </section>
 <section id="project-description" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="project-description">Term project</h2>
-<p>Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.</p>
+<p>Your term project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.</p>
 <p>You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio using R.</p>
 <section id="deliverables" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="deliverables">Deliverables</h3>
-<p>Work in groups of 2 or 3 according to the assignments made in <a href="./teams.html">late October</a>. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammates with feedback, suggestions, debugging help, proofreading and other assistance as requested.</p>
+<p>Work in groups of 2. Most teams will produce one of each component (proposal, report, presentation) per team member. If you prefer, each person on the team can make their own documents (proposal, report, presentation). Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.</p>
 <p>Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.</p>
 </section>
 <section id="team-creation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="team-creation">Team creation</h3>
-<p>Teams will be created in October. If you would like to form a team with someone else in the class, edit the team-planning.Rmd document in the Tasks repository to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. The deadline for selecting teammates will be Sunday 16 October. I will review this list, finalize the team assignments, create the presentation schedule and peer-evaluation assignments later that week.</p>
-<p><strong>If you withdraw from the course once you have been assigned to a team for the term project, please let your teammates and me know as soon as possible.</strong></p>
+<p>Teams will be created shortly after the mid-term break. If you would like to form a team with a specific person in the class, answer the Brightspace quiz in the “project” section. If you would like to be assigned a randomly selected team mate, you don’t need to complete the form. I will finalize the team assignments during the break week.</p>
+<p><strong>If you withdraw from the course once you have been assigned to a team for the term project, please let your teammate and me know as soon as possible.</strong></p>
 </section>
 <section id="proposal" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="proposal">Proposal</h3>
 <p>Your main task for the proposal is to find a data set to analyze for your project and describe at least one question you can address with data visualizations.</p>
-<p>It is important that you choose a readily accessible data set that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your data set should have at least 50 observations and about 10 variables. If you find a bigger data set, you can make a subset to work with for your project. The data set should include categorical and quantitative variables. If you plan to use a data set that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.</p>
+<p>It is important that you choose a readily accessible data set that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your data set should have at least 50 observations and about 10 variables. If you find a very large data set, you can make a subset to work with for your project. The data set must include categorical and quantitative variables. If you plan to use a data set that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be a challenging task. If you are having trouble ask for help before it is too late.</p>
 <p>Do not reuse data sets from any part of the course.</p>
 <p>Here is list of data repositories containing many interesting data sets. Feel free to use data from other sources if you prefer.</p>
 <ul>
 <li><a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a></li>
-<li><a href="https://www.kaggle.com/datasets">Kaggle</a></li>
 <li><a href="https://www.openintro.org/book/statdata/index.php">OpenIntro</a></li>
 <li><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome public</a> datasets</li>
 <li><a href="https://www.bikeshare.com/data/">Bikeshare</a> data portal</li>
@@ -459,11 +459,12 @@ git config --global user.name "Your Name"</code></pre>
 <li>Other sources listed in the Data sources section of the course notes</li>
 <li>Data you find on your own may be suitable too.</li>
 </ul>
-<p>Describe a data set and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).</p>
+<p>Describe a data set and question you can address with the data for your proposal. Outline a plan to use about five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).</p>
+<p>Many data sets on <a href="https://www.kaggle.com/datasets">Kaggle</a> are simulated data – generated by a computer with randomization and not the result of a real-life data-gathering process. You can recognize these data because there is no clear explanation of how the data were collected. <strong>Do not use simulated data. Do not use data if you can’t explain how it was collected.</strong></p>
 <p>The repository contains a template for your proposal called <code>proposal.Rmd</code>. Write your proposal by revising this file and using this template.</p>
 <ul>
 <li>Questions: The introduction should introduce your research questions</li>
-<li>Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.). Place your data in the /data folder. Show that you can read the data and include the output of <code>dplyr::glimpse()</code> or <code>skimr::skim()</code> on your data in the proposal.</li>
+<li>Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.). Place your data in the /data folder. Show that you can read the data and include the output of <code>dplyr::glimpse()</code> or <code>skimr::skim()</code> on your data in the proposal. Do not show the entire dataset.</li>
 <li>Visualization plan:
 <ul>
 <li>The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.</li>
@@ -472,31 +473,13 @@ git config --global user.name "Your Name"</code></pre>
 </ul></li>
 <li>Team planning: briefly describe how members of your team will divide the tasks to be performed.</li>
 </ul>
-<p><em>Assessment</em>. See the file grade-proposal.rmd for the assessment guidelines and rubric.</p>
-</section>
-<section id="oral-presentation" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="oral-presentation">Oral presentation</h3>
-<p>The oral presentation should be about 5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.</p>
-<p>You should have a small number of slides to accompany your presentation. I have provided a template for you to use as <code>presentation.qmd</code>. I suggest a format such as the following:</p>
-<ul>
-<li>A title with team members’ names</li>
-<li>A description of the data you are analyzing</li>
-<li>At least one question you can investigate with your data visualization</li>
-<li>At least two data visualizations</li>
-<li>A conclusion</li>
-</ul>
-<p>For suggestions on making slide presentations see the lesson on slides.</p>
-<p>Don’t show your R code; the focus should be on your results and visualizations not your computing. Set <code>echo = FALSE</code> to hide R code (this is already done in the template).</p>
-<p>Your presentation should not just be an account of everything you tried (“then we did this, then we did this, etc.”), instead it should convey what choices you made, and why, and what you found.</p>
-<p>Presentation schedule: Presentations will take place during the last two synchronous sessions of the course. You can choose to do your presentation live or pre-record it. You will watch presentations from other teams and provide feedback on one each day in the form of peer evaluations. The presentation schedule will be generated randomly.</p>
-<p><em>Assessment</em>. See the file <code>grade-presentation.Rmd</code> for the assessment guidelines.</p>
-<p><strong>Practice your presentation, as a team, using the course collaborate room or other videoconferencing tool!</strong></p>
+<p><em>Assessment</em>. See the file <code>grade-proposal.Rmd</code> for the assessment guidelines and rubric.</p>
 </section>
 <section id="written-report" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="written-report">Written report</h3>
-<p>Follow the template provided for your written report (<code>report.Rmd</code>) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.</p>
+<p>Follow the template provided for your written report (<code>report.Rmd</code>) to present your visualizations and insights about your data. Review the marking guidelines in <code>grade-report.Rmd</code> and ask questions if any of the expectations are unclear.</p>
 <p>Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.</p>
-<p>You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck. Look at the lesson on collaboration for help.</p>
+<p>You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! <strong>Pull work from github before you start, commit your changes, and push often.</strong> Ask questions when stuck. Look at the lesson on collaboration for help.</p>
 <p>In your knitted report your R code should be hidden (<code>echo = FALSE</code>) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you’re welcome to show that portion.</p>
 <p>General criteria for evaluation:</p>
 <ul>
@@ -505,6 +488,32 @@ git config --global user.name "Your Name"</code></pre>
 <li>Writing and Presentation - What is the quality of the visualizations, writing, and explanations?</li>
 <li>Creativity and Critical Thought - Is the project carefully thought out? Does it appear that time and effort went into the planning and implementation of the project?</li>
 </ul>
+</section>
+</section>
+<section id="final-exam" class="level2">
+<h2 class="anchored" data-anchor-id="final-exam">Final exam</h2>
+<p>The final exam has three components:</p>
+<ul>
+<li>The oral presentation, which must be completed before the time of the exam.</li>
+<li>You will be assigned 5 presentations to watch as part of the final exam. You should plan to watch these during the assigned time for the final exam.</li>
+<li>You will complete a peer evaluation of the presentations you watch. This will be an assignment on Brightspace to be done during the final exam. You will also be asked to provide feedback on your partner’s contribution to the project. You should find a quiet place to write the exam. You do not need to come to the exam room.</li>
+</ul>
+<section id="oral-presentation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="oral-presentation">Oral presentation</h3>
+<p>The oral presentation should be 5-10 minutes long (at least 5, no more than 10). Your goal is to present the highlights of your project.</p>
+<p>You should have a small number of slides to accompany your presentation. I have provided a template for you to use as <code>presentation.qmd</code>. I suggest a format such as the following:</p>
+<ul>
+<li>A title for your project and your team members’ names</li>
+<li>A description of the data you are analyzing</li>
+<li>At least one question you can investigate with your data visualization</li>
+<li>At least two data visualizations that help answer this question</li>
+<li>A conclusion</li>
+</ul>
+<p>For suggestions on making slide presentations see the lesson on slides.</p>
+<p>Don’t show your R code; the focus should be on your results and visualizations not your computing. Set <code>echo = FALSE</code> to hide R code (this is already done in the template).</p>
+<p>Your presentation should convey what you learned from your analysis and the choices you made when constructing your visualizations. Be careful not to simply describe a list of visualizations and analyses (“then we did this, then we did this, etc.”). You must tie the visualizations you show to the questions you are investigating.</p>
+<p>Presentation schedule: You should record your presentation as part of the exam preparation period. You must upload your recorded presentation at least 1 day before the scheduled final exam. During the exam period you will watch presentations from other teams I assign to you and provide feedback in the form of a peer evaluation.</p>
+<p><em>Assessment</em>. See the file <code>grade-presentation.Rmd</code> for the assessment guidelines.</p>
 
 
 </section>
@@ -539,9 +548,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -553,17 +576,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -573,43 +612,299 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

@@ -1,0 +1,98 @@
+---
+title: "Task: Multidimensional scaling"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(broom)
+library(ggfortify)
+library(GGally)
+library(vegan)
+```
+
+## Iris
+
+The data frame `iris` is similar to the penguins data we have been using, except it is about iris plants.
+
+Here is a pairs plot of four quantitative variables from this dataset. The diagonal shows the density of each variable. Below the diagonal is a scatter plot of pairs of varibles. Above the diagonal is the Pearson correlation between pairs of variables. Colour is used to distinguish the three species.
+
+```{r}
+iris |> ggpairs(aes(color=Species), columns=1:4, progress=FALSE)
+```
+
+## PCA 
+
+Use `prcomp` to create a PCA of the four quantitative variables in `iris`.
+
+```{r}
+
+```
+
+Use `autoplot` to create a "biplot" showing the data projected onto the first two principal components. Colour the points according to the species. (Note you have to spell colour with a "u" in this command, and you need to put the variable name 'Species' in quotation marks; this is different from the way most functions we've been using work.) Show the "loading" vectors with their labels.
+
+```{r}
+
+```
+
+Use `augment` and `ggplot` to make your own customized biplot. You don't need to include the loading arrows, but you can if you like.
+
+```{r}
+
+```
+
+## MDS
+
+First we will use the function `dist` to compute the distance between each plant (row) in the `iris` dataset. 
+
+```{r}
+dist1 <- dist(iris |> select(-Species) |> scale() )
+```
+
+Use `metaMDS` from the `vegan` package to perform multidimensional scaling on the iris data using this distance matrix.
+
+```{r}
+
+```
+
+Use `ordiplot` to show the points as separated into the two dimensional ordination space.
+
+```{r}
+
+```
+
+If the result of your MDS is stored in a variable called `mds1` you can get the MDS coordinates of each plant using `mds1$points` (change `mds1` to the name of the object you stored the MDS analysis in.) Below I also use the `as_tibble` function to convert the matrix to a tibble in preparation for our next step.
+
+```{r}
+mds1$points |> as_tibble()
+```
+
+Use `bind_cols` to combine these points with the original `iris` dataset. Make a scatter plot using the MDS coordinates and colour the points using the Species variable.
+
+```{r}
+bind_cols(iris, mds1$points |> as_tibble()) 
+```
+
+Make a scatterplot using any two of the original quantitative from `iris`. 
+
+```{r}
+
+```
+
+**Do the species form three separate clusters in your plot using the original data? Are the observations separated in the plane according to the species name in the MDS plot?**
+
+*write your response here*
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+

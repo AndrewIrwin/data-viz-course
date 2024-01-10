@@ -1,0 +1,60 @@
+---
+title: "Task: k-means"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(broom)
+```
+
+## K-means
+
+We will continue working with the iris data. Use k-means clustering on scaled versions of the four quantitative variables to create 3 clusters.
+
+```{r}
+
+
+```
+
+Use `tidy` to show the centres of the three clusters.
+
+```{r}
+
+```
+
+Make a scatterplot of each observation using any two of the original quantitative variables. Colour the points according to the cluster. Use `augment` to combine the clustering results with the original data.
+
+```{r}
+
+
+```
+
+Use `augment` to combine the cluster and original data again. Count the number of combinations of each pair of species name and cluster number using group_by and summarize (or just count).
+
+```{r}
+
+```
+
+The four quantitative variables are all measured in cm and are all similar in magnitude. Perhaps the absolute values of the lengths should be retained. Repeat the cluster analysis below (showing the plot and the table of species and cluster numbers) with data that are **not** scaled.
+
+```{r}
+
+
+
+```
+
+**Write a sentence or two that summarizes how well k-means clusters divide these three species into three clusters using these four variables. How do the results from scaled and unscaled data differ? Is one approach clearly better?**
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+

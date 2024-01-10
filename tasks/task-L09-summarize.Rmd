@@ -1,0 +1,71 @@
+---
+title: "Task: Summarizing data"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gapminder)
+```
+
+The purpose of this task is to practice the use of `filter`, `mutate`, `group_by` and `summarize` from the `dplyr` package. This is Task 5 for Lesson 9 on Summarizing Data.
+
+For each question you should filter, transform or summarize the data, make a visualization of your data, and answer a question using the calculation and visualization with a written sentence.
+
+## Question 1
+
+Filter the gapminder data keeping only observations from Canada (use `filter(country == "Canada")`). (I've done this first step for you.) Then make a line plot (`geom_line`) of life expectancy as a function of time.
+
+```{r}
+#| fig-cap: "Change this text to be a meaningful caption for your figure."
+gapminder |> filter(country == "Canada")
+```
+
+By approximately how many years has the life expectancy increased in Canada over the time described by this data?
+
+**Replace this text with your answer written in a complete sentence.**
+
+
+## Question 2
+
+Compute the median life expectancy for each year and continent, using `group_by` and `summarize`. Then plot median life expectancy vs year using a different colour for each continent.
+
+```{r}
+gapminder |> group_by(year, continent)
+```
+
+Which continent has the highest median life expectancy in 2007, according to this data?
+
+**Replace this text with your answer written in a complete sentence.**
+
+## Question 3
+
+Compute a scaled version of the GDP per capita by dividing gdpPercap for each country by its maximum value using `mutate`. All countries will have a maximum value of 1. Then compute the median for each year and continent and plot the median as a function of time.
+
+This calculation requires a few steps, which you then translate into R code:
+
+* find the maximum GDP per capita for each country and add this as a column using mutate,
+* compute a new variable which is GDP per capita divided by this maximum value,
+* grouping by year and continent, compute the median of the scaled GDP per capita you just computed,
+* make a line plot of these data, using colour to identify the continent.
+
+```{r}
+#| fig-cap: "Change this text to be a meaningful caption for your figure."
+# write your code here
+```
+
+On which continent has median GDP per capita increased the most (as a proportion relative to 2007, not absolute amounts) according to this data?
+
+**Replace this text with your answer written in a complete sentence.**
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```

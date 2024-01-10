@@ -1,0 +1,75 @@
+---
+title: "Task: Map alternatives"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(statebins)
+library(covdata)
+```
+
+In this task you will practice showing geographic data, but not on a map.
+
+Kieran Healy (author of our main textbook) has been doing some work collecting and organizing COVID data. He writes up some of his explorations in a [blog](https://kieranhealy.org/blog/archives/2020/03/21/covid-19-tracking/) and he has collected some of this data in a R package called [covdata](https://kjhealy.github.io/covdata/). He has prepared a [codebook](https://kjhealy.github.io/covdata/articles/codebook.html) to describe the data in the package.
+
+Install the covdata package using 
+
+```
+remotes::install_github("kjhealy/covdata@main")
+```
+
+In early September there was a problem with this package. If this problem persists when it is time to work
+on this Task, I'll send some new instructions.
+
+## Question 1
+
+Use `covnat_daily` which reports data from European Centres for Disease Control.
+
+Here is a list of countries.
+
+```{r}
+countries <- c("Austria", "Belgium", "Bulgaria", "Canary Islands", "Cyprus", "Estonia", "Finland", "Germany", 
+               "Greece", "France", "Italy", "Spain", "Portugal", "Ireland", "Macedonia", "Luxembourg", 
+               "UK", "Switzerland", "Norway", "Sweden")
+```
+
+Select data from `covnat_weekly` that match these countries or regions (some may be missing, that's OK) with date after 2020-12-01 using filter and the comparison operator `%in%`. Use ggplot and geom_tile to show cases (as fill colour) for those dates on one axis and the country on the other axis.
+
+```{r}
+
+
+```
+
+Make a second heatmap to show the per captia case rate: cases / pop.
+
+```{r}
+
+
+```
+
+
+## Question 2
+
+Show data from the data frame `covus` using `geom_statebins`. Pick a date (`date`) and a quantitative variable (described by `measure` and reported in `count`). Use `filter` to select those data for each state. Make sure you have only a single number (or NA) for each state. Show the data on a "statebins" map.
+
+There may be some state codes that don't match the map used by statebins. That's okay.
+
+```{r}
+
+
+```
+
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
