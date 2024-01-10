@@ -16,9 +16,7 @@ website:
         text: Schedule
       - href: 004-evaluation.qmd
         text: Evaluation
-      - href: teams.qmd
-        text: Teams
-        
+       
 format:
   html:
     theme: cosmo

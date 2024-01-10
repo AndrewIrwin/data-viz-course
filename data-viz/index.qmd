@@ -1,15 +1,15 @@
 ---
 title: "Data Visualization"
-subtitle: "STAT 2430 at Dalhousie University, Fall 2022"
+subtitle: "STAT 2430 at Dalhousie University, Winter 2024"
 author: "Andrew Irwin"
-date: "`r Sys.Date()`"
+date: "2024-01-09"
 format: 
   html:
     code-line-numbers: true
 editor: source
 ---
 
-Welcome to Data Visualization (STAT 2430) at Dalhousie University for Fall 2022. From this page you can access all the required elements of the course including
+Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2024. From this page you can access all the required elements of the course including
 
 * the [syllabus](001-syllabus.qmd) for the whole course,
 * the course [textbook](https://andrewirwin.github.io/data-viz-notes/),
@@ -18,9 +18,7 @@ Welcome to Data Visualization (STAT 2430) at Dalhousie University for Fall 2022.
 
 A few items are located on [Brightspace course page](https://dal.brightspace.com/d2l/home/232100)
 
-* a link to participate online through Collaborate, in case you can't come to a class,
-* recordings from class,
-* course work to be submitted during the first two weeks of term,
+* tasks to be submitted once a week,
 * term project information: team membership, presentation schedule, and peer-evaluation schedule,
 * your grades in the course.
 

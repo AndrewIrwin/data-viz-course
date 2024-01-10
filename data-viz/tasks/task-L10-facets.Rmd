@@ -1,0 +1,67 @@
+---
+title: "Task: Facets"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+The goal of this task is to practice the use of facets in visualizations. For each question you are asked to make a visualization using facets. Be sure to use `facet_wrap` for at least one plot and `facet_grid` for at least one plot.
+
+Use the subset of the `diamonds` dataset defined below.
+
+```{r}
+diamonds_subset <- diamonds |> filter(clarity == "IF", carat > 0.5)
+```
+
+## Question 1
+
+Make a scatter plot of price as a function of carat from the `diamonds_subset` data. Create a facet for each level of the `cut` categorical variable.
+
+```{r}
+#| fig-cap: "Change this text to be a meaningful caption for your figure."
+diamonds_subset |> ggplot(aes(y=price, x=carat)) 
+```
+
+*Write a sentence to describe what you learn by looking at the different facets of the plot.*
+
+## Question 2
+
+Make a scatter plot of the length and width of each diamond (the variables `x` and `y`) in the diamonds subset data. Create facets for each combination of `color` and `cut`.
+
+```{r}
+#| fig-cap: "Change this text to be a meaningful caption for your figure."
+
+
+```
+
+*Write a sentence to describe what you learn by looking at the different facets of the plot.*
+
+## Question 3
+
+When I drew a plot for question 1, I noticed a different pattern for diamonds smaller than 1 carat compared to diamonds 1 carat or larger. In the code block below I create a new categorical variable to separate diamonds into these two groups. Use this categorical variable to create a two facet scatter plot and colour the points on your plot according to the `cut` variable. Show any variables you like on the plot.
+
+```{r}
+#| fig-cap: "Change this text to be a meaningful caption for your figure."
+diamonds_subset_1ct <- diamonds_subset |> 
+  mutate(one_carat = cut(carat, breaks = c(0, 1, Inf), 
+                         labels = c("Less than 1 ct", "1 ct or more")))
+diamonds_subset_1ct |> ggplot()
+```
+
+
+*Write a sentence to describe what you learn by looking at the different facets of the plot.*
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+

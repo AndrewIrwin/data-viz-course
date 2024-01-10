@@ -215,7 +215,7 @@ t1 %>% mutate(elapsed = dt - min(dt)) %>%
 
 * Healy appendix
 
-* R4DS Chapter 14 [Strings](https://r4ds.had.co.nz/strings.html), Chapter 15 [Factors](https://r4ds.had.co.nz/factors.html), and Chapter 16 [Dates and times](https://r4ds.had.co.nz/dates-and-times.html)
+* R4DS Chapter 14 [Strings](https://r4ds.hadley.nz/strings), Chapter 16 [Factors](https://r4ds.hadley.nz/factors), and Chapter 17 [Dates and times](https://r4ds.hadley.nz/datetimes)
 
 
 ## Task

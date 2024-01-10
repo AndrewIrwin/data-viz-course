@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(leaflet)
 library(ggmap)
+library(kableExtra)
 ```
 
 ## Plan
@@ -101,10 +102,12 @@ m3
 
 ## Other tiled map services
 
-```{r stamen, cache=TRUE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
-mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, 
+Stament maps are from Stadia Maps have more options, but you must sign up for an API key first.
+
+```{r stamen, eval=FALSE, cache=TRUE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
+mymap_terrain <- get_stadiamap(bbox = c(left = -130, bottom = 41, 
                                         right = -50, top = 66), 
-                               zoom=5, maptype = "terrain")
+                               zoom=5, maptype = "stamen_terrain")
 m4 <- ggmap(mymap_terrain)  
 ```
 
@@ -114,14 +117,14 @@ Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don
 
 ## Other tiled map services
 
-```{r message=FALSE, fig.align="center", out.width="90%", fig.retina=2, echo=FALSE}
+```{r eval=FALSE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2, echo=FALSE}
 m4
 ```
 
 
 ## Add text and points
 
-```{r message=FALSE}
+```{r eval=FALSE, message=FALSE}
 my_points <- tibble(lat = c(43+57/60, 49+53/60),
                     lon = c(-59-55/60, -97-9/60),
                     label = c("Sable Is.", "Winnipeg")
@@ -137,7 +140,7 @@ m5 <- ggmap(mymap_terrain)  +
 
 ## Add text and points
 
-```{r echo=FALSE, fig.align="center", out.width="90%", echo=FALSE, fig.retina=2}
+```{r eval=FALSE, echo=FALSE, fig.align="center", out.width="90%", echo=FALSE, fig.retina=2}
 m5
 ```
 

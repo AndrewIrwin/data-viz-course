@@ -1,5 +1,6 @@
 # Detailed schedule {#outline .unnumbered}
 
+
 ```{r include=FALSE}
 library(tidyverse, quietly = TRUE)  # fussy, but might be useful later on
 library(knitr)
@@ -9,17 +10,13 @@ library(lubridate)
 cal <- read_excel(here::here("data-viz", "schedule.xlsx"))
 ```
 
-Class meetings will be in person in LSC C338 on Tuesday and Thursday 1:00-2:20. If you are unable to attend class in person, you can participate live online or watch the recording later. Managing a hybrid course is challenging and I expect the in-person experience will be better than the online version. Links to these sessions will be on [Brightspace](https://dal.brightspace.com/d2l/le/content/232100/Home). 
-
 Each lesson below has links to course notes and slides. Course notes contain further links to textbook readings and other material to help you learn. Some students will prefer to begin by attending class, others will prefer to begin with the written notes and slides. I suggest you learn which you prefer by experimentation. The tasks are designed to help you be sure you know the most important parts of each lesson.
 
 ## Course calendar {-}
 
-This is a plan for the term. Timing of course content may change. Slides will normally appear before the class, but you can expect last-minute changes and maybe some edits after class is over.
+This is a plan for the term. Timing of course content may change. Slides will normally appear before the class, but you can expect last-minute changes and maybe some edits after each class is over.
 
-[Tasks](004-evaluation.qmd#tasks) are due Friday at 6:00 pm Atlantic each week. Due dates for assignment and term project component are listed below.
-
-Recordings from the previous offering of this course are [available](http://bio.mmab.ca/data-visualization/), but this course will deviate somewhat from that version of the course. 
+[Tasks](004-evaluation.qmd#tasks) are due Monday at 6:00 pm Atlantic each week. Due dates for assignment and term project component are listed below.
 
 Slides and other materials presented in class will be posted here when they are ready.
 

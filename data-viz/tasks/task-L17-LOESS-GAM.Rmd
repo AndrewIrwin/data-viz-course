@@ -1,0 +1,65 @@
+---
+title: "Task: LOESS and GAM"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(broom)
+library(kableExtra)
+library(quantreg)
+```
+
+In this task you will practice fitting LOESS and GAM smooths and adding them to visualizations.
+
+## Question 1
+
+Using the same data from the Linear Models Task, plot the median duration of unemployment as a function of the date. Add a GAM or LOESS smooth to the data which you think captures the main trend in the data.
+
+```{r}
+
+
+```
+
+**Explain your preferred choice. (Why is GAM better than LOESS, or the reverse?) What is the main trend highlighted by your smooth?**
+
+Write your response here.
+
+
+## Question 2
+
+In the code block below I calculate the increase in population each year, relative to lowest population in the year. The first and last year in the dataset are outliers because there is less than a full year of data for those years.
+
+```{r}
+my_econ3 <- economics |> mutate(year = year(date),
+                                 month = month(date)) |>
+              group_by(year) |>
+              mutate(pop_incr = (pop - min(pop))/min(pop)) |>
+              filter(pop_incr == max(pop_incr)) 
+```
+
+Plot the population increase (`pop_incr`) as a function of the year. Use `filter` to exclude the first and last years. Add a smooth curve to the graph. Choose the type you did not use in question 1 (e.g., if you used a GAM in question 1, use a LOESS here.)
+
+```{r}
+
+```
+
+**Summarize the trend in the annual rate of population increase in the USA in a sentence or two.**
+
+Write your response here.
+
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+

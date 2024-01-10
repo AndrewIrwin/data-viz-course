@@ -159,7 +159,7 @@ penguins |> filter(!is.na(bill_length_mm)) |>
 
 * More examples with different data in the course notes
 
-* R4DS [Section 3.5](https://r4ds.had.co.nz/data-visualisation.html#facets)
+* R4DS [Section 3.5](https://r4ds.hadley.nz/layers.html#facets)
 
 * Wilke [Multi-panel figures](https://clauswilke.com/dataviz/multi-panel-figures.html) discussing facets and other suggestions for combining different views of data together into one figure
 

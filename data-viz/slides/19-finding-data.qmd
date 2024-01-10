@@ -153,7 +153,7 @@ data.frame(
 
 * Course notes
 
-* [Importing data](https://r4ds.had.co.nz/data-import.html) from R4DS
+* [Importing data](https://r4ds.hadley.nz/import) from R4DS
 
 * Roger Peng's notes on [importing data](https://bookdown.org/rdpeng/rprogdatascience/getting-data-in-and-out-of-r.html)
 

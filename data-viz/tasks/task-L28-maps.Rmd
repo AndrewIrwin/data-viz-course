@@ -1,0 +1,46 @@
+---
+title: "Task: Making maps"
+author: "Your name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggmap)
+library(leaflet)
+```
+
+In this task you will practice making maps.
+
+## Question 1
+
+Make an outline (vector) map of any country or region except for Canada or the USA using the information in the world database `map_data` and the `geom_map` function. Fill the country with any colour you like except for the default grey. I encourage you to experiment with map projections, showing or hiding the grid lines, and showing or hiding axis labels, but these extra customizations are not required.
+
+```{r}
+
+
+```
+
+
+## Question 2
+
+Pick a location on the Earth that you find interesting (e.g., a place you visited, where you lived for a long time, or a place you are interested in but have never been to). Find latitude and longitude coordinates for this location. One way to do this is to use google maps to find the location, then look in the address bar for the latitude and longitude.
+
+Make a leaflet (interactive, sliding) map centred on this area. Choose a level of zoom to show the detail you think is appropriate. Use the function `setView` to set the coordinates at the middle of the map and the zoom level. Add a point on the map at the place of interest.
+
+```{r}
+
+```
+
+
+## Submit?
+
+If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
+
+```{r}
+assess_task = FALSE
+```
+
+
