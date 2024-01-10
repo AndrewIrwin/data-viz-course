@@ -8,7 +8,7 @@ The course web page is at
 
 The course textbook is at
 
-* https://Dalhousie-AndrewIrwin-Teaching.github.io/data-viz-notes/
+* https://AndrewIrwin.github.io/data-viz-notes/
 
 Other information about the course can be accessed by registered student through [Brightspace](https://dal.brightspace.com/d2l/home/310584) at Dalhousie.
 
