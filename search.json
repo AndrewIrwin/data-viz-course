@@ -1467,7 +1467,7 @@
     "href": "slides/06-version-control.html#demo-practice",
     "title": "Version control",
     "section": "Demo + Practice",
-    "text": "Demo + Practice\n\nLive demo in class (I’ll write the time that the demo starts in the recording once class is over.)\nPractice this skill in Assignment 1"
+    "text": "Demo + Practice\n\nLive demo in class.\nPractice this skill in Assignment 1"
   },
   {
     "objectID": "slides/04-look-at-data.html#datasaurus-dozen",
@@ -1530,7 +1530,7 @@
     "href": "slides/04-look-at-data.html#how-to-make-a-good-visualization",
     "title": "Look at Data",
     "section": "How to make a good visualization",
-    "text": "How to make a good visualization\n\nThink about your goals.\nWhat is the best choice to highlight the most important feature of the dataset?\nHow will your reader interpret your visualization?\nDoes your picture represent the data fairly?\nAre there perceptual problems that make the picture easy to misinterpret or difficult to understand?\nRevise and edit your graphs.\nPractice thinking about the effectiveness ofvisual elements."
+    "text": "How to make a good visualization\n\nThink about your goals.\nWhat are the best choices to highlight the most important features of the dataset?\nHow will your reader interpret your visualization?\nDoes your picture represent the data fairly?\nAre there perceptual problems that make the picture easy to misinterpret or difficult to understand?\nRevise and edit your graphs.\nPractice thinking about the effectiveness of visual elements."
   },
   {
     "objectID": "slides/04-look-at-data.html#suggested-reading",
@@ -2083,7 +2083,7 @@
     "href": "slides/05-making-your-first-plot.html#datasets-to-experiment-with",
     "title": "Making your first plot",
     "section": "Datasets to experiment with",
-    "text": "Datasets to experiment with\n\n\nmtcars, iris and many other well-known data in datasets package\n\npenguins in palmerpenguins package\n\ngapminder in gapminder package (but see website too Gapminder)\n\ndiamonds in ggplot2 package\n\nUse glimpse(mtcars) (or other dataset) and View(mtcars) to look at the data.\nUse ?mtcars to get documentation for the dataset, or use the search in the “Help” panel."
+    "text": "Datasets to experiment with\n\n\nmtcars, iris and many other well-known data in datasets package\n\npenguins in palmerpenguins package\n\ngapminder in gapminder package (see Gapminder website too)\n\ndiamonds in ggplot2 package\n\nUse glimpse(mtcars) (or other dataset) and View(mtcars) to look at the data.\nUse ?mtcars to get documentation for the dataset, or use the search in the “Help” panel.\nglimpse is in the dplyr package. Load it into your R session using library(tidyverse)."
   },
   {
     "objectID": "slides/07-grammar-graphics.html#development",
@@ -2874,7 +2874,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-0.8374048\n-0.3622607\n-1.4726879\n12\n14.03344\n1\n\n\n0.7653176\n0.7147770\n-0.5821182\n51\n37.52720\n2\n\n\n-1.4703259\n-1.3100647\n-0.1126642\n27\n17.78997\n3\n\n\n-0.6163025\n-0.8038199\n0.8499368\n19\n17.88040\n4\n\n\n0.6795820\n0.5617523\n1.0379824\n33\n27.06476\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-0.5553538\n-0.3687870\n-1.2065990\n16\n21.718639\n1\n\n\n0.1197776\n-0.1789689\n1.1400217\n24\n23.696310\n2\n\n\n0.9078778\n1.0383001\n0.8465417\n20\n8.083777\n3\n\n\n0.7881227\n0.7942471\n-0.6379760\n45\n29.547062\n4\n\n\n-1.2868130\n-1.2516561\n0.1006256\n37\n30.603546\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
