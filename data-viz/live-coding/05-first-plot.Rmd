@@ -19,12 +19,12 @@ Steps:
 * Make a scatterplot using `geom_point`
 
 ```{r}
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+
 ```
 
 
 ```{r}
-ggplot(gapminder, aes(y = gdpPercap, x = lifeExp)) + geom_point()
+
 ```
 
 
@@ -38,44 +38,18 @@ Refine your plot:
 * Transform the x axis to be on a log scale using `scale_x_log10`
 
 ```{r}
-ggplot(gapminder, aes(y = gdpPercap, 
-                      x = lifeExp)) + 
-  geom_point() +
-  labs(x = "GDP per capita (US$, inflation adjusted",
-       y = "Life expectancy (years, at birth)",
-       title = "Life expectancy varies with national income",
-       subtitle = "Something more here",
-       caption = "Source: gapminder")
+
+
 
 ```
 
 ```{r}
-ggplot(gapminder, aes(y = gdpPercap, 
-                      x = lifeExp,
-                      color = continent),
-       ) + 
-  geom_point() +
-  labs(y = "GDP per capita (US$, inflation adjusted",
-       x = "Life expectancy (years, at birth)",
-       title = "Life expectancy varies with national income",
-       subtitle = "Something more here",
-       caption = "Source: gapminder")
+
 
 ```
 
 ```{r}
-ggplot(gapminder, aes(y = gdpPercap, 
-                      x = lifeExp,
-                      color = continent),
-       ) + 
-  geom_point() +
-  labs(y = "GDP per capita (US$, inflation adjusted",
-       x = "Life expectancy (years, at birth)",
-       title = "Life expectancy varies with national income",
-       subtitle = "Something more here",
-       caption = "Source: gapminder") +
-  scale_y_log10() +
-  theme(text = element_text(size=14))
+
 
 ```
 

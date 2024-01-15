@@ -1,7 +1,7 @@
 ---
 title: "Version control"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-09-15"
+date: "2024-01-23"
 format:
   revealjs:
     slide-number: true
@@ -92,6 +92,6 @@ More advanced material:
 
 ## Demo + Practice
 
-* Live demo in class (I'll write the time that the demo starts in the recording once class is over.)
+* Live demo in class.
 
 * Practice this skill in Assignment 1

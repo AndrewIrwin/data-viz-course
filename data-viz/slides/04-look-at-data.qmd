@@ -1,7 +1,7 @@
 ---
 title: "Look at Data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-09-13"
+date: "2024-01-16"
 format:
   revealjs:
     slide-number: true
@@ -170,12 +170,12 @@ Healy. Fig. 1.24.
 ## How to make a good visualization
 
 * Think about your goals.
-* What is the best choice to highlight the most important feature of the dataset? 
+* What are the best choices to highlight the most important features of the dataset? 
 * How will your reader interpret your visualization? 
 * Does your picture represent the data fairly? 
 * Are there perceptual problems that make the picture easy to misinterpret or difficult to understand? 
 * Revise and edit your graphs.
-* Practice thinking about the effectiveness ofvisual elements.
+* Practice thinking about the effectiveness of visual elements.
 
 ## Suggested reading
 

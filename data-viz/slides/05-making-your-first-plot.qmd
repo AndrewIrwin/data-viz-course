@@ -1,7 +1,7 @@
 ---
 title: "Making your first plot"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-09-13"
+date: "2024-01-16"
 format:
   revealjs:
     slide-number: true
@@ -213,10 +213,12 @@ knitr::include_graphics(knitr::fig_chunk("fig4", "png"))
 
 * `mtcars`, `iris` and many other well-known data in datasets package
 * `penguins` in palmerpenguins package
-* `gapminder` in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* `gapminder` in gapminder package  (see [Gapminder](https://gapminder.org) website too)
 * `diamonds` in ggplot2 package
 
 Use `glimpse(mtcars)` (or other dataset) and `View(mtcars)` to look at the data.
 
 Use ?mtcars to get documentation for the dataset, or use the search in the "Help" panel.
+
+`glimpse` is in the `dplyr` package. Load it into your R session using `library(tidyverse)`.
 
