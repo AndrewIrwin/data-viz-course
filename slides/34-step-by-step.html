@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.538">
+<meta name="generator" content="quarto-1.3.450">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-11-24">
 <title>data-viz - Recreating a plot step by step</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -410,8 +409,8 @@ Andrew Irwin, a.irwin@dal.ca
 
 <img data-src="static/L34/cover-stats-data-models.JPG" class="r-stretch quarto-figure-center"><p class="caption">cover image</p></section><section id="get-the-data" class="slide level2"><h2>Get the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb1-2"><a></a>gapminder <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>gapminder <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 </div>
 <p>We will make a scatterplot of life expectancy as a function of GDP per capita, for one year only.</p>
 </section><section class="slide level2"><div class="cell">
@@ -14073,208 +14072,208 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="first-plot" class="slide level2"><h2>First Plot</h2>
 <p>The last year with data is 2007, so let’s take those data and make a scatterplot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp,</span>
-<span id="cb2-4"><a></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
-<span id="cb2-5"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
 </div>
 
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section><section id="change-the-x-axis-to-a-log-scale" class="slide level2"><h2>Change the x-axis to a log scale</h2>
 <p>The figure uses <span class="math inline">\(\log_2\)</span> with fancy labels (and has an error), but we will be content with simple labels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp,</span>
-<span id="cb3-4"><a></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
-<span id="cb3-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb3-6"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section><section id="add-axis-labels-and-a-title" class="slide level2"><h2>Add axis labels and a title</h2>
 <p>Clean up the axis labels. I’ll hide some of the code to make room on the screen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb4-3"><a></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
-<span id="cb4-4"><a></a>  ... <span class="sc">+</span> </span>
-<span id="cb4-5"><a></a>  <span class="fu">xlab</span>(<span class="st">"Income per person, GCP/capita in $/year adjusted for inflation and prices"</span>) <span class="sc">+</span> </span>
-<span id="cb4-6"><a></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> </span>
-<span id="cb4-7"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Life Expectancy (2007)"</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb4-3"><a href="#cb4-3"></a>             <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4"></a>  ... <span class="sc">+</span> </span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">xlab</span>(<span class="st">"Income per person, GCP/capita in $/year adjusted for inflation and prices"</span>) <span class="sc">+</span> </span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">ggtitle</span>(<span class="st">"Life Expectancy (2007)"</span>) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section><section id="add-colour" class="slide level2"><h2>Add colour</h2>
 <p>We will use the continent name to pick colours.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb5-3"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb5-4"><a></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
-<span id="cb5-5"><a></a>  ... </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb5-3"><a href="#cb5-3"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb5-4"><a href="#cb5-4"></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="#cb5-5"></a>  ... </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section><section id="make-points-transparent-to-highlight-overlap" class="slide level2"><h2>Make points transparent to highlight overlap</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb6-2"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb6-3"><a></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a></a>  ...</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb6-2"><a href="#cb6-2"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb6-3"><a href="#cb6-3"></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  ...</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section><section id="add-a-black-outline-to-each-dot" class="slide level2"><h2>Add a black outline to each dot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb7-2"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb7-3"><a></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a></a>  ...</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb7-2"><a href="#cb7-2"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  ...</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section><section id="match-the-colour-scale-to-the-example" class="slide level2"><h2>Match the colour scale to the example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb8-2"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb8-3"><a></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  ... <span class="sc">+</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb8-2"><a href="#cb8-2"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb8-3"><a href="#cb8-3"></a>             <span class="at">color=</span>continent)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>  ... <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>)) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section><section id="make-the-points-bigger" class="slide level2"><h2>Make the points bigger</h2>
 <p>Scale the size of points using the population of each country.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb9-2"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb9-3"><a></a>             <span class="at">color=</span>continent, </span>
-<span id="cb9-4"><a></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
-<span id="cb9-5"><a></a>  ...</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb9-2"><a href="#cb9-2"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb9-3"><a href="#cb9-3"></a>             <span class="at">color=</span>continent, </span>
+<span id="cb9-4"><a href="#cb9-4"></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>  ...</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section><section id="make-the-points-bigger-part-2" class="slide level2"><h2>Make the points bigger: Part 2</h2>
 <p>Make the points bigger by setting the maximum size of the points.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb10-2"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb10-3"><a></a>             <span class="at">color=</span>continent, </span>
-<span id="cb10-4"><a></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  ... <span class="sc">+</span></span>
-<span id="cb10-6"><a></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb10-2"><a href="#cb10-2"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb10-3"><a href="#cb10-3"></a>             <span class="at">color=</span>continent, </span>
+<span id="cb10-4"><a href="#cb10-4"></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  ... <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">20</span>)</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section><section id="hide-the-legend" class="slide level2"><h2>Hide the legend</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(...)) <span class="sc">+</span> </span>
-<span id="cb11-2"><a></a>  ... <span class="sc">+</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span></span>
-<span id="cb11-4"><a></a>          <span class="st">"none"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(...)) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  ... <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>          <span class="st">"none"</span>)</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section><section id="draw-a-map-for-the-inset" class="slide level2"><h2>Draw a map for the inset</h2>
 <p>Get the map data and draw a map. Google a first example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale=</span><span class="st">'medium'</span>,</span>
-<span id="cb12-2"><a></a>      <span class="at">returnclass =</span> <span class="st">'sf'</span>)</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a>world <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb12-6"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale=</span><span class="st">'medium'</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>      <span class="at">returnclass =</span> <span class="st">'sf'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>world <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent))</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-25-1.png" width="768" class="r-stretch"></section><section id="remove-antarctica" class="slide level2"><h2>Remove Antarctica</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">filter</span>(continent <span class="sc">!=</span> </span>
-<span id="cb13-3"><a></a>           <span class="st">"Antarctica"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb13-5"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(continent <span class="sc">!=</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>           <span class="st">"Antarctica"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent)) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-27-1.png" width="768" class="r-stretch"></section><section id="match-the-colours-to-the-plot" class="slide level2"><h2>Match the colours to the plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb14-3"><a></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> </span>
-<span id="cb14-4"><a></a>          <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>,</span>
-<span id="cb14-5"><a></a>            <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"black"</span>, </span>
-<span id="cb14-6"><a></a>            <span class="st">"green"</span> )) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a>          <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>            <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"black"</span>, </span>
+<span id="cb14-6"><a href="#cb14-6"></a>            <span class="st">"green"</span> )) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-29-1.png" width="768" class="r-stretch"></section><section id="remove-outlines-on-countries-and-make-colors-transparent" class="slide level2"><h2>Remove outlines on countries and make colors transparent</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent), </span>
-<span id="cb15-4"><a></a>          <span class="at">color=</span><span class="cn">NA</span>, </span>
-<span id="cb15-5"><a></a>          <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb15-6"><a></a>  ...</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent), </span>
+<span id="cb15-4"><a href="#cb15-4"></a>          <span class="at">color=</span><span class="cn">NA</span>, </span>
+<span id="cb15-5"><a href="#cb15-5"></a>          <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  ...</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-31-1.png" width="768" class="r-stretch"></section><section id="remove-the-legend" class="slide level2"><h2>Remove the legend</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb16-3"><a></a>  ... <span class="sc">+</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  ... <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-33-1.png" width="768" class="r-stretch"></section><section id="clean-up-the-grid-lines-white-background" class="slide level2"><h2>Clean up the grid lines, white background</h2>
 <p>Lots of help from Google to figure this out!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> ... <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb17-4"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position=</span> <span class="st">"none"</span>,</span>
-<span id="cb17-5"><a></a>      <span class="at">panel.border=</span> <span class="fu">element_rect</span>(<span class="at">linetype=</span><span class="dv">0</span>),</span>
-<span id="cb17-6"><a></a>      <span class="at">panel.grid=</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
-<span id="cb17-7"><a></a>      <span class="at">panel.background=</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
-<span id="cb17-8"><a></a>      <span class="at">plot.background=</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
-<span id="cb17-9"><a></a>      <span class="at">axis.text.x=</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
-<span id="cb17-10"><a></a>      <span class="at">axis.ticks.length=</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"cm"</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> ... <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="fu">theme</span>(<span class="at">legend.position=</span> <span class="st">"none"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>      <span class="at">panel.border=</span> <span class="fu">element_rect</span>(<span class="at">linetype=</span><span class="dv">0</span>),</span>
+<span id="cb17-6"><a href="#cb17-6"></a>      <span class="at">panel.grid=</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
+<span id="cb17-7"><a href="#cb17-7"></a>      <span class="at">panel.background=</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
+<span id="cb17-8"><a href="#cb17-8"></a>      <span class="at">plot.background=</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
+<span id="cb17-9"><a href="#cb17-9"></a>      <span class="at">axis.text.x=</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
+<span id="cb17-10"><a href="#cb17-10"></a>      <span class="at">axis.ticks.length=</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"cm"</span>)) </span></code></pre></div>
 </div>
 
-<img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section><section id="store-the-map-in-an-object-for-later-use" class="slide level2"><h2>Store the map in an object for later use</h2>
+<img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-35-1.png" width="768" class="r-stretch quarto-figure-center"></section><section id="store-the-map-in-an-object-for-later-use" class="slide level2"><h2>Store the map in an object for later use</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a>world <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb18-3"><a></a>  ... <span class="ot">-&gt;</span> world_map</span>
-<span id="cb18-4"><a></a><span class="fu">print</span>(world_map)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  ... <span class="ot">-&gt;</span> world_map</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">print</span>(world_map)</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-37-1.png" width="768" class="r-stretch"></section><section id="combine-the-plot-and-the-map" class="slide level2"><h2>Combine the plot and the map</h2>
 <p>And add a floating label for Canada.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb19-2"><a></a>           <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">annotation_custom</span>(<span class="at">grob=</span></span>
-<span id="cb19-4"><a></a>    <span class="fu">ggplotGrob</span>(world_map), </span>
-<span id="cb19-5"><a></a>    <span class="at">xmin=</span><span class="fl">12.3</span>, </span>
-<span id="cb19-6"><a></a>    <span class="at">ymin=</span><span class="dv">35</span>, <span class="at">ymax=</span><span class="dv">50</span> ) <span class="sc">+</span></span>
-<span id="cb19-7"><a></a>  </span>
-<span id="cb19-8"><a></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(</span>
-<span id="cb19-9"><a></a>          <span class="at">label=</span>country), </span>
-<span id="cb19-10"><a></a>      <span class="at">data =</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb19-11"><a></a>       <span class="fu">filter</span>(year <span class="sc">==</span><span class="dv">2007</span>, </span>
-<span id="cb19-12"><a></a>        country<span class="sc">==</span><span class="st">"Canada"</span>), </span>
-<span id="cb19-13"><a></a>    <span class="at">color=</span><span class="st">"black"</span>, </span>
-<span id="cb19-14"><a></a>    <span class="at">fill=</span><span class="st">"green"</span>, </span>
-<span id="cb19-15"><a></a>    <span class="at">segment.size=</span><span class="dv">1</span>, </span>
-<span id="cb19-16"><a></a>    <span class="at">segment.color=</span><span class="st">"green"</span>, </span>
-<span id="cb19-17"><a></a>    <span class="at">box.padding=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb19-18"><a></a>  ...</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb19-2"><a href="#cb19-2"></a>           <span class="at">x=</span>gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">annotation_custom</span>(<span class="at">grob=</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="fu">ggplotGrob</span>(world_map), </span>
+<span id="cb19-5"><a href="#cb19-5"></a>    <span class="at">xmin=</span><span class="fl">12.3</span>, </span>
+<span id="cb19-6"><a href="#cb19-6"></a>    <span class="at">ymin=</span><span class="dv">35</span>, <span class="at">ymax=</span><span class="dv">50</span> ) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>  </span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(</span>
+<span id="cb19-9"><a href="#cb19-9"></a>          <span class="at">label=</span>country), </span>
+<span id="cb19-10"><a href="#cb19-10"></a>      <span class="at">data =</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb19-11"><a href="#cb19-11"></a>       <span class="fu">filter</span>(year <span class="sc">==</span><span class="dv">2007</span>, </span>
+<span id="cb19-12"><a href="#cb19-12"></a>        country<span class="sc">==</span><span class="st">"Canada"</span>), </span>
+<span id="cb19-13"><a href="#cb19-13"></a>    <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb19-14"><a href="#cb19-14"></a>    <span class="at">fill=</span><span class="st">"green"</span>, </span>
+<span id="cb19-15"><a href="#cb19-15"></a>    <span class="at">segment.size=</span><span class="dv">1</span>, </span>
+<span id="cb19-16"><a href="#cb19-16"></a>    <span class="at">segment.color=</span><span class="st">"green"</span>, </span>
+<span id="cb19-17"><a href="#cb19-17"></a>    <span class="at">box.padding=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a>  ...</span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"></section><section id="adjust-the-aspect-ratio" class="slide level2"><h2>Adjust the aspect ratio</h2>
 <p>Use the ratio of width (log units, log2(30000/300)) to height (80-40), scaled to be 1:2 for a wide plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
-<span id="cb20-3"><a></a>             <span class="at">x=</span>gdpPercap, </span>
-<span id="cb20-4"><a></a>             <span class="at">color=</span>continent, </span>
-<span id="cb20-5"><a></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
-<span id="cb20-6"><a></a>  ... <span class="sc">+</span></span>
-<span id="cb20-7"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span></span>
-<span id="cb20-8"><a></a>                <span class="fu">log2</span>(<span class="dv">30000</span><span class="sc">/</span><span class="dv">300</span>)<span class="sc">/</span>(<span class="dv">80-40</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, </span>
+<span id="cb20-3"><a href="#cb20-3"></a>             <span class="at">x=</span>gdpPercap, </span>
+<span id="cb20-4"><a href="#cb20-4"></a>             <span class="at">color=</span>continent, </span>
+<span id="cb20-5"><a href="#cb20-5"></a>             <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6"></a>  ... <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>                <span class="fu">log2</span>(<span class="dv">30000</span><span class="sc">/</span><span class="dv">300</span>)<span class="sc">/</span>(<span class="dv">80-40</span>)) </span></code></pre></div>
 </div>
 </section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section><section id="how-did-we-do" class="slide level2"><h2>How did we do?</h2>
@@ -14282,60 +14281,58 @@ Andrew Irwin, a.irwin@dal.ca
 <img data-src="static/L34/cover-stats-data-models.JPG" class="r-stretch quarto-figure-center"><p class="caption">cover image</p></section><section class="slide level2">
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-42-1.png" width="960" class="r-stretch"></section><section id="final-code-and-plot" class="slide level2"><h2>Final code and plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, <span class="at">x=</span>gdpPercap, <span class="at">color=</span>continent, <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb21-5"><a></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>country), <span class="at">data =</span> </span>
-<span id="cb21-6"><a></a>                     gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span><span class="dv">2007</span>, </span>
-<span id="cb21-7"><a></a>                                          country<span class="sc">==</span><span class="st">"Canada"</span>), </span>
-<span id="cb21-8"><a></a>                                   <span class="at">color=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"green"</span>, </span>
-<span id="cb21-9"><a></a>                   <span class="at">segment.size=</span><span class="dv">1</span>, <span class="at">segment.color=</span><span class="st">"green"</span>, </span>
-<span id="cb21-10"><a></a>                   <span class="at">box.padding=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a></a>  <span class="fu">xlab</span>(<span class="st">"Income per person, GCP/capita in $/year</span><span class="sc">\n</span><span class="st">adjusted for inflation and prices"</span>) <span class="sc">+</span> </span>
-<span id="cb21-12"><a></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> </span>
-<span id="cb21-13"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb21-14"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Life Expectancy (2007)"</span>) <span class="sc">+</span></span>
-<span id="cb21-15"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"pink"</span>, </span>
-<span id="cb21-16"><a></a>                                <span class="st">"yellow"</span>, <span class="st">"red"</span>)) <span class="sc">+</span></span>
-<span id="cb21-17"><a></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">20</span>) <span class="sc">+</span> </span>
-<span id="cb21-18"><a></a>  <span class="fu">annotation_custom</span>(<span class="at">grob=</span><span class="fu">ggplotGrob</span>(world_map), </span>
-<span id="cb21-19"><a></a>                  <span class="at">xmin=</span><span class="fl">12.3</span>, <span class="at">ymin=</span><span class="dv">40</span>, <span class="at">ymax=</span><span class="dv">55</span> ) <span class="sc">+</span></span>
-<span id="cb21-20"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) <span class="sc">+</span></span>
-<span id="cb21-21"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb21-22"><a></a>        <span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>))  <span class="sc">+</span></span>
-<span id="cb21-23"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="fl">0.5</span><span class="sc">*</span><span class="fu">log2</span>(<span class="dv">30000</span><span class="sc">/</span><span class="dv">300</span>)<span class="sc">/</span>(<span class="dv">80-40</span>)) <span class="ot">-&gt;</span> final_plot</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>lifeExp, <span class="at">x=</span>gdpPercap, <span class="at">color=</span>continent, <span class="at">size=</span>pop)) <span class="sc">+</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>country), <span class="at">data =</span> </span>
+<span id="cb21-6"><a href="#cb21-6"></a>                     gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span><span class="dv">2007</span>, </span>
+<span id="cb21-7"><a href="#cb21-7"></a>                                          country<span class="sc">==</span><span class="st">"Canada"</span>), </span>
+<span id="cb21-8"><a href="#cb21-8"></a>                                   <span class="at">color=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"green"</span>, </span>
+<span id="cb21-9"><a href="#cb21-9"></a>                   <span class="at">segment.size=</span><span class="dv">1</span>, <span class="at">segment.color=</span><span class="st">"green"</span>, </span>
+<span id="cb21-10"><a href="#cb21-10"></a>                   <span class="at">box.padding=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">xlab</span>(<span class="st">"Income per person, GCP/capita in $/year</span><span class="sc">\n</span><span class="st">adjusted for inflation and prices"</span>) <span class="sc">+</span> </span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb21-14"><a href="#cb21-14"></a>  <span class="fu">ggtitle</span>(<span class="st">"Life Expectancy (2007)"</span>) <span class="sc">+</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"pink"</span>, </span>
+<span id="cb21-16"><a href="#cb21-16"></a>                                <span class="st">"yellow"</span>, <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">20</span>) <span class="sc">+</span> </span>
+<span id="cb21-18"><a href="#cb21-18"></a>  <span class="fu">annotation_custom</span>(<span class="at">grob=</span><span class="fu">ggplotGrob</span>(world_map), </span>
+<span id="cb21-19"><a href="#cb21-19"></a>                  <span class="at">xmin=</span><span class="fl">12.3</span>, <span class="at">ymin=</span><span class="dv">40</span>, <span class="at">ymax=</span><span class="dv">55</span> ) <span class="sc">+</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) <span class="sc">+</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb21-22"><a href="#cb21-22"></a>        <span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>))  <span class="sc">+</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="fl">0.5</span><span class="sc">*</span><span class="fu">log2</span>(<span class="dv">30000</span><span class="sc">/</span><span class="dv">300</span>)<span class="sc">/</span>(<span class="dv">80-40</span>)) <span class="ot">-&gt;</span> final_plot</span></code></pre></div>
 </div>
 </section><section id="final-plot" class="slide level2"><h2>Final plot</h2>
 
 <img data-src="34-step-by-step_files/figure-revealjs/unnamed-chunk-44-1.png" width="1152" class="r-stretch"></section><section id="final-map-code" class="slide level2"><h2>Final map code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a>world <span class="sc">%&gt;%</span> <span class="fu">filter</span>(continent <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent), <span class="at">color=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb22-3"><a></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>,<span class="st">"green"</span>, </span>
-<span id="cb22-4"><a></a>                                 <span class="st">"red"</span>, <span class="st">"black"</span>, <span class="st">"green"</span> )) <span class="sc">+</span></span>
-<span id="cb22-5"><a></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>, </span>
-<span id="cb22-6"><a></a>                     <span class="at">panel.border=</span><span class="fu">element_rect</span>(<span class="at">linetype=</span><span class="dv">0</span>),</span>
-<span id="cb22-7"><a></a>                     <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
-<span id="cb22-8"><a></a>                     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
-<span id="cb22-9"><a></a>                     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
-<span id="cb22-10"><a></a>                     <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
-<span id="cb22-11"><a></a>                     <span class="at">axis.ticks.length =</span>  <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"cm"</span>)) <span class="ot">-&gt;</span> world_map</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>world <span class="sc">%&gt;%</span> <span class="fu">filter</span>(continent <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>continent), <span class="at">color=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"pink"</span>, <span class="st">"yellow"</span>,<span class="st">"green"</span>, </span>
+<span id="cb22-4"><a href="#cb22-4"></a>                                 <span class="st">"red"</span>, <span class="st">"black"</span>, <span class="st">"green"</span> )) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>, </span>
+<span id="cb22-6"><a href="#cb22-6"></a>                     <span class="at">panel.border=</span><span class="fu">element_rect</span>(<span class="at">linetype=</span><span class="dv">0</span>),</span>
+<span id="cb22-7"><a href="#cb22-7"></a>                     <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
+<span id="cb22-8"><a href="#cb22-8"></a>                     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
+<span id="cb22-9"><a href="#cb22-9"></a>                     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>),</span>
+<span id="cb22-10"><a href="#cb22-10"></a>                     <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="cn">NA</span>),</span>
+<span id="cb22-11"><a href="#cb22-11"></a>                     <span class="at">axis.ticks.length =</span>  <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"cm"</span>)) <span class="ot">-&gt;</span> world_map</span></code></pre></div>
 </div>
 </section><section id="libraries-used" class="slide level2"><h2>Libraries used</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb23-2"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb23-3"><a></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb23-4"><a></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb23-5"><a></a><span class="fu">library</span>(rnaturalearthdata)</span>
-<span id="cb23-6"><a></a><span class="fu">library</span>(rgeos)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">library</span>(rnaturalearthdata)</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="fu">library</span>(rgeos)</span></code></pre></div>
 </div>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
 </div>
@@ -14348,6 +14345,7 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -14591,9 +14589,10 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -14603,17 +14602,8 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
