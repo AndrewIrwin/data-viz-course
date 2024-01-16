@@ -1,0 +1,58 @@
+---
+title: "Create repositories for Assignments"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(ghclass)
+```
+
+## Make a class list
+
+Start by collecting GitHub names for each student using a Google form or other tool. Write these into a file with headings (name, email, github). Put these in the parent directory for this folder (or in another convenient place not in the repository).
+
+```{r}
+name_id_location <- "~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/GitHub-User-Name.csv"
+github <- read_csv(name_id_location)
+```
+
+
+## Get list of current repositories
+
+```{r}
+github_whoami()
+org_name = "Dalhousie-AndrewIrwin-Teaching"
+# org_exists(org_name)  # just checking!
+org_sitrep(org_name)
+# repos <- org_repos(org_name) # all of them
+repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
+```
+
+## Create repositories
+
+Make list of repos to create.
+
+```{r}
+github <- github |> mutate(full_assignment_repo = paste0(org_name, "/", "data-viz-assignments-", Github)) |>
+  mutate(assignment_repo = paste0("data-viz-assignments-", Github)) |>
+  filter(!(full_assignment_repo %in% repos))
+```
+
+Create a repo
+
+```{r}
+create_repo <- function(i) {
+  org_create_assignment(org = org_name,
+                        repo = github$assignment_repo[i],
+                        user = github$Github[i],
+                        source_repo = paste0(org_name, "/data-viz-assignments"),
+                        private = TRUE)
+}
+for (i in 1:nrow(github)) create_repo(i)
+```
+
+
