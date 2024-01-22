@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.538">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2021-09-20">
 <title>data-viz - Grammar of Graphics</title>
@@ -158,7 +158,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -342,17 +343,17 @@ Andrew Irwin, a.irwin@dal.ca
 
   <p class="date">2021-09-20</p>
 </section><section id="development" class="slide level2"><h2>Development</h2>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-left">
-<figure><p><img data-src="static/Leland_Wilkinson.png"></p>
+<figure><p><img data-src="static/Leland_Wilkinson.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
 <figcaption><a href="https://en.wikipedia.org/wiki/Leland_Wilkinson">Leland Wilkinson</a></figcaption></figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-left">
-<figure><p><img data-src="static/Hadley-wickham2016-02-04.jpeg"></p>
+<figure><p><img data-src="static/Hadley-wickham2016-02-04.jpeg" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
 <figcaption><a href="https://en.wikipedia.org/wiki/Hadley_Wickham">Hadley Wickham</a></figcaption></figure>
 </div>
 </div>
@@ -375,7 +376,7 @@ Andrew Irwin, a.irwin@dal.ca
 </li>
 </ul></section><section id="what-is-the-grammar-of-graphics-1" class="slide level2"><h2>What is the grammar of graphics?</h2>
 
-<img data-src="static/L07/ggplot-layers.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section><section id="data" class="slide level2"><h2>Data</h2>
+<img data-src="static/L07/ggplot-layers.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="data" class="slide level2"><h2>Data</h2>
 <p>We will use “tidy data” arranged in a table</p>
 <ul>
 <li>columns are variable</li>
@@ -405,7 +406,7 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="static/L07/geoms-1.png" style="width:80.0%"></p>
+<figure><p><img data-src="static/L07/geoms-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -414,7 +415,7 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="static/L07/geoms-2.png" style="width:80.0%"></p>
+<figure><p><img data-src="static/L07/geoms-2.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -423,7 +424,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="facets" class="slide level2"><h2>Facets</h2>
 
-<img data-src="static/L07/ggplot-facet.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section><section id="statistics-coordinates" class="slide level2 smaller"><h2>Statistics &amp; Coordinates</h2>
+<img data-src="static/L07/ggplot-facet.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="statistics-coordinates" class="slide level2 smaller"><h2>Statistics &amp; Coordinates</h2>
 <ul>
 <li>
 <p>Do you want to perform calculations on your data before plotting?</p>
@@ -456,14 +457,14 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="suggested-reading" class="slide level2"><h2>Suggested reading</h2>
 <ul>
 <li>Course notes</li>
-</ul></section><section id="self-quiz-bonus-task" class="slide level2"><h2>Self-quiz / Bonus task</h2>
+</ul></section><section id="self-quiz-bonus-task" class="slide level2 scrollable"><h2>Self-quiz / Bonus task</h2>
 <p>Aesthetics are mappings between variables in your dataset and your visualization, defined using the <code>aes</code> function.</p>
 <p>Which of the following is a possible aesthetic mapping for the <code>gapminder</code> data set?</p>
 <ol type="1">
 <li><code>aes(country = x, pop = y)</code></li>
 <li><code>aes(x = country, y = pop)</code></li>
 <li><code>aes(x &lt;- country, y &lt;- pop)</code></li>
-</ol></section><section id="self-quiz-bonus-task-1" class="slide level2"><h2>Self-quiz / Bonus task</h2>
+</ol></section><section id="self-quiz-bonus-task-1" class="slide level2 scrollable"><h2>Self-quiz / Bonus task</h2>
 <p>The geometry (or geom) of a plot determines how the data are displayed in your visualization.</p>
 <p>Select the true statement.</p>
 <ol type="1">
@@ -472,8 +473,10 @@ Andrew Irwin, a.irwin@dal.ca
 </ol></section><section id="self-quiz-bonus-task-2" class="slide level2"><h2>Self-quiz / Bonus task</h2>
 <p>True or false: To change all the points in a scatterplot to red circles, you need to add variables to your data frame with values “red” and “circle” and map those variables to the colour and shape aesthetic.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -486,7 +489,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -730,10 +732,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -743,8 +744,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
