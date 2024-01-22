@@ -140,7 +140,7 @@ Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LO
 
 #### Team Planning {#task-planning .unnumbered}
 
-If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You'll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don't need to do anything.
+If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You'll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don't need to do anything. Teams of two or three students are both okay.
 
 
 ### Week 7
@@ -284,7 +284,7 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 ### Deliverables {-}
 
-Work in groups of 2. Most teams will produce one of each component (proposal, report, presentation) per team member. If you prefer, each person on the team can make their own documents (proposal, report, presentation). Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2 or 3. Most teams will produce one of each component (proposal, report, presentation) per team member. If you prefer, each person on the team can make their own documents (proposal, report, presentation). Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.
 
