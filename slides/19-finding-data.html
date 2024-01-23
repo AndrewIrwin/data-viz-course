@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.538">
+<meta name="generator" content="quarto-1.3.450">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-10-20">
 <title>data-viz - Finding data</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -428,57 +427,57 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>A license or terms and conditions of reuse and redistribution</p></li>
 </ul></section><section id="example-gapminder" class="slide level2"><h2>Example: gapminder</h2>
 
-<img data-src="static/L19/gapminder-web-01.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="example-gapminder-1" class="slide level2"><h2>Example: gapminder</h2>
+<img data-src="static/L19/gapminder-web-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-gapminder-1" class="slide level2"><h2>Example: gapminder</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>electricity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/electricity_use_per_person.csv"</span>)</span>
-<span id="cb1-2"><a></a>electricity <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a></a>  <span class="fu">filter</span>(<span class="fu">str_starts</span>(country, <span class="st">"[AM]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="st">`</span><span class="at">2010</span><span class="st">`</span>, <span class="fu">fct_reorder</span>(country, <span class="st">`</span><span class="at">2010</span><span class="st">`</span>))) <span class="sc">+</span></span>
-<span id="cb1-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-6"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Electricity use in 2010</span><span class="sc">\n</span><span class="st">(annual kWh per capita)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>electricity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/electricity_use_per_person.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>electricity <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">filter</span>(<span class="fu">str_starts</span>(country, <span class="st">"[AM]"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="st">`</span><span class="at">2010</span><span class="st">`</span>, <span class="fu">fct_reorder</span>(country, <span class="st">`</span><span class="at">2010</span><span class="st">`</span>))) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Electricity use in 2010</span><span class="sc">\n</span><span class="st">(annual kWh per capita)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
 <img data-src="19-finding-data_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section><section id="example-un" class="slide level2"><h2>Example: UN</h2>
 
-<img data-src="static/L19/un-data-01.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="example-un-1" class="slide level2"><h2>Example: UN</h2>
+<img data-src="static/L19/un-data-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-un-1" class="slide level2"><h2>Example: UN</h2>
 
-<img data-src="static/L19/un-data-02.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="example-un-2" class="slide level2"><h2>Example: UN</h2>
+<img data-src="static/L19/un-data-02.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-un-2" class="slide level2"><h2>Example: UN</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>forest_UN <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/UNdata_Export_20210219_185253716.csv"</span>)</span>
-<span id="cb2-2"><a></a>forest_UN <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>, Unit <span class="sc">==</span> <span class="st">"1000 ha"</span>,</span>
-<span id="cb2-4"><a></a>         <span class="fu">str_starts</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, <span class="st">"[BU]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Value, <span class="at">y =</span> <span class="fu">fct_reorder</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, Value))) <span class="sc">+</span></span>
-<span id="cb2-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Forest area (1000 ha)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb2-7"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>forest_UN <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/UNdata_Export_20210219_185253716.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>forest_UN <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>, Unit <span class="sc">==</span> <span class="st">"1000 ha"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>         <span class="fu">str_starts</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, <span class="st">"[BU]"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Value, <span class="at">y =</span> <span class="fu">fct_reorder</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, Value))) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Forest area (1000 ha)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
 
 </div>
 <img data-src="19-finding-data_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section><section id="datapasta" class="slide level2"><h2>Datapasta</h2>
 
-<img data-src="static/L19/datapasta-01.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="datapasta-1" class="slide level2"><h2>Datapasta</h2>
+<img data-src="static/L19/datapasta-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="datapasta-1" class="slide level2"><h2>Datapasta</h2>
 <p>Addins &gt; Paste as data.frame</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-3"><a></a>             <span class="at">Prov. =</span> <span class="fu">c</span>(<span class="st">"Total"</span>,<span class="st">"BC"</span>,<span class="st">"ON"</span>,<span class="st">"QC"</span>,<span class="st">"AB"</span>,</span>
-<span id="cb3-4"><a></a>                       <span class="st">"MB"</span>,<span class="st">"NB"</span>,<span class="st">"SK"</span>,<span class="st">"PEI"</span>,<span class="st">"NL"</span>,<span class="st">"NS"</span>,<span class="st">"YT"</span>,<span class="st">"NT"</span>,<span class="st">"NU"</span>,</span>
-<span id="cb3-5"><a></a>                       <span class="st">"\U0001f6a2"</span>),</span>
-<span id="cb3-6"><a></a>   <span class="at">Total.Confirmed =</span> <span class="fu">c</span>(<span class="st">"839,451 (arrow_upward1,950)"</span>,</span>
-<span id="cb3-7"><a></a>                       <span class="st">"75,327"</span>,<span class="st">"290,771 (arrow_upward1,150)"</span>,</span>
-<span id="cb3-8"><a></a>                       <span class="st">"280,687 (arrow_upward800)"</span>,<span class="st">"130,030"</span>,<span class="st">"31,145"</span>,<span class="st">"1,411"</span>,<span class="st">"27,099"</span>,</span>
-<span id="cb3-9"><a></a>                       <span class="st">"114"</span>,<span class="st">"803"</span>,<span class="st">"1,602"</span>,<span class="st">"72"</span>,<span class="st">"47"</span>,<span class="st">"330"</span>,<span class="st">"13"</span>),</span>
-<span id="cb3-10"><a></a>      <span class="at">Total.Deaths =</span> <span class="fu">c</span>(<span class="st">"21,559 (arrow_upward61)"</span>,</span>
-<span id="cb3-11"><a></a>                       <span class="st">"1,321"</span>,<span class="st">"6,820 ( arrow_upward 47)"</span>,</span>
-<span id="cb3-12"><a></a>                       <span class="st">"10,278 ( arrow_upward 14)"</span>,<span class="st">"1,805"</span>,<span class="st">"878"</span>,<span class="st">"24"</span>,<span class="st">"362"</span>,<span class="st">"0"</span>,<span class="st">"4"</span>,<span class="st">"65"</span>,<span class="st">"1"</span>,</span>
-<span id="cb3-13"><a></a>                       <span class="st">"0"</span>,<span class="st">"1"</span>,<span class="st">"0"</span>),</span>
-<span id="cb3-14"><a></a>   <span class="at">Total.Recovered =</span> <span class="fu">c</span>(<span class="st">"785,855 (arrow_upward2,439)"</span>,</span>
-<span id="cb3-15"><a></a>                       <span class="st">"69,602"</span>,<span class="st">"273,401 ( arrow_upward 1,255)"</span>,</span>
-<span id="cb3-16"><a></a>                       <span class="st">"261,429 ( arrow_upward 1,184)"</span>,<span class="st">"123,338"</span>,<span class="st">"29,114"</span>,<span class="st">"1,275"</span>,<span class="st">"25,221"</span>,</span>
-<span id="cb3-17"><a></a>                       <span class="st">"112"</span>,<span class="st">"416"</span>,<span class="st">"1,524"</span>,<span class="st">"69"</span>,<span class="st">"39"</span>,<span class="st">"302"</span>,<span class="st">"13"</span>),</span>
-<span id="cb3-18"><a></a>      <span class="at">Total.Active =</span> <span class="fu">c</span>(<span class="st">"32,037 (-550)"</span>,<span class="st">"4,404"</span>,</span>
-<span id="cb3-19"><a></a>                       <span class="st">"10,550 (-152)"</span>,<span class="st">"8,980 (-398)"</span>,<span class="st">"4,887"</span>,<span class="st">"1,153"</span>,<span class="st">"112"</span>,</span>
-<span id="cb3-20"><a></a>                       <span class="st">"1,516"</span>,<span class="st">"2"</span>,<span class="st">"383"</span>,<span class="st">"13"</span>,<span class="st">"2"</span>,<span class="st">"8"</span>,<span class="st">"27"</span>,<span class="st">"0"</span>)</span>
-<span id="cb3-21"><a></a>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>             <span class="at">Prov. =</span> <span class="fu">c</span>(<span class="st">"Total"</span>,<span class="st">"BC"</span>,<span class="st">"ON"</span>,<span class="st">"QC"</span>,<span class="st">"AB"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                       <span class="st">"MB"</span>,<span class="st">"NB"</span>,<span class="st">"SK"</span>,<span class="st">"PEI"</span>,<span class="st">"NL"</span>,<span class="st">"NS"</span>,<span class="st">"YT"</span>,<span class="st">"NT"</span>,<span class="st">"NU"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                       <span class="st">"\U0001f6a2"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6"></a>   <span class="at">Total.Confirmed =</span> <span class="fu">c</span>(<span class="st">"839,451 (arrow_upward1,950)"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>                       <span class="st">"75,327"</span>,<span class="st">"290,771 (arrow_upward1,150)"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>                       <span class="st">"280,687 (arrow_upward800)"</span>,<span class="st">"130,030"</span>,<span class="st">"31,145"</span>,<span class="st">"1,411"</span>,<span class="st">"27,099"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                       <span class="st">"114"</span>,<span class="st">"803"</span>,<span class="st">"1,602"</span>,<span class="st">"72"</span>,<span class="st">"47"</span>,<span class="st">"330"</span>,<span class="st">"13"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      <span class="at">Total.Deaths =</span> <span class="fu">c</span>(<span class="st">"21,559 (arrow_upward61)"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>                       <span class="st">"1,321"</span>,<span class="st">"6,820 ( arrow_upward 47)"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>                       <span class="st">"10,278 ( arrow_upward 14)"</span>,<span class="st">"1,805"</span>,<span class="st">"878"</span>,<span class="st">"24"</span>,<span class="st">"362"</span>,<span class="st">"0"</span>,<span class="st">"4"</span>,<span class="st">"65"</span>,<span class="st">"1"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13"></a>                       <span class="st">"0"</span>,<span class="st">"1"</span>,<span class="st">"0"</span>),</span>
+<span id="cb3-14"><a href="#cb3-14"></a>   <span class="at">Total.Recovered =</span> <span class="fu">c</span>(<span class="st">"785,855 (arrow_upward2,439)"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15"></a>                       <span class="st">"69,602"</span>,<span class="st">"273,401 ( arrow_upward 1,255)"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16"></a>                       <span class="st">"261,429 ( arrow_upward 1,184)"</span>,<span class="st">"123,338"</span>,<span class="st">"29,114"</span>,<span class="st">"1,275"</span>,<span class="st">"25,221"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17"></a>                       <span class="st">"112"</span>,<span class="st">"416"</span>,<span class="st">"1,524"</span>,<span class="st">"69"</span>,<span class="st">"39"</span>,<span class="st">"302"</span>,<span class="st">"13"</span>),</span>
+<span id="cb3-18"><a href="#cb3-18"></a>      <span class="at">Total.Active =</span> <span class="fu">c</span>(<span class="st">"32,037 (-550)"</span>,<span class="st">"4,404"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19"></a>                       <span class="st">"10,550 (-152)"</span>,<span class="st">"8,980 (-398)"</span>,<span class="st">"4,887"</span>,<span class="st">"1,153"</span>,<span class="st">"112"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20"></a>                       <span class="st">"1,516"</span>,<span class="st">"2"</span>,<span class="st">"383"</span>,<span class="st">"13"</span>,<span class="st">"2"</span>,<span class="st">"8"</span>,<span class="st">"27"</span>,<span class="st">"0"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Prov.             Total.Confirmed              Total.Deaths
 1  Total 839,451 (arrow_upward1,950)   21,559 (arrow_upward61)
@@ -535,10 +534,8 @@ Andrew Irwin, a.irwin@dal.ca
 <li>Make a simple plot of the data.</li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
 </div>
@@ -551,6 +548,7 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -794,9 +792,10 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -806,17 +805,8 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
