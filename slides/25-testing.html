@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-11-03">
 <title>data-viz - Checking your work</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -447,7 +448,7 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="example-jelly-bean-data" class="slide level2 smaller"><h2>Example: Jelly bean data</h2>
 <p>Key variables: treatment, flavour, reaction time, accuracy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7098,7 +7099,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="example-jelly-bean-data-1" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(treatment) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(treatment) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7128,7 +7129,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="example-jelly-bean-data-2" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(flavour) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(flavour) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7314,7 +7315,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="example-jelly-bean-data-3" class="slide level2"><h2>Example: Jelly bean data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7448,8 +7449,8 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="example-sorting" class="slide level2"><h2>Example: Sorting</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">tolower</span>(flavour)) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7583,19 +7584,19 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="example-histogram" class="slide level2"><h2>Example: Histogram</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> <span class="fu">factor</span>(accuracy_0_incorrect_1_correct))) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> <span class="fu">factor</span>(accuracy_0_incorrect_1_correct))) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
 
 </div>
 <img data-src="25-testing_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section><section id="example-histogram-1" class="slide level2"><h2>Example: Histogram</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(reaction_time_s, <span class="at">fill =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
 
 </div>
 <img data-src="25-testing_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section><section id="example-counts" class="slide level2"><h2>Example: Counts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(accuracy_0_incorrect_1_correct, treatment) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">count</span>(accuracy_0_incorrect_1_correct, treatment) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -7642,8 +7643,8 @@ Andrew Irwin, a.irwin@dal.ca
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">factor</span>(accuracy_0_incorrect_1_correct), treatment)) <span class="sc">+</span> <span class="fu">geom_count</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>jelly <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reaction_time_s =</span> <span class="fu">as.numeric</span>(reaction_time_in_sec)) <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">factor</span>(accuracy_0_incorrect_1_correct), treatment)) <span class="sc">+</span> <span class="fu">geom_count</span>()</span></code></pre></div>
 
 </div>
 <img data-src="25-testing_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section><section id="summary-testing-in-this-course" class="slide level2"><h2>Summary: testing in this course</h2>
@@ -7653,8 +7654,10 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>You should do some checking of the data in your term project, but it’s not an assigned part of the work</p></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -7667,7 +7670,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -7911,10 +7913,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -7924,8 +7925,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

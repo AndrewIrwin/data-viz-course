@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-11-22">
 <title>data-viz - Text, Factors, Dates, and Times</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -419,8 +420,8 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="extra-spaces" class="slide level2"><h2>Extra spaces</h2>
 <p>Data entered by a human in a web form or spreadsheet often has inconspicuous spaces, for example after the last letter, or two spaces between a word. This is easily ignored when read by humans, but creates havoc for computers. <code>str_squish</code> gets rid of these troublesome spaces.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">str_squish</span>(<span class="st">" a crazy sentence   with </span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="st">           too many spaces in    strange places.     "</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">str_squish</span>(<span class="st">" a crazy sentence   with </span></span>
+<span id="cb1-2"><a></a><span class="st">           too many spaces in    strange places.     "</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a crazy sentence with too many spaces in strange places."</code></pre>
 </div>
@@ -428,10 +429,10 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="letter-case" class="slide level2 smaller"><h2>Letter case</h2>
 <p>Upper and lower case differences are often not noticed by humans, but matter to a computer. One solution is to convert all text to upper, lower, or title case.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">tibble</span>(<span class="at">original =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"apple"</span>, <span class="st">"APPLE"</span>, <span class="st">"aPpLe"</span>),</span>
-<span id="cb3-2"><a href="#cb3-2"></a>       <span class="at">lower =</span> <span class="fu">str_to_lower</span>(original),</span>
-<span id="cb3-3"><a href="#cb3-3"></a>       <span class="at">upper =</span> <span class="fu">str_to_upper</span>(original),</span>
-<span id="cb3-4"><a href="#cb3-4"></a>       <span class="at">title =</span> <span class="fu">str_to_title</span>(original)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">tibble</span>(<span class="at">original =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"apple"</span>, <span class="st">"APPLE"</span>, <span class="st">"aPpLe"</span>),</span>
+<span id="cb3-2"><a></a>       <span class="at">lower =</span> <span class="fu">str_to_lower</span>(original),</span>
+<span id="cb3-3"><a></a>       <span class="at">upper =</span> <span class="fu">str_to_upper</span>(original),</span>
+<span id="cb3-4"><a></a>       <span class="at">title =</span> <span class="fu">str_to_title</span>(original)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -471,9 +472,9 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="getting-data-in-and-out-of-strings" class="slide level2"><h2>Getting data in and out of strings</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Andrew"</span>, <span class="st">"Susan"</span>, <span class="st">"Yong"</span>),</span>
-<span id="cb4-2"><a href="#cb4-2"></a>       <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">21</span>, <span class="dv">35</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">mutate</span>(<span class="at">sentence =</span> <span class="fu">glue</span>(<span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Andrew"</span>, <span class="st">"Susan"</span>, <span class="st">"Yong"</span>),</span>
+<span id="cb4-2"><a></a>       <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">21</span>, <span class="dv">35</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">sentence =</span> <span class="fu">glue</span>(<span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -503,10 +504,10 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="getting-data-in-and-out-of-strings-1" class="slide level2"><h2>Getting data in and out of strings</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>t0 <span class="sc">%&gt;%</span> <span class="fu">select</span>(sentence) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>( <span class="fu">unglue_data</span>(sentence, <span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>( <span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>          <span class="at">next_year =</span> age <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>t0 <span class="sc">%&gt;%</span> <span class="fu">select</span>(sentence) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">mutate</span>( <span class="fu">unglue_data</span>(sentence, <span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">mutate</span>( <span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
+<span id="cb5-4"><a></a>          <span class="at">next_year =</span> age <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -546,30 +547,30 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="plot-order" class="slide level2 smaller"><h2>Plot order</h2>
 <p>Here’s a plot of mean penguin body mass by species and sex. What’s the order?</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> island)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> island)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-6-1.svg" style="width:90.0%" class="r-stretch quarto-figure-center"></section><section id="plot-order-1" class="slide level2 smaller"><h2>Plot order</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-6-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%"></section><section id="plot-order-1" class="slide level2 smaller"><h2>Plot order</h2>
 <p>Order from smallest to largest, top to bottom. Watch out for NAs.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
-<span id="cb7-3"><a href="#cb7-3"></a>                   <span class="at">y =</span> <span class="fu">fct_reorder</span>(species, bill_length_mm,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>                                   <span class="at">.desc=</span><span class="cn">TRUE</span>))) <span class="sc">+</span> </span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
+<span id="cb7-3"><a></a>                   <span class="at">y =</span> <span class="fu">fct_reorder</span>(species, bill_length_mm,</span>
+<span id="cb7-4"><a></a>                                   <span class="at">.desc=</span><span class="cn">TRUE</span>))) <span class="sc">+</span> </span>
+<span id="cb7-5"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-7-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="custom-order" class="slide level2 smaller"><h2>Custom order</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-7-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="custom-order" class="slide level2 smaller"><h2>Custom order</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
-<span id="cb8-3"><a href="#cb8-3"></a>             <span class="at">y =</span> <span class="fu">fct_relevel</span>(species, <span class="st">"Gentoo"</span>, <span class="st">"Adelie"</span>))) <span class="sc">+</span> </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
+<span id="cb8-3"><a></a>             <span class="at">y =</span> <span class="fu">fct_relevel</span>(species, <span class="st">"Gentoo"</span>, <span class="st">"Adelie"</span>))) <span class="sc">+</span> </span>
+<span id="cb8-4"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-8-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="challenges-that-arise-with-dates-and-times" class="slide level2"><h2>Challenges that arise with dates and times</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="challenges-that-arise-with-dates-and-times" class="slide level2"><h2>Challenges that arise with dates and times</h2>
 <ul>
 <li><p>Date format</p></li>
 <li><p>Extracting components of date or time</p></li>
@@ -578,10 +579,10 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Time zones</p></li>
 </ul></section><section id="converting-text-to-dates" class="slide level2"><h2>Converting text to dates</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"01/02/03"</span>, <span class="st">"121006"</span>, <span class="st">"05/12/08"</span>, <span class="st">"11-03-21"</span>),</span>
-<span id="cb9-2"><a href="#cb9-2"></a>       <span class="at">ymd =</span> <span class="fu">ymd</span>(date),</span>
-<span id="cb9-3"><a href="#cb9-3"></a>       <span class="at">dmy =</span> <span class="fu">dmy</span>(date),</span>
-<span id="cb9-4"><a href="#cb9-4"></a>       <span class="at">mdy =</span> <span class="fu">mdy</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"01/02/03"</span>, <span class="st">"121006"</span>, <span class="st">"05/12/08"</span>, <span class="st">"11-03-21"</span>),</span>
+<span id="cb9-2"><a></a>       <span class="at">ymd =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb9-3"><a></a>       <span class="at">dmy =</span> <span class="fu">dmy</span>(date),</span>
+<span id="cb9-4"><a></a>       <span class="at">mdy =</span> <span class="fu">mdy</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -621,30 +622,30 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="dates-and-times" class="slide level2"><h2>Dates and times</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
-<span id="cb10-2"><a href="#cb10-2"></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
-<span id="cb10-3"><a href="#cb10-3"></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb10-4"><a href="#cb10-4"></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
+<span id="cb10-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
+<span id="cb10-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
+<span id="cb10-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-10-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="dates-and-times-1" class="slide level2"><h2>Dates and times</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-10-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="dates-and-times-1" class="slide level2"><h2>Dates and times</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
-<span id="cb11-2"><a href="#cb11-2"></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
-<span id="cb11-3"><a href="#cb11-3"></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb11-4"><a href="#cb11-4"></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">scale_y_datetime</span>(<span class="at">date_labels =</span> <span class="st">"%H:%M"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
+<span id="cb11-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
+<span id="cb11-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
+<span id="cb11-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb11-6"><a></a>  <span class="fu">scale_y_datetime</span>(<span class="at">date_labels =</span> <span class="st">"%H:%M"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="time-arithmetic" class="slide level2 smaller"><h2>Time arithmetic</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="time-arithmetic" class="slide level2 smaller"><h2>Time arithmetic</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
-<span id="cb12-2"><a href="#cb12-2"></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
-<span id="cb12-3"><a href="#cb12-3"></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb12-4"><a href="#cb12-4"></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
+<span id="cb12-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
+<span id="cb12-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
+<span id="cb12-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -684,13 +685,13 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="time-arithmetic-1" class="slide level2"><h2>Time arithmetic</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>t1 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(elapsed)<span class="sc">/</span><span class="dv">3600</span>, </span>
-<span id="cb13-3"><a href="#cb13-3"></a>             <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time in hours since start"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>t1 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(elapsed)<span class="sc">/</span><span class="dv">3600</span>, </span>
+<span id="cb13-3"><a></a>             <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time in hours since start"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-14-1.svg" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-14-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy appendix</p></li>
@@ -700,8 +701,10 @@ Andrew Irwin, a.irwin@dal.ca
 <li>Task on dates and factors in repository</li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -714,7 +717,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -958,10 +960,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -971,8 +972,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
