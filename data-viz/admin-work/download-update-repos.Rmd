@@ -1,0 +1,77 @@
+---
+title: "Downloading and updating existing git repos"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(ghclass)
+```
+
+## Tasks
+
+* Download student work from github
+* Update files if an error was made in the initial assignment
+
+## Download student work
+
+To mark student work, you need to 
+
+* get a list of repositories
+* indicate where they should go
+* clone (or pull) each one
+
+
+```{r}
+repo_location <- "~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/repos"
+dir.create(repo_location, recursive = TRUE)
+github_whoami()
+org_name = "Dalhousie-AndrewIrwin-Teaching"
+org_sitrep(org_name)
+repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
+```
+
+Clone them all into `repo_location`.
+
+```{r}
+for (repo in repos[-(1:3)]) {
+  local_repo_clone(repo, 
+                   local_path = repo_location)
+}
+```
+
+To pull changes
+
+```{r}
+repo_dirs = list.files(repo_location)
+for (repo in repo_dirs) {
+  local_repo_pull(repo)
+}
+```
+
+
+## Update files
+
+To update files you need to 
+
+* pull any changes that have been made since you last updated the local copies of the repos (see previous section)
+* make changes to the file in each repository
+* stage and commit those changes
+* push the changes back to the repo
+* remind students to pull the changes back to their computer
+
+Example update: remove .html from .gitignore, add it, and then push. Can be done from R but probably easiest to do from shell.
+
+```
+for DIR in *
+do
+   (cd $DIR; git pull; cp ../.gitignore .; git add .gitignore; git commit -m "fix error in .gitignore"; git push)
+done
+```
+
+
+```
+

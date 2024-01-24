@@ -365,17 +365,18 @@ of usage information?)</li>
 <li>Introduce yourself to git if you haven’t done this before by typing
 these lines in the <code>Terminal</code> window
 <ul>
-<li><code>git config --global user.email &quot;you\@example.com&quot;</code></li>
+<li><code>git config --global user.email &quot;you@example.com&quot;</code></li>
 <li><code>git config --global user.name &quot;Your Name&quot;</code></li>
 </ul></li>
-<li>Go to github web page: <a href="https://github.com/">github.com</a></li>
-<li>Find your assignment repository</li>
-<li>Create a new project on your computer using Rstudio and this
-repository</li>
-<li>At some point in this process you need to get Rstudio and GitHub to
-communicate with each other. You need to create a GitHub personal access
-token (PAT) and tell R about it.
+<li>You need to get Rstudio and GitHub to communicate with each other.
+You need to create a GitHub personal access token (PAT) and tell R about
+it.
 <ul>
+<li>Make sure the packages <code>usethis</code> and
+<code>gitcreds</code> are installed. Type <code>library(usethis)</code>
+and <code>library(gitcreds)</code> to check. If you get an error install
+them using <code>install.packages(&quot;usethis&quot;)</code> and
+<code>install.packages(&quot;gitcreds&quot;)</code></li>
 <li>In the R console, type <code>usethis::create_github_token()</code>.
 This will open up a web browser. You will be asked to login and perhaps
 use two factor authentication. Enter a note to describe the token and
@@ -386,9 +387,13 @@ the screen.</li>
 <li>Copy the random numbers and letters that make up your token by
 clicking the two overlapping blue boxes (or highlight and select copy
 from the menu).</li>
-<li>In the R console, type <code>gitcreds::gitcreds_set()</code> and
-then enter the PAT by pasting it into the console.</li>
+<li>In the R console, type <code>gitcreds::gitcreds_set()</code>, enter,
+and then enter the PAT by pasting it into the console.</li>
 </ul></li>
+<li>Go to github web page: <a href="https://github.com/">github.com</a></li>
+<li>Find your assignment repository</li>
+<li>Create a new project on your computer using Rstudio and this
+repository</li>
 <li>Edit a file</li>
 <li>Stage and commit the changes</li>
 <li>Push the changes to github</li>
