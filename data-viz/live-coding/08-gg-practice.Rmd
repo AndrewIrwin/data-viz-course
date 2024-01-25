@@ -11,7 +11,6 @@ library(socviz) # data
 library(datasets) # data
 library(palmerpenguins) # data
 library(gapminder)
-glimpse(ToothGrowth)
 ```
 
 Practice making plots of these data: `gss_sm`, `gss_lon`, `penguins`, 
@@ -19,18 +18,22 @@ Practice making plots of these data: `gss_sm`, `gss_lon`, `penguins`,
 
 Examine the data using `View`, `glimpse`.
 
+```{r}
+glimpse(ToothGrowth)
+```
+
 ## Aesthetic mappings to use
 
 x, y, color, fill, shape, size, group
 
 ## Geometries to try
 
-geom_bar, geom_count,
-geom_point, geom_line, geom_boxplot, geom_jitter, 
-geom_histogram, geom_density,
-geom_hline, geom_vline,  geom_rug,
-stat_summary,
-geom_function, 
+* geom_bar, geom_count,
+* geom_point, geom_line, geom_boxplot, geom_jitter, 
+* geom_histogram, geom_density,
+* geom_hline, geom_vline,  geom_rug,
+* stat_summary,
+* geom_function
 
 Which should you use with categorical data? quantitative data? A mixture?
 What happens if you use the wrong kind of data?
@@ -46,32 +49,41 @@ As we practice, we will describe each geom here and provide some examples.
 penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram()
 ```
 
+## Make lots of your own experiments
+
 ```{r}
-penguins |> ggplot(aes(x = sex)) + geom_bar()
+
 
 ```
 
+## Make the plots look better
+
+* Add labels with `labs(x = "...", y = "...", title = "...", color = "...", fill = "...")`.
+
+* Make the text bigger with `theme(text = element_text(size = 15))`.
+
+* Turn off the grey shading with `theme_bw()`
+
+* Always use `+` to "add" parts of a ggplot together.
+
+
+## Examples from previous courses
+
+Left here as more examples.
+
 ```{r}
+penguins |> ggplot(aes(x = sex)) + geom_bar()
 penguins |> ggplot(aes(x = sex, color = species)) + geom_bar()
 penguins |> ggplot(aes(x = sex, fill = species)) + geom_bar()
 penguins |> ggplot(aes(fill = sex, x = species)) + geom_bar()
 penguins |> ggplot(aes(fill = sex, x = species)) + geom_bar(position = "dodge") 
-```
-
-```{r}
 penguins |> ggplot(aes(x = species, y = sex)) + geom_count()
 # penguins |> ggplot(aes(x = species)) + geom_count() # fails can't drqw with only one of x or y
 penguins |> ggplot(aes(x = species, y = island, color = sex)) + geom_count(position = "jitter") # terrible, but fun!
-```
-
-```{r}
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm)) + geom_point()
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm, color = species)) + geom_point()
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm, color = sex)) + geom_point()
 penguins |> na.omit() |> ggplot(aes(flipper_length_mm, bill_length_mm, color = species, size = sex)) + geom_point()
-```
-
-```{r}
 penguins |> ggplot(aes(body_mass_g, bill_length_mm)) + geom_line() # works, but silly
 gapminder |> filter(country %in% c("China", "Canada", "India", "France", "Argentina", "Lybia")) |>
   ggplot(aes(year, lifeExp)) + geom_line()
@@ -79,33 +91,13 @@ gapminder |> filter(country %in% c("China", "Canada", "India", "France", "Argent
   ggplot(aes(year, lifeExp, color = country)) + geom_line()
 gapminder |> 
   ggplot(aes(year, lifeExp, group = country)) + geom_line()
-```
-
-```{r}
 gapminder |> ggplot(aes(x = continent, y = lifeExp)) + geom_boxplot()
 gapminder |> ggplot(aes(x = year, y = lifeExp)) + geom_boxplot()  # doesn't work the way I hoped!
 gapminder |> ggplot(aes(x = factor(year), y = lifeExp)) + geom_boxplot()
 gapminder |> ggplot(aes(x = factor(year), y = lifeExp, color = continent)) + geom_boxplot()
-```
-
-```{r}
 gapminder |> ggplot(aes(lifeExp, fill = continent)) + geom_histogram()
 gapminder |> ggplot(aes(lifeExp, color = continent)) + geom_density()
-```
-
-```{r}
 gapminder |> ggplot(aes(y = lifeExp, x = continent, color = factor(year))) + stat_summary() +
   labs(x = "Continent", y = "Life Expectancy (years)", color = "Year") +
   theme_bw()
 ```
-
-## Make the plots look better
-
-Add labels with `labs(x = "...", y = "...", title = "...", color = "...", fill = "...")`.
-
-Make the text bigger with `theme(text = element_text(size = 15))`.
-
-Turn of the grey shading with `theme_bw()`
-
-Always use `+` to "add" parts of a ggplot together.
-
