@@ -34,12 +34,17 @@ org_sitrep(org_name)
 repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
 ```
 
-Clone them all into `repo_location`.
+Clone them all into `repo_location`. (Unless the repo exists. Could pull instead.)
 
 ```{r}
-for (repo in repos[-(1:3)]) {
-  local_repo_clone(repo, 
-                   local_path = repo_location)
+for (repo in repos) {
+  repo_dir <- paste0(repo_location, "/", basename(repo))
+  if (!file.exists(repo_dir)) {
+     local_repo_clone(repo, 
+                      local_path = repo_location)
+  } else {
+    local_repo_pull(repo_dir)
+  }
 }
 ```
 
