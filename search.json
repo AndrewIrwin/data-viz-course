@@ -2874,7 +2874,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.8802513\n1.0149662\n0.8617957\n21\n8.730738\n1\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n2\n\n\n-1.3092703\n-1.2492232\n0.1431273\n33\n23.096735\n3\n\n\n0.0673307\n-0.2927558\n1.0593589\n26\n27.383777\n4\n\n\n0.7656064\n0.7178849\n-0.6287148\n48\n34.314870\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n1\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n4\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
