@@ -11,7 +11,6 @@ library(socviz) # data
 library(datasets) # data
 library(palmerpenguins) # data
 library(gapminder)
-glimpse(ToothGrowth)
 ```
 
 Practice making plots of these data: `gss_sm`, `gss_lon`, `penguins`, 
@@ -19,18 +18,22 @@ Practice making plots of these data: `gss_sm`, `gss_lon`, `penguins`,
 
 Examine the data using `View`, `glimpse`.
 
+```{r}
+glimpse(ToothGrowth)
+```
+
 ## Aesthetic mappings to use
 
 x, y, color, fill, shape, size, group
 
 ## Geometries to try
 
-geom_bar, geom_count,
-geom_point, geom_line, geom_boxplot, geom_jitter, 
-geom_histogram, geom_density,
-geom_hline, geom_vline,  geom_rug,
-stat_summary,
-geom_function, 
+* geom_bar, geom_count,
+* geom_point, geom_line, geom_boxplot, geom_jitter, 
+* geom_histogram, geom_density,
+* geom_hline, geom_vline,  geom_rug,
+* stat_summary,
+* geom_function
 
 Which should you use with categorical data? quantitative data? A mixture?
 What happens if you use the wrong kind of data?
@@ -42,36 +45,106 @@ As we practice, we will describe each geom here and provide some examples.
 
 ## An example to warm up with
 
-```{r}
-penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram()
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm |> ggplot(aes(y = region)) + geom_bar()
 ```
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm |> ggplot(aes(y = region, color = sex)) + geom_bar()
+gss_sm |> ggplot(aes(y = region, fill = sex)) + geom_bar()
+```
+
+
+```{r}
+glimpse(penguins)
+```
+
+```{r}
+penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram(binwidth = 5)
+```
+
+```{r}
+penguins |> ggplot(aes(x = flipper_length_mm, fill = species)) + geom_histogram(binwidth = 5)
+penguins |> ggplot(aes(x = flipper_length_mm, fill = island)) + geom_histogram(binwidth = 5)
+```
+
+
+## Make lots of your own experiments
+
+Can we show two categorical variables on one plot?
+
+```{r}
+penguins |> ggplot(aes(species, island)) + geom_count()
+penguins |> ggplot(aes(species, island)) + geom_jitter()
+penguins |> ggplot(aes(species, island)) + geom_jitter(aes(color = sex)) # a bit random for my taste
+penguins |> ggplot(aes(species, island)) + geom_count(aes(color = sex)) # not sure I understand this one
+
+```
+
+## Make the plots look better
+
+* Add labels with `labs(x = "...", y = "...", title = "...", color = "...", fill = "...")`.
+
+```{r}
+penguins |> ggplot(aes(species, island, color = sex)) + geom_jitter() +
+  labs(x = "Species", y = "Island", color = "Sex")
+
+```
+
+* Make the text bigger with `theme(text = element_text(size = 15))`.
+
+* Turn off the grey shading with `theme_bw()`
+
+* Always use `+` to "add" parts of a ggplot together.
+
+## gapminder experiments
+
+```{r}
+str(gapminder)
+```
+
+```{r}
+gapminder |> ggplot(aes(x = gdpPercap, y = lifeExp )) + geom_point() +
+  labs(x = "GDP per capita ($)", y = "Life expectancy (years)")
+```
+
+```{r}
+gapminder |> ggplot(aes(x = gdpPercap, y = lifeExp,
+                        color = year, shape = continent)) + geom_point() +
+  labs(x = "GDP per capita ($)", y = "Life expectancy (years)")
+gapminder |> ggplot(aes(x = log10(gdpPercap), y = lifeExp,
+                        color = year, shape = continent)) + geom_point() +
+  labs(x = "GDP per capita ($)", y = "Life expectancy (years)")
+```
+
+Can we see how GDP per capita varies with year? And maybe continent too?
+
+```{r}
+gapminder |> ggplot(aes(y = log10(gdpPercap), x = year)) + geom_point()
+gapminder |> ggplot(aes(y = log10(gdpPercap), x = year)) + geom_boxplot() # ugh!!
+gapminder |> ggplot(aes(y = log10(gdpPercap), x = factor(year))) + geom_boxplot()
+gapminder |> ggplot(aes(y = log10(gdpPercap), x = factor(year), fill = continent)) + geom_boxplot()
+gapminder |> ggplot(aes(y = log10(gdpPercap), fill = factor(year), x = continent)) + geom_boxplot()
+```
+
+
+## Examples from previous courses
+
+Left here as more examples.
 
 ```{r}
 penguins |> ggplot(aes(x = sex)) + geom_bar()
-
-```
-
-```{r}
 penguins |> ggplot(aes(x = sex, color = species)) + geom_bar()
 penguins |> ggplot(aes(x = sex, fill = species)) + geom_bar()
 penguins |> ggplot(aes(fill = sex, x = species)) + geom_bar()
 penguins |> ggplot(aes(fill = sex, x = species)) + geom_bar(position = "dodge") 
-```
-
-```{r}
 penguins |> ggplot(aes(x = species, y = sex)) + geom_count()
 # penguins |> ggplot(aes(x = species)) + geom_count() # fails can't drqw with only one of x or y
 penguins |> ggplot(aes(x = species, y = island, color = sex)) + geom_count(position = "jitter") # terrible, but fun!
-```
-
-```{r}
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm)) + geom_point()
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm, color = species)) + geom_point()
 penguins |> ggplot(aes(flipper_length_mm, bill_length_mm, color = sex)) + geom_point()
 penguins |> na.omit() |> ggplot(aes(flipper_length_mm, bill_length_mm, color = species, size = sex)) + geom_point()
-```
-
-```{r}
 penguins |> ggplot(aes(body_mass_g, bill_length_mm)) + geom_line() # works, but silly
 gapminder |> filter(country %in% c("China", "Canada", "India", "France", "Argentina", "Lybia")) |>
   ggplot(aes(year, lifeExp)) + geom_line()
@@ -79,33 +152,13 @@ gapminder |> filter(country %in% c("China", "Canada", "India", "France", "Argent
   ggplot(aes(year, lifeExp, color = country)) + geom_line()
 gapminder |> 
   ggplot(aes(year, lifeExp, group = country)) + geom_line()
-```
-
-```{r}
 gapminder |> ggplot(aes(x = continent, y = lifeExp)) + geom_boxplot()
 gapminder |> ggplot(aes(x = year, y = lifeExp)) + geom_boxplot()  # doesn't work the way I hoped!
 gapminder |> ggplot(aes(x = factor(year), y = lifeExp)) + geom_boxplot()
 gapminder |> ggplot(aes(x = factor(year), y = lifeExp, color = continent)) + geom_boxplot()
-```
-
-```{r}
 gapminder |> ggplot(aes(lifeExp, fill = continent)) + geom_histogram()
 gapminder |> ggplot(aes(lifeExp, color = continent)) + geom_density()
-```
-
-```{r}
 gapminder |> ggplot(aes(y = lifeExp, x = continent, color = factor(year))) + stat_summary() +
   labs(x = "Continent", y = "Life Expectancy (years)", color = "Year") +
   theme_bw()
 ```
-
-## Make the plots look better
-
-Add labels with `labs(x = "...", y = "...", title = "...", color = "...", fill = "...")`.
-
-Make the text bigger with `theme(text = element_text(size = 15))`.
-
-Turn of the grey shading with `theme_bw()`
-
-Always use `+` to "add" parts of a ggplot together.
-
