@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2021-09-29">
+<meta name="dcterms.date" content="2024-01-30">
 <title>data-viz - Summarizing data with dplyr</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,7 +405,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2021-09-29</p>
+  <p class="date">2024-01-30</p>
 </section><section id="transforming-data" class="slide level2"><h2>Transforming data</h2>
 <p>With a large dataset we commonly want to</p>
 <ul>
@@ -446,13 +446,14 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </tr></tbody>
 </table>
 </div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># ChickWeight |&gt; count() # a handy abbreviation</span></span></code></pre></div>
 </div>
 </section><section id="count-observations-in-groups" class="slide level2"><h2>Count observations in groups</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -479,13 +480,14 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </tbody>
 </table>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># ChickWeight |&gt; count(Diet)</span></span></code></pre></div>
 </div>
 </section><section id="two-grouping-factors" class="slide level2 smaller"><h2>Two grouping factors</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -496,14 +498,14 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 </section><section id="compute-any-function-you-want" class="slide level2 smaller"><h2>Compute any function you want</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">group_by</span>(Chick, Diet) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), </span>
-<span id="cb6-4"><a></a>            <span class="at">max_time =</span> <span class="fu">max</span>(Time), </span>
-<span id="cb6-5"><a></a>            <span class="at">median_weight =</span> <span class="fu">median</span>(weight),</span>
-<span id="cb6-6"><a></a>            <span class="at">increase_weight =</span> <span class="fu">max</span>(weight) <span class="sc">-</span> <span class="fu">min</span>(weight),</span>
-<span id="cb6-7"><a></a>            <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a></a>    <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">group_by</span>(Chick, Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), </span>
+<span id="cb8-4"><a></a>            <span class="at">max_time =</span> <span class="fu">max</span>(Time), </span>
+<span id="cb8-5"><a></a>            <span class="at">median_weight =</span> <span class="fu">median</span>(weight),</span>
+<span id="cb8-6"><a></a>            <span class="at">increase_weight =</span> <span class="fu">max</span>(weight) <span class="sc">-</span> <span class="fu">min</span>(weight),</span>
+<span id="cb8-7"><a></a>            <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-8"><a></a>    <span class="fu">paged_table</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -514,9 +516,9 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 </section><section id="use-mutate-to-create-new-columns-for-each-observation" class="slide level2 smaller"><h2>Use mutate to create new columns for each observation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> weight <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> weight <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -527,9 +529,9 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 </section><section id="use-mutate-to-create-new-columns-for-each-observation-1" class="slide level2 smaller"><h2>Use mutate to create new columns for each observation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> (weight<span class="sc">-</span><span class="fu">min</span>(weight)) <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> (weight<span class="sc">-</span><span class="fu">min</span>(weight)) <span class="sc">/</span> Time) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -540,10 +542,10 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 </section><section id="exclude-observations-with-filter" class="slide level2 smaller"><h2>Exclude observations with filter</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">filter</span>(Time <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">arrange</span>(Time) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">filter</span>(Time <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a></a>  <span class="fu">arrange</span>(Time) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -554,11 +556,11 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 </section><section id="exclude-observations-with-filter-1" class="slide level2 smaller"><h2>Exclude observations with filter</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">filter</span>(Time <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a></a>  <span class="fu">summarize</span>(<span class="at">weight_10 =</span> <span class="fu">mean</span>(weight), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a>ChickWeight <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">filter</span>(Time <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">group_by</span>(Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a></a>  <span class="fu">summarize</span>(<span class="at">weight_10 =</span> <span class="fu">mean</span>(weight), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -593,14 +595,14 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <li>Count the number of observations per chick and diet treatment</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">max_weight =</span> <span class="fu">max</span>(weight)) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">filter</span>(max_weight <span class="sc">&gt;</span> <span class="dv">110</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb11-7"><a></a>  <span class="fu">summarize</span>(<span class="at">count_chicks =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>ChickWeight <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">mutate</span>(<span class="at">max_weight =</span> <span class="fu">max</span>(weight)) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">filter</span>(max_weight <span class="sc">&gt;</span> <span class="dv">110</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb13-6"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a></a>  <span class="fu">summarize</span>(<span class="at">count_chicks =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-8"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
 </div>
 </section><section id="combine-all-three-1" class="slide level2"><h2>Combine all three</h2>
 <ul>
@@ -642,10 +644,45 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <li><p>Use <code>group_by</code> to split, summarize, and combine data</p></li>
 <li><p>Use <code>mutate</code> to define a new variable for all observations</p></li>
 <li><p>Use <code>filter</code> to select observations</p></li>
-</ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+</ul></section><section id="bonus-dplyr-is-closely-linked-to-sql" class="slide level2"><h2>Bonus: dplyr is closely linked to SQL</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb14-2"><a></a><span class="fu">memdb_frame</span>(ChickWeight) <span class="sc">|&gt;</span> <span class="fu">count</span>(Diet) <span class="sc">|&gt;</span> <span class="fu">show_query</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT `Diet`, COUNT(*) AS `n`
+FROM `dbplyr_001`
+GROUP BY `Diet`</code></pre>
+</div>
+</div>
+</section><section id="dplyr-and-sql" class="slide level2"><h2>dplyr and SQL</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">memdb_frame</span>(ChickWeight) <span class="sc">|&gt;</span>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">mutate</span>(<span class="at">max_weight =</span> <span class="fu">max</span>(weight)) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a></a>  <span class="fu">filter</span>(max_weight <span class="sc">&gt;</span> <span class="dv">110</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a></a>  <span class="fu">group_by</span>(Diet, Chick) <span class="sc">|&gt;</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb16-6"><a></a>  <span class="fu">summarize</span>(<span class="at">count_chicks =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> <span class="fu">show_query</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT `Diet`, COUNT(*) AS `count_chicks`
+FROM (
+  SELECT `Diet`, `Chick`, COUNT(*) AS `n`
+  FROM (
+    SELECT *, MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`
+    FROM `dbplyr_002`
+  )
+  WHERE (`max_weight` &gt; 110.0)
+  GROUP BY `Diet`, `Chick`
+)
+GROUP BY `Diet`</code></pre>
+</div>
+</div>
+</section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
 <li><p>Lots more examples with different data in the course notes</p></li>
-<li><p>R4DS <a href="https://r4ds.hadley.nz/data-transform">Chapter 5 Data transformations</a></p></li>
+<li><p>R4DS <a href="https://r4ds.hadley.nz/data-transform">Chapter 3 Data transformations</a></p></li>
+<li><p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Cheatsheet for dplyr</a></p></li>
 </ul></section><section id="task" class="slide level2"><h2>Task</h2>
 <p>Practice these skills by doing the calculations in the associated Task.</p>
 

@@ -1208,14 +1208,14 @@
     "href": "slides/10-summarizing-data.html#use-summarize-to-count-observations",
     "title": "Summarizing data with dplyr",
     "section": "Use summarize to count observations",
-    "text": "Use summarize to count observations\n\nChickWeight |&gt; summarize(count = n()) |&gt; kable()\n\n\n\ncount\n\n\n578"
+    "text": "Use summarize to count observations\n\nChickWeight |&gt; summarize(count = n()) |&gt; kable()\n\n\n\ncount\n\n\n578\n\n\n\n# ChickWeight |&gt; count() # a handy abbreviation"
   },
   {
     "objectID": "slides/10-summarizing-data.html#count-observations-in-groups",
     "href": "slides/10-summarizing-data.html#count-observations-in-groups",
     "title": "Summarizing data with dplyr",
     "section": "Count observations in groups",
-    "text": "Count observations in groups\n\nChickWeight |&gt;\n  group_by(Diet) |&gt; \n  summarize(count = n(), .groups=\"drop\") |&gt;\n  kable()\n\n\n\nDiet\ncount\n\n\n\n1\n220\n\n\n2\n120\n\n\n3\n120\n\n\n4\n118"
+    "text": "Count observations in groups\n\nChickWeight |&gt;\n  group_by(Diet) |&gt; \n  summarize(count = n(), .groups=\"drop\") |&gt;\n  kable()\n\n\n\nDiet\ncount\n\n\n\n1\n220\n\n\n2\n120\n\n\n3\n120\n\n\n4\n118\n\n\n\n\n# ChickWeight |&gt; count(Diet)"
   },
   {
     "objectID": "slides/10-summarizing-data.html#two-grouping-factors",
@@ -1281,11 +1281,25 @@
     "text": "Summary\n\nUse summarize to compute functions (count, mean, …) to reduce many observations to one\nUse group_by to split, summarize, and combine data\nUse mutate to define a new variable for all observations\nUse filter to select observations"
   },
   {
+    "objectID": "slides/10-summarizing-data.html#bonus-dplyr-is-closely-linked-to-sql",
+    "href": "slides/10-summarizing-data.html#bonus-dplyr-is-closely-linked-to-sql",
+    "title": "Summarizing data with dplyr",
+    "section": "Bonus: dplyr is closely linked to SQL",
+    "text": "Bonus: dplyr is closely linked to SQL\n\nlibrary(dbplyr)\nmemdb_frame(ChickWeight) |&gt; count(Diet) |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `n`\nFROM `dbplyr_001`\nGROUP BY `Diet`"
+  },
+  {
+    "objectID": "slides/10-summarizing-data.html#dplyr-and-sql",
+    "href": "slides/10-summarizing-data.html#dplyr-and-sql",
+    "title": "Summarizing data with dplyr",
+    "section": "dplyr and SQL",
+    "text": "dplyr and SQL\n\nmemdb_frame(ChickWeight) |&gt;  group_by(Diet, Chick) |&gt;\n  mutate(max_weight = max(weight)) |&gt;\n  filter(max_weight &gt; 110) |&gt;\n  group_by(Diet, Chick) |&gt;\n  summarize(n = n()) |&gt;\n  summarize(count_chicks = n(), .groups = \"drop\") |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `count_chicks`\nFROM (\n  SELECT `Diet`, `Chick`, COUNT(*) AS `n`\n  FROM (\n    SELECT *, MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`\n    FROM `dbplyr_002`\n  )\n  WHERE (`max_weight` &gt; 110.0)\n  GROUP BY `Diet`, `Chick`\n)\nGROUP BY `Diet`"
+  },
+  {
     "objectID": "slides/10-summarizing-data.html#further-reading",
     "href": "slides/10-summarizing-data.html#further-reading",
     "title": "Summarizing data with dplyr",
     "section": "Further reading",
-    "text": "Further reading\n\nLots more examples with different data in the course notes\nR4DS Chapter 5 Data transformations"
+    "text": "Further reading\n\nLots more examples with different data in the course notes\nR4DS Chapter 3 Data transformations\nCheatsheet for dplyr"
   },
   {
     "objectID": "slides/10-summarizing-data.html#task",
@@ -2874,7 +2888,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n1\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n4\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.3405236\n0.2165305\n-0.9583436\n35\n39.69086\n1\n\n\n0.9359963\n1.0910681\n0.1416654\n40\n23.37945\n2\n\n\n-0.9313551\n-1.0224072\n0.4801873\n26\n17.29125\n3\n\n\n-1.5502093\n-1.1604192\n-0.5891784\n21\n19.95865\n4\n\n\n0.3705723\n-0.0134949\n1.3881644\n20\n18.32172\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
