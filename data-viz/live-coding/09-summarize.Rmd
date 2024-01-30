@@ -1,7 +1,7 @@
 ---
 title: "Summarizing data practice"
 author: "AJ Irwin"
-date: "`r Sys.Date()`"
+date: "2024-02-01"
 output: html_document
 ---
 
@@ -31,7 +31,45 @@ ChickWeight |>
 
 Use the dplyr functions: mutate, filter, group_by, summarize, select, arrange to answer the following questions.
 
-How many kinds of species of penguin are in the `penguins`? How many observations of each species?
+* How many kinds of species of penguin are in the dataset `penguins`? How many observations of each species?
+
+* What is the maximum and minimum flipper length?
+
+* Use `na.omit` and `filter(!is.na())` to remove missing data.
+
+* Find the max and min flipper length for each species.
+
+* Find the observation with the largest flipper length.
+
+** For each species and island.
+
+* Make a table showing the number of observations of each combination of species and island.
+
+* Compute the ratio of the bill length to bill depth and make a histogram with these data.
+
+** For each species
+
+* Compute the mean and standard deviation of body mass for each species and sex.
+
+* Decode this complex calculation from the course notes by executing just one line at a time, making a prediction about the result, and checking your understanding. Change the calculation to make it do something similar but different to test your understanding. (For example, try using `slice_tail` instead of `slice_head`, or remove the `-` in the `arrange` function.)
+
+```{r}
+diamonds |>
+  mutate(price_per_carat = price / carat) |>
+  group_by(color, clarity, cut) |>
+  summarise(median_price_per_carat = median(price_per_carat), 
+            n = n(),
+            .groups = "drop") |>
+  arrange(-median_price_per_carat) |>
+  group_by(cut) |>
+  slice_head(n=2) |>
+  arrange(-median_price_per_carat)
+```
+
+
+## Solutions from a previous year
+
+How many kinds of species of penguin are in the dataset `penguins`? How many observations of each species?
 
 ```{r}
 penguins |> group_by(species) |> summarize(n = n()) # These 3 lines all do the same thing
@@ -125,24 +163,10 @@ penguins |>
 
 ```
 
-Compute the mean and stanard deviation of body mass for each species and sex.
+Compute the mean and standard deviation of body mass for each species and sex.
 
 ```{r}
 
 ```
 
-Decode this complex calculation from the course notes by executing just one line at a time, making a prediction about the result, and checking your understanding. Change the calculation to make it do something similar but different to test your understanding. (For example, try using `slice_tail` instead of `slice_head`, or remove the `-` in the `arrange` function.)
-
-```{r}
-diamonds |>
-  mutate(price_per_carat = price / carat) |>
-  group_by(color, clarity, cut) |>
-  summarise(median_price_per_carat = median(price_per_carat), 
-            n = n(),
-            .groups = "drop") |>
-  arrange(-median_price_per_carat) |>
-  group_by(cut) |>
-  slice_head(n=2) |>
-  arrange(-median_price_per_carat)
-```
 

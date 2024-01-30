@@ -1,7 +1,7 @@
 ---
 title: "Summarizing data with dplyr"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-09-29"
+date: "2024-01-30"
 format:
   revealjs:
     slide-number: true
@@ -59,6 +59,7 @@ glimpse(ChickWeight)
 
 ```{r}
 ChickWeight |> summarize(count = n()) |> kable()
+# ChickWeight |> count() # a handy abbreviation
 ```
 
 ## Count observations in groups
@@ -68,6 +69,7 @@ ChickWeight |>
   group_by(Diet) |> 
   summarize(count = n(), .groups="drop") |>
   kable()
+# ChickWeight |> count(Diet)
 ```
 
 
@@ -174,13 +176,31 @@ ChickWeight |>
 
 * Use `filter` to select observations
 
+## Bonus: dplyr is closely linked to SQL
+
+```{r}
+library(dbplyr)
+memdb_frame(ChickWeight) |> count(Diet) |> show_query()
+```
+
+## dplyr and SQL
+
+```{r}
+memdb_frame(ChickWeight) |>  group_by(Diet, Chick) |>
+  mutate(max_weight = max(weight)) |>
+  filter(max_weight > 110) |>
+  group_by(Diet, Chick) |>
+  summarize(n = n()) |>
+  summarize(count_chicks = n(), .groups = "drop") |> show_query()
+```
 
 ## Further reading
 
 * Lots more examples with different data in the course notes
 
-* R4DS [Chapter 5 Data transformations](https://r4ds.hadley.nz/data-transform)
+* R4DS [Chapter 3 Data transformations](https://r4ds.hadley.nz/data-transform)
 
+* [Cheatsheet for dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 ## Task
 
