@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2021-09-27">
+<meta name="dcterms.date" content="2024-02-01">
 <title>data-viz - Splitting graphs into facets</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -403,7 +403,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2021-09-27</p>
+  <p class="date">2024-02-01</p>
 </section><section id="splitting-a-plot-into-facets" class="slide level2"><h2>Splitting a plot into facets</h2>
 <ul>
 <li><p>Using one categorical variable</p></li>
@@ -468,7 +468,7 @@ Andrew Irwin, a.irwin@dal.ca
 <img data-src="09-facets_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section><section class="slide level2"><div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>gapminder <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> country), <span class="at">color =</span> <span class="st">"gray40"</span>, <span class="at">size=</span><span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> country), <span class="at">color =</span> <span class="st">"gray40"</span>, <span class="at">linewidth=</span><span class="fl">0.25</span>) <span class="sc">+</span></span>
 <span id="cb9-4"><a></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_cl_normal"</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
 <span id="cb9-5"><a></a>  <span class="fu">facet_grid</span>( continent <span class="sc">~</span> . )</span></code></pre></div>
 
