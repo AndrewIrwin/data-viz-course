@@ -23,7 +23,7 @@ Try single = for logical comparison and see what happens!
 
 ```{r error=TRUE}
 ChickWeight |> 
-  filter(Time = 10) |> 
+  filter(Time == 10) |> 
   group_by(Diet) |> 
   summarize(weight_10 = mean(weight), .groups = "drop")
 ```
@@ -33,11 +33,47 @@ Use the dplyr functions: mutate, filter, group_by, summarize, select, arrange to
 
 * How many kinds of species of penguin are in the dataset `penguins`? How many observations of each species?
 
+```{r}
+penguins |> count(species)
+```
+
+
 * What is the maximum and minimum flipper length?
+
+```{r}
+penguins |> summarize(max_flipper = max(flipper_length_mm),
+                      min_flipper = min(flipper_length_mm))
+penguins |> summarize(max_flipper = max(flipper_length_mm, na.rm=TRUE),
+                      min_flipper = min(flipper_length_mm, na.rm=TRUE),
+                      count = n())
+
+```
 
 * Use `na.omit` and `filter(!is.na())` to remove missing data.
 
+```{r}
+penguins |> filter(!is.na(flipper_length_mm)) |>
+  summarize(max_flipper = max(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())
+penguins |> na.omit() |>
+  summarize(max_flipper = max(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())
+
+```
+
 * Find the max and min flipper length for each species.
+
+```{r}
+penguins |> filter(!is.na(flipper_length_mm)) |>
+  group_by(species, sex) |>
+  summarize(max_flipper = max(flipper_length_mm),
+            median_flipper = median(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())
+```
+
 
 * Find the observation with the largest flipper length.
 

@@ -378,23 +378,90 @@ display: none;
 ## # ℹ 568 more rows</code></pre>
 <p>Try single = for logical comparison and see what happens!</p>
 <pre class="r"><code>ChickWeight |&gt; 
-  filter(Time = 10) |&gt; 
+  filter(Time == 10) |&gt; 
   group_by(Diet) |&gt; 
   summarize(weight_10 = mean(weight), .groups = &quot;drop&quot;)</code></pre>
-<pre><code>## Error in `filter()`:
-## ! We detected a named input.
-## ℹ This usually means that you&#39;ve used `=` instead of `==`.
-## ℹ Did you mean `Time == 10`?</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##   Diet  weight_10
+##   &lt;fct&gt;     &lt;dbl&gt;
+## 1 1          93.1
+## 2 2         108. 
+## 3 3         117. 
+## 4 4         126</code></pre>
 <p>Use the dplyr functions: mutate, filter, group_by, summarize, select,
 arrange to answer the following questions.</p>
 <ul>
-<li><p>How many kinds of species of penguin are in the dataset
-<code>penguins</code>? How many observations of each species?</p></li>
-<li><p>What is the maximum and minimum flipper length?</p></li>
-<li><p>Use <code>na.omit</code> and <code>filter(!is.na())</code> to
-remove missing data.</p></li>
-<li><p>Find the max and min flipper length for each species.</p></li>
-<li><p>Find the observation with the largest flipper length.</p></li>
+<li>How many kinds of species of penguin are in the dataset
+<code>penguins</code>? How many observations of each species?</li>
+</ul>
+<pre class="r"><code>penguins |&gt; count(species)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   species       n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124</code></pre>
+<ul>
+<li>What is the maximum and minimum flipper length?</li>
+</ul>
+<pre class="r"><code>penguins |&gt; summarize(max_flipper = max(flipper_length_mm),
+                      min_flipper = min(flipper_length_mm))</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   max_flipper min_flipper
+##         &lt;int&gt;       &lt;int&gt;
+## 1          NA          NA</code></pre>
+<pre class="r"><code>penguins |&gt; summarize(max_flipper = max(flipper_length_mm, na.rm=TRUE),
+                      min_flipper = min(flipper_length_mm, na.rm=TRUE),
+                      count = n())</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   max_flipper min_flipper count
+##         &lt;int&gt;       &lt;int&gt; &lt;int&gt;
+## 1         231         172   344</code></pre>
+<ul>
+<li>Use <code>na.omit</code> and <code>filter(!is.na())</code> to remove
+missing data.</li>
+</ul>
+<pre class="r"><code>penguins |&gt; filter(!is.na(flipper_length_mm)) |&gt;
+  summarize(max_flipper = max(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   max_flipper min_flipper count
+##         &lt;int&gt;       &lt;int&gt; &lt;int&gt;
+## 1         231         172   342</code></pre>
+<pre class="r"><code>penguins |&gt; na.omit() |&gt;
+  summarize(max_flipper = max(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   max_flipper min_flipper count
+##         &lt;int&gt;       &lt;int&gt; &lt;int&gt;
+## 1         231         172   333</code></pre>
+<ul>
+<li>Find the max and min flipper length for each species.</li>
+</ul>
+<pre class="r"><code>penguins |&gt; filter(!is.na(flipper_length_mm)) |&gt;
+  group_by(species, sex) |&gt;
+  summarize(max_flipper = max(flipper_length_mm),
+            median_flipper = median(flipper_length_mm),
+            min_flipper = min(flipper_length_mm),
+            count = n())</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;species&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 8 × 6
+## # Groups:   species [3]
+##   species   sex    max_flipper median_flipper min_flipper count
+##   &lt;fct&gt;     &lt;fct&gt;        &lt;int&gt;          &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
+## 1 Adelie    female         202           188          172    73
+## 2 Adelie    male           210           193          178    73
+## 3 Adelie    &lt;NA&gt;           193           186          179     5
+## 4 Chinstrap female         202           192          178    34
+## 5 Chinstrap male           212           200.         187    34
+## 6 Gentoo    female         222           212          203    58
+## 7 Gentoo    male           231           221          208    61
+## 8 Gentoo    &lt;NA&gt;           217           216          214     4</code></pre>
+<ul>
+<li>Find the observation with the largest flipper length.</li>
 </ul>
 <p>** For each species and island.</p>
 <ul>
