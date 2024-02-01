@@ -77,15 +77,79 @@ penguins |> filter(!is.na(flipper_length_mm)) |>
 
 * Find the observation with the largest flipper length.
 
-** For each species and island.
+```{r}
+penguins |> summarize( max_flipper_length_mm = max(flipper_length_mm) )
+penguins |> summarize( max_flipper_length_mm = max(flipper_length_mm, na.rm=TRUE) )
+penguins |> filter( flipper_length_mm == max(flipper_length_mm, na.rm=TRUE) )
+```
+
+  * For each combination of species and island.
+
+```{r}
+penguins |>
+  group_by(species, island) |> 
+  filter( flipper_length_mm == max(flipper_length_mm, na.rm=TRUE) )
+penguins |>
+  group_by(species) |> 
+  filter( flipper_length_mm == max(flipper_length_mm, na.rm=TRUE) )
+penguins |>
+  group_by(island) |> 
+  filter( flipper_length_mm == max(flipper_length_mm, na.rm=TRUE) )
+```
+
 
 * Make a table showing the number of observations of each combination of species and island.
 
+```{r}
+penguins |> 
+  count(island, species)
+
+```
+
+We will talk next week about shifting this "long" format table into a "wide" format table that has one row per island and one column per species.
+
 * Compute the ratio of the bill length to bill depth and make a histogram with these data.
 
-** For each species
+```{r}
+penguins |> 
+  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  # select(species, island, bill_length_mm, bill_depth_mm, ratio) |>
+  ggplot(aes(x = ratio)) +
+  geom_histogram(bins = 25)
+```
+
+  * For each species
+
+```{r}
+penguins |> 
+  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  # select(species, island, bill_length_mm, bill_depth_mm, ratio) |>
+  ggplot(aes(x = ratio, fill = species)) +
+  geom_histogram(bins = 25)
+```
+
+```{r}
+penguins |> 
+  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  # select(species, island, bill_length_mm, bill_depth_mm, ratio) |>
+  ggplot(aes(x = ratio, fill = island)) +
+  geom_histogram(bins = 25)
+```
 
 * Compute the mean and standard deviation of body mass for each species and sex.
+
+```{r}
+penguins |>
+  filter(!is.na(body_mass_g)) |>
+  group_by(species, sex) |>
+  summarize( mean_body_mass = mean(body_mass_g),
+             sd_body_mass = sd(body_mass_g),
+             n = n(),
+             se_mean_body_mass = sd_body_mass / sqrt(n),
+             cv_body_mass = sd_body_mass / mean_body_mass)
+
+```
+
 
 * Decode this complex calculation from the course notes by executing just one line at a time, making a prediction about the result, and checking your understanding. Change the calculation to make it do something similar but different to test your understanding. (For example, try using `slice_tail` instead of `slice_head`, or remove the `-` in the `arrange` function.)
 
@@ -99,6 +163,8 @@ diamonds |>
   arrange(-median_price_per_carat) |>
   group_by(cut) |>
   slice_head(n=2) |>
+  # filter(median_price_per_carat == max(median_price_per_carat)) |>
+  ungroup() |>
   arrange(-median_price_per_carat)
 ```
 

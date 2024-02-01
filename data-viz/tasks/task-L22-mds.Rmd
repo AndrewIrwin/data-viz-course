@@ -87,12 +87,4 @@ Make a scatterplot using any two of the original quantitative from `iris`.
 *write your response here*
 
 
-## Submit?
-
-If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
-
-```{r}
-assess_task = FALSE
-```
-
 
