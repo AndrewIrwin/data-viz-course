@@ -1,7 +1,7 @@
 ---
 title: "Splitting graphs into facets"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-09-27"
+date: "2024-02-01"
 format:
   revealjs:
     slide-number: true
@@ -114,7 +114,7 @@ gapminder |>
 ```{r message=FALSE}
 gapminder |>
   ggplot(aes(x=year, y = lifeExp)) + 
-  geom_line(aes(group = country), color = "gray40", size=0.25) +
+  geom_line(aes(group = country), color = "gray40", linewidth=0.25) +
   stat_summary(fun.data = "mean_cl_normal", color = "blue") + 
   facet_grid( continent ~ . )
 ```
