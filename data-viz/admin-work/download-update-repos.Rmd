@@ -34,7 +34,7 @@ org_sitrep(org_name)
 repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
 ```
 
-Clone them all into `repo_location`. (Unless the repo exists. Could pull instead.)
+Clone them all into `repo_location`. (Unless the repo exists. Then pull instead.)
 
 ```{r}
 for (repo in repos) {
