@@ -119,6 +119,10 @@ gapminder |>
   facet_grid( continent ~ . )
 ```
 
+::: footer
+Requires `Hmisc` package
+:::
+
 ---
 
 ## Splitting on a quantitative variable {.smaller}

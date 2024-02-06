@@ -108,11 +108,3 @@ After you knit the document, find the PDF version of this figure in the "task-pr
 
 You can name code chunks, to help you navigate the document (see the menu in the bottom left of this editing window). I've added a name for the previous chunk. Add a name for at least one other chunk in your document. Confirm this worked by looking in the "chunk menu".
 
-
-## Submit?
-
-If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
-
-```{r}
-assess_task = FALSE
-```

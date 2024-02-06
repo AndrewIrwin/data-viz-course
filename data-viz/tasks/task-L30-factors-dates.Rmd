@@ -51,13 +51,3 @@ The "epidemiological week" begins on Saturday. The function `epiweek` gives you 
 ```
 
 **In what week after the January wave did the number of people hospitalized reach a minimum?**
-
-## Submit?
-
-If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
-
-```{r}
-assess_task = FALSE
-```
-
-

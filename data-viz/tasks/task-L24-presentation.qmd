@@ -88,16 +88,6 @@ Put an image or figure in this column
 
 ::::
 
-## Submit
-
-Do you want this Task to be graded? If yes, change `FALSE` to `TRUE` below:
-
-```{r echo=TRUE}
-#| code-fold: true
-#| code-summary: "Show the code"
-assess_task = FALSE
-```
-
 
 Learn how to show code and how to "fold" code [here](https://quarto.org/docs/get-started/computations/rstudio.html#code-folding).
 

@@ -49,12 +49,3 @@ The four quantitative variables are all measured in cm and are all similar in ma
 
 **Write a sentence or two that summarizes how well k-means clusters divide these three species into three clusters using these four variables. How do the results from scaled and unscaled data differ? Is one approach clearly better?**
 
-
-## Submit?
-
-If you want to submit this task for evaluation, change the FALSE to TRUE in the following code block. Save and knit your R markdown document by clicking Knit in the toolbar at the top of the editing window. If there are errors when you knit the document you will not receive full marks.
-
-```{r}
-assess_task = FALSE
-```
-
