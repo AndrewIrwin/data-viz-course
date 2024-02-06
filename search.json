@@ -18,14 +18,7 @@
     "href": "tasks/task-L24-presentation.html#two-columns",
     "title": "Write a title here",
     "section": "Two columns",
-    "text": "Two columns\n\n\nPut an image or figure in this column\n\n\nWrite a sentence about the graphic here.\nAdjust the column widths to make good use of space."
-  },
-  {
-    "objectID": "tasks/task-L24-presentation.html#submit",
-    "href": "tasks/task-L24-presentation.html#submit",
-    "title": "Write a title here",
-    "section": "Submit",
-    "text": "Submit\nDo you want this Task to be graded? If yes, change FALSE to TRUE below:\n\n\nShow the code\nassess_task = FALSE\n\n\nLearn how to show code and how to “fold” code here."
+    "text": "Two columns\n\n\nPut an image or figure in this column\n\n\nWrite a sentence about the graphic here.\nAdjust the column widths to make good use of space.\n\n\n\nLearn how to show code and how to “fold” code here."
   },
   {
     "objectID": "slides/33-graphics-output.html#plan",
@@ -1173,7 +1166,7 @@
     "href": "slides/12-reshaping-data.html#further-reading",
     "title": "Reshaping data",
     "section": "Further reading",
-    "text": "Further reading\n\nTidy Data (Chapter 12) in R4DS\nMore examples in course notes"
+    "text": "Further reading\n\nTidy Data (Chapter 5) in R4DS\nMore examples in course notes"
   },
   {
     "objectID": "slides/12-reshaping-data.html#task",
@@ -2321,14 +2314,14 @@
     "href": "slides/11-reading-data.html#things-to-watch-out-for",
     "title": "Reading data into R",
     "section": "Things to watch out for",
-    "text": "Things to watch out for\n\nMulti-row headings, missing headings\nExtra rows at the top of the file\nMissing data coded in an “interesting” way\nMultiple tabs (sheets) in a spreadsheet\nDate formats\nNumeric data interpreted as text"
+    "text": "Things to watch out for\n\nMulti-row headings, missing headings\nExtra rows at the top of the file\nMissing data coded in an “interesting” way\nMultiple tabs (sheets) in a spreadsheet or workbook\nDate formats\nNumeric data interpreted as text"
   },
   {
     "objectID": "slides/11-reading-data.html#summary",
     "href": "slides/11-reading-data.html#summary",
     "title": "Reading data into R",
     "section": "Summary",
-    "text": "Summary\n\nread_excel to read from spreadsheets\nread_csv, read_tsv, and read_delim to read many text files\nTry the Rstudio data import tool. Notice the R code generated for you.\nAlways check your data table in R\nLots of ways to get trouble\nPractice, practice, practice and ask for help!"
+    "text": "Summary\n\nread_excel to read from spreadsheets\nread_csv, read_tsv, and read_delim to read many text files\nTry the Rstudio data import tool. Notice the R code generated for you.\nAlways check your data table in R\nLots of ways for errors to arise\nPractice, practice, practice and ask for help!"
   },
   {
     "objectID": "slides/11-reading-data.html#further-reading",
@@ -2888,7 +2881,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5301554\n0.1811066\n-0.4517881\n31\n14.00332\n1\n\n\n-1.2616953\n-1.2330437\n0.0440010\n39\n34.49558\n2\n\n\n-0.2962622\n0.2367267\n-1.7720737\n14\n24.17695\n3\n\n\n0.1058623\n-0.1468691\n1.2765138\n22\n21.50458\n4\n\n\n0.9608334\n1.1775374\n0.2504200\n36\n23.35138\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n1\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n4\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
