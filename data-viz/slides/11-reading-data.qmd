@@ -1,7 +1,7 @@
 ---
 title: "Reading data into R"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2021-10-04"
+date: "2024-02-06"
 format:
   revealjs:
     slide-number: true
@@ -127,7 +127,7 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 * Missing data coded in an "interesting" way
 
-* Multiple tabs (sheets) in a spreadsheet
+* Multiple tabs (sheets) in a spreadsheet or workbook
 
 * Date formats
 
@@ -144,7 +144,7 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 * **Always check your data table in R**
 
-* Lots of ways to get trouble
+* Lots of ways for errors to arise
 
 * _Practice, practice, practice_ and ask for help!
 

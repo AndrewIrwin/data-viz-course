@@ -1,7 +1,7 @@
 ---
 title: "Reshaping data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-04"
+date: "2024-02-06"
 format:
   revealjs:
     slide-number: true
@@ -179,7 +179,7 @@ bind_rows(mutate(df1A, type = "cases"),
 
 ## Further reading
 
-* Tidy Data (Chapter 12) in R4DS
+* Tidy Data ([Chapter 5](https://r4ds.hadley.nz/data-tidy)) in R4DS
 * More examples in course notes
 
 ## Task
