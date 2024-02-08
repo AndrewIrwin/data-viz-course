@@ -166,6 +166,9 @@ How do you ask for help?
 * What was the result (output, graphic, error message)?
 * What do you think the problem might be?
 
+## Notes on functions used in this course
+
+I've made a [list](https://andrewirwin.github.io/data-viz-notes/lessons/499-review.html) of many of functions that I use in the first few weeks of the course, and the package you need for each, and put them in the course notes under "R Review".
 
 ## Summary {.smaller}
 

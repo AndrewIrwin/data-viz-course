@@ -33,7 +33,6 @@ After we collect, reshape, and summarize data, we want to display it!
 
 * Consistent goal: make the table easy to interpret
 
-
 ## Raw data
 
 ```{r echo = FALSE}
@@ -113,6 +112,19 @@ mtcars |> head() |> select(mpg, cyl, hp, wt) |>
                       "Footnote 2")) 
 ```
 
+## Packages used
+
+* `knitr` -- for knitting R markdown documents; already installed; has `kable` function
+* `kableExtra` -- nicer formatting of tables, e.g., `kable_styling`
+  * also `column_spec`, `row_spec`, `add_header_above`, `group_rows`, `footnote`
+
+Other packages to consider:
+
+* `DT` for making data tables ([web page](https://rstudio.github.io/DT/)), especially interactive tables for web pages
+* `gt` ([demos and help](https://gt.rstudio.com/index.html))
+* `flextable` for working with Microsoft Office
+* Information about these and [more](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541)
+
 ## Summary
 
 * Several ways to customize the formatting of a table
@@ -122,7 +134,7 @@ mtcars |> head() |> select(mpg, cyl, hp, wt) |>
 
 * Course notes
 
-* `kableExtra` vignette
+* `kableExtra` [vignette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
 
 
 ## Task

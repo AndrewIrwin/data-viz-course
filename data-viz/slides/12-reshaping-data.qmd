@@ -168,6 +168,26 @@ bind_rows(mutate(df1A, type = "cases"),
   kable() |> kable_styling(full_width = FALSE)
 ```
 
+## Another way to join tables
+
+First make a long table.
+
+```{r}
+df1A |> pivot_longer(`1999`:`2000`, names_to = "year", values_to = "cases") |> 
+  kable() |> kable_styling(full_width = FALSE)
+```
+## Another way to join tables
+
+Then join them together.
+
+```{r}
+full_join(
+  df1A |> pivot_longer(`1999`:`2000`, names_to = "year", values_to = "cases"),
+  df1B |> pivot_longer(`1999`:`2000`, names_to = "year", values_to = "population"),
+  by = c("country", "year")
+) |> kable() |> kable_styling(full_width = FALSE)
+```
+
 ## Summary
 
 * What and why of tidy data
