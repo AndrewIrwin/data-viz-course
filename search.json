@@ -1050,6 +1050,13 @@
     "text": "Asking questions\nYou are still stuck.\nHow do you ask for help?\n\nWhat are you trying to do?\nWhat have you tried?\nWhat was the result (output, graphic, error message)?\nWhat do you think the problem might be?"
   },
   {
+    "objectID": "slides/14-getting-help.html#notes-on-functions-used-in-this-course",
+    "href": "slides/14-getting-help.html#notes-on-functions-used-in-this-course",
+    "title": "Getting help",
+    "section": "Notes on functions used in this course",
+    "text": "Notes on functions used in this course\nI’ve made a list of many of functions that I use in the first few weeks of the course, and the package you need for each, and put them in the course notes under “R Review”."
+  },
+  {
     "objectID": "slides/14-getting-help.html#summary",
     "href": "slides/14-getting-help.html#summary",
     "title": "Getting help",
@@ -1153,6 +1160,20 @@
     "title": "Reshaping data",
     "section": "Combine two tables into one",
     "text": "Combine two tables into one\n\nbind_rows(mutate(df1A, type = \"cases\"),\n          mutate(df1B, type = \"population\")) |&gt;\n  kable() |&gt; kable_styling(full_width = FALSE)\n\n\n\ncountry\n1999\n2000\ntype\n\n\n\nAfghanistan\n745\n2666\ncases\n\n\nBrazil\n37737\n80488\ncases\n\n\nChina\n212258\n213766\ncases\n\n\nAfghanistan\n19987071\n20595360\npopulation\n\n\nBrazil\n172006362\n174504898\npopulation\n\n\nChina\n1272915272\n1280428583\npopulation"
+  },
+  {
+    "objectID": "slides/12-reshaping-data.html#another-way-to-join-tables",
+    "href": "slides/12-reshaping-data.html#another-way-to-join-tables",
+    "title": "Reshaping data",
+    "section": "Another way to join tables",
+    "text": "Another way to join tables\nFirst make a long table.\n\ndf1A |&gt; pivot_longer(`1999`:`2000`, names_to = \"year\", values_to = \"cases\") |&gt; \n  kable() |&gt; kable_styling(full_width = FALSE)\n\n\n\ncountry\nyear\ncases\n\n\n\nAfghanistan\n1999\n745\n\n\nAfghanistan\n2000\n2666\n\n\nBrazil\n1999\n37737\n\n\nBrazil\n2000\n80488\n\n\nChina\n1999\n212258\n\n\nChina\n2000\n213766"
+  },
+  {
+    "objectID": "slides/12-reshaping-data.html#another-way-to-join-tables-1",
+    "href": "slides/12-reshaping-data.html#another-way-to-join-tables-1",
+    "title": "Reshaping data",
+    "section": "Another way to join tables",
+    "text": "Another way to join tables\nThen join them together.\n\nfull_join(\n  df1A |&gt; pivot_longer(`1999`:`2000`, names_to = \"year\", values_to = \"cases\"),\n  df1B |&gt; pivot_longer(`1999`:`2000`, names_to = \"year\", values_to = \"population\"),\n  by = c(\"country\", \"year\")\n) |&gt; kable() |&gt; kable_styling(full_width = FALSE)\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583"
   },
   {
     "objectID": "slides/12-reshaping-data.html#summary",
@@ -2408,6 +2429,13 @@
     "text": "Adding caption, footnote\n\nmtcars |&gt; head() |&gt; select(mpg, cyl, hp, wt) |&gt; \n  kable(caption=\"Car data from Motor Trend magazine.\") |&gt;\n  kable_styling(full_width = FALSE) |&gt;\n  footnote(symbol = c(\"Footnote 1.\", \n                      \"Footnote 2\")) \n\n\nCar data from Motor Trend magazine.\n\n\nmpg\ncyl\nhp\nwt\n\n\n\nMazda RX4\n21.0\n6\n110\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n110\n2.875\n\n\nDatsun 710\n22.8\n4\n93\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n110\n3.215\n\n\nHornet Sportabout\n18.7\n8\n175\n3.440\n\n\nValiant\n18.1\n6\n105\n3.460\n\n\n\n\n\n* Footnote 1.\n\n\n\n\n\n\n\n† Footnote 2"
   },
   {
+    "objectID": "slides/13-displaying-tables.html#packages-used",
+    "href": "slides/13-displaying-tables.html#packages-used",
+    "title": "Displaying tables",
+    "section": "Packages used",
+    "text": "Packages used\n\n\nknitr – for knitting R markdown documents; already installed; has kable function\n\nkableExtra – nicer formatting of tables, e.g., kable_styling\n\nalso column_spec, row_spec, add_header_above, group_rows, footnote\n\n\n\n\nOther packages to consider:\n\n\nDT for making data tables (web page), especially interactive tables for web pages\n\ngt (demos and help)\n\nflextable for working with Microsoft Office\nInformation about these and more"
+  },
+  {
     "objectID": "slides/13-displaying-tables.html#summary",
     "href": "slides/13-displaying-tables.html#summary",
     "title": "Displaying tables",
@@ -2881,7 +2909,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n1\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n4\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n1\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n4\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
