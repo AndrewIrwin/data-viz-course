@@ -1,0 +1,66 @@
+---
+title: "Table formatting demo"
+author: "A Irwin"
+date: "2024-02-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+library(palmerpenguins)
+library(gapminder)
+```
+
+
+Make a table of the number of penguins of each species observed on each island. Format with good column headings and a title.
+
+```{r}
+penguins |> rename(Species = species) |>
+  count(Species, island) |>
+  pivot_wider(names_from = island, values_from = n,
+              values_fill = 0) |>
+  kable(caption = "Number of individuals of each species observed on three island near the Antarctic peninsula.",
+        # col.names = c("Species", "Biscoe", "Dream", "Torgersen")
+        ) |>
+  add_header_above(c(" " = 1, "Island" = 3)) |>
+  kable_styling(full_width = FALSE)
+
+```
+
+
+## Bonus material
+
+```{r}
+gapminder |>
+    filter(country == "Canada" | country == "Iran") 
+gapminder |>
+    filter(country == "Canada" | country == "Iran" | country == "China")
+gapminder |>
+    filter(country %in% c("Canada", "Iran", "China")) 
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+penguins |> count(species, island) |>
+  pivot_wider(names_from = island,
+              values_from = n,
+              values_fill = 0) |>
+  kable(caption = "Number of penguins observed on each island, by species",
+       col.names = c("Species", "Biscoe", "Dream", "Torgersen")) |>
+  add_header_above(c(" " = 1, "Island" = 3)) |>
+  kable_styling() 
+  
+
+
+```
