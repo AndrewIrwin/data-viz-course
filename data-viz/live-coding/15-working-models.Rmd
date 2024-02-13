@@ -8,13 +8,67 @@ output: html_document
 ```{r setup, include=FALSE}
 library(gapminder)
 library(tidyverse)
-library(lubridate)
 ```
 
 
 In this demonstration, we will practice adding smooths (regression lines) to plots, including using colour and facets to create multiple lines.
 
 ## Life expectancy by year
+
+Plot life expectancy by year, facet on continent, add regression line by continent, show a thin line for each country. Possibly show a regression line for each country instead of data.
+
+```{r}
+
+
+```
+
+## Quantile regression
+
+Use `geom_quantile` and `quantiles = ...` to do quantile regression.
+Try a polynomial instead of a straight line.
+
+## Logarithmic increases
+
+Show increase in life expectancy as a function of GDP per capita. Add an appropriate regression line.
+
+```{r}
+
+
+```
+
+Compare regression on the mean (ordinary least squares, linear model, lm) with quantile regression on the median (geom_quantile, quantiles = 0.5).
+
+
+## CO2
+
+Plot full data and add a smooth.
+
+```{r}
+co2 <- read_table("https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt",
+                  comment = "#", col_names = FALSE)
+```
+
+
+
+Show interannual cycle for CO2 after subtracting annual mean, plot as a function of the fraction of the year elapsed, smooth with a LOESS or GAM.
+
+```{r}
+
+```
+
+
+Try some boxplots, facet by decade, other variations.
+
+```{r}
+
+
+```
+
+
+
+## Examples from previous year
+
+### Life expectancy by year
 
 Build up a complex plot piece by piece.
 
@@ -47,7 +101,21 @@ gapminder |> ggplot(aes(year, lifeExp)) +
   facet_grid(continent ~ .)
 ```
 
-## CO2
+Compare regression on the mean (ordinary least squares, linear model, lm) with quantile regression on the median (tau = 0.5).
+
+```{r}
+gapminder |> 
+  # filter(continent %in% c("Africa", "Americas", "Asia")) |>
+  ggplot(aes(gdpPercap, lifeExp)) + 
+  scale_x_log10() + 
+  geom_quantile(quantiles = 0.5, formula = y ~ x) +
+  geom_smooth(method = "lm", formula = y ~ x, color = "green") + 
+  facet_grid(continent ~ .)
+  # facet_wrap(continent ~ ., ncol=1)
+
+```
+
+### CO2
 
 Get data from previous lesson (reading data):
 
@@ -124,7 +192,7 @@ co2 |> mutate(decade = 10*floor(X1/10),
   facet_grid(decade ~ . , scale = "free_y")
 ```
 
-## GAM is just linear regression
+### GAM is just linear regression
 
 ```{r}
 co2 |> filter(X1 > 2019) |>
@@ -132,3 +200,14 @@ co2 |> filter(X1 > 2019) |>
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs")) +
   geom_point()
 ```
+
+```{r}
+gam1 <- mgcv::gam(X4 ~ s(dd, bs = "cc") + s(X1), 
+             data = co2 |> filter(X1 > 2010) |> mutate(dd = X3 - X1) )
+broom::augment(gam1, 
+        co2 |> filter(X1 > 2010) ) |> 
+  ggplot() + 
+  geom_line(aes(X3, .fitted)) +
+  geom_point(aes(X3, X4))
+```
+

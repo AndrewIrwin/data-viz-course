@@ -181,10 +181,4 @@ p + geom_smooth(method = "lm", formula = y ~ x, orientation = "y") +
 * Healy Chapter 6. Work with models.
 
 
-## Task
-
-Bonus task for this lesson to practice these functions. Nothing to hand in.
-
-
-
 

@@ -101,7 +101,7 @@ gapminder |> ggplot(aes(x = gdpPercap, y= lifeExp)) + geom_point() +
 ##  Log transforms
 
 ```{r, fig.height=5, fig.align="center"}
-m3 <- gapminder |> mutate(logGDPpercap = log10(gdpPercap)) %>%
+m3 <- gapminder |> mutate(logGDPpercap = log10(gdpPercap)) |>
   lm( lifeExp ~ logGDPpercap, data = . ) 
 tidy(m3) |> kable(digits = 2) |> kable_styling(full_width = FALSE)
 glance(m3) |> kable(digits = 2) |> kable_styling(full_width = FALSE)
@@ -174,11 +174,11 @@ bind_cols(my_mpg |> select(displ, city_l100km),
 
 ```{r, fig.height=5, fig.align="center"}
 bind_cols(new_data,
-          predict(m1, new_data, interval = "prediction") |> as_tibble() ) |>
-   kable(digits = 2)
+          predict(m1, new_data, interval = "prediction") |> 
+            as_tibble() ) |> kable(digits = 2)
 ```
 
-## Can also use augment
+## Easier: augment
 
 ```{r}
 augment(m1, my_mpg, interval = "confidence") |>
@@ -222,11 +222,6 @@ augment(m4, newdata = new_data, interval = "confidence") |> kable(digits = 2)
 * Course notes
 
 * Healy Chapter 6. Work with models.
-
-## Task
-
-Task: Fitting and using linear models.
-
 
 
 
