@@ -101,7 +101,7 @@ gapminder |> ggplot(aes(x = gdpPercap, y= lifeExp)) + geom_point() +
 ##  Log transforms
 
 ```{r, fig.height=5, fig.align="center"}
-m3 <- gapminder |> mutate(logGDPpercap = log10(gdpPercap)) |>
+m3 <- gapminder |> mutate(logGDPpercap = log10(gdpPercap)) %>%
   lm( lifeExp ~ logGDPpercap, data = . ) 
 tidy(m3) |> kable(digits = 2) |> kable_styling(full_width = FALSE)
 glance(m3) |> kable(digits = 2) |> kable_styling(full_width = FALSE)
@@ -182,7 +182,7 @@ bind_cols(new_data,
 
 ```{r}
 augment(m1, my_mpg, interval = "confidence") |>
-  select(displ, city_l100km, .fitted, .lower, .upper, .resid, everything() ) |> kable(digits =2)
+  select(displ, city_l100km, .fitted, .lower, .upper, .resid, everything() ) |> kable(digits = 2)
 ```
 
 ## Same methods for other model types
