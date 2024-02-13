@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.538">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-06">
+<meta name="dcterms.date" content="2024-02-13">
 <title>data-viz - Working with models</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -403,7 +403,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-10-06</p>
+  <p class="date">2024-02-13</p>
 </section><section id="models-and-visualizations" class="slide level2"><h2>Models and visualizations</h2>
 <ul>
 <li><p>Adding regression and smoothing lines to ggplot visualizations</p></li>
@@ -454,7 +454,8 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb5-2"><a></a>                  <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>))</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="generalized-additive-model" class="slide level2"><h2>Generalized additive model</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>:: footnote Requires package <code>quantreg</code> ::</p>
+</section><section id="generalized-additive-model" class="slide level2"><h2>Generalized additive model</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, </span>
 <span id="cb6-2"><a></a>                <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="at">df =</span> <span class="dv">5</span>))</span></code></pre></div>
@@ -518,8 +519,7 @@ Andrew Irwin, a.irwin@dal.ca
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy Chapter 6. Work with models.</p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<p>Bonus task for this lesson to practice these functions. Nothing to hand in.</p>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

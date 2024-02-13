@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.538">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-10-06">
 <title>data-viz - GAM and LOESS models</title>
@@ -408,7 +408,7 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="gam-and-loess-models" class="slide level2"><h2>GAM and LOESS models</h2>
 <ul>
 <li><p>Describing, fitting, and using models</p></li>
-<li><p>No model coefficients</p></li>
+<li><p>No (simple, easily understood) model coefficients</p></li>
 <li><p>Calculating residuals</p></li>
 <li><p>Making predictions: point estimates and standard errors or confidence intervals</p></li>
 </ul></section><section id="start-with-a-basic-graph" class="slide level2"><h2>Start with a basic graph</h2>
@@ -445,7 +445,7 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 </section><section id="fit-a-cubic-spline-1" class="slide level2"><h2>Fit a cubic spline</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb3-2"><a></a><span class="fu">glance</span>(m1)  <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb3-2"><a></a><span class="fu">glance</span>(m1)  <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -468,7 +468,7 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 </tr></tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tidy</span>(m1) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
@@ -491,8 +491,8 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 </section><section id="find-predicted-values-and-residuals" class="slide level2"><h2>Find predicted values and residuals</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(gratia)</span>
-<span id="cb5-2"><a></a>hfx <span class="sc">%&gt;%</span> <span class="fu">add_fitted</span>(m1) <span class="sc">%&gt;%</span> <span class="fu">select</span>(year_day, mean_temp, .value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">add_residuals</span>(m1)  <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb5-2"><a></a>hfx <span class="sc">|&gt;</span> <span class="fu">add_fitted</span>(m1) <span class="sc">|&gt;</span> <span class="fu">select</span>(year_day, mean_temp, .value) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">add_residuals</span>(m1)  <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -4810,8 +4810,8 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 </div>
 </section><section id="graph-smooth-term" class="slide level2"><h2>Graph “smooth” term</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>hfx <span class="sc">%&gt;%</span> <span class="fu">add_fitted</span>(m1) <span class="sc">%&gt;%</span> <span class="fu">select</span>(year_day, mean_temp, .value) <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">add_residuals</span>(m1) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>hfx <span class="sc">|&gt;</span> <span class="fu">add_fitted</span>(m1) <span class="sc">|&gt;</span> <span class="fu">select</span>(year_day, mean_temp, .value) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">add_residuals</span>(m1) <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year_day)) <span class="sc">+</span></span>
 <span id="cb6-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>.value), <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span> </span>
 <span id="cb6-5"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> mean_temp)) <span class="sc">+</span> my_theme</span></code></pre></div>
@@ -4819,7 +4819,7 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 </div>
 <img data-src="17-gam-loess_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="graph-smooth-term-1" class="slide level2"><h2>Graph “smooth” term</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">confint</span>(m1, <span class="st">"s(year_day)"</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">confint</span>(m1, <span class="st">"s(year_day)"</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year_day)) <span class="sc">+</span></span>
 <span id="cb7-3"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper), <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">fill=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb7-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>est), <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span> </span>
@@ -4852,9 +4852,9 @@ drop.square:  FALSE </code></pre>
 </div>
 </section><section id="predictions" class="slide level2"><h2>Predictions</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>hfx <span class="sc">%&gt;%</span> <span class="fu">select</span>(year_day, mean_temp) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>hfx <span class="sc">|&gt;</span> <span class="fu">select</span>(year_day, mean_temp) <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">predict</span>(m2),</span>
-<span id="cb10-3"><a></a>         <span class="at">residuals =</span> <span class="fu">residuals</span>(m2)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb10-3"><a></a>         <span class="at">residuals =</span> <span class="fu">residuals</span>(m2)) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -9172,7 +9172,7 @@ drop.square:  FALSE </code></pre>
 </div>
 </section><section id="predictions-1" class="slide level2"><h2>Predictions</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">augment</span>(m2, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">augment</span>(m2, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -14208,7 +14208,7 @@ drop.square:  FALSE </code></pre>
 </div>
 </section><section id="residuals" class="slide level2"><h2>Residuals</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">augment</span>(m2, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">augment</span>(m2, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .resid)) <span class="sc">+</span> </span>
 <span id="cb12-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
@@ -14216,7 +14216,7 @@ drop.square:  FALSE </code></pre>
 <img data-src="17-gam-loess_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="predictions-2" class="slide level2"><h2>Predictions</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>new_data <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">year_day =</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">730</span>))</span>
-<span id="cb13-2"><a></a><span class="fu">augment</span>(m2, <span class="at">newdata =</span> new_data, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a><span class="fu">augment</span>(m2, <span class="at">newdata =</span> new_data, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year_day, <span class="at">y =</span> .fitted)) <span class="sc">+</span> </span>
 <span id="cb13-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
 <span id="cb13-5"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .fitted <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>.se.fit,</span>
@@ -14228,7 +14228,7 @@ drop.square:  FALSE </code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a>m3 <span class="ot">&lt;-</span> <span class="fu">loess</span>(mean_temp <span class="sc">~</span> year_day, <span class="at">data =</span> hfx, </span>
 <span id="cb14-2"><a></a>            <span class="at">degree =</span> <span class="dv">1</span>, <span class="at">span =</span> <span class="fl">0.25</span>)</span>
-<span id="cb14-3"><a></a><span class="fu">augment</span>(m3, <span class="at">newdata =</span> new_data, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a></a><span class="fu">augment</span>(m3, <span class="at">newdata =</span> new_data, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb14-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year_day, <span class="at">y =</span> .fitted)) <span class="sc">+</span> </span>
 <span id="cb14-5"><a></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
 <span id="cb14-6"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .fitted <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>.se.fit,</span>
@@ -14245,8 +14245,7 @@ drop.square:  FALSE </code></pre>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy Chapter 6. Work with models.</p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<p>Task: Fitting and using smoothing models.</p>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.538">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2022-10-06">
 <title>data-viz - Linear models</title>
@@ -716,14 +716,14 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">6.26</td>
-<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">5.17</td>
 <td style="text-align: right;">7.10</td>
 <td style="text-align: right;">0.5</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">displ</td>
 <td style="text-align: right;">2.47</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">2.00</td>
 <td style="text-align: right;">3.03</td>
 <td style="text-align: right;">0.5</td>
 </tr>
@@ -5224,6 +5224,14 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <td style="text-align: right;">232</td>
 <td style="text-align: right;">2.24</td>
 </tr>
+<tr class="even">
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">11.20</td>
+<td style="text-align: right;">10.93</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">2.24</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -5950,8 +5958,8 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section><section id="prediction-uncertainties" class="slide level2"><h2>Prediction uncertainties</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">bind_cols</span>(new_data,</span>
-<span id="cb20-2"><a></a>          <span class="fu">predict</span>(m1, new_data, <span class="at">interval =</span> <span class="st">"prediction"</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() ) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a></a>   <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb20-2"><a></a>          <span class="fu">predict</span>(m1, new_data, <span class="at">interval =</span> <span class="st">"prediction"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a></a>            <span class="fu">as_tibble</span>() ) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -6037,10 +6045,10 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </table>
 </div>
 </div>
-</section><section id="can-also-use-augment" class="slide level2"><h2>Can also use augment</h2>
+</section><section id="easier-augment" class="slide level2"><h2>Easier: augment</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">augment</span>(m1, my_mpg, <span class="at">interval =</span> <span class="st">"confidence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">select</span>(displ, city_l100km, .fitted, .lower, .upper, .resid, <span class="fu">everything</span>() ) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span><span class="dv">2</span>)</span></code></pre></div>
+<span id="cb21-2"><a></a>  <span class="fu">select</span>(displ, city_l100km, .fitted, .lower, .upper, .resid, <span class="fu">everything</span>() ) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead><tr class="header">
@@ -11503,8 +11511,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy Chapter 6. Work with models.</p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<p>Task: Fitting and using linear models.</p>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
