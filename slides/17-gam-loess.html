@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-06">
+<meta name="dcterms.date" content="2024-02-15">
 <title>data-viz - GAM and LOESS models</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,7 +404,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-10-06</p>
+  <p class="date">2024-02-15</p>
 </section><section id="gam-and-loess-models" class="slide level2"><h2>GAM and LOESS models</h2>
 <ul>
 <li><p>Describing, fitting, and using models</p></li>
@@ -14224,7 +14224,7 @@ drop.square:  FALSE </code></pre>
 <span id="cb13-7"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> mean_temp), <span class="at">data =</span> hfx) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="17-gam-loess_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="loess-with-straight-lines" class="slide level2"><h2>LOESS with straight lines</h2>
+<img data-src="17-gam-loess_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="loess-with-smaller-span" class="slide level2"><h2>LOESS with smaller span</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a>m3 <span class="ot">&lt;-</span> <span class="fu">loess</span>(mean_temp <span class="sc">~</span> year_day, <span class="at">data =</span> hfx, </span>
 <span id="cb14-2"><a></a>            <span class="at">degree =</span> <span class="dv">1</span>, <span class="at">span =</span> <span class="fl">0.25</span>)</span>
