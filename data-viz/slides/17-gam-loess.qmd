@@ -1,7 +1,7 @@
 ---
 title: "GAM and LOESS models"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-06"
+date: "2024-02-15"
 format:
   revealjs:
     slide-number: true
@@ -137,7 +137,7 @@ augment(m2, newdata = new_data, se_fit = TRUE) |>
   geom_point(aes(y = mean_temp), data = hfx) + my_theme
 ```
 
-## LOESS with straight lines
+## LOESS with smaller span
 
 ```{r fig.height=5, fig.align="center"}
 m3 <- loess(mean_temp ~ year_day, data = hfx, 
