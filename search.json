@@ -2496,7 +2496,7 @@
     "href": "slides/15-working-with-models.html#quantile-regression",
     "title": "Working with models",
     "section": "Quantile regression",
-    "text": "Quantile regression\n\np + geom_quantile(method = \"rqss\", formula = y ~ x,\n                  quantiles = c(0.1, 0.5, 0.9))\n\n\n:: footer Requires package quantreg ::"
+    "text": "Quantile regression\n\np + geom_quantile(method = \"rqss\", formula = y ~ x,\n                  quantiles = c(0.1, 0.5, 0.9))\n\n\n\nRequires package quantreg"
   },
   {
     "objectID": "slides/15-working-with-models.html#generalized-additive-model",
@@ -2888,7 +2888,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.9078778\n1.0383001\n0.8465417\n20\n8.083777\n1\n\n\n0.7379609\n0.6828378\n-0.6059133\n50\n37.453269\n2\n\n\n-1.2211135\n-1.1722363\n0.2201526\n38\n30.954848\n3\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n4\n\n\n0.2562886\n-0.1713082\n1.2592483\n20\n17.034740\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.7379609\n0.6828378\n-0.6059133\n50\n37.453269\n1\n\n\n0.7535204\n0.7453651\n0.8252914\n29\n16.744315\n2\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n3\n\n\n0.2250399\n-0.3560400\n1.9079736\n9\n5.915561\n4\n\n\n-1.1749108\n-1.1404092\n0.2344096\n40\n34.003173\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
