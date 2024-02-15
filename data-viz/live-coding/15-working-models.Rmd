@@ -18,7 +18,13 @@ In this demonstration, we will practice adding smooths (regression lines) to plo
 Plot life expectancy by year, facet on continent, add regression line by continent, show a thin line for each country. Possibly show a regression line for each country instead of data.
 
 ```{r}
-
+gapminder |> ggplot(aes(x = year, y = lifeExp)) +
+  # geom_point() +
+  facet_wrap(~ continent) +
+  geom_smooth(method = "lm", formula = y ~ x, aes(group = country), se = FALSE,
+              linewidth = 0.5, color = "lightgray", alpha = 0.1) +
+  geom_smooth(method = "lm", formula = y ~ x) +
+  theme_bw()
 
 ```
 
@@ -27,14 +33,35 @@ Plot life expectancy by year, facet on continent, add regression line by contine
 Use `geom_quantile` and `quantiles = ...` to do quantile regression.
 Try a polynomial instead of a straight line.
 
+```{r}
+gapminder |> ggplot(aes(x = year, y = lifeExp)) +
+  # geom_point() +
+  facet_wrap(~ continent) +
+  geom_quantile(method = "rqss", formula = y ~ x, quantiles = c(0.25, 0.75)) +
+  theme_bw()
+
+```
+
+
 ## Logarithmic increases
 
 Show increase in life expectancy as a function of GDP per capita. Add an appropriate regression line.
 
 ```{r}
-
+gapminder |> ggplot(aes(gdpPercap, lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x) +
+  scale_x_log10()
 
 ```
+
+```{r}
+gapminder |> ggplot(aes(gdpPercap, lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ log(x)) 
+
+```
+
 
 Compare regression on the mean (ordinary least squares, linear model, lm) with quantile regression on the median (geom_quantile, quantiles = 0.5).
 
@@ -45,7 +72,11 @@ Plot full data and add a smooth.
 
 ```{r}
 co2 <- read_table("https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt",
-                  comment = "#", col_names = FALSE)
+                  comment = "#", col_names = FALSE) |>
+  rename(year = X1,
+         decimal_year = X3, 
+         co2 = X4)
+co2 |> ggplot(aes(decimal_year, co2)) + geom_line()
 ```
 
 
@@ -53,7 +84,21 @@ co2 <- read_table("https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_
 Show interannual cycle for CO2 after subtracting annual mean, plot as a function of the fraction of the year elapsed, smooth with a LOESS or GAM.
 
 ```{r}
-
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean) |>
+  ggplot(aes(decimal_year, co2_season)) + 
+  geom_line()
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean) |>
+  ggplot(aes(factor(decimal_year - year) , co2_season)) + 
+  geom_boxplot()
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean) |>
+  ggplot(aes(factor(X2) , co2_season)) + 
+  geom_boxplot()
 ```
 
 
