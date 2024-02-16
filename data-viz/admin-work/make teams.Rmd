@@ -1,0 +1,59 @@
+---
+title: "Make teams for term project"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+```
+
+## Read data from google form
+
+Read requests for team memberships from google forms. Assume there are duplicates and other errors in the form. Work backwards from most recent entry first.
+
+Strategy: make a table of name / email / github / team number.
+
+```{r}
+requests <- read_csv("~/Downloads/Create a team for a term project.csv") |>
+  janitor::clean_names()
+clean_requests <- requests |> mutate(team = 1:n()) |>
+  unite(col = "name_1", name_of_first_person:git_hub_id_of_first_person) |>
+  unite(col = "name_2", name_of_second_person:git_hub_id_of_second_person) |>
+  unite(col = "name_3", name_of_third_person_optional:git_hub_id_of_third_person_optional) |>
+  pivot_longer(name_1:name_3) |>
+  filter(value != "NA_NA_NA") |>
+  separate(value, into = c("name", "email", "github"), sep="_") |>
+  mutate(email = tolower(email)) |>
+  group_by(email) |>
+  filter(team == max(team)) |>
+  ungroup() |>
+  # filter(do_you_want_to_work_with_a_randomly_selected_person_or_a_person_you_chose_for_your_term_project != "Randomly selected person")
+  select(-timestamp, -do_you_want_to_work_with_a_randomly_selected_person_or_a_person_you_chose_for_your_term_project) |>
+  group_by(team) |>
+  mutate(team_index = 1:n(),
+         team_size = max(team_index),
+         group = cur_group_id())
+write_csv(clean_requests, "team-requests.csv")
+```
+
+Remove singletons and clean up errors.
+
+```{r}
+teams <- read_csv("team-requests.csv")
+class_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/GitHub-User-Name.csv")
+teams2 <- bind_rows(teams,
+                    class_list |> filter(!(Github %in% teams$github)))
+write_csv(teams2, "teams-v1.csv") # check!
+```
+
+Then merge in rest of class list and create random teams.
+
+Post this list on brightspace and see if there are any changes or errors.
+
+
+Ask students who do not intend to continue in the course to let people know ASAP! Or if you can't contact your team mate, let me know ASAP and I'll give you a new team.
+
