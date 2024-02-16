@@ -98,9 +98,9 @@ p + geom_quantile(method = "rqss", formula = y ~ x,
                   quantiles = c(0.1, 0.5, 0.9))
 ```
 
-:: footnote
+::: footer
 Requires package `quantreg`
-::
+:::
 
 ## Generalized additive model 
 

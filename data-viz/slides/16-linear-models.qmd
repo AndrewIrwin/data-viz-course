@@ -1,7 +1,7 @@
 ---
 title: "Linear models"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-06"
+date: "2024-02-13"
 format:
   revealjs:
     slide-number: true
@@ -128,7 +128,7 @@ glance(m4) |> kable(digits = 2)
 ## Working with models: predictions
 
 ```{r, fig.height=5, fig.align="center"}
-predict(m1, se.fit = TRUE) |> kable(digits = 2)
+predict(m1, se.fit = TRUE) |> kable(digits = 2) # confusing!
 ```
 
 ## Working with models: residuals
