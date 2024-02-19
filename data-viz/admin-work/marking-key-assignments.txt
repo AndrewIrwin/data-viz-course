@@ -1,0 +1,15 @@
+Marking keys
+
+Record grades in Brightspace using rubric.
+Use csv file to link Github (submission) names to real student names.
+
+Assignment 1.
+
+Goal of the assignment is to get a working R/Rstudio/git system and practice 
+some basic plotting with ggplot.
+
+Question 1. Scatter plot of two quantitative variables from penguin data, plus 1 sentence description (3 points)
+Question 2. Same plot plus color or shape for points, plus 1 sentence descrbing information now visible (3 points)
+Question 3. Same plot plus title and axis labels (2 points)
+Submit an updated Rmd and matching html file without errors (1 point each, total 2)
+Total 10.

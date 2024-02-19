@@ -111,10 +111,13 @@ I will get you to practice reading files later on in the course. For now,
 * pay attention to the code I use in future lessons for reading files, and
 * download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
 
+You can get the file "[test-data.csv](tasks/test-data.csv)" from this link.
 
 #### Task: Reshaping data (Lesson 12) {#task-7 .unnumbered}
 
 Reshaping data practice. File: [task-L12-reshape](tasks/task-L12-reshape.Rmd).
+
+You can get the file "[question-2.csv](tasks/question-2.csv)" from this link.
 
 #### Task: Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
