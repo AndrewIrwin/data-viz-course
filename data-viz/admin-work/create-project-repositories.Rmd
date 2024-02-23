@@ -1,0 +1,59 @@
+---
+title: "Create repositories for Assignments"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(ghclass)
+```
+
+## Read project team list
+
+
+```{r}
+team_list <- read_csv("teams-v1.csv")
+```
+
+
+## Get list of current repositories
+
+```{r}
+github_whoami()
+org_name = "Dalhousie-AndrewIrwin-Teaching"
+# org_exists(org_name)  # just checking!
+org_sitrep(org_name)
+# repos <- org_repos(org_name) # all of them
+repos <- org_repos(org_name, filter = "data-viz-project-.*") # student assignment repositories
+```
+
+## Create repositories
+
+Make list of repos to create.
+
+```{r}
+team_list <- team_list |> mutate(full_project_repo = paste0(org_name, "/", "data-viz-project-", sprintf("%02d", group))) |>
+  mutate(project_repo = paste0("data-viz-project-",  sprintf("%02d", group))) |>
+  filter(!(full_project_repo %in% repos))
+```
+
+Create a repo
+
+```{r}
+create_repo <- function(team_number) {
+  team_name = paste0("Team-", sprintf("%02d", team_number))
+  users <- team_list |> filter(team_number == group) %>% pull(github)
+  org_create_assignment(org = org_name,
+                        repo = paste0("data-viz-project-", sprintf("%02d", team_number)),
+                        user = users,
+                        team = team_name,
+                        source_repo = paste0(org_name, "/data-viz-project"),
+                        private = TRUE)
+}
+# for (i in unique(team_list$group)) create_repo(i)
+```
+
+
