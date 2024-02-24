@@ -38,7 +38,8 @@ Make list of repos to create.
 ```{r}
 team_list <- team_list |> mutate(full_project_repo = paste0(org_name, "/", "data-viz-project-", sprintf("%02d", group))) |>
   mutate(project_repo = paste0("data-viz-project-",  sprintf("%02d", group))) |>
-  filter(!(full_project_repo %in% repos))
+  filter(!(full_project_repo %in% repos)) |>
+  filter(!is.na(github))
 ```
 
 Create a repo
@@ -54,7 +55,8 @@ create_repo <- function(team_number) {
                         source_repo = paste0(org_name, "/data-viz-project"),
                         private = TRUE)
 }
-# for (i in unique(team_list$group)) create_repo(i)
+tl <- unique(team_list$group) |> setdiff(1)
+for (i in tl) create_repo(i)
 ```
 
 
