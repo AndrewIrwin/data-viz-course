@@ -40,20 +40,52 @@ clean_requests <- requests |> mutate(team = 1:n()) |>
 write_csv(clean_requests, "team-requests.csv")
 ```
 
-Remove singletons and clean up errors.
+Remove singletons and clean up errors. Get list of registrations and remove students who have dropped.
 
 ```{r}
 teams <- read_csv("team-requests.csv")
 class_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/GitHub-User-Name.csv")
+registrations <- read_delim("~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/dalonline-classlist-2024-02-19.esv", delim = "=")
+  # can't match; dont have banner ID; some students have used gmail addresses
+  # match by hand....
 teams2 <- bind_rows(teams,
-                    class_list |> filter(!(Github %in% teams$github)))
-write_csv(teams2, "teams-v1.csv") # check!
+                    class_list |> 
+                      filter(!(Github %in% teams$github)))
+teams3 <- full_join(registrations |> janitor::clean_names(),
+          teams2 )
+write_csv(teams3, "teams-v1.csv", na = "") # check!
 ```
 
-Then merge in rest of class list and create random teams.
+Then merge in rest of class list and create random teams. Do data cleaning by hand.
 
 Post this list on brightspace and see if there are any changes or errors.
 
+Not sortable.
+
+```{r}
+library(kableExtra)
+new_teams <- read_csv("teams-v1.csv")
+new_teams |> select(group, name, github, email) |>
+  filter(!is.na(github)) |>
+  kbl() |> kable_styling() |>
+  save_kable("teams-table.html")
+```
+
+
+Sortable
+
+```{r}
+library(DT)
+new_teams |>
+  select(group, name, github, email) |>
+  arrange(group) |>
+  # filter(!is.na(github)) |>
+  datatable(class = 'cell-border stripe', rownames = FALSE,
+            options = list(lengthMenu = list(c(-1), c('All')))) |>
+  htmlwidgets::saveWidget("teams-table-2.html")
+
+
+```
 
 Ask students who do not intend to continue in the course to let people know ASAP! Or if you can't contact your team mate, let me know ASAP and I'll give you a new team.
 
