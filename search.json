@@ -809,7 +809,7 @@
     "href": "slides/18-collaboration.html#task",
     "title": "Collaboration with GitHub",
     "section": "Task",
-    "text": "Task\n\nWork with your team on the project repository. Each team member should edit the proposal file.\n\nClone your project repository to your computer.\nEdit your project proposal.\nStage, commit, and push your changes.\nResolve any conflicts that arise – for example, two people using the same line of the table."
+    "text": "Task\n\nWork with your team on the project repository. Each team member should edit the proposal file.\n\nClone your project repository to your computer.\nEdit your project proposal.\nStage, commit, and push your changes.\nResolve any conflicts that arise – for example, two people editing the same line of a markdown document."
   },
   {
     "objectID": "slides/16-linear-models.html#linear-models",
@@ -2685,7 +2685,7 @@
     "href": "slides/19-finding-data.html#plan",
     "title": "Finding data",
     "section": "Plan",
-    "text": "Plan\n\nFinding data\nReading data\nChecking data\nSubsetting data (filtering observations, selecting variables)\nImportance of metadata (source, units, how/why/when)"
+    "text": "Plan\n\nFinding data\nAsking questions that can be answered by data\nReading data\nChecking data\nSubsetting data (filtering observations, selecting variables)\nImportance of metadata (source, units, how/why/when)"
   },
   {
     "objectID": "slides/19-finding-data.html#where-to-get-data",
@@ -2699,7 +2699,7 @@
     "href": "slides/19-finding-data.html#what-to-look-for",
     "title": "Finding data",
     "section": "What to look for?",
-    "text": "What to look for?\n\nDownloadable spreadsheets, comma separated variables files, text files\nR packages to download data\nGitHub repositories (and others: pangaea.de, osf.io, and many, many more)\nA license or terms and conditions of reuse and redistribution"
+    "text": "What to look for?\n\nA clear description of the data, how and why they were collected\nDownloadable spreadsheets, comma separated variables files, text files\nR packages to download data\nGitHub repositories (and others: pangaea.de, osf.io, and many, many more)\nA license or terms and conditions of reuse and redistribution"
   },
   {
     "objectID": "slides/19-finding-data.html#example-gapminder",
@@ -2735,6 +2735,13 @@
     "title": "Finding data",
     "section": "Example: UN",
     "text": "Example: UN\n\nforest_UN &lt;- read_csv(\"static/L19/UNdata_Export_20210219_185253716.csv\")\nforest_UN %&gt;%\n  filter(Year == 2017, Unit == \"1000 ha\",\n         str_starts(`Country or Area`, \"[BU]\")) %&gt;%\n  ggplot(aes(x = Value, y = fct_reorder(`Country or Area`, Value))) +\n  geom_point() + labs(x = \"Forest area (1000 ha)\", y = \"\") + my_theme +\n  scale_x_log10() + theme(axis.title.y = element_text(size=10))"
+  },
+  {
+    "objectID": "slides/19-finding-data.html#our-world-in-data",
+    "href": "slides/19-finding-data.html#our-world-in-data",
+    "title": "Finding data",
+    "section": "Our World in Data",
+    "text": "Our World in Data"
   },
   {
     "objectID": "slides/19-finding-data.html#datapasta",
@@ -2895,7 +2902,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.6476207\n0.5439807\n1.3631592\n25\n25.48083\n1\n\n\n0.8839747\n1.0519845\n-0.6567060\n36\n22.34772\n2\n\n\n0.4647469\n0.0269926\n-0.0632616\n28\n12.03898\n3\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n4\n\n\n-1.1816097\n-1.1429065\n0.2649730\n40\n35.38243\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.2250399\n-0.3560400\n1.9079736\n9\n5.915561\n1\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n2\n\n\n-1.1749108\n-1.1404092\n0.2344096\n40\n34.003173\n3\n\n\n0.7535204\n0.7453651\n0.8252914\n29\n16.744315\n4\n\n\n0.7379609\n0.6828378\n-0.6059133\n50\n37.453269\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
