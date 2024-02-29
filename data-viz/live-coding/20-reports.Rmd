@@ -3,7 +3,6 @@ title: "Reports"
 author: "Andrew Irwin"
 date: "Thursday 29 February, 2024"
 output:
-  word_document: default
   html_document: default
 ---
 
@@ -31,13 +30,17 @@ peng_subset |> ggplot(aes(bill_depth_mm)) + geom_histogram()
 -   text
 -   R code
 
-## Formatting
+## Text formatting
+
+A paragraph is a sequence of lines separated by a blank line.
+
+This is a second paragraph.
 
 -   Headings (hash marks)
 -   Paragraphs
 -   Lists (numbered, bullets)
 -   **bold**, *italics*
--   hyperlinks
+-   [hyperlinks](https://andrewirwin.github.io/data-viz-course/002-detailed-outline.html)
 -   spell check
 -   outline menu (far right)
 -   code block menu (bottom left)
@@ -61,6 +64,11 @@ Contrast with 'source' mode
 -   options: fig.cap="", echo=FALSE, message=FALSE and many more
 -   [code chunk option tutorial](https://rmarkdown.rstudio.com/lesson-3.html) and [reference](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html)
 
+```{r demo_chunk, warning=FALSE, message=FALSE, fig.cap="Figure 1. A histogram of penguin bill lengths (in mm).", fig.width=4, fig.height=3, echo=FALSE}
+peng_subset |> ggplot(aes(bill_length_mm)) + geom_histogram()
+
+```
+
 ## Computation model
 
 -   Work as you go and develop
@@ -76,9 +84,9 @@ Contrast with 'source' mode
 -   Leave R errors in your Rmd document
 
 ```{r}
-# read_csv("test-data.csv")
-# read_csv("/Users/airwin/Dropbox/test-data.csv")
-# read_csv(here::here("data-viz/tasks", "test-data.csv"))
+read_csv("../tasks/test-data.csv")
+## read_csv("/Users/airwin/git-repos/Stat2430/data-viz-course/data-viz/tasks/test-data.csv")
+read_csv(here::here("data-viz/tasks", "test-data.csv"))
 ```
 
 ## How Rstudio tries to help
@@ -88,7 +96,7 @@ Contrast with 'source' mode
 -   Environment viewer
 
 ```{r}
-model1 <- lm(body_mass_g ~ species, 
+model1 <- lm(body_mass_g ~ species,
              data = penguins)  # delete bracket to see red X
 summary(model1)
 p1 <- penguins |> ggplot(aes(body_mass_g)) + geom_histogram()
@@ -113,6 +121,7 @@ Do a calculation two ways: with just pipes, and then in a series of steps with n
 penguins |> na.omit() |>
   group_by(species) |>
   summarize(mean_body_mass = mean(body_mass_g))
+penguins |> summarize(mean_flipper_lenght = mean(flipper_length_mm))
 ```
 
 "step-by-step"
@@ -121,4 +130,6 @@ penguins |> na.omit() |>
 penguins_no_na <- penguins |> na.omit()
 penguins_group <- penguins_no_na |> group_by(species)
 penguins_group |> summarize(mean_body_mass = mean(body_mass_g))
+penguins_no_na |> summarize(mean_flipper_lenght = mean(flipper_length_mm))
+
 ```
