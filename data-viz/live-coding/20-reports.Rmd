@@ -1,8 +1,9 @@
 ---
 title: "Reports"
 author: "Andrew Irwin"
-date: "Thursday 20 October, 2022"
+date: "Thursday 29 February, 2024"
 output:
+  word_document: default
   html_document: default
 ---
 
@@ -42,10 +43,8 @@ peng_subset |> ggplot(aes(bill_depth_mm)) + geom_histogram()
 -   code block menu (bottom left)
 -   more bullets.
 
-```{r penguin_plot, warning=FALSE}
-library(palmerpenguins)
+```{r penguin_plot, warning=FALSE, fig.cap = "A histogram of bill length from three species of penguins on three islands in the Antarctic peninsula near Palmer Station."}
 penguins |> ggplot(aes(bill_length_mm)) + geom_histogram()
-peng_subset <- penguins |> filter(species == "Adelie")
 ```
 
 ## Visual mode
@@ -77,9 +76,9 @@ Contrast with 'source' mode
 -   Leave R errors in your Rmd document
 
 ```{r}
-# read_csv("data.csv")
-# read_csv("/Users/airwin/Dropbox/data.csv")
-# read_csv(here::here("data.csv"))
+# read_csv("test-data.csv")
+# read_csv("/Users/airwin/Dropbox/test-data.csv")
+# read_csv(here::here("data-viz/tasks", "test-data.csv"))
 ```
 
 ## How Rstudio tries to help
@@ -95,7 +94,6 @@ summary(model1)
 p1 <- penguins |> ggplot(aes(body_mass_g)) + geom_histogram()
 ```
 
-
 ## Concepts to reinforce and reexplain
 
 -   Objects come in different types
@@ -108,7 +106,6 @@ p1 <- penguins |> ggplot(aes(body_mass_g)) + geom_histogram()
     -   type name in console
     -   look in environment tab
 -   Chain commands together with pipes (`|>` or `%>%`) vs. assigning objects to temporary names to break down computations into component parts
-
 
 Do a calculation two ways: with just pipes, and then in a series of steps with named objects I'll create.
 
@@ -125,7 +122,3 @@ penguins_no_na <- penguins |> na.omit()
 penguins_group <- penguins_no_na |> group_by(species)
 penguins_group |> summarize(mean_body_mass = mean(body_mass_g))
 ```
-
-
-
-
