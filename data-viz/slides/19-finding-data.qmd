@@ -26,6 +26,8 @@ my_theme = theme_bw() +
 
 * Finding data
 
+* Asking questions that can be answered by data
+
 * Reading data
 
 * Checking data
@@ -51,6 +53,8 @@ my_theme = theme_bw() +
 * Many, many, many more sources: google
 
 ## What to look for?
+
+* A clear description of the data, how and why they were collected
 
 * Downloadable spreadsheets, comma separated variables files, text files
 
@@ -100,6 +104,12 @@ forest_UN %>%
   ggplot(aes(x = Value, y = fct_reorder(`Country or Area`, Value))) +
   geom_point() + labs(x = "Forest area (1000 ha)", y = "") + my_theme +
   scale_x_log10() + theme(axis.title.y = element_text(size=10))
+```
+
+## Our World in Data
+
+```{r echo=FALSE, out.width = '60%', fig.align="center"}
+knitr::include_graphics("static/L19/price-lighting.png")
 ```
 
 ## Datapasta
