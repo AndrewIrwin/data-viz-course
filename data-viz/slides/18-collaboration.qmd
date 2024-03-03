@@ -1,7 +1,7 @@
 ---
 title: "Collaboration with GitHub"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-18"
+date: "2024-02-27"
 format:
   revealjs:
     slide-number: true
@@ -131,9 +131,9 @@ knitr::include_graphics("static/L18/collaboration-07-resolution.png")
 
 ## Task
 
-* Task: 
+* Work with your team on the project repository. Each team member should edit the proposal file.
   * Clone your project repository to your computer.
   * Edit your project proposal. 
   * Stage, commit, and push your changes.
-  * Resolve any conflicts that arise -- for example, two people using the same line of the table.
+  * Resolve any conflicts that arise -- for example, two people editing the same line of a markdown document.
 

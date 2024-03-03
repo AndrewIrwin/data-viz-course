@@ -1,7 +1,7 @@
 ---
 title: "Reproducible reports"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2024-02-29"
 format:
   revealjs:
     slide-number: true
@@ -26,7 +26,7 @@ my_theme = theme_bw() +
 
 * What is reproducibility?
 
-* Why do I care?
+* Why should you care?
 
 * Specific role of 
 
@@ -93,7 +93,8 @@ Easy to detect if a report is complete (Does it knit?)
 * Carefully format text in R markdown reports
 
   * Headings with `#`
-  * Bold, italics, and other formatting with `*`, `**` and `_`
+  * Bullet points with indented `*` or `-`
+  * Bold and italics formatting with `*`, `**` around words
 
 * Control output from R with "chunk options"
 

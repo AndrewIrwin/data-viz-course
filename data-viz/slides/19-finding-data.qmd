@@ -1,7 +1,7 @@
 ---
 title: "Finding data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2024-02-29"
 format:
   revealjs:
     slide-number: true
@@ -25,6 +25,8 @@ my_theme = theme_bw() +
 ## Plan
 
 * Finding data
+
+* Asking questions that can be answered by data
 
 * Reading data
 
@@ -51,6 +53,8 @@ my_theme = theme_bw() +
 * Many, many, many more sources: google
 
 ## What to look for?
+
+* A clear description of the data, how and why they were collected
 
 * Downloadable spreadsheets, comma separated variables files, text files
 
@@ -102,6 +106,12 @@ forest_UN %>%
   scale_x_log10() + theme(axis.title.y = element_text(size=10))
 ```
 
+## Our World in Data
+
+```{r echo=FALSE, out.width = '60%', fig.align="center"}
+knitr::include_graphics("static/L19/price-lighting.png")
+```
+
 ## Datapasta
 
 ```{r echo=FALSE, out.width = '60%', fig.align="center"}
@@ -136,6 +146,17 @@ data.frame(
 )
 ```
 
+## Metadata
+
+* What data were collected? (Column definitions, units, sampling)
+
+* Who collected the data?
+
+* Why were the data collected? (Purpose can influence utility)
+
+* How were the data collected? (Survey, random design or self-reported, experiment, methods)
+
+* When and where were the data collected? (Geographic, temporal scope)
 
 ## Summary
 
