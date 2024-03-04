@@ -3,7 +3,6 @@ title: "Reports"
 author: "Andrew Irwin"
 date: "Thursday 29 February, 2024"
 output:
-  word_document: default
   html_document: default
 ---
 
