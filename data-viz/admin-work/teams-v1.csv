@@ -1,12 +1,14 @@
 id,last_name,first_name,email,name,github,group
 B00853225,Zhao                                                        ,Zeyu           ,zy203905@dal.ca,Zeyu Zhao,DoubleZyu,1
 B00901891,Yu                                                          ,Yifan          ,yf634683@dal.ca,Yifan Yu,yyfID,1
+B00926556,Chen                                                        ,Kaixun         ,kx303683@dal.ca,Kaixun Chen,Ckx20040305,1
 B00849636,Xu                                                          ,Draymond       ,zh945371@dal.ca,Draymond Xu,Draymond4,2
 B00898119,Sun                                                         ,Qiayi          ,qy967219@dal.ca,Qiayi Sun,QiayiS,2
 B00909776,Pan                                                         ,Yichao         ,yc380569@dal.ca,Yichao Pan,YichaoPan,3
 B00952399,Bao                                                         ,Jia            ,jz691838@dal.ca,Jia Bao,JiaBao2023,3
 B00870952,Feng                                                        ,Yushan         ,ys649868@dal.ca,Yushan Feng,LILYUshan,4
 B00879734,Fu                                                          ,Zhuang         ,zh960710@dal.ca,Zhuang FU,zhuangfu123,4
+B00927542,Bi                                                          ,Zhirui         ,zh305197@dal.ca,"Bi, Zhirui",bizhirui,4
 B00816215,Xie                                                         ,Xinyi          ,xn734320@dal.ca,Xinyi Xie,xiexinyi123,5
 B00824291,Liu                                                         ,Yuan           ,yn554501@dal.ca,Yuan Liu,StEvn0827,5
 B00876340,Yang                                                        ,Jiarui         ,jr754972@dal.ca,Jiarui Yang,Jiaruiyang6,5
@@ -24,6 +26,7 @@ B00922148,Li                                                          ,Jiayi    
 B00935128,Xiao                                                        ,Ziyang         ,zy582053@dal.ca,Ziyang Xiao,Ziyanggggg,10
 B00892779,Qi                                                          ,Jihong         ,jh586734@dal.ca,Jihong Qi,JihongQi1,11
 B00892847,Zhang                                                       ,Jingyi         ,jn836791@dal.ca,Jingyi Zhang,JingyiZhang2,11
+B00863045,Wang                                                        ,Yufei          ,yf747608@dal.ca,Yufei Wang,YufeiWww,11
 B00915427,Jing                                                        ,Xiangfeng,xn937190@dal.ca,xiangfeng jing,xn937190,12
 B00901296,Yu                                                          ,Wenao          ,wn917462@dal.ca,wenao yu,WenaoYu,12
 B00901405,Li                                                          ,Jiarui         ,jr988967@dal.ca,jiarui li,jr0214,12
@@ -62,7 +65,7 @@ B00833325,Chauhan                                                     ,Yash     
 B00835180,Peng                                                        ,Wenxuan        ,jy769300@dal.ca,"Peng, Wenxuan",orca359,25
 B00844177,Hong                                                        ,Jianci         ,jn393447@dal.ca,Jianci Hong,JaneyHong,25
 B00845516,Mascini                                                     ,Max            ,mx860115@dal.ca,Max Mascini,MaxMascini,26
-B00855422,Liu                                                         ,Xiangyu        ,xn726814@dal.ca,Xiangyu Liu,SwiftLiuu,39
+B00915427,Jing                                                        ,JING           ,xn937190@dal.ca,Xiangfeng Jing,xn937190,26
 B00858875,Al Balushi                                                  ,Osama Abdul Ham,as462555@dal.ca,Osama Albalushi,OsamaAlbalushi,27
 B00859359,Keetch                                                      ,Lucas          ,lc268948@dal.ca,Lucas Keetch,LucasKee,27
 B00859846,Winter                                                      ,Noah           ,nh600292@dal.ca,Noah Winter,NoahSTAT2430,28
@@ -70,15 +73,13 @@ B00859945,Yun                                                         ,Samuel   
 B00860195,Lloyd                                                       ,Sylvie         ,sy553039@dal.ca,Sylvie Lloyd,sylvielloyd,29
 B00860274,Yeon                                                        ,Julia          ,th916074@dal.ca,Julia Yeon,juliayeon,29
 B00860387,Wang                                                        ,Zhenghao       ,zh705140@dal.ca,Zhenghao Wang,Zhenghaoooo,30
-B00861141,Qi                                                          ,Chongan        ,ch257295@dal.ca,Chongan Qi,ChonganQi,33
-B00863045,Wang                                                        ,Yufei          ,yf747608@dal.ca,Yufei Wang,YufeiWww,11
-B00865885,Law                                                         ,Yuki           ,yk717189@dal.ca,Yuki Law,Yuki-Law,44
-B00867497,Jin                                                         ,Yanchi         ,yn568249@dal.ca,Yanchi Jin,WGJason0831,33
-B00869093,Vesuna                                                      ,Atarsh         ,at889044@dal.ca,Atarsh Vesuna,atarshyv,32
-B00869905,Kerr                                                        ,Ian            ,in335268@dal.ca,Ian Kerr,ianskerr,33
 B00869908,Tang                                                        ,Lei            ,lz356454@dal.ca,Lei Tang,WHOISTT,30
 B00870101,Li                                                          ,Junyang        ,jn205443@dal.ca,Junyang Li,JunyangLi1111,30
+B00869093,Vesuna                                                      ,Atarsh         ,at889044@dal.ca,Atarsh Vesuna,atarshyv,32
 B00871064,Tripathi                                                    ,Utkarsh        ,ut885930@dal.ca,Utkarsh Tripathi,utkarsh9985,32
+B00861141,Qi                                                          ,Chongan        ,ch257295@dal.ca,Chongan Qi,ChonganQi,33
+B00867497,Jin                                                         ,Yanchi         ,yn568249@dal.ca,Yanchi Jin,WGJason0831,33
+B00869905,Kerr                                                        ,Ian            ,in335268@dal.ca,Ian Kerr,ianskerr,33
 B00871229,Deng                                                        ,Yining         ,yn220576@dal.ca,Yining Deng,DddYNnnn,35
 B00871921,Hengel                                                      ,Zizo           ,ab607538@dal.ca,Zizo Hengel,ZizoHengel,35
 B00876452,Luo                                                         ,Jianhao        ,jn502718@dal.ca,Jianhao Luo,Jianhao133,36
@@ -87,17 +88,16 @@ B00889285,Marsala                                                     ,Marin    
 B00892382,Shala                                                       ,Alb            ,al878844@dal.ca,Alb Shala,Al873842,37
 B00897465,Ames                                                        ,Deanna         ,dn912025@dal.ca,Deanna Ames,deannaames,38
 B00907590,Jain                                                        ,Samkit         ,sm572831@dal.ca,Samkit Jain,SamkitCodes,38
+B00855422,Liu                                                         ,Xiangyu        ,xn726814@dal.ca,Xiangyu Liu,SwiftLiuu,39
 B00908217,Zhang                                                       ,Haoran         ,hr473038@dal.ca,Haoran Zhang,Andyzhang222,39
-B00915427,Jing                                                        ,JING           ,xn937190@dal.ca,Xiangfeng Jing,xn937190,26
-B00919642,Jin                                                         ,Nuoling        ,nl916044@dal.ca,Nuoling Jin,Nuoling9,41
 B00920090,Lao                                                         ,Geoff          ,zh536906@dal.ca,Geoffrey Lao,geoffreylao,40
 B00920197,Crake                                                       ,Harrison       ,hr266509@dal.ca,Harrison Crake,HCrake48,40
+B00919642,Jin                                                         ,Nuoling        ,nl916044@dal.ca,Nuoling Jin,Nuoling9,41
 B00921585,Bhardwaj                                                    ,Vedika         ,vd765248@dal.ca,vedika Bhardwaj,vedika0808,41
 B00925877,MacNeil                                                     ,Jessica        ,js580918@dal.ca,Jessica MacNeil,jessica2430,41
-B00926556,Chen                                                        ,Kaixun         ,kx303683@dal.ca,Kaixun Chen,Ckx20040305,1
-B00927542,Bi                                                          ,Zhirui         ,zh305197@dal.ca,"Bi, Zhirui",bizhirui,4
 B00928265,Adams                                                       ,Max            ,mx298563@dal.ca,Max Adams,MACKSATOMS,43
 B00939597,Zhang                                                       ,Cindy          ,cn483845@dal.ca,Cindy Zhang,cindzh,43
 B00992230,Yu                                                          ,Haseon         ,HS880690@DAL.CA,Haseon Yu,HaseonYu,43
+B00865885,Law                                                         ,Yuki           ,yk717189@dal.ca,Yuki Law,Yuki-Law,38
 B00792609,Sun                                                         ,ezra           ,yz792930@dal.ca,Ezra Sun,,44
 B00926527,Sun                                                         ,Yutong         ,yt277242@dal.ca,Yutong Sun,,44
