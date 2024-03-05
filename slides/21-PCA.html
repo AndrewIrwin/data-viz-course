@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-25">
+<meta name="dcterms.date" content="2024-03-06">
 <title>data-viz - PCA: Principal Component Analysis</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -388,6 +388,7 @@
       margin-right: 0; 
     }
   </style>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -403,7 +404,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-10-25</p>
+  <p class="date">2024-03-06</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>What is PCA and why do we use it?</p></li>
@@ -431,7 +432,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="pairs-plot" class="slide level2"><h2>Pairs plot</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>my_gapminder <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>year) <span class="sc">%&gt;%</span> <span class="fu">ggpairs</span>(<span class="fu">aes</span>(<span class="at">color =</span> continent))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>my_gapminder <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>year) <span class="sc">|&gt;</span> <span class="fu">ggpairs</span>(<span class="fu">aes</span>(<span class="at">color =</span> continent))</span></code></pre></div>
 
 </div>
 <img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><div class="footer">
@@ -444,23 +445,59 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb2-3"><a></a>         <span class="at">colour =</span> <span class="st">'continent'</span>)</span></code></pre></div>
 
 </div>
-<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"></section><section id="pca-all-years" class="slide level2"><h2>PCA: All years</h2>
+<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"></section><section id="loadings" class="slide level2"><h2>Loadings</h2>
+<p>This matrix tells you how to rotate the data into PC coordinates which is the weight of each original variable in the computation of PCs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">tidy</span>(pca1, <span class="at">matrix =</span> <span class="st">"rotation"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> column, <span class="at">values_from =</span> value) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">PC</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">lifeExp</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">logGDPpercap</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">logPop</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-0.7075921</td>
+<td style="text-align: right;">-0.7064117</td>
+<td style="text-align: right;">-0.0172002</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-0.0555353</td>
+<td style="text-align: right;">0.0798613</td>
+<td style="text-align: right;">-0.9952578</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7044354</td>
+<td style="text-align: right;">-0.7032813</td>
+<td style="text-align: right;">-0.0957400</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="pca-all-years" class="slide level2"><h2>PCA: All years</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>pca1 <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(my_gapminder <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>continent, <span class="sc">-</span>year), </span>
-<span id="cb3-2"><a></a>               <span class="at">scale=</span><span class="cn">TRUE</span>)</span>
-<span id="cb3-3"><a></a><span class="fu">autoplot</span>(pca1, <span class="at">data =</span> my_gapminder, <span class="at">loadings=</span><span class="cn">TRUE</span>, </span>
-<span id="cb3-4"><a></a>         <span class="at">loadings.label =</span> <span class="cn">TRUE</span>, <span class="at">colour =</span> <span class="st">'continent'</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>pca1 <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(my_gapminder <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>continent, <span class="sc">-</span>year), </span>
+<span id="cb4-2"><a></a>               <span class="at">scale=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-3"><a></a><span class="fu">autoplot</span>(pca1, <span class="at">data =</span> my_gapminder, <span class="at">loadings=</span><span class="cn">TRUE</span>, </span>
+<span id="cb4-4"><a></a>         <span class="at">loadings.label =</span> <span class="cn">TRUE</span>, <span class="at">colour =</span> <span class="st">'continent'</span>)</span></code></pre></div>
 
 </div>
-<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"></section><section id="penguins" class="slide level2"><h2>Penguins</h2>
+<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"></section><section id="penguins" class="slide level2"><h2>Penguins</h2>
 
-<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section class="slide level2"><div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>pca2 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>(<span class="at">matrix=</span><span class="st">"loadings"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">filter</span>(PC <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from=</span><span class="st">"value"</span>, </span>
-<span id="cb4-4"><a></a>              <span class="at">names_from=</span><span class="st">"PC"</span>, <span class="at">names_prefix=</span><span class="st">"PC_"</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<img data-src="21-PCA_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section class="slide level2"><div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>pca2 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>(<span class="at">matrix=</span><span class="st">"loadings"</span>) <span class="sc">|&gt;</span> <span class="co"># same as rotation</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">filter</span>(PC <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from=</span><span class="st">"value"</span>, </span>
+<span id="cb5-4"><a></a>              <span class="at">names_from=</span><span class="st">"PC"</span>, <span class="at">names_prefix=</span><span class="st">"PC_"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table class="table" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">column</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">PC_1</th>
@@ -511,15 +548,16 @@ Andrew Irwin, a.irwin@dal.ca
 <ul>
 <li>Bonus task: Practice the PCA skills in this lesson</li>
 </ul></section><section id="penguin-pca-code" class="slide level2"><h2>Penguin PCA code</h2>
+<p>See the course notes for more code examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>my_penguins_raw <span class="ot">=</span> penguins_raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Sample Number</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">select</span>(Species, <span class="fu">where</span>(is.numeric) ) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">str_remove</span>(Species, <span class="st">"</span><span class="sc">\\</span><span class="st">(.*</span><span class="sc">\\</span><span class="st">)"</span>))</span>
-<span id="cb5-4"><a></a>pca2 <span class="ot">&lt;-</span> my_penguins_raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span> <span class="fu">prcomp</span>(<span class="at">scale=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a></a><span class="fu">autoplot</span>(pca2, <span class="at">data =</span> my_penguins_raw, </span>
-<span id="cb5-6"><a></a>         <span class="at">loadings=</span><span class="cn">TRUE</span>, <span class="at">loadings.label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-7"><a></a>         <span class="at">loadings.label.colour =</span> <span class="st">"black"</span>, <span class="at">loadings.colour =</span> <span class="st">"black"</span>,</span>
-<span id="cb5-8"><a></a>         <span class="at">colour =</span> <span class="st">'Species'</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>my_penguins_raw <span class="ot">=</span> penguins_raw <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Sample Number</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">select</span>(Species, <span class="fu">where</span>(is.numeric) ) <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">str_remove</span>(Species, <span class="st">"</span><span class="sc">\\</span><span class="st">(.*</span><span class="sc">\\</span><span class="st">)"</span>))</span>
+<span id="cb6-4"><a></a>pca2 <span class="ot">&lt;-</span> my_penguins_raw <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">|&gt;</span> <span class="fu">prcomp</span>(<span class="at">scale=</span><span class="cn">TRUE</span>)</span>
+<span id="cb6-5"><a></a><span class="fu">autoplot</span>(pca2, <span class="at">data =</span> my_penguins_raw, </span>
+<span id="cb6-6"><a></a>         <span class="at">loadings=</span><span class="cn">TRUE</span>, <span class="at">loadings.label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-7"><a></a>         <span class="at">loadings.label.colour =</span> <span class="st">"black"</span>, <span class="at">loadings.colour =</span> <span class="st">"black"</span>,</span>
+<span id="cb6-8"><a></a>         <span class="at">colour =</span> <span class="st">'Species'</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">0.15</span>)</span></code></pre></div>
 </div>
 
 <div class="quarto-auto-generated-content">

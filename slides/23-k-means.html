@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-27">
+<meta name="dcterms.date" content="2024-03-07">
 <title>data-viz - k-means clustering</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,7 +404,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-10-27</p>
+  <p class="date">2024-03-07</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>What is k-means clustering and why do we use it?</p></li>
@@ -1165,54 +1165,54 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb3-3"><a></a>                  <span class="at">centers =</span> <span class="dv">5</span>)</span>
 <span id="cb3-4"><a></a><span class="fu">tidy</span>(kclust1) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_lifeExp</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_logGDP</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_logPop</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">size</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">withinss</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">cluster</th>
+<th style="text-align: right;">s_lifeExp</th>
+<th style="text-align: right;">s_logGDP</th>
+<th style="text-align: right;">s_logPop</th>
+<th style="text-align: right;">size</th>
+<th style="text-align: right;">withinss</th>
+<th style="text-align: left;">cluster</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.2250399</td>
-<td style="text-align: right;">-0.3560400</td>
-<td style="text-align: right;">1.9079736</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5.915561</td>
+<td style="text-align: right;">0.6056531</td>
+<td style="text-align: right;">0.4490787</td>
+<td style="text-align: right;">1.1568376</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">32.11889</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-0.9842188</td>
-<td style="text-align: right;">-0.4954821</td>
-<td style="text-align: right;">-1.4418523</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">17.755300</td>
+<td style="text-align: right;">-0.0361808</td>
+<td style="text-align: right;">0.0812628</td>
+<td style="text-align: right;">-1.5085304</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">26.84173</td>
 <td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">-1.1749108</td>
-<td style="text-align: right;">-1.1404092</td>
-<td style="text-align: right;">0.2344096</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">34.003173</td>
+<td style="text-align: right;">0.8095180</td>
+<td style="text-align: right;">0.7985506</td>
+<td style="text-align: right;">-0.3603722</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">22.89679</td>
 <td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.7535204</td>
-<td style="text-align: right;">0.7453651</td>
-<td style="text-align: right;">0.8252914</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">16.744315</td>
+<td style="text-align: right;">-1.5986582</td>
+<td style="text-align: right;">-1.2394229</td>
+<td style="text-align: right;">-0.4821150</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">15.32189</td>
 <td style="text-align: left;">4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.7379609</td>
-<td style="text-align: right;">0.6828378</td>
-<td style="text-align: right;">-0.6059133</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">37.453269</td>
+<td style="text-align: right;">-0.8778423</td>
+<td style="text-align: right;">-0.9953400</td>
+<td style="text-align: right;">0.4998026</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">20.71386</td>
 <td style="text-align: left;">5</td>
 </tr>
 </tbody>
@@ -1247,15 +1247,24 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb6-4"><a></a>                  <span class="at">centers =</span> <span class="dv">3</span>)</span>
 <span id="cb6-5"><a></a><span class="fu">tidy</span>(kclust1) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 10%">
+</colgroup>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_flipper_length</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_body_mass</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_bill_length</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">s_bill_depth</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">size</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">withinss</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">cluster</th>
+<th style="text-align: right;">s_flipper_length</th>
+<th style="text-align: right;">s_body_mass</th>
+<th style="text-align: right;">s_bill_length</th>
+<th style="text-align: right;">s_bill_depth</th>
+<th style="text-align: right;">size</th>
+<th style="text-align: right;">withinss</th>
+<th style="text-align: left;">cluster</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -1296,11 +1305,19 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb7-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
 </div>
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="how-good-is-the-clustering-1" class="slide level2"><h2>How good is the clustering?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="alternate-display" class="slide level2"><h2>Alternate display</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>kclust1 <span class="sc">|&gt;</span> <span class="fu">augment</span>(penguins_scaled) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">unite</span>(<span class="st">"spp_clust"</span>, species, .cluster) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_bill_depth, <span class="at">x =</span> s_bill_length, <span class="at">color =</span> spp_clust)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">8</span>)</span></code></pre></div>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="four-species-of-penguins" class="slide level2"><h2>Four species of penguins?</h2>
+</div>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="how-good-is-the-clustering-1" class="slide level2"><h2>How good is the clustering?</h2>
 
-<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section><section id="when-to-use-k-means" class="slide level2"><h2>When to use k-means?</h2>
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="four-species-of-penguins" class="slide level2"><h2>Four species of penguins?</h2>
+
+<img data-src="23-k-means_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section><section id="when-to-use-k-means" class="slide level2"><h2>When to use k-means?</h2>
 <ul>
 <li><p>When the goal is to make categories from continuous variables</p></li>
 <li><p>Each observation is placed in a cluster</p></li>

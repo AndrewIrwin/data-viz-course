@@ -704,13 +704,13 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb12-3"><a></a>                      <span class="at">tau =</span> <span class="fl">0.50</span>) <span class="co"># quantile, between 0 and 1</span></span>
 <span id="cb12-4"><a></a><span class="fu">tidy</span>(m4) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) </span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">conf.low</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">conf.high</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">tau</th>
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+<th style="text-align: right;">tau</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -732,13 +732,13 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">glance</span>(m4) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) </span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">tau</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">logLik</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">AIC</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">BIC</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">df.residual</th>
+<th style="text-align: right;">tau</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">df.residual</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td style="text-align: right;">0.5</td>
@@ -754,17 +754,11 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">predict</span>(m1, <span class="at">se.fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># confusing!</span></span></code></pre></div>
 <div class="cell-output-display">
-<table class="kable_wrapper" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<tbody><tr class="odd">
-<td><table data-quarto-postprocess="true">
+<table class="kable_wrapper"><tbody><tr>
+<td>
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+<th style="text-align: right;">x</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -1470,10 +1464,12 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <td style="text-align: right;">15.14</td>
 </tr>
 </tbody>
-</table></td>
-<td><table data-quarto-postprocess="true">
+</table>
+</td>
+<td>
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+<th style="text-align: right;">x</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -2179,34 +2175,38 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <td style="text-align: right;">0.15</td>
 </tr>
 </tbody>
-</table></td>
-<td><table data-quarto-postprocess="true">
+</table>
+</td>
+<td>
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+<th style="text-align: right;">x</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td style="text-align: right;">232</td>
 </tr></tbody>
-</table></td>
-<td><table data-quarto-postprocess="true">
+</table>
+</td>
+<td>
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+<th style="text-align: right;">x</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td style="text-align: right;">2.24</td>
 </tr></tbody>
-</table></td>
-</tr></tbody>
 </table>
+</td>
+</tr></tbody></table>
 </div>
 </div>
 </section><section id="working-with-models-residuals" class="slide level2"><h2>Working with models: residuals</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">residuals</span>(m1) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">value</th>
+<th style="text-align: right;">value</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -2921,12 +2921,12 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb16-2"><a></a>          <span class="fu">predict</span>(m1) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">predict =</span> value),</span>
 <span id="cb16-3"><a></a>          <span class="fu">residuals</span>(m1) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">residual =</span> value)) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">city_l100km</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">predict</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">residual</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">city_l100km</th>
+<th style="text-align: right;">predict</th>
+<th style="text-align: right;">residual</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -4342,10 +4342,10 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a>new_data <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">displ =</span> <span class="fu">seq</span>(<span class="fl">1.6</span>, <span class="fl">7.2</span>, <span class="at">by =</span> <span class="fl">0.5</span>))</span>
 <span id="cb17-2"><a></a>new_data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">predict</span>(m1, new_data)) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">prediction</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">prediction</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -4406,14 +4406,14 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb18-2"><a></a>          <span class="fu">predict</span>(m1, <span class="at">se.fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() ) <span class="sc">|&gt;</span></span>
 <span id="cb18-3"><a></a> <span class="fu">distinct</span>() <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">city_l100km</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">fit</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">se.fit</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">residual.scale</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">city_l100km</th>
+<th style="text-align: right;">fit</th>
+<th style="text-align: right;">se.fit</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">residual.scale</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -5234,13 +5234,13 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb19-2"><a></a>          <span class="fu">predict</span>(m1, <span class="at">interval =</span> <span class="st">"confidence"</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() ) <span class="sc">|&gt;</span></span>
 <span id="cb19-3"><a></a>  <span class="fu">distinct</span>() <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">city_l100km</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">fit</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">lwr</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">upr</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">city_l100km</th>
+<th style="text-align: right;">fit</th>
+<th style="text-align: right;">lwr</th>
+<th style="text-align: right;">upr</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -5953,12 +5953,12 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb20-2"><a></a>          <span class="fu">predict</span>(m1, new_data, <span class="at">interval =</span> <span class="st">"prediction"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb20-3"><a></a>            <span class="fu">as_tibble</span>() ) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">fit</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">lwr</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">upr</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">fit</th>
+<th style="text-align: right;">lwr</th>
+<th style="text-align: right;">upr</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -6042,28 +6042,50 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">augment</span>(m1, my_mpg, <span class="at">interval =</span> <span class="st">"confidence"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb21-2"><a></a>  <span class="fu">select</span>(displ, city_l100km, .fitted, .lower, .upper, .resid, <span class="fu">everything</span>() ) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+</colgroup>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">city_l100km</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.fitted</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.lower</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.upper</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.resid</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">manufacturer</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">model</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">cyl</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">trans</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">drv</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">cty</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">hwy</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">fl</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">class</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.hat</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.sigma</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.cooksd</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.std.resid</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">city_l100km</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.lower</th>
+<th style="text-align: right;">.upper</th>
+<th style="text-align: right;">.resid</th>
+<th style="text-align: left;">manufacturer</th>
+<th style="text-align: left;">model</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: left;">trans</th>
+<th style="text-align: left;">drv</th>
+<th style="text-align: right;">cty</th>
+<th style="text-align: right;">hwy</th>
+<th style="text-align: left;">fl</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: right;">.hat</th>
+<th style="text-align: right;">.sigma</th>
+<th style="text-align: right;">.cooksd</th>
+<th style="text-align: right;">.std.resid</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -11223,12 +11245,12 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">augment</span>(m2, <span class="at">newdata =</span> new_data, <span class="at">interval =</span> <span class="st">"prediction"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-2"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.fitted</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.lower</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.upper</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.lower</th>
+<th style="text-align: right;">.upper</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -11314,12 +11336,12 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb23-3"><a></a>        <span class="at">interval =</span> <span class="st">"prediction"</span>, <span class="at">level =</span> <span class="fl">0.90</span>) <span class="sc">|&gt;</span></span>
 <span id="cb23-4"><a></a>   <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">logGDPpercap</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.fitted</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.lower</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.upper</th>
+<th style="text-align: right;">logGDPpercap</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.lower</th>
+<th style="text-align: right;">.upper</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -11396,13 +11418,13 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">augment</span>(m4, <span class="at">newdata =</span> new_data, <span class="at">interval =</span> <span class="st">"confidence"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">displ</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.tau</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.fitted</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.lower</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.upper</th>
+<th style="text-align: right;">displ</th>
+<th style="text-align: right;">.tau</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.lower</th>
+<th style="text-align: right;">.upper</th>
 </tr></thead>
 <tbody>
 <tr class="odd">

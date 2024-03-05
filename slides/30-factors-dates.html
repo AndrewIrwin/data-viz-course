@@ -434,12 +434,12 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb3-3"><a></a>       <span class="at">upper =</span> <span class="fu">str_to_upper</span>(original),</span>
 <span id="cb3-4"><a></a>       <span class="at">title =</span> <span class="fu">str_to_title</span>(original)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">original</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lower</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">upper</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
+<th style="text-align: left;">original</th>
+<th style="text-align: left;">lower</th>
+<th style="text-align: left;">upper</th>
+<th style="text-align: left;">title</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -476,11 +476,11 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb4-2"><a></a>       <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">21</span>, <span class="dv">35</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">sentence =</span> <span class="fu">glue</span>(<span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">sentence</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">sentence</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -509,12 +509,12 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb5-3"><a></a>  <span class="fu">mutate</span>( <span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
 <span id="cb5-4"><a></a>          <span class="at">next_year =</span> age <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">sentence</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">next_year</th>
+<th style="text-align: left;">sentence</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">next_year</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -584,12 +584,12 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb9-3"><a></a>       <span class="at">dmy =</span> <span class="fu">dmy</span>(date),</span>
 <span id="cb9-4"><a></a>       <span class="at">mdy =</span> <span class="fu">mdy</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">ymd</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">dmy</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">mdy</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">ymd</th>
+<th style="text-align: left;">dmy</th>
+<th style="text-align: left;">mdy</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -647,12 +647,12 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb12-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb12-5"><a></a>  <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">dt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">elapsed</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">dt</th>
+<th style="text-align: right;">value</th>
+<th style="text-align: left;">elapsed</th>
 </tr></thead>
 <tbody>
 <tr class="odd">

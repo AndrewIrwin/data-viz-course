@@ -437,9 +437,9 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>ChickWeight <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+<th style="text-align: right;">count</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td style="text-align: right;">578</td>
@@ -455,10 +455,10 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <span id="cb5-3"><a></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-4"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Diet</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+<th style="text-align: left;">Diet</th>
+<th style="text-align: right;">count</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -562,10 +562,10 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <span id="cb12-4"><a></a>  <span class="fu">summarize</span>(<span class="at">weight_10 =</span> <span class="fu">mean</span>(weight), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb12-5"><a></a>  <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Diet</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">weight_10</th>
+<th style="text-align: left;">Diet</th>
+<th style="text-align: right;">weight_10</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -612,10 +612,10 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Diet</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">count_chicks</th>
+<th style="text-align: left;">Diet</th>
+<th style="text-align: right;">count_chicks</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -669,12 +669,17 @@ SELECT `Diet`, COUNT(*) AS `count_chicks`
 FROM (
   SELECT `Diet`, `Chick`, COUNT(*) AS `n`
   FROM (
-    SELECT *, MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`
-    FROM `dbplyr_002`
-  )
-  WHERE (`max_weight` &gt; 110.0)
+    SELECT `q01`.*
+    FROM (
+      SELECT
+        `dbplyr_002`.*,
+        MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`
+      FROM `dbplyr_002`
+    ) AS `q01`
+    WHERE (`max_weight` &gt; 110.0)
+  ) AS `q01`
   GROUP BY `Diet`, `Chick`
-)
+) AS `q01`
 GROUP BY `Diet`</code></pre>
 </div>
 </div>

@@ -494,12 +494,12 @@ GCV = 14.553  Scale est. = 14.353    n = 717</code></pre>
 <span id="cb5-2"><a></a>hfx <span class="sc">|&gt;</span> <span class="fu">add_fitted</span>(m1) <span class="sc">|&gt;</span> <span class="fu">select</span>(year_day, mean_temp, .value) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">add_residuals</span>(m1)  <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">year_day</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_temp</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.residual</th>
+<th style="text-align: right;">year_day</th>
+<th style="text-align: right;">mean_temp</th>
+<th style="text-align: right;">.value</th>
+<th style="text-align: right;">.residual</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -4856,12 +4856,12 @@ drop.square:  FALSE </code></pre>
 <span id="cb10-2"><a></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">predict</span>(m2),</span>
 <span id="cb10-3"><a></a>         <span class="at">residuals =</span> <span class="fu">residuals</span>(m2)) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">year_day</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_temp</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">prediction</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">residuals</th>
+<th style="text-align: right;">year_day</th>
+<th style="text-align: right;">mean_temp</th>
+<th style="text-align: right;">prediction</th>
+<th style="text-align: right;">residuals</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -9174,13 +9174,13 @@ drop.square:  FALSE </code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">augment</span>(m2, <span class="at">se_fit =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<table>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_temp</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">year_day</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.fitted</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.se.fit</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">.resid</th>
+<th style="text-align: right;">mean_temp</th>
+<th style="text-align: right;">year_day</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.se.fit</th>
+<th style="text-align: right;">.resid</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
