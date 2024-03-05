@@ -1,7 +1,7 @@
 ---
 title: "k-means clustering"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-27"
+date: "2024-03-07"
 format:
   revealjs:
     slide-number: true
@@ -108,6 +108,7 @@ kclust1 |> augment(gapminder_scaled) |>
   geom_point(size=2) + theme(aspect.ratio = .8)
 ```
 
+
 ## How good is the clustering?
 
 ```{r echo = FALSE, out.width="60%", fig.align="center"}
@@ -175,6 +176,16 @@ kclust1 |> augment(penguins_scaled) |>
   ggplot(aes(y = s_bill_depth, x = s_bill_length, color = .cluster, shape = species)) + 
   geom_point() + theme(aspect.ratio = .8)
 ```
+
+## Alternate display 
+
+```{r fig.align="center", out.width="60%", fig.asp=0.8}
+kclust1 |> augment(penguins_scaled) |>
+  unite("spp_clust", species, .cluster) |>
+  ggplot(aes(y = s_bill_depth, x = s_bill_length, color = spp_clust)) + 
+  geom_point() + theme(aspect.ratio = .8)
+```
+
 
 ## How good is the clustering?
 

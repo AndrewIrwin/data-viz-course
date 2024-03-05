@@ -1,7 +1,7 @@
 ---
 title: "PCA: Principal Component Analysis"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-25"
+date: "2024-03-06"
 format:
   revealjs:
     slide-number: true
@@ -58,9 +58,9 @@ my_theme = theme_classic() +
 
 [Interactive version](plotly-1.html)
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-my_gapminder <- gapminder %>%
+my_gapminder <- gapminder |>
   mutate(logPop = log10(pop),
-         logGDPpercap = log10(gdpPercap)) %>%
+         logGDPpercap = log10(gdpPercap)) |>
   select(year, continent, lifeExp, logGDPpercap, logPop) 
 
 pi <- my_gapminder %>% plot_ly(x = ~ logPop, y = ~ lifeExp, z = ~ logGDPpercap, color = ~ continent, size = 1)
@@ -83,7 +83,7 @@ Plot made with `plot_ly` function in `plotly` package.
 ## Pairs plot
 
 ```{r echo=TRUE, message=FALSE, out.width = '60%', fig.align="center"}
-my_gapminder %>% select(-year) %>% ggpairs(aes(color = continent))
+my_gapminder |> select(-year) |> ggpairs(aes(color = continent))
 ```
 
 ::: footer
@@ -101,11 +101,20 @@ autoplot(pca1, data = my_gapminder2, loadings=TRUE, loadings.label = TRUE,
          colour = 'continent')
 ```
 
+## Loadings
+
+This matrix tells you how to rotate the data into PC coordinates which is the weight of each original variable in the computation of PCs.
+
+```{r}
+tidy(pca1, matrix = "rotation") |>
+  pivot_wider(names_from = column, values_from = value) |> kable() |> kable_styling(full_width = FALSE)
+
+```
 
 ## PCA: All years
 
 ```{r out.width="55%", fig.align="center"}
-pca1 <- prcomp(my_gapminder %>% select(-continent, -year), 
+pca1 <- prcomp(my_gapminder |> select(-continent, -year), 
                scale=TRUE)
 autoplot(pca1, data = my_gapminder, loadings=TRUE, 
          loadings.label = TRUE, colour = 'continent')
@@ -114,9 +123,9 @@ autoplot(pca1, data = my_gapminder, loadings=TRUE,
 ## Penguins
 
 ```{r echo=FALSE, out.width="80%", fig.align="center"}
-my_penguins_raw = penguins_raw %>% select(-`Sample Number`) %>% select(Species, where(is.numeric) ) %>% na.omit() %>%
+my_penguins_raw = penguins_raw |> select(-`Sample Number`) %>% select(Species, where(is.numeric) ) |> na.omit() |>
   mutate(Species = str_remove(Species, "\\(.*\\)"))
-pca2 <- my_penguins_raw %>% select(-Species) %>% prcomp(scale = TRUE)
+pca2 <- my_penguins_raw |> select(-Species) |> prcomp(scale = TRUE)
 autoplot(pca2, data = my_penguins_raw, loadings = TRUE, loadings.label = TRUE,
          loadings.label.colour = "black", loadings.colour = "black",
          colour = 'Species') + xlim(-0.15, 0.15) + ylim(-0.15, 0.15) + coord_fixed()
@@ -125,10 +134,10 @@ autoplot(pca2, data = my_penguins_raw, loadings = TRUE, loadings.label = TRUE,
 ---
 
 ```{r}
-pca2 %>% tidy(matrix="loadings") %>%
-  filter(PC < 3) %>%
+pca2 %>% tidy(matrix="loadings") |> # same as rotation
+  filter(PC < 3) |>
   pivot_wider(values_from="value", 
-              names_from="PC", names_prefix="PC_") %>% kable()
+              names_from="PC", names_prefix="PC_") |> kable() |> kable_styling(full_width = FALSE)
 ```
 
 ---
@@ -150,11 +159,13 @@ pca2 %>% tidy(matrix="loadings") %>%
 
 ## Penguin PCA code
 
+See the course notes for more code examples.
+
 ```{r eval=FALSE}
-my_penguins_raw = penguins_raw %>% select(-`Sample Number`) %>% 
-  select(Species, where(is.numeric) ) %>% na.omit() %>%
+my_penguins_raw = penguins_raw |> select(-`Sample Number`) |>
+  select(Species, where(is.numeric) ) |> na.omit() |>
   mutate(Species = str_remove(Species, "\\(.*\\)"))
-pca2 <- my_penguins_raw %>% select(-Species) %>% prcomp(scale=TRUE)
+pca2 <- my_penguins_raw |> select(-Species) |> prcomp(scale=TRUE)
 autoplot(pca2, data = my_penguins_raw, 
          loadings=TRUE, loadings.label = TRUE,
          loadings.label.colour = "black", loadings.colour = "black",

@@ -1,7 +1,7 @@
 ---
 title: "MDS: Multidimensional scaling"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-27"
+date: "2024-03-07"
 format:
   revealjs:
     slide-number: true
@@ -98,13 +98,16 @@ knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
 
 ## How is MDS different from PCA?
 
-* PCA is a rotation and projection of data to select linear combinations of original variables that highlight variation
-
-* MDS converts pairwise distance or dissimilarity matrix into relative positions
-
 * Both make plots of points on abstract axes
 
   * Possibly with arrows showing direction of change of other variables
+
+* Otherwise, completely different methods!
+  
+  * PCA is a rotation and projection of data to select linear combinations of original variables that highlight variation
+
+  * MDS converts pairwise distance or dissimilarity matrix into relative positions
+
 
 
 ## Further reading
