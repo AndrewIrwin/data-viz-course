@@ -1,7 +1,7 @@
 ---
 title: "Dynamic graphics"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-11-03"
+date: "2024-03-14"
 format:
   revealjs:
     slide-number: true
@@ -29,7 +29,7 @@ my_theme = theme_classic() +
 
 ## Plan
 
-* Advantages and disadvantages of dynamic graphics?
+* Advantages and disadvantages of dynamic graphics
 
 * When should you use dynamic graphics?
 
@@ -53,7 +53,7 @@ my_theme = theme_classic() +
 
 [Link to interactive graphic](dynamic-graphics-1.html)
 
-```{r warning=FALSE}
+```{r warning=FALSE, out.height="50%"}
 p1 <- penguins |> plot_ly(x = ~ body_mass_g, y = ~ bill_length_mm) |>
   add_markers(color = ~ species)
 p1
@@ -62,7 +62,7 @@ htmlwidgets::saveWidget(as_widget(p1), "dynamic-graphics-1.html")
 
 ## Animations
 
-Easy to create with `gganimate`. Make a regular ggplot, then use a variable to show how it changes over time.
+Make a regular ggplot, then use a variable to show how it changes over time.
 
 ```{r warning=FALSE, fig.align="center", out.height="50%", out.width="50%"}
 penguins |> ggplot(aes(bill_length_mm, bill_depth_mm,

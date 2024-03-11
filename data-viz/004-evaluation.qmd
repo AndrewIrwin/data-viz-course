@@ -191,7 +191,7 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-File: [task-L24-presentation](tasks/task-L24-presentation.qmd).
+File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L23-presentation.qmd) presentation.
 
 ### Week 11
 

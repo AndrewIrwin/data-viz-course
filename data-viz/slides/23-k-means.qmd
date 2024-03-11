@@ -237,7 +237,7 @@ kclust1 |> augment(penguins_scaled) |>
 
 * Course notes
 
-* [How does k-means clustering work?](https://towardsdatascience.com/how-does-k-means-clustering-in-machine-learning-work-fdaaaf5acfa0)
+* [How does k-means clustering work?](https://saturncloud.io/blog/what-is-k-means-clustering-and-how-does-its-algorithm-work/)
 
 
 ## Task
