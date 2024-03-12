@@ -1619,140 +1619,140 @@
   {
     "objectID": "live-coding/24-slides.html#second-slide",
     "href": "live-coding/24-slides.html#second-slide",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Second slide",
     "text": "Second slide\nTitle at the top of the page\nAdd code just like in regular markdown. Hide a code block with echo = FALSE.\nMany other options are available.: eval, echo, output, warning, error.\n\n\n\n\n\nspecies\nn\n\n\n\n\nAdelie\n152\n\n\nChinstrap\n68\n\n\nGentoo\n124"
   },
   {
     "objectID": "live-coding/24-slides.html#linear-model-formula",
     "href": "live-coding/24-slides.html#linear-model-formula",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Linear model formula",
     "text": "Linear model formula\nMake a linear model that predicts flipper length from bill length."
   },
   {
     "objectID": "live-coding/24-slides.html#linear-model-formula-1",
     "href": "live-coding/24-slides.html#linear-model-formula-1",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Linear model formula",
     "text": "Linear model formula\nShow code with echo = TRUE.\n\nm1 &lt;- lm( bill_length_mm ~ flipper_length_mm, data = penguins)\nbroom::tidy(m1, conf.int = TRUE) |&gt; knitr::kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-7.265\n3.200\n-2.270\n0.024\n-13.559\n-0.970\n\n\nflipper_length_mm\n0.255\n0.016\n16.034\n0.000\n0.224\n0.286"
   },
   {
     "objectID": "live-coding/24-slides.html#linear-model-formula-2",
     "href": "live-coding/24-slides.html#linear-model-formula-2",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Linear model formula",
     "text": "Linear model formula\n\nm2 &lt;- lm( flipper_length_mm ~ bill_length_mm, data = penguins)\nbroom::tidy(m2, conf.int = TRUE) |&gt; knitr::kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n126.684\n4.665\n27.156\n0\n117.508\n135.860\n\n\nbill_length_mm\n1.690\n0.105\n16.034\n0\n1.483\n1.897"
   },
   {
     "objectID": "live-coding/24-slides.html#change-background-colour",
     "href": "live-coding/24-slides.html#change-background-colour",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Change background colour",
     "text": "Change background colour\nAnd the text changes color too"
   },
   {
     "objectID": "live-coding/24-slides.html#make-large-text",
     "href": "live-coding/24-slides.html#make-large-text",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Make large text",
     "text": "Make large text\n\nWhat is data visualization?"
   },
   {
     "objectID": "live-coding/24-slides.html#two-columns",
     "href": "live-coding/24-slides.html#two-columns",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Two columns",
     "text": "Two columns\n\n\nStuff on the left\n\nStuff on the right"
   },
   {
     "objectID": "live-coding/24-slides.html#another-way-to-do-2-columns",
     "href": "live-coding/24-slides.html#another-way-to-do-2-columns",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Another way to do 2 columns",
     "text": "Another way to do 2 columns\n\n\n\nList One\n\nItem A\nItem B\nItem C\n\n\n\nList Two\n\nItem X\nItem Y\nItem Z"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr",
     "href": "live-coding/24-slides.html#translating-english-to-dplyr",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Translating English to dplyr",
     "text": "Translating English to dplyr\nMake a table that counts the number of observations per country.\n\nlibrary(gapminder)\ngapminder |&gt; group_by(country) |&gt; summarize(n_observations = n())\n\n# A tibble: 142 × 2\n   country     n_observations\n   &lt;fct&gt;                &lt;int&gt;\n 1 Afghanistan             12\n 2 Albania                 12\n 3 Algeria                 12\n 4 Angola                  12\n 5 Argentina               12\n 6 Australia               12\n 7 Austria                 12\n 8 Bahrain                 12\n 9 Bangladesh              12\n10 Belgium                 12\n# ℹ 132 more rows\n\ngapminder |&gt; count(country)\n\n# A tibble: 142 × 2\n   country         n\n   &lt;fct&gt;       &lt;int&gt;\n 1 Afghanistan    12\n 2 Albania        12\n 3 Algeria        12\n 4 Angola         12\n 5 Argentina      12\n 6 Australia      12\n 7 Austria        12\n 8 Bahrain        12\n 9 Bangladesh     12\n10 Belgium        12\n# ℹ 132 more rows\n\ngapminder |&gt; count(is.na(country))\n\n# A tibble: 1 × 2\n  `is.na(country)`     n\n  &lt;lgl&gt;            &lt;int&gt;\n1 FALSE             1704\n\ngapminder |&gt; group_by(country) |&gt; \n  summarize(n_missing_lifeExp = sum(is.na(lifeExp)) )\n\n# A tibble: 142 × 2\n   country     n_missing_lifeExp\n   &lt;fct&gt;                   &lt;int&gt;\n 1 Afghanistan                 0\n 2 Albania                     0\n 3 Algeria                     0\n 4 Angola                      0\n 5 Argentina                   0\n 6 Australia                   0\n 7 Austria                     0\n 8 Bahrain                     0\n 9 Bangladesh                  0\n10 Belgium                     0\n# ℹ 132 more rows"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr-1",
     "href": "live-coding/24-slides.html#translating-english-to-dplyr-1",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Translating English to dplyr",
     "text": "Translating English to dplyr\nFind the country with the highest and lowest life expectancy in each year.\n\ntable3 &lt;- gapminder |&gt; group_by(year) |&gt;\n  mutate(max_life_exp = max(lifeExp),\n         min_life_exp = min(lifeExp)) |&gt;\n  filter(near(lifeExp, max_life_exp) | near(lifeExp, min_life_exp)) \ntable3 |&gt; kable() |&gt; kable_styling()\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\nmax_life_exp\nmin_life_exp\n\n\n\n\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.4453\n72.670\n28.801\n\n\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.8530\n73.470\n30.332\n\n\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.1007\n73.680\n31.997\n\n\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.1971\n74.160\n34.020\n\n\nAngola\nAfrica\n1987\n39.906\n7874230\n2430.2083\n78.670\n39.906\n\n\nCambodia\nAsia\n1977\n31.220\n6978607\n524.9722\n76.110\n31.220\n\n\nIceland\nEurope\n1957\n73.470\n165110\n9244.0014\n73.470\n30.332\n\n\nIceland\nEurope\n1962\n73.680\n182053\n10350.1591\n73.680\n31.997\n\n\nIceland\nEurope\n1977\n76.110\n221823\n19654.9625\n76.110\n31.220\n\n\nJapan\nAsia\n1982\n77.110\n118454974\n19384.1057\n77.110\n38.445\n\n\nJapan\nAsia\n1987\n78.670\n122091325\n22375.9419\n78.670\n39.906\n\n\nJapan\nAsia\n1992\n79.360\n124329269\n26824.8951\n79.360\n23.599\n\n\nJapan\nAsia\n1997\n80.690\n125956499\n28816.5850\n80.690\n36.087\n\n\nJapan\nAsia\n2002\n82.000\n127065841\n28604.5919\n82.000\n39.193\n\n\nJapan\nAsia\n2007\n82.603\n127467972\n31656.0681\n82.603\n39.613\n\n\nNorway\nEurope\n1952\n72.670\n3327728\n10095.4217\n72.670\n28.801\n\n\nRwanda\nAfrica\n1992\n23.599\n7290203\n737.0686\n79.360\n23.599\n\n\nRwanda\nAfrica\n1997\n36.087\n7212583\n589.9445\n80.690\n36.087\n\n\nSierra Leone\nAfrica\n1972\n35.400\n2879013\n1353.7598\n74.720\n35.400\n\n\nSierra Leone\nAfrica\n1982\n38.445\n3464522\n1465.0108\n77.110\n38.445\n\n\nSwaziland\nAfrica\n2007\n39.613\n1133066\n4513.4806\n82.603\n39.613\n\n\nSweden\nEurope\n1967\n74.160\n7867931\n15258.2970\n74.160\n34.020\n\n\nSweden\nEurope\n1972\n74.720\n8122293\n17832.0246\n74.720\n35.400\n\n\nZambia\nAfrica\n2002\n39.193\n10595811\n1071.6139\n82.000\n39.193"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr-2",
     "href": "live-coding/24-slides.html#translating-english-to-dplyr-2",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Translating English to dplyr",
     "text": "Translating English to dplyr\nGraph these data.\n\ntable3 |&gt; ggplot(aes(y = country, x = lifeExp, color = year)) + geom_point()"
   },
   {
     "objectID": "live-coding/24-slides.html#translating-english-to-dplyr-3",
     "href": "live-coding/24-slides.html#translating-english-to-dplyr-3",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Translating English to dplyr",
     "text": "Translating English to dplyr\nMake a table showing the number of missing data for each penguin species.\nThere are missing data for sex and four quantitative variables:\n\npenguins |&gt; group_by(species) |&gt;\n  summarize(bill_length_na = sum(is.na(bill_length_mm)),\n            bill_depth_na = sum(is.na(bill_depth_mm)),\n            flipper_length_na = sum(is.na(flipper_length_mm)),\n            body_mass_na = sum(is.na(body_mass_g))\n            )\n\n# A tibble: 3 × 5\n  species   bill_length_na bill_depth_na flipper_length_na body_mass_na\n  &lt;fct&gt;              &lt;int&gt;         &lt;int&gt;             &lt;int&gt;        &lt;int&gt;\n1 Adelie                 1             1                 1            1\n2 Chinstrap              0             0                 0            0\n3 Gentoo                 1             1                 1            1"
   },
   {
     "objectID": "live-coding/24-slides.html#comparisons",
     "href": "live-coding/24-slides.html#comparisons",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Comparisons",
-    "text": "Comparisons\nYou can compare numbers and “text numbers” (numbers in quotation marks) but you shouldn’t make a habit of it.\n\nlibrary(gapminder)\ngapminder |&gt; filter(country == \"Canada\", year == 2007)\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", year == \"2007\")\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", lifeExp == \"80.653\")\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319."
+    "text": "Comparisons\nYou can compare numbers and “text numbers” (numbers in quotation marks) but you shouldn’t make a habit of it.\n\nlibrary(gapminder)\ngapminder |&gt; filter(country == \"Canada\", year == 2007)\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", year == \"2007\")\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", lifeExp == \"80.653\")\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", near(lifeExp, 80.7, tol = 0.1))\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319.\n\ngapminder |&gt; filter(country == \"Canada\", abs(lifeExp - 80.7) &lt; 0.1)\n\n# A tibble: 1 × 6\n  country continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Canada  Americas   2007    80.7 33390141    36319."
   },
   {
     "objectID": "live-coding/24-slides.html#comparions",
     "href": "live-coding/24-slides.html#comparions",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Comparions",
     "text": "Comparions\nSome surprises exist out there…\n\n4 == 4\n\n[1] TRUE\n\n4 == \"4\"\n\n[1] TRUE\n\nTRUE == 1\n\n[1] TRUE\n\nTRUE == \"1\"\n\n[1] FALSE\n\n3E4\n\n[1] 30000\n\n3E4 == \"30000\"\n\n[1] TRUE\n\n3E4 == \"3E4\"\n\n[1] FALSE"
   },
   {
     "objectID": "live-coding/24-slides.html#more-comparisons",
     "href": "live-coding/24-slides.html#more-comparisons",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "More comparisons",
     "text": "More comparisons\nNumbers with decimal points (floating point) can cause challenges for comparisons.\n\n2/10 - 1/10 == 0.1\n\n[1] TRUE\n\n3/10 - 1/10 == 0.2\n\n[1] FALSE\n\n3/10 - 1/10\n\n[1] 0.2"
   },
   {
     "objectID": "live-coding/24-slides.html#comparions-1",
     "href": "live-coding/24-slides.html#comparions-1",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Comparions",
     "text": "Comparions\nWhat if you really want to know if two things are the same?\n\nidentical(4, \"4\")\n\n[1] FALSE\n\nidentical(4, 4)\n\n[1] TRUE\n\nnear(2/10 - 1/10, 0.1)\n\n[1] TRUE\n\nnear(3/10 - 1/10, 0.2)\n\n[1] TRUE\n\nnear(pi, 22/7)\n\n[1] FALSE\n\nnear(pi, 355/113, tol = 1e-6)\n\n[1] TRUE\n\npi - 355/113\n\n[1] -2.667642e-07"
   },
   {
     "objectID": "live-coding/24-slides.html#combining-two-tables",
     "href": "live-coding/24-slides.html#combining-two-tables",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Combining two tables",
     "text": "Combining two tables\n\nt1 &lt;- gapminder |&gt; group_by(country) |&gt; summarize(max_life_exp = max(lifeExp)) \nt1\n\n# A tibble: 142 × 2\n   country     max_life_exp\n   &lt;fct&gt;              &lt;dbl&gt;\n 1 Afghanistan         43.8\n 2 Albania             76.4\n 3 Algeria             72.3\n 4 Angola              42.7\n 5 Argentina           75.3\n 6 Australia           81.2\n 7 Austria             79.8\n 8 Bahrain             75.6\n 9 Bangladesh          64.1\n10 Belgium             79.4\n# ℹ 132 more rows\n\ncountry_codes |&gt; head()\n\n# A tibble: 6 × 3\n  country     iso_alpha iso_num\n  &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;\n1 Afghanistan AFG             4\n2 Albania     ALB             8\n3 Algeria     DZA            12\n4 Angola      AGO            24\n5 Argentina   ARG            32\n6 Armenia     ARM            51"
   },
   {
     "objectID": "live-coding/24-slides.html#combining-two-tables-1",
     "href": "live-coding/24-slides.html#combining-two-tables-1",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Combining two tables",
     "text": "Combining two tables\n\nleft_join(t1, country_codes, by = \"country\") |&gt; DT::datatable()"
   },
   {
     "objectID": "live-coding/24-slides.html#combining-two-tables-2",
     "href": "live-coding/24-slides.html#combining-two-tables-2",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Combining two tables",
     "text": "Combining two tables\n\nleft_join(t1, rgbif::isocodes, by = c(\"country\" = \"name\")) |&gt; DT::datatable()"
   },
   {
     "objectID": "live-coding/24-slides.html#other-kinds-of-joins",
     "href": "live-coding/24-slides.html#other-kinds-of-joins",
-    "title": "Slide presentations",
+    "title": "Demo slide presentations",
     "section": "Other kinds of joins",
     "text": "Other kinds of joins\n\nfull_join: all rows in both tables are kept\nleft_join: all rows from left table\nright_join: all rows from right table\ninner_join: only rows in both tables\nanti_join: filter rows in left that are missing from right table\nsemi_join: filter rows in left that are present in right table\n\nAnimated versions of joins\nR4DS textbook explanation of joins"
   },
@@ -2916,7 +2916,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-0.8374048\n-0.3622607\n-1.4726879\n12\n14.03344\n1\n\n\n-0.6163025\n-0.8038199\n0.8499368\n19\n17.88040\n2\n\n\n0.6795820\n0.5617523\n1.0379824\n33\n27.06476\n3\n\n\n0.7653176\n0.7147770\n-0.5821182\n51\n37.52720\n4\n\n\n-1.4703259\n-1.3100647\n-0.1126642\n27\n17.78997\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-0.8374048\n-0.3622607\n-1.4726879\n12\n14.03344\n1\n\n\n-0.3665079\n-0.6928189\n0.9135163\n23\n23.86830\n2\n\n\n0.7453046\n0.7475116\n0.9687021\n30\n21.65822\n3\n\n\n0.7554782\n0.7023001\n-0.6149332\n49\n35.57412\n4\n\n\n-1.4606797\n-1.3055747\n-0.0809984\n28\n18.63361\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
