@@ -1,7 +1,7 @@
 ---
 title: "Making slide presentations"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-11-01"
+date: "2024-03-12"
 format:
   revealjs:
     slide-number: true
@@ -13,6 +13,12 @@ format:
     code-copy: false
     code-link: true
     history: false
+    width: 1200 # default 1050
+    height: 700
+    margin: 0.05  # default 0.1
+    min-scale: 0.2
+    max-scale: 2.0
+    fig-cap-location: top
 ---
 
 ```{r setup, include=FALSE}
@@ -28,14 +34,18 @@ library(tidyverse)
 library(kableExtra)
 ```
 
-## Goals
+# Goals
 
-- Why we make slides for data visualization
-  * As an aid to oral communication
+- Why do we make slides?
+- Introduction to the most important tools for making slides with R
+
+## What are slides for?
+
+- An aid to oral communication
+  * Usually a small amount of text and a "display item" (figure, table, equation, code)
+  * Designed to help you communicate a specific point
 - Visualizations on slides differ from reports
-  * Larger text, brighter colours, material tailored to presentation
-- How to make slides using "Quarto presentation" format
-  * Like regular R markdown documents, with a few variations
+  * Large text, bold colours, material tailored to presentation
 
 ## Create a template
 
@@ -46,18 +56,37 @@ Rstudio menu:
   * New File...
     * Quarto presentation
       * Check "RevealJS"
-    
+
+## Documentation
+
+* Quarto format: like regular R markdown documents, with a few variations
+  * [Quarto documentation](https://quarto.org/docs/presentations/)
+  * [Full list of options](https://quarto.org/docs/reference/formats/presentations/revealjs.html) and [RevealJS documentation](https://revealjs.com/)
+
+* [Demo](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide) slides and [code](https://github.com/quarto-dev/quarto-web/blob/main/docs/presentations/revealjs/demo/index.qmd) for demo slides
+  
 ## Essentials
 
-Just like regular markdown, but use two hashes (`##`) to start a slide and make a title at the top.
+Like R markdown, but use two hashes (`##`) to start a slide and make a title at the top.
 
-Just just three minus signs (`---`) to start a new slide with no title.
+
+A heading with single hash mark makes a vertically-centred title
+
+Use three minus signs (`---`) to start a new slide with no title.
 
 ## Stopping distance increases with car speed
 
-```{r, echo=FALSE, fig.align="center", out.width="40%"}
+```{r}
+#| echo: false
+#| fig-width: 6.5
+#| fig-height: 4
+#| fig.align: center
 cars |> ggplot(aes(speed, dist)) + geom_point(size=4) +
-    theme_bw() + theme(text=element_text(size=30)) 
+  geom_smooth() + 
+    theme_bw() + 
+  theme(text=element_text(size=24)) +
+  labs(x = "Speed (miles/h)",
+       y = "Stopping distance (ft)")
 ```
 
 
@@ -71,10 +100,9 @@ cars |> ggplot(aes(speed, dist)) + geom_point()
 
 ## Formatting text and adding images
 
-
 All markdown formatting for *italics*, **bold**, [hyperlinks](https://www.r-project.org/) are available.
 
-You can include images from the internet or your own computer.
+You can include images.
 
 ![A kitten](kitten.jpeg)
 
@@ -92,6 +120,8 @@ mpg |> count(class) |> kable() |> kable_styling()
 :::
 ::: {.column width="50%"}
 ```{r echo=FALSE}
+#| label: demo-figure
+#| fig-cap: "The number of observations tabulated by class of car."
 mpg |> count(class) |> ggplot(aes(x = class, y = n)) + geom_col() + 
   theme_bw() + theme(text=element_text(size=30)) +
   theme(axis.text.x = element_text(angle=90))
@@ -102,11 +132,11 @@ mpg |> count(class) |> ggplot(aes(x = class, y = n)) + geom_col() +
 
 ## Summary
 
-* I've shown a simple set of slides you can easily make using Rstudio and R markdown
+* I've shown a simple set of slides you can easily make using Rstudio and Quarto/RevealJS (very similar to R markdown)
 
-* Remember, you generally want to make your slides quite simple and use large text and images
+* Your slides should use large text and images
 
-* You can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed
+* Use formatting (see lesson on [reproducible reports](20-reproducible-reports.qmd)) to control how code and visualizations are displayed
 
 * [A link to the full code for these slides](https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/slides/24-slide-presentation.qmd) 
 

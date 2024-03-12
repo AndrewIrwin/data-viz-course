@@ -36,6 +36,7 @@ midwest_pca <- prcomp(midwest_ss,
                       scale. = TRUE)
 ```
 
+
 Get a text summary of the PCA results showing the standard deviation associated with each principal component and the proportion of variance for each PC.
 
 ```{r}
@@ -58,6 +59,13 @@ autoplot(midwest_pca, data = midwest_ss,
          shape = FALSE, label = TRUE,
          loadings = TRUE, loadings.label = TRUE, 
          variance_percentage = TRUE)
+```
+
+What is row 44?
+
+```{r}
+midwest_ss[44,]
+
 ```
 
 Show a similar plot using a different function:
@@ -89,7 +97,47 @@ biplot(midwest_pca2)
 ggplot plots
 
 ```{r}
-autoplot(midwest_pca, data = midwest_ss, loadings = TRUE,
+autoplot(midwest_pca2, data = midwest_ss, loadings = TRUE,
          loadings.label=TRUE)
 
+```
+
+## Scaling experiment
+
+Don't scale the variables. You rarely really want to do this!
+
+```{r}
+midwest_ss <- midwest |> slice_sample(n = 100) |>
+  select(-category, -PID, -county, -state)
+midwest_pca3 <- prcomp(midwest_ss, 
+                      center = TRUE,
+                      scale. = FALSE)
+autoplot(midwest_pca3)
+screeplot(midwest_pca3)
+tidy(midwest_pca3, "loadings") |> pivot_wider(names_from = PC, values_from = value, names_prefix = "PC ")
+
+```
+
+
+## Same thing with penguins
+
+```{r}
+library(palmerpenguins)
+my_penguins_raw = penguins_raw |> select(-`Sample Number`) |>
+  select(Species, where(is.numeric) ) |> na.omit() |>
+  mutate(Species = str_remove(Species, "\\(.*\\)"))
+pca2 <- my_penguins_raw |> select(-Species) |> prcomp(scale=TRUE)
+autoplot(pca2, data = my_penguins_raw, 
+         loadings=TRUE, loadings.label = TRUE,
+         loadings.label.colour = "black", loadings.colour = "black",
+         colour = 'Species') + xlim(-0.15, 0.15) + ylim(-0.15, 0.15)
+```
+
+
+```{r}
+pca2a <- my_penguins_raw |> select(-Species) |> prcomp(scale=FALSE)
+autoplot(pca2a, data = my_penguins_raw, 
+         loadings=TRUE, loadings.label = TRUE,
+         loadings.label.colour = "black", loadings.colour = "black",
+         colour = 'Species') + xlim(-0.15, 0.15) + ylim(-0.15, 0.15)
 ```
