@@ -1,5 +1,5 @@
 ---
-title: "Slide presentations"
+title: "Demo slide presentations"
 author: "Andrew Irwin"
 date: "2024-03-12"
 format: revealjs
@@ -180,6 +180,9 @@ library(gapminder)
 gapminder |> filter(country == "Canada", year == 2007)
 gapminder |> filter(country == "Canada", year == "2007")
 gapminder |> filter(country == "Canada", lifeExp == "80.653")
+gapminder |> filter(country == "Canada", near(lifeExp, 80.7, tol = 0.1))
+gapminder |> filter(country == "Canada", abs(lifeExp - 80.7) < 0.1)
+
 ```
 
 ## Comparions
