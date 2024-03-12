@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.3.450">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-01-23">
 <title>data-viz - Using the grammar of graphics (ggplot2)</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -411,7 +410,7 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="general-social-survey-data-2016" class="slide level2 smaller"><h2>General Social Survey data, 2016</h2>
 <p>A dataset containing an extract from the 2016 General Social Survey. See http://gss.norc.org/Get-Documentation for full documentation of the variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glimpse</span>(gss_sm)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">glimpse</span>(gss_sm)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,867
 Columns: 32
@@ -451,7 +450,7 @@ $ obama       &lt;dbl&gt; 0, 1, 0, 0, 1, 1, NA, NA, NA, 0, NA, NA, 1, 1, 0, 1, 0
 </div>
 </section><section id="gss-overview" class="slide level2 smaller"><h2>gss overview</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">glimpse</span>(gss_cat)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">glimpse</span>(gss_cat)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 21,483
 Columns: 9
@@ -474,63 +473,63 @@ $ tvhours &lt;int&gt; 12, NA, 2, 4, 1, NA, 3, NA, 0, 3, 2, NA, 1, NA, 1, 7, NA, 
 <li><p>Two quantitative: <code>geom_point</code></p></li>
 </ul></section><section id="one-categorical-variable" class="slide level2"><h2>One categorical variable</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> region)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> region)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="two-categorical-variables" class="slide level2"><h2>Two categorical variables</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-3-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="two-categorical-variables" class="slide level2"><h2>Two categorical variables</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> region, <span class="at">fill =</span> degree)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> region, <span class="at">fill =</span> degree)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="two-categorical-variables-using-area-for-counts" class="slide level2"><h2>Two categorical variables, using area for counts</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-4-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="two-categorical-variables-using-area-for-counts" class="slide level2"><h2>Two categorical variables, using area for counts</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>income16, <span class="at">x =</span> happy)) <span class="sc">+</span> <span class="fu">geom_count</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>income16, <span class="at">x =</span> happy)) <span class="sc">+</span> <span class="fu">geom_count</span>()</span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="same-data-using-bars" class="slide level2"><h2>Same data using bars</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-5-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="same-data-using-bars" class="slide level2"><h2>Same data using bars</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>income16, <span class="at">fill =</span> happy)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>income16, <span class="at">fill =</span> happy)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="same-data-too-many-colors" class="slide level2"><h2>Same data, too many colors</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-6-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="same-data-too-many-colors" class="slide level2"><h2>Same data, too many colors</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>income16, <span class="at">x =</span> happy)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>income16, <span class="at">x =</span> happy)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="one-quantitative-variable" class="slide level2"><h2>One quantitative variable</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-7-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="one-quantitative-variable" class="slide level2"><h2>One quantitative variable</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="categorical-1-quantitative" class="slide level2"><h2>1 categorical, 1 quantitative</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-8-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="categorical-1-quantitative" class="slide level2"><h2>1 categorical, 1 quantitative</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span><span class="fu">factor</span>(childs))) <span class="sc">+</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of children"</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>gss_sm <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span><span class="fu">factor</span>(childs))) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of children"</span>) </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="two-quantitative-variables" class="slide level2"><h2>Two quantitative variables</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-9-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="two-quantitative-variables" class="slide level2"><h2>Two quantitative variables</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span> tvhours)) <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.2</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span> tvhours)) <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.2</span>) </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="two-quantitative-variables-1" class="slide level2"><h2>Two quantitative variables</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-10-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="two-quantitative-variables-1" class="slide level2"><h2>Two quantitative variables</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span> tvhours)) <span class="sc">+</span> </span>
-<span id="cb13-3"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb13-4"><a></a>  <span class="fu">geom_smooth</span>() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y=</span> tvhours)) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_jitter</span>(<span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_smooth</span>() </span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="quantitative-show-variability-in-one" class="slide level2"><h2>2 quantitative, show variability in one</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-11-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="quantitative-show-variability-in-one" class="slide level2"><h2>2 quantitative, show variability in one</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> tvhours )) <span class="sc">+</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> tvhours )) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"></section><section id="summary" class="slide level2"><h2>Summary</h2>
+<img data-src="08-ggplot-intro_files/figure-revealjs/unnamed-chunk-12-1.png" width="1500" class="r-stretch quarto-figure-center"></section><section id="summary" class="slide level2"><h2>Summary</h2>
 <ul>
 <li><p>Showed variations on introductory example with 1 or 2 categorical and quantitative variables</p></li>
 <li><p>Demonstrated a few embelishments (colours, standard deviations, symbol area, smooths, jitter points)</p></li>
@@ -547,10 +546,8 @@ $ tvhours &lt;int&gt; 12, NA, 2, 4, 1, NA, 3, NA, 0, 3, 2, NA, 1, NA, 1, 7, NA, 
 </ul>
 <p>If you would like, use other data sources described in “Data Sources” chapter in course notes.</p>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
 </div>
@@ -563,6 +560,7 @@ $ tvhours &lt;int&gt; 12, NA, 2, 4, 1, NA, 3, NA, 0, 3, 2, NA, 1, NA, 1, 7, NA, 
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -806,9 +804,10 @@ $ tvhours &lt;int&gt; 12, NA, 2, 4, 1, NA, 3, NA, 0, 3, 2, NA, 1, NA, 1, 7, NA, 
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -818,17 +817,8 @@ $ tvhours &lt;int&gt; 12, NA, 2, 4, 1, NA, 3, NA, 0, 3, 2, NA, 1, NA, 1, 7, NA, 
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

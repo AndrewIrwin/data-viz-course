@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.3.450">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-11-01">
+<meta name="dcterms.date" content="2024-03-12">
 <title>data-viz - Making slide presentations</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -404,22 +403,22 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-11-01</p>
-</section><section id="goals" class="slide level2"><h2>Goals</h2>
+  <p class="date">2024-03-12</p>
+</section><section><section id="goals" class="title-slide slide level1 center"><h1>Goals</h1>
 <ul>
-<li>Why we make slides for data visualization
+<li>Why do we make slides?</li>
+<li>Introduction to the most important tools for making slides with R</li>
+</ul></section><section id="what-are-slides-for" class="slide level2"><h2>What are slides for?</h2>
 <ul>
-<li>As an aid to oral communication</li>
+<li>An aid to oral communication
+<ul>
+<li>Usually a small amount of text and a “display item” (figure, table, equation, code)</li>
+<li>Designed to help you communicate a specific point</li>
 </ul>
 </li>
 <li>Visualizations on slides differ from reports
 <ul>
-<li>Larger text, brighter colours, material tailored to presentation</li>
-</ul>
-</li>
-<li>How to make slides using “Quarto presentation” format
-<ul>
-<li>Like regular R markdown documents, with a few variations</li>
+<li>Large text, bold colours, material tailored to presentation</li>
 </ul>
 </li>
 </ul></section><section id="create-a-template" class="slide level2"><h2>Create a template</h2>
@@ -438,26 +437,39 @@ Andrew Irwin, a.irwin@dal.ca
 </li>
 </ul>
 </li>
+</ul></section><section id="documentation" class="slide level2"><h2>Documentation</h2>
+<ul>
+<li>Quarto format: like regular R markdown documents, with a few variations
+<ul>
+<li><a href="https://quarto.org/docs/presentations/">Quarto documentation</a></li>
+<li>
+<a href="https://quarto.org/docs/reference/formats/presentations/revealjs.html">Full list of options</a> and <a href="https://revealjs.com/">RevealJS documentation</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://quarto.org/docs/presentations/revealjs/demo/#/title-slide">Demo</a> slides and <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/presentations/revealjs/demo/index.qmd">code</a> for demo slides</li>
 </ul></section><section id="essentials" class="slide level2"><h2>Essentials</h2>
-<p>Just like regular markdown, but use two hashes (<code>##</code>) to start a slide and make a title at the top.</p>
-<p>Just just three minus signs (<code>---</code>) to start a new slide with no title.</p>
+<p>Like R markdown, but use two hashes (<code>##</code>) to start a slide and make a title at the top.</p>
+<p>A heading with single hash mark makes a vertically-centred title</p>
+<p>Use three minus signs (<code>---</code>) to start a new slide with no title.</p>
 </section><section id="stopping-distance-increases-with-car-speed" class="slide level2"><h2>Stopping distance increases with car speed</h2>
 
-<img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section><section id="show-computer-code" class="slide level2"><h2>Show computer code</h2>
+<img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="624" class="r-stretch quarto-figure-center"></section><section id="show-computer-code" class="slide level2"><h2>Show computer code</h2>
 <p>Use <code>echo=TRUE</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>cars <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(speed, dist)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(speed, dist)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 
 </div>
 <img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section id="formatting-text-and-adding-images" class="slide level2"><h2>Formatting text and adding images</h2>
 <p>All markdown formatting for <em>italics</em>, <strong>bold</strong>, <a href="https://www.r-project.org/">hyperlinks</a> are available.</p>
-<p>You can include images from the internet or your own computer.</p>
+<p>You can include images.</p>
 
 <img data-src="kitten.jpeg" class="r-stretch quarto-figure-center"><p class="caption">A kitten</p></section><section id="two-column-format" class="slide level2"><h2>Two column format</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>mpg <span class="sc">|&gt;</span> <span class="fu">count</span>(class)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">count</span>(class)</span></code></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -502,8 +514,8 @@ Andrew Irwin, a.irwin@dal.ca
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure><p><img data-src="24-slide-presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure><figcaption>The number of observations tabulated by class of car.</figcaption><p><img data-src="24-slide-presentation_files/figure-revealjs/demo-figure-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -512,18 +524,16 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="summary" class="slide level2"><h2>Summary</h2>
 <ul>
-<li><p>I’ve shown a simple set of slides you can easily make using Rstudio and R markdown</p></li>
-<li><p>Remember, you generally want to make your slides quite simple and use large text and images</p></li>
-<li><p>You can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed</p></li>
+<li><p>I’ve shown a simple set of slides you can easily make using Rstudio and Quarto/RevealJS (very similar to R markdown)</p></li>
+<li><p>Your slides should use large text and images</p></li>
+<li><p>Use formatting (see lesson on <a href="20-reproducible-reports.qmd">reproducible reports</a>) to control how code and visualizations are displayed</p></li>
 <li><p><a href="https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/slides/24-slide-presentation.qmd">A link to the full code for these slides</a></p></li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</div>
-</section>
+</section></section>
 </div>
   </div>
 
@@ -534,6 +544,7 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -685,12 +696,17 @@ Andrew Irwin, a.irwin@dal.ca
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1200,
 
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+
+        maxScale: 2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
@@ -777,9 +793,10 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -789,17 +806,8 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.3.450">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-02-13">
 <title>data-viz - Working with models</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -427,92 +426,92 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Smooths on facetted plots</p></li>
 </ul></section><section id="start-with-a-basic-graph" class="slide level2"><h2>Start with a basic graph</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>mpg <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">city_l100km =</span> <span class="fl">235.214583</span> <span class="sc">/</span> cty) <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>displ, <span class="at">y=</span> city_l100km)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Engine displacement (L)"</span>,</span>
-<span id="cb1-4"><a></a>        <span class="at">y =</span> <span class="st">"Fuel economy, city (L/100km)"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">city_l100km =</span> <span class="fl">235.214583</span> <span class="sc">/</span> cty) <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>displ, <span class="at">y=</span> city_l100km)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Engine displacement (L)"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="at">y =</span> <span class="st">"Fuel economy, city (L/100km)"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="add-a-regression-line" class="slide level2"><h2>Add a regression line</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="add-a-regression-line" class="slide level2"><h2>Add a regression line</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="add-a-regression-line-for-each-group" class="slide level2"><h2>Add a regression line for each group</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="add-a-regression-line-for-each-group" class="slide level2"><h2>Add a regression line for each group</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">factor</span>(cyl)), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">factor</span>(cyl)), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="polynomial-regression" class="slide level2"><h2>Polynomial regression</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="polynomial-regression" class="slide level2"><h2>Polynomial regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x,<span class="dv">2</span>))</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="quantile-regression" class="slide level2"><h2>Quantile regression</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="quantile-regression" class="slide level2"><h2>Quantile regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
-<span id="cb5-2"><a></a>                  <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p <span class="sc">+</span> <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb5-2"><a href="#cb5-2"></a>                  <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>))</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="footer">
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch quarto-figure-center"><div class="footer">
 <p>Requires package <code>quantreg</code></p>
 </div>
 </section><section id="generalized-additive-model" class="slide level2"><h2>Generalized additive model</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, </span>
-<span id="cb6-2"><a></a>                <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="at">df =</span> <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, </span>
+<span id="cb6-2"><a href="#cb6-2"></a>                <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="at">df =</span> <span class="dv">5</span>))</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="generalized-additive-model-1" class="slide level2"><h2>Generalized additive model</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="generalized-additive-model-1" class="slide level2"><h2>Generalized additive model</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"gam"</span>, </span>
-<span id="cb7-2"><a></a>                <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">bs=</span><span class="st">"cs"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"gam"</span>, </span>
+<span id="cb7-2"><a href="#cb7-2"></a>                <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">bs=</span><span class="st">"cs"</span>))</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="loess" class="slide level2"><h2>LOESS</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="loess" class="slide level2"><h2>LOESS</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, </span>
-<span id="cb8-2"><a></a>                <span class="at">formula =</span> y <span class="sc">~</span> x) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, </span>
+<span id="cb8-2"><a href="#cb8-2"></a>                <span class="at">formula =</span> y <span class="sc">~</span> x) </span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="loess-1" class="slide level2"><h2>LOESS</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="loess-1" class="slide level2"><h2>LOESS</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
-<span id="cb9-2"><a></a>                <span class="at">span =</span> <span class="fl">0.3</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>                <span class="at">span =</span> <span class="fl">0.3</span>) </span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="putting-multiple-smooths-on-one-plot" class="slide level2"><h2>Putting multiple smooths on one plot</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="putting-multiple-smooths-on-one-plot" class="slide level2"><h2>Putting multiple smooths on one plot</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Linear"</span>), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb10-2"><a></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"GAM"</span>), <span class="at">method =</span> <span class="st">"gam"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb10-3"><a></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"LOESS"</span>), <span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a></a>    <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Type"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Linear"</span>), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"GAM"</span>), <span class="at">method =</span> <span class="st">"gam"</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"LOESS"</span>), <span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>    <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Type"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="smooths-on-facetted-plots" class="slide level2"><h2>Smooths on facetted plots</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="smooths-on-facetted-plots" class="slide level2"><h2>Smooths on facetted plots</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> class)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> class)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="other-customizations" class="slide level2"><h2>Other customizations</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="other-customizations" class="slide level2"><h2>Other customizations</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">TRUE</span>, </span>
-<span id="cb12-2"><a></a>                <span class="at">fullrange =</span> <span class="cn">TRUE</span>, <span class="at">level =</span> <span class="fl">0.50</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">1</span>,<span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">TRUE</span>, </span>
+<span id="cb12-2"><a href="#cb12-2"></a>                <span class="at">fullrange =</span> <span class="cn">TRUE</span>, <span class="at">level =</span> <span class="fl">0.50</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">1</span>,<span class="dv">8</span>)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="modelling-x-as-a-function-of-y" class="slide level2"><h2>Modelling x as a function of y</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="modelling-x-as-a-function-of-y" class="slide level2"><h2>Modelling x as a function of y</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">orientation =</span> <span class="st">"y"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">orientation =</span> <span class="st">"y"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="modelling-x-as-a-function-of-y-1" class="slide level2"><h2>Modelling x as a function of y</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="modelling-x-as-a-function-of-y-1" class="slide level2"><h2>Modelling x as a function of y</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">orientation =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">color =</span> <span class="st">"red"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">orientation =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">color =</span> <span class="st">"red"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section id="summary" class="slide level2"><h2>Summary</h2>
+<img data-src="15-working-with-models_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="summary" class="slide level2"><h2>Summary</h2>
 <ul>
 <li><p>Regression lines (based on a model) and “smooths” (no simple model) can be used to draw attention to patterns in data</p></li>
 <li><p>We are using smooths for their visual effect</p></li>
@@ -523,10 +522,8 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Healy Chapter 6. Work with models.</p></li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
 </div>
@@ -539,6 +536,7 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -782,9 +780,10 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -794,17 +793,8 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
