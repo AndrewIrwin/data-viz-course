@@ -1,5 +1,5 @@
 ---
-title: "Slide presentations"
+title: "Demo slide presentations"
 author: "Andrew Irwin"
 date: "2024-03-12"
 format: revealjs
@@ -22,6 +22,7 @@ Add code just like in regular markdown. Hide a code block with `echo = FALSE`.
 library(palmerpenguins)
 library(tidyverse)
 library(DT)
+library(kableExtra)
 ```
 
 
@@ -42,6 +43,8 @@ penguins |>
 
 ## Linear model formula
 
+Show code with `echo = TRUE`.
+
 ```{r echo = TRUE}
 m1 <- lm( bill_length_mm ~ flipper_length_mm, data = penguins)
 broom::tidy(m1, conf.int = TRUE) |> knitr::kable(digits = 3)
@@ -54,6 +57,118 @@ m2 <- lm( flipper_length_mm ~ bill_length_mm, data = penguins)
 broom::tidy(m2, conf.int = TRUE) |> knitr::kable(digits = 3)
 ```
 
+## Change background colour { background-color="black" }
+
+And the text changes color too
+
+
+## Make large text
+
+::: {.r-fit-text}
+What is data visualization?
+:::
+
+## Two columns
+
+:::: {.columns}
+::: {.column width="40%"}
+Stuff on the left
+:::
+::: {.column width="60%"}
+Stuff on the right
+:::
+::::
+
+## Another way to do 2 columns
+
+::: {layout-ncol=2}
+### List One
+- Item A
+- Item B
+- Item C
+
+### List Two
+- Item X
+- Item Y
+- Item Z
+:::
+
+# Exercises
+
+The next few slides are some dplyr and visualization exercises.
+
+## Translating English to dplyr
+
+Make a table that counts the number of observations per country.
+
+```{r echo=TRUE}
+library(gapminder)
+gapminder |> group_by(country) |> summarize(n_observations = n())
+gapminder |> count(country)
+gapminder |> count(is.na(country))
+gapminder |> group_by(country) |> 
+  summarize(n_missing_lifeExp = sum(is.na(lifeExp)) )
+```
+
+## Translating English to dplyr {.scrollable}
+
+Find the country with the highest and lowest life expectancy in each year.
+
+```{r echo=TRUE}
+table3 <- gapminder |> group_by(year) |>
+  mutate(max_life_exp = max(lifeExp),
+         min_life_exp = min(lifeExp)) |>
+  filter(near(lifeExp, max_life_exp) | near(lifeExp, min_life_exp)) 
+table3 |> kable() |> kable_styling()
+```
+
+
+## Translating English to dplyr
+
+Graph these data.
+
+```{r echo=TRUE}
+table3 |> ggplot(aes(y = country, x = lifeExp, color = year)) + geom_point()
+```
+
+---
+
+Looking ahead to the lesson on factors, we can make this plot look a bit nicer by rearranging the countries according to lifeExpectancy:
+
+```{r echo=TRUE}
+table3 |> ggplot(aes(y = fct_reorder(country, lifeExp),
+                     x = lifeExp, 
+                     color = year)) +
+  geom_point()
+```
+
+## Translating English to dplyr
+
+Make a table showing the number of missing data for each penguin species.
+
+There are missing data for sex and four quantitative variables:
+
+```{r echo=TRUE}
+penguins |> group_by(species) |>
+  summarize(bill_length_na = sum(is.na(bill_length_mm)),
+            bill_depth_na = sum(is.na(bill_depth_mm)),
+            flipper_length_na = sum(is.na(flipper_length_mm)),
+            body_mass_na = sum(is.na(body_mass_g))
+            )
+```
+
+---
+
+The `naniar` package has a nice function to show this too:
+
+```{r warning=FALSE, echo=TRUE}
+library(naniar)
+gg_miss_var(penguins)
+```
+
+# Bonus topics
+
+The remaining slides address some questions that sometimes arise when you are working on term projects.
 
 ## Comparisons
 
@@ -65,6 +180,9 @@ library(gapminder)
 gapminder |> filter(country == "Canada", year == 2007)
 gapminder |> filter(country == "Canada", year == "2007")
 gapminder |> filter(country == "Canada", lifeExp == "80.653")
+gapminder |> filter(country == "Canada", near(lifeExp, 80.7, tol = 0.1))
+gapminder |> filter(country == "Canada", abs(lifeExp - 80.7) < 0.1)
+
 ```
 
 ## Comparions
@@ -82,6 +200,8 @@ TRUE == "1"
 ```
 
 ## More comparisons
+
+Numbers with decimal points (floating point) can cause challenges for comparisons.
 
 ```{r echo=TRUE}
 2/10 - 1/10 == 0.1
@@ -137,109 +257,5 @@ left_join(t1, rgbif::isocodes, by = c("country" = "name")) |> DT::datatable()
 Animated versions of [joins](https://github.com/gadenbuie/tidyexplain)
 
 R4DS textbook explanation of [joins](https://r4ds.hadley.nz/joins.html)
-
-## Change background colour { background-color="black" }
-
-And the text changes color too
-
-
-## Make large text
-
-::: {.r-fit-text}
-What is data visualization?
-:::
-
-## Two columns
-
-:::: {.columns}
-::: {.column width="40%"}
-Stuff on the left
-:::
-::: {.column width="60%"}
-Stuff on the right
-:::
-::::
-
-## Another way to do 2 columns
-
-::: {layout-ncol=2}
-### List One
-- Item A
-- Item B
-- Item C
-
-### List Two
-- Item X
-- Item Y
-- Item Z
-:::
-
-## Translating English to dplyr
-
-Make a table that counts the number of observations per country.
-
-```{r echo=TRUE}
-library(gapminder)
-gapminder |> group_by(country) |> summarize(n_observations = n())
-gapminder |> count(country)
-gapminder |> count(is.na(country))
-gapminder |> group_by(country) |> 
-  summarize(n_missing_lifeExp = sum(is.na(lifeExp)) )
-```
-
-## Translating English to dplyr
-
-Find the country with the highest and lowest life expectancy in each year.
-
-```{r echo=TRUE}
-table3 <- gapminder |> group_by(year) |> mutate(max_life_exp = max(lifeExp),
-                                      min_life_exp = min(lifeExp)) |>
-  filter(near(lifeExp, max_life_exp) | near(lifeExp, min_life_exp)) 
-table3
-```
-
-
-## Translating English to dplyr
-
-Graph these data.
-
-```{r echo=TRUE}
-table3 |> ggplot(aes(y = country, x = lifeExp, color = year)) + geom_point()
-```
-
----
-
-Looking ahead to the lesson on factors, we can make this plot look a bit nicer by rearranging the countries according to lifeExpectancy:
-
-```{r echo=TRUE}
-table3 |> ggplot(aes(y = fct_reorder(country, lifeExp),
-                     x = lifeExp, 
-                     color = year)) +
-  geom_point()
-```
-
-## Translating English to dplyr
-
-Make a table showing the number of missing data for each penguin species.
-
-There are missing data for sex and four quantitative variables:
-
-```{r echo=TRUE}
-penguins |> group_by(species) |>
-  summarize(bill_length_na = sum(is.na(bill_length_mm)),
-            bill_depth_na = sum(is.na(bill_depth_mm)),
-            flipper_length_na = sum(is.na(flipper_length_mm)),
-            body_mass_na = sum(is.na(body_mass_g))
-            )
-```
-
----
-
-The `naniar` package has a nice function to show this too:
-
-```{r warning=FALSE, echo=TRUE}
-library(naniar)
-gg_miss_var(penguins)
-```
 
 

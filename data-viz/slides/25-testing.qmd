@@ -106,7 +106,7 @@ Check the "obvious" things.
 
 ## Example: Jelly bean data {.smaller}
 
-Key variables: treatment, flavour, reaction time, accuracy.
+Key variables: treatment, flavour, reaction time, accuracy. [Data](https://raw.githubusercontent.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/main/data-viz/slides/static/L25/jelly-bean-data.csv).
 
 ```{r include=FALSE}
 jelly <- read_csv("static/L25/jelly-bean-data.csv") |> clean_names() |> filter(!is.na(flavour)) |>
