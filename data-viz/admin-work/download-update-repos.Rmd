@@ -31,7 +31,8 @@ dir.create(repo_location, recursive = TRUE)
 github_whoami()
 org_name = "Dalhousie-AndrewIrwin-Teaching"
 org_sitrep(org_name)
-repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
+# repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assignment repositories
+repos <- org_repos(org_name, filter = "data-viz-project-.*") # student assignment repositories
 ```
 
 Clone them all into `repo_location`. (Unless the repo exists. Then pull instead. The file `.DS_Store` on a mac can create conflicts when pulling, if the student has committed this file.)
