@@ -44,14 +44,13 @@ library(kableExtra)
 
 * Both rely on internet services such as:
   * [OpenStreetMap](https://www.openstreetmap.org/#map=5/44.653/-63.413) 
-  * [Stamen Maps](http://maps.stamen.com/terrain/#12/44.6453/-63.5724)
   * [Google Maps](https://mapsplatform.google.com/maps-products/#static-maps)
 
 ## A basic map
 
 ```{r message=FALSE, warning=FALSE}
-m <- leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
+m <- leaflet() |>
+  addTiles() |>  # Add default OpenStreetMap map tiles
   addMarkers(lng=-63.5932, lat=44.63697, popup="Math & Stats, Dalhousie U")
 ```
 
@@ -67,8 +66,8 @@ m  # Print the map
 ```{r message=FALSE, warning=FALSE}
 cities <- read_csv("static/L28/selected_cities.csv")
 head(cities) |> kable() |> kable_styling()
-m2 <- leaflet(data = cities) %>%
-  addTiles() %>%
+m2 <- leaflet(data = cities) |>
+  addTiles() |>
   addCircleMarkers(~ lng, ~lat, label = ~city)
 ```
 
@@ -85,11 +84,11 @@ library(geojsonio)
 pal <- colorNumeric("viridis", NULL)  # make a viridis palette
 canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
 my_values = runif(13, 0, 10) # random numbers between 0 and 10
-m3 <- canada %>% 
-  leaflet() %>%
-  addTiles() %>%
+m3 <- canada |>
+  leaflet() |>
+  addTiles() |>
   addPolygons(fillColor = ~ pal(my_values),
-              weight = 1, color = "black") %>%
+              weight = 1, color = "black") |>
   addLegend(pal = pal, values = my_values, opacity = 1.0)
 ```
 
@@ -102,24 +101,18 @@ m3
 
 ## Other tiled map services
 
-Stament maps are from Stadia Maps have more options, but you must sign up for an API key first.
+Google maps have more options, but you must sign up for an API key first. These examples are for anyone who wants to experiment with that option.
 
 ```{r stamen, eval=FALSE, cache=TRUE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
-mymap_terrain <- get_stadiamap(bbox = c(left = -130, bottom = 41, 
+mymap_terrain <- ggmap::get_googlemap(bbox = c(left = -130, bottom = 41, 
                                         right = -50, top = 66), 
-                               zoom=5, maptype = "stamen_terrain")
+                               zoom=5, maptype = "terrain")
 m4 <- ggmap(mymap_terrain)  
 ```
 
 See help for the package `ggmap` for more services (google maps, open street maps).
 
 Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don't burden yourself or a free service by downloading unnecessary data.)
-
-## Other tiled map services
-
-```{r eval=FALSE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2, echo=FALSE}
-m4
-```
 
 
 ## Add text and points
@@ -138,12 +131,6 @@ m5 <- ggmap(mymap_terrain)  +
 ```
 
 
-## Add text and points
-
-```{r eval=FALSE, echo=FALSE, fig.align="center", out.width="90%", echo=FALSE, fig.retina=2}
-m5
-```
-
 ## Summary
 
 * Outline vs tiled (image) maps
@@ -154,12 +141,8 @@ m5
 
 * Fill regions with colour (requires polygons)
 
-* There are several tile services
+* There are several tile services, but free access comes and goes frequently
 
-
-## Task
-
-* Task to make some maps in repository
 
 
 

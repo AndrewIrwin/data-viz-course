@@ -66,11 +66,12 @@ my_theme = theme_classic() +
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 WorldData <- map_data('world')  
-m1 <- ggplot(WorldData, aes(map_id=region)) + 
+m1 <- ggplot(WorldData) + 
         geom_map(map = WorldData,
-                 aes(x = long, y = lat),
+                 aes(map_id = region),
                  fill = "lightgray", colour = "#7f7f7f", 
-                 alpha = 0.5, size=0.5) +
+                 alpha = 0.5, linewidth=0.5) +
+  expand_limits(x = c(-180, 180), y = c(-85, 85)) + 
   theme_bw()
 ```
 
@@ -85,13 +86,13 @@ m1
 ## Colour countries
 
 ```{r message=FALSE, warning=FALSE}
-values <- tibble( region = WorldData %>% pull(region) %>% unique())
-values <- values %>% mutate(value = runif(nrow(values)))
-m2 <- ggplot(values, aes(map_id = region)) + 
-        geom_map(aes(fill = value),
+values <- tibble( region = WorldData |> pull(region) |> unique())
+values <- values |> mutate(value = runif(nrow(values)))
+m2 <- values |> ggplot() + 
+        geom_map(aes(fill = value, map_id = region),
                  map = WorldData,
                  colour = "lightgray", 
-                 alpha = 1, size=0.5) +
+                 alpha = 1, linewidth=0.5) +
    expand_limits(x = c(-180,180), y = c(-80,80)) +
    theme_bw()
 ```
@@ -108,11 +109,11 @@ m2
 ```{r message=FALSE, warning=FALSE}
 values <- tibble( region = c("Canada", "China", "Chile"),
                   value  = c(1, 2, 3))
-m3 <- ggplot(values, aes(map_id = region)) + 
-        geom_map(aes(fill = value),
+m3 <- values |> ggplot() + 
+        geom_map(aes(fill = value, map_id = region),
                  map = WorldData,
                  colour = "lightgray", 
-                 alpha = 1, size=0.5) +
+                 alpha = 1, linewidth=0.5) +
    expand_limits(x = c(-180,180), y = c(-80,80))+
   theme_bw()
 ```
@@ -129,10 +130,10 @@ m3
 ```{r message=FALSE, warning=FALSE}
 values <- tibble( region = c("Canada", "China", "Chile"),
                   value  = c(1, 2, 3))
-m4 <- ggplot(WorldData, aes(map_id = region)) + 
+m4 <- ggplot(data = WorldData, aes(map_id = region)) + 
         geom_map(map = WorldData,
                  colour = "lightgray", fill = "darkgray",
-                 alpha = 1, size=0.5) +
+                 alpha = 1, linewidth=0.5) +
         geom_map(aes(fill = value), 
                  data = values, map = WorldData) + 
    expand_limits(x = c(-180,180), y = c(-80,80))+
@@ -181,7 +182,7 @@ m6 <- ggplot(CanadaData, aes(map_id=region)) +
         geom_map(map = CanadaData,
                  aes(x = long, y = lat),
                  fill = "lightgray", colour = "#7f7f7f", 
-                 alpha = 0.5, size=0.5) +
+                 alpha = 0.5, linewidth=0.5) +
   theme_bw() +
   coord_map("lambert", lat0 = 42, lat1 = 50)
 ```
@@ -200,7 +201,7 @@ m7 <- ggplot(WorldData, aes(map_id=region)) +
         geom_map(map = WorldData,
                  aes(x = long, y = lat),
                  fill = "lightgray", colour = "#7f7f7f", 
-                 alpha = 0.5, size=0.5) +
+                 alpha = 0.5, linewidth=0.5) +
   theme_bw() +
   coord_map("perspective", 2, orientation=c(-90, -90, 90))
 ```
