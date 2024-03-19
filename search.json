@@ -382,14 +382,14 @@
     "href": "slides/28-sliding-maps.html#map-libraries",
     "title": "Making sliding maps",
     "section": "Map libraries",
-    "text": "Map libraries\n\nDynamic: leaflet for drawing raster or tiled maps (leafletjs.com)\nStatic: ggmap (part of tidyverse, tiles from several services)\n\nBoth rely on internet services such as:\n\nOpenStreetMap\nStamen Maps\nGoogle Maps"
+    "text": "Map libraries\n\nDynamic: leaflet for drawing raster or tiled maps (leafletjs.com)\nStatic: ggmap (part of tidyverse, tiles from several services)\n\nBoth rely on internet services such as:\n\nOpenStreetMap\nGoogle Maps"
   },
   {
     "objectID": "slides/28-sliding-maps.html#a-basic-map",
     "href": "slides/28-sliding-maps.html#a-basic-map",
     "title": "Making sliding maps",
     "section": "A basic map",
-    "text": "A basic map\n\nm &lt;- leaflet() %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap map tiles\n  addMarkers(lng=-63.5932, lat=44.63697, popup=\"Math & Stats, Dalhousie U\")"
+    "text": "A basic map\n\nm &lt;- leaflet() |&gt;\n  addTiles() |&gt;  # Add default OpenStreetMap map tiles\n  addMarkers(lng=-63.5932, lat=44.63697, popup=\"Math & Stats, Dalhousie U\")"
   },
   {
     "objectID": "slides/28-sliding-maps.html#a-basic-map-1",
@@ -403,7 +403,7 @@
     "href": "slides/28-sliding-maps.html#adding-points",
     "title": "Making sliding maps",
     "section": "Adding points",
-    "text": "Adding points\n\ncities &lt;- read_csv(\"static/L28/selected_cities.csv\")\nhead(cities) |&gt; kable() |&gt; kable_styling()\n\n\n\ncity\ncity_ascii\nlat\nlng\ncountry\niso2\niso3\nadmin_name\ncapital\npopulation\nid\n\n\n\nTokyo\nTokyo\n35.6897\n139.6922\nJapan\nJP\nJPN\nTōkyō\nprimary\n37977000\n1392685764\n\n\nJakarta\nJakarta\n-6.2146\n106.8451\nIndonesia\nID\nIDN\nJakarta\nprimary\n34540000\n1360771077\n\n\nDelhi\nDelhi\n28.6600\n77.2300\nIndia\nIN\nIND\nDelhi\nadmin\n29617000\n1356872604\n\n\nMumbai\nMumbai\n18.9667\n72.8333\nIndia\nIN\nIND\nMahārāshtra\nadmin\n23355000\n1356226629\n\n\nManila\nManila\n14.5958\n120.9772\nPhilippines\nPH\nPHL\nManila\nprimary\n23088000\n1608618140\n\n\nShanghai\nShanghai\n31.1667\n121.4667\nChina\nCN\nCHN\nShanghai\nadmin\n22120000\n1156073548\n\n\n\n\nm2 &lt;- leaflet(data = cities) %&gt;%\n  addTiles() %&gt;%\n  addCircleMarkers(~ lng, ~lat, label = ~city)"
+    "text": "Adding points\n\ncities &lt;- read_csv(\"static/L28/selected_cities.csv\")\nhead(cities) |&gt; kable() |&gt; kable_styling()\n\n\n\ncity\ncity_ascii\nlat\nlng\ncountry\niso2\niso3\nadmin_name\ncapital\npopulation\nid\n\n\n\nTokyo\nTokyo\n35.6897\n139.6922\nJapan\nJP\nJPN\nTōkyō\nprimary\n37977000\n1392685764\n\n\nJakarta\nJakarta\n-6.2146\n106.8451\nIndonesia\nID\nIDN\nJakarta\nprimary\n34540000\n1360771077\n\n\nDelhi\nDelhi\n28.6600\n77.2300\nIndia\nIN\nIND\nDelhi\nadmin\n29617000\n1356872604\n\n\nMumbai\nMumbai\n18.9667\n72.8333\nIndia\nIN\nIND\nMahārāshtra\nadmin\n23355000\n1356226629\n\n\nManila\nManila\n14.5958\n120.9772\nPhilippines\nPH\nPHL\nManila\nprimary\n23088000\n1608618140\n\n\nShanghai\nShanghai\n31.1667\n121.4667\nChina\nCN\nCHN\nShanghai\nadmin\n22120000\n1156073548\n\n\n\n\nm2 &lt;- leaflet(data = cities) |&gt;\n  addTiles() |&gt;\n  addCircleMarkers(~ lng, ~lat, label = ~city)"
   },
   {
     "objectID": "slides/28-sliding-maps.html#adding-points-1",
@@ -417,7 +417,7 @@
     "href": "slides/28-sliding-maps.html#colour-regions",
     "title": "Making sliding maps",
     "section": "Colour regions",
-    "text": "Colour regions\n\nlibrary(geojsonio)\npal &lt;- colorNumeric(\"viridis\", NULL)  # make a viridis palette\ncanada &lt;- geojson_read(\"https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson\", what=\"sp\")\nmy_values = runif(13, 0, 10) # random numbers between 0 and 10\nm3 &lt;- canada %&gt;% \n  leaflet() %&gt;%\n  addTiles() %&gt;%\n  addPolygons(fillColor = ~ pal(my_values),\n              weight = 1, color = \"black\") %&gt;%\n  addLegend(pal = pal, values = my_values, opacity = 1.0)"
+    "text": "Colour regions\n\nlibrary(geojsonio)\npal &lt;- colorNumeric(\"viridis\", NULL)  # make a viridis palette\ncanada &lt;- geojson_read(\"https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson\", what=\"sp\")\nmy_values = runif(13, 0, 10) # random numbers between 0 and 10\nm3 &lt;- canada |&gt;\n  leaflet() |&gt;\n  addTiles() |&gt;\n  addPolygons(fillColor = ~ pal(my_values),\n              weight = 1, color = \"black\") |&gt;\n  addLegend(pal = pal, values = my_values, opacity = 1.0)"
   },
   {
     "objectID": "slides/28-sliding-maps.html#colour-regions-1",
@@ -431,14 +431,7 @@
     "href": "slides/28-sliding-maps.html#other-tiled-map-services",
     "title": "Making sliding maps",
     "section": "Other tiled map services",
-    "text": "Other tiled map services\nStament maps are from Stadia Maps have more options, but you must sign up for an API key first.\n\nmymap_terrain &lt;- get_stadiamap(bbox = c(left = -130, bottom = 41, \n                                        right = -50, top = 66), \n                               zoom=5, maptype = \"stamen_terrain\")\nm4 &lt;- ggmap(mymap_terrain)  \n\nSee help for the package ggmap for more services (google maps, open street maps).\nStart with a small integer for zoom and increase it if your map is fuzzy. (Don’t burden yourself or a free service by downloading unnecessary data.)"
-  },
-  {
-    "objectID": "slides/28-sliding-maps.html#other-tiled-map-services-1",
-    "href": "slides/28-sliding-maps.html#other-tiled-map-services-1",
-    "title": "Making sliding maps",
-    "section": "Other tiled map services",
-    "text": "Other tiled map services"
+    "text": "Other tiled map services\nGoogle maps have more options, but you must sign up for an API key first. These examples are for anyone who wants to experiment with that option.\n\nmymap_terrain &lt;- ggmap::get_googlemap(bbox = c(left = -130, bottom = 41, \n                                        right = -50, top = 66), \n                               zoom=5, maptype = \"terrain\")\nm4 &lt;- ggmap(mymap_terrain)  \n\nSee help for the package ggmap for more services (google maps, open street maps).\nStart with a small integer for zoom and increase it if your map is fuzzy. (Don’t burden yourself or a free service by downloading unnecessary data.)"
   },
   {
     "objectID": "slides/28-sliding-maps.html#add-text-and-points",
@@ -448,25 +441,11 @@
     "text": "Add text and points\n\nmy_points &lt;- tibble(lat = c(43+57/60, 49+53/60),\n                    lon = c(-59-55/60, -97-9/60),\n                    label = c(\"Sable Is.\", \"Winnipeg\")\n)\nm5 &lt;- ggmap(mymap_terrain)  +\n  geom_point(data = my_points, color=\"brown\") + \n  geom_label(data = my_points, \n            aes(label=label), \n            fill = \"#FFFFFF90\",\n            color = \"black\", nudge_y = 1.5)"
   },
   {
-    "objectID": "slides/28-sliding-maps.html#add-text-and-points-1",
-    "href": "slides/28-sliding-maps.html#add-text-and-points-1",
-    "title": "Making sliding maps",
-    "section": "Add text and points",
-    "text": "Add text and points"
-  },
-  {
     "objectID": "slides/28-sliding-maps.html#summary",
     "href": "slides/28-sliding-maps.html#summary",
     "title": "Making sliding maps",
     "section": "Summary",
-    "text": "Summary\n\nOutline vs tiled (image) maps\nMake a basic map\nAdd points and labels\nFill regions with colour (requires polygons)\nThere are several tile services"
-  },
-  {
-    "objectID": "slides/28-sliding-maps.html#task",
-    "href": "slides/28-sliding-maps.html#task",
-    "title": "Making sliding maps",
-    "section": "Task",
-    "text": "Task\n\nTask to make some maps in repository"
+    "text": "Summary\n\nOutline vs tiled (image) maps\nMake a basic map\nAdd points and labels\nFill regions with colour (requires polygons)\nThere are several tile services, but free access comes and goes frequently"
   },
   {
     "objectID": "slides/26-dynamic-graphics.html#plan",
@@ -2916,7 +2895,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.8801496\n0.9807152\n-0.4623993\n39\n20.98983\n1\n\n\n0.6434835\n0.4874906\n1.0179752\n33\n27.20555\n2\n\n\n-0.7286058\n-0.9212916\n0.9015219\n20\n19.63254\n3\n\n\n-1.4670833\n-1.2431472\n-0.2800012\n27\n20.06632\n4\n\n\n-0.0598882\n-0.1019251\n-1.1317397\n23\n27.75678\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-1.4670833\n-1.2431472\n-0.2800012\n27\n20.06632\n1\n\n\n0.6551759\n0.5041549\n1.0483312\n32\n25.79484\n2\n\n\n-0.7286058\n-0.9212916\n0.9015219\n20\n19.63254\n3\n\n\n0.0143558\n-0.0604618\n-1.0173923\n27\n31.53864\n4\n\n\n0.9119480\n1.0413977\n-0.4596503\n36\n18.48695\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -3140,7 +3119,7 @@
     "href": "slides/27-making-maps.html#a-basic-map",
     "title": "Making outline maps",
     "section": "A basic map",
-    "text": "A basic map\n\nlibrary(tidyverse)\nWorldData &lt;- map_data('world')  \nm1 &lt;- ggplot(WorldData, aes(map_id=region)) + \n        geom_map(map = WorldData,\n                 aes(x = long, y = lat),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, size=0.5) +\n  theme_bw()"
+    "text": "A basic map\n\nlibrary(tidyverse)\nWorldData &lt;- map_data('world')  \nm1 &lt;- ggplot(WorldData) + \n        geom_map(map = WorldData,\n                 aes(map_id = region),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, linewidth=0.5) +\n  expand_limits(x = c(-180, 180), y = c(-85, 85)) + \n  theme_bw()"
   },
   {
     "objectID": "slides/27-making-maps.html#a-basic-map-1",
@@ -3154,7 +3133,7 @@
     "href": "slides/27-making-maps.html#colour-countries",
     "title": "Making outline maps",
     "section": "Colour countries",
-    "text": "Colour countries\n\nvalues &lt;- tibble( region = WorldData %&gt;% pull(region) %&gt;% unique())\nvalues &lt;- values %&gt;% mutate(value = runif(nrow(values)))\nm2 &lt;- ggplot(values, aes(map_id = region)) + \n        geom_map(aes(fill = value),\n                 map = WorldData,\n                 colour = \"lightgray\", \n                 alpha = 1, size=0.5) +\n   expand_limits(x = c(-180,180), y = c(-80,80)) +\n   theme_bw()"
+    "text": "Colour countries\n\nvalues &lt;- tibble( region = WorldData |&gt; pull(region) |&gt; unique())\nvalues &lt;- values |&gt; mutate(value = runif(nrow(values)))\nm2 &lt;- values |&gt; ggplot() + \n        geom_map(aes(fill = value, map_id = region),\n                 map = WorldData,\n                 colour = \"lightgray\", \n                 alpha = 1, linewidth=0.5) +\n   expand_limits(x = c(-180,180), y = c(-80,80)) +\n   theme_bw()"
   },
   {
     "objectID": "slides/27-making-maps.html#colour-countries-1",
@@ -3168,7 +3147,7 @@
     "href": "slides/27-making-maps.html#show-only-some-countries",
     "title": "Making outline maps",
     "section": "Show only some countries",
-    "text": "Show only some countries\n\nvalues &lt;- tibble( region = c(\"Canada\", \"China\", \"Chile\"),\n                  value  = c(1, 2, 3))\nm3 &lt;- ggplot(values, aes(map_id = region)) + \n        geom_map(aes(fill = value),\n                 map = WorldData,\n                 colour = \"lightgray\", \n                 alpha = 1, size=0.5) +\n   expand_limits(x = c(-180,180), y = c(-80,80))+\n  theme_bw()"
+    "text": "Show only some countries\n\nvalues &lt;- tibble( region = c(\"Canada\", \"China\", \"Chile\"),\n                  value  = c(1, 2, 3))\nm3 &lt;- values |&gt; ggplot() + \n        geom_map(aes(fill = value, map_id = region),\n                 map = WorldData,\n                 colour = \"lightgray\", \n                 alpha = 1, linewidth=0.5) +\n   expand_limits(x = c(-180,180), y = c(-80,80))+\n  theme_bw()"
   },
   {
     "objectID": "slides/27-making-maps.html#show-some-countries",
@@ -3182,7 +3161,7 @@
     "href": "slides/27-making-maps.html#colour-some-countries",
     "title": "Making outline maps",
     "section": "Colour some countries",
-    "text": "Colour some countries\n\nvalues &lt;- tibble( region = c(\"Canada\", \"China\", \"Chile\"),\n                  value  = c(1, 2, 3))\nm4 &lt;- ggplot(WorldData, aes(map_id = region)) + \n        geom_map(map = WorldData,\n                 colour = \"lightgray\", fill = \"darkgray\",\n                 alpha = 1, size=0.5) +\n        geom_map(aes(fill = value), \n                 data = values, map = WorldData) + \n   expand_limits(x = c(-180,180), y = c(-80,80))+\n  theme_bw()"
+    "text": "Colour some countries\n\nvalues &lt;- tibble( region = c(\"Canada\", \"China\", \"Chile\"),\n                  value  = c(1, 2, 3))\nm4 &lt;- ggplot(data = WorldData, aes(map_id = region)) + \n        geom_map(map = WorldData,\n                 colour = \"lightgray\", fill = \"darkgray\",\n                 alpha = 1, linewidth=0.5) +\n        geom_map(aes(fill = value), \n                 data = values, map = WorldData) + \n   expand_limits(x = c(-180,180), y = c(-80,80))+\n  theme_bw()"
   },
   {
     "objectID": "slides/27-making-maps.html#colour-some-countries-1",
@@ -3210,7 +3189,7 @@
     "href": "slides/27-making-maps.html#projections",
     "title": "Making outline maps",
     "section": "Projections",
-    "text": "Projections\n\nlibrary(mapproj)\nCanadaData &lt;- map_data('world', 'Canada')  \nm6 &lt;- ggplot(CanadaData, aes(map_id=region)) + \n        geom_map(map = CanadaData,\n                 aes(x = long, y = lat),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, size=0.5) +\n  theme_bw() +\n  coord_map(\"lambert\", lat0 = 42, lat1 = 50)"
+    "text": "Projections\n\nlibrary(mapproj)\nCanadaData &lt;- map_data('world', 'Canada')  \nm6 &lt;- ggplot(CanadaData, aes(map_id=region)) + \n        geom_map(map = CanadaData,\n                 aes(x = long, y = lat),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, linewidth=0.5) +\n  theme_bw() +\n  coord_map(\"lambert\", lat0 = 42, lat1 = 50)"
   },
   {
     "objectID": "slides/27-making-maps.html#projections-1",
@@ -3224,7 +3203,7 @@
     "href": "slides/27-making-maps.html#polar-regions",
     "title": "Making outline maps",
     "section": "Polar regions",
-    "text": "Polar regions\n\nlibrary(mapproj)\nm7 &lt;- ggplot(WorldData, aes(map_id=region)) + \n        geom_map(map = WorldData,\n                 aes(x = long, y = lat),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, size=0.5) +\n  theme_bw() +\n  coord_map(\"perspective\", 2, orientation=c(-90, -90, 90))"
+    "text": "Polar regions\n\nlibrary(mapproj)\nm7 &lt;- ggplot(WorldData, aes(map_id=region)) + \n        geom_map(map = WorldData,\n                 aes(x = long, y = lat),\n                 fill = \"lightgray\", colour = \"#7f7f7f\", \n                 alpha = 0.5, linewidth=0.5) +\n  theme_bw() +\n  coord_map(\"perspective\", 2, orientation=c(-90, -90, 90))"
   },
   {
     "objectID": "slides/27-making-maps.html#polar-regions-1",

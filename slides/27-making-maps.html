@@ -437,24 +437,25 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a>WorldData <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">'world'</span>)  </span>
-<span id="cb1-3"><a></a>m1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(WorldData, <span class="fu">aes</span>(<span class="at">map_id=</span>region)) <span class="sc">+</span> </span>
+<span id="cb1-3"><a></a>m1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(WorldData) <span class="sc">+</span> </span>
 <span id="cb1-4"><a></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> WorldData,</span>
-<span id="cb1-5"><a></a>                 <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat),</span>
+<span id="cb1-5"><a></a>                 <span class="fu">aes</span>(<span class="at">map_id =</span> region),</span>
 <span id="cb1-6"><a></a>                 <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">colour =</span> <span class="st">"#7f7f7f"</span>, </span>
-<span id="cb1-7"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb1-8"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<span id="cb1-7"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">180</span>, <span class="dv">180</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">85</span>, <span class="dv">85</span>)) <span class="sc">+</span> </span>
+<span id="cb1-9"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 </div>
 </section><section id="a-basic-map-1" class="slide level2"><h2>A basic map</h2>
 
 <img data-src="27-making-maps_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%"></section><section id="colour-countries" class="slide level2"><h2>Colour countries</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>values <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">region =</span> WorldData <span class="sc">%&gt;%</span> <span class="fu">pull</span>(region) <span class="sc">%&gt;%</span> <span class="fu">unique</span>())</span>
-<span id="cb2-2"><a></a>values <span class="ot">&lt;-</span> values <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">runif</span>(<span class="fu">nrow</span>(values)))</span>
-<span id="cb2-3"><a></a>m2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(values, <span class="fu">aes</span>(<span class="at">map_id =</span> region)) <span class="sc">+</span> </span>
-<span id="cb2-4"><a></a>        <span class="fu">geom_map</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value),</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>values <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">region =</span> WorldData <span class="sc">|&gt;</span> <span class="fu">pull</span>(region) <span class="sc">|&gt;</span> <span class="fu">unique</span>())</span>
+<span id="cb2-2"><a></a>values <span class="ot">&lt;-</span> values <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">runif</span>(<span class="fu">nrow</span>(values)))</span>
+<span id="cb2-3"><a></a>m2 <span class="ot">&lt;-</span> values <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-4"><a></a>        <span class="fu">geom_map</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value, <span class="at">map_id =</span> region),</span>
 <span id="cb2-5"><a></a>                 <span class="at">map =</span> WorldData,</span>
 <span id="cb2-6"><a></a>                 <span class="at">colour =</span> <span class="st">"lightgray"</span>, </span>
-<span id="cb2-7"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb2-8"><a></a>   <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">180</span>,<span class="dv">180</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">80</span>,<span class="dv">80</span>)) <span class="sc">+</span></span>
 <span id="cb2-9"><a></a>   <span class="fu">theme_bw</span>()</span></code></pre></div>
 </div>
@@ -464,11 +465,11 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>values <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>),</span>
 <span id="cb3-2"><a></a>                  <span class="at">value  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb3-3"><a></a>m3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(values, <span class="fu">aes</span>(<span class="at">map_id =</span> region)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a></a>        <span class="fu">geom_map</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value),</span>
+<span id="cb3-3"><a></a>m3 <span class="ot">&lt;-</span> values <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-4"><a></a>        <span class="fu">geom_map</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value, <span class="at">map_id =</span> region),</span>
 <span id="cb3-5"><a></a>                 <span class="at">map =</span> WorldData,</span>
 <span id="cb3-6"><a></a>                 <span class="at">colour =</span> <span class="st">"lightgray"</span>, </span>
-<span id="cb3-7"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb3-8"><a></a>   <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">180</span>,<span class="dv">180</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">80</span>,<span class="dv">80</span>))<span class="sc">+</span></span>
 <span id="cb3-9"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 </div>
@@ -478,10 +479,10 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>values <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>),</span>
 <span id="cb4-2"><a></a>                  <span class="at">value  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb4-3"><a></a>m4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(WorldData, <span class="fu">aes</span>(<span class="at">map_id =</span> region)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a></a>m4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> WorldData, <span class="fu">aes</span>(<span class="at">map_id =</span> region)) <span class="sc">+</span> </span>
 <span id="cb4-4"><a></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> WorldData,</span>
 <span id="cb4-5"><a></a>                 <span class="at">colour =</span> <span class="st">"lightgray"</span>, <span class="at">fill =</span> <span class="st">"darkgray"</span>,</span>
-<span id="cb4-6"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a></a>                 <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb4-7"><a></a>        <span class="fu">geom_map</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value), </span>
 <span id="cb4-8"><a></a>                 <span class="at">data =</span> values, <span class="at">map =</span> WorldData) <span class="sc">+</span> </span>
 <span id="cb4-9"><a></a>   <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">180</span>,<span class="dv">180</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">80</span>,<span class="dv">80</span>))<span class="sc">+</span></span>
@@ -518,7 +519,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb6-4"><a></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> CanadaData,</span>
 <span id="cb6-5"><a></a>                 <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat),</span>
 <span id="cb6-6"><a></a>                 <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">colour =</span> <span class="st">"#7f7f7f"</span>, </span>
-<span id="cb6-7"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb6-8"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb6-9"><a></a>  <span class="fu">coord_map</span>(<span class="st">"lambert"</span>, <span class="at">lat0 =</span> <span class="dv">42</span>, <span class="at">lat1 =</span> <span class="dv">50</span>)</span></code></pre></div>
 </div>
@@ -531,7 +532,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb7-3"><a></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> WorldData,</span>
 <span id="cb7-4"><a></a>                 <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat),</span>
 <span id="cb7-5"><a></a>                 <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">colour =</span> <span class="st">"#7f7f7f"</span>, </span>
-<span id="cb7-6"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb7-7"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb7-8"><a></a>  <span class="fu">coord_map</span>(<span class="st">"perspective"</span>, <span class="dv">2</span>, <span class="at">orientation=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">90</span>, <span class="sc">-</span><span class="dv">90</span>, <span class="dv">90</span>))</span></code></pre></div>
 </div>
