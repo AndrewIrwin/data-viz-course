@@ -62,8 +62,8 @@ Political borders and territorial disputes: maps will undoubtedly be incomplete,
 
 ```{r}
 ggplot(m1, aes(map_id = region)) +
-    geom_map(fill = "transparent", color = "black", 
-             linewidth = 0.5, map = m1) +
+    geom_map(fill = "darkred", color = NA, 
+             linewidth = 0.1, map = m1, alpha = 0.5) +
   expand_limits(x = c(-180,180), y = c(-85, 85) )
 ```
 
@@ -72,8 +72,8 @@ Combine the land and lake maps.
 
 ```{r}
 ggplot(m1, aes(map_id = region)) +
-  geom_map(fill = "white", color = "black", 
-           linewidth = 0.2, map = m1) +
+  geom_map(data = m1, fill = "white", color = "black", 
+           linewidth = 0.2, alpha = 1, map = m1) +
   geom_map(data = m1lake, map = m1lake,
            fill = "blue", color = NA) +
   expand_limits(x = c(-180,180), y = c(-85, 85) )
@@ -86,8 +86,15 @@ m2 <- m1 |> filter(region == "Canada")
 m2 |> summarize(min_lat = min(lat), max_lat = max(lat), 
                 min_long = min(long), max_long = max(long))
 ggplot(m2, aes(map_id = region)) +
-  geom_map(fill = "white", color = "black", size = 0.5, map = m2)  +
+  geom_map(fill = "white", color = "black", linewidth = 0.5, map = m2)  +
   coord_map("albers", 60, 90) +
+  # coord_map("lambert", 42, 50) +
+  theme(axis.title = element_blank(), axis.text = element_blank(),
+        axis.ticks = element_blank()) +
+  expand_limits(x = c(-141, -50), y = c(41, 85))
+ggplot(m2, aes(map_id = region)) +
+  geom_map(fill = "white", color = "black", linewidth = 0.5, map = m2)  +
+  coord_map("lambert", 42, 50) +
   theme(axis.title = element_blank(), axis.text = element_blank(),
         axis.ticks = element_blank()) +
   expand_limits(x = c(-141, -50), y = c(41, 85))
@@ -122,6 +129,14 @@ ggplot(m2, aes(map_id = region)) +
   geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
   # coord_map("gilbert") 
   expand_limits(x = c(0, 360), y = c(-90, 90)) +
+  coord_map("mollweide") 
+  # coord_map("lambert", -25, 25) # not good for the whole globe
+  # coord_map("albers", -25, 25)
+m2 <- map_data("world")
+ggplot(m2, aes(map_id = region)) +
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
+  # coord_map("gilbert") 
+  expand_limits(x = c(-180, 180), y = c(-90, 90)) +
   coord_map("mollweide") 
   # coord_map("lambert", -25, 25) # not good for the whole globe
   # coord_map("albers", -25, 25)
