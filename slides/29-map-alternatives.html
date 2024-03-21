@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-20">
+<meta name="dcterms.date" content="2024-03-21">
 <title>data-viz - Alternatives to maps</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -403,26 +403,39 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-10-20</p>
+  <p class="date">2024-03-21</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>When is a map not appropriate for geospatial data?</p></li>
 <li><p>Tile geometry</p></li>
 <li><p>Heatmaps with dendrograms</p></li>
 <li><p>Specialized heatmap for the USA</p></li>
-</ul></section><section id="why-shouldnt-i-use-a-map" class="slide level2"><h2>Why shouldn’t I use a map?</h2>
+</ul></section><section id="population-maps" class="slide level2"><h2>Population maps</h2>
+
+<img data-src="static/L29/us-state-population.png" class="r-stretch quarto-figure-center"><p class="caption">USA population by state</p><div class="footer">
+<p>https://www.everviz.com/chart-examples/choropleth-categories-point-and-pattern-fill-maps/us-state-population-choropleth-map/</p>
+</div>
+</section><section id="population-maps-ii" class="slide level2"><h2>Population maps II</h2>
+
+<img data-src="static/L29/population-density-county-2010.avif" class="r-stretch quarto-figure-center"><p class="caption">USA population by county</p><div class="footer">
+<p>https://www.census.gov/library/visualizations/2010/geo/population-density-county-2010.html</p>
+</div>
+</section><section class="slide level2">
+<img data-src="static/L29/Canada-province.png" class="r-stretch quarto-figure-center"><p class="caption">Canada population</p></section><section class="slide level2">
+<img data-src="static/L29/Canada2016-ada.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Canada population</p></section><section id="population-maps-iii" class="slide level2"><h2>Population maps III</h2>
+
+<img data-src="static/L29/usa-can-dot-map.png" class="r-stretch quarto-figure-center"><p class="caption">Canada USA population dot map</p><div class="footer">
+<p>https://flowingdata.com/2012/12/31/map-of-every-person-counted-in-2010-us-census/</p>
+</div>
+</section><section id="nighttime-image-of-earth" class="slide level2"><h2>Nighttime image of Earth</h2>
+
+<img data-src="static/L29/night-dnb_united_states_1000.webp" class="r-stretch quarto-figure-center"><p class="caption">NASA composite image of night time North America</p></section><section id="why-shouldnt-i-use-a-map" class="slide level2"><h2>Why shouldn’t I use a map?</h2>
 <ul>
 <li><p>Always think about the purpose</p></li>
 <li><p>Is geography the most important feature?</p></li>
 <li><p>Are you showing points or areas?</p></li>
 <li><p>Will the area of a region complicate interpretation?</p></li>
 <li><p>Is the spatial extent one dimensional? What could you do with the other dimension?</p></li>
-</ul></section><section id="summary" class="slide level2"><h2>Summary</h2>
-<ul>
-<li><p>Maps are very effective for showing points where spatial location is the primary information</p></li>
-<li><p>To show quantitative data varying along a transcect, a line or dot plot may be better</p></li>
-<li><p>Colour shows larger/smaller, positive/negative, but does not show quantitative values well</p></li>
-<li><p>Heatmaps (2 dimensional tiles of colours) can be a good alternative</p></li>
 </ul></section><section id="covid-19-cases-geom_tile" class="slide level2"><h2>COVID-19 cases &amp; geom_tile</h2>
 
 <img data-src="29-map-alternatives_files/figure-revealjs/covid-data-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="same-data-with-ggheatmap" class="slide level2"><h2>Same data with ggheatmap</h2>
@@ -440,13 +453,16 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="specialized-maps-of-usa-1" class="slide level2"><h2>Specialized maps of USA</h2>
 
-<img data-src="29-map-alternatives_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-TRUE r-stretch" style="width:90.0%"></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<img data-src="29-map-alternatives_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-TRUE r-stretch" style="width:90.0%"></section><section id="summary" class="slide level2"><h2>Summary</h2>
+<ul>
+<li><p>Maps are very effective for showing points where spatial location is the primary information</p></li>
+<li><p>To show quantitative data varying along a transcect, a line or dot plot may be better</p></li>
+<li><p>Colour shows larger/smaller, positive/negative, but does not show quantitative values well</p></li>
+<li><p>Heatmaps (2 dimensional tiles of colours) can be a good alternative</p></li>
+</ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy Chapter 7</p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<ul>
-<li>Task on map alteratives in repository</li>
 </ul>
 
 <div class="quarto-auto-generated-content">
