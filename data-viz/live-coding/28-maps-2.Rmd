@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse, quietly = TRUE)
-library(ggmap)
+# library(ggmap)
 library(leaflet)
 ```
 
@@ -60,18 +60,28 @@ library(socviz)
 s1 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
   group_by(partywinner16, census_region) |> summarize(pop = sum(pop))
 s1 |> ggplot(aes(y = census_region, x = partywinner16, fill = log10(pop))) + geom_tile() 
-s1 <- county_data |> filter(!is.na(census_region)) |>
+```
+
+More experiments with the same data.
+
+```{r}
+s2 <- county_data |> filter(!is.na(census_region)) |>
   group_by(pop_dens, census_region) |> summarize(pop = sum(pop), n = n(), land = sum(land_area))
-s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = log10(pop))) + geom_tile() 
-s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = n)) + geom_tile() 
-s1 |> ggplot(aes(y = census_region, x = pop_dens, fill = land)) + geom_tile() 
-s1 |> group_by(census_region) |> mutate(percent = n/sum(n)*100) |>
+s2 |> ggplot(aes(y = census_region, x = pop_dens, fill = log10(pop))) + geom_tile() 
+s2 |> ggplot(aes(y = census_region, x = pop_dens, fill = n)) + geom_tile() 
+s2 |> ggplot(aes(y = census_region, x = pop_dens, fill = land)) + geom_tile() 
+s2 |> group_by(census_region) |> mutate(percent = n/sum(n)*100) |>
   ggplot(aes(y = census_region, x = pop_dens, fill = percent)) + geom_tile() 
-s1 |> group_by(census_region) |> mutate(percent_pop = pop/sum(pop)*100) |>
+s2 |> group_by(census_region) |> mutate(percent_pop = pop/sum(pop)*100) |>
   ggplot(aes(y = census_region, x = pop_dens, fill = percent_pop)) + geom_tile() 
-s1 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
+```
+
+And more...
+
+```{r}
+s3 <- county_data |> filter(!is.na(census_region), !is.na(partywinner16)) |>
   group_by(partywinner16, state) |> summarize(pop = sum(pop))
-s1 |> ggplot(aes(y = fct_reorder(state, pop), x = partywinner16, fill = log10(pop))) + geom_tile() 
+s3 |> ggplot(aes(y = fct_reorder(state, pop), x = partywinner16, fill = log10(pop))) + geom_tile() 
 ```
 
 ## USA state map
