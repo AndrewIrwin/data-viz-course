@@ -2895,7 +2895,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n1\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n2\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n3\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n4\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.5116874\n0.1286984\n-0.5512334\n29\n14.49961\n1\n\n\n-1.0586255\n-0.5008071\n-1.4819352\n13\n16.45012\n2\n\n\n0.5939644\n0.4625594\n1.2265903\n30\n28.33482\n3\n\n\n0.9774023\n1.2253082\n-0.4343692\n29\n14.26527\n4\n\n\n-1.1522049\n-1.1373776\n0.2695103\n41\n36.88434\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -3266,7 +3266,7 @@
     "href": "slides/29-map-alternatives.html#why-shouldnt-i-use-a-map",
     "title": "Alternatives to maps",
     "section": "Why shouldn’t I use a map?",
-    "text": "Why shouldn’t I use a map?\n\nAlways think about the purpose\nIs geography the most important feature?\nAre you showing points or areas?\nWill the area of a region complicate interpretation?\nIs the spatial extent one dimensional? What could you do with the other dimension?"
+    "text": "Why shouldn’t I use a map?\n\nAlways think about the purpose\nIs geography the most important feature?\nAre you showing points or areas?\nIs your map approximately a population map?\nWill the area of a region complicate interpretation?\nIs the spatial extent one dimensional? What could you do with the other dimension?"
   },
   {
     "objectID": "slides/29-map-alternatives.html#covid-19-cases-geom_tile",
