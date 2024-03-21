@@ -1,7 +1,7 @@
 ---
 title: "Alternatives to maps"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-10-20"
+date: "2024-03-21"
 format:
   revealjs:
     slide-number: true
@@ -31,6 +31,45 @@ library(ggheatmap)
 
 * Specialized heatmap for the USA
 
+## Population maps
+
+![USA population by state](static/L29/us-state-population.png)
+
+::: footer
+https://www.everviz.com/chart-examples/choropleth-categories-point-and-pattern-fill-maps/us-state-population-choropleth-map/
+:::
+
+
+## Population maps II
+
+![USA population by county](static/L29/population-density-county-2010.avif)
+
+::: footer
+https://www.census.gov/library/visualizations/2010/geo/population-density-county-2010.html
+:::
+
+
+---
+
+![Canada population](static/L29/Canada-province.png)
+
+---
+
+![Canada population](static/L29/Canada2016-ada.jpeg)
+
+
+## Population maps III
+
+![Canada USA population dot map](static/L29/usa-can-dot-map.png)
+
+::: footer
+https://flowingdata.com/2012/12/31/map-of-every-person-counted-in-2010-us-census/
+:::
+
+## Nighttime image of Earth
+
+![NASA composite image of night time North America](static/L29/night-dnb_united_states_1000.webp)
+
 ## Why shouldn't I use a map?
 
 * Always think about the purpose
@@ -44,15 +83,6 @@ library(ggheatmap)
 * Is the spatial extent one dimensional? What could you do with the other dimension?
 
 
-## Summary
-
-* Maps are very effective for showing points where spatial location is the primary information
-
-* To show quantitative data varying along a transcect, a line or dot plot may be better
-
-* Colour shows larger/smaller, positive/negative, but does not show quantitative values well
-
-* Heatmaps (2 dimensional tiles of colours) can be a good alternative
 
 ## COVID-19 cases & geom_tile
 
@@ -109,17 +139,22 @@ m4 <- election %>% ggplot(aes(state = state, fill = pct_trump)) +
 m4
 ```
 
+## Summary
+
+* Maps are very effective for showing points where spatial location is the primary information
+
+* To show quantitative data varying along a transcect, a line or dot plot may be better
+
+* Colour shows larger/smaller, positive/negative, but does not show quantitative values well
+
+* Heatmaps (2 dimensional tiles of colours) can be a good alternative
+
 
 ## Further reading
 
 * Course notes
 
 * Healy Chapter 7
-
-
-## Task
-
-* Task on map alteratives in repository
 
 
 
