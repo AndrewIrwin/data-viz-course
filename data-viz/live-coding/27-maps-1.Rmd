@@ -21,14 +21,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Packages
 
 ```{r}
-library(tidyverse)
+library(tidyverse, quietly = TRUE)
 library(ggmap)
 # library(rnaturalearth)
 # library(rnaturalearthdata) # devtools::install_github("ropensci/rnaturalearthdata")
 # library(rnaturalearthhires) # devtools::install_github("ropensci/rnaturalearthhires")
 ```
 
-Lots of other packages in examples (notes and wider internet): `sf` (simple features), `rgdal` (geographic data abstraction library), and many more.
+Lots of other packages in examples (notes and wider internet): `sf` (simple features), `terra`, and many more.
 
 ## Functions
 
@@ -36,7 +36,7 @@ Lots of other packages in examples (notes and wider internet): `sf` (simple feat
 * `geom_map` (draw a map)
   * aesthetics: `map_id` (column with names for each region to be plotted), required argument: `map` (a data frame with the map data)
 * `expand_limits` (if part of your map is not showing)
-* `coord_map` (projections, mercator is default)
+* `coord_map` (projections, Mercator is default)
 
 ## Data for map
 
@@ -53,7 +53,7 @@ There are many "regions" and "subregions" within some of these maps:
 
 ```{r}
 count(m1, region) |> head()
-m1 |> filter(region == "Canada") |> head()
+m1 |> filter(region == "Canada") |> count(subregion)
 ```
 
 Political borders and territorial disputes: maps will undoubtedly be incomplete, inaccurate, or conflict with some people's political views whether in Canada (Québec, Labrador), France (St Pierre & Miquelon), China, Palestine, Russia, etc.
@@ -61,53 +61,83 @@ Political borders and territorial disputes: maps will undoubtedly be incomplete,
 ## Make a map
 
 ```{r}
-ggplot(m1, aes(map_id = region, 
-               x = long, y = lat)) +
-    geom_map(fill = "transparent", color = "black", 
-             size = 0.5, map = m1)
+ggplot(m1, aes(map_id = region)) +
+    geom_map(fill = "darkred", color = NA, 
+             linewidth = 0.1, map = m1, alpha = 0.5) +
+  expand_limits(x = c(-180,180), y = c(-85, 85) )
 ```
 
 
-Try to overlay two maps. I made a mistake in class by not specifying both "map" and "data" in the second geom_map layer (with the lake data).
+Combine the land and lake maps. 
 
 ```{r}
-ggplot(m1, aes(map_id = region, 
-               x = long, y = lat)) +
-  geom_map(fill = "transparent", color = "black", 
-           size = 0.1, map = m1) +
-  geom_map(data = m1lake, fill = "blue", color = "transparent",
-           map = m1lake)
+ggplot(m1, aes(map_id = region)) +
+  geom_map(data = m1, fill = "white", color = "black", 
+           linewidth = 0.2, alpha = 1, map = m1) +
+  geom_map(data = m1lake, map = m1lake,
+           fill = "blue", color = NA) +
+  expand_limits(x = c(-180,180), y = c(-85, 85) )
 ```
 
 Show just one region
 
 ```{r}
 m2 <- m1 |> filter(region == "Canada") 
-ggplot(m2, aes(map_id = region, x = long, y = lat)) +
-  geom_map(fill = "white", color = "black", size = 0.5, map = m2)  +
+m2 |> summarize(min_lat = min(lat), max_lat = max(lat), 
+                min_long = min(long), max_long = max(long))
+ggplot(m2, aes(map_id = region)) +
+  geom_map(fill = "white", color = "black", linewidth = 0.5, map = m2)  +
   coord_map("albers", 60, 90) +
+  # coord_map("lambert", 42, 50) +
   theme(axis.title = element_blank(), axis.text = element_blank(),
-        axis.ticks = element_blank())
-  # theme_void()
+        axis.ticks = element_blank()) +
+  expand_limits(x = c(-141, -50), y = c(41, 85))
+ggplot(m2, aes(map_id = region)) +
+  geom_map(fill = "white", color = "black", linewidth = 0.5, map = m2)  +
+  coord_map("lambert", 42, 50) +
+  theme(axis.title = element_blank(), axis.text = element_blank(),
+        axis.ticks = element_blank()) +
+  expand_limits(x = c(-141, -50), y = c(41, 85))
 ```
+
+Note, this course is not making political statements when drawing maps.
 
 ```{r}
 m2 <- m1 |> filter(region == "Ukraine") 
 m2 <- m1 |> filter(region == "Iran")
 m2 <- m1 |> filter(region == "Chile")
+m2 <- m1 |> filter(region == "Israel")
+m2 <- m1 |> filter(region == "Palestine")
 m2 <- m1 |> filter(region == "China")
-m2 <- m1 |> filter(region == "France") # m2 <- map_data("france") # more detail
+m2 <- m1 |> filter(region == "Taiwan")
+m2 <- m1 |> filter(region == "USA")
+m2 <- m1 |> filter(region == "USA", subregion == "Hawaii")
+m2 <- map_data("usa")
+m2 <- m1 |> filter(region == "France")
+m2 <- map_data("france") # more detail
 ggplot(m2, aes(map_id = region, x = long, y = lat)) +
   geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
-  coord_map("mollweide")
+  coord_map("mollweide") +
+  expand_limits(x = range(m2$long), y = range(m2$lat))
 ```
+
+Sometimes it is useful to have a world map centred on the Pacific Ocean.
 
 ```{r}
 m2 <- map_data("world2")
-ggplot(m2, aes(map_id = region, x = long, y = lat)) +
+ggplot(m2, aes(map_id = region)) +
   geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
   # coord_map("gilbert") 
-  coord_map("mollweide")
+  expand_limits(x = c(0, 360), y = c(-90, 90)) +
+  coord_map("mollweide") 
+  # coord_map("lambert", -25, 25) # not good for the whole globe
+  # coord_map("albers", -25, 25)
+m2 <- map_data("world")
+ggplot(m2, aes(map_id = region)) +
+  geom_map(fill = "white", color = "black", size = 0.5, map = m2) +
+  # coord_map("gilbert") 
+  expand_limits(x = c(-180, 180), y = c(-90, 90)) +
+  coord_map("mollweide") 
   # coord_map("lambert", -25, 25) # not good for the whole globe
   # coord_map("albers", -25, 25)
 
@@ -115,18 +145,18 @@ ggplot(m2, aes(map_id = region, x = long, y = lat)) +
 
 Get a list of projections from help("mapproject") (in `mapproj` package).
 
-
-
 ## Colouring regions
 
+You can use a second data frame to add fill colours to a region. This second table must name the regions with the same codes as the map.
+
 ```{r}
-values <- tibble( region = m1 %>% pull(region) %>% unique())
-values <- values %>% mutate(value = runif(nrow(values)))
+values <- tibble( region = m1 |> pull(region) |> unique())
+values <- values |> mutate(value = runif(nrow(values)))
 map2 <- ggplot(values, aes(map_id = region)) + 
         geom_map(aes(fill = value),
                  map = m1,
                  colour = "white", 
-                 alpha = 1, size=0.2) +
+                 alpha = 1, linewidth = 0.2) +
    expand_limits(x = c(-180,180), y = c(-80,80)) +
    theme_bw() +
   coord_map("mollweide")
@@ -138,7 +168,7 @@ Show just a few regions
 
 ```{r}
 map2 <- ggplot(m1, aes(map_id = region)) + 
-  geom_map(fill = "gray", color = "white", map = m1, size= 0.2) + 
+  geom_map(fill = "gray", color = "white", map = m1, linewidth = 0.2) + 
   geom_map(aes(fill = value),
            data = values |> slice_sample(n = 50),
            map = m1,
@@ -166,16 +196,18 @@ library(ggrepel)
 m2 <- m1 |> filter(region == "Canada") 
 ggplot(m2) +
   geom_map(aes(map_id = region),
-           fill = "white", color = "black", size = 0.5, map = m2) +
+           fill = "white", color = "black", linewidth = 0.5, map = m2) +
   geom_point(data = canada.cities,
              aes(x = long, y = lat),
-             size = 0.25) +
+             colour = "lightblue", size = 0.25) +
   geom_label_repel(data = canada.cities |> filter(pop > 500000),
              aes(x = long, y = lat, label = name),
              size = 3) +
   geom_point(data = canada.cities |> filter(pop > 500000),
              aes(x = long, y = lat),
-             size = 0.25, color = "red") +
-  coord_map("albers", 60, 90)
+             size = 0.75, color = "red") +
+  coord_map("albers", 60, 90) + 
+  theme_void()
 ```
+
 
