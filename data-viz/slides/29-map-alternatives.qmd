@@ -78,6 +78,8 @@ https://flowingdata.com/2012/12/31/map-of-every-person-counted-in-2010-us-census
 
 * Are you showing points or areas?
 
+* Is your map approximately a population map?
+
 * Will the area of a region complicate interpretation?
 
 * Is the spatial extent one dimensional? What could you do with the other dimension?

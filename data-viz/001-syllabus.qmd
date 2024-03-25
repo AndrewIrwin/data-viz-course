@@ -90,7 +90,7 @@ The term project is designed to be done collaboratively with a partner. The work
 * Assignments (30%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
   * Proposal, due Thursday 7 March, 5%
-  * Report, due Thursday 4 April, 15%
+  * Report, due Tuesday 9 April, 15%
 * Final exam, with two components
   * Oral presentation, due one day before the final exam, 10%
   * Peer evaluation of presentations, 10%
