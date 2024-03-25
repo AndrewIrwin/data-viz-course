@@ -408,9 +408,10 @@ Andrew Irwin, a.irwin@dal.ca
 <ul>
 <li><p>What is the <code>theme</code> of a visualization?</p></li>
 <li><p>Ready-to-use themes</p></li>
-<li><p>Titles</p></li>
-<li><p>Text size, colour, bold, italics, and more</p></li>
-<li><p>Spacing and positioning</p></li>
+<li><p>Text size</p></li>
+<li><p>Text colour, bold, italics, and more</p></li>
+<li><p>Legend spacing and positioning</p></li>
+<li><p>Formatting axis numbers</p></li>
 </ul></section><section id="starting-figure" class="slide level2"><h2>Starting figure</h2>
 
 <img data-src="32-theme_files/figure-revealjs/unnamed-chunk-1-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="ready-to-use-themes" class="slide level2"><h2>Ready to use themes</h2>
@@ -494,8 +495,46 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb9-3"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
 
 </div>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-10-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="formatting-numbers-on-scales-1" class="slide level2"><h2>Formatting numbers on scales</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>p2 <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>, <span class="at">labels =</span> scales<span class="sc">::</span>scientific,</span>
+<span id="cb10-2"><a></a>                        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>)) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"date"</span>, <span class="at">label =</span> <span class="fu">label_date</span>(<span class="at">format=</span><span class="st">"%Y-%m"</span>)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
 
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-10-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="quarto-auto-generated-content">
+</div>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-12-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="power-of-10-notation" class="slide level2"><h2>Power of 10 notation</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
+<span id="cb11-3"><a></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
+<span id="cb11-5"><a></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
+
+</div>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-13-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="si-units" class="slide level2"><h2>SI units</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"g"</span>)),</span>
+<span id="cb12-3"><a></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"m"</span>)),</span>
+<span id="cb12-5"><a></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
+
+</div>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-14-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="getting-help-with-theme" class="slide level2 smaller"><h2>Getting help with theme</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>?theme</span></code></pre></div>
+</div>
+<p>theme(line, rect, text, title, aspect.ratio, axis.title, axis.title.x, axis.title.x.top, axis.title.x.bottom, axis.title.y, axis.title.y.left, axis.title.y.right, axis.text, axis.text.x, axis.text.x.top, axis.text.x.bottom, axis.text.y, axis.text.y.left, axis.text.y.right, axis.ticks, axis.ticks.x, axis.ticks.x.top, axis.ticks.x.bottom, axis.ticks.y, axis.ticks.y.left, axis.ticks.y.right, axis.ticks.length, axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right, axis.line, axis.line.x, axis.line.x.top, axis.line.x.bottom, axis.line.y, axis.line.y.left, axis.line.y.right, legend.background, legend.margin, legend.spacing, legend.spacing.x, legend.spacing.y, legend.key, legend.key.size, legend.key.height, legend.key.width, legend.text, legend.text.align, legend.title, legend.title.align, legend.position, legend.direction, legend.justification, legend.box, legend.box.just, legend.box.margin, legend.box.background, legend.box.spacing, panel.background, panel.border, panel.spacing, panel.spacing.x, panel.spacing.y, panel.grid, panel.grid.major, panel.grid.minor, panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x, panel.grid.minor.y, panel.ontop, plot.background, plot.title, plot.title.position, plot.subtitle, plot.caption, plot.caption.position, plot.tag, plot.tag.position, plot.margin, strip.background, strip.background.x, strip.background.y, strip.clip, strip.placement, strip.text, strip.text.x, strip.text.x.bottom, strip.text.x.top, strip.text.y, strip.text.y.left, strip.text.y.right, strip.switch.pad.grid, strip.switch.pad.wrap)</p>
+</section><section id="theme-elements" class="slide level2"><h2>Theme elements</h2>
+<p>element_blank()</p>
+<p>element_rect( fill = NULL, colour = NULL, linewidth = NULL, linetype = NULL, color = NULL)</p>
+<p>element_line( colour = NULL, linewidth = NULL, linetype = NULL, lineend = NULL, color = NULL, arrow = NULL)</p>
+<p>element_text( family = NULL, face = NULL, colour = NULL, size = NULL, hjust = NULL, vjust = NULL, angle = NULL, lineheight = NULL, color = NULL, margin = NULL)</p>
+</section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<p>Chapter on <a href="https://ggplot2-book.org/themes">Theme</a> in the ggplot book (currently being revised.)</p>
+
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>

@@ -11,7 +11,7 @@
 <meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-03-26">
-<title>data-viz - Text, Factors, Dates, and Times</title>
+<title>data-viz - Text &amp; FactorsDates &amp; Times</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Text, Factors, Dates, and Times</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Text &amp; Factors<br>Dates &amp; Times</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -432,7 +432,7 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">tibble</span>(<span class="at">original =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"apple"</span>, <span class="st">"APPLE"</span>, <span class="st">"aPpLe"</span>),</span>
 <span id="cb3-2"><a></a>       <span class="at">lower =</span> <span class="fu">str_to_lower</span>(original),</span>
 <span id="cb3-3"><a></a>       <span class="at">upper =</span> <span class="fu">str_to_upper</span>(original),</span>
-<span id="cb3-4"><a></a>       <span class="at">title =</span> <span class="fu">str_to_title</span>(original)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb3-4"><a></a>       <span class="at">title =</span> <span class="fu">str_to_title</span>(original)) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table>
 <thead><tr class="header">
@@ -473,8 +473,8 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="getting-data-in-and-out-of-strings" class="slide level2"><h2>Getting data in and out of strings</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Andrew"</span>, <span class="st">"Susan"</span>, <span class="st">"Yong"</span>),</span>
-<span id="cb4-2"><a></a>       <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">21</span>, <span class="dv">35</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">sentence =</span> <span class="fu">glue</span>(<span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb4-2"><a></a>       <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">21</span>, <span class="dv">35</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">sentence =</span> <span class="fu">glue</span>(<span class="st">"{name} is {age} years old."</span>)) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table>
 <thead><tr class="header">
@@ -504,10 +504,10 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="getting-data-in-and-out-of-strings-1" class="slide level2"><h2>Getting data in and out of strings</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>t0 <span class="sc">%&gt;%</span> <span class="fu">select</span>(sentence) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">mutate</span>( <span class="fu">unglue_data</span>(sentence, <span class="st">"{name} is {age} years old."</span>)) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>t0 <span class="sc">|&gt;</span> <span class="fu">select</span>(sentence) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">mutate</span>( <span class="fu">unglue_data</span>(sentence, <span class="st">"{name} is {age} years old."</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">mutate</span>( <span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
-<span id="cb5-4"><a></a>          <span class="at">next_year =</span> age <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb5-4"><a></a>          <span class="at">next_year =</span> age <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table>
 <thead><tr class="header">
@@ -545,9 +545,9 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Too many factors</p></li>
 <li><p>Mapping colours to specific levels (later lesson on colour)</p></li>
 </ul></section><section id="plot-order" class="slide level2 smaller"><h2>Plot order</h2>
-<p>Here’s a plot of mean penguin body mass by species and sex. What’s the order?</p>
+<p>Here’s a plot of mean penguin body mass by specie and sex. What’s the order?</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> island)) <span class="sc">+</span> </span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> species)) <span class="sc">+</span> </span>
 <span id="cb6-2"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex) <span class="sc">+</span> <span class="fu">theme_bw</span>() </span></code></pre></div>
 
@@ -555,22 +555,32 @@ Andrew Irwin, a.irwin@dal.ca
 <img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-6-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%"></section><section id="plot-order-1" class="slide level2 smaller"><h2>Plot order</h2>
 <p>Order from smallest to largest, top to bottom. Watch out for NAs.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
-<span id="cb7-3"><a></a>                   <span class="at">y =</span> <span class="fu">fct_reorder</span>(species, bill_length_mm,</span>
-<span id="cb7-4"><a></a>                                   <span class="at">.desc=</span><span class="cn">TRUE</span>))) <span class="sc">+</span> </span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb7-3"><a></a>             <span class="at">y =</span> <span class="fu">fct_reorder</span>(species, body_mass_g,</span>
+<span id="cb7-4"><a></a>                             <span class="at">.desc=</span><span class="cn">TRUE</span>))) <span class="sc">+</span> </span>
 <span id="cb7-5"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
 <img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-7-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="custom-order" class="slide level2 smaller"><h2>Custom order</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
 <span id="cb8-3"><a></a>             <span class="at">y =</span> <span class="fu">fct_relevel</span>(species, <span class="st">"Gentoo"</span>, <span class="st">"Adelie"</span>))) <span class="sc">+</span> </span>
 <span id="cb8-4"><a></a>  <span class="fu">stat_summary</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="challenges-that-arise-with-dates-and-times" class="slide level2"><h2>Challenges that arise with dates and times</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="ordering-works-for-other-aesthetics-too" class="slide level2"><h2>Ordering works for other aesthetics too</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb9-3"><a></a>             <span class="at">y =</span> flipper_length_mm,</span>
+<span id="cb9-4"><a></a>             <span class="at">color =</span> <span class="fu">fct_reorder</span>(species, body_mass_g, <span class="at">.desc=</span><span class="cn">TRUE</span>))) <span class="sc">+</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Species"</span>)</span></code></pre></div>
+
+</div>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-9-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="challenges-that-arise-with-dates-and-times" class="slide level2"><h2>Challenges that arise with dates and times</h2>
 <ul>
 <li><p>Date format</p></li>
 <li><p>Extracting components of date or time</p></li>
@@ -579,10 +589,10 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Time zones</p></li>
 </ul></section><section id="converting-text-to-dates" class="slide level2"><h2>Converting text to dates</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"01/02/03"</span>, <span class="st">"121006"</span>, <span class="st">"05/12/08"</span>, <span class="st">"11-03-21"</span>),</span>
-<span id="cb9-2"><a></a>       <span class="at">ymd =</span> <span class="fu">ymd</span>(date),</span>
-<span id="cb9-3"><a></a>       <span class="at">dmy =</span> <span class="fu">dmy</span>(date),</span>
-<span id="cb9-4"><a></a>       <span class="at">mdy =</span> <span class="fu">mdy</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"01/02/03"</span>, <span class="st">"121006"</span>, <span class="st">"05/12/08"</span>, <span class="st">"11-03-21"</span>),</span>
+<span id="cb10-2"><a></a>       <span class="at">ymd =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb10-3"><a></a>       <span class="at">dmy =</span> <span class="fu">dmy</span>(date),</span>
+<span id="cb10-4"><a></a>       <span class="at">mdy =</span> <span class="fu">mdy</span>(date)) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table>
 <thead><tr class="header">
@@ -622,30 +632,179 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="dates-and-times" class="slide level2"><h2>Dates and times</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
-<span id="cb10-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
-<span id="cb10-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb10-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
-
-</div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-10-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="dates-and-times-1" class="slide level2"><h2>Dates and times</h2>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
 <span id="cb11-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
 <span id="cb11-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb11-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">scale_y_datetime</span>(<span class="at">date_labels =</span> <span class="st">"%H:%M"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<span id="cb11-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="time-arithmetic" class="slide level2 smaller"><h2>Time arithmetic</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-11-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="dates-and-times-1" class="slide level2"><h2>Dates and times</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
 <span id="cb12-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
 <span id="cb12-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
-<span id="cb12-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb12-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> dt, <span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb12-6"><a></a>  <span class="fu">scale_y_datetime</span>(<span class="at">date_labels =</span> <span class="st">"%H:%M"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+
+</div>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-12-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="calendar-arithmetic" class="slide level2"><h2>Calendar arithmetic</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2024/02/29"</span>, <span class="st">"2021/01/01"</span>, </span>
+<span id="cb13-2"><a></a>                <span class="st">"2021/06/21"</span>, <span class="st">"2023/09/01"</span>,</span>
+<span id="cb13-3"><a></a>                <span class="st">"1900/02/29"</span>),</span>
+<span id="cb13-4"><a></a>       <span class="at">dt =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb13-5"><a></a>       <span class="fu">yday</span>(dt),</span>
+<span id="cb13-6"><a></a>       <span class="fu">decimal_date</span>(dt)) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<table>
+<thead><tr class="header">
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">dt</th>
+<th style="text-align: right;">yday(dt)</th>
+<th style="text-align: right;">decimal_date(dt)</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2024/02/29</td>
+<td style="text-align: left;">2024-02-29</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">2024.161</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2021/01/01</td>
+<td style="text-align: left;">2021-01-01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2021.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2021/06/21</td>
+<td style="text-align: left;">2021-06-21</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">2021.468</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023/09/01</td>
+<td style="text-align: left;">2023-09-01</td>
+<td style="text-align: right;">244</td>
+<td style="text-align: right;">2023.666</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1900/02/29</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="calendar-arithmetic-1" class="slide level2"><h2>Calendar arithmetic</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ymd</span>(<span class="st">"2024/01/31"</span>) <span class="sc">+</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">duration</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">330</span>, <span class="at">by =</span> <span class="dv">30</span>), <span class="at">units =</span> <span class="st">"day"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2024-01-31" "2024-03-01" "2024-03-31" "2024-04-30" "2024-05-30"
+ [6] "2024-06-29" "2024-07-29" "2024-08-28" "2024-09-27" "2024-10-27"
+[11] "2024-11-26" "2024-12-26"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ymd</span>(<span class="st">"2024/01/31"</span>) <span class="sc">+</span> </span>
+<span id="cb16-2"><a></a>  <span class="fu">duration</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">units =</span> <span class="st">"month"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2024-01-31 00:00:00 UTC" "2024-03-01 10:30:00 UTC"
+ [3] "2024-03-31 21:00:00 UTC" "2024-05-01 07:30:00 UTC"
+ [5] "2024-05-31 18:00:00 UTC" "2024-07-01 04:30:00 UTC"
+ [7] "2024-07-31 15:00:00 UTC" "2024-08-31 01:30:00 UTC"
+ [9] "2024-09-30 12:00:00 UTC" "2024-10-30 22:30:00 UTC"
+[11] "2024-11-30 09:00:00 UTC" "2024-12-30 19:30:00 UTC"</code></pre>
+</div>
+</div>
+</section><section id="more-calendar-arithmetic" class="slide level2"><h2>More calendar arithmetic</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/06/21"</span>, <span class="st">"2024/02/29"</span>, <span class="st">"2024/01/01"</span>, <span class="st">"2023/09/01"</span>, <span class="st">"2027/03/01"</span>),</span>
+<span id="cb18-2"><a></a>       <span class="at">dt =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb18-3"><a></a>       <span class="at">next_year =</span> dt <span class="sc">+</span> <span class="fu">duration</span>(<span class="dv">1</span>, <span class="at">units =</span> <span class="st">"year"</span>),</span>
+<span id="cb18-4"><a></a>       <span class="at">rounded =</span> <span class="fu">round</span>(next_year, <span class="at">unit =</span> <span class="st">"day"</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<table>
+<thead><tr class="header">
+<th style="text-align: left;">dt</th>
+<th style="text-align: left;">next_year</th>
+<th style="text-align: left;">rounded</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2021-06-21</td>
+<td style="text-align: left;">2022-06-21 06:00:00</td>
+<td style="text-align: left;">2022-06-21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2024-02-29</td>
+<td style="text-align: left;">2025-02-28 06:00:00</td>
+<td style="text-align: left;">2025-02-28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2024-01-01</td>
+<td style="text-align: left;">2024-12-31 06:00:00</td>
+<td style="text-align: left;">2024-12-31</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-09-01</td>
+<td style="text-align: left;">2024-08-31 06:00:00</td>
+<td style="text-align: left;">2024-08-31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2027-03-01</td>
+<td style="text-align: left;">2028-02-29 06:00:00</td>
+<td style="text-align: left;">2028-02-29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="tricky-results" class="slide level2"><h2>Tricky results</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">duration</span>(<span class="dv">1</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "31557600s (~1 years)"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">60</span><span class="sc">*</span><span class="dv">60</span><span class="sc">*</span><span class="dv">24</span><span class="sc">*</span><span class="fl">365.25</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31557600</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ymd</span>(<span class="st">"2000/02/29"</span>) <span class="sc">+</span> <span class="fu">duration</span>(<span class="dv">100</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2100-03-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ymd</span>(<span class="st">"2100/02/29"</span>) <span class="co"># no leap day in 2100</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ymd</span>(<span class="st">"2000/02/29"</span>) <span class="sc">-</span> <span class="fu">duration</span>(<span class="dv">100</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1900-02-28"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ymd</span>(<span class="st">"2000/02/29"</span>) <span class="sc">+</span> <span class="fu">duration</span>(<span class="dv">200</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2200-03-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">ymd</span>(<span class="st">"2000/02/29"</span>) <span class="sc">+</span> <span class="fu">duration</span>(<span class="dv">300</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2300-03-03"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">ymd</span>(<span class="st">"2000/02/29"</span>) <span class="sc">+</span> <span class="fu">duration</span>(<span class="dv">400</span>, <span class="at">units =</span> <span class="st">"years"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2400-03-03"</code></pre>
+</div>
+</div>
+</section><section id="time-arithmetic" class="slide level2 smaller"><h2>Time arithmetic</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">tibble</span>(<span class="at">date =</span> <span class="fu">c</span>(<span class="st">"2021/03/11 10:05"</span>, <span class="st">"2021/03/12 15:12"</span>, </span>
+<span id="cb35-2"><a></a>                <span class="st">"2021/03/11 15:14"</span>, <span class="st">"2021/03/11 11:50 PM"</span>),</span>
+<span id="cb35-3"><a></a>       <span class="at">dt =</span> <span class="fu">ymd_hm</span>(date),</span>
+<span id="cb35-4"><a></a>       <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-5"><a></a>  <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <table>
 <thead><tr class="header">
@@ -685,20 +844,66 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </section><section id="time-arithmetic-1" class="slide level2"><h2>Time arithmetic</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>t1 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(elapsed)<span class="sc">/</span><span class="dv">3600</span>, </span>
-<span id="cb13-3"><a></a>             <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time in hours since start"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb36-1"><a></a>t1 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">elapsed =</span> dt <span class="sc">-</span> <span class="fu">min</span>(dt)) <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(elapsed)<span class="sc">/</span><span class="dv">3600</span>, </span>
+<span id="cb36-3"><a></a>             <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb36-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time in hours since start"</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-14-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
+<img data-src="30-factors-dates_files/figure-revealjs/unnamed-chunk-19-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="time-zones" class="slide level2"><h2>Time zones</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb37-1"><a></a>t1 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-03-27 10:05:05"</span>, <span class="at">tz =</span> <span class="st">"America/Halifax"</span>)</span>
+<span id="cb37-2"><a></a>t2 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-03-27 10:05:05"</span>, <span class="at">tz =</span> <span class="st">"GMT"</span>)</span>
+<span id="cb37-3"><a></a>t1</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-27 10:05:05 ADT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb39-1"><a></a>t2</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-27 10:05:05 GMT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb41-1"><a></a>t1<span class="sc">-</span>t2</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 3 hours</code></pre>
+</div>
+</div>
+</section><section id="time-zones-1" class="slide level2"><h2>Time zones</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">now</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-25 10:22:02 ADT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">format_ISO8601</span>(<span class="fu">now</span>(), <span class="at">usetz=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-25T10:22:02-0300"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">stamp</span>(<span class="st">"January 1, 2024 at 10:00 AM"</span>)(<span class="fu">now</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March 25, 2024 at 10:22 AM"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">strftime</span>(<span class="fu">now</span>(), <span class="st">"%Y-%m-%d %H:%M:%S %Z"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-25 10:22:02 ADT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb51-1"><a></a>t2 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-03-27 10:05:05"</span>)</span>
+<span id="cb51-2"><a></a><span class="fu">format_ISO8601</span>(t2, <span class="at">usetz=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-27T10:05:05+0000"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">stamp</span>(<span class="st">"January 1, 2024 at 10:00 AM"</span>)(t2)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March 27, 2024 at 10:05 AM"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">strftime</span>(t2, <span class="st">"%Y-%m-%d %H:%M:%S %Z"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-03-27 07:05:05 ADT"</code></pre>
+</div>
+</div>
+</section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy appendix</p></li>
 <li><p>R4DS Chapter 14 <a href="https://r4ds.hadley.nz/strings">Strings</a>, Chapter 16 <a href="https://r4ds.hadley.nz/factors">Factors</a>, and Chapter 17 <a href="https://r4ds.hadley.nz/datetimes">Dates and times</a></p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<ul>
-<li>Task on dates and factors in repository</li>
 </ul>
 
 <div class="quarto-auto-generated-content">
