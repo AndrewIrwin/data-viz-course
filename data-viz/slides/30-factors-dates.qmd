@@ -1,5 +1,5 @@
 ---
-title: "Text, Factors,\nDates, and Times"
+title: "Text & Factors<br>Dates & Times"
 author: "Andrew Irwin, a.irwin@dal.ca"
 date: "2024-03-26"
 format:
@@ -191,6 +191,50 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
        value = 1:4) |>
   ggplot(aes(y = dt, x = value)) + geom_point(size=4) + 
   scale_y_datetime(date_labels = "%H:%M") + my_theme
+```
+
+## Calendar arithmetic
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
+tibble(date = c("2024/02/29", "2021/01/01", 
+                "2021/06/21", "2023/09/01",
+                "1900/02/29"),
+       dt = ymd(date),
+       yday(dt),
+       decimal_date(dt)) |> kable()
+```
+
+## Calendar arithmetic
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
+ymd("2024/01/31") + 
+  duration(seq(0, 330, by = 30), units = "day")
+ymd("2024/01/31") + 
+  duration(seq(0, 11, by = 1), units = "month")
+```
+
+## More calendar arithmetic
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
+tibble(date = c("2021/06/21", "2024/02/29", "2024/01/01", "2023/09/01", "2027/03/01"),
+       dt = ymd(date),
+       next_year = dt + duration(1, units = "year"),
+       rounded = round(next_year, unit = "day")) |> select(-date) |> kable()
+```
+
+
+## Tricky results
+
+```{r}
+duration(1, units = "years")
+60*60*24*365.25
+ymd("2000/02/29") + duration(100, units = "years")
+ymd("2100/02/29") # no leap day in 2100
+ymd("2000/02/29") - duration(100, units = "years")
+ymd("2000/02/29") + duration(200, units = "years")
+ymd("2000/02/29") + duration(300, units = "years")
+ymd("2000/02/29") + duration(400, units = "years")
+
 ```
 
 ## Time arithmetic {.smaller}
