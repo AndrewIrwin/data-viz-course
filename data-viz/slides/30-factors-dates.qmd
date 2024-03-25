@@ -1,5 +1,5 @@
 ---
-title: "Text, Factors, Dates, and Times"
+title: "Text, Factors,\nDates, and Times"
 author: "Andrew Irwin, a.irwin@dal.ca"
 date: "2022-11-22"
 format:
@@ -70,30 +70,30 @@ Upper and lower case differences are often not noticed by humans, but matter to 
 tibble(original = c("Apple", "apple", "APPLE", "aPpLe"),
        lower = str_to_lower(original),
        upper = str_to_upper(original),
-       title = str_to_title(original)) %>% kable()
+       title = str_to_title(original)) |> kable()
 ```
 
 ## Getting data in and out of strings
 
 ```{r}
 tibble(name = c("Andrew", "Susan", "Yong"),
-       age = c(12, 21, 35)) %>%
-  mutate(sentence = glue("{name} is {age} years old.")) %>% kable()
+       age = c(12, 21, 35)) |>
+  mutate(sentence = glue("{name} is {age} years old.")) |> kable()
 ```
 
 ## Getting data in and out of strings
 
 ```{r include = FALSE}
 t0 <- tibble(name = c("Andrew", "Susan", "Yong"),
-       age = c(12, 21, 35)) %>%
+       age = c(12, 21, 35)) |>
   mutate(sentence = glue("{name} is {age} years old."))
 ```
 
 ```{r}
-t0 %>% select(sentence) %>%
-  mutate( unglue_data(sentence, "{name} is {age} years old.")) %>%
+t0 |> select(sentence) |>
+  mutate( unglue_data(sentence, "{name} is {age} years old.")) |>
   mutate( age = as.numeric(age),
-          next_year = age + 1) %>% kable()
+          next_year = age + 1) |> kable()
 ```
 
 ## Challenges that arise with factors
@@ -107,10 +107,10 @@ t0 %>% select(sentence) %>%
 
 ## Plot order {.smaller}
 
-Here's a plot of mean penguin body mass by species and sex. What's the order?
+Here's a plot of mean penguin body mass by specie and sex. What's the order?
 
 ```{r warning=FALSE, message=FALSE, fig.asp = 0.5, fig.align="center", out.width="90%", dev='svglite'}
-penguins %>% ggplot(aes(x = body_mass_g, y = island)) + 
+penguins |> ggplot(aes(x = body_mass_g, y = species)) + 
   stat_summary() +
   facet_wrap(~ sex) + theme_bw() 
 ```
@@ -121,23 +121,34 @@ penguins %>% ggplot(aes(x = body_mass_g, y = island)) +
 Order from smallest to largest, top to bottom. Watch out for NAs.
 
 ```{r fig.align="center", fig.asp=0.75, message=FALSE, warning=FALSE, dev='svglite', out.width="50%"}
-penguins %>% na.omit() %>%
-  ggplot(aes(x = bill_length_mm, 
-                   y = fct_reorder(species, bill_length_mm,
-                                   .desc=TRUE))) + 
+penguins |> na.omit() |>
+  ggplot(aes(x = body_mass_g, 
+             y = fct_reorder(species, body_mass_g,
+                             .desc=TRUE))) + 
   stat_summary() + my_theme
 ```
 
 
 ## Custom order {.smaller}
 
-
 ```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
-penguins %>%
-  ggplot(aes(x = bill_length_mm, 
+penguins |>
+  ggplot(aes(x = body_mass_g, 
              y = fct_relevel(species, "Gentoo", "Adelie"))) + 
   stat_summary() + my_theme
 ```
+
+## Ordering works for other aesthetics too
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
+penguins |> na.omit() |>
+  ggplot(aes(x = body_mass_g, 
+             y = flipper_length_mm,
+             color = fct_reorder(species, body_mass_g, .desc=TRUE))) + 
+  geom_point() + my_theme +
+  labs(color = "Species")
+```
+
 
 ## Challenges that arise with dates and times
 
@@ -157,7 +168,7 @@ penguins %>%
 tibble(date = c("01/02/03", "121006", "05/12/08", "11-03-21"),
        ymd = ymd(date),
        dmy = dmy(date),
-       mdy = mdy(date)) %>% kable()
+       mdy = mdy(date)) |> kable()
 ```
 
 
@@ -167,7 +178,7 @@ tibble(date = c("01/02/03", "121006", "05/12/08", "11-03-21"),
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
-       value = 1:4) %>%
+       value = 1:4) |>
   ggplot(aes(y = dt, x = value)) + geom_point(size=4) + my_theme
 ```
 
@@ -177,7 +188,7 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
-       value = 1:4) %>%
+       value = 1:4) |>
   ggplot(aes(y = dt, x = value)) + geom_point(size=4) + 
   scale_y_datetime(date_labels = "%H:%M") + my_theme
 ```
@@ -188,8 +199,8 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
-       value = 1:4) %>%
-  mutate(elapsed = dt - min(dt)) %>% kable()
+       value = 1:4) |>
+  mutate(elapsed = dt - min(dt)) |> kable()
 ```
 
 ## Time arithmetic
@@ -202,12 +213,35 @@ t1 <- tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
 ```
 
 ```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", dev='svglite'}
-t1 %>% mutate(elapsed = dt - min(dt)) %>%
+t1 |> mutate(elapsed = dt - min(dt)) |>
   ggplot(aes(x = as.numeric(elapsed)/3600, 
              y = value)) + geom_point(size=4) +
   labs(x = "Time in hours since start") + my_theme
 ```
 
+## Time zones
+
+```{r}
+t1 <- ymd_hms("2024-03-27 10:05:05", tz = "America/Halifax")
+t2 <- ymd_hms("2024-03-27 10:05:05", tz = "GMT")
+t1
+t2
+t1-t2
+```
+
+## Time zones
+
+```{r warning=FALSE, message=FALSE}
+now()
+format_ISO8601(now(), usetz=TRUE)
+stamp("January 1, 2024 at 10:00 AM")(now())
+strftime(now(), "%Y-%m-%d %H:%M:%S %Z")
+
+t2 <- ymd_hms("2024-03-27 10:05:05")
+format_ISO8601(t2, usetz=TRUE)
+stamp("January 1, 2024 at 10:00 AM")(t2)
+strftime(t2, "%Y-%m-%d %H:%M:%S %Z")
+```
 
 ## Further reading
 
@@ -217,10 +251,6 @@ t1 %>% mutate(elapsed = dt - min(dt)) %>%
 
 * R4DS Chapter 14 [Strings](https://r4ds.hadley.nz/strings), Chapter 16 [Factors](https://r4ds.hadley.nz/factors), and Chapter 17 [Dates and times](https://r4ds.hadley.nz/datetimes)
 
-
-## Task
-
-* Task on dates and factors in repository
 
 
 
