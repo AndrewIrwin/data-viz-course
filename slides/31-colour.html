@@ -508,7 +508,16 @@ Figure&nbsp;7: Subtractive
 
 <img data-src="31-colour_files/figure-revealjs/unnamed-chunk-7-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="make-your-own-palette" class="slide level2" data-background-image="static/L31/beach.jpg"><h2>Make your own palette</h2>
 </section><section id="coolors.co-palette-maker" class="slide level2" data-background-image="static/L31/palette.png"><h2>coolors.co palette maker</h2>
-</section><section id="further-reading" class="slide level2 smaller"><h2>Further reading</h2>
+</section><section id="using-custom-colors" class="slide level2"><h2>Using custom colors</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb7-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#5496E2"</span>,</span>
+<span id="cb7-4"><a></a>                                <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#A19D95"</span>,</span>
+<span id="cb7-5"><a></a>                                <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#2C4500"</span>)) </span></code></pre></div>
+
+</div>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="further-reading" class="slide level2 smaller"><h2>Further reading</h2>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy and Wilke sections on colour</p></li>

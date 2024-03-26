@@ -259,6 +259,13 @@
     "text": "coolors.co palette maker"
   },
   {
+    "objectID": "slides/31-colour.html#using-custom-colors",
+    "href": "slides/31-colour.html#using-custom-colors",
+    "title": "Colour",
+    "section": "Using custom colors",
+    "text": "Using custom colors\n\npenguins |&gt; ggplot(aes(body_mass_g, flipper_length_mm,\n                        color = species)) + geom_point() + my_theme +\n  scale_color_manual(values = c(\"Adelie\" = \"#5496E2\",\n                                \"Gentoo\" = \"#A19D95\",\n                                \"Chinstrap\" = \"#2C4500\"))"
+  },
+  {
     "objectID": "slides/31-colour.html#further-reading",
     "href": "slides/31-colour.html#further-reading",
     "title": "Colour",
@@ -648,7 +655,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.8802513\n1.0149662\n0.8617957\n21\n8.730738\n1\n\n\n0.7881227\n0.7942471\n-0.6379760\n45\n29.547062\n2\n\n\n0.0748394\n-0.2936333\n1.1082908\n25\n25.790319\n3\n\n\n-1.3410321\n-1.2518282\n0.0631292\n35\n27.719661\n4\n\n\n-0.5553538\n-0.3687870\n-1.2065990\n16\n21.718639\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.2250399\n-0.3560400\n1.9079736\n9\n5.915561\n1\n\n\n0.7535204\n0.7453651\n0.8252914\n29\n16.744315\n2\n\n\n-1.1749108\n-1.1404092\n0.2344096\n40\n34.003173\n3\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n4\n\n\n0.7379609\n0.6828378\n-0.6059133\n50\n37.453269\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -3371,7 +3378,7 @@
     "href": "slides/30-factors-dates.html#time-zones-1",
     "title": "Text & FactorsDates & Times",
     "section": "Time zones",
-    "text": "Time zones\n\nnow()\n\n[1] \"2024-03-25 10:22:02 ADT\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2024-03-25T10:22:02-0300\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"March 25, 2024 at 10:22 AM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-25 10:22:02 ADT\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
+    "text": "Time zones\n\nnow()\n\n[1] \"2024-03-26 09:59:32 ADT\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2024-03-26T09:59:32-0300\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"March 26, 2024 at 09:59 AM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-26 09:59:32 ADT\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
   },
   {
     "objectID": "slides/30-factors-dates.html#further-reading",

@@ -871,19 +871,19 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">now</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-03-25 10:22:02 ADT"</code></pre>
+<pre><code>[1] "2024-03-26 09:59:32 ADT"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">format_ISO8601</span>(<span class="fu">now</span>(), <span class="at">usetz=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-03-25T10:22:02-0300"</code></pre>
+<pre><code>[1] "2024-03-26T09:59:32-0300"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">stamp</span>(<span class="st">"January 1, 2024 at 10:00 AM"</span>)(<span class="fu">now</span>())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "March 25, 2024 at 10:22 AM"</code></pre>
+<pre><code>[1] "March 26, 2024 at 09:59 AM"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">strftime</span>(<span class="fu">now</span>(), <span class="st">"%Y-%m-%d %H:%M:%S %Z"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-03-25 10:22:02 ADT"</code></pre>
+<pre><code>[1] "2024-03-26 09:59:32 ADT"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb51-1"><a></a>t2 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-03-27 10:05:05"</span>)</span>
 <span id="cb51-2"><a></a><span class="fu">format_ISO8601</span>(t2, <span class="at">usetz=</span><span class="cn">TRUE</span>)</span></code></pre></div>
