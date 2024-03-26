@@ -32,8 +32,8 @@ str_to_title(my_string2)
 ```{r}
 text_and_numbers <- tibble( text = c("Andrew", "33", "12.45", 
                                      "-1.00", "Inf"))
-text_and_numbers %>% mutate(numbers = as.numeric(text), 
-                            integers = as.integer(text)) %>% kable()
+text_and_numbers |> mutate(numbers = as.numeric(text), 
+                            integers = as.integer(text)) |> kable()
 ```
 
 ### Extracting information from longer labels
@@ -61,20 +61,20 @@ my_strings1 <- tibble(greeting = c("My name is Andrew.",
 unglue_unnest(my_strings1, 
               greeting, 
               "My name is {name}.", 
-              remove=FALSE) %>% kable()
+              remove=FALSE) |> kable()
 ```
 
 
 ## Plots and text labels (factors)
 
 ```{r}
-mpg %>% ggplot(aes(x = cty,
+mpg |> ggplot(aes(x = cty,
                    y = trans)) +
   geom_boxplot()
 ```
 
 ```{r}
-mpg %>% ggplot(aes(x = cty,
+mpg |> ggplot(aes(x = cty,
                    y = fct_reorder(trans, hwy, median, .desc=TRUE))) +
   geom_boxplot() 
 ```
@@ -82,7 +82,7 @@ mpg %>% ggplot(aes(x = cty,
 Simplify the number of categories
 
 ```{r}
-mpg %>% 
+mpg |> 
   ggplot(aes(x = cty,
              y = fct_lump(trans, 4))) +
   geom_boxplot() 
@@ -118,7 +118,7 @@ Crazy formats!
 ```{r}
 tibble(date = c("Jan 5, 1999", "Saturday May 16, 70", "8-8-88",
                "December 31/99", "Jan 1, 01"),
-      decoded = mdy(date)) %>% kable()
+      decoded = mdy(date)) |> kable()
 ```
 
 With times
@@ -129,7 +129,7 @@ dt2 <- tibble(text_date = c("1999-01-31 09:14", "2000-02-28 12:15",
                             "2010-06-28 23:45", 
                             "2024-03-14 07:00 AM", "2021-03-01 6:16 PM"),
              date_time = ymd_hm(text_date, tz="America/Halifax"))
-dt2 %>% kable()
+dt2 |> kable()
 ```
 
 ### Converting dates to numbers
@@ -146,7 +146,7 @@ date_decimal(2022.95)
 ## Plotting with dates and times
 
 ```{r}
-dt2 %>% mutate(r = rnorm(n(), 20, 3)) %>%
+dt2 |> mutate(r = rnorm(n(), 20, 3)) |>
   ggplot(aes(x = date_time, y = r)) + 
   geom_point() +
   scale_x_datetime(date_labels = "%Y\n%b-%d")

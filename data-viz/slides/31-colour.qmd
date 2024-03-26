@@ -56,14 +56,14 @@ knitr::opts_chunk$set(
 
 ![Crayola colors](static/L31/crayola.jpeg)
 
+## Colors that exist in nature
+
+![Pigments in nature](static/L31/photosynthetic-pigment-abs-spectrum.jpeg){#fig-nature-colour}
+
 ## What your eye sees
 
 ![Response of cones in your eyes](static/L31/cones-response-curves.svg){#fig-cones}
 
-
-## Colors that exist in nature
-
-![Pigments in nature](static/L31/photosynthetic-pigment-abs-spectrum.jpeg){#fig-nature-colour}
 
 ## What a computer screen creates
 
@@ -74,16 +74,24 @@ knitr::opts_chunk$set(
 
 ![CIE model](static/L31/CIExy1931_sRGB_gamut_D65-wikimedia.png){#fig-create-on-computer}
 
+## Photo of screen
+
+![Photo of LCD screen with cell phone](static/L31/computer-screen-cell-phone-photo.png)
+
+## Pixel geometry
+
+![Wikipedia page for Pixel](static/L31/Pixel_geometry_01_Pengo.jpeg)
 
 ## Two models for creating colour 
 
 ![Creating colour models](static/L31/rgb-cmyk.webp){#fig-create-colour}
 
 
-## Additive and subtractive models
+## Additive model
 
 ![Additive](static/L31/wheel-additive-basic.svg){#fig-adding-colour}
 
+## Subtractive model
 
 ![Subtractive](static/L31/wheel-subtractive-basic.svg){#fig-subtract-colour}
 
@@ -105,14 +113,14 @@ knitr::opts_chunk$set(
 ## Discrete colour scales
 
 ```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
-penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
                         color = species)) + geom_point() + my_theme
 ```
 
 ## Discrete colour scales
 
 ```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
-penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
                         color = species)) + geom_point() + my_theme +
   scale_color_viridis_d(end = 0.7) 
 ```
@@ -121,7 +129,7 @@ penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
 ## Discrete colour scales
 
 ```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
-penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
                         color = species)) + geom_point() + my_theme +
   scale_color_paletteer_d("ggthemes::hc_default")
 ```
@@ -130,7 +138,7 @@ penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
 ## Discrete colour scales
 
 ```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
-penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
                         color = species)) + geom_point() + my_theme +
   scale_color_manual(values = c("red", "blue", "orange"))
 ```
@@ -138,7 +146,7 @@ penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
 ## Continuous colour shades
 
 ```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
-gapminder %>% filter(country %in% c("Canada", "China", "Chile", "Iceland")) %>%
+gapminder |> filter(country %in% c("Canada", "China", "Chile", "Iceland")) |>
   ggplot(aes(year, lifeExp, color = log10(pop))) +
   geom_point(size=3) + my_theme
 ```
@@ -147,8 +155,8 @@ gapminder %>% filter(country %in% c("Canada", "China", "Chile", "Iceland")) %>%
 ## Continuous colour shades - diverging
 
 ```{r warning=FALSE}
-p1 <- penguins %>% mutate(body_mass_centered = 
-                      body_mass_g - mean(body_mass_g, na.rm=TRUE)) %>%
+p1 <- penguins |> mutate(body_mass_centered = 
+                      body_mass_g - mean(body_mass_g, na.rm=TRUE)) |>
   ggplot(aes(flipper_length_mm, bill_length_mm, 
              color = body_mass_centered)) +
   geom_point(size=3) + theme_bw() +
@@ -169,6 +177,15 @@ p1 + my_theme +
 
 ## coolors.co palette maker { background-image="static/L31/palette.png" }
 
+## Using custom colors
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme +
+  scale_color_manual(values = c("Adelie" = "#5496E2",
+                                "Gentoo" = "#A19D95",
+                                "Chinstrap" = "#2C4500")) 
+```
 
 ## Further reading {.smaller}
 

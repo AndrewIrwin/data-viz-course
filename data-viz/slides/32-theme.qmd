@@ -24,6 +24,7 @@ library(palmerpenguins)
 library(kableExtra)
 library(paletteer)
 library(gapminder)
+library(scales)
 my_theme = theme_bw() + theme(text = element_text(size=25))
 dpi = 72
 knitr::opts_chunk$set(
@@ -37,11 +38,13 @@ knitr::opts_chunk$set(
 
 * Ready-to-use themes
 
-* Titles
+* Text size
 
-* Text size, colour, bold, italics, and more
+* Text colour, bold, italics, and more
 
-* Spacing and positioning
+* Legend spacing and positioning
+
+* Formatting axis numbers
 
 ## Starting figure
 
@@ -146,5 +149,180 @@ p1 + scale_x_continuous(labels = scales::dollar) +
   theme(axis.text = element_text(size=14))
 ```
 
+## Formatting numbers on scales
 
+```{r include=FALSE}
+p2 <- gapminder %>% # filter(continent == "Europe") %>%
+  ggplot(aes(x = make_date(year), y = lifeExp)) + 
+  # geom_line(aes(group=country)) + 
+  geom_smooth(method = "loess", formula = y ~ x, aes(color = continent))
+```
+
+```{r}
+p2 + scale_y_continuous(trans = "log2", labels = scales::scientific,
+                        breaks = c(20,40,60,80)) +
+  scale_x_continuous(trans = "date", label = label_date(format="%Y-%m")) + 
+  theme(axis.text = element_text(size=14))
+```
+
+## Power of 10 notation
+
+```{r}
+tibble(x=10^seq(0,15), y = x*1e-15) |> ggplot(aes(x , y)) + geom_blank() + 
+  scale_x_log10(labels = trans_format('log10', math_format(10^.x)),
+                breaks = c(1e0,1e3,1e6,1e9,1e12,1e15)) + 
+  scale_y_log10(labels = trans_format('log10', math_format(10^.x)),
+                breaks = c(1e-15,1e-12,1e-9,1e-6,1e-3,1e0))
+```
+
+## SI units
+
+```{r}
+tibble(x=10^seq(0,15), y = x*1e-15) |> ggplot(aes(x , y)) + geom_blank() + 
+  scale_x_continuous(trans = "log10", labels = label_number(scale_cut = cut_si("g")),
+                     breaks = c(1e0,1e3,1e6,1e9,1e12,1e15)) +
+  scale_y_continuous(trans = "log10", labels = label_number(scale_cut = cut_si("m")),
+                     breaks = c(1e-15,1e-12,1e-9,1e-6,1e-3,1e0))
+```
+
+
+
+## Getting help with theme { .smaller }
+
+```{r eval=FALSE}
+?theme
+```
+
+theme(line,
+  rect,
+  text,
+  title,
+  aspect.ratio,
+  axis.title,
+  axis.title.x,
+  axis.title.x.top,
+  axis.title.x.bottom,
+  axis.title.y,
+  axis.title.y.left,
+  axis.title.y.right,
+  axis.text,
+  axis.text.x,
+  axis.text.x.top,
+  axis.text.x.bottom,
+  axis.text.y,
+  axis.text.y.left,
+  axis.text.y.right,
+  axis.ticks,
+  axis.ticks.x,
+  axis.ticks.x.top,
+  axis.ticks.x.bottom,
+  axis.ticks.y,
+  axis.ticks.y.left,
+  axis.ticks.y.right,
+  axis.ticks.length,
+  axis.ticks.length.x,
+  axis.ticks.length.x.top,
+  axis.ticks.length.x.bottom,
+  axis.ticks.length.y,
+  axis.ticks.length.y.left,
+  axis.ticks.length.y.right,
+  axis.line,
+  axis.line.x,
+  axis.line.x.top,
+  axis.line.x.bottom,
+  axis.line.y,
+  axis.line.y.left,
+  axis.line.y.right,
+  legend.background,
+  legend.margin,
+  legend.spacing,
+  legend.spacing.x,
+  legend.spacing.y,
+  legend.key,
+  legend.key.size,
+  legend.key.height,
+  legend.key.width,
+  legend.text,
+  legend.text.align,
+  legend.title,
+  legend.title.align,
+  legend.position,
+  legend.direction,
+  legend.justification,
+  legend.box,
+  legend.box.just,
+  legend.box.margin,
+  legend.box.background,
+  legend.box.spacing,
+  panel.background,
+  panel.border,
+  panel.spacing,
+  panel.spacing.x,
+  panel.spacing.y,
+  panel.grid,
+  panel.grid.major,
+  panel.grid.minor,
+  panel.grid.major.x,
+  panel.grid.major.y,
+  panel.grid.minor.x,
+  panel.grid.minor.y,
+  panel.ontop,
+  plot.background,
+  plot.title,
+  plot.title.position,
+  plot.subtitle,
+  plot.caption,
+  plot.caption.position,
+  plot.tag,
+  plot.tag.position,
+  plot.margin,
+  strip.background,
+  strip.background.x,
+  strip.background.y,
+  strip.clip,
+  strip.placement,
+  strip.text,
+  strip.text.x,
+  strip.text.x.bottom,
+  strip.text.x.top,
+  strip.text.y,
+  strip.text.y.left,
+  strip.text.y.right,
+  strip.switch.pad.grid,
+  strip.switch.pad.wrap)
+
+## Theme elements
+
+element_blank()
+
+element_rect(
+  fill = NULL,
+  colour = NULL,
+  linewidth = NULL,
+  linetype = NULL,
+  color = NULL)
+
+element_line(
+  colour = NULL,
+  linewidth = NULL,
+  linetype = NULL,
+  lineend = NULL,
+  color = NULL,
+  arrow = NULL)
+
+element_text(
+  family = NULL,
+  face = NULL,
+  colour = NULL,
+  size = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  angle = NULL,
+  lineheight = NULL,
+  color = NULL,
+  margin = NULL)
+
+## Further reading
+
+Chapter on [Theme](https://ggplot2-book.org/themes) in the ggplot book (currently being revised.)
 
