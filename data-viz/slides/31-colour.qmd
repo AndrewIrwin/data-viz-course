@@ -177,6 +177,15 @@ p1 + my_theme +
 
 ## coolors.co palette maker { background-image="static/L31/palette.png" }
 
+## Using custom colors
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme +
+  scale_color_manual(values = c("Adelie" = "#5496E2",
+                                "Gentoo" = "#A19D95",
+                                "Chinstrap" = "#2C4500")) 
+```
 
 ## Further reading {.smaller}
 
