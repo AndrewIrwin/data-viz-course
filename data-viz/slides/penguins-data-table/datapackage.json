@@ -1,0 +1,58 @@
+{
+  "resources": [
+    {
+      "name": "penguins",
+      "path": "penguins.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "title": "Data about penguins",
+      "schema": {
+        "fields": [
+          {
+            "name": "species",
+            "type": "string",
+            "constraints": {
+              "enum": ["Adelie", "Chinstrap", "Gentoo"]
+            }
+          },
+          {
+            "name": "island",
+            "type": "string",
+            "constraints": {
+              "enum": ["Biscoe", "Dream", "Torgersen"]
+            }
+          },
+          {
+            "name": "bill_length_mm",
+            "type": "number"
+          },
+          {
+            "name": "bill_depth_mm",
+            "type": "number"
+          },
+          {
+            "name": "flipper_length_mm",
+            "type": "integer"
+          },
+          {
+            "name": "body_mass_g",
+            "type": "integer"
+          },
+          {
+            "name": "sex",
+            "type": "string",
+            "constraints": {
+              "enum": ["female", "male"]
+            }
+          },
+          {
+            "name": "year",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  ]
+}

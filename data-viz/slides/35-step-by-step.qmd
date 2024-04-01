@@ -1,7 +1,7 @@
 ---
 title: "Recreating a plot step by step"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2022-11-24"
+date: "2024-04-04"
 format:
   revealjs:
     slide-number: true

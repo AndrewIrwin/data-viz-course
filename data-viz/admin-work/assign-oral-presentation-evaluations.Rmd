@@ -1,0 +1,27 @@
+---
+title: "Project viewing assignments"
+author: "AJ Irwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Generate a list of oral presentations for students to view.
+
+Need:
+
+  * a gmail account, authenticated
+  * the list of students, emails, github IDs, and team numbers
+  * a list of teams that have submitted oral presentations
+
+For each student generate a list of 5 oral presentations for teams other than theirs.
+
+Write an email to each student. Queue the emails as drafts. Review emails. Send them a few hours before the exam. Do a test email to yourself a day or two early.
+
+```{r}
+number_to_view <- 5
+```
