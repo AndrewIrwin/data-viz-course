@@ -15,19 +15,168 @@ format:
     history: false
 ---
 
+```{r echo=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
 ## Plan
 
-## Using databases
-
-## JSON data
-
-
+* Improve CSV files with metadata
+* Beyond tables: lists and vectors
+* Faster and larger tables: parquet
+* Multiple tables: relational databases
 
 ## Frictionless data
 
+Problem: Someone gives you a dataset, but you need to be sure that 
+
+* the data are read correctly
+* you know what the names of the columns mean
+* you know the units of numeric data
+
+Frictionless data solves these problems by distributing a metadata file
+with the data.
+
+```{r}
+library(frictionless) # v. 1.1.0
+```
+
+---
+
+```{r}
+package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
+package
+```
+
+
+---
+
+```{r}
+resources(package)
+reference_data <- read_resource(package, "reference-data")
+reference_data 
+```
+
+## Creating frictionless data
+
+Create a folder (`penguin-data-table`) with data and metadata: 
+
+```{r}
+package <- create_package()
+schema <- create_schema(penguins)
+package <- add_resource(package, 
+                        resource_name = "penguins", 
+                        data = penguins, 
+                        schema = schema, 
+                        title = "Data about penguins",
+                        delim = ",")
+write_package(package, "penguins-data-table")
+```
+
+More functions in the [Python](https://github.com/frictionlessdata/frictionless-py) version.
+
+---
+
+Read the data with the following functions:
+
+```{r}
+p <- read_package("penguins-data-table/datapackage.json")
+resources(p)
+p1 <- read_resource(p, "penguins")
+```
+
+Still a work-in-progress, but tools are being developed.
+
+
+## JSON data
+
+* JavaScript Object Notation (JSON) - JS computer code
+* Flexible notation for describing data in more formats (not just tables)
+* Lists, vectors, dictionaries (keys and values)
+* also has data type information
+
+## Example: Metadata for CSV file
+
+```{r}
+library(jsonlite)
+toJSON(schema)
+```
+
+---
+
+![JSON schema for penguins data](static/L33/JSON-example.png)
+
+## Reading a JSON file
+
+* JSON is "just" text, but can be read as a "nested" data table
+
+```{r}
+j1 <- fromJSON("penguins-data-table/datapackage.json")
+j1$resources
+j1$resources$schema[[1]]
+```
 
 ## Parquet format
 
+* Faster to read and write than CSV
+* A "binary" format; not stored as text
+* Has metadata about variable types
+
+```{r}
+library(arrow)
+write_parquet(penguins, "penguins.parquet")
+fast_penguin <- read_parquet("penguins.parquet")
+fast_penguin
+```
+
+## Parquet schemas
+
+```{r}
+arrow_table(penguins)
+```
+
+## Multiple tables: relational databases
+
+```{r message=FALSE}
+library(RSQLite)
+library(dbplyr)
+library(nycflights13)
+nyc <- nycflights13_sqlite()
+airlines <- tbl(nyc, "airlines")
+airports <- tbl(nyc, "airports")
+airplanes <- tbl(nyc, "planes")
+flights <- tbl(nyc, "flights")
+```
+
+## NYC flights
+
+```{r}
+airlines |> head()
+```
+
+## NYC flights
+
+```{r}
+count(flights)
+flights |> head()
+```
+
+## Joins
+
+```{r}
+left_join(flights, 
+          airlines, by = "carrier") |>
+  filter(month == 5, day == 10, dep_time < 700,
+         dep_delay < 0, arr_delay > 0)
+```
 
 ## Summary
 
+* Tidy tables are very powerful and flexible!
+* The world of data is much larger than tables
+  * Metadata
+  * Faster formats
+  * Larger data
+  * Tables with variables in common (relational)
+* Much more to learn about JSON, parquet (arrow) and relational databases
