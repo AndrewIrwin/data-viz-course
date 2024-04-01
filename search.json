@@ -53,7 +53,7 @@
     "href": "slides/34-graphics-output.html#chunk-options",
     "title": "Graphics output",
     "section": "Chunk options",
-    "text": "Chunk options\nR markdown:\n::: {.cell layout-align=“center”}\n:::\nQuarto document (as above, or…)\n::: {.cell layout-align=“center”}\n:::"
+    "text": "Chunk options\nR markdown:\n```{r fig.height = 5, fig.asp = 0.6}\n# code for plot here\n```\nQuarto document (as above, or…)\n#| fig.height: 5\n#| fig.asp: 0.5\n# code for plot here"
   },
   {
     "objectID": "slides/34-graphics-output.html#png-example",
@@ -102,7 +102,7 @@
     "href": "slides/34-graphics-output.html#creating-standalone-files",
     "title": "Graphics output",
     "section": "Creating standalone files",
-    "text": "Creating standalone files\nUse ggsave:"
+    "text": "Creating standalone files\nUse ggsave:\n\nggsave(\"test-plot.pdf\", p1, height = 4, width = 6)\nggsave(\"test-plot.png\", p1, dpi = 400)"
   },
   {
     "objectID": "slides/32-theme.html#plan",
@@ -389,7 +389,7 @@
     "href": "slides/30-factors-dates.html#time-zones-1",
     "title": "Text & FactorsDates & Times",
     "section": "Time zones",
-    "text": "Time zones\n\nnow()\n\n[1] \"2024-04-01 12:58:10 ADT\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2024-04-01T12:58:10-0300\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"April 01, 2024 at 12:58 PM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-04-01 12:58:10 ADT\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
+    "text": "Time zones\n\nnow()\n\n[1] \"2024-04-01 13:19:11 ADT\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2024-04-01T13:19:11-0300\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"April 01, 2024 at 01:19 PM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-04-01 13:19:11 ADT\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
   },
   {
     "objectID": "slides/30-factors-dates.html#further-reading",
@@ -2923,7 +2923,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.8802513\n1.0149662\n0.8617957\n21\n8.730738\n1\n\n\n0.0748394\n-0.2936333\n1.1082908\n25\n25.790319\n2\n\n\n-0.5553538\n-0.3687870\n-1.2065990\n16\n21.718639\n3\n\n\n-1.3410321\n-1.2518282\n0.0631292\n35\n27.719661\n4\n\n\n0.7881227\n0.7942471\n-0.6379760\n45\n29.547062\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-1.2173177\n-1.1410976\n0.1024324\n43\n41.78191\n1\n\n\n0.9438028\n1.1527140\n0.0276943\n38\n21.24418\n2\n\n\n0.4073454\n0.0894008\n1.6668991\n16\n15.39153\n3\n\n\n-0.2962622\n0.2367267\n-1.7720737\n14\n24.17695\n4\n\n\n0.4551709\n0.0167574\n-0.2360752\n31\n14.49770\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -3539,14 +3539,14 @@
     "href": "slides/33-other-data.html#frictionless-data",
     "title": "Beyond tidy data",
     "section": "Frictionless data",
-    "text": "Frictionless data\nProblem: Someone gives you a dataset, but you need to be sure that\n\nthe data are read correctly\nyou know what the names of the columns mean\nyou know the units of numeric data\n\nFrictionless data solves these problems by distributing a metadata file with the data."
+    "text": "Frictionless data\nProblem: Someone gives you a dataset, but you need to be sure that\n\nthe data are read correctly\nyou know what the names of the columns mean\nyou know the units of numeric data\n\nFrictionless data solves these problems by distributing a metadata file with the data.\n\nlibrary(frictionless) # v. 1.1.0"
   },
   {
     "objectID": "slides/33-other-data.html#creating-frictionless-data",
     "href": "slides/33-other-data.html#creating-frictionless-data",
     "title": "Beyond tidy data",
     "section": "Creating frictionless data",
-    "text": "Creating frictionless data\nCreate a folder (penguin-data-table) with data and metadata:\nMore functions in the Python version."
+    "text": "Creating frictionless data\nCreate a folder (penguin-data-table) with data and metadata:\n\npackage &lt;- create_package()\nschema &lt;- create_schema(penguins)\npackage &lt;- add_resource(package, \n                        resource_name = \"penguins\", \n                        data = penguins, \n                        schema = schema, \n                        title = \"Data about penguins\",\n                        delim = \",\")\nwrite_package(package, \"penguins-data-table\")\n\nMore functions in the Python version."
   },
   {
     "objectID": "slides/33-other-data.html#json-data",
@@ -3560,56 +3560,56 @@
     "href": "slides/33-other-data.html#example-metadata-for-csv-file",
     "title": "Beyond tidy data",
     "section": "Example: Metadata for CSV file",
-    "text": "Example: Metadata for CSV file\n\n\n{\"fields\":[{\"name\":[\"species\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"Adelie\",\"Chinstrap\",\"Gentoo\"]}},{\"name\":[\"island\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"Biscoe\",\"Dream\",\"Torgersen\"]}},{\"name\":[\"bill_length_mm\"],\"type\":[\"number\"]},{\"name\":[\"bill_depth_mm\"],\"type\":[\"number\"]},{\"name\":[\"flipper_length_mm\"],\"type\":[\"integer\"]},{\"name\":[\"body_mass_g\"],\"type\":[\"integer\"]},{\"name\":[\"sex\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"female\",\"male\"]}},{\"name\":[\"year\"],\"type\":[\"integer\"]}]}"
+    "text": "Example: Metadata for CSV file\n\nlibrary(jsonlite)\ntoJSON(schema)\n\n{\"fields\":[{\"name\":[\"species\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"Adelie\",\"Chinstrap\",\"Gentoo\"]}},{\"name\":[\"island\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"Biscoe\",\"Dream\",\"Torgersen\"]}},{\"name\":[\"bill_length_mm\"],\"type\":[\"number\"]},{\"name\":[\"bill_depth_mm\"],\"type\":[\"number\"]},{\"name\":[\"flipper_length_mm\"],\"type\":[\"integer\"]},{\"name\":[\"body_mass_g\"],\"type\":[\"integer\"]},{\"name\":[\"sex\"],\"type\":[\"string\"],\"constraints\":{\"enum\":[\"female\",\"male\"]}},{\"name\":[\"year\"],\"type\":[\"integer\"]}]}"
   },
   {
     "objectID": "slides/33-other-data.html#reading-a-json-file",
     "href": "slides/33-other-data.html#reading-a-json-file",
     "title": "Beyond tidy data",
     "section": "Reading a JSON file",
-    "text": "Reading a JSON file\n\nJSON is “just” text, but can be read as a “nested” data table\n\n\n\n      name         path               profile format mediatype encoding\n1 penguins penguins.csv tabular-data-resource    csv  text/csv    utf-8\n                title\n1 Data about penguins\n                                                                                                                                                                                                                           fields\n1 species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year, string, string, number, number, integer, integer, string, integer, Adelie, Chinstrap, Gentoo, Biscoe, Dream, Torgersen, female, male\n\n\n[[1]]\n               name    type                      enum\n1           species  string Adelie, Chinstrap, Gentoo\n2            island  string  Biscoe, Dream, Torgersen\n3    bill_length_mm  number                      NULL\n4     bill_depth_mm  number                      NULL\n5 flipper_length_mm integer                      NULL\n6       body_mass_g integer                      NULL\n7               sex  string              female, male\n8              year integer                      NULL"
+    "text": "Reading a JSON file\n\nJSON is “just” text, but can be read as a “nested” data table\n\n\nj1 &lt;- fromJSON(\"penguins-data-table/datapackage.json\")\nj1$resources\n\n      name         path               profile format mediatype encoding\n1 penguins penguins.csv tabular-data-resource    csv  text/csv    utf-8\n                title\n1 Data about penguins\n                                                                                                                                                                                                                           fields\n1 species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year, string, string, number, number, integer, integer, string, integer, Adelie, Chinstrap, Gentoo, Biscoe, Dream, Torgersen, female, male\n\nj1$resources$schema[[1]]\n\n[[1]]\n               name    type                      enum\n1           species  string Adelie, Chinstrap, Gentoo\n2            island  string  Biscoe, Dream, Torgersen\n3    bill_length_mm  number                      NULL\n4     bill_depth_mm  number                      NULL\n5 flipper_length_mm integer                      NULL\n6       body_mass_g integer                      NULL\n7               sex  string              female, male\n8              year integer                      NULL"
   },
   {
     "objectID": "slides/33-other-data.html#parquet-format",
     "href": "slides/33-other-data.html#parquet-format",
     "title": "Beyond tidy data",
     "section": "Parquet format",
-    "text": "Parquet format\n\nFaster to read and write than CSV\nA “binary” format; not stored as text\nHas metadata about variable types\n\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Parquet format\n\nFaster to read and write than CSV\nA “binary” format; not stored as text\nHas metadata about variable types\n\n\nlibrary(arrow)\nwrite_parquet(penguins, \"penguins.parquet\")\n  fast_penguin &lt;- read_parquet(\"penguins.parquet\")\nfast_penguin\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#parquet-schemas",
     "href": "slides/33-other-data.html#parquet-schemas",
     "title": "Beyond tidy data",
     "section": "Parquet schemas",
-    "text": "Parquet schemas\n\n\nTable\n344 rows x 8 columns\n$species &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$island &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$bill_length_mm &lt;double&gt;\n$bill_depth_mm &lt;double&gt;\n$flipper_length_mm &lt;int32&gt;\n$body_mass_g &lt;int32&gt;\n$sex &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$year &lt;int32&gt;"
+    "text": "Parquet schemas\n\narrow_table(penguins)\n\nTable\n344 rows x 8 columns\n$species &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$island &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$bill_length_mm &lt;double&gt;\n$bill_depth_mm &lt;double&gt;\n$flipper_length_mm &lt;int32&gt;\n$body_mass_g &lt;int32&gt;\n$sex &lt;dictionary&lt;values=string, indices=int8&gt;&gt;\n$year &lt;int32&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#multiple-tables-relational-databases",
     "href": "slides/33-other-data.html#multiple-tables-relational-databases",
     "title": "Beyond tidy data",
     "section": "Multiple tables: relational databases",
-    "text": "Multiple tables: relational databases"
+    "text": "Multiple tables: relational databases\n\nlibrary(RSQLite)\nlibrary(dbplyr)\nlibrary(nycflights13)\nnyc &lt;- nycflights13_sqlite()\nairlines &lt;- tbl(nyc, \"airlines\")\nairports &lt;- tbl(nyc, \"airports\")\nairplanes &lt;- tbl(nyc, \"planes\")\nflights &lt;- tbl(nyc, \"flights\")"
   },
   {
     "objectID": "slides/33-other-data.html#nyc-flights",
     "href": "slides/33-other-data.html#nyc-flights",
     "title": "Beyond tidy data",
     "section": "NYC flights",
-    "text": "NYC flights\n\n\n# Source:   SQL [6 x 2]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//RtmpbQnYsp/nycflights13.sqlite]\n  carrier name                    \n  &lt;chr&gt;   &lt;chr&gt;                   \n1 9E      Endeavor Air Inc.       \n2 AA      American Airlines Inc.  \n3 AS      Alaska Airlines Inc.    \n4 B6      JetBlue Airways         \n5 DL      Delta Air Lines Inc.    \n6 EV      ExpressJet Airlines Inc."
+    "text": "NYC flights\n\nairlines |&gt; head()\n\n# Source:   SQL [6 x 2]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]\n  carrier name                    \n  &lt;chr&gt;   &lt;chr&gt;                   \n1 9E      Endeavor Air Inc.       \n2 AA      American Airlines Inc.  \n3 AS      Alaska Airlines Inc.    \n4 B6      JetBlue Airways         \n5 DL      Delta Air Lines Inc.    \n6 EV      ExpressJet Airlines Inc."
   },
   {
     "objectID": "slides/33-other-data.html#nyc-flights-1",
     "href": "slides/33-other-data.html#nyc-flights-1",
     "title": "Beyond tidy data",
     "section": "NYC flights",
-    "text": "NYC flights\n\n\n# Source:   SQL [1 x 1]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//RtmpbQnYsp/nycflights13.sqlite]\n       n\n   &lt;int&gt;\n1 336776\n\n\n# Source:   SQL [6 x 19]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//RtmpbQnYsp/nycflights13.sqlite]\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n6  2013     1     1      554            558        -4      740            728\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;"
+    "text": "NYC flights\n\ncount(flights)\n\n# Source:   SQL [1 x 1]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]\n       n\n   &lt;int&gt;\n1 336776\n\nflights |&gt; head()\n\n# Source:   SQL [6 x 19]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n6  2013     1     1      554            558        -4      740            728\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#joins",
     "href": "slides/33-other-data.html#joins",
     "title": "Beyond tidy data",
     "section": "Joins",
-    "text": "Joins\n\n\n# Source:   SQL [?? x 20]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//RtmpbQnYsp/nycflights13.sqlite]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     5    10      512            515        -3      824            811\n 2  2013     5    10      554            600        -6      858            850\n 3  2013     5    10      554            600        -6      721            720\n 4  2013     5    10      555            600        -5      704            701\n 5  2013     5    10      602            605        -3      803            800\n 6  2013     5    10      617            632       -15      932            920\n 7  2013     5    10      624            625        -1      752            745\n 8  2013     5    10      627            629        -2      832            825\n 9  2013     5    10      650            655        -5      946            935\n10  2013     5    10      655            700        -5      949            945\n# ℹ more rows\n# ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;, name &lt;chr&gt;"
+    "text": "Joins\n\nleft_join(flights, \n          airlines, by = \"carrier\") |&gt;\n  filter(month == 5, day == 10, dep_time &lt; 700,\n         dep_delay &lt; 0, arr_delay &gt; 0)\n\n# Source:   SQL [?? x 20]\n# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     5    10      512            515        -3      824            811\n 2  2013     5    10      554            600        -6      858            850\n 3  2013     5    10      554            600        -6      721            720\n 4  2013     5    10      555            600        -5      704            701\n 5  2013     5    10      602            605        -3      803            800\n 6  2013     5    10      617            632       -15      932            920\n 7  2013     5    10      624            625        -1      752            745\n 8  2013     5    10      627            629        -2      832            825\n 9  2013     5    10      650            655        -5      946            935\n10  2013     5    10      655            700        -5      949            945\n# ℹ more rows\n# ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;, name &lt;chr&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#summary",
