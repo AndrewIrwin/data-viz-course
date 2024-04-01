@@ -126,7 +126,7 @@ j1$resources$schema[[1]]
 ```{r}
 library(arrow)
 write_parquet(penguins, "penguins.parquet")
-fast_penguin <- read_parquet("penguins.parquet")
+  fast_penguin <- read_parquet("penguins.parquet")
 fast_penguin
 ```
 

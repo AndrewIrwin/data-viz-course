@@ -43,7 +43,7 @@ knitr::opts_chunk$set(
 ## Starting figure
 
 ```{r}
-p1 <- gapminder %>% # filter(continent == "Europe") %>%
+p1 <- gapminder |> # filter(continent == "Europe") |>
   ggplot(aes(x = year, y = lifeExp)) + 
   # geom_line(aes(group=country)) + 
   geom_smooth(method = "loess", formula = y ~ x, aes(color = continent)) +
@@ -78,6 +78,23 @@ p1
 
 * Alignment: fig.align = left, right, center
 
+## Chunk options
+
+R markdown:
+
+   ```{r fig.height = 5, fig.asp = 0.6}
+   # code for plot here
+   ```
+
+Quarto document (as above, or...)
+
+   ```{r}
+   #| fig.height: 5
+   #| fig.asp: 0.5
+   # code for plot here
+   ```
+   
+
 ## PNG example
 
 Chunk options: `fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev = 'png'`
@@ -99,9 +116,21 @@ p1
 Chunk options: `dev='ragg_png', dpi = 150`
 
 ```{r dev='ragg_png', dpi = 150}
-p1 
+p1 +
+  annotate("text", 1990, 45, label = "Tokyo (東京)") + 
+  labs(title = "Text in Japanese (日本) 🇯🇵") 
 ```
 
+
+## Fails with PNG
+
+Chunk options: `dev='png', dpi = 150`
+
+```{r dev='png', dpi = 150}
+p1 +
+  annotate("text", 1990, 45, label = "Tokyo (東京)") + 
+  labs(title = "Text in Japanese (日本) 🇯🇵") 
+```
 
 ## JPEG example
 
@@ -119,14 +148,13 @@ Chunk options: `dev='svglite'`
 p1 
 ```
 
-## PDF example
+## Creating standalone files
 
-The file looks great on [my computer](33-graphics-output_files/figure-html/pdfoutput-1.pdf) (look in `XXXX_files` folder), but is not shown properly in a web page.
+Use `ggsave`:
 
-Chunk options: `dev='pdf'`
-
-```{r pdfoutput, dev='pdf'}
-p1 
+```{r eval=FALSE}
+ggsave("test-plot.pdf", p1, height = 4, width = 6)
+ggsave("test-plot.png", p1, dpi = 400)
 ```
 
 
