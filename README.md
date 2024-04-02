@@ -4,7 +4,7 @@ This repository contains information for students registered in the course inclu
 
 The course web page is at
 
-* https://Dalhousie-AndrewIrwin-Teaching.github.io/data-viz-course/
+* https://AndrewIrwin.github.io/data-viz-course/
 
 The course textbook is at
 
