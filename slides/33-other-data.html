@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-04-02">
 <title>data-viz - Beyond tidy data</title>
@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -223,7 +158,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -417,12 +353,7 @@ Andrew Irwin, a.irwin@dal.ca
 <li>you know the units of numeric data</li>
 </ul>
 <p>Frictionless data solves these problems by distributing a metadata file with the data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(frictionless) <span class="co"># v. 1.1.0</span></span></code></pre></div>
-</div>
 </section><section class="slide level2"><div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>package <span class="ot">&lt;-</span> <span class="fu">read_package</span>(<span class="st">"https://zenodo.org/records/10053702/files/datapackage.json"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>package</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A Data Package with 3 resources:
 • reference-data
@@ -433,12 +364,9 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 </div>
 </div>
 </section><section class="slide level2"><div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">resources</span>(package)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "reference-data" "gps"            "acceleration"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>reference_data <span class="ot">&lt;-</span> <span class="fu">read_resource</span>(package, <span class="st">"reference-data"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>reference_data </span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 27
    `tag-id` `animal-id` `animal-taxon`   `deploy-on-date`    `deploy-off-date`  
@@ -467,26 +395,12 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 </div>
 </section><section id="creating-frictionless-data" class="slide level2"><h2>Creating frictionless data</h2>
 <p>Create a folder (<code>penguin-data-table</code>) with data and metadata:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>package <span class="ot">&lt;-</span> <span class="fu">create_package</span>()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>schema <span class="ot">&lt;-</span> <span class="fu">create_schema</span>(penguins)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>package <span class="ot">&lt;-</span> <span class="fu">add_resource</span>(package, </span>
-<span id="cb8-4"><a href="#cb8-4"></a>                        <span class="at">resource_name =</span> <span class="st">"penguins"</span>, </span>
-<span id="cb8-5"><a href="#cb8-5"></a>                        <span class="at">data =</span> penguins, </span>
-<span id="cb8-6"><a href="#cb8-6"></a>                        <span class="at">schema =</span> schema, </span>
-<span id="cb8-7"><a href="#cb8-7"></a>                        <span class="at">title =</span> <span class="st">"Data about penguins"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8"></a>                        <span class="at">delim =</span> <span class="st">","</span>)</span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="fu">write_package</span>(package, <span class="st">"penguins-data-table"</span>)</span></code></pre></div>
-</div>
 <p>More functions in the <a href="https://github.com/frictionlessdata/frictionless-py">Python</a> version.</p>
 </section><section class="slide level2"><p>Read the data with the following functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>p <span class="ot">&lt;-</span> <span class="fu">read_package</span>(<span class="st">"penguins-data-table/datapackage.json"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">resources</span>(p)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "penguins"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">read_resource</span>(p, <span class="st">"penguins"</span>)</span></code></pre></div>
 </div>
 <p>Still a work-in-progress, but tools are being developed.</p>
 </section><section id="json-data" class="slide level2"><h2>JSON data</h2>
@@ -497,8 +411,6 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <li>also has data type information</li>
 </ul></section><section id="example-metadata-for-csv-file" class="slide level2"><h2>Example: Metadata for CSV file</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">toJSON</span>(schema)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{"fields":[{"name":["species"],"type":["string"],"constraints":{"enum":["Adelie","Chinstrap","Gentoo"]}},{"name":["island"],"type":["string"],"constraints":{"enum":["Biscoe","Dream","Torgersen"]}},{"name":["bill_length_mm"],"type":["number"]},{"name":["bill_depth_mm"],"type":["number"]},{"name":["flipper_length_mm"],"type":["integer"]},{"name":["body_mass_g"],"type":["integer"]},{"name":["sex"],"type":["string"],"constraints":{"enum":["female","male"]}},{"name":["year"],"type":["integer"]}]} </code></pre>
 </div>
@@ -509,8 +421,6 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <li>JSON is “just” text, but can be read as a “nested” data table</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>j1 <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"penguins-data-table/datapackage.json"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>j1<span class="sc">$</span>resources</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      name         path               profile format mediatype encoding
 1 penguins penguins.csv tabular-data-resource    csv  text/csv    utf-8
@@ -519,7 +429,6 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
                                                                                                                                                                                                                            fields
 1 species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year, string, string, number, number, integer, integer, string, integer, Adelie, Chinstrap, Gentoo, Biscoe, Dream, Torgersen, female, male</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>j1<span class="sc">$</span>resources<span class="sc">$</span>schema[[<span class="dv">1</span>]]</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
                name    type                      enum
@@ -538,63 +447,13 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <li>Faster to read and write than CSV</li>
 <li>A “binary” format; not stored as text</li>
 <li>Has metadata about variable types</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">write_parquet</span>(penguins, <span class="st">"penguins.parquet"</span>)</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  fast_penguin <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"penguins.parquet"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>fast_penguin</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           39.1          18.7               181        3750
- 2 Adelie  Torgersen           39.5          17.4               186        3800
- 3 Adelie  Torgersen           40.3          18                 195        3250
- 4 Adelie  Torgersen           NA            NA                  NA          NA
- 5 Adelie  Torgersen           36.7          19.3               193        3450
- 6 Adelie  Torgersen           39.3          20.6               190        3650
- 7 Adelie  Torgersen           38.9          17.8               181        3625
- 8 Adelie  Torgersen           39.2          19.6               195        4675
- 9 Adelie  Torgersen           34.1          18.1               193        3475
-10 Adelie  Torgersen           42            20.2               190        4250
-# ℹ 334 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
-</section><section id="parquet-schemas" class="slide level2"><h2>Parquet schemas</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">arrow_table</span>(penguins)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Table
-344 rows x 8 columns
-$species &lt;dictionary&lt;values=string, indices=int8&gt;&gt;
-$island &lt;dictionary&lt;values=string, indices=int8&gt;&gt;
-$bill_length_mm &lt;double&gt;
-$bill_depth_mm &lt;double&gt;
-$flipper_length_mm &lt;int32&gt;
-$body_mass_g &lt;int32&gt;
-$sex &lt;dictionary&lt;values=string, indices=int8&gt;&gt;
-$year &lt;int32&gt;</code></pre>
-</div>
-</div>
+</ul></section><section id="parquet-schemas" class="slide level2"><h2>Parquet schemas</h2>
 </section><section id="multiple-tables-relational-databases" class="slide level2"><h2>Multiple tables: relational databases</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb22-4"><a href="#cb22-4"></a>nyc <span class="ot">&lt;-</span> <span class="fu">nycflights13_sqlite</span>()</span>
-<span id="cb22-5"><a href="#cb22-5"></a>airlines <span class="ot">&lt;-</span> <span class="fu">tbl</span>(nyc, <span class="st">"airlines"</span>)</span>
-<span id="cb22-6"><a href="#cb22-6"></a>airports <span class="ot">&lt;-</span> <span class="fu">tbl</span>(nyc, <span class="st">"airports"</span>)</span>
-<span id="cb22-7"><a href="#cb22-7"></a>airplanes <span class="ot">&lt;-</span> <span class="fu">tbl</span>(nyc, <span class="st">"planes"</span>)</span>
-<span id="cb22-8"><a href="#cb22-8"></a>flights <span class="ot">&lt;-</span> <span class="fu">tbl</span>(nyc, <span class="st">"flights"</span>)</span></code></pre></div>
-</div>
 </section><section id="nyc-flights" class="slide level2"><h2>NYC flights</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>airlines <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [6 x 2]
-# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]
+# Database: sqlite 3.45.0 [/var/folders/f9/hrk12n5x4cggf82gcnlx23bm0000gn/T//RtmpdlpdpC/nycflights13.sqlite]
   carrier name                    
   &lt;chr&gt;   &lt;chr&gt;                   
 1 9E      Endeavor Air Inc.       
@@ -607,18 +466,16 @@ $year &lt;int32&gt;</code></pre>
 </div>
 </section><section id="nyc-flights-1" class="slide level2"><h2>NYC flights</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">count</span>(flights)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [1 x 1]
-# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]
+# Database: sqlite 3.45.0 [/var/folders/f9/hrk12n5x4cggf82gcnlx23bm0000gn/T//RtmpdlpdpC/nycflights13.sqlite]
        n
    &lt;int&gt;
 1 336776</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [6 x 19]
-# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]
+# Database: sqlite 3.45.0 [/var/folders/f9/hrk12n5x4cggf82gcnlx23bm0000gn/T//RtmpdlpdpC/nycflights13.sqlite]
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
 1  2013     1     1      517            515         2      830            819
@@ -634,13 +491,9 @@ $year &lt;int32&gt;</code></pre>
 </div>
 </section><section id="joins" class="slide level2"><h2>Joins</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">left_join</span>(flights, </span>
-<span id="cb29-2"><a href="#cb29-2"></a>          airlines, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">5</span>, day <span class="sc">==</span> <span class="dv">10</span>, dep_time <span class="sc">&lt;</span> <span class="dv">700</span>,</span>
-<span id="cb29-4"><a href="#cb29-4"></a>         dep_delay <span class="sc">&lt;</span> <span class="dv">0</span>, arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 20]
-# Database: sqlite 3.44.2 [/var/folders/nr/n31pl_p95tq7w0p_6pgv_t4h0000gn/T//Rtmp27QzjL/nycflights13.sqlite]
+# Database: sqlite 3.45.0 [/var/folders/f9/hrk12n5x4cggf82gcnlx23bm0000gn/T//RtmpdlpdpC/nycflights13.sqlite]
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
  1  2013     5    10      512            515        -3      824            811
@@ -673,8 +526,10 @@ $year &lt;int32&gt;</code></pre>
 <li>Much more to learn about JSON, parquet (arrow) and relational databases</li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -687,7 +542,6 @@ $year &lt;int32&gt;</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -931,10 +785,9 @@ $year &lt;int32&gt;</code></pre>
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -944,8 +797,17 @@ $year &lt;int32&gt;</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

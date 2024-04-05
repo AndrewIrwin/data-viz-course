@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-03-26">
 <title>data-viz - Colour</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -418,23 +419,37 @@ Andrew Irwin, a.irwin@dal.ca
 
 <img data-src="static/L31/crayola.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Crayola colors</p></section><section id="colors-that-exist-in-nature" class="slide level2"><h2>Colors that exist in nature</h2>
 
-<img data-src="static/L31/photosynthetic-pigment-abs-spectrum.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Pigments in nature</p></section><section id="what-your-eye-sees" class="slide level2"><h2>What your eye sees</h2>
+<img data-src="static/L31/photosynthetic-pigment-abs-spectrum.jpeg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;1: Pigments in nature
+</p></section><section id="what-your-eye-sees" class="slide level2"><h2>What your eye sees</h2>
 
-<img data-src="static/L31/cones-response-curves.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Response of cones in your eyes</p></section><section id="what-a-computer-screen-creates" class="slide level2"><h2>What a computer screen creates</h2>
+<img data-src="static/L31/cones-response-curves.svg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;2: Response of cones in your eyes
+</p></section><section id="what-a-computer-screen-creates" class="slide level2"><h2>What a computer screen creates</h2>
 
-<img data-src="static/L31/RGB_LED_Spectrum.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: LED emission spectrum</p></section><section id="colors-on-a-computer-screen" class="slide level2"><h2>Colors on a computer screen</h2>
+<img data-src="static/L31/RGB_LED_Spectrum.svg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;3: LED emission spectrum
+</p></section><section id="colors-on-a-computer-screen" class="slide level2"><h2>Colors on a computer screen</h2>
 
-<img data-src="static/L31/CIExy1931_sRGB_gamut_D65-wikimedia.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;4: CIE model</p></section><section id="photo-of-screen" class="slide level2"><h2>Photo of screen</h2>
+<img data-src="static/L31/CIExy1931_sRGB_gamut_D65-wikimedia.png" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;4: CIE model
+</p></section><section id="photo-of-screen" class="slide level2"><h2>Photo of screen</h2>
 
 <img data-src="static/L31/computer-screen-cell-phone-photo.png" class="r-stretch quarto-figure-center"><p class="caption">Photo of LCD screen with cell phone</p></section><section id="pixel-geometry" class="slide level2"><h2>Pixel geometry</h2>
 
 <img data-src="static/L31/Pixel_geometry_01_Pengo.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Wikipedia page for Pixel</p></section><section id="two-models-for-creating-colour" class="slide level2"><h2>Two models for creating colour</h2>
 
-<img data-src="static/L31/rgb-cmyk.webp" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: Creating colour models</p></section><section id="additive-model" class="slide level2"><h2>Additive model</h2>
+<img data-src="static/L31/rgb-cmyk.webp" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;5: Creating colour models
+</p></section><section id="additive-model" class="slide level2"><h2>Additive model</h2>
 
-<img data-src="static/L31/wheel-additive-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;6: Additive</p></section><section id="subtractive-model" class="slide level2"><h2>Subtractive model</h2>
+<img data-src="static/L31/wheel-additive-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;6: Additive
+</p></section><section id="subtractive-model" class="slide level2"><h2>Subtractive model</h2>
 
-<img data-src="static/L31/wheel-subtractive-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: Subtractive</p></section><section id="colour-guidelines---discrete" class="slide level2"><h2>Colour guidelines - Discrete</h2>
+<img data-src="static/L31/wheel-subtractive-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;7: Subtractive
+</p></section><section id="colour-guidelines---discrete" class="slide level2"><h2>Colour guidelines - Discrete</h2>
 <ul>
 <li><p>Not too many</p></li>
 <li><p>Keep brightness constant</p></li>
@@ -445,64 +460,64 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Avoid red-green diverging scales</p></li>
 </ul></section><section id="discrete-colour-scales" class="slide level2"><h2>Discrete colour scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb1-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-1-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="discrete-colour-scales-1" class="slide level2"><h2>Discrete colour scales</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-1-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="discrete-colour-scales-1" class="slide level2"><h2>Discrete colour scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
-<span id="cb2-2"><a href="#cb2-2"></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.7</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb2-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.7</span>) </span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-2-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="discrete-colour-scales-2" class="slide level2"><h2>Discrete colour scales</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-2-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="discrete-colour-scales-2" class="slide level2"><h2>Discrete colour scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
-<span id="cb3-2"><a href="#cb3-2"></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">scale_color_paletteer_d</span>(<span class="st">"ggthemes::hc_default"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb3-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">scale_color_paletteer_d</span>(<span class="st">"ggthemes::hc_default"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-3-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="discrete-colour-scales-3" class="slide level2"><h2>Discrete colour scales</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-3-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="discrete-colour-scales-3" class="slide level2"><h2>Discrete colour scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
-<span id="cb4-2"><a href="#cb4-2"></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"orange"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb4-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"orange"</span>))</span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-4-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="continuous-colour-shades" class="slide level2"><h2>Continuous colour shades</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-4-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="continuous-colour-shades" class="slide level2"><h2>Continuous colour shades</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>, <span class="st">"Iceland"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, lifeExp, <span class="at">color =</span> <span class="fu">log10</span>(pop))) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>, <span class="st">"Iceland"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, lifeExp, <span class="at">color =</span> <span class="fu">log10</span>(pop))) <span class="sc">+</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-5-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="continuous-colour-shades---diverging" class="slide level2"><h2>Continuous colour shades - diverging</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-5-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="continuous-colour-shades---diverging" class="slide level2"><h2>Continuous colour shades - diverging</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p1 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">body_mass_centered =</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>                      body_mass_g <span class="sc">-</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flipper_length_mm, bill_length_mm, </span>
-<span id="cb6-4"><a href="#cb6-4"></a>             <span class="at">color =</span> body_mass_centered)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co"># scale_color_distiller(type="div", palette="RdBu", limits = c(-2000,2000)) </span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">scale_color_fermenter</span>(<span class="at">type=</span><span class="st">"div"</span>, </span>
-<span id="cb6-8"><a href="#cb6-8"></a>                        <span class="at">palette=</span><span class="st">"RdBu"</span>, </span>
-<span id="cb6-9"><a href="#cb6-9"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2000</span>,<span class="dv">2000</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>p1 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">body_mass_centered =</span> </span>
+<span id="cb6-2"><a></a>                      body_mass_g <span class="sc">-</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flipper_length_mm, bill_length_mm, </span>
+<span id="cb6-4"><a></a>             <span class="at">color =</span> body_mass_centered)) <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a></a>  <span class="co"># scale_color_distiller(type="div", palette="RdBu", limits = c(-2000,2000)) </span></span>
+<span id="cb6-7"><a></a>  <span class="fu">scale_color_fermenter</span>(<span class="at">type=</span><span class="st">"div"</span>, </span>
+<span id="cb6-8"><a></a>                        <span class="at">palette=</span><span class="st">"RdBu"</span>, </span>
+<span id="cb6-9"><a></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2000</span>,<span class="dv">2000</span>)) </span></code></pre></div>
 </div>
 </section><section id="continuous-colour-shades---diverging-1" class="slide level2"><h2>Continuous colour shades - diverging</h2>
 
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-7-1.svg" style="width:80.0%" class="r-stretch quarto-figure-center"></section><section id="make-your-own-palette" class="slide level2" data-background-image="static/L31/beach.jpg"><h2>Make your own palette</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-7-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="make-your-own-palette" class="slide level2" data-background-image="static/L31/beach.jpg"><h2>Make your own palette</h2>
 </section><section id="coolors.co-palette-maker" class="slide level2" data-background-image="static/L31/palette.png"><h2>coolors.co palette maker</h2>
 </section><section id="using-custom-colors" class="slide level2"><h2>Using custom colors</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#5496E2"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>                                <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#A19D95"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>                                <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#2C4500"</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(body_mass_g, flipper_length_mm,</span>
+<span id="cb7-2"><a></a>                        <span class="at">color =</span> species)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> my_theme <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#5496E2"</span>,</span>
+<span id="cb7-4"><a></a>                                <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#A19D95"</span>,</span>
+<span id="cb7-5"><a></a>                                <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#2C4500"</span>)) </span></code></pre></div>
 
 </div>
-<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-8-1.svg" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="further-reading" class="slide level2 smaller"><h2>Further reading</h2>
+<img data-src="31-colour_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section><section id="further-reading" class="slide level2 smaller"><h2>Further reading</h2>
 <ul>
 <li><p>Course notes</p></li>
 <li><p>Healy and Wilke sections on colour</p></li>
@@ -522,8 +537,10 @@ Andrew Irwin, a.irwin@dal.ca
 </li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -536,7 +553,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -780,10 +796,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -793,8 +808,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

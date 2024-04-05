@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-03-28">
 <title>data-viz - Theme</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -413,116 +414,116 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Formatting axis numbers</p></li>
 </ul></section><section id="starting-figure" class="slide level2"><h2>Starting figure</h2>
 
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-1-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="ready-to-use-themes" class="slide level2"><h2>Ready to use themes</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-1-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="ready-to-use-themes" class="slide level2"><h2>Ready to use themes</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p1 <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-2-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="ready-to-use-themes-1" class="slide level2"><h2>Ready to use themes</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-2-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="ready-to-use-themes-1" class="slide level2"><h2>Ready to use themes</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p1 <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-3-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="more-themes" class="slide level2"><h2>More themes</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-3-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="more-themes" class="slide level2"><h2>More themes</h2>
 <ul>
 <li><p><code>theme_dark</code>, <code>theme_gray</code>, <code>theme_light</code></p></li>
 <li><p>From <code>ggthemes</code>: <code>theme_wsj</code>, <code>theme_tufte</code>, <code>theme_fivethirtyeight</code>, <code>theme_economist</code>, <code>theme_clean</code></p></li>
 </ul></section><section id="all-text-larger" class="slide level2"><h2>All text larger</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">22</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">22</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-4-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="sizes-for-different-elements" class="slide level2"><h2>Sizes for different elements</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-4-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="sizes-for-different-elements" class="slide level2"><h2>Sizes for different elements</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
-<span id="cb4-2"><a href="#cb4-2"></a>           <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
-<span id="cb4-3"><a href="#cb4-3"></a>           <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
-<span id="cb4-4"><a href="#cb4-4"></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
-<span id="cb4-5"><a href="#cb4-5"></a>           <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">21</span>),</span>
-<span id="cb4-6"><a href="#cb4-6"></a>           <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb4-8"><a href="#cb4-8"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy at birth"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a>       <span class="at">title =</span> <span class="st">"Life expectancy averaged by continent"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>       <span class="at">subtitle =</span> <span class="st">"From Gapminder.org"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb4-2"><a></a>           <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb4-3"><a></a>           <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>),</span>
+<span id="cb4-4"><a></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>),</span>
+<span id="cb4-5"><a></a>           <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">21</span>),</span>
+<span id="cb4-6"><a></a>           <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb4-8"><a></a>       <span class="at">y =</span> <span class="st">"Life Expectancy at birth"</span>,</span>
+<span id="cb4-9"><a></a>       <span class="at">title =</span> <span class="st">"Life expectancy averaged by continent"</span>,</span>
+<span id="cb4-10"><a></a>       <span class="at">subtitle =</span> <span class="st">"From Gapminder.org"</span>)</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-5-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="other-features-of-text" class="slide level2"><h2>Other features of text</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-5-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="other-features-of-text" class="slide level2"><h2>Other features of text</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average life expectancy"</span>) <span class="sc">+</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>                                  <span class="at">face =</span> <span class="st">"italic"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4"></a>                                  <span class="at">color =</span> <span class="st">"blue"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5"></a>                                  <span class="at">size =</span> <span class="dv">30</span>,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>                                  <span class="at">hjust =</span> <span class="dv">1</span>, </span>
-<span id="cb5-7"><a href="#cb5-7"></a>                                  <span class="at">lineheight =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a>p1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average life expectancy"</span>) <span class="sc">+</span> </span>
+<span id="cb5-2"><a></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>,</span>
+<span id="cb5-3"><a></a>                                  <span class="at">face =</span> <span class="st">"italic"</span>,</span>
+<span id="cb5-4"><a></a>                                  <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb5-5"><a></a>                                  <span class="at">size =</span> <span class="dv">30</span>,</span>
+<span id="cb5-6"><a></a>                                  <span class="at">hjust =</span> <span class="dv">1</span>, </span>
+<span id="cb5-7"><a></a>                                  <span class="at">lineheight =</span> <span class="dv">2</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-6-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="fancy-text-ggtext" class="slide level2"><h2>Fancy text: ggtext</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-6-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="fancy-text-ggtext" class="slide level2"><h2>Fancy text: ggtext</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>p1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"**Gapminder** data for _life expectancy_&lt;sup&gt;1&lt;/sup&gt;"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>          <span class="at">caption =</span> <span class="st">"&lt;sup&gt;1&lt;/sup&gt;from gapminder.org"</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">24</span>),</span>
-<span id="cb6-5"><a href="#cb6-5"></a>        <span class="at">plot.caption =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">13</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb6-2"><a></a>p1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"**Gapminder** data for _life expectancy_&lt;sup&gt;1&lt;/sup&gt;"</span>,</span>
+<span id="cb6-3"><a></a>          <span class="at">caption =</span> <span class="st">"&lt;sup&gt;1&lt;/sup&gt;from gapminder.org"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">24</span>),</span>
+<span id="cb6-5"><a></a>        <span class="at">plot.caption =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">13</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-7-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="move-and-redesign-the-legend" class="slide level2"><h2>Move and redesign the legend</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-7-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="move-and-redesign-the-legend" class="slide level2"><h2>Move and redesign the legend</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>           <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb7-4"><a href="#cb7-4"></a>           <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb7-5"><a href="#cb7-5"></a>           <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.9</span>, <span class="st">"cm"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb7-2"><a></a>           <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>,</span>
+<span id="cb7-3"><a></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb7-4"><a></a>           <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb7-5"><a></a>           <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.9</span>, <span class="st">"cm"</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-8-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="move-and-redesign-the-legend-1" class="slide level2"><h2>Move and redesign the legend</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-8-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="move-and-redesign-the-legend-1" class="slide level2"><h2>Move and redesign the legend</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>p1 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.03</span>, <span class="fl">0.98</span>),</span>
-<span id="cb8-2"><a href="#cb8-2"></a>                        <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb8-3"><a href="#cb8-3"></a>           <span class="at">legend.direction =</span> <span class="st">"vertical"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>           <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb8-6"><a href="#cb8-6"></a>           <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb8-7"><a href="#cb8-7"></a>           <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.8</span>, <span class="st">"cm"</span>)) <span class="sc">+</span> </span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a>p1 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.03</span>, <span class="fl">0.98</span>),</span>
+<span id="cb8-2"><a></a>                        <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb8-3"><a></a>           <span class="at">legend.direction =</span> <span class="st">"vertical"</span>,</span>
+<span id="cb8-4"><a></a>           <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>),</span>
+<span id="cb8-5"><a></a>           <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb8-6"><a></a>           <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-7"><a></a>           <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.8</span>, <span class="st">"cm"</span>)) <span class="sc">+</span> </span>
+<span id="cb8-8"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">3</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-9-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="formatting-numbers-on-scales" class="slide level2"><h2>Formatting numbers on scales</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-9-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="formatting-numbers-on-scales" class="slide level2"><h2>Formatting numbers on scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>p1 <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span> <span class="co"># also comma</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a>p1 <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span> <span class="co"># also comma</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-10-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="formatting-numbers-on-scales-1" class="slide level2"><h2>Formatting numbers on scales</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-10-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="formatting-numbers-on-scales-1" class="slide level2"><h2>Formatting numbers on scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>p2 <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>, <span class="at">labels =</span> scales<span class="sc">::</span>scientific,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>                        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"date"</span>, <span class="at">label =</span> <span class="fu">label_date</span>(<span class="at">format=</span><span class="st">"%Y-%m"</span>)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>p2 <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>, <span class="at">labels =</span> scales<span class="sc">::</span>scientific,</span>
+<span id="cb10-2"><a></a>                        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>)) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"date"</span>, <span class="at">label =</span> <span class="fu">label_date</span>(<span class="at">format=</span><span class="st">"%Y-%m"</span>)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-12-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="power-of-10-notation" class="slide level2"><h2>Power of 10 notation</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-12-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="power-of-10-notation" class="slide level2"><h2>Power of 10 notation</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
-<span id="cb11-3"><a href="#cb11-3"></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span> </span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
-<span id="cb11-5"><a href="#cb11-5"></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
+<span id="cb11-3"><a></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> <span class="fu">trans_format</span>(<span class="st">'log10'</span>, <span class="fu">math_format</span>(<span class="dv">10</span><span class="sc">^</span>.x)),</span>
+<span id="cb11-5"><a></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-13-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="si-units" class="slide level2"><h2>SI units</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-13-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="si-units" class="slide level2"><h2>SI units</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"g"</span>)),</span>
-<span id="cb12-3"><a href="#cb12-3"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"m"</span>)),</span>
-<span id="cb12-5"><a href="#cb12-5"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">tibble</span>(<span class="at">x=</span><span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">15</span>), <span class="at">y =</span> x<span class="sc">*</span><span class="fl">1e-15</span>) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x , y)) <span class="sc">+</span> <span class="fu">geom_blank</span>() <span class="sc">+</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"g"</span>)),</span>
+<span id="cb12-3"><a></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e0</span>,<span class="fl">1e3</span>,<span class="fl">1e6</span>,<span class="fl">1e9</span>,<span class="fl">1e12</span>,<span class="fl">1e15</span>)) <span class="sc">+</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_si</span>(<span class="st">"m"</span>)),</span>
+<span id="cb12-5"><a></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1e-15</span>,<span class="fl">1e-12</span>,<span class="fl">1e-9</span>,<span class="fl">1e-6</span>,<span class="fl">1e-3</span>,<span class="fl">1e0</span>))</span></code></pre></div>
 
 </div>
-<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-14-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="getting-help-with-theme" class="slide level2 smaller"><h2>Getting help with theme</h2>
+<img data-src="32-theme_files/figure-revealjs/unnamed-chunk-14-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="getting-help-with-theme" class="slide level2 smaller"><h2>Getting help with theme</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>?theme</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a>?theme</span></code></pre></div>
 </div>
 <p>theme(line, rect, text, title, aspect.ratio, axis.title, axis.title.x, axis.title.x.top, axis.title.x.bottom, axis.title.y, axis.title.y.left, axis.title.y.right, axis.text, axis.text.x, axis.text.x.top, axis.text.x.bottom, axis.text.y, axis.text.y.left, axis.text.y.right, axis.ticks, axis.ticks.x, axis.ticks.x.top, axis.ticks.x.bottom, axis.ticks.y, axis.ticks.y.left, axis.ticks.y.right, axis.ticks.length, axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right, axis.line, axis.line.x, axis.line.x.top, axis.line.x.bottom, axis.line.y, axis.line.y.left, axis.line.y.right, legend.background, legend.margin, legend.spacing, legend.spacing.x, legend.spacing.y, legend.key, legend.key.size, legend.key.height, legend.key.width, legend.text, legend.text.align, legend.title, legend.title.align, legend.position, legend.direction, legend.justification, legend.box, legend.box.just, legend.box.margin, legend.box.background, legend.box.spacing, panel.background, panel.border, panel.spacing, panel.spacing.x, panel.spacing.y, panel.grid, panel.grid.major, panel.grid.minor, panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x, panel.grid.minor.y, panel.ontop, plot.background, plot.title, plot.title.position, plot.subtitle, plot.caption, plot.caption.position, plot.tag, plot.tag.position, plot.margin, strip.background, strip.background.x, strip.background.y, strip.clip, strip.placement, strip.text, strip.text.x, strip.text.x.bottom, strip.text.x.top, strip.text.y, strip.text.y.left, strip.text.y.right, strip.switch.pad.grid, strip.switch.pad.wrap)</p>
 </section><section id="theme-elements" class="slide level2"><h2>Theme elements</h2>
@@ -533,8 +534,10 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <p>Chapter on <a href="https://ggplot2-book.org/themes">Theme</a> in the ggplot book (currently being revised.)</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -547,7 +550,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -791,10 +793,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -804,8 +805,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

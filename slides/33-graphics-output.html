@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-11-24">
+<meta name="dcterms.date" content="2024-03-28">
 <title>data-viz - Graphics output</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -158,7 +158,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -337,7 +338,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2022-11-24</p>
+  <p class="date">2024-03-28</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>Kinds of graphics</p></li>
@@ -345,7 +346,7 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Knitted documents and separate files</p></li>
 </ul></section><section id="starting-figure" class="slide level2"><h2>Starting figure</h2>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-1-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="kinds-of-graphics" class="slide level2"><h2>Kinds of graphics</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-1-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="kinds-of-graphics" class="slide level2"><h2>Kinds of graphics</h2>
 <ul>
 <li><p>Vector graphics (pdf, svg)</p></li>
 <li><p>Bitmapped or raster graphics (png, jpeg)</p></li>
@@ -367,32 +368,34 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="png-example" class="slide level2"><h2>PNG example</h2>
 <p>Chunk options: <code>fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev = 'png'</code></p>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="higher-resolution-png-example" class="slide level2"><h2>Higher resolution PNG example</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="higher-resolution-png-example" class="slide level2"><h2>Higher resolution PNG example</h2>
 <p>Chunk options: <code>dev='png', dpi=150</code></p>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="ragg-example" class="slide level2"><h2>RAGG example</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="ragg-example" class="slide level2"><h2>RAGG example</h2>
 <p>Chunk options: <code>dev='ragg_png', dpi = 150</code></p>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="jpeg-example" class="slide level2"><h2>JPEG example</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="jpeg-example" class="slide level2"><h2>JPEG example</h2>
 <p>Chunk options: <code>dev='jpeg', dpi = 150</code></p>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-5-1.jpeg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="svg-example" class="slide level2"><h2>SVG example</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-5-1.jpeg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="svg-example" class="slide level2"><h2>SVG example</h2>
 <p>Chunk options: <code>dev='svglite'</code></p>
 
-<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-6-1.svg" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="pdf-example" class="slide level2"><h2>PDF example</h2>
+<img data-src="33-graphics-output_files/figure-revealjs/unnamed-chunk-6-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section><section id="pdf-example" class="slide level2"><h2>PDF example</h2>
 <p>The file looks great on <a href="33-graphics-output_files/figure-html/pdfoutput-1.pdf">my computer</a> (look in <code>XXXX_files</code> folder), but is not shown properly in a web page.</p>
 <p>Chunk options: <code>dev='pdf'</code></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><embed data-src="33-graphics-output_files/figure-revealjs/pdfoutput-1.pdf" style="width:70.0%"></p>
+<figure><p><embed data-src="33-graphics-output_files/figure-revealjs/pdfoutput-1.pdf" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </div>
@@ -405,7 +408,6 @@ Andrew Irwin, a.irwin@dal.ca
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -649,10 +651,9 @@ Andrew Irwin, a.irwin@dal.ca
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -662,8 +663,17 @@ Andrew Irwin, a.irwin@dal.ca
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
