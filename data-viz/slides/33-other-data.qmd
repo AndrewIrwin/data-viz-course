@@ -123,7 +123,7 @@ j1$resources$schema[[1]]
 * A "binary" format; not stored as text
 * Has metadata about variable types
 
-```{r}
+```{r eval=FALSE}
 library(arrow)
 write_parquet(penguins, "penguins.parquet")
   fast_penguin <- read_parquet("penguins.parquet")
@@ -132,7 +132,7 @@ fast_penguin
 
 ## Parquet schemas
 
-```{r}
+```{r eval=FALSE}
 arrow_table(penguins)
 ```
 
