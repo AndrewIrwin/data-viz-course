@@ -82,17 +82,19 @@ p1
 
 R markdown:
 
-   ```{r fig.height = 5, fig.asp = 0.6}
-   # code for plot here
-   ```
+````
+```{{r fig.height = 5, fig.asp = 0.6}}
+# code for plot here
+```
+````
 
 Quarto document (as above, or...)
 
-   ```{r}
-   #| fig.height: 5
-   #| fig.asp: 0.5
-   # code for plot here
-   ```
+```{{r}}
+#| fig.height: 5
+#| fig.asp: 0.5
+# code for plot here
+```
    
 
 ## PNG example
@@ -128,7 +130,7 @@ Chunk options: `dev='png', dpi = 150`
 
 ```{r dev='png', dpi = 150}
 p1 +
-  annotate("text", 1990, 45, label = "Tokyo (東京)") + 
+  annotate("text", 1990, 60, label = "Tokyo (東京)") + 
   labs(title = "Text in Japanese (日本) 🇯🇵") 
 ```
 
@@ -152,7 +154,7 @@ p1
 
 Use `ggsave`:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=TRUE}
 ggsave("test-plot.pdf", p1, height = 4, width = 6)
 ggsave("test-plot.png", p1, dpi = 400)
 ```
