@@ -1,0 +1,58 @@
+---
+title: "How to make a Panopto recording"
+author: Andrew Irwin
+date: 2023-04-05
+format: revealjs
+---
+
+## Steps
+
+* Open your presentation in a web browser
+
+* Separate browser window: Brightspace > Term Project > Recordings for Term project
+
+* Upload term project videos here
+
+* Create > Panopto capture (or download application to your computer)
+
+
+## Recording steps
+
+* Authorize use of your microphone and camera
+
+* Share your presentation
+
+* Use red square to start and stop recording
+
+* When done, change the recording name from the date and time you started to "Team XX"
+
+* Close the window, or redo the recording if you aren't happy
+
+* Go back to Brightspace window, check to be sure your recording is there and called "Team XX"
+
+* Watch enough of the video to be sure your sound and video both worked well
+
+---
+
+![panopto still](36-panopto.png)
+
+## Team members in different locations
+
+* Can you do a team presentation with everyone on their own computer in different locations with Panopto?
+  * I don't think so.
+  
+* How can we all work on the presentation together, but in different locations?
+  * Record a zoom call (you will need to download the application and create a free account, then one person sends an invitation to each team member). Same steps (join audio, share screen, start recording) as with Panopto, but different buttons. When you are done, the video will be converted by zoom to a video file and you need to rename and upload the mp4 file to Brightspace.
+
+---
+
+![zoom still](36-zoom.png)
+
+## Live demonstration
+
+* Zoom first
+
+* See separate recording for Panopto
+
+
+  
