@@ -38,13 +38,13 @@ Problem: Someone gives you a dataset, but you need to be sure that
 Frictionless data solves these problems by distributing a metadata file
 with the data.
 
-```{r}
+```{r echo=TRUE}
 library(frictionless) # v. 1.1.0
 ```
 
 ---
 
-```{r}
+```{r echo=TRUE}
 package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
 package
 ```
@@ -52,7 +52,7 @@ package
 
 ---
 
-```{r}
+```{r echo=TRUE}
 resources(package)
 reference_data <- read_resource(package, "reference-data")
 reference_data 
@@ -62,7 +62,7 @@ reference_data
 
 Create a folder (`penguin-data-table`) with data and metadata: 
 
-```{r}
+```{r echo=TRUE}
 package <- create_package()
 schema <- create_schema(penguins)
 package <- add_resource(package, 
@@ -80,7 +80,7 @@ More functions in the [Python](https://github.com/frictionlessdata/frictionless-
 
 Read the data with the following functions:
 
-```{r}
+```{r echo=TRUE}
 p <- read_package("penguins-data-table/datapackage.json")
 resources(p)
 p1 <- read_resource(p, "penguins")
@@ -98,7 +98,7 @@ Still a work-in-progress, but tools are being developed.
 
 ## Example: Metadata for CSV file
 
-```{r}
+```{r echo=TRUE}
 library(jsonlite)
 toJSON(schema)
 ```
@@ -111,7 +111,7 @@ toJSON(schema)
 
 * JSON is "just" text, but can be read as a "nested" data table
 
-```{r}
+```{r echo=TRUE}
 j1 <- fromJSON("penguins-data-table/datapackage.json")
 j1$resources
 j1$resources$schema[[1]]
@@ -123,7 +123,7 @@ j1$resources$schema[[1]]
 * A "binary" format; not stored as text
 * Has metadata about variable types
 
-```{r}
+```{r eval=FALSE}
 library(arrow)
 write_parquet(penguins, "penguins.parquet")
   fast_penguin <- read_parquet("penguins.parquet")
@@ -132,13 +132,13 @@ fast_penguin
 
 ## Parquet schemas
 
-```{r}
+```{r eval=FALSE}
 arrow_table(penguins)
 ```
 
 ## Multiple tables: relational databases
 
-```{r message=FALSE}
+```{r message=FALSE, echo = TRUE}
 library(RSQLite)
 library(dbplyr)
 library(nycflights13)
@@ -151,20 +151,20 @@ flights <- tbl(nyc, "flights")
 
 ## NYC flights
 
-```{r}
+```{r echo=TRUE}
 airlines |> head()
 ```
 
 ## NYC flights
 
-```{r}
+```{r echo=TRUE}
 count(flights)
 flights |> head()
 ```
 
 ## Joins
 
-```{r}
+```{r echo=TRUE}
 left_join(flights, 
           airlines, by = "carrier") |>
   filter(month == 5, day == 10, dep_time < 700,
