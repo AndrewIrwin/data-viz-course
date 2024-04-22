@@ -7,8 +7,36 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+library(gmailr)
 ```
 
+Set up gmailr. See: https://gmailr.r-lib.org/ and https://gmailr.r-lib.org/dev/articles/oauth-client.html
+
+```{r}
+# app name: data-viz-project
+# https://console.cloud.google.com/apis/dashboard
+# move json file to a designated place
+path_old <- "~/Downloads/client_secret_148938503506-ioakn2u0ied7q8ttarl9bit261kdq4b7.apps.googleusercontent.com.json"
+d <- fs::dir_create(rappdirs::user_data_dir("gmailr"), recurse = TRUE)
+fs::file_move(path_old, d)
+gm_auth_configure()
+gm_oauth_client()
+```
+
+Test email
+
+```{r}
+test_email <-
+  gm_mime() |>
+  gm_to("a.irwin@dal.ca") |>
+  gm_from("andrew.irwin@gmail.com") |>
+  gm_subject("this is just a gmailr test") |>
+  gm_text_body("Can you hear me now?")
+d <- gm_create_draft(test_email)
+# If all is good with your draft, then you can send the existing draft
+gm_send_draft(d)
+```
 
 Generate a list of oral presentations for students to view.
 
@@ -24,4 +52,121 @@ Write an email to each student. Queue the emails as drafts. Review emails. Send 
 
 ```{r}
 number_to_view <- 5
+team_list <- read_csv("teams-v1.csv")
+```
+
+Create list of teams, after checking to see what presentations were submitted.
+
+```{r}
+# teams <- unique(team_list$group)
+# teams <- setdiff(teams, c(2, 33))  ### any missing?
+# teams <- union(teams, c("33 Qi")) ## variations where team made two presentations
+
+teams <- tribble(~ team, ~ presentation,
+                 1, "01", 
+                 3, "03", 
+                 4, "04", 
+                 5, "05",
+                 6, "06", 
+                 7, "07",
+                 8, "08",
+                 9, "09",
+                 10, "10",
+                 11, "11",
+                 12, "12",
+                 13, "13",
+                 14, "14",
+                 15, "15",
+                 16, "16",
+                 17, "17",
+                 18, "18",
+                 19, "19",
+                 20, "20",
+                 21, "21", 
+                 22, "22",
+                 23, "23",
+                 24, "24 Bull",
+                 24, "24 Yash",
+                 25, "25",
+                 26, "26",
+                 27, "27",
+                 28, "28",
+                 29, "29",
+                 30, "30",
+                 32, "32",
+                 33, "33 Jin Kerr",
+                 33, "33 Qi",
+                 35, "35", 
+                 36, "36 Jianho",
+                 36, "36 Daly",
+                 37, "37 Alb Shala",
+                 37, "37 Marin Marsala",
+                 38, "38",
+                 39, "39",
+                 40, "40", 
+                 41, "41",
+                 43, "43",
+                 44, "44")
+# consider a column - must have at least one from this list... # 28, 27, 26, 24, 15, 8, 29
+teams <- teams |> mutate(select = case_when(team %in% c(8,15, 24, 26, 27, 28, 29) ~ TRUE,
+                                            TRUE ~ FALSE))
+```
+
+Make random list of groups to watch for each student. May send to some non-active students; that's okay.
+
+```{r}
+# random_teams <- function(x, t = teams, N = 5) sort(sample(setdiff(t, x), N))
+random_teams <- function(x, t = teams, N = 5) {
+  zz <- filter(t, team != x) |> group_by(team) |> slice_sample(n=1) |> ungroup()
+  zz1 <- zz |> filter(select) |> slice_sample(n = 1)
+  bind_rows(zz1,
+            slice_sample(zz |> filter(team != zz1$team), n = N-1)) |>
+    pull(presentation) |> sort()
+} 
+team_sentence <- function(x) {
+  paste(c("For your final exam, you should watch the presentations by teams: ", 
+        paste(random_teams(x), collapse=", "), 
+        ".\nAnswer questions about each presentation on the Brightspace quiz in the Final exam section of the course. These presentations were selected for you; do not write solutions about any other presentations on your exam.  Presentations can be found in the Term project section of the Brightspace page where you uploaded the presentation for your team.\nIf you have any questions, come to the course classroom during the exam time. \nAndrew Irwin"),
+  collapse = "")
+}
+team_sentence(1)
+set.seed(489537)
+assignments <- team_list |> rowwise() |> mutate(sentence = team_sentence(group)) |> ungroup()
+set.seed(489537)
+assignments <- assignments |> rowwise() |> mutate(assign = paste(random_teams(group), collapse = ",")) |> ungroup()
+write_csv(assignments, "exam-watch-assignments.csv")
+```
+
+Queue emails as drafts
+
+```{r}
+email_f <- function(i) {
+  email <- team_list$email[i]
+  group <- team_list$group[i]
+  name <- team_list$first_name[i]
+  gm_mime() |>
+  # gm_to("a.irwin@dal.ca") |>  # testing
+  gm_to(email) |> # production
+  gm_from("andrew.irwin@gmail.com") |>
+  gm_subject("STAT 2430: Project presentations to watch for your final exam") |>
+  gm_text_body(paste0("Dear ", name, ",\n", team_sentence(group))) |>
+  gm_create_draft() |>
+  gm_send_draft() # production
+}
+# email_f(12) # , "a.irwin@dal.ca")
+set.seed(489537)
+# walk(1:3, function(i) email_f(i))
+walk(1:nrow(team_list), function(i) email_f(i))
+```
+
+Make list of missing students
+
+```{r}
+missing <- tribble(~id, ~last_name, ~first_name, ~email, ~name, ~github, ~group,
+                   "", "Liu", "Yuan", "yn554501@dal.ca", "Yuan Liu", "StEvn0827", 5,
+                   "B00862890", "Guo", "Ruiying", "ry276545@dal.ca", "Ruiying Guo", "Snowcake12", 23,
+                   "B00863045", "Wang", "Yufei", "yf747608@dal.ca", "Yufei Wang", "YufeiWww", 11,
+                   "", "Peng", "Changjiayu", "ch637334@dal.ca", "Changjiayu Peng", "changjiayupeng", 16,
+                   "", "Yu", "Haseon", "Haseon.Yu@dal.ca", "Haseon Yu", "HaseonYu", 43)
+
 ```
