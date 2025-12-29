@@ -1,25 +1,26 @@
 ---
 title: "Data Visualization"
-subtitle: "STAT 2430 at Dalhousie University, Winter 2024"
+subtitle: "STAT 2430 at Dalhousie University, Winter 2026"
 author: "Andrew Irwin"
-date: "2024-01-08"
+date: "2026-01-08"
 format: 
   html:
     code-line-numbers: true
 editor: source
 ---
 
-Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2024. From this page you can access all the required elements of the course including
+Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2026. From this page you can access all the required elements of the course including
 
 * the [syllabus](001-syllabus.qmd) for the whole course,
 * the course [textbook](https://andrewirwin.github.io/data-viz-notes/),
-* the [detailed outline](002-detailed-outline.qmd) with a plan for each class (subject to change!) and a link to slides and other materials presented in class, and
+* the [detailed outline](002-detailed-outline.qmd) with a plan for each class (subject to change!) and a link to slides and other materials presented in class, 
+* suggested [exercises](003-exercises.qmd) for each lesson, and
 * detailed information about all work to be [evaluated](004-evaluation.qmd).
 
 A few items are located on [Brightspace course page](https://dal.brightspace.com/d2l/home/232100)
 
-* tasks to be submitted once a week,
-* term project information: team membership, presentation schedule, and peer-evaluation schedule,
+* links to forms for you to provide personal information to me (your GitHub ID, any preferences for a project partner)
+* term project information: team membership, proposal presentation schedule, and 
 * your grades in the course.
 
 If you have questions about the course, please ask in class, or contact me by [email](mailto:a.irwin@dal.ca).

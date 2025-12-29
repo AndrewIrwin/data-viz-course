@@ -14,6 +14,8 @@ website:
         text: Syllabus
       - href: 002-detailed-outline.qmd
         text: Schedule
+      - href: 003-exercises.qmd
+        text: Exercises
       - href: 004-evaluation.qmd
         text: Evaluation
        

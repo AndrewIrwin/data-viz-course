@@ -6,15 +6,11 @@ library(tidyverse)
 library(gt)
 ```
 
-This is the syllabus for the Data Visualization (STAT 2430) course offered in Winter 2024 at Dalhousie University.
+This is the syllabus for the Data Visualization (STAT 2430) course offered in Winter 2026 at Dalhousie University.
 
 * Instructor: Andrew Irwin, a.irwin@dal.ca
-* Meeting times: Tuesday and Thursday 10:05-11:25 am, Henry Hicks (HH) 212
-* Office hours: Tuesday and Thursday 2:30-3:30 pm  in Chase 225, or by appointment.
-* Math & Stats Learning Centre: Mohammad Amirian, Chase 119
-  * Tuesday 11:30a-12:30p
-  * Wednesday 1:30-2:30p
-  * Thursday 1:30-2:30p
+* Meeting times: Tuesday and Thursday 4:05-5:25 pm, Life Science Centre (LSC) C242
+* Office hours: Tuesday and Thursday 3:00-4:00 pm  in Chase 225, or by appointment.
 
 ## Course Description {-}
 
@@ -32,13 +28,13 @@ No experience with R or computer programming is required, but a desire to learn 
  
 Course notes:
 
-- Andrew J Irwin (2022) [Data visualization](https://andrewirwin.github.io/data-viz-notes/).
+- Andrew J Irwin (2025) [Data visualization](https://andrewirwin.github.io/data-viz-notes/).
 
 Textbooks:
 
 - Kieran Healy (2018) [Data Visualization: A Practical Introduction](https://socviz.co). Princeton University Press. 
 - Claus O. Wilke (2019) [Fundamentals of data visualization](https://clauswilke.com/dataviz/). O'Reilly.
-- Garret Grolemund & Hadley Wickham (2017) [R for data science](https://r4ds.hadley.nz/). O'Reilly. 
+- Hadley Wickham, Mine Çetinkaya-Rundel, Garret Grolemund (2023) [R for data science](https://r4ds.hadley.nz/). Second edition. O'Reilly. 
 
 The textbooks are available in printed form from bookstores and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals.
 The books by Healy and Wilke focus on the design and interpretation of data visualizations. The book by Grolemund and Wickham describes the use of R, particularly the set of packages known as the "tidyverse" for data visualization and the broader tasks of data science.
@@ -55,9 +51,9 @@ R, RStudio or git is assumed. We will take class time to learn the software.
   * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
   * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type `xcode-select --install` to download and install git.
 
-These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/). Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
+These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [posit.cloud](https://posit.cloud/). Everyone should learn to use the cloud service as a backup in case of problems with their own computer. The cloud service provides 25 hours of free usage each month. If you can't install the software on your computer and you run into limits with the free account, please contact me.
 
-R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login. For this reason, I don't recommend using Dalhousie computer labs for this course, unless you are using rstudio.cloud.
+R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login. For this reason, I don't recommend using Dalhousie computer labs for this course, unless you are using posit.cloud.
 
 You should install this software on your computer during the first week of the course. 
 If you are unable to install the software, get in touch with me for assistance.
@@ -68,7 +64,7 @@ Each week will be structured around the following components:
 
 - Reading course notes and suggested material from the textbooks.
 - In class meetings which will be a mixture of lectures, demonstrations, and skills practice. Some class time will be be dedicated to computer demonstrations and exercises; these times will be identified by a file describing the demonstration (marked Demo in the detailed outline). You are encouraged to bring your computer to these classes.
-- Opportunities to develop and demonstrate your knowledge in course work to be evaluated (tasks, assignments, and a term project).
+- Opportunities to develop and demonstrate your knowledge in course work to be evaluated (assignments, tests, and a term project).
 - Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading. If you can't participate in office hours, but you have a question, please get in touch with me and arrange another time to meet.
 
 **Follow the [detailed outline](002-detailed-outline.qmd) for each week's plan to keep you on track.**
@@ -77,29 +73,28 @@ Each week will be structured around the following components:
 
 Your goal in this course is to learn the principles and skills of data visualization. Most people learn best using a combination of collaborative and independent work. The general guideline is that work you submit should be your own---your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. When you help another student, be careful you don't help them so much that you inhibit their learning.
 
-**Tasks** are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete. After you work on the task with R, go to Brightspace to answer some questions about the task.
-Tasks are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own.
+**Exercises** are designed to develop and test your understanding of the key concepts from the lessons. **Exercises are not assigned or submitted for grading, but will help you with assignments and tests.**
 
 **Assignments** combine skills from multiple lessons into a meaningful data visualization activity. These are opportunities to apply the content of lessons in thoughtful and sometimes creative ways.
 Assignments are assessments of your skills and should be done independently.
+
+The **mid-term test and final exam** are written on paper and in person and will test your knowledge of material from exercises and assignments.
  
-The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected data set.
+The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. 
 The term project is designed to be done collaboratively with a partner. The work on the project should be the work of members of the group and not outside collaborators or internet sources.
 
-* Tasks (30%, due weekly, equally weighted)
-* Assignments (30%, roughly 1 every two weeks, equally weighted)
-* Term project, divided into three components
-  * Proposal, due Thursday 7 March, 5%
-  * Report, due Tuesday 9 April, 15%
-* Final exam, with two components
-  * Oral presentation, due one day before the final exam, 10%
-  * Peer evaluation of presentations, 10%
+* Assignments (30%, roughly 1 every two weeks)
+* Mid-term test, 20%
+* Term project, divided into two components
+  * Proposal, due Tuesday 3 March, 5%
+  * Oral presentation, due last day of classes, 15%
+* Final exam, 30%
   
-Tasks are due by the end of the day on Monday. Assignments are due on Friday, approximately one week after they are assigned. If Friday is a holiday (Feb 2, March 29) the assignment will be due the following Monday. 
+Assignments are due on Friday, approximately one week after they are assigned. If Friday is a holiday (Feb 6, April 3) the assignment will be due the following Monday. 
 
-Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to *learn* from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
+Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to *learn* from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work. There is a specific lesson that describes how artificial intelligence (AI, or large language models LLMs) can be used in this course.
 
-_Late policy._ Tasks will not be accepted late, but I will drop your two lowest grades. Late assignments will be penalized 10% per day. If an accommodation is requested and granted due to illness or other unforeseeable circumstance, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit any component of the term project (proposal, oral presentation, or report) on time, please contact me by email.*
+_Late policy._ Assignments will not be accepted after they have been sent to the teaching assistant for grading. If an accommodation is requested and granted due to illness or other unforeseeable circumstance, the value of that work will be redistributed to other components of the course.
 
 Grades will be reported on Brightspace.
 
@@ -131,9 +126,9 @@ During the course you will create work on a third-party website (github.com). Th
 
 ## Important dates {-}
 
-* Tuesday 9 January: Term begins
-* February 19-23: Study break
-* Thursday 4 April: Last Tuesday/Thursday class
+* Wednesday 7 January: Term begins
+* February 16-20: Study break
+* Tuesday 7 April: Last Tuesday/Thursday class
 
 If you know you will be unable to meet certain deadlines in advance, for _bona fide_ reasons such as scheduled medical appointments or religious observances, please contact me as soon as practical.
 

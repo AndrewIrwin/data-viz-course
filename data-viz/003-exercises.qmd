@@ -1,0 +1,221 @@
+# Exercises {#exercises .unnumbered}
+
+I have created exercises to give you practice with the main skills and ideas from each lesson.
+
+After the first week, most tasks have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
+
+Exercises are not to be submitted for evaluation and are not graded.
+
+### Invitation (Lesson 1) {#task-1 .unnumbered}
+
+1. Describe an example from the lesson: what data are shown on the graph, how are the data presented, what is the most straightforward conclusion to be drawn from the presentation, are there any elements that are difficult to understand?
+
+2. Find a visualization you like on the internet (provide a copy and the source). Repeat question 1, writing so that a classmate would understand what you see in the visualization.
+
+3. How does the visualization of atmospheric CO2 concentration on different time axes (a million years, a thousand years, a century, a decade, a year, a month) change what you see on the graphs? Write a sentence about the message of this graph shown on three different time axes.
+
+4. Describe some data you are interested in and a question you think it could answer. How could you get those data? Describe a visualization you would create. What would a reader easily understand from your visualization?
+
+5. Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month.
+
+6. In figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.
+
+
+### Computer tools (Lesson 2)  {#task-b1 .unnumbered}
+
+Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
+
+1. Make a list of about 10 key takeaway messages from the reading. For example, I would start with
+
+- Do all my learning and work in R in Quarto (.qmd, R markdown) documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don't use a word processor. Don't cut and paste code and results from the R console into a document. It's too easy to make mistakes this way and will take longer.
+- Take notes about what I learn (for ggplot and other skills). I'll write these in a private qmd document called data-viz-notes.Rmd (or something like that)
+
+2. Describe in one sentence the capacity or purpose of the following computer software: R, Rstudio, ggplot, tidyverse, R markdown (or quarto), git and github.
+
+3. Most software gets replaced as ideas and technologies develop. What is a function of each of the software tools in question 1 that you would want to have in a technology that replaces it?
+
+4. Some people prefer python to R for data analysis. What are some generic reasons you might prefer one tool to another? (familiarity, performance, capacity to do a particular task, use by colleagues/associates)
+
+  
+### Setting up (Lesson 3) {#task-2 .unnumbered}
+
+See the instructions in the syllabus or in Lesson 3 notes.
+
+Provide your name, email address, and GitHub ID using the [form linked here](https://forms.gle/mrg9gBDzuaeAWUM59). Your GitHub ID will be your public name for work submitted in the course, so use professional judgement when creating your GitHub ID. 
+
+1. Install R, Rstudio, and the packages listed in Lesson 3.
+
+2. Install git.
+
+3. Create a github account. 
+
+4. Login to [rstudio.cloud](https://rstudio.cloud/). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.
+
+5. Ask for help with any of these exercises if you need it. 
+
+6. Have you installed the packages listed in the lesson? What happens when you type “library(tidyverse)” in the Console window? There should be a bunch of messages printed on the screen. Some contain warnings, which are informational messages and often don't mean anything is wrong. 
+
+### Look at data (Lesson 4) {#task-3 .unnumbered}
+
+Read [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which contains much more on the topic of this lesson.
+
+1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in Lesson 1. The vertical scale does not start at 0. Use the ideas in [Healy, Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
+
+2. Hans Rosling's visualizations (as shown in Lesson 1) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
+   a. For Rosling's plot shown in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
+   b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?
+   c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?
+
+### Making your first plot (Lesson 5) {#task-b2 .unnumbered}
+
+Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. 
+
+### Version control software (Lesson 6) {#task-b2b .unnumbered}
+
+Get the software `git` working on your computer by following the steps in Lesson 6.
+
+If you gave me your GitHub ID after lesson 3, you will receive an invitation by email to a new GitHub repository. Accept that invitation. Use [these instructions](https://andrewirwin.github.io/data-viz-notes/lessons/106-version-control.html#clone-a-project-from-github) to get the repository on your computer.
+
+
+### Grammar of Graphics (Lesson 7) {#task-b3 .unnumbered}
+
+* Review material on ggplot to connect the ideas from  to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. 
+* Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
+* Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
+
+### Using the grammar of graphics (Lesson 8) {#task-b4 .unnumbered}
+
+* Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
+
+
+### Week 4
+
+#### Summarizing data (Lesson 9) {#task-5 .unnumbered}
+
+Work through the exercises to practice filter, group_by, summarize, and mutate provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. 
+
+Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
+
+### Week 5
+
+#### Facetted plots (Lesson 10) {#task-6 .unnumbered}
+
+Exercises to practice making faceted plots. File [task-L10-facets](tasks/task-L10-facets.Rmd).
+
+#### Lesson 11 {#task-b5 .unnumbered}
+
+I will get you to practice reading files later on in the course. For now, 
+
+* pay attention to the code I use in future lessons for reading files, and
+* download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
+
+You can get the file "[test-data.csv](tasks/test-data.csv)" from this link.
+
+#### Reshaping data (Lesson 12) {#task-7 .unnumbered}
+
+Reshaping data practice. File: [task-L12-reshape](tasks/task-L12-reshape.Rmd).
+
+You can get the file "[question-2.csv](tasks/question-2.csv)" from this link.
+
+#### Formatting tables (Lesson 13) {#task-8 .unnumbered}
+
+Displaying tables practice. File: [task-L13-tables](tasks/task-L13-tables.Rmd)
+
+#### Lesson 14 {#task-b6 .unnumbered}
+
+The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
+
+### Week 6
+
+#### Lesson 15 {#task-b7 .unnumbered}
+
+Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
+
+#### Linear models (Lesson 16) {#task-9 .unnumbered}
+
+Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
+
+#### LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
+
+Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
+
+#### Team Planning {#task-planning .unnumbered}
+
+If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You'll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don't need to do anything. Teams of two or three students are both okay.
+
+
+### Week 7
+
+Reading week. No classes or course work due.
+
+### Week 8
+
+#### Lesson 18 {#task-11 .unnumbered}
+
+Practice skills associated with collaborating on GitHub using the project repository for your team.
+
+#### Lesson 19 {#task-b8 .unnumbered}
+
+Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
+
+You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
+
+#### Reports (Lesson 20) {#task-12 .unnumbered}
+
+We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
+ File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
+
+### Week 9
+
+#### PCA (Lesson 21)
+
+The task for this lesson is grouped with the MDS task.
+
+#### MDS (Lesson 22) {#task-13 .unnumbered}
+
+Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
+
+#### K-means (Lesson 23) {#task-14 .unnumbered}
+
+Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
+
+### Week 10
+
+#### Presentations (Lesson 24) {#task-14a .unnumbered}
+
+Create and modify a Quarto presentation as described in the lesson. Ensure you know how to 
+
+* show graphics output, but not the code that generated it,
+* make the graphic the right size to fit on the slide,
+* open the HTML version in your web browser.
+
+File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L23-presentation.qmd) presentation.
+
+### Week 11
+
+#### Lesson 27 {#task-b10 .unnumbered}
+
+Practice making a map from the lesson
+
+#### Maps (Lesson 28) {#task-15 .unnumbered}
+
+Make maps described in the file [task-L28-maps](tasks/task-L28-maps.Rmd).
+
+#### Map alternatives (Lesson 29) {#task-16 .unnumbered}
+
+Show geographic data without maps as described in [task-L29-map-alternatives](tasks/task-L29-map-alternatives.Rmd).
+
+### Week 12
+
+#### Factors and Dates (Lesson 30) {#task-17 .unnumbered}
+
+Exercises with strings, factors, dates, and times. See [task-L30-factors-dates](tasks/task-L30-factors-dates.Rmd).
+
+#### Lesson 31 {#task-b11 .unnumbered}
+
+Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
+
+#### Themes (Lesson 32) {#task-18 .unnumbered}
+
+See [task-themes](tasks/task-L32-themes.Rmd).
+
