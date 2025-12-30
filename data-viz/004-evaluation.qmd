@@ -84,7 +84,7 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 Work in groups of 2 or 3. Most teams will produce one of each component (proposal and presentation). If you prefer, each person on the team can make their own individual documents (proposal and presentation). 
 
-Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested. Part of your responsibility for the project is to work with your team to divide up the tasks, take responsibility for leading your parts, and provide feedback to your team on the parts they lead.
 
 Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.
 

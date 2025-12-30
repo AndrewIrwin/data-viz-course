@@ -79,7 +79,8 @@ m2
 
 ## Colour regions
 
-```{r message=FALSE}
+```{r message=FALSE, eval=FALSE}
+# File missing; fix
 library(geojsonio)
 pal <- colorNumeric("viridis", NULL)  # make a viridis palette
 canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
@@ -96,7 +97,7 @@ m3 <- canada |>
 ## Colour regions
 
 ```{r fig.align="center", out.width="90%", echo=FALSE}
-m3
+# m3
 ```
 
 ## Other tiled map services

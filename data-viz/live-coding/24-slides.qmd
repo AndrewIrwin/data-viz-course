@@ -242,7 +242,7 @@ left_join(t1, country_codes, by = "country") |> DT::datatable()
 ## Combining two tables
 
 ```{r echo=TRUE}
-left_join(t1, rgbif::isocodes, by = c("country" = "name")) |> DT::datatable()
+left_join(t1, isocountry::isocountry, by = c("country" = "name")) |> DT::datatable()
 ```
 
 ## Other kinds of joins

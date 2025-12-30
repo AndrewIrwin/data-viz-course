@@ -83,105 +83,102 @@ If you gave me your GitHub ID after lesson 3, you will receive an invitation by 
 * Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
 * Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
 
+1. In the context of the grammar of graphics, what is an aesthetic?
+
+2. Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.
+
 ### Using the grammar of graphics (Lesson 8) {#task-b4 .unnumbered}
 
 * Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
 
+1. What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?
 
-### Week 4
+2. What aesthetic mappings are required to make a boxplot? You don't need to specify a cateogorical variable for color or fill, but what happens if you do? 
 
-#### Summarizing data (Lesson 9) {#task-5 .unnumbered}
+3. What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?
 
-Work through the exercises to practice filter, group_by, summarize, and mutate provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. 
+4. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example?
+
+5. A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using `theme_classic()`?
+
+### Summarizing data (Lesson 9) {#task-5 .unnumbered}
+
+Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. 
 
 Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
 
-### Week 5
+1. Describe what the functions `mutate`, `filter`, `group_by`, and `summarize` do to a data frame. Write a working example using each function and explain what it does.
 
-#### Facetted plots (Lesson 10) {#task-6 .unnumbered}
+### Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
-Exercises to practice making faceted plots. File [task-L10-facets](tasks/task-L10-facets.Rmd).
+Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
 
-#### Lesson 11 {#task-b5 .unnumbered}
+1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
 
-I will get you to practice reading files later on in the course. For now, 
 
-* pay attention to the code I use in future lessons for reading files, and
-* download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
+### Reading data (Lesson 11) {#task-b5 .unnumbered}
 
-You can get the file "[test-data.csv](tasks/test-data.csv)" from this link.
+* Download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
 
-#### Reshaping data (Lesson 12) {#task-7 .unnumbered}
+* Get the file "[test-data.csv](tasks/test-data.csv)" and read the data into R using `read_csv`.
 
-Reshaping data practice. File: [task-L12-reshape](tasks/task-L12-reshape.Rmd).
+* Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data.
+
+
+### Reshaping data (Lesson 12) {#task-7 .unnumbered}
+
+Practice reshaping data using the examples in [task-L12-reshape](tasks/task-L12-reshape.Rmd).
 
 You can get the file "[question-2.csv](tasks/question-2.csv)" from this link.
 
-#### Formatting tables (Lesson 13) {#task-8 .unnumbered}
+### Formatting tables (Lesson 13) {#task-8 .unnumbered}
 
-Displaying tables practice. File: [task-L13-tables](tasks/task-L13-tables.Rmd)
+Practice displaying tables [task-L13-tables](tasks/task-L13-tables.Rmd).
 
-#### Lesson 14 {#task-b6 .unnumbered}
+### Getting help (Lesson 14) {#task-b6 .unnumbered}
 
 The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
 
-### Week 6
-
-#### Lesson 15 {#task-b7 .unnumbered}
+### Working with models (Lesson 15) {#task-b7 .unnumbered}
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
 
-#### Linear models (Lesson 16) {#task-9 .unnumbered}
+### Linear models (Lesson 16) {#task-9 .unnumbered}
 
 Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
 
-#### LOESS and GAM (Lesson 17) {#task-10 .unnumbered}
+### GAM and LOESS (Lesson 17) {#task-10 .unnumbered}
 
 Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
 
-#### Team Planning {#task-planning .unnumbered}
-
-If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You'll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don't need to do anything. Teams of two or three students are both okay.
-
-
-### Week 7
-
-Reading week. No classes or course work due.
-
-### Week 8
-
-#### Lesson 18 {#task-11 .unnumbered}
+### Collaborating (Lesson 18) {#task-11 .unnumbered}
 
 Practice skills associated with collaborating on GitHub using the project repository for your team.
 
-#### Lesson 19 {#task-b8 .unnumbered}
+### Finding data (Lesson 19) {#task-b8 .unnumbered}
 
 Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
 You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
-#### Reports (Lesson 20) {#task-12 .unnumbered}
+### Reproducible Reports (Lesson 20) {#task-12 .unnumbered}
 
 We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
  File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
 
-### Week 9
-
-#### PCA (Lesson 21)
+### PCA (Lesson 21)
 
 The task for this lesson is grouped with the MDS task.
 
-#### MDS (Lesson 22) {#task-13 .unnumbered}
+### MDS (Lesson 22) {#task-13 .unnumbered}
 
 Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
 
-#### K-means (Lesson 23) {#task-14 .unnumbered}
+### K-means (Lesson 23) {#task-14 .unnumbered}
 
 Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
 
-### Week 10
-
-#### Presentations (Lesson 24) {#task-14a .unnumbered}
+### Presentations (Lesson 24) {#task-14a .unnumbered}
 
 Create and modify a Quarto presentation as described in the lesson. Ensure you know how to 
 
@@ -191,31 +188,30 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 
 File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L23-presentation.qmd) presentation.
 
-### Week 11
-
-#### Lesson 27 {#task-b10 .unnumbered}
+### Making Maps (Lesson 27) {#task-b10 .unnumbered}
 
 Practice making a map from the lesson
 
-#### Maps (Lesson 28) {#task-15 .unnumbered}
+### More Maps (Lesson 28) {#task-15 .unnumbered}
 
 Make maps described in the file [task-L28-maps](tasks/task-L28-maps.Rmd).
 
-#### Map alternatives (Lesson 29) {#task-16 .unnumbered}
+### Map alternatives (Lesson 29) {#task-16 .unnumbered}
 
 Show geographic data without maps as described in [task-L29-map-alternatives](tasks/task-L29-map-alternatives.Rmd).
 
-### Week 12
-
-#### Factors and Dates (Lesson 30) {#task-17 .unnumbered}
+### Factors and Dates (Lesson 30) {#task-17 .unnumbered}
 
 Exercises with strings, factors, dates, and times. See [task-L30-factors-dates](tasks/task-L30-factors-dates.Rmd).
 
-#### Lesson 31 {#task-b11 .unnumbered}
+### Colour (Lesson 31) {#task-b11 .unnumbered}
 
 Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
 
-#### Themes (Lesson 32) {#task-18 .unnumbered}
+### Themes (Lesson 32) {#task-18 .unnumbered}
 
 See [task-themes](tasks/task-L32-themes.Rmd).
+
+
+### Graphics formats (Lesson 34)
 
