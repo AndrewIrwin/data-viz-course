@@ -1,6 +1,5 @@
 # Detailed schedule {#outline .unnumbered}
 
-
 ```{r include=FALSE}
 library(tidyverse, quietly = TRUE)  # fussy, but might be useful later on
 library(knitr)
@@ -14,11 +13,9 @@ Each lesson below has links to course notes and slides. Course notes contain fur
 
 ## Course calendar {-}
 
-This is a plan for the term. Timing of course content may change. Slides will normally appear before the class, but you can expect last-minute changes and maybe some edits after each class is over.
+This is a plan for the term. The timing of course content may change depending on discussions in class or external factors. 
 
-[Tasks](004-evaluation.qmd#tasks) are due Monday at 6:00 pm Atlantic each week. Due dates for assignment and term project component are listed below.
-
-Slides and other materials presented in class will be posted here when they are ready.
+Sides and other course material linked below are initially from a previous offering of the course. Material will be revised shortly before each class and there may be some edits after each class is over.
 
 ```{r echo=FALSE}
 #| output: asis
