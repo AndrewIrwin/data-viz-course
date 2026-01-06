@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data-viz</title>
+<title>evaluation – data-viz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,15 +30,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -101,12 +102,16 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./003-exercises.html"> 
+<span class="menu-text">Exercises</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./004-evaluation.html" aria-current="page"> 
 <span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -122,23 +127,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#evaluation" id="toc-evaluation" class="nav-link active" data-scroll-target="#evaluation">Evaluation</a>
   <ul class="collapse">
-  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
-  <ul class="collapse">
-  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1</a></li>
-  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a></li>
-  <li><a href="#week-3" id="toc-week-3" class="nav-link" data-scroll-target="#week-3">Week 3</a></li>
-  <li><a href="#week-4" id="toc-week-4" class="nav-link" data-scroll-target="#week-4">Week 4</a></li>
-  <li><a href="#week-5" id="toc-week-5" class="nav-link" data-scroll-target="#week-5">Week 5</a></li>
-  <li><a href="#week-6" id="toc-week-6" class="nav-link" data-scroll-target="#week-6">Week 6</a></li>
-  <li><a href="#week-7" id="toc-week-7" class="nav-link" data-scroll-target="#week-7">Week 7</a></li>
-  <li><a href="#week-8" id="toc-week-8" class="nav-link" data-scroll-target="#week-8">Week 8</a></li>
-  <li><a href="#week-9" id="toc-week-9" class="nav-link" data-scroll-target="#week-9">Week 9</a></li>
-  <li><a href="#week-10" id="toc-week-10" class="nav-link" data-scroll-target="#week-10">Week 10</a></li>
-  <li><a href="#week-11" id="toc-week-11" class="nav-link" data-scroll-target="#week-11">Week 11</a></li>
-  <li><a href="#week-12" id="toc-week-12" class="nav-link" data-scroll-target="#week-12">Week 12</a></li>
-  </ul></li>
   <li><a href="#assignments" id="toc-assignments" class="nav-link" data-scroll-target="#assignments">Assignments</a>
   <ul class="collapse">
+  <li><a href="#assignment-0" id="toc-assignment-0" class="nav-link" data-scroll-target="#assignment-0">Assignment 0</a></li>
   <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link" data-scroll-target="#assignment-1">Assignment 1</a></li>
   <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2">Assignment 2</a></li>
   <li><a href="#assignment-3" id="toc-assignment-3" class="nav-link" data-scroll-target="#assignment-3">Assignment 3</a></li>
@@ -150,18 +141,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables</a></li>
   <li><a href="#team-creation" id="toc-team-creation" class="nav-link" data-scroll-target="#team-creation">Team creation</a></li>
   <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a></li>
-  <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written report</a></li>
-  </ul></li>
-  <li><a href="#final-exam" id="toc-final-exam" class="nav-link" data-scroll-target="#final-exam">Final exam</a>
-  <ul class="collapse">
   <li><a href="#oral-presentation" id="toc-oral-presentation" class="nav-link" data-scroll-target="#oral-presentation">Oral presentation</a></li>
   </ul></li>
+  <li><a href="#final-exam" id="toc-final-exam" class="nav-link" data-scroll-target="#final-exam">Final exam</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -169,236 +157,30 @@ ul.task-list li input[type="checkbox"] {
 <section id="evaluation" class="level1 unnumbered">
 <h1 class="unnumbered">Evaluation</h1>
 <p>All the work you will complete for evaluation and credit in the course is described below.</p>
-<section id="tasks" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="tasks">Tasks</h2>
-<p>I have created a tasks to give you practice with the main skills and ideas from each lesson.</p>
-<p>After the first week, most tasks have work for you to do in R. After you have done the task, go to Brightspace to answer questions associated with each task. Only these questions will be graded. Save your completed work in R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.</p>
-<section id="week-1" class="level3">
-<h3 class="anchored" data-anchor-id="week-1">Week 1</h3>
-<p>There are three tasks this week. See Brightspace to submit your work for these tasks.</p>
-<section id="task-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-1">Task: Invitation (Lesson 1)</h4>
-<p>Find two data visualizations that you find informative, compelling, or in need of improvement.</p>
-<p>Create a document that shows each visualization (the figure, or a snapshot of a dynamic visualization), provides the source (e.g., url and publication details if applicable). In a short paragraph describe</p>
-<ol type="1">
-<li>the data behind the visualization,</li>
-<li>main message conveyed by the visualization,</li>
-<li>one or two features of the visualization that make it effective or provide suggestions for improvement.</li>
-</ol>
-<p>The goal of this task isn’t to be right or wrong in your assessment, but rather to develop a practice of looking at data visualizations through the perspective of creator, designer, and critic. It’s okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualizations.</p>
-<p>Submit your work by answering questions about one of these visualizations in the quiz on Brightspace.</p>
-</section>
-<section id="task-b1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b1">Task (Lesson 2)</h4>
-<p>Read <a href="https://socviz.co/gettingstarted.html#gettingstarted">Healy, Sections 2.1-2.4</a>, which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.</p>
-<p>Make a list of about 10 key takeaway messages from the reading. For example, I would start with</p>
-<ul>
-<li>Do all my learning and work in R in R markdown documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don’t use a word processor. Don’t cut and paste code and results from the R console into a document. It’s too easy to make mistakes this way and will take longer.</li>
-<li>Take notes about what I learn (for ggplot and other skills). I’ll write these in a private Rmd document called data-viz-notes.Rmd (or something like that)</li>
-</ul>
-<p>Write about two takeaway messages in the Brightspace quiz.</p>
-</section>
-<section id="task-2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-2">Task: Setting up (Lesson 3)</h4>
-<p>See the instructions in the syllabus or in Lesson 3 notes.</p>
-<ol type="1">
-<li>Install R, Rstudio, and the packages listed in Lesson 3.</li>
-<li>Install git.</li>
-<li>Create a github account.</li>
-<li>Login to <a href="https://rstudio.cloud/">rstudio.cloud</a>. This is a complete R, Rstudio, and git setup “in the cloud” that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.</li>
-<li>Ask for help with any of these tasks if you need it.</li>
-</ol>
-<p>The Brightspace quiz asks if you were successful with each task or if you need help. Provide your GitHub ID in one of the quiz questions.</p>
-</section>
-</section>
-<section id="week-2" class="level3">
-<h3 class="anchored" data-anchor-id="week-2">Week 2</h3>
-<section id="task-3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-3">Task: Look at data (Lesson 4)</h4>
-<p>Your task for this lesson is to answer two specific questions about choices made when visualizing data, drawing on your own experience and the ideas presented below. You should also become familiar with <a href="https://socviz.co/lookatdata.html#lookatdata">Healy, Chapter 1</a> which contains much more on these topics.</p>
-<ol type="1">
-<li><p>Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in Lesson 1. The vertical scale does not start at 0. Use the ideas in <a href="https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment">Healy, Chapter 1.6</a> to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.</p></li>
-<li><p>Hans Rosling’s visualizations (as shown in Lesson 1) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations!</p>
-<ol type="a">
-<li>For Rosling’s plot show in in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?</li>
-<li>According to <a href="https://socviz.co/lookatdata.html#channels-for-representing-data">Healy, Chapter 1</a> which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree?</li>
-<li>In your judgment, is this visualization effective or too complex? Watch the <a href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen">TED talk</a> or experiment with the <a href="https://www.gapminder.org/tools/">interactive version</a> before answering the question. Does the live explanation provided in Rosling’s oral presentation help you interpret the plot?</li>
-</ol></li>
-</ol>
-<p>Write answers for these questions in a word processor. Answer the questions in the Task Quiz for week 2 on Brightspace.</p>
-</section>
-<section id="task-b2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b2">Task (Lesson 5)</h4>
-<p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot. The Brightspace quiz asks you a couple of questions about making plots.</p>
-</section>
-<section id="task-b2b" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b2b">Task (Lesson 6)</h4>
-<p>Get the software <code>git</code> working on your computer by following the steps in Lesson 6.</p>
-</section>
-</section>
-<section id="week-3" class="level3">
-<h3 class="anchored" data-anchor-id="week-3">Week 3</h3>
-<section id="task-b3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b3">Task (Lesson 7)</h4>
-<p>Your task for this lesson is to review some material on ggplot to connect the ideas from to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week’s task quiz</p>
-<p>In addition, I suggest the following reading with nothing to submit:</p>
-<ul>
-<li>Browse the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.</li>
-<li>Read through the ggplot <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a> to see how the concepts of the grammar of graphics will be connected to computer code. Don’t worry about the details – you will practice making visualizations using these tools over many future lessons.</li>
-</ul>
-</section>
-<section id="task-b4" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b4">Task (Lesson 8)</h4>
-<p>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in “Data Sources” chapter in course notes.</p>
-</section>
-</section>
-<section id="week-4" class="level3">
-<h3 class="anchored" data-anchor-id="week-4">Week 4</h3>
-<section id="task-5" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-5">Task: Summarizing data (Lesson 9)</h4>
-<p>Work through the exercises to practice filter, group_by, summarize, and mutate provided in the file <a href="tasks/task-L09-summarize.Rmd">task-L09-summarize</a>. Right click the link and select “save as” to get the file on your computer. Then open it with Rstudio.</p>
-<p>Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference. Answer questions in the Brightspace Task quiz.</p>
-</section>
-</section>
-<section id="week-5" class="level3">
-<h3 class="anchored" data-anchor-id="week-5">Week 5</h3>
-<section id="task-6" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-6">Task: Facetted plots (Lesson 10)</h4>
-<p>Exercises to practice making faceted plots. File <a href="tasks/task-L10-facets.Rmd">task-L10-facets</a>.</p>
-</section>
-<section id="task-b5" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b5">Task (Lesson 11)</h4>
-<p>I will get you to practice reading files later on in the course. For now,</p>
-<ul>
-<li>pay attention to the code I use in future lessons for reading files, and</li>
-<li>download the <a href="https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true">Excel file</a> from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R.</li>
-</ul>
-<p>You can get the file “<a href="tasks/test-data.csv">test-data.csv</a>” from this link.</p>
-</section>
-<section id="task-7" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-7">Task: Reshaping data (Lesson 12)</h4>
-<p>Reshaping data practice. File: <a href="tasks/task-L12-reshape.Rmd">task-L12-reshape</a>.</p>
-<p>You can get the file “<a href="tasks/question-2.csv">question-2.csv</a>” from this link.</p>
-</section>
-<section id="task-8" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-8">Task: Formatting tables (Lesson 13)</h4>
-<p>Displaying tables practice. File: <a href="tasks/task-L13-tables.Rmd">task-L13-tables</a></p>
-</section>
-<section id="task-b6" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b6">Task (Lesson 14)</h4>
-<p>The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.</p>
-</section>
-</section>
-<section id="week-6" class="level3">
-<h3 class="anchored" data-anchor-id="week-6">Week 6</h3>
-<section id="task-b7" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b7">Task (Lesson 15)</h4>
-<p>Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets.</p>
-</section>
-<section id="task-9" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-9">Task: Linear models (Lesson 16)</h4>
-<p>Exercises on linear models. File: <a href="tasks/task-L16-linear-models.Rmd">task-L16-linear-models</a>.</p>
-</section>
-<section id="task-10" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-10">Task: LOESS and GAM (Lesson 17)</h4>
-<p>Exercises on LOESS and GAM smooths. File: <a href="tasks/task-L17-LOESS-GAM.Rmd">task-L17-LOESS-GAM</a>.</p>
-</section>
-<section id="task-planning" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-planning">Team Planning</h4>
-<p>If you would like to work in a team with a specific classmate, fill in the form on Brightspace. You’ll need the name, email, and GitHub ID of the student you would like to work with. If you want to be assigned a random teammate, you don’t need to do anything. Teams of two or three students are both okay.</p>
-</section>
-</section>
-<section id="week-7" class="level3">
-<h3 class="anchored" data-anchor-id="week-7">Week 7</h3>
-<p>Reading week. No classes or course work due.</p>
-</section>
-<section id="week-8" class="level3">
-<h3 class="anchored" data-anchor-id="week-8">Week 8</h3>
-<section id="task-11" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-11">Task (Lesson 18)</h4>
-<p>Practice skills associated with collaborating on GitHub using the project repository for your team.</p>
-</section>
-<section id="task-b8" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b8">Task (Lesson 19)</h4>
-<p>Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?</p>
-<p>You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.</p>
-</section>
-<section id="task-12" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-12">Task: Reports (Lesson 20)</h4>
-<p>We’ve been using R markdown to make reproducible reports throughout the course. In this task, practice using <code>here</code> and chunk options. File <a href="tasks/task-L20-collaboration.Rmd">task-L20-collaboration</a>.</p>
-</section>
-</section>
-<section id="week-9" class="level3">
-<h3 class="anchored" data-anchor-id="week-9">Week 9</h3>
-<section id="pca-lesson-21" class="level4">
-<h4 class="anchored" data-anchor-id="pca-lesson-21">PCA (Lesson 21)</h4>
-<p>The task for this lesson is grouped with the MDS task.</p>
-</section>
-<section id="task-13" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-13">Task: MDS (Lesson 22)</h4>
-<p>Create a PCA and MDS plot as described in the file <a href="tasks/task-L22-mds.Rmd">task-L22-mds</a>.</p>
-</section>
-<section id="task-14" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-14">Task: K-means (Lesson 23)</h4>
-<p>Create a K-means analysis and accompanying visualization as described in the file <a href="tasks/task-L23-k-means.Rmd">task-L23-k-means</a>.</p>
-</section>
-</section>
-<section id="week-10" class="level3">
-<h3 class="anchored" data-anchor-id="week-10">Week 10</h3>
-<section id="task-14a" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-14a">Task: Presentations (Lesson 24)</h4>
-<p>Create and modify a Quarto presentation as described in the lesson. Ensure you know how to</p>
-<ul>
-<li>show graphics output, but not the code that generated it,</li>
-<li>make the graphic the right size to fit on the slide,</li>
-<li>open the HTML version in your web browser.</li>
-</ul>
-<p>File: <a href="https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd">task-L24-presentation</a> code and the <a href="task-L23-presentation.qmd">formatted</a> presentation.</p>
-</section>
-</section>
-<section id="week-11" class="level3">
-<h3 class="anchored" data-anchor-id="week-11">Week 11</h3>
-<section id="task-b10" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b10">Task (Lesson 27)</h4>
-<p>Practice making a map from the lesson</p>
-</section>
-<section id="task-15" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-15">Task: Maps (Lesson 28)</h4>
-<p>Make maps described in the file <a href="tasks/task-L28-maps.Rmd">task-L28-maps</a>.</p>
-</section>
-<section id="task-16" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-16">Task: Map alternatives (Lesson 29)</h4>
-<p>Show geographic data without maps as described in <a href="tasks/task-L29-map-alternatives.Rmd">task-L29-map-alternatives</a>.</p>
-</section>
-</section>
-<section id="week-12" class="level3">
-<h3 class="anchored" data-anchor-id="week-12">Week 12</h3>
-<section id="task-17" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-17">Task: Factors and Dates (Lesson 30)</h4>
-<p>Exercises with strings, factors, dates, and times. See <a href="tasks/task-L30-factors-dates.Rmd">task-L30-factors-dates</a>.</p>
-</section>
-<section id="task-b11" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-b11">Task (Lesson 31)</h4>
-<p>Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.</p>
-</section>
-<section id="task-18" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="task-18">Task: Themes (Lesson 32)</h4>
-<p>See <a href="tasks/task-L32-themes.Rmd">task-themes</a>.</p>
-<p>That is the last task for the course!</p>
-</section>
-</section>
-</section>
 <section id="assignments" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="assignments">Assignments</h2>
 <p>Assignments are opportunities to apply and combine the skills from several lessons. They are both structured, in that you are asked to use specific skills to accomplish a task, and creative in that you have some flexibility in the product you produce. You will be assessed on your use of technical skills and your judgement in making well-designed and effective visualizations, following the principles explored in the course.</p>
+<section id="assignment-0" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="assignment-0">Assignment 0</h3>
+<p>Find two data visualizations, not from the course notes or textbooks, that you find informative, compelling, or in need of improvement.</p>
+<p>Create a document that shows each visualization (the figure, or a snapshot of a dynamic visualization), provides the source (e.g., url and publication details if applicable). In a short paragraph describe</p>
+<ol type="1">
+<li>the data behind the visualization,</li>
+<li>a question that can be answered with the visualization,</li>
+<li>the main message conveyed by the visualization,</li>
+<li>one or two features of the visualization that make it effective or provide suggestions for improvement. Make specific references to the guidelines in Healy <a href="https://socviz.co/lookatdata.html#lookatdata">Chapter 1</a> for this part of the assignment.</li>
+</ol>
+<p>The goal of this task isn’t to be right or wrong in your assessment, but rather to develop a practice of looking at data visualizations through the perspective of creator, designer, and critic. It’s okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualizations.</p>
+<p>Submit a PDF of your work on Brightspace.</p>
+</section>
 <section id="assignment-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="assignment-1">Assignment 1</h3>
-<p>Your assignment is to get the repositories for Assignments on to your computer, make a few edits to the file, and push your changes back to GitHub. I will let the class know when the repositories have been created.</p>
+<p>Your assignment is to get the repositories for Assignments on to your computer, make a few edits to the file, and push your changes back to GitHub. I will let the class know when the repositories have been created and you can begin work.</p>
 <p>Before you begin this assignment, be sure you have completed the process of getting git working on your computer described in Lesson 6.</p>
 <ul>
 <li>Go to your <a href="https://github.com">github</a> account and look for a repository called <code>data-viz-assignments-</code> followed by your github user name. Get the link by clicking the green button labeled “Code”. It should look like this: <code>https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-assignments-&lt;your github name&gt;.git</code></li>
 <li>Using Rstudio on your computer, select menu File &gt; New Project &gt; From repository… &gt; Git. Insert the link to the repository and tell R where to put the repository on your computer.</li>
-<li>If you use rstudio.cloud, start at the <a href="https://rstudio.cloud/projects">projects</a> page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command <code>git clone &lt;link from github&gt;</code>. Finally, open the new folder in the Files pane and click on the “assignments.Rproj” link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories.</li>
+<li>If you use posit.cloud, start at the <a href="https://posit.cloud/projects">projects</a> page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command <code>git clone &lt;link from github&gt;</code>. Finally, open the new folder in the Files pane and click on the “assignments.Rproj” link to switch to the project. You may be asked by posit.cloud to link to your github account to access private repositories.</li>
 </ul>
 <p>Open the Assignments project and edit <code>assignment-1.Rmd</code>. Follow the instructions in that file. If you have trouble with this assignment, ask for help. It’s very important.</p>
 <p>Use the assignment repository for this work and all assignments in the course.</p>
@@ -422,7 +204,7 @@ git config --global user.name "Your Name"</code></pre>
 <p><a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday</a> is a weekly activity to support people learning to use R for data analysis and visualization. Each week a new dataset is posted and interested participants post their visualizations. Some are complex pieces of work by people with lots of experience, but many are the work of beginners just learning to make good visualizations. I encourage you to explore the datasets and example visualizations others have made as a source of ideas and inspiration.</p>
 <p>For the next two assignments, I’ll select a few datasets and ask you to work with one of those for your assignment.</p>
 <p>For this assignment you will make scatter plots with smooths (linear, loess, or gam) and dimensionality reduction (PCA or MDS). The goal is to gain some insight into the data and present some aspect of the data in a visually appealing way. You may be able to use the data as its presented, or you may need to transform it in some way first (for example using the dplyr tools). You should feel free to show a subset of the data if you think that makes a better visualization to highlight a particular feature of the data.</p>
-<p>Present your work as a short R markdown report. You should describe the dataset, explain any analysis or transformations you did, present at least 2 visualizations, and describe the main messages conveyed by your visualization. Full instructions are in the repostory.</p>
+<p>Present your work as a short Quarto report. You should describe the dataset, explain any analysis or transformations you did, present at least 2 visualizations, and describe the main messages conveyed by your visualization. Full instructions are in the repostory.</p>
 </section>
 <section id="assignment-5" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="assignment-5">Assignment 5</h3>
@@ -436,7 +218,8 @@ git config --global user.name "Your Name"</code></pre>
 <p>You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio using R.</p>
 <section id="deliverables" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="deliverables">Deliverables</h3>
-<p>Work in groups of 2 or 3. Most teams will produce one of each component (proposal, report, presentation) per team member. If you prefer, each person on the team can make their own documents (proposal, report, presentation). Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.</p>
+<p>Work in groups of 2 or 3. Most teams will produce one of each component (proposal and presentation). If you prefer, each person on the team can make their own individual documents (proposal and presentation).</p>
+<p>Each team member has two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested. Part of your responsibility for the project is to work with your team to divide up the tasks, take responsibility for leading your parts, and provide feedback to your team on the parts they lead.</p>
 <p>Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on collaboration with GitHub for guidance. Contact me if you have trouble.</p>
 </section>
 <section id="team-creation" class="level3 unnumbered">
@@ -475,34 +258,11 @@ git config --global user.name "Your Name"</code></pre>
 </ul></li>
 <li>Team planning: briefly describe how members of your team will divide the tasks to be performed.</li>
 </ul>
-<p><em>Assessment</em>. See the file <code>grade-proposal.Rmd</code> for the assessment guidelines and rubric.</p>
+<p><em>Assessment</em>. Commit your project proposal to your repository and push it to GitHub. You and your team will describe your project in a short in-class conversation with me on March 3 or 5. A schedule will be provided on Brightspace. The project template has an evaluation rubric.</p>
 </section>
-<section id="written-report" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="written-report">Written report</h3>
-<p>Follow the template provided for your written report (<code>report.Rmd</code>) to present your visualizations and insights about your data. Review the marking guidelines in <code>grade-report.Rmd</code> and ask questions if any of the expectations are unclear.</p>
-<p>Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.</p>
-<p>You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! <strong>Pull work from github before you start, commit your changes, and push often.</strong> Ask questions when stuck. Look at the lesson on collaboration for help.</p>
-<p>In your knitted report your R code should be hidden (<code>echo = FALSE</code>) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you’re welcome to show that portion.</p>
-<p>General criteria for evaluation:</p>
-<ul>
-<li>Content - What is the quality of research question and relevancy of data to those questions?</li>
-<li>Correctness - Are visualization procedures carried out and explained correctly?</li>
-<li>Writing and Presentation - What is the quality of the visualizations, writing, and explanations?</li>
-<li>Creativity and Critical Thought - Is the project carefully thought out? Does it appear that time and effort went into the planning and implementation of the project?</li>
-</ul>
-</section>
-</section>
-<section id="final-exam" class="level2">
-<h2 class="anchored" data-anchor-id="final-exam">Final exam</h2>
-<p>The final exam has three components:</p>
-<ul>
-<li>The oral presentation, which must be completed before the time of the exam.</li>
-<li>You will be assigned 5 presentations to watch as part of the final exam. You should plan to watch these during the assigned time for the final exam.</li>
-<li>You will complete a peer evaluation of the presentations you watch. This will be an assignment on Brightspace to be done during the final exam. You will also be asked to provide feedback on your partner’s contribution to the project. You should find a quiet place to write the exam. You do not need to come to the exam room.</li>
-</ul>
 <section id="oral-presentation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="oral-presentation">Oral presentation</h3>
-<p>The oral presentation should be 5-10 minutes long (at least 5, no more than 10). Your goal is to present the highlights of your project.</p>
+<p>The oral presentation should be 5-10 minutes long (at least 5, no more than 10). Your goal is to present the main findings of your project.</p>
 <p>You should have a small number of slides to accompany your presentation. I have provided a template for you to use as <code>presentation.qmd</code>. I suggest a format such as the following:</p>
 <ul>
 <li>A title for your project and your team members’ names</li>
@@ -511,214 +271,261 @@ git config --global user.name "Your Name"</code></pre>
 <li>At least two data visualizations that help answer this question</li>
 <li>A conclusion</li>
 </ul>
+<p>Feel free to add or delete slides as needed from the template. Be sure to update the titles of sides to be informative.</p>
 <p>For suggestions on making slide presentations see the lesson on slides.</p>
 <p>Don’t show your R code; the focus should be on your results and visualizations not your computing. Set <code>echo = FALSE</code> to hide R code (this is already done in the template).</p>
 <p>Your presentation should convey what you learned from your analysis and the choices you made when constructing your visualizations. Be careful not to simply describe a list of visualizations and analyses (“then we did this, then we did this, etc.”). You must tie the visualizations you show to the questions you are investigating.</p>
 <p>Presentation schedule: You should record your presentation as part of the exam preparation period. You must upload your recorded presentation at least 1 day before the scheduled final exam. During the exam period you will watch presentations from other teams I assign to you and provide feedback in the form of a peer evaluation.</p>
 <p><em>Assessment</em>. See the file <code>grade-presentation.Rmd</code> for the assessment guidelines.</p>
-
-
 </section>
+</section>
+<section id="final-exam" class="level2">
+<h2 class="anchored" data-anchor-id="final-exam">Final exam</h2>
+<p>The final exam will be written on paper during the exam period at a time selected by the registrar.</p>
+<p>Questions on the exam will be similar to the exercises, assignments, and mid-term test.</p>
+
+
 </section>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/AndrewIrwin\.github\.io\/data-viz-course\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      return note.innerHTML;
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -726,185 +533,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 
 
