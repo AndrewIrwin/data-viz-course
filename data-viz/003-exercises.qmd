@@ -1,8 +1,9 @@
 # Exercises {#exercises .unnumbered}
 
 I have created exercises to give you practice with the main skills and ideas from each lesson.
+Exercises are new to the course this year, so you should anticipate revisions to this page throughout the term.
 
-After the first week, most tasks have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
+After the first week, most exercises have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
 
 Exercises are not to be submitted for evaluation and are not graded.
 
@@ -159,16 +160,16 @@ Practice skills associated with collaborating on GitHub using the project reposi
 
 Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
-You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
+You can use any data you like for this exercise. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
 ### Reproducible Reports (Lesson 20) {#task-12 .unnumbered}
 
-We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
+We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options.
  File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
 
 ### PCA (Lesson 21)
 
-The task for this lesson is grouped with the MDS task.
+The exercises for this lesson are grouped with the MDS exercises.
 
 ### MDS (Lesson 22) {#task-13 .unnumbered}
 

@@ -44,7 +44,7 @@ cal |> select(-Day) |>
                          tz = "America/Halifax"), # timezone error? Excel bug?
          # Notes = my_paste(notes, notes_link),
          Slides = my_paste(slides, slides_link, "/slides/"),
-         Evaluation = my_paste(evaluation, evaluation_link),
+         Exercises = my_paste(evaluation, evaluation_link),
          Demo = my_paste2(demo, demo_link),
          Title = my_paste(title, title_link, "https://andrewirwin.github.io/data-viz-notes/")
          ) |>

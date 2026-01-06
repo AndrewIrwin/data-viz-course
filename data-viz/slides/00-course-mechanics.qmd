@@ -3,12 +3,13 @@ title: "STAT 2430<br/>Data Visualization"
 subtitle: "Course Mechanics"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Mathematics & Statistics,<br/>Dalhousie University"
-date: "2024-01-09"
+date: "2026-01-08"
 format:
   revealjs:
     slide-number: true
     theme:  default
     history: false
+    embedd-resources: true
 ---
 
 
@@ -84,9 +85,10 @@ format:
 
 * R - software for statistics
 * Rstudio - a graphical interface to make using R easier
-* R markdown - write reports that combine computations, results, and natural language
+* Quarto / R markdown - write reports that combine computations, results, and natural language
 * ggplot - a tool for plotting data 
 * git - a tool for managing your work and collaborating
+* GitHub - a web-based platform for sharing code and collaborating
 
 ## Weekly Plan
 
@@ -94,18 +96,22 @@ format:
 
 * In-class meetings
 
+* Exercises
+
 * Evaluation
   
 * Office hours for individual discussion
 
 ## Evaluation
 
-* Tasks (weekly)
-
 * Assignments (every two weeks)
 
-* Project (Proposal, Presentation, Report)
+* Mid-term test
+
+* Project (Proposal & Presentation)
   
+* Final exam
+
 **All work to be evaluated is described on a [single course page](https://andrewirwin.github.io/data-viz-course/004-evaluation.html).**
 
 

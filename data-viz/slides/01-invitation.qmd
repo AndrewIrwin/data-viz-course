@@ -2,7 +2,7 @@
 title: "Data Visualization"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2024-01-09"
+date: "2026-01-08"
 format:
   revealjs:
     slide-number: true
@@ -11,6 +11,7 @@ format:
     auto-animate: true
     scrollable: true
     history: false
+    embedd-resources: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,55 +19,133 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 # course_link <- function(static_file) paste0("https://andrewirwin.github.io/data-viz-notes/lessons/static/", static_file)
 ```
 
+# {background-color="black" visibility="uncounted"}
+::: {.r-fit-text}
+Asking questions with data.
+
+Telling stories with data.
+:::
+
+
+## Questions
+
+* What is the average amount of CO<sub>2</sub> in the atmosphere?
+
+* How does this concentration change during the year? Is there a regular pattern?
+
+* How does this concentration change from one year to the next?
 
 ## {background-image="static/L01-mlo_two_years.png" background-size="contain" background-repeat="no-repeat" }
 
+## Stories
+
+* CO<sub>2</sub> in the atmosphere varies through the year and increases each year
+
+## Questions
+
+* How does this concentration change from one decade to the next?
+
+* Are the interannual patterns stable over decades?
+
 ## {background-image="static/L01-mlo_full_record.png" background-size="contain" background-repeat="no-repeat" }
+
+## Stories
+
+* CO<sub>2</sub> in the atmosphere varies regularly through the year and has increased 100 ppm over 60 years
+
+## Questions
+
+* How has this concentration changed over thousands of years?
+
+* Are current levels of atmospheric CO<sub>2</sub> unusual?
 
 ## {background-image="static/L01-mlo_co2_800k.png" background-size="contain" background-repeat="no-repeat"}
 
+## Stories
+
+* CO<sub>2</sub> in the atmosphere has varied regularly from 180 to 280 ppm for hundreds of thousands of years and is now higher than it has been for 800,000 years
+
+## Questions
+
+* How has Arctic sea ice volume changed over the last few decades?
+
+* What is the regular interannual pattern of sea ice volume? 
+
+* How much variation do we see year to year?
+
 ## {background-image="static/L01-sea-ice-volume.png" background-size="contain" background-repeat="no-repeat" background-color="black" }
+
+## Stories
+
+* Arctic sea ice volume has shrunk by more than 50% and it appears likely that the fall will be ice-free soon
+
+## Questions
+
+* How does fertility relate to income for different countries?
 
 ## {background-image="static/L01-gapminder-fertility-income.png" background-size="contain" background-repeat="no-repeat" }
 
+## Stories
+
+* Fertility decreases as income increases, regardless of the country
+
+## Questions 
+
+* What is the weather like in Halifax, Nova Scotia?
+
 ## {background-image="static/L01-env-canada-halifax-snapshot.png" background-size="contain" background-repeat="no-repeat" }
+
+## Story and Question
+
+We have predictions for temperature and precipitation for the next week. We can see the amount of variation that occurs within a day, and from day to day. But what about longer term patterns?
 
 ## {background-image="static/L01-weatherspark-hfx-temperature.png" background-size="contain" background-repeat="no-repeat" }
 
+## Stories
+
+Seasonal variation is about 24°C, daily variation is about 8°C, and year to year variation is about 7-14°C.
+
+## Questions
+
+* What happened to Napoleon's army in Russia in 1812?
+
 ## {background-image="static/L01-Minard.png" background-size="contain" background-repeat="no-repeat" }
+
+## Stories
+
+* Napoleon's army was reduced by 99% over the course of the campain, largely due to cold weather and starvation.
+
+## Questions
+
+* What caused so many deaths in the Crimean war?
 
 ## {background-image="static/L01-Nightingale-mortality.jpeg" background-size="contain" background-repeat="no-repeat" }
 
+## Stories
+
+* Most deaths were from preventable causes such as infectious diseases, not battle wounds.
+
+## Questions
+
+* What caused the 1854 cholera outbreak in London?
+
 ## {background-image="static/L01-snow-cholera-map-1.png" background-size="contain" background-repeat="no-repeat" }
+
+## Story
+
+* The outbreak was centred on a single water pump on Broad St.
+
+## Questions
+
+* How did the prevelance of SARS-CoV-2 variants change over time in 2021?
 
 ## SARS-CoV-2 variants {.smaller}
 
 ![Each color is a variant. Data from [covariants.org](https://covariants.org/)](static/L01-covariants-org-2022-08-29.png)
 
-
-# {background-color="black" visibility="uncounted"}
-::: {.r-fit-text}
-What stories were told in those images?
-:::
-
 ## Stories
 
-::: {.incremental}
-* CO<sub>2</sub> in the atmosphere varies through the year, has increased 100 ppm over 60 years and is higher than it has been for 800,000 years
-* Arctic sea ice volume has shrunk by more than 50% and the fall will be ice-free soon
-* Fertility decreases as income increases, regardless of the country
-* Is it going to rain? Turn cooler?
-:::
-
-## Stories
-
-::: {.incremental}
-* Annual cycle of temperature is about 24°C. Daily range is about 8°C. Daily variation over years is 7-14°C.
-* Napoleon's army shrunk by 99% in their Russian campaign
-* Military deaths in the Crimean war were largely from preventable causes
-* Deaths from cholera were centred on one location in Broad St.
-* There have been at least 7 major covid variants, persisting for 4-6 months each
-:::
+* There were at least 7 major covid variants, persisting for 4-6 months each
 
 # {background-color="black" visibility="uncounted"}
 ::: {.r-fit-text}
@@ -115,10 +194,13 @@ What is data visualization?
 * Video: Excerpt from Claus Wilke's talk for the Santa Fe Institute (linked in "Invitation")
 
 
-# Task {background-color="black" visibility="uncounted"}
+# Assignment 0 {background-color="black" visibility="uncounted"}
 
 * Prepare a short report on two visualizations you like or could improve on.
 
 * Details in Course notes (Detailed outline, Evaluation)
+
+* Submit on Brightspace, due Friday, January 16 at 11:59 PM
+
 
 
