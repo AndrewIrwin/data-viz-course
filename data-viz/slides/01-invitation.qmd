@@ -39,7 +39,7 @@ Telling stories with data.
 
 ## Stories
 
-* CO<sub>2</sub> in the atmosphere varies through the year and increases each year
+* CO<sub>2</sub> in the atmosphere varies through the year, with an amplitude of about 7-9 ppm, and increases by 2-3 ppm each year.
 
 ## Questions
 
@@ -77,7 +77,7 @@ Telling stories with data.
 
 ## Stories
 
-* Arctic sea ice volume has shrunk by more than 50% and it appears likely that the fall will be ice-free soon
+* Arctic sea ice volume has shrunk by about 50% and it appears likely that the fall will be ice-free soon
 
 ## Questions
 
@@ -97,7 +97,9 @@ Telling stories with data.
 
 ## Story and Question
 
-We have predictions for temperature and precipitation for the next week. We can see the amount of variation that occurs within a day, and from day to day. But what about longer term patterns?
+We have predictions for temperature and precipitation for the next week. The example shows the amount of variation that occurs within a day, and from day to day, in September. 
+
+What can we say about longer term patterns, averaged over many years, and displayed for all seasons?
 
 ## {background-image="static/L01-weatherspark-hfx-temperature.png" background-size="contain" background-repeat="no-repeat" }
 
@@ -113,7 +115,7 @@ Seasonal variation is about 24°C, daily variation is about 8°C, and year to ye
 
 ## Stories
 
-* Napoleon's army was reduced by 99% over the course of the campain, largely due to cold weather and starvation.
+* Napoleon's army was reduced by about 99% over the course of the campain, largely due to cold weather and starvation.
 
 ## Questions
 
@@ -137,7 +139,7 @@ Seasonal variation is about 24°C, daily variation is about 8°C, and year to ye
 
 ## Questions
 
-* How did the prevelance of SARS-CoV-2 variants change over time in 2021?
+* How did the prevelance of SARS-CoV-2 variants change over time from September 2020 to June 2022?
 
 ## SARS-CoV-2 variants {.smaller}
 
