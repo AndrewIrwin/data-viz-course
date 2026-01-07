@@ -358,7 +358,7 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a>airlines <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 2]
-# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp6yDuf8/nycflights13.sqlite]
+# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp5u06vx/nycflights13.sqlite]
   carrier name                    
   &lt;chr&gt;   &lt;chr&gt;                   
 1 9E      Endeavor Air Inc.       
@@ -374,7 +374,7 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">count</span>(flights)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 1]
-# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp6yDuf8/nycflights13.sqlite]
+# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp5u06vx/nycflights13.sqlite]
        n
    &lt;int&gt;
 1 336776</code></pre>
@@ -382,7 +382,7 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 19]
-# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp6yDuf8/nycflights13.sqlite]
+# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp5u06vx/nycflights13.sqlite]
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
 1  2013     1     1      517            515         2      830            819
@@ -404,7 +404,7 @@ Use `unclass()` to print the Data Package as a list.</code></pre>
 <span id="cb25-4"><a></a>         dep_delay <span class="sc">&lt;</span> <span class="dv">0</span>, arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 20]
-# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp6yDuf8/nycflights13.sqlite]
+# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//Rtmp5u06vx/nycflights13.sqlite]
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
  1  2013     5    10      512            515        -3      824            811
