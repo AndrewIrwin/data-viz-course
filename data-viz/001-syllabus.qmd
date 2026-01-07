@@ -28,7 +28,7 @@ No experience with R or computer programming is required, but a desire to learn 
  
 Course notes:
 
-- Andrew J Irwin (2025) [Data visualization](https://andrewirwin.github.io/data-viz-notes/).
+- Andrew J Irwin (2026) [Data visualization](https://andrewirwin.github.io/data-viz-notes/).
 
 Textbooks:
 
@@ -37,7 +37,7 @@ Textbooks:
 - Hadley Wickham, Mine Çetinkaya-Rundel, Garret Grolemund (2023) [R for data science](https://r4ds.hadley.nz/). Second edition. O'Reilly. 
 
 The textbooks are available in printed form from bookstores and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals.
-The books by Healy and Wilke focus on the design and interpretation of data visualizations. The book by Grolemund and Wickham describes the use of R, particularly the set of packages known as the "tidyverse" for data visualization and the broader tasks of data science.
+The books by Healy and Wilke focus on the design and interpretation of data visualizations. The book by Wickham _et al._ describes the use of R, particularly the set of packages known as the "tidyverse" for data visualization and the broader tasks of data science.
 
 
 ### Software {#syllabus_software .unnumbered}
@@ -46,10 +46,10 @@ We will use the statistical software R and RStudio and version control software 
 R, RStudio or git is assumed. We will take class time to learn the software.
 
 * To download and install R go to [r-project.org](https://www.r-project.org/) and click on the link to [download R](http://cran.r-project.org/mirrors.html)
-* To download and install Rstudio, go to [Rstudio.com](https://www.rstudio.com/) and click on the link to [download Rstudio](https://rstudio.com/products/rstudio/download/)
+* To download and install Rstudio, go to posit.co and click on the link to [download Rstudio](https://posit.co/download/rstudio-desktop/) Desktop.
 * To download and install git: 
-  * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
-  * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type `xcode-select --install` to download and install git.
+  * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win). Install the software in the usual way.
+  * on Macintosh, use the Terminal pane in the Rstudio application or the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type `xcode-select --install` to download and install git.
 
 These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [posit.cloud](https://posit.cloud/). Everyone should learn to use the cloud service as a backup in case of problems with their own computer. The cloud service provides 25 hours of free usage each month. If you can't install the software on your computer and you run into limits with the free account, please contact me.
 
@@ -67,7 +67,7 @@ Each week will be structured around the following components:
 - Opportunities to develop and demonstrate your knowledge in course work to be evaluated (assignments, tests, and a term project).
 - Scheduled office hours. Come to office hours if you have questions about the classes, readings, or work to be submitted for grading. If you can't participate in office hours, but you have a question, please get in touch with me and arrange another time to meet.
 
-**Follow the [detailed outline](002-detailed-outline.qmd) for each week's plan to keep you on track.**
+**Follow the [detailed schedule](002-detailed-outline.qmd) for each week's plan to keep you on track.**
 
 ## Evaluation {-}
 
@@ -80,14 +80,14 @@ Assignments are assessments of your skills and should be done independently.
 
 The **mid-term test and final exam** are written on paper and in person and will test your knowledge of material from exercises and assignments.
  
-The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. 
-The term project is designed to be done collaboratively with a partner. The work on the project should be the work of members of the group and not outside collaborators or internet sources.
+The **Term Project** is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present an analysis of a data set of your choice. Your proposal will select a data set and describe some of your planned analyses. The oral presentation will be a 5-10 minute overview of your data and key visualizations. You will submit a recording of your oral presentation to be graded.
+The term project is designed to be done collaboratively with a partner. Your project should be the work of members of the group and not outside collaborators or internet sources.
 
 * Assignments (30%, roughly 1 every two weeks)
 * Mid-term test, 20%
 * Term project, divided into two components
   * Proposal, due Tuesday 3 March, 5%
-  * Oral presentation, due last day of classes, 15%
+  * Oral presentation, recording due last day of classes, 15%
 * Final exam, 30%
   
 Assignments are due on Friday, approximately one week after they are assigned. If Friday is a holiday (Feb 6, April 3) the assignment will be due the following Monday. 
@@ -115,7 +115,7 @@ grade_table <- tibble(
 grade_table |> unite(`Grade range`, min_grade, max_grade, sep="-") |>
         rename(`Letter grade`=letter) |>
   pivot_wider(names_from = `Letter grade`, values_from = `Grade range`) |>
-  gt() |> cols_align("center") |> cols_width(everything() ~ pct(120))
+  gt() |> cols_align("center") #  |> cols_width(everything() ~ pct(120))
 ```
 
 ## Course Policies {-}
