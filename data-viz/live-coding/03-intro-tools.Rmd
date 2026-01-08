@@ -1,7 +1,7 @@
 ---
 title: "Demo"
 author: "Andrew Irwin"
-date: 2024-01-11
+date: 2026-01-11
 output: html_document
 ---
 
@@ -42,9 +42,11 @@ my_packages <- c("tidyverse", "broom", "coefplot", "cowplot",
 install.packages(my_packages)
 ```
 
+(Sometimes I set `eval=FALSE` on a chunk so that the code is displayed but not executed. Take note and change as needed.)
+
 ## Cloud services
 
--   [rstudio.cloud](https://rstudio.cloud/)
+-   [posit.cloud](https://posit.cloud/)
 
 ## Why these tools and not some others?
 

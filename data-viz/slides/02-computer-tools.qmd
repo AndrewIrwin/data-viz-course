@@ -76,8 +76,8 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 Read Healy, Sections 2.1-2.4: 
 
-* why and how to use quarto, R/Rstudio, projects. 
-* the basics of R and being patient as you learn computing tasks.
+* Why and how to use quarto (R markdown), R/Rstudio, projects. 
+* The basics of R and being patient as you learn computing tasks.
 
 Make a list of about 10 key takeaway messages from the reading. 
 
