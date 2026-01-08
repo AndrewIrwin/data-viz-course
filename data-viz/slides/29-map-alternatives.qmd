@@ -18,7 +18,7 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(ggheatmap)
+# library(ggheatmap)
 ```
 
 ## Plan
@@ -101,26 +101,6 @@ covid_ss %>%
   theme(axis.text.x = element_text(angle = 90, size=15, hjust = 1, vjust=0.5),
         axis.text.y = element_text(size=14, hjust = 1)) + 
   labs(x = "", y="")
-```
-
-## Same data with ggheatmap
-
-```{r message=FALSE, echo=FALSE, fig.align="center", out.width="90%"}
-covid_ss4 <- covid_ss %>% select(GEO, `Age group`, VALUE) %>%
-  pivot_wider(names_from = GEO, values_from = VALUE) 
-data.frame(covid_ss4 %>% select(-`Age group`), 
-              row.names = covid_ss4 %>% pull(`Age group`)) %>%
-  ggheatmap()
-```
-
-## Scale columns to have sum 1
-
-```{r message=FALSE, echo=FALSE, fig.align="center", out.width="90%"}
-data.frame(covid_ss4 %>% select(-`Age group`), 
-              row.names = covid_ss4 %>% pull(`Age group`)) %>%
-  scale(center = FALSE, scale = colSums(.)) %>%
-  as.data.frame() %>%
-  ggheatmap()
 ```
 
 

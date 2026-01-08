@@ -119,8 +119,8 @@ Chunk options: `dev='ragg_png', dpi = 150`
 
 ```{r dev='ragg_png', dpi = 150}
 p1 +
-  annotate("text", 1990, 45, label = "Tokyo (東京)") + 
-  labs(title = "Text in Japanese (日本) 🇯🇵") 
+  annotate("text", 1990, 45, label = "Tokyo") + 
+  labs(title = "Text in Japanese") 
 ```
 
 
@@ -130,8 +130,8 @@ Chunk options: `dev='png', dpi = 150`
 
 ```{r dev='png', dpi = 150}
 p1 +
-  annotate("text", 1990, 60, label = "Tokyo (東京)") + 
-  labs(title = "Text in Japanese (日本) 🇯🇵") 
+  annotate("text", 1990, 60, label = "Tokyo") + 
+  labs(title = "Text in Japanese") 
 ```
 
 ## JPEG example
