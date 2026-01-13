@@ -79,6 +79,11 @@ Telling stories with data.
 
 * Arctic sea ice volume has shrunk by about 50% and it appears likely that the fall will be ice-free soon
 
+* Sea ice volume varies by about 15 thousand cubic km each year, with a peak in May and trough in October
+
+* Year to year variation is about 3-4 thousand cubic km, much less than the variation within a year, and about the same as the change in mean volume across a decade.
+ 
+
 ## Questions
 
 * How does fertility relate to income for different countries?
@@ -88,6 +93,8 @@ Telling stories with data.
 ## Stories
 
 * Fertility decreases as income increases, regardless of the country
+
+* The animation (or a series of stills) makes this point more convincingly
 
 ## Questions 
 
@@ -202,7 +209,7 @@ What is data visualization?
 
 * Details in Course notes (Detailed outline, Evaluation)
 
-* Submit on Brightspace, due Friday, January 16 at 11:59 PM
+* Submit on Brightspace, due Friday, January 23 at 11:59 PM
 
 
 
