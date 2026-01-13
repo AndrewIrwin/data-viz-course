@@ -188,9 +188,9 @@ Healy. Fig. 1.24.
 * Wilke. Chapters 5-16: "Visualizing" series of chapters. Return to these over time.
 
 
-## Task
+## Exercises
 
-* Task 3: Answer 2 questions about data visualization
+* Exercises for Lesson 4: Answer 2 questions about data visualization
 
   * Use arguments provided in the lessons and readings
 

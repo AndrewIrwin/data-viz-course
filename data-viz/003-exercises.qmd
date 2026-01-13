@@ -121,11 +121,6 @@ Follow the instructions in the file. When you are done, knit the file to be sure
 
 1. Describe what the functions `mutate`, `filter`, `group_by`, and `summarize` do to a data frame. Write a working example using each function and explain what it does.
 
-### Facetted plots (Lesson 10) {#task-6 .unnumbered}
-
-Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
-
-1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
 
 2. Does a line of code like `gapminder |> filter(country == "Canada")` change the original dataset?
 
@@ -140,6 +135,13 @@ Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  t
 7. What do slice, slice_sample, and slice_head do?
 
 8. List as many summary statistic functions you can such as `mean` that give one number when applied to a set of numbers.
+
+
+### Facetted plots (Lesson 10) {#task-6 .unnumbered}
+
+Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
+
+1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
 
 ### Using LLM to learn (Lesson 11) {.unnumbered}
 
