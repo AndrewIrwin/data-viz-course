@@ -44,11 +44,13 @@ cal |> select(-Day) |>
                          tz = "America/Halifax"), # timezone error? Excel bug?
          # Notes = my_paste(notes, notes_link),
          Slides = my_paste(slides, slides_link, "/slides/"),
-         Exercises = my_paste(evaluation, evaluation_link),
+         Exercises = case_when(!is.na(evaluation) ~ my_paste(evaluation, evaluation_link),
+                               TRUE ~ my_paste(exercise, exercise_link, "003-exercises.qmd")),
          Demo = my_paste2(demo, demo_link),
          Title = my_paste(title, title_link, "https://andrewirwin.github.io/data-viz-notes/")
          ) |>
   select(-evaluation, -evaluation_link, -demo, -demo_link,
+         -exercise, -exercise_link,
          -slides, -slides_link, -title, -title_link) |>
   select( -Week) |> 
   select(Date, Lesson, Title, everything()) |>

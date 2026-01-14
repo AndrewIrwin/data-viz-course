@@ -24,23 +24,24 @@ After the first week, most exercises have work for you to do in R. Save your com
 
 ### Computer tools (Lesson 2)  {#task-b1 .unnumbered}
 
-Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
+Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using quarto (R markdown), R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
 
 1. Make a list of about 10 key takeaway messages from the reading. For example, I would start with
 
 - Do all my learning and work in R in Quarto (.qmd, R markdown) documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don't use a word processor. Don't cut and paste code and results from the R console into a document. It's too easy to make mistakes this way and will take longer.
 - Take notes about what I learn (for ggplot and other skills). I'll write these in a private qmd document called data-viz-notes.Rmd (or something like that)
+- Start a new .qmd document for each new skill I'm trying to learn or each new set of exercises I work on. Give the document an informative name and put in a "Stat 2430" folder.
 
-2. Describe in one sentence the capacity or purpose of the following computer software: R, Rstudio, ggplot, tidyverse, R markdown (or quarto), git and github.
+2. Describe in one or two sentences the capacity or purpose of each of the following computer software: R, Rstudio, ggplot, tidyverse, R markdown (or quarto), git, and github.
 
-3. Most software gets replaced as ideas and technologies develop. What is a function of each of the software tools in question 1 that you would want to have in a technology that replaces it?
+3. Most software gets replaced as ideas and technologies develop. What is a function of each of the software tools used in this course that you would want to have in a technology that replaces it?
 
 4. Some people prefer python to R for data analysis. What are some generic reasons you might prefer one tool to another? (familiarity, performance, capacity to do a particular task, use by colleagues/associates)
 
   
 ### Setting up (Lesson 3) {#task-2 .unnumbered}
 
-See the instructions in the syllabus or in Lesson 3 notes.
+Follow the instructions in the syllabus or in Lesson 3 notes to set up your computing environment.
 
 Provide your name, email address, and GitHub ID using the [form linked here](https://forms.gle/mrg9gBDzuaeAWUM59). Your GitHub ID will be your public name for work submitted in the course, so use professional judgement when creating your GitHub ID. 
 
@@ -50,11 +51,11 @@ Provide your name, email address, and GitHub ID using the [form linked here](htt
 
 3. Create a github account. 
 
-4. Login to [rstudio.cloud](https://rstudio.cloud/). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.
+4. Login to [posit.cloud](https://posit.cloud/). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.
 
 5. Ask for help with any of these exercises if you need it. 
 
-6. Have you installed the packages listed in the lesson? What happens when you type “library(tidyverse)” in the Console window? There should be a bunch of messages printed on the screen. Some contain warnings, which are informational messages and often don't mean anything is wrong. 
+6. Have you installed the packages listed in the lesson? What happens when you type “library(tidyverse)” in the Console window? There should be a bunch of messages printed on the screen. Some contain warnings, which are informational messages and often don't mean anything is wrong. Learn to notice the difference between a warning and an error. You can make an error by typing something at the console that can't be interpreted, like `2 +* 2`.
 
 ### Look at data (Lesson 4) {#task-3 .unnumbered}
 
@@ -67,15 +68,25 @@ Read [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which cont
    b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?
    c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?
 
+3. Color or shading is sometimes used to indicate quantitative data, for [example on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
+
 ### Making your first plot (Lesson 5) {#task-b2 .unnumbered}
 
 Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. 
+
+1. Explain what the functions ggplot, geom_point, and aes do.
+
+2. Explain what the functions labs and theme do.
+
+3. How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.
+
+4. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each when you make a graph with ggplot?
 
 ### Version control software (Lesson 6) {#task-b2b .unnumbered}
 
 Get the software `git` working on your computer by following the steps in Lesson 6.
 
-If you gave me your GitHub ID after lesson 3, you will receive an invitation by email to a new GitHub repository. Accept that invitation. Use [these instructions](https://andrewirwin.github.io/data-viz-notes/lessons/106-version-control.html#clone-a-project-from-github) to get the repository on your computer.
+If you gave me your GitHub ID after lesson 3, you will receive an invitation by email to a new GitHub repository. Accept that invitation. The invitation will expire a few days after you receive it, so don't delay accepting the invitation. Use [these instructions](https://andrewirwin.github.io/data-viz-notes/lessons/106-version-control.html#clone-a-project-from-github) to get the repository for homework assignments on your computer.
 
 
 ### Grammar of Graphics (Lesson 7) {#task-b3 .unnumbered}
@@ -110,6 +121,22 @@ Follow the instructions in the file. When you are done, knit the file to be sure
 
 1. Describe what the functions `mutate`, `filter`, `group_by`, and `summarize` do to a data frame. Write a working example using each function and explain what it does.
 
+
+2. Does a line of code like `gapminder |> filter(country == "Canada")` change the original dataset?
+
+3. Write a line of code that creates a new quantitative variable in a data frame from an arithmetic calculation using an existing variable. Explain in English what your line of code does.
+
+4. What do the symbols `&`, `|`, and `!` mean inside the filter function?
+
+5. Is there a difference in the output of `diamonds |> filter(color == "J", cut == "Premium")` and `diamonds |> filter(color == "J") |> filter(cut == "Premium")`? Explain what the code does and what the difference is, if any.
+
+6. What do the functions head, tail, select, and arrange do?
+
+7. What do slice, slice_sample, and slice_head do?
+
+8. List as many summary statistic functions you can such as `mean` that give one number when applied to a set of numbers.
+
+
 ### Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
 Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
@@ -118,6 +145,35 @@ Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  t
 
 ### Using LLM to learn (Lesson 11) {.unnumbered}
 
+1. Practice getting an LLM to explain what R code does. Pick examples from the course notes, type the word "explain" and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative. 
+
+2. Try asking follow-up questions if part of an explanation is not clear (or even if it is clear to you, to see how the AI responds.)
+
+1. Explain what the following code does:
+
+```
+diamonds |>
+  mutate(volume = x * y * z,
+         price_per_volume = price / volume) |>
+  filter(volume > 0) |>
+  group_by(cut, color) |>
+  summarise(mean_price_per_volume = mean(price_per_volume),
+            mean_carat = mean(carat),
+            n = n(),
+            .groups = "drop") |>
+  filter(n >= 50) |>
+  arrange(-mean_price_per_volume) |>
+  group_by(color) |>
+  slice_head(n = 3) |>
+  arrange(color, -mean_price_per_volume)
+```
+
+Paste the code into an AI assistant and ask for an explanation. Check your line by line understanding and your overall summary of the result of the calculation.
+
+3. Write a sentence that describes a calculation, for example: _Write tidyverse code to compute a table based on the diamonds dataset showing which cut-color combinations command the highest prices relative to their physical size, filtered to statistically significant groups, with up to 3 cuts shown per color grade._
+and ask an LLM to write tidyverse code to perform the calculation. Read the code and decide if it is correct. Paste the code into R and determine if it works and if it does the calculation described.
+
+4. Write lots of English-language queries, such as `Find the smallest penguin of each species in the palmerpenguins dataset`. Write R code to accomplish the task. Ask the LLM to write code. Compare you code and its code. Test both versions in R. Do they give the same answer? If not, as the LLM to explain what your code does. Many calculations can be achieved in multiple ways, so don't be surprised if the LLM produces code different from yours. 
 
 ### Reading data (Lesson 12) {#task-b5 .unnumbered}
 
@@ -127,6 +183,9 @@ Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  t
 
 * Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data.
 
+* Variable names with spaces or "special" symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks?
+
+* Use the function `janitor::clean_names()` on your imported dataset.  Did this function change the names of the variables? Say how, briefly.
 
 ### Reshaping data (Lesson 13) {#task-7 .unnumbered}
 
