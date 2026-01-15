@@ -68,7 +68,7 @@ Read [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which cont
    b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?
    c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?
 
-3. Color or shading is sometimes used to indicate quantitative data, for [example on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
+3. Color or shading is sometimes used to indicate quantitative data, for example [on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
 
 ### Making your first plot (Lesson 5) {#task-b2 .unnumbered}
 
@@ -76,11 +76,11 @@ Repeat the examples from Lesson 5 until you are comfortable with the basics of m
 
 1. Explain what the functions ggplot, geom_point, and aes do.
 
-2. Explain what the functions labs and theme do.
+2. Explain what the functions labs and theme do. (I would expect your explanation to be incomplete, since you just learned about them, but you should be able to say something about what these functions can do.)
 
 3. How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.
 
-4. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each when you make a graph with ggplot?
+4. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each -- conceptually and in terms of how code is written -- when you make a graph with ggplot?
 
 ### Version control software (Lesson 6) {#task-b2b .unnumbered}
 
@@ -99,9 +99,11 @@ If you gave me your GitHub ID after lesson 3, you will receive an invitation by 
 
 2. Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.
 
+3. What are the 7 different layers in a visualization? (See course notes.) Some of these we have not discussed yet, but you should be able to explain how data, aesthetics, geometries, and theme each describe a separate element of a visualization and can be combined together to make a visualization.
+
 ### Using the grammar of graphics (Lesson 8) {#task-b4 .unnumbered}
 
-* Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
+* Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the "Finding and Accessing Data" chapter in course notes.
 
 1. What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?
 
@@ -109,7 +111,7 @@ If you gave me your GitHub ID after lesson 3, you will receive an invitation by 
 
 3. What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?
 
-4. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example?
+4. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example of each.
 
 5. A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using `theme_classic()`?
 
