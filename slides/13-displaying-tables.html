@@ -5,9 +5,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-02-08">
 <title>data-viz – Displaying tables</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c68d4e54d35810038446c33f7c9eae0.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1ba7d0d22c1292c64167ba25544c5fbd.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -262,7 +262,7 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>mtcars <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>) </span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">mpg</th>
@@ -736,7 +736,7 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <span id="cb3-2"><a></a>  <span class="fu">kable_styling</span>() <span class="sc">|&gt;</span> <span class="fu">scroll_box</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 5px; ">
-<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">mpg</th>
@@ -1224,7 +1224,7 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <span id="cb5-4"><a></a>                      <span class="st">"Cylinders"</span>, <span class="st">"Weight (1000 lbs)"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb5-5"><a></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Make &amp; Model</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Miles per gallon</th>
@@ -1440,7 +1440,7 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <span id="cb6-8"><a></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb6-9"><a></a>                <span class="at">font_size=</span><span class="dv">24</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 24px; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="font-size: 24px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Make &amp; Model</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Miles per gallon</th>
@@ -1650,7 +1650,7 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <span id="cb7-2"><a></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Group A"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"Group B"</span> <span class="ot">=</span> <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 20%">
@@ -1912,7 +1912,7 @@ Group B
 <span id="cb8-3"><a></a>  <span class="fu">group_rows</span>(<span class="st">"Group 2"</span>, <span class="dv">5</span>, <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">mpg</th>
@@ -2163,7 +2163,7 @@ Group B
 <span id="cb9-4"><a></a>  <span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"Footnote 1."</span>, </span>
 <span id="cb9-5"><a></a>                      <span class="st">"Footnote 2"</span>)) </span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption>Car data from Motor Trend magazine.</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -2445,7 +2445,7 @@ Group B
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

@@ -5,9 +5,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-03-07">
 <title>data-viz – k-means clustering</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c68d4e54d35810038446c33f7c9eae0.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1ba7d0d22c1292c64167ba25544c5fbd.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -224,7 +224,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb1-3"><a></a>gapminder_ss <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>country, <span class="sc">-</span>continent) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>lifeExp) <span class="sc">|&gt;</span></span>
 <span id="cb1-4"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">lifeExp</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">pop</th>
@@ -978,43 +978,43 @@ Andrew Irwin, a.irwin@dal.ca
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">-0.2962622</td>
-<td style="text-align: right;">0.2367267</td>
-<td style="text-align: right;">-1.7720737</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">24.17695</td>
+<td style="text-align: right;">-1.6337006</td>
+<td style="text-align: right;">-1.2911500</td>
+<td style="text-align: right;">-0.4679201</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">13.91793</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-1.1891063</td>
-<td style="text-align: right;">-1.1359867</td>
-<td style="text-align: right;">0.1103545</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">43.45588</td>
+<td style="text-align: right;">0.0143558</td>
+<td style="text-align: right;">-0.0604618</td>
+<td style="text-align: right;">-1.0173923</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">31.53864</td>
 <td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.9616985</td>
-<td style="text-align: right;">1.1679433</td>
-<td style="text-align: right;">0.1967631</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">19.60683</td>
+<td style="text-align: right;">-0.9058963</td>
+<td style="text-align: right;">-1.0221741</td>
+<td style="text-align: right;">0.5243855</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">19.11763</td>
 <td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.3541155</td>
-<td style="text-align: right;">0.0098290</td>
-<td style="text-align: right;">1.5040089</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">15.74762</td>
+<td style="text-align: right;">0.9051797</td>
+<td style="text-align: right;">1.0176289</td>
+<td style="text-align: right;">-0.4443755</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">19.61127</td>
 <td style="text-align: left;">4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.5301554</td>
-<td style="text-align: right;">0.1811066</td>
-<td style="text-align: right;">-0.4517881</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">14.00332</td>
+<td style="text-align: right;">0.6056531</td>
+<td style="text-align: right;">0.4490787</td>
+<td style="text-align: right;">1.1568376</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">32.11889</td>
 <td style="text-align: left;">5</td>
 </tr>
 </tbody>
@@ -1315,7 +1315,7 @@ Andrew Irwin, a.irwin@dal.ca
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

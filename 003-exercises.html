@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,6 +80,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">data-viz</span>
     </a>
@@ -228,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 <li>According to <a href="https://socviz.co/lookatdata.html#channels-for-representing-data">Healy, Chapter 1</a> which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?</li>
 <li>In your judgment, is this visualization effective or too complex? Watch the <a href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen">TED talk</a> or experiment with the <a href="https://www.gapminder.org/tools/">interactive version</a> before answering the question. Does the live explanation provided in Rosling’s oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?</li>
 </ol></li>
-<li><p>Color or shading is sometimes used to indicate quantitative data, for <a href="https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/">example on a map</a>. Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?</p></li>
+<li><p>Color or shading is sometimes used to indicate quantitative data, for example <a href="https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/">on a map</a>. Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?</p></li>
 </ol>
 </section>
 <section id="task-b2" class="level3 unnumbered">
@@ -236,9 +239,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot.</p>
 <ol type="1">
 <li><p>Explain what the functions ggplot, geom_point, and aes do.</p></li>
-<li><p>Explain what the functions labs and theme do.</p></li>
+<li><p>Explain what the functions labs and theme do. (I would expect your explanation to be incomplete, since you just learned about them, but you should be able to say something about what these functions can do.)</p></li>
 <li><p>How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.</p></li>
-<li><p>What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each when you make a graph with ggplot?</p></li>
+<li><p>What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each – conceptually and in terms of how code is written – when you make a graph with ggplot?</p></li>
 </ol>
 </section>
 <section id="task-b2b" class="level3 unnumbered">
@@ -256,18 +259,19 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p>In the context of the grammar of graphics, what is an aesthetic?</p></li>
 <li><p>Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.</p></li>
+<li><p>What are the 7 different layers in a visualization? (See course notes.) Some of these we have not discussed yet, but you should be able to explain how data, aesthetics, geometries, and theme each describe a separate element of a visualization and can be combined together to make a visualization.</p></li>
 </ol>
 </section>
 <section id="task-b4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-b4">Using the grammar of graphics (Lesson 8)</h3>
 <ul>
-<li>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in “Data Sources” chapter in course notes.</li>
+<li>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the “Finding and Accessing Data” chapter in course notes.</li>
 </ul>
 <ol type="1">
 <li><p>What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?</p></li>
 <li><p>What aesthetic mappings are required to make a boxplot? You don’t need to specify a cateogorical variable for color or fill, but what happens if you do?</p></li>
 <li><p>What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?</p></li>
-<li><p>How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example?</p></li>
+<li><p>How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example of each.</p></li>
 <li><p>A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using <code>theme_classic()</code>?</p></li>
 </ol>
 </section>
@@ -479,13 +483,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

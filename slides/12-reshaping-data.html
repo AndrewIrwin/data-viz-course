@@ -5,9 +5,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-02-06">
 <title>data-viz – Reshaping data</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c68d4e54d35810038446c33f7c9eae0.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1ba7d0d22c1292c64167ba25544c5fbd.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,7 @@ Andrew Irwin, a.irwin@dal.ca
 </ul></section><section id="example-1-tidy" class="slide level2"><h2>Example 1 (tidy)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -273,7 +273,7 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="example-2-long" class="slide level2"><h2>Example 2 (long)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -360,7 +360,7 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="example-3" class="slide level2"><h2>Example 3</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -404,7 +404,7 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="example-4" class="slide level2"><h2>Example 4</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Cases</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -433,7 +433,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Population</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -478,7 +478,7 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -534,7 +534,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb1-4"><a></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-5"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -625,7 +625,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb2-2"><a></a>  <span class="fu">unite</span>(<span class="st">"rate"</span>, cases<span class="sc">:</span>population, <span class="at">sep=</span><span class="st">"/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -679,7 +679,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb3-2"><a></a>  <span class="fu">separate</span>(rate, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"population"</span>), <span class="at">sep=</span><span class="st">"/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -733,7 +733,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb4-2"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"year"</span>, <span class="at">values_from =</span> <span class="st">"cases"</span>) </span>
 <span id="cb4-3"><a></a>df1A <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">caption=</span><span class="st">"Cases"</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Cases</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -765,7 +765,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb5-2"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"year"</span>, <span class="at">values_from =</span> <span class="st">"population"</span>) </span>
 <span id="cb5-3"><a></a>df1B <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">caption=</span><span class="st">"Population"</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Population</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -798,7 +798,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb6-2"><a></a>          <span class="fu">mutate</span>(df1B, <span class="at">type =</span> <span class="st">"population"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">1999</th>
@@ -852,7 +852,7 @@ Andrew Irwin, a.irwin@dal.ca
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a>df1A <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2000</span><span class="st">`</span>, <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="at">values_to =</span> <span class="st">"cases"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">year</th>
@@ -902,7 +902,7 @@ Andrew Irwin, a.irwin@dal.ca
 <span id="cb8-4"><a></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"year"</span>)</span>
 <span id="cb8-5"><a></a>) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">year</th>
@@ -1138,7 +1138,7 @@ Andrew Irwin, a.irwin@dal.ca
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

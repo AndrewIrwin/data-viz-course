@@ -5,9 +5,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
 <meta name="dcterms.date" content="2024-02-13">
 <title>data-viz – Linear models</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c68d4e54d35810038446c33f7c9eae0.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1ba7d0d22c1292c64167ba25544c5fbd.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +254,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(broom)</span>
 <span id="cb3-2"><a></a><span class="fu">glance</span>(m1)  <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">r.squared</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">adj.r.squared</th>
@@ -287,7 +287,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
@@ -326,7 +326,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>( city_l100km <span class="sc">~</span> <span class="fu">poly</span>(displ,<span class="dv">2</span>), <span class="at">data =</span> my_mpg)</span>
 <span id="cb6-2"><a></a><span class="fu">glance</span>(m2) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">r.squared</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">adj.r.squared</th>
@@ -359,7 +359,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">tidy</span>(m2) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
@@ -406,7 +406,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb9-2"><a></a>  <span class="fu">lm</span>( lifeExp <span class="sc">~</span> logGDPpercap, <span class="at">data =</span> . ) </span>
 <span id="cb9-3"><a></a><span class="fu">tidy</span>(m3) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
@@ -434,7 +434,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">glance</span>(m3) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">r.squared</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">adj.r.squared</th>
@@ -472,7 +472,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb11-2"><a></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>( lifeExp <span class="sc">~</span> logGDPpercap, <span class="at">data =</span> d3 ) </span>
 <span id="cb11-3"><a></a><span class="fu">tidy</span>(m3) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table caption-top" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
@@ -11520,7 +11520,7 @@ F-statistic: 424.3 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
