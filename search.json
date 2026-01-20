@@ -270,21 +270,21 @@
     "href": "slides/33-other-data.html#nyc-flights",
     "title": "Beyond tidy data",
     "section": "NYC flights",
-    "text": "NYC flights\n\nairlines |&gt; head()\n\n# Source:   SQL [?? x 2]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpAlsa6T/nycflights13.sqlite]\n  carrier name                    \n  &lt;chr&gt;   &lt;chr&gt;                   \n1 9E      Endeavor Air Inc.       \n2 AA      American Airlines Inc.  \n3 AS      Alaska Airlines Inc.    \n4 B6      JetBlue Airways         \n5 DL      Delta Air Lines Inc.    \n6 EV      ExpressJet Airlines Inc."
+    "text": "NYC flights\n\nairlines |&gt; head()\n\n# Source:   SQL [?? x 2]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpoByT2A/nycflights13.sqlite]\n  carrier name                    \n  &lt;chr&gt;   &lt;chr&gt;                   \n1 9E      Endeavor Air Inc.       \n2 AA      American Airlines Inc.  \n3 AS      Alaska Airlines Inc.    \n4 B6      JetBlue Airways         \n5 DL      Delta Air Lines Inc.    \n6 EV      ExpressJet Airlines Inc."
   },
   {
     "objectID": "slides/33-other-data.html#nyc-flights-1",
     "href": "slides/33-other-data.html#nyc-flights-1",
     "title": "Beyond tidy data",
     "section": "NYC flights",
-    "text": "NYC flights\n\ncount(flights)\n\n# Source:   SQL [?? x 1]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpAlsa6T/nycflights13.sqlite]\n       n\n   &lt;int&gt;\n1 336776\n\nflights |&gt; head()\n\n# Source:   SQL [?? x 19]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpAlsa6T/nycflights13.sqlite]\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n6  2013     1     1      554            558        -4      740            728\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;"
+    "text": "NYC flights\n\ncount(flights)\n\n# Source:   SQL [?? x 1]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpoByT2A/nycflights13.sqlite]\n       n\n   &lt;int&gt;\n1 336776\n\nflights |&gt; head()\n\n# Source:   SQL [?? x 19]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpoByT2A/nycflights13.sqlite]\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n6  2013     1     1      554            558        -4      740            728\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#joins",
     "href": "slides/33-other-data.html#joins",
     "title": "Beyond tidy data",
     "section": "Joins",
-    "text": "Joins\n\nleft_join(flights, \n          airlines, by = \"carrier\") |&gt;\n  filter(month == 5, day == 10, dep_time &lt; 700,\n         dep_delay &lt; 0, arr_delay &gt; 0)\n\n# Source:   SQL [?? x 20]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpAlsa6T/nycflights13.sqlite]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     5    10      512            515        -3      824            811\n 2  2013     5    10      554            600        -6      858            850\n 3  2013     5    10      554            600        -6      721            720\n 4  2013     5    10      555            600        -5      704            701\n 5  2013     5    10      602            605        -3      803            800\n 6  2013     5    10      617            632       -15      932            920\n 7  2013     5    10      624            625        -1      752            745\n 8  2013     5    10      627            629        -2      832            825\n 9  2013     5    10      650            655        -5      946            935\n10  2013     5    10      655            700        -5      949            945\n11  2013     5    10      656            700        -4      954            950\n# ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;, name &lt;chr&gt;"
+    "text": "Joins\n\nleft_join(flights, \n          airlines, by = \"carrier\") |&gt;\n  filter(month == 5, day == 10, dep_time &lt; 700,\n         dep_delay &lt; 0, arr_delay &gt; 0)\n\n# Source:   SQL [?? x 20]\n# Database: sqlite 3.51.1 [/var/folders/nm/s3fqdtfj4_vd34n3855h_6j80000gn/T//RtmpoByT2A/nycflights13.sqlite]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     5    10      512            515        -3      824            811\n 2  2013     5    10      554            600        -6      858            850\n 3  2013     5    10      554            600        -6      721            720\n 4  2013     5    10      555            600        -5      704            701\n 5  2013     5    10      602            605        -3      803            800\n 6  2013     5    10      617            632       -15      932            920\n 7  2013     5    10      624            625        -1      752            745\n 8  2013     5    10      627            629        -2      832            825\n 9  2013     5    10      650            655        -5      946            935\n10  2013     5    10      655            700        -5      949            945\n11  2013     5    10      656            700        -4      954            950\n# ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;, name &lt;chr&gt;"
   },
   {
     "objectID": "slides/33-other-data.html#summary",
@@ -844,7 +844,7 @@
     "href": "slides/23-k-means.html#perform-k-means",
     "title": "k-means clustering",
     "section": "Perform k-means",
-    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n-1.6337006\n-1.2911500\n-0.4679201\n18\n13.91793\n1\n\n\n0.0143558\n-0.0604618\n-1.0173923\n27\n31.53864\n2\n\n\n-0.9058963\n-1.0221741\n0.5243855\n27\n19.11763\n3\n\n\n0.9051797\n1.0176289\n-0.4443755\n37\n19.61127\n4\n\n\n0.6056531\n0.4490787\n1.1568376\n33\n32.11889\n5"
+    "text": "Perform k-means\n\nkclust1 &lt;- kmeans(gapminder_scaled |&gt;\n                    select(s_lifeExp, s_logGDP, s_logPop),\n                  centers = 5)\ntidy(kclust1) |&gt; kable()\n\n\n\ns_lifeExp\ns_logGDP\ns_logPop\nsize\nwithinss\ncluster\n\n\n\n0.0673307\n-0.2927558\n1.0593589\n26\n27.383777\n1\n\n\n0.8802513\n1.0149662\n0.8617957\n21\n8.730738\n2\n\n\n-1.3092703\n-1.2492232\n0.1431273\n33\n23.096735\n3\n\n\n-0.9842188\n-0.4954821\n-1.4418523\n14\n17.755300\n4\n\n\n0.7656064\n0.7178849\n-0.6287148\n48\n34.314870\n5"
   },
   {
     "objectID": "slides/23-k-means.html#display-clustering",
@@ -1936,7 +1936,7 @@
     "href": "index.html",
     "title": "Data Visualization",
     "section": "",
-    "text": "Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2026. From this page you can access all the required elements of the course including\n\nthe syllabus for the whole course,\nthe course textbook,\nthe detailed schedule with a plan for each class (subject to change!) and a link to slides and other materials presented in class,\nsuggested exercises for each lesson, and\ndetailed information about all work to be evaluated.\n\nA few items are located on the Brightspace course page, including:\n\nlinks to forms for you to provide personal information to me (your GitHub ID, any preferences for a project partner)\nterm project information: team membership, proposal presentation schedule, and\nyour grades in the course.\n\nIf you have questions about the course, please ask in class, during regular office hours, or contact me by email."
+    "text": "Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2026. From this page you can access all the required elements of the course including\n\nthe syllabus for the course,\nthe course textbook,\nthe detailed schedule with a plan for each class (subject to change!) and a link to slides and other materials presented in class,\nsuggested exercises for each lesson, and\ndetailed information about all work to be evaluated.\n\nA few items are located on the Brightspace course page, including:\n\nlinks to forms for you to provide personal information to me (your GitHub ID, any preferences for a project partner)\nterm project information: team membership, proposal presentation schedule, and\nyour grades in the course.\n\nIf you have questions about the course, please ask in class, during regular office hours, or contact me by email."
   },
   {
     "objectID": "003-exercises.html",
@@ -2475,7 +2475,7 @@
     "href": "slides/06-version-control.html#what-is-github",
     "title": "Version control",
     "section": "What is github?",
-    "text": "What is github?\n\nInternet service to manage repository in remote location (“remotes”)\nCollaboration tool\nMany other services (error checking, websites, teams, feedback)\nNeed a free account. Sign up at github.com. Send me your github ID."
+    "text": "What is github?\n\nInternet service to manage a repository in remote location (“remotes”)\nCollaboration tool\nMany other services (error checking, websites, teams, feedback)\nNeed a free account. Sign up at github.com. Send me your github ID using the Brightspace survey."
   },
   {
     "objectID": "slides/06-version-control.html#how-to-use-git-and-github-with-rstudio",
@@ -2727,14 +2727,14 @@
     "href": "slides/10-summarizing-data.html#bonus-dplyr-is-closely-linked-to-sql",
     "title": "Summarizing data with dplyr",
     "section": "Bonus: dplyr is closely linked to SQL",
-    "text": "Bonus: dplyr is closely linked to SQL\n\nlibrary(dbplyr)\nmemdb_frame(ChickWeight) |&gt; count(Diet) |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `n`\nFROM `dbplyr_CgLzZo026p`\nGROUP BY `Diet`"
+    "text": "Bonus: dplyr is closely linked to SQL\n\nlibrary(dbplyr)\nmemdb_frame(ChickWeight) |&gt; count(Diet) |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `n`\nFROM `dbplyr_MTdstpP8fq`\nGROUP BY `Diet`"
   },
   {
     "objectID": "slides/10-summarizing-data.html#dplyr-and-sql",
     "href": "slides/10-summarizing-data.html#dplyr-and-sql",
     "title": "Summarizing data with dplyr",
     "section": "dplyr and SQL",
-    "text": "dplyr and SQL\n\nmemdb_frame(ChickWeight) |&gt;  group_by(Diet, Chick) |&gt;\n  mutate(max_weight = max(weight)) |&gt;\n  filter(max_weight &gt; 110) |&gt;\n  group_by(Diet, Chick) |&gt;\n  summarize(n = n()) |&gt;\n  summarize(count_chicks = n(), .groups = \"drop\") |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `count_chicks`\nFROM (\n  SELECT `Diet`, `Chick`, COUNT(*) AS `n`\n  FROM (\n    SELECT `q01`.*\n    FROM (\n      SELECT\n        `dbplyr_HAK1g6MYIl`.*,\n        MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`\n      FROM `dbplyr_HAK1g6MYIl`\n    ) AS `q01`\n    WHERE (`max_weight` &gt; 110.0)\n  ) AS `q01`\n  GROUP BY `Diet`, `Chick`\n) AS `q01`\nGROUP BY `Diet`"
+    "text": "dplyr and SQL\n\nmemdb_frame(ChickWeight) |&gt;  group_by(Diet, Chick) |&gt;\n  mutate(max_weight = max(weight)) |&gt;\n  filter(max_weight &gt; 110) |&gt;\n  group_by(Diet, Chick) |&gt;\n  summarize(n = n()) |&gt;\n  summarize(count_chicks = n(), .groups = \"drop\") |&gt; show_query()\n\n&lt;SQL&gt;\nSELECT `Diet`, COUNT(*) AS `count_chicks`\nFROM (\n  SELECT `Diet`, `Chick`, COUNT(*) AS `n`\n  FROM (\n    SELECT `q01`.*\n    FROM (\n      SELECT\n        `dbplyr_tBbgM2xNna`.*,\n        MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`\n      FROM `dbplyr_tBbgM2xNna`\n    ) AS `q01`\n    WHERE (`max_weight` &gt; 110.0)\n  ) AS `q01`\n  GROUP BY `Diet`, `Chick`\n) AS `q01`\nGROUP BY `Diet`"
   },
   {
     "objectID": "slides/10-summarizing-data.html#further-reading",
@@ -3714,7 +3714,7 @@
     "href": "slides/30-factors-dates.html#time-zones-1",
     "title": "Text & FactorsDates & Times",
     "section": "Time zones",
-    "text": "Time zones\n\nnow()\n\n[1] \"2026-01-15 13:48:17 AST\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2026-01-15T13:48:17-0400\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"January 15, 2026 at 01:48 PM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2026-01-15 13:48:17 AST\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
+    "text": "Time zones\n\nnow()\n\n[1] \"2026-01-20 14:50:56 AST\"\n\nformat_ISO8601(now(), usetz=TRUE)\n\n[1] \"2026-01-20T14:50:56-0400\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(now())\n\n[1] \"January 20, 2026 at 02:50 PM\"\n\nstrftime(now(), \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2026-01-20 14:50:56 AST\"\n\nt2 &lt;- ymd_hms(\"2024-03-27 10:05:05\")\nformat_ISO8601(t2, usetz=TRUE)\n\n[1] \"2024-03-27T10:05:05+0000\"\n\nstamp(\"January 1, 2024 at 10:00 AM\")(t2)\n\n[1] \"March 27, 2024 at 10:05 AM\"\n\nstrftime(t2, \"%Y-%m-%d %H:%M:%S %Z\")\n\n[1] \"2024-03-27 07:05:05 ADT\""
   },
   {
     "objectID": "slides/30-factors-dates.html#further-reading",
