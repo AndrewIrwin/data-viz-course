@@ -1,7 +1,7 @@
 ---
 title: "Version control"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-01-23"
+date: "2026-01-20"
 format:
   revealjs:
     slide-number: true
@@ -54,13 +54,13 @@ format:
 
 ## What is github?
 
-* Internet service to manage repository in remote location ("remotes")
+* Internet service to manage a repository in remote location ("remotes")
 
 * Collaboration tool
 
 * Many other services (error checking, websites, teams, feedback)
 
-* _Need a free account_. Sign up at github.com. Send me your github ID.
+* _Need a free account_. Sign up at github.com. Send me your github ID using the Brightspace survey.
 
 
 ## How to use git and github with Rstudio?

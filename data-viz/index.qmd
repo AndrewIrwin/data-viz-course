@@ -11,7 +11,7 @@ editor: source
 
 Welcome to Data Visualization (STAT 2430) at Dalhousie University for Winter 2026. From this page you can access all the required elements of the course including
 
-* the [syllabus](001-syllabus.qmd) for the whole course,
+* the [syllabus](001-syllabus.qmd) for the course,
 * the course [textbook](https://andrewirwin.github.io/data-viz-notes/),
 * the [detailed schedule](002-detailed-outline.qmd) with a plan for each class (subject to change!) and a link to slides and other materials presented in class, 
 * suggested [exercises](003-exercises.qmd) for each lesson, and
