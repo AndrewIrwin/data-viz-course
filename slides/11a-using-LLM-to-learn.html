@@ -9,9 +9,9 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
-  <meta name="author" content="Your name">
-  <meta name="dcterms.date" content="2026-01-22">
-  <title>data-viz – Write a title here</title>
+  <meta name="author" content="Andrew Irwin">
+  <meta name="dcterms.date" content="2026-01-30">
+  <title>data-viz – Using LLMs to Learn</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,8 @@
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -46,6 +48,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -128,84 +131,111 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Write a title here</h1>
+  <h1 class="title">Using LLMs to Learn</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Your name 
+Andrew Irwin 
 </div>
 </div>
 </div>
 
-  <p class="date">2026-01-22</p>
+  <p class="date">2026-01-30</p>
 </section>
-<section>
-<section id="instructions" class="title-slide slide level1 center">
-<h1>Instructions</h1>
+<section id="what-is-an-llm" class="slide level2">
+<h2>What is an LLM?</h2>
 <ul>
-<li>Modify this file to be a short collection of slides for a presentation</li>
-<li>Follow the instructions on the rest of the slides</li>
-<li>Delete this slide of instructions</li>
-<li>If you get stuck, review the <a href="https://quarto.org/docs/presentations/revealjs/">overview of making presentation slides</a></li>
+<li><strong>The Concept:</strong> A Large Language Model (LLM) is an AI trained on massive amounts of text and code.</li>
+<li><strong>Capabilities:</strong>
+<ul>
+<li>Writing and debugging code (R, Python, etc.).</li>
+<li>Explaining complex statistical concepts.</li>
+<li>Brainstorming visualization designs.</li>
+</ul></li>
+<li><strong>Key Distinction:</strong> They are <strong>probabilistic</strong>, not deterministic. They predict the next word based on patterns; they don’t “know” facts like humans do.</li>
 </ul>
 </section>
-<section id="headings" class="slide level2">
-<h2>Headings</h2>
-<p>Learn, by experimentation, the difference between a heading with one (<code>#</code>) or two (<code>##</code>) hash marks.</p>
-<p><strong>Describe the difference here.</strong></p>
-</section>
-<section id="images" class="slide level2">
-<h2>Images</h2>
-<p>Find a small graphic (photo, drawing, etc.). Add it to this repository. Make it appear on this slide.</p>
-<p>Follow the instructions <a href="https://quarto.org/docs/authoring/figures.html">here</a>.</p>
-<div class="footer">
-<p>Learn how to put an image in the <a href="https://quarto.org/docs/presentations/revealjs/#image-backgrounds">background</a>.</p>
-</div>
-</section></section>
-<section id="visualization" class="title-slide slide level1 smaller center">
-<h1>Visualization</h1>
-<p>Change the ggplot graphic here to something of your choosing.</p>
-<p>(You can create a new one, or use something from earlier in the course.)</p>
-<p>Create a caption for the figure.</p>
-
-<img data-src="task-L24-presentation_files/figure-revealjs/fig-one-1.png" width="864" class="r-stretch quarto-figure-center" id="fig-one"><p class="caption">
-Figure&nbsp;1: A descriptive caption.
-</p></section>
-
-<section id="another-slide" class="title-slide slide level1 center" data-background-color="gray">
-<h1>Another slide</h1>
-<p>Set the background to black, or another color.</p>
-<div class="footer">
-<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#color-backgrounds">Slide Backgrounds</a></p>
-</div>
-</section>
-
-<section>
-<section id="view-the-slides-in-a-browser" class="title-slide slide level1 center">
-<h1>View the slides in a browser</h1>
+<section id="why-use-llms-for-learning" class="slide level2">
+<h2>Why Use LLMs for Learning?</h2>
 <ul>
-<li>Click: Render.</li>
-<li>Open the slides in a web browser. (Click Present, or find the html file and open it.)</li>
-<li>Hit ? for help.</li>
-<li>Click on the menu in the lower left to see what options are available in presentation mode.</li>
+<li><strong>Personalized Tutoring:</strong> 24/7 help with specific bugs.</li>
+<li><strong>Iterative Learning:</strong> Ask “Why does this work?” or “Explain like I’m a beginner.”</li>
+<li><strong>Bridging the Gap:</strong> Move from “blank page syndrome” to a working draft quickly.</li>
+<li><strong>Efficiency:</strong> Find specific <code>ggplot2</code> syntax without hunting through outdated forums.</li>
 </ul>
 </section>
-<section id="two-columns" class="slide level2">
-<h2>Two columns</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p>Put an image or figure in this column</p>
-</div><div class="column" style="width:70%;">
+<section id="effective-prompting-strategies" class="slide level2 scrollable">
+<h2>Effective Prompting Strategies</h2>
+<blockquote>
+<p>“The quality of the output depends on the quality of the input.”</p>
+</blockquote>
+<ol type="1">
+<li><strong>Provide Context:</strong> “I am an R student using the tidyverse…”</li>
+<li><strong>Be Specific:</strong> Instead of “Fix my code,” use “I have an error on line 4; explain why.”</li>
+<li><strong>Show Your Data:</strong> Use <code>str()</code> or <code>head()</code> so the AI understands your variables.</li>
+<li><strong>Chain of Thought:</strong> Ask the AI to “Explain your reasoning step-by-step.”</li>
+</ol>
+</section>
+<section id="the-learning-vs.-doing-trap" class="slide level2 scrollable">
+<h2>The “Learning” vs.&nbsp;“Doing” Trap</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Danger</strong></p>
+</div>
+<div class="callout-content">
+<p>If you copy-paste without understanding, you haven’t learned.</p>
+</div>
+</div>
+</div>
+<p><strong>The Solution: Read-Understand-Rewrite</strong></p>
+<ol type="1">
+<li><strong>Read</strong> the AI’s code thoroughly.</li>
+<li><strong>Understand</strong> the logic (ask the AI to explain specific functions).</li>
+<li><strong>Manually Type</strong> the code into your project. <strong>Do not copy-paste.</strong></li>
+</ol>
+</section>
+<section id="limitations-hallucinations" class="slide level2">
+<h2>Limitations &amp; Hallucinations</h2>
 <ul>
-<li>Write a sentence about the graphic here.</li>
-<li>Adjust the column widths to make good use of space.</li>
+<li><strong>Hallucinations:</strong> LLMs can confidently invent R packages that do not exist.</li>
+<li><strong>Outdated Info:</strong> They may suggest deprecated libraries or old syntax.</li>
+<li><strong>No Critical Thinking:</strong> They don’t inherently know if a chart is “ethical” or “misleading.”</li>
+<li><strong>The Golden Rule:</strong> Always run the code. If it doesn’t run, the AI is wrong.</li>
 </ul>
-</div></div>
-<p>Learn how to show code and how to “fold” code <a href="https://quarto.org/docs/get-started/computations/rstudio.html#code-folding">here</a>.</p>
+</section>
+<section id="ethical-use-integrity" class="slide level2">
+<h2>Ethical Use &amp; Integrity</h2>
+<ul>
+<li><strong>Transparency:</strong> Disclose when an LLM was used for analysis or code generation.</li>
+<li><strong>Originality:</strong> The <em>story</em> and <em>interpretation</em> of the data must be yours.</li>
+<li><strong>The Policy:</strong> LLMs are tools for <strong>assistance</strong>, not <strong>authorship</strong>.</li>
+</ul>
+</section>
+<section id="practical-exercise" class="slide level2 scrollable" data-background-color="#e7f3ff">
+<h2>Practical Exercise</h2>
+<ol type="1">
+<li>Identify a “messy” piece of code or a concept you find confusing (e.g., <code>pivot_longer</code>).</li>
+<li><strong>Prompt:</strong> Ask the LLM to explain the concept and provide a minimal example.</li>
+<li><strong>Review:</strong> Does the explanation match the official R documentation?</li>
+<li><strong>Apply:</strong> Use the logic to solve a new, slightly different problem.</li>
+</ol>
+</section>
+<section id="summary-best-practices" class="slide level2">
+<h2>Summary &amp; Best Practices</h2>
+<ul>
+<li><strong>Treat it as a Mentor:</strong> Ask “how” and “why.”</li>
+<li><strong>Verify Everything:</strong> Check against official documentation.</li>
+<li><strong>Stay in Control:</strong> You are the designer; the LLM is the intern.</li>
+<li><strong>Build AI Literacy:</strong> Practice makes your prompting more effective.</li>
+</ul>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -220,6 +250,7 @@ Figure&nbsp;1: A descriptive caption.
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -241,7 +272,8 @@ Figure&nbsp;1: A descriptive caption.
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -412,7 +444,7 @@ Figure&nbsp;1: A descriptive caption.
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -421,44 +453,6 @@ Figure&nbsp;1: A descriptive caption.
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

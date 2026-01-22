@@ -453,7 +453,7 @@ $ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT `Diet`, COUNT(*) AS `n`
-FROM `dbplyr_MTdstpP8fq`
+FROM `dbplyr_cp2dU4cx0k`
 GROUP BY `Diet`</code></pre>
 </div>
 </div>
@@ -474,9 +474,9 @@ FROM (
     SELECT `q01`.*
     FROM (
       SELECT
-        `dbplyr_tBbgM2xNna`.*,
+        `dbplyr_2x8ad63aQ1`.*,
         MAX(`weight`) OVER (PARTITION BY `Diet`, `Chick`) AS `max_weight`
-      FROM `dbplyr_tBbgM2xNna`
+      FROM `dbplyr_2x8ad63aQ1`
     ) AS `q01`
     WHERE (`max_weight` &gt; 110.0)
   ) AS `q01`

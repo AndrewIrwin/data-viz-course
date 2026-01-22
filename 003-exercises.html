@@ -178,6 +178,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Exercises</h1>
 <p>I have created exercises to give you practice with the main skills and ideas from each lesson. Exercises are new to the course this year, so you should anticipate revisions to this page throughout the term.</p>
 <p>After the first week, most exercises have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.</p>
+<p>Most of the questions on the midterm test and final exam will be based on an exercise on this page.</p>
 <p><strong>Exercises are not to be submitted for evaluation and are not graded.</strong></p>
 <section id="task-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-1">Invitation (Lesson 1)</h3>
@@ -186,8 +187,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Find a visualization you like on the internet (provide a copy and the source). Repeat question 1, writing so that a classmate would understand what you see in the visualization.</p></li>
 <li><p>How does the visualization of atmospheric CO2 concentration on different time axes (a million years, a thousand years, a century, a decade, a year, a month) change what you see on the graphs? Write a sentence about the message of this graph shown on three different time axes.</p></li>
 <li><p>Describe some data you are interested in and a question you think it could answer. How could you get those data? Describe a visualization you would create. What would a reader easily understand from your visualization?</p></li>
-<li><p>Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month.</p></li>
-<li><p>In figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.</p></li>
+<li><p>Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month. What if you plotted the historical CO2 data the way the sea ice volume data are plotted?</p></li>
+<li><p>In Figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.</p></li>
 </ol>
 </section>
 <section id="task-b1" class="level3 unnumbered">
@@ -210,10 +211,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="task-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-2">Setting up (Lesson 3)</h3>
 <p>Follow the instructions in the syllabus or in Lesson 3 notes to set up your computing environment.</p>
-<p>Provide your name, email address, and GitHub ID using the <a href="https://forms.gle/mrg9gBDzuaeAWUM59">form linked here</a>. Your GitHub ID will be your public name for work submitted in the course, so use professional judgement when creating your GitHub ID.</p>
+<p>Provide your name, email address, and GitHub ID using the <a href="https://forms.gle/mrg9gBDzuaeAWUM59">form linked here</a>. Your GitHub ID will be your public name for work submitted in the course and shared with your teammate for the term project, so use professional judgement when creating your GitHub ID.</p>
 <ol type="1">
 <li><p>Install R, Rstudio, and the packages listed in Lesson 3.</p></li>
-<li><p>Install git.</p></li>
+<li><p>Install git. What happens when you type “git” in Rstudio’s Terminal window?</p></li>
 <li><p>Create a github account.</p></li>
 <li><p>Login to <a href="https://posit.cloud/">posit.cloud</a>. This is a complete R, Rstudio, and git setup “in the cloud” that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.</p></li>
 <li><p>Ask for help with any of these exercises if you need it.</p></li>
@@ -236,8 +237,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="task-b2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-b2">Making your first plot (Lesson 5)</h3>
-<p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot.</p>
 <ol type="1">
+<li><p>Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to <a href="https://socviz.co/gettingstarted.html#make-your-first-figure">Healy, Section 2.6</a> for a different basic plot.</p></li>
 <li><p>Explain what the functions ggplot, geom_point, and aes do.</p></li>
 <li><p>Explain what the functions labs and theme do. (I would expect your explanation to be incomplete, since you just learned about them, but you should be able to say something about what these functions can do.)</p></li>
 <li><p>How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.</p></li>
@@ -251,12 +252,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="task-b3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-b3">Grammar of Graphics (Lesson 7)</h3>
-<ul>
-<li>Review material on ggplot to connect the ideas from to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson.</li>
-<li>Browse the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.</li>
-<li>Read through the ggplot <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a> to see how the concepts of the grammar of graphics will be connected to computer code. Don’t worry about the details – you will practice making visualizations using these tools over many future lessons.</li>
-</ul>
 <ol type="1">
+<li><p>Review material on ggplot to connect the ideas from to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson.</p></li>
+<li><p>Browse the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.</p></li>
+<li><p>Read through the ggplot <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a> to see how the concepts of the grammar of graphics will be connected to computer code. Don’t worry about the details – you will practice making visualizations using these tools over many future lessons.</p></li>
 <li><p>In the context of the grammar of graphics, what is an aesthetic?</p></li>
 <li><p>Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.</p></li>
 <li><p>What are the 7 different layers in a visualization? (See course notes.) Some of these we have not discussed yet, but you should be able to explain how data, aesthetics, geometries, and theme each describe a separate element of a visualization and can be combined together to make a visualization.</p></li>
@@ -264,10 +263,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="task-b4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-b4">Using the grammar of graphics (Lesson 8)</h3>
-<ul>
-<li>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the “Finding and Accessing Data” chapter in course notes.</li>
-</ul>
 <ol type="1">
+<li><p>Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the “Finding and Accessing Data” chapter in course notes.</p></li>
 <li><p>What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?</p></li>
 <li><p>What aesthetic mappings are required to make a boxplot? You don’t need to specify a cateogorical variable for color or fill, but what happens if you do?</p></li>
 <li><p>What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?</p></li>
@@ -277,16 +274,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="task-5" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-5">Summarizing data (Lesson 9)</h3>
-<p>Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file <a href="tasks/task-L09-summarize.Rmd">task-L09-summarize</a>. Right click the link and select “save as” to get the file on your computer. Then open it with Rstudio.</p>
-<p>Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.</p>
+<p>Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file <a href="tasks/task-L09-summarize.Rmd">task-L09-summarize</a>. Right click the link and select “save as” to get the file on your computer. Then open it with Rstudio. Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.</p>
 <ol type="1">
 <li><p>Describe what the functions <code>mutate</code>, <code>filter</code>, <code>group_by</code>, and <code>summarize</code> do to a data frame. Write a working example using each function and explain what it does.</p></li>
-<li><p>Does a line of code like <code>gapminder |&gt; filter(country == "Canada")</code> change the original dataset?</p></li>
+<li><p>Does a line of code like <code>gapminder |&gt; filter(country == "Canada")</code> change the original dataset? Use that code and then follow it up with <code>gapminder |&gt; filter(country == "China")</code>. If the dataset changed, what would you expect from this second line of code?</p></li>
 <li><p>Write a line of code that creates a new quantitative variable in a data frame from an arithmetic calculation using an existing variable. Explain in English what your line of code does.</p></li>
 <li><p>What do the symbols <code>&amp;</code>, <code>|</code>, and <code>!</code> mean inside the filter function?</p></li>
 <li><p>Is there a difference in the output of <code>diamonds |&gt; filter(color == "J", cut == "Premium")</code> and <code>diamonds |&gt; filter(color == "J") |&gt; filter(cut == "Premium")</code>? Explain what the code does and what the difference is, if any.</p></li>
-<li><p>What do the functions head, tail, select, and arrange do?</p></li>
-<li><p>What do slice, slice_sample, and slice_head do?</p></li>
+<li><p>What do the functions <code>head</code>, <code>tail</code>, <code>select</code>, and <code>arrange</code> do?</p></li>
+<li><p>What do <code>slice</code>, <code>slice_sample</code>, and <code>slice_head</code> do?</p></li>
 <li><p>List as many summary statistic functions you can such as <code>mean</code> that give one number when applied to a set of numbers.</p></li>
 </ol>
 </section>
@@ -300,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="using-llm-to-learn-lesson-11" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="using-llm-to-learn-lesson-11">Using LLM to learn (Lesson 11)</h3>
 <ol type="1">
-<li><p>Practice getting an LLM to explain what R code does. Pick examples from the course notes, type the word “explain” and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative.</p></li>
+<li><p>Practice getting an LLM to explain what R code does. Pick examples from the course notes. Type the word “explain” and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative.</p></li>
 <li><p>Try asking follow-up questions if part of an explanation is not clear (or even if it is clear to you, to see how the AI responds.)</p></li>
 <li><p>Explain what the following code does:</p></li>
 </ol>
@@ -321,18 +317,18 @@ ul.task-list li input[type="checkbox"] {
 <p>Paste the code into an AI assistant and ask for an explanation. Check your line by line understanding and your overall summary of the result of the calculation.</p>
 <ol start="3" type="1">
 <li><p>Write a sentence that describes a calculation, for example: <em>Write tidyverse code to compute a table based on the diamonds dataset showing which cut-color combinations command the highest prices relative to their physical size, filtered to statistically significant groups, with up to 3 cuts shown per color grade.</em> and ask an LLM to write tidyverse code to perform the calculation. Read the code and decide if it is correct. Paste the code into R and determine if it works and if it does the calculation described.</p></li>
-<li><p>Write lots of English-language queries, such as <code>Find the smallest penguin of each species in the palmerpenguins dataset</code>. Write R code to accomplish the task. Ask the LLM to write code. Compare you code and its code. Test both versions in R. Do they give the same answer? If not, as the LLM to explain what your code does. Many calculations can be achieved in multiple ways, so don’t be surprised if the LLM produces code different from yours.</p></li>
+<li><p>Write lots of English-language queries, such as <code>Find the smallest penguin of each species in the palmerpenguins dataset</code>. Write R code to accomplish the task. Ask the LLM to write code. Compare your code and its code. Test both versions in R. Do they give the same answer? If not, ask the LLM to explain what your code does. Many computations can be achieved in multiple ways, so don’t be surprised if the LLM produces code different from yours.</p></li>
 </ol>
 </section>
 <section id="task-b5" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-b5">Reading data (Lesson 12)</h3>
-<ul>
-<li><p>Download the <a href="https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true">Excel file</a> from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R.</p></li>
+<ol type="1">
+<li><p>Download the <a href="https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true">Excel file</a> from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. What happens if you leave a cell blank? What happens if you put a number in a column that is text in the other rows? What about putting text in a column where the other entries are numbers?</p></li>
 <li><p>Get the file “<a href="tasks/test-data.csv">test-data.csv</a>” and read the data into R using <code>read_csv</code>.</p></li>
-<li><p>Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data.</p></li>
-<li><p>Variable names with spaces or “special” symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks?</p></li>
+<li><p>Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data. If the data are not “tidy” (a grid with variable names in the first row), how does R store and present the data? What if your Excel workbook has multiple sheets in it?</p></li>
+<li><p>Variable names with spaces or “special” symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks? Change a column name in test-data.xlsx to have a space, or a minus sign, or other symbols and re-read the file. How does R present the variable name?</p></li>
 <li><p>Use the function <code>janitor::clean_names()</code> on your imported dataset. Did this function change the names of the variables? Say how, briefly.</p></li>
-</ul>
+</ol>
 </section>
 <section id="task-7" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-7">Reshaping data (Lesson 13)</h3>
