@@ -5,6 +5,8 @@ Exercises are new to the course this year, so you should anticipate revisions to
 
 After the first week, most exercises have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
 
+Most of the questions on the midterm test and final exam will be based on an exercise on this page.
+
 **Exercises are not to be submitted for evaluation and are not graded.**
 
 ### Invitation (Lesson 1) {#task-1 .unnumbered}
@@ -17,9 +19,9 @@ After the first week, most exercises have work for you to do in R. Save your com
 
 4. Describe some data you are interested in and a question you think it could answer. How could you get those data? Describe a visualization you would create. What would a reader easily understand from your visualization?
 
-5. Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month.
+5. Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month. What if you plotted the historical CO2 data the way the sea ice volume data are plotted?
 
-6. In figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.
+6. In Figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.
 
 
 ### Computer tools (Lesson 2)  {#task-b1 .unnumbered}
@@ -43,11 +45,11 @@ Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstar
 
 Follow the instructions in the syllabus or in Lesson 3 notes to set up your computing environment.
 
-Provide your name, email address, and GitHub ID using the [form linked here](https://forms.gle/mrg9gBDzuaeAWUM59). Your GitHub ID will be your public name for work submitted in the course, so use professional judgement when creating your GitHub ID. 
+Provide your name, email address, and GitHub ID using the [form linked here](https://forms.gle/mrg9gBDzuaeAWUM59). Your GitHub ID will be your public name for work submitted in the course and shared with your teammate for the term project, so use professional judgement when creating your GitHub ID. 
 
 1. Install R, Rstudio, and the packages listed in Lesson 3.
 
-2. Install git.
+2. Install git. What happens when you type "git" in Rstudio's Terminal window?
 
 3. Create a github account. 
 
@@ -68,19 +70,19 @@ Read [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which cont
    b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?
    c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?
 
-3. Color or shading is sometimes used to indicate quantitative data, for [example on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
+3. Color or shading is sometimes used to indicate quantitative data, for example [on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
 
 ### Making your first plot (Lesson 5) {#task-b2 .unnumbered}
 
-Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. 
+1. Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. 
 
-1. Explain what the functions ggplot, geom_point, and aes do.
+2. Explain what the functions ggplot, geom_point, and aes do.
 
-2. Explain what the functions labs and theme do.
+3. Explain what the functions labs and theme do. (I would expect your explanation to be incomplete, since you just learned about them, but you should be able to say something about what these functions can do.)
 
-3. How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.
+4. How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.
 
-4. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each when you make a graph with ggplot?
+5. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each -- conceptually and in terms of how code is written -- when you make a graph with ggplot?
 
 ### Version control software (Lesson 6) {#task-b2b .unnumbered}
 
@@ -91,38 +93,40 @@ If you gave me your GitHub ID after lesson 3, you will receive an invitation by 
 
 ### Grammar of Graphics (Lesson 7) {#task-b3 .unnumbered}
 
-* Review material on ggplot to connect the ideas from  to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. 
-* Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
-* Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
+1. Review material on ggplot to connect the ideas from  to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. 
 
-1. In the context of the grammar of graphics, what is an aesthetic?
+2. Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
 
-2. Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.
+3. Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
+
+4. In the context of the grammar of graphics, what is an aesthetic?
+
+5. Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.
+
+6. What are the 7 different layers in a visualization? (See course notes.) Some of these we have not discussed yet, but you should be able to explain how data, aesthetics, geometries, and theme each describe a separate element of a visualization and can be combined together to make a visualization.
 
 ### Using the grammar of graphics (Lesson 8) {#task-b4 .unnumbered}
 
-* Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
+1. Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the "Finding and Accessing Data" chapter in course notes.
 
-1. What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?
+2. What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?
 
-2. What aesthetic mappings are required to make a boxplot? You don't need to specify a cateogorical variable for color or fill, but what happens if you do? 
+3. What aesthetic mappings are required to make a boxplot? You don't need to specify a cateogorical variable for color or fill, but what happens if you do? 
 
-3. What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?
+4. What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?
 
-4. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example?
+5. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example of each.
 
-5. A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using `theme_classic()`?
+6. A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using `theme_classic()`?
 
 ### Summarizing data (Lesson 9) {#task-5 .unnumbered}
 
-Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. 
-
-Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
+Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
 
 1. Describe what the functions `mutate`, `filter`, `group_by`, and `summarize` do to a data frame. Write a working example using each function and explain what it does.
 
 
-2. Does a line of code like `gapminder |> filter(country == "Canada")` change the original dataset?
+2. Does a line of code like `gapminder |> filter(country == "Canada")` change the original dataset? Use that code and then follow it up with `gapminder |> filter(country == "China")`. If the dataset changed, what would you expect from this second line of code?
 
 3. Write a line of code that creates a new quantitative variable in a data frame from an arithmetic calculation using an existing variable. Explain in English what your line of code does.
 
@@ -130,9 +134,9 @@ Follow the instructions in the file. When you are done, knit the file to be sure
 
 5. Is there a difference in the output of `diamonds |> filter(color == "J", cut == "Premium")` and `diamonds |> filter(color == "J") |> filter(cut == "Premium")`? Explain what the code does and what the difference is, if any.
 
-6. What do the functions head, tail, select, and arrange do?
+6. What do the functions `head`, `tail`, `select`, and `arrange` do?
 
-7. What do slice, slice_sample, and slice_head do?
+7. What do `slice`, `slice_sample`, and `slice_head` do?
 
 8. List as many summary statistic functions you can such as `mean` that give one number when applied to a set of numbers.
 
@@ -145,7 +149,7 @@ Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  t
 
 ### Using LLM to learn (Lesson 11) {.unnumbered}
 
-1. Practice getting an LLM to explain what R code does. Pick examples from the course notes, type the word "explain" and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative. 
+1. Practice getting an LLM to explain what R code does. Pick examples from the course notes. Type the word "explain" and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative. 
 
 2. Try asking follow-up questions if part of an explanation is not clear (or even if it is clear to you, to see how the AI responds.)
 
@@ -173,19 +177,19 @@ Paste the code into an AI assistant and ask for an explanation. Check your line 
 3. Write a sentence that describes a calculation, for example: _Write tidyverse code to compute a table based on the diamonds dataset showing which cut-color combinations command the highest prices relative to their physical size, filtered to statistically significant groups, with up to 3 cuts shown per color grade._
 and ask an LLM to write tidyverse code to perform the calculation. Read the code and decide if it is correct. Paste the code into R and determine if it works and if it does the calculation described.
 
-4. Write lots of English-language queries, such as `Find the smallest penguin of each species in the palmerpenguins dataset`. Write R code to accomplish the task. Ask the LLM to write code. Compare you code and its code. Test both versions in R. Do they give the same answer? If not, as the LLM to explain what your code does. Many calculations can be achieved in multiple ways, so don't be surprised if the LLM produces code different from yours. 
+4. Write lots of English-language queries, such as `Find the smallest penguin of each species in the palmerpenguins dataset`. Write R code to accomplish the task. Ask the LLM to write code. Compare your code and its code. Test both versions in R. Do they give the same answer? If not, ask the LLM to explain what your code does. Many computations can be achieved in multiple ways, so don't be surprised if the LLM produces code different from yours. 
 
 ### Reading data (Lesson 12) {#task-b5 .unnumbered}
 
-* Download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. 
+1. Download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. What happens if you leave a cell blank? What happens if you put a number in a column that is text in the other rows? What about putting text in a column where the other entries are numbers?
 
-* Get the file "[test-data.csv](tasks/test-data.csv)" and read the data into R using `read_csv`.
+2. Get the file "[test-data.csv](tasks/test-data.csv)" and read the data into R using `read_csv`.
 
-* Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data.
+3. Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data. If the data are not "tidy" (a grid with variable names in the first row), how does R store and present the data? What if your Excel workbook has multiple sheets in it?
 
-* Variable names with spaces or "special" symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks?
+4. Variable names with spaces or "special" symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks? Change a column name in test-data.xlsx to have a space, or a minus sign, or other symbols and re-read the file. How does R present the variable name?
 
-* Use the function `janitor::clean_names()` on your imported dataset.  Did this function change the names of the variables? Say how, briefly.
+5. Use the function `janitor::clean_names()` on your imported dataset.  Did this function change the names of the variables? Say how, briefly.
 
 ### Reshaping data (Lesson 13) {#task-7 .unnumbered}
 

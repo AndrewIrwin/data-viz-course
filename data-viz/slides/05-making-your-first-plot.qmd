@@ -44,6 +44,10 @@ glimpse(mtcars)
 
 Also try `mtcars` or `str(mtcars)` or `View(mtcars)`.
 
+Read the help at `?mtcars`
+
+Type `data(mtcars)` in the Console and then click on the name in the Environment pane.
+
 ## First plot
 
 ```{r fig0, fig.show="hide", warning=FALSE, fig.height=6, fig.width=6, echo=TRUE}
@@ -220,7 +224,7 @@ knitr::include_graphics(knitr::fig_chunk("fig4", "png"))
 
 Look at the data: use `glimpse(mtcars)` and `View(mtcars)` or just `mtcars` in the console.
 
-Read documentation: ?mtcars or use search in the "Help" panel.
+Read documentation: `?mtcars` or use search in the "Help" panel.
 
 `glimpse` is in the `dplyr` package. Load it into your R session using `library(tidyverse)`.
 

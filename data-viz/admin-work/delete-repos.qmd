@@ -44,10 +44,17 @@ sapply(del_assign, repo_delete, prompt=FALSE)
 
 Projects to delete
 
-Assignments to delete
-
 ```{r}
 del_project <- repos[str_detect(repos, "data-viz-project-")]
 sapply(del_project, repo_delete, prompt=FALSE)
 ```
 
+## Delete old teams 
+
+From last year.
+
+```{r}
+teams <- org_teams(org = "Dalhousie-AndrewIrwin-Teaching")
+teams
+ghclass::team_delete(org = "Dalhousie-AndrewIrwin-Teaching", team = teams)
+```
