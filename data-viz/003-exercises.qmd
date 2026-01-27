@@ -193,13 +193,23 @@ and ask an LLM to write tidyverse code to perform the calculation. Read the code
 
 ### Reshaping data (Lesson 13) {#task-7 .unnumbered}
 
-Practice reshaping data using the examples in [task-L12-reshape](tasks/task-L12-reshape.Rmd).
+1. Reshape the table `penguins |> count(species, island)` into a wide format table with species in rows and islands in columns.
 
-You can get the file "[question-2.csv](tasks/question-2.csv)" from this link.
+2. Read the file "[question-2.csv](tasks/question-2.csv)" into R. Reshape the data from wide to long format using `pivot_longer` to obtain three columns: Student, Task_number, Grade. Make a faceted plot of grade on the y-axis, task on the x-axis with each facet corresponding to a different student.
+
+3. Make a wide table from the `gapminder` data. Use `filter` to include only countries from Oceania and only the years 1997, 2002, and 2007. Then use `pivot_wider` to make a wide table with countries in rows and population in the entries under the columns named with the year.
+
+4. Use separate on the results of question 2 to create two new columns: Task and Number, where Task is the word "Task" and Number is the task number as a numeric variable.
+
+5. Use `str_remove` to clean up the task number column to be just the number. Convert the number from text format to a numeric format.
+
 
 ### Formatting tables (Lesson 14) {#task-8 .unnumbered}
 
-Practice displaying tables [task-L13-tables](tasks/task-L13-tables.Rmd).
+1. Display a table of population for countries in Oceania in three years (from `gapminder`). Round the population to the nearest 1000 (3 places before the decimal place) and add a separator between every three digits to make the numbers easier to read (a comma or space). Add a header row over the three years that says "Year". Capitalize the heading "country" as "Country". Add a brief but informative caption. Work though these refinements one at a time, making sure your code works after each improvement.
+
+2. Compute a total score for tasks 1-4 for each student using the grades from the file [question-2.csv](tasks/question-2.csv) and the `adorn_totals` function from `janitor`. Assume the maximum scores are all the same for each task, so you don't need to weight the scores when you add them. Make a `kable` formatted table with an informative caption. 
+
 
 ### Getting help (Lesson 15) {#task-b6 .unnumbered}
 

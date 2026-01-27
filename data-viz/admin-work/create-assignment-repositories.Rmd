@@ -46,9 +46,11 @@ repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assig
 Make list of repos to create.
 
 ```{r}
-github <- github |> mutate(full_assignment_repo = paste0(org_name, "/", "data-viz-assignments-", Github)) |>
+github2 <- github |> mutate(full_assignment_repo = paste0(org_name, "/", "data-viz-assignments-", Github)) |>
   mutate(assignment_repo = paste0("data-viz-assignments-", Github)) |>
-  filter(!(full_assignment_repo %in% repos))
+  select(-timestamp) |>
+  filter(!(full_assignment_repo %in% repos)) |>
+  distinct()
 ```
 
 Create a repo
@@ -61,7 +63,7 @@ create_repo <- function(i) {
                         source_repo = paste0(org_name, "/data-viz-assignments"),
                         private = TRUE)
 }
-for (i in 1:nrow(github)) create_repo(i)
+for (i in 1:nrow(github2)) create_repo(i)
 ```
 
 
