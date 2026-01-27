@@ -1,8 +1,13 @@
 ---
 title: "First Plot demonstration"
 author: "Andrew Irwin"
-date: "2022-09-13"
-output: html_document
+date: "2026-01-13"
+format:
+  html:
+    toc: true
+    toc-location: left       # 'right' (default) or 'left'
+    toc-float: true          # Ensures the TOC moves as you scroll
+    embed-resources: true    # Embeds images/css for a single file
 ---
 
 ```{r setup, include=FALSE}

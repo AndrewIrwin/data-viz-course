@@ -1,0 +1,298 @@
+# Exercises {#exercises .unnumbered}
+
+I have created exercises to give you practice with the main skills and ideas from each lesson.
+Exercises are new to the course this year, so you should anticipate revisions to this page throughout the term.
+
+After the first week, most exercises have work for you to do in R. Save your completed work as a quarto document using R as it will be a reference for you later in the course when you want to review skills you learned earlier in the course.
+
+Most of the questions on the midterm test and final exam will be based on an exercise on this page.
+
+**Exercises are not to be submitted for evaluation and are not graded.**
+
+### Invitation (Lesson 1) {#task-1 .unnumbered}
+
+1. Describe an example from the lesson: what data are shown on the graph, how are the data presented, what is the most straightforward conclusion to be drawn from the presentation, are there any elements that are difficult to understand?
+
+2. Find a visualization you like on the internet (provide a copy and the source). Repeat question 1, writing so that a classmate would understand what you see in the visualization.
+
+3. How does the visualization of atmospheric CO2 concentration on different time axes (a million years, a thousand years, a century, a decade, a year, a month) change what you see on the graphs? Write a sentence about the message of this graph shown on three different time axes.
+
+4. Describe some data you are interested in and a question you think it could answer. How could you get those data? Describe a visualization you would create. What would a reader easily understand from your visualization?
+
+5. Reinterpret one of the graphs from the lesson. How could you present it differently? For example, describe what would you learn from a histogram of the historical weather for the current month. What if you plotted the historical CO2 data the way the sea ice volume data are plotted?
+
+6. In Figure 1.7, projected career earnings, can you conclude that a chemical engineer will earn more than someone working in education? Is it likely? When you consider the probable range of lifetime earnings (middle 50%), how many career areas summarized in the graph have a reasonable chance of similar, mid-level earnings? Explain.
+
+
+### Computer tools (Lesson 2)  {#task-b1 .unnumbered}
+
+Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using quarto (R markdown), R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
+
+1. Make a list of about 10 key takeaway messages from the reading. For example, I would start with
+
+- Do all my learning and work in R in Quarto (.qmd, R markdown) documents created with Rstudio. This is a new skill to learn, but will be worthwhile. Don't use a word processor. Don't cut and paste code and results from the R console into a document. It's too easy to make mistakes this way and will take longer.
+- Take notes about what I learn (for ggplot and other skills). I'll write these in a private qmd document called data-viz-notes.Rmd (or something like that)
+- Start a new .qmd document for each new skill I'm trying to learn or each new set of exercises I work on. Give the document an informative name and put in a "Stat 2430" folder.
+
+2. Describe in one or two sentences the capacity or purpose of each of the following computer software: R, Rstudio, ggplot, tidyverse, R markdown (or quarto), git, and github.
+
+3. Most software gets replaced as ideas and technologies develop. What is a function of each of the software tools used in this course that you would want to have in a technology that replaces it?
+
+4. Some people prefer python to R for data analysis. What are some generic reasons you might prefer one tool to another? (familiarity, performance, capacity to do a particular task, use by colleagues/associates)
+
+  
+### Setting up (Lesson 3) {#task-2 .unnumbered}
+
+Follow the instructions in the syllabus or in Lesson 3 notes to set up your computing environment.
+
+Provide your name, email address, and GitHub ID using the [form linked here](https://forms.gle/mrg9gBDzuaeAWUM59). Your GitHub ID will be your public name for work submitted in the course and shared with your teammate for the term project, so use professional judgement when creating your GitHub ID. 
+
+1. Install R, Rstudio, and the packages listed in Lesson 3.
+
+2. Install git. What happens when you type "git" in Rstudio's Terminal window?
+
+3. Create a github account. 
+
+4. Login to [posit.cloud](https://posit.cloud/). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer. I suggest you login using your git account to link Rstudio to git.
+
+5. Ask for help with any of these exercises if you need it. 
+
+6. Have you installed the packages listed in the lesson? What happens when you type “library(tidyverse)” in the Console window? There should be a bunch of messages printed on the screen. Some contain warnings, which are informational messages and often don't mean anything is wrong. Learn to notice the difference between a warning and an error. You can make an error by typing something at the console that can't be interpreted, like `2 +* 2`.
+
+### Look at data (Lesson 4) {#task-3 .unnumbered}
+
+Read [Healy, Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which contains much more on the topic of this lesson.
+
+1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in Lesson 1. The vertical scale does not start at 0. Use the ideas in [Healy, Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
+
+2. Hans Rosling's visualizations (as shown in Lesson 1) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
+   a. For Rosling's plot shown in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
+   b. According to [Healy, Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? Could you defend the use of each feature for each variable? How?
+   c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://www.gapminder.org/tools/) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot? Does this make you think that visualizations destined for different media (e.g., an article or blog, a live presentation, a recorded video, a zoom presentation) should be different?
+
+3. Color or shading is sometimes used to indicate quantitative data, for example [on a map](https://science.nasa.gov/blogs/earth-matters/2013/08/12/subtleties-of-color-part-3-of-6/). Does the checker shadow illusion suggest a way such a representation could be hard to interpret quantitatively?
+
+### Making your first plot (Lesson 5) {#task-b2 .unnumbered}
+
+1. Repeat the examples from Lesson 5 until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. Refer to [Healy, Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot. 
+
+2. Explain what the functions ggplot, geom_point, and aes do.
+
+3. Explain what the functions labs and theme do. (I would expect your explanation to be incomplete, since you just learned about them, but you should be able to say something about what these functions can do.)
+
+4. How many aesthetics do you know about now? These are the attributes of the plot that can be mapped to a variable using the aes function.
+
+5. What is the difference between a dataset (e.g., gapminder, penguins) and a variable inside the dataset? How do you use each -- conceptually and in terms of how code is written -- when you make a graph with ggplot?
+
+### Version control software (Lesson 6) {#task-b2b .unnumbered}
+
+Get the software `git` working on your computer by following the steps in Lesson 6.
+
+If you gave me your GitHub ID after lesson 3, you will receive an invitation by email to a new GitHub repository. Accept that invitation. The invitation will expire a few days after you receive it, so don't delay accepting the invitation. Use [these instructions](https://andrewirwin.github.io/data-viz-notes/lessons/106-version-control.html#clone-a-project-from-github) to get the repository for homework assignments on your computer.
+
+
+### Grammar of Graphics (Lesson 7) {#task-b3 .unnumbered}
+
+1. Review material on ggplot to connect the ideas from  to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. 
+
+2. Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
+
+3. Read through the ggplot [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
+
+4. In the context of the grammar of graphics, what is an aesthetic?
+
+5. Have you used Excel or other software to plot data before? Compare the perspective of using that software to the ideas in the grammar of graphics.
+
+6. What are the 7 different layers in a visualization? (See course notes.) Some of these we have not discussed yet, but you should be able to explain how data, aesthetics, geometries, and theme each describe a separate element of a visualization and can be combined together to make a visualization.
+
+### Using the grammar of graphics (Lesson 8) {#task-b4 .unnumbered}
+
+1. Practice using ggplot to make graphs by reproducing examples from notes and modifying them by changing variables used in aesthetic mappings. Practice using other data sources described in the slides for this lesson or the "Finding and Accessing Data" chapter in course notes.
+
+2. What aesthetic mapping is required to make a histogram? Give an example. Should you use a quantitative or categorical variable?
+
+3. What aesthetic mappings are required to make a boxplot? You don't need to specify a cateogorical variable for color or fill, but what happens if you do? 
+
+4. What aesthetic mappings are required to make a scatterplot? Should you use quantitative or categorical variables?
+
+5. How can you change the text in the following positions of a figure: x and y axis labels, title, subtitle, label on legend? Write an example of each.
+
+6. A default setting with ggplot is to make the background grey with white grid lines. How can you change this to white, with black grid lines? What is the effect of using `theme_classic()`?
+
+### Summarizing data (Lesson 9) {#task-5 .unnumbered}
+
+Work through the exercises to practice mutate, filter, group_by, and summarize provided in the file [task-L09-summarize](tasks/task-L09-summarize.Rmd). Right click the link and select "save as" to get the file on your computer. Then open it with Rstudio. Follow the instructions in the file. When you are done, knit the file to be sure there are no errors. Save your answers for future reference.
+
+1. Describe what the functions `mutate`, `filter`, `group_by`, and `summarize` do to a data frame. Write a working example using each function and explain what it does.
+
+
+2. Does a line of code like `gapminder |> filter(country == "Canada")` change the original dataset? Use that code and then follow it up with `gapminder |> filter(country == "China")`. If the dataset changed, what would you expect from this second line of code?
+
+3. Write a line of code that creates a new quantitative variable in a data frame from an arithmetic calculation using an existing variable. Explain in English what your line of code does.
+
+4. What do the symbols `&`, `|`, and `!` mean inside the filter function?
+
+5. Is there a difference in the output of `diamonds |> filter(color == "J", cut == "Premium")` and `diamonds |> filter(color == "J") |> filter(cut == "Premium")`? Explain what the code does and what the difference is, if any.
+
+6. What do the functions `head`, `tail`, `select`, and `arrange` do?
+
+7. What do `slice`, `slice_sample`, and `slice_head` do?
+
+8. List as many summary statistic functions you can such as `mean` that give one number when applied to a set of numbers.
+
+
+### Facetted plots (Lesson 10) {#task-6 .unnumbered}
+
+Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
+
+1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
+
+### Using LLM to learn (Lesson 11) {.unnumbered}
+
+1. Practice getting an LLM to explain what R code does. Pick examples from the course notes. Type the word "explain" and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative. 
+
+2. Try asking follow-up questions if part of an explanation is not clear (or even if it is clear to you, to see how the AI responds.)
+
+1. Explain what the following code does:
+
+```
+diamonds |>
+  mutate(volume = x * y * z,
+         price_per_volume = price / volume) |>
+  filter(volume > 0) |>
+  group_by(cut, color) |>
+  summarise(mean_price_per_volume = mean(price_per_volume),
+            mean_carat = mean(carat),
+            n = n(),
+            .groups = "drop") |>
+  filter(n >= 50) |>
+  arrange(-mean_price_per_volume) |>
+  group_by(color) |>
+  slice_head(n = 3) |>
+  arrange(color, -mean_price_per_volume)
+```
+
+Paste the code into an AI assistant and ask for an explanation. Check your line by line understanding and your overall summary of the result of the calculation.
+
+3. Write a sentence that describes a calculation, for example: _Write tidyverse code to compute a table based on the diamonds dataset showing which cut-color combinations command the highest prices relative to their physical size, filtered to statistically significant groups, with up to 3 cuts shown per color grade._
+and ask an LLM to write tidyverse code to perform the calculation. Read the code and decide if it is correct. Paste the code into R and determine if it works and if it does the calculation described.
+
+4. Write lots of English-language queries, such as `Find the smallest penguin of each species in the palmerpenguins dataset`. Write R code to accomplish the task. Ask the LLM to write code. Compare your code and its code. Test both versions in R. Do they give the same answer? If not, ask the LLM to explain what your code does. Many computations can be achieved in multiple ways, so don't be surprised if the LLM produces code different from yours. 
+
+### Reading data (Lesson 12) {#task-b5 .unnumbered}
+
+1. Download the [Excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in Excel (or another spreadsheet), and confirming that you can read the changes with R. What happens if you leave a cell blank? What happens if you put a number in a column that is text in the other rows? What about putting text in a column where the other entries are numbers?
+
+2. Get the file "[test-data.csv](tasks/test-data.csv)" and read the data into R using `read_csv`.
+
+3. Find an Excel or csv data file in your own records or on the Internet. Read the data into R and confirm you have read the correct number of variables, the data were interpreted correctly, and you have the correct number of rows of data. If the data are not "tidy" (a grid with variable names in the first row), how does R store and present the data? What if your Excel workbook has multiple sheets in it?
+
+4. Variable names with spaces or "special" symbols need to be enclosed in back-ticks before they can be used in R. Did your imported data have any variable names that needed to be enclosed in back-ticks? Change a column name in test-data.xlsx to have a space, or a minus sign, or other symbols and re-read the file. How does R present the variable name?
+
+5. Use the function `janitor::clean_names()` on your imported dataset.  Did this function change the names of the variables? Say how, briefly.
+
+### Reshaping data (Lesson 13) {#task-7 .unnumbered}
+
+1. Reshape the table `penguins |> count(species, island)` into a wide format table with species in rows and islands in columns.
+
+2. Read the file "[question-2.csv](tasks/question-2.csv)" into R. Reshape the data from wide to long format using `pivot_longer` to obtain three columns: Student, Task_number, Grade. Make a faceted plot of grade on the y-axis, task on the x-axis with each facet corresponding to a different student.
+
+3. Make a wide table from the `gapminder` data. Use `filter` to include only countries from Oceania and only the years 1997, 2002, and 2007. Then use `pivot_wider` to make a wide table with countries in rows and population in the entries under the columns named with the year.
+
+4. Use separate on the results of question 2 to create two new columns: Task and Number, where Task is the word "Task" and Number is the task number as a numeric variable.
+
+5. Use `str_remove` to clean up the task number column to be just the number. Convert the number from text format to a numeric format.
+
+
+### Formatting tables (Lesson 14) {#task-8 .unnumbered}
+
+1. Display a table of population for countries in Oceania in three years (from `gapminder`). Round the population to the nearest 1000 (3 places before the decimal place) and add a separator between every three digits to make the numbers easier to read (a comma or space). Add a header row over the three years that says "Year". Capitalize the heading "country" as "Country". Add a brief but informative caption. Work though these refinements one at a time, making sure your code works after each improvement.
+
+2. Compute a total score for tasks 1-4 for each student using the grades from the file [question-2.csv](tasks/question-2.csv) and the `adorn_totals` function from `janitor`. Assume the maximum scores are all the same for each task, so you don't need to weight the scores when you add them. Make a `kable` formatted table with an informative caption. 
+
+
+### Getting help (Lesson 15) {#task-b6 .unnumbered}
+
+The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
+
+### Working with models (Lesson 16) {#task-b7 .unnumbered}
+
+Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
+
+### Linear models (Lesson 17) {#task-9 .unnumbered}
+
+Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
+
+### GAM and LOESS (Lesson 18) {#task-10 .unnumbered}
+
+Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
+
+### Collaborating (Lesson 19) {#task-11 .unnumbered}
+
+Practice skills associated with collaborating on GitHub using the project repository for your team.
+
+### Finding data (Lesson 20) {#task-b8 .unnumbered}
+
+Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
+
+You can use any data you like for this exercise. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
+
+### Reproducible Reports (Lesson 21) {#task-12 .unnumbered}
+
+We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options.
+ File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
+
+### PCA (Lesson 22)
+
+The exercises for this lesson are grouped with the MDS exercises.
+
+### MDS (Lesson 23) {#task-13 .unnumbered}
+
+Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
+
+### K-means (Lesson 24) {#task-14 .unnumbered}
+
+Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
+
+### Presentations (Lesson 25) {#task-14a .unnumbered}
+
+Create and modify a Quarto presentation as described in the lesson. Ensure you know how to 
+
+* show graphics output, but not the code that generated it,
+* make the graphic the right size to fit on the slide,
+* open the HTML version in your web browser.
+
+File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L23-presentation.qmd) presentation.
+
+### Checking your work (Lesson 26) {.unnumbered}
+
+
+### Dynamic graphics (Lesson 27) {.unnumbered}
+
+### Making Maps (Lesson 28) {#task-b10 .unnumbered}
+
+Practice making a map from the lesson
+
+### More Maps (Lesson 29) {#task-15 .unnumbered}
+
+Make maps described in the file [task-L28-maps](tasks/task-L28-maps.Rmd).
+
+### Map alternatives (Lesson 30) {#task-16 .unnumbered}
+
+Show geographic data without maps as described in [task-L29-map-alternatives](tasks/task-L29-map-alternatives.Rmd).
+
+### Factors and Dates (Lesson 31) {#task-17 .unnumbered}
+
+Exercises with strings, factors, dates, and times. See [task-L30-factors-dates](tasks/task-L30-factors-dates.Rmd).
+
+### Colour (Lesson 32) {#task-b11 .unnumbered}
+
+Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
+
+### Themes (Lesson 33) {#task-18 .unnumbered}
+
+See [task-themes](tasks/task-L32-themes.Rmd).
+
+
+### Graphics formats (Lesson 35)
+

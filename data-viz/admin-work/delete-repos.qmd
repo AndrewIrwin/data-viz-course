@@ -1,0 +1,60 @@
+---
+title: "Delete old repositories"
+format: html
+editor: source
+---
+
+
+```{r}
+library(tidyverse)
+library(gh)
+library(ghclass)
+error("DANGEROUS! Deletes repos. Don't just render me.")
+```
+
+First task when starting a new offering of the course: delete the repositories from the last offering.
+
+Three steps:
+
+* ensure permissions are correct
+* get list of repositories
+* delete repositories
+
+## Ensure permissions are correct
+
+Make sure you have admin permissions for the organization. If you don't, ask the course admin to give you admin permissions.
+
+## Get list of repositories
+
+Get the list of repositories in the organization. You can do this using the GitHub API or by using a tool like `gh` (GitHub CLI).
+
+```{r}
+gh_whoami()
+org_sitrep("Dalhousie-AndrewIrwin-Teaching")
+
+repos <- org_repos("Dalhousie-AndrewIrwin-Teaching")
+```
+
+Assignments to delete
+
+```{r}
+del_assign <- repos[str_detect(repos, "data-viz-assignments-")]
+sapply(del_assign, repo_delete, prompt=FALSE)
+```
+
+Projects to delete
+
+```{r}
+del_project <- repos[str_detect(repos, "data-viz-project-")]
+sapply(del_project, repo_delete, prompt=FALSE)
+```
+
+## Delete old teams 
+
+From last year.
+
+```{r}
+teams <- org_teams(org = "Dalhousie-AndrewIrwin-Teaching")
+teams
+ghclass::team_delete(org = "Dalhousie-AndrewIrwin-Teaching", team = teams)
+```

@@ -16,8 +16,17 @@ library(ghclass)
 Start by collecting GitHub names for each student using a Google form or other tool. Write these into a file with headings (name, email, github). Put these in the parent directory for this folder (or in another convenient place not in the repository).
 
 ```{r}
-name_id_location <- "~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/GitHub-User-Name.csv"
-github <- read_csv(name_id_location)
+name_id_location <- "~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/GitHub User Name (Responses).xlsx"
+# github <- read_csv(name_id_location)
+github <- readxl::read_excel(name_id_location) |> janitor::clean_names()
+github <- github |> 
+  rename(github_account = create_a_git_hub_account_from_the_git_hub_web_page_click_on_the_user_menu_in_the_upper_right_select_your_profile_paste_the_web_address_url_in_the_blank_below) |>
+  add_row(timestamp = now(),
+          your_name = "Andrew Irwin",
+          your_dalhousie_email_address = "stat2430-student@mmab.ca",
+          your_student_number_starting_with_b0 = "B00123456",
+          github_account = "https://github.com/stat2430-student") |>
+  mutate(Github = basename(github_account)) 
 ```
 
 
@@ -37,9 +46,11 @@ repos <- org_repos(org_name, filter = "data-viz-assignments-.*") # student assig
 Make list of repos to create.
 
 ```{r}
-github <- github |> mutate(full_assignment_repo = paste0(org_name, "/", "data-viz-assignments-", Github)) |>
+github2 <- github |> mutate(full_assignment_repo = paste0(org_name, "/", "data-viz-assignments-", Github)) |>
   mutate(assignment_repo = paste0("data-viz-assignments-", Github)) |>
-  filter(!(full_assignment_repo %in% repos))
+  select(-timestamp) |>
+  filter(!(full_assignment_repo %in% repos)) |>
+  distinct()
 ```
 
 Create a repo
@@ -52,7 +63,7 @@ create_repo <- function(i) {
                         source_repo = paste0(org_name, "/data-viz-assignments"),
                         private = TRUE)
 }
-for (i in 1:nrow(github)) create_repo(i)
+for (i in 1:nrow(github2)) create_repo(i)
 ```
 
 

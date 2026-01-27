@@ -1,0 +1,89 @@
+---
+title: "Using LLMs to Learn"
+author: "Andrew Irwin"
+date: "2026-01-30"
+format: 
+  revealjs:
+    scrollable: true
+    slide-number: true
+    chalkboard: true
+---
+
+## What is an LLM?
+
+* **The Concept:** A Large Language Model (LLM) is an AI trained on massive amounts of text and code.
+* **Capabilities:**
+    * Writing and debugging code (R, Python, etc.).
+    * Explaining complex statistical concepts.
+    * Brainstorming visualization designs.
+* **Key Distinction:** They are **probabilistic**, not deterministic. They predict the next word based on patterns; they don't "know" facts like humans do.
+
+---
+
+## Why Use LLMs for Learning?
+
+* **Personalized Tutoring:** 24/7 help with specific bugs.
+* **Iterative Learning:** Ask "Why does this work?" or "Explain like I’m a beginner."
+* **Bridging the Gap:** Move from "blank page syndrome" to a working draft quickly.
+* **Efficiency:** Find specific `ggplot2` syntax without hunting through outdated forums.
+
+---
+
+## Effective Prompting Strategies
+
+> "The quality of the output depends on the quality of the input."
+
+1.  **Provide Context:** "I am an R student using the tidyverse..."
+2.  **Be Specific:** Instead of "Fix my code," use "I have an error on line 4; explain why."
+3.  **Show Your Data:** Use `str()` or `head()` so the AI understands your variables.
+4.  **Chain of Thought:** Ask the AI to "Explain your reasoning step-by-step."
+
+---
+
+## The "Learning" vs. "Doing" Trap
+
+::: {.callout-warning}
+### Danger
+If you copy-paste without understanding, you haven't learned.
+:::
+
+**The Solution: Read-Understand-Rewrite**
+
+1.  **Read** the AI's code thoroughly.
+2.  **Understand** the logic (ask the AI to explain specific functions).
+3.  **Manually Type** the code into your project. **Do not copy-paste.**
+
+---
+
+## Limitations & Hallucinations
+
+* **Hallucinations:** LLMs can confidently invent R packages that do not exist.
+* **Outdated Info:** They may suggest deprecated libraries or old syntax.
+* **No Critical Thinking:** They don't inherently know if a chart is "ethical" or "misleading."
+* **The Golden Rule:** Always run the code. If it doesn't run, the AI is wrong.
+
+---
+
+## Ethical Use & Integrity
+
+* **Transparency:** Disclose when an LLM was used for analysis or code generation.
+* **Originality:** The *story* and *interpretation* of the data must be yours.
+* **The Policy:** LLMs are tools for **assistance**, not **authorship**.
+
+---
+
+## Practical Exercise {background-color="#e7f3ff"}
+
+1.  Identify a "messy" piece of code or a concept you find confusing (e.g., `pivot_longer`).
+2.  **Prompt:** Ask the LLM to explain the concept and provide a minimal example.
+3.  **Review:** Does the explanation match the official R documentation?
+4.  **Apply:** Use the logic to solve a new, slightly different problem.
+
+---
+
+## Summary & Best Practices
+
+* **Treat it as a Mentor:** Ask "how" and "why."
+* **Verify Everything:** Check against official documentation.
+* **Stay in Control:** You are the designer; the LLM is the intern.
+* **Build AI Literacy:** Practice makes your prompting more effective.

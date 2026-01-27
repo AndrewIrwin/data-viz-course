@@ -1,7 +1,7 @@
 ---
 title: "Look at Data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-01-16"
+date: "2026-01-15"
 format:
   revealjs:
     slide-number: true
@@ -47,7 +47,7 @@ anscombe %>%
             y_mean = mean(y),
             y_sd = sd(y),
             correlation = cor(x,y)) %>%
-  kable() %>%
+  kable(digits = 4) %>%
   kable_styling(full_width = FALSE)
 ```
 
@@ -96,6 +96,14 @@ datasaurus_dozen |> filter(dataset == "dino") |>
     facet_wrap(~dataset, ncol = 3)
 # ![The Datasaurus Dozen](static/L04-datasaurus.gif){#fig-datasaurus}
 ```
+
+# What can you learn from a visualization?
+
+* Relationships between variables
+* Relative values of means, standard deviation, ...
+* Trends and patterns
+* ... your ideas here
+
 
 # What is a good visualization?
 
@@ -188,12 +196,12 @@ Healy. Fig. 1.24.
 * Wilke. Chapters 5-16: "Visualizing" series of chapters. Return to these over time.
 
 
-## Task
+## Exercises
 
-* Task 3: Answer 2 questions about data visualization
+* Practice using ideas about the kind of visualization, position, shape, colour, order to assess what messages are most readily communicated by a visualization
 
-  * Use arguments provided in the lessons and readings
+* Practice thinking about how alternative displays of the same data will change the message of a visualization
 
-  * You can agree or disagree, but you must engage with the ideas
+* How easy is it for you, or less experienced users of visualizations, to understand a visualization?
 
 

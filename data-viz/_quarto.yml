@@ -3,6 +3,7 @@ project:
   render: 
     - "*.qmd"
     - "!06-demo-assignment-github.qmd"
+    - "!admin-work/*"
 
 website:
   title: "data-viz"
@@ -14,6 +15,8 @@ website:
         text: Syllabus
       - href: 002-detailed-outline.qmd
         text: Schedule
+      - href: 003-exercises.qmd
+        text: Exercises
       - href: 004-evaluation.qmd
         text: Evaluation
        

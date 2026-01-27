@@ -2,7 +2,12 @@
 title: "Task: Summarizing data"
 author: "Your Name"
 date: "`r Sys.Date()`"
-output: html_document
+format:
+  html:
+    toc: true
+    toc-location: left       # 'right' (default) or 'left'
+    toc-float: true          # Ensures the TOC moves as you scroll
+    embed-resources: true    # Embeds images/css for a single file
 ---
 
 ```{r setup, include=FALSE}

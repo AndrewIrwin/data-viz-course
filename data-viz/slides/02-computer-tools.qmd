@@ -1,7 +1,7 @@
 ---
 title: "Computer Tools"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-01-11"
+date: "2026-01-13"
 format:
   revealjs:
     slide-number: true
@@ -23,11 +23,11 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 * tidyverse
 
-* Rmarkdown
+* Quarto / Rmarkdown
 
 * git
 
-* github
+* GitHub
 
 
 ## Why are we learning to use these tools?
@@ -59,7 +59,7 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ![[tidyverse](https://tidyverse.org/) screenshot](static/L02-tidyverse.png){#fig-tidyverse}
 
-## R markdown
+## Quarto
 
 ![[Rmarkdown](https://rmarkdown.rstudio.com) screenshot. Can also use [Quarto](https://quarto.org/).](static/L02-rmarkdown.png){#fig-tidyverse}
 
@@ -67,17 +67,17 @@ course <- function(static_file) knitr::include_graphics(paste0("https://andrewir
 
 ![[git](https://git-scm.com/) screenshot](static/L02-git.png){#fig-git}
 
-## github
+## GitHub
 
 ![[github](https://github.com/) screenshot](static/L02-github.png){#fig-github}
 
 
-## Task
+## Homework
 
 Read Healy, Sections 2.1-2.4: 
 
-* why and how to use R markdown, R/Rstudio, projects. 
-* the basics of R and being patient as you learn computing tasks.
+* Why and how to use quarto (R markdown), R/Rstudio, projects. 
+* The basics of R and being patient as you learn computing tasks.
 
 Make a list of about 10 key takeaway messages from the reading. 
 
