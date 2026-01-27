@@ -1,7 +1,7 @@
 ---
 title: "Summarizing data with dplyr"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-01-30"
+date: "2026-01-27"
 format:
   revealjs:
     slide-number: true
@@ -33,11 +33,13 @@ With a large dataset we commonly want to
 
 * Compute derived quantities (ratios, change units) 
 
-
+* Perform computations separately for groups of observations, according to the levels of a categorical variable
 
 ## dplyr examples
 
 We will transform and reduce observations using 
+
+* `count` 
 
 * `mutate`
 
@@ -202,7 +204,4 @@ memdb_frame(ChickWeight) |>  group_by(Diet, Chick) |>
 
 * [Cheatsheet for dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
-## Task
-
-Practice these skills by doing the calculations in the associated Task.
 
