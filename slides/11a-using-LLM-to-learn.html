@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Andrew Irwin">
-  <meta name="dcterms.date" content="2026-01-30">
-  <title>data-viz – Using LLMs to Learn</title>
+  <meta name="dcterms.date" content="2026-01-29">
+  <title>data-viz – Using Large Language Models to Learn</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -131,7 +131,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Using LLMs to Learn</h1>
+  <h1 class="title">Using Large Language Models to Learn</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -141,35 +141,135 @@ Andrew Irwin
 </div>
 </div>
 
-  <p class="date">2026-01-30</p>
+  <p class="date">2026-01-29</p>
+</section>
+<section id="goals" class="slide level2">
+<h2>Goals</h2>
+<ul>
+<li>Learn effective ways to ask the computer for help</li>
+<li>Identify which tasks are done well and which tasks are done poorly by LLMs</li>
+<li>Ensure the computer helps you extend and expand your knowledge, rather than just replacing your brain</li>
+<li>Develop strategies for determining if the solutions provided by the computer are correct</li>
+</ul>
+</section>
+<section id="think-about-course-and-learning-goals" class="slide level2">
+<h2>Think about Course and Learning Goals</h2>
+<ul>
+<li>Learn to perform specific computing tasks</li>
+<li>Develop confidence and fluency for the data visualization pipeline: examine data, summarize data, visualize data, interpret and describe your findings</li>
+<li>Learn new tools, ideas, and techniques</li>
+<li>Reflect on what you have learned and develop the skills to think about a wide range of data analysis and visualization tasks</li>
+</ul>
 </section>
 <section id="what-is-an-llm" class="slide level2">
 <h2>What is an LLM?</h2>
 <ul>
-<li><strong>The Concept:</strong> A Large Language Model (LLM) is an AI trained on massive amounts of text and code.</li>
-<li><strong>Capabilities:</strong>
+<li>A Large Language Model (LLM)
 <ul>
-<li>Writing and debugging code (R, Python, etc.).</li>
-<li>Explaining complex statistical concepts.</li>
-<li>Brainstorming visualization designs.</li>
+<li>is trained on massive amounts of text and code,</li>
+<li>generates text and code using statistical predictions,</li>
+<li>provides responses starting with a prompt or question.</li>
 </ul></li>
-<li><strong>Key Distinction:</strong> They are <strong>probabilistic</strong>, not deterministic. They predict the next word based on patterns; they don’t “know” facts like humans do.</li>
+<li>LLMs are <strong>probabilistic</strong>, not deterministic.</li>
+<li>LLMs predict the next word based on patterns; they don’t “know” facts like humans do.</li>
 </ul>
 </section>
-<section id="why-use-llms-for-learning" class="slide level2">
-<h2>Why Use LLMs for Learning?</h2>
+<section id="llm-strengths" class="slide level2">
+<h2>LLM strengths</h2>
 <ul>
-<li><strong>Personalized Tutoring:</strong> 24/7 help with specific bugs.</li>
-<li><strong>Iterative Learning:</strong> Ask “Why does this work?” or “Explain like I’m a beginner.”</li>
-<li><strong>Bridging the Gap:</strong> Move from “blank page syndrome” to a working draft quickly.</li>
-<li><strong>Efficiency:</strong> Find specific <code>ggplot2</code> syntax without hunting through outdated forums.</li>
+<li>Getting started: Move from “blank page syndrome” to a working draft quickly.</li>
+<li>Brainstorming visualization designs</li>
+<li>Explaining statistical or computing concepts: Ask “Why does this work?” or “Explain like I’m a beginner.”</li>
+<li>Tailored help with specific errors in your code.</li>
+<li>Creating examples: Find specific R syntax for unfamiliar functions quickly.</li>
+<li>Writing and debugging code</li>
 </ul>
 </section>
-<section id="effective-prompting-strategies" class="slide level2 scrollable">
-<h2>Effective Prompting Strategies</h2>
-<blockquote>
-<p>“The quality of the output depends on the quality of the input.”</p>
-</blockquote>
+<section id="llms-to-try" class="slide level2">
+<h2>LLMs to try:</h2>
+<ul>
+<li>Claude <a href="https://claude.ai/chat/">https://claude.ai/chat/</a></li>
+<li>ChatGPT <a href="https://chatgpt.com/">https://chatgpt.com/</a></li>
+<li>Microsoft co-pilot <a href="my.dal.ca">my.dal.ca</a></li>
+<li>Gemini <a href="https://gemini.google.com/">https://gemini.google.com/</a></li>
+<li>DeepSeek <a href="https://chat.deepseek.com/">https://chat.deepseek.com/</a></li>
+</ul>
+</section>
+<section id="asking-questions" class="slide level2">
+<h2>Asking questions</h2>
+<p>Use a phrase you might type for a google search, or turn your phrase in to a question:</p>
+<ul>
+<li>Write code for a simple scatterplot based on the Palmer Penguins data using ggplot</li>
+<li>What is tidy data?</li>
+<li>Explain what the “aes” function in ggplot does.</li>
+<li>What is the difference between staging, committing and pushing to github?</li>
+</ul>
+</section>
+<section id="more-complicated-questions" class="slide level2">
+<h2>More complicated questions</h2>
+<ul>
+<li>Is there a version of the mtcars or mpg dataset with more modern data?</li>
+<li>Make a ggplot of gapminder data showing life expectancy vs GDP per capita, with GDP on a log scale. Label the GDP axis using exponents, for example 1e5 = 10^5.</li>
+<li>Find the Mauna Loa atmospheric CO2 data since 1960 and write code to plot the concentration of CO2 vs time.</li>
+</ul>
+</section>
+<section id="make-notes" class="slide level2">
+<h2>Make notes</h2>
+<p>Write a journal to learn:</p>
+<ul>
+<li>Write queries and code in a .qmd file</li>
+<li>Summarize what you learned from each useful prompt and response</li>
+<li>Generate new ideas for questions to answer later</li>
+<li>Simplify LLM output to create the simplest example you can that captures new knowledge or skills</li>
+</ul>
+</section>
+<section id="explain-code" class="slide level2">
+<h2>Explain code</h2>
+<ul>
+<li><p>Explain what <code>%&gt;%</code> does in the code <code>co2_1960 &lt;- co2_raw %&gt;% filter(year &gt;= 1960)</code></p></li>
+<li><p>What is the difference between <code>=</code>, <code>==</code>, and <code>&lt;-</code> ?</p></li>
+<li><p>Explain and improve <code>diamonds |&gt; ggplot(aes(x = price, y = carat)) + geom_bin2d() + scale_x_log10()</code> (Example from Lesson 8.)</p></li>
+</ul>
+</section>
+<section id="explain-more-complex-code" class="slide level2">
+<h2>Explain more complex code</h2>
+<p>From last class: <em>Explain the following code line by line</em></p>
+<pre><code>diamonds |&gt;
+  mutate(price_per_carat = price / carat) |&gt;
+  group_by(color, clarity, cut) |&gt;
+  summarise(median_price_per_carat = median(price_per_carat),
+            n = n(),
+            .groups = "drop") |&gt;
+  arrange(-median_price_per_carat) |&gt;
+  group_by(cut) |&gt;
+  slice_head(n=2) |&gt;
+  arrange(-median_price_per_carat)</code></pre>
+</section>
+<section id="generate-code-for-you-to-think-about" class="slide level2">
+<h2>Generate code for you to think about</h2>
+<ul>
+<li><p>Ask the LLM to challenge you or give you some examples: <em>Give me some interesting calculations to make summary tables with group_by, mutate and summarize.</em></p></li>
+<li><p>Help me improve the following code to make a scatter plot: <code>mpg |&gt; ggplot() + geom_point(aes(displ, cty))</code></p></li>
+</ul>
+</section>
+<section id="tutor-me" class="slide level2">
+<h2>Tutor me</h2>
+<p>I’d like to reproduce Hans Rosling’s life expectancy vs GDP figure, without animation using the tidyverse. I want to learn how to make the figure, so don’t give me the code or an answer. Instead ask me questions to help me figure out what I need to know to solve this challenge.</p>
+<ul>
+<li><p>I can get as far as: <code>gapminder |&gt; ggplot() + geom_point(aes(gdpPerCapita, lifeExp))</code>. Can you help me with the size of the dots?</p></li>
+<li><p>Keep going until you are happy with the result …</p></li>
+<li><p>Write in your journal</p></li>
+</ul>
+</section>
+<section id="start-to-think-about-data-analysis-projects" class="slide level2">
+<h2>Start to think about data analysis projects</h2>
+<ul>
+<li><p>Help me find and summarize temperature data from Halifax, NS using R and the tidyverse.</p></li>
+<li><p>Write tidyverse code to compute the distribution of the number of days in a row with a daily high temperature below freezing in Halifax</p></li>
+</ul>
+</section>
+<section id="prompting-strategies" class="slide level2 scrollable">
+<h2>Prompting Strategies</h2>
 <ol type="1">
 <li><strong>Provide Context:</strong> “I am an R student using the tidyverse…”</li>
 <li><strong>Be Specific:</strong> Instead of “Fix my code,” use “I have an error on line 4; explain why.”</li>
@@ -192,46 +292,49 @@ Andrew Irwin
 </div>
 </div>
 </div>
-<p><strong>The Solution: Read-Understand-Rewrite</strong></p>
+<p><strong>The Solution: Read-Understand-Revise</strong></p>
 <ol type="1">
 <li><strong>Read</strong> the AI’s code thoroughly.</li>
 <li><strong>Understand</strong> the logic (ask the AI to explain specific functions).</li>
-<li><strong>Manually Type</strong> the code into your project. <strong>Do not copy-paste.</strong></li>
+<li><strong>Revise and Adapt</strong> the code to your own purposes</li>
 </ol>
 </section>
 <section id="limitations-hallucinations" class="slide level2">
 <h2>Limitations &amp; Hallucinations</h2>
 <ul>
-<li><strong>Hallucinations:</strong> LLMs can confidently invent R packages that do not exist.</li>
-<li><strong>Outdated Info:</strong> They may suggest deprecated libraries or old syntax.</li>
-<li><strong>No Critical Thinking:</strong> They don’t inherently know if a chart is “ethical” or “misleading.”</li>
-<li><strong>The Golden Rule:</strong> Always run the code. If it doesn’t run, the AI is wrong.</li>
+<li><strong>Hallucinations:</strong> LLMs will sometimes use R packages that do not exist.</li>
+<li><strong>Outdated Info:</strong> Suggestions may use outdated libraries or old syntax.</li>
+<li><strong>No Critical Thinking:</strong> LLMs don’t assess if a chart is misleading or suitable for your purpose.</li>
+</ul>
+</section>
+<section id="testing-llm-code" class="slide level2">
+<h2>Testing LLM code</h2>
+<ul>
+<li>Perform manual calculation checks (count data, compute means) for a few examples to see if they match output of more complex code</li>
+<li>Make simplified versions of a visualization that you draw yourself</li>
+<li>Compare notes with friend – did they use the same approach? did they get the same answer?</li>
+<li>Think of alternative ways to get similar results and try both</li>
+<li>Read the LLM code line by line and ensure you really understand each line. <em>Caution: it’s easy to deceive yourself</em></li>
 </ul>
 </section>
 <section id="ethical-use-integrity" class="slide level2">
 <h2>Ethical Use &amp; Integrity</h2>
 <ul>
-<li><strong>Transparency:</strong> Disclose when an LLM was used for analysis or code generation.</li>
-<li><strong>Originality:</strong> The <em>story</em> and <em>interpretation</em> of the data must be yours.</li>
-<li><strong>The Policy:</strong> LLMs are tools for <strong>assistance</strong>, not <strong>authorship</strong>.</li>
+<li><p><strong>Transparency:</strong> Disclose when an LLM was used for analysis or code generation in an acknowledgements or citations section of your work.</p></li>
+<li><p><strong>Originality:</strong> The <em>story</em> and <em>interpretation</em> of the data must be yours.</p></li>
+<li><p><strong>The Policy:</strong> LLMs are tools for <strong>assistance</strong>, not <strong>authorship</strong>.</p></li>
+<li><p>You will need to demonstrate your knowledge of course material on a written test without computer assistance, so be sure you check your understanding</p></li>
 </ul>
 </section>
-<section id="practical-exercise" class="slide level2 scrollable" data-background-color="#e7f3ff">
-<h2>Practical Exercise</h2>
-<ol type="1">
-<li>Identify a “messy” piece of code or a concept you find confusing (e.g., <code>pivot_longer</code>).</li>
-<li><strong>Prompt:</strong> Ask the LLM to explain the concept and provide a minimal example.</li>
-<li><strong>Review:</strong> Does the explanation match the official R documentation?</li>
-<li><strong>Apply:</strong> Use the logic to solve a new, slightly different problem.</li>
-</ol>
-</section>
-<section id="summary-best-practices" class="slide level2">
-<h2>Summary &amp; Best Practices</h2>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
 <ul>
-<li><strong>Treat it as a Mentor:</strong> Ask “how” and “why.”</li>
-<li><strong>Verify Everything:</strong> Check against official documentation.</li>
-<li><strong>Stay in Control:</strong> You are the designer; the LLM is the intern.</li>
-<li><strong>Build AI Literacy:</strong> Practice makes your prompting more effective.</li>
+<li>LLMs can be very useful for: getting started, learning new methods, finding and fixing errors</li>
+<li>LLMs code can be more complex than what you are used to, creating barriers to understanding (“Simplify this code:”)</li>
+<li>LLM output can be completely or subtly wrong</li>
+<li>You are responsible for ensuring your mind is engaged and you are learning</li>
+<li>Reflect on the skills you are developing in the course and ask yourself what you can do with that knowledge</li>
+<li>Learning to use LLMs to develop your own knowledge and skills is challenging but potentially very rewarding</li>
 </ul>
 
 
