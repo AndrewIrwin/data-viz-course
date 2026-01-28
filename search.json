@@ -1547,11 +1547,11 @@
     "text": "The “Learning” vs. “Doing” Trap\n\n\n\n\n\n\nDanger\n\n\nIf you copy-paste without understanding, you haven’t learned.\n\n\n\nThe Solution: Read-Understand-Revise\n\nRead the AI’s code thoroughly.\nUnderstand the logic (ask the AI to explain specific functions).\nRevise and Adapt the code to your own purposes"
   },
   {
-    "objectID": "slides/11a-using-LLM-to-learn.html#limitations-hallucinations",
-    "href": "slides/11a-using-LLM-to-learn.html#limitations-hallucinations",
+    "objectID": "slides/11a-using-LLM-to-learn.html#limitations",
+    "href": "slides/11a-using-LLM-to-learn.html#limitations",
     "title": "Using Large Language Models to Learn",
-    "section": "Limitations & Hallucinations",
-    "text": "Limitations & Hallucinations\n\nHallucinations: LLMs will sometimes use R packages that do not exist.\nOutdated Info: Suggestions may use outdated libraries or old syntax.\nNo Critical Thinking: LLMs don’t assess if a chart is misleading or suitable for your purpose.\nErrors: Code written will sometime be simply wrong or non-functional\nSycophancy: The LLM will compliment you, agree with you, admit to errors, but this “decorative” text and doens’t mean anything"
+    "section": "Limitations",
+    "text": "Limitations\n\nHallucinations: LLMs will sometimes use R packages that do not exist.\nOutdated Info: Suggestions may use outdated libraries or old syntax.\nNo Critical Thinking: LLMs don’t assess if a chart is misleading or suitable for your purpose.\nErrors: Code will sometimes be wrong or non-functional\nSycophancy: The LLM will compliment you, agree with you, admit to errors, but this “decorative” text doesn’t mean anything."
   },
   {
     "objectID": "slides/11a-using-LLM-to-learn.html#testing-llm-code",
