@@ -58,8 +58,8 @@ Create a repo
 ```{r}
 create_repo <- function(i) {
   org_create_assignment(org = org_name,
-                        repo = github$assignment_repo[i],
-                        user = github$Github[i],
+                        repo = github2$assignment_repo[i],
+                        user = github2$Github[i],
                         source_repo = paste0(org_name, "/data-viz-assignments"),
                         private = TRUE)
 }

@@ -1,7 +1,7 @@
 ---
-title: "Using LLMs to Learn"
+title: "Using Large Language Models to Learn"
 author: "Andrew Irwin"
-date: "2026-01-30"
+date: "2026-01-29"
 format: 
   revealjs:
     scrollable: true
@@ -9,36 +9,126 @@ format:
     chalkboard: true
 ---
 
+## Goals
+
+* Learn effective ways to ask the computer for help
+* Identify which tasks are done well and which tasks are done poorly by LLMs
+* Ensure the computer helps you extend and expand your knowledge, rather than just replacing your brain
+* Develop strategies for determining if the solutions provided by the computer are correct
+
+## Think about Course and Learning Goals
+
+* Learn to perform specific computing tasks
+* Develop confidence and fluency for the data visualization pipeline: examine data, summarize data, visualize data, interpret and describe your findings
+* Learn new tools, ideas, and techniques
+* Reflect on what you have learned and develop the skills to think about a wide range of data analysis and visualization tasks
+
 ## What is an LLM?
 
-* **The Concept:** A Large Language Model (LLM) is an AI trained on massive amounts of text and code.
-* **Capabilities:**
-    * Writing and debugging code (R, Python, etc.).
-    * Explaining complex statistical concepts.
-    * Brainstorming visualization designs.
-* **Key Distinction:** They are **probabilistic**, not deterministic. They predict the next word based on patterns; they don't "know" facts like humans do.
+* A Large Language Model (LLM) 
+  * is trained on massive amounts of text and code,
+  * generates text and code using statistical predictions,
+  * provides responses starting with a prompt or question.
+* LLMs are **probabilistic**, not deterministic. 
+* LLMs predict the next word based on patterns; they don't "know" facts like humans do.
+
+## LLM strengths
+
+* Getting started: Move from "blank page syndrome" to a working draft quickly.
+* Brainstorming visualization designs
+* Explaining statistical or computing concepts: Ask "Why does this work?" or "Explain like I’m a beginner."
+* Tailored help with specific errors in your code.
+* Creating examples: Find specific R syntax for unfamiliar functions quickly.
+* Writing and debugging code
 
 ---
 
-## Why Use LLMs for Learning?
+## LLMs to try:
 
-* **Personalized Tutoring:** 24/7 help with specific bugs.
-* **Iterative Learning:** Ask "Why does this work?" or "Explain like I’m a beginner."
-* **Bridging the Gap:** Move from "blank page syndrome" to a working draft quickly.
-* **Efficiency:** Find specific `ggplot2` syntax without hunting through outdated forums.
+* Claude [https://claude.ai/chat/](https://claude.ai/chat/)
+* ChatGPT [https://chatgpt.com/](https://chatgpt.com/)
+* Microsoft co-pilot [my.dal.ca](my.dal.ca)
+* Gemini [https://gemini.google.com/](https://gemini.google.com/)
+* DeepSeek [https://chat.deepseek.com/](https://chat.deepseek.com/)
 
----
+## Asking questions
 
-## Effective Prompting Strategies
+Use a phrase you might type for a google search, or turn your phrase in to a question:
 
-> "The quality of the output depends on the quality of the input."
+* Write code for a simple scatterplot based on the Palmer Penguins data using ggplot
+* What is tidy data?
+* Explain what the "aes" function in ggplot does.
+* What is the difference between staging, committing and pushing to github?
+
+## More complicated questions
+
+* Is there a version of the mtcars or mpg dataset with more modern data?
+* Make a ggplot of gapminder data showing life expectancy vs GDP per capita, with GDP on a log scale. Label the GDP axis using exponents, for example 1e5 = 10^5.
+* Find the Mauna Loa atmospheric CO2 data since 1960 and write code to plot the concentration of CO2 vs time.
+
+## Make notes
+
+Write a journal to learn:
+
+* Write queries and code in a .qmd file 
+* Summarize what you learned from each useful prompt and response
+* Generate new ideas for questions to answer later
+* Simplify LLM output to create the simplest example you can that captures new knowledge or skills
+
+## Explain code
+
+* Explain what `%>%` does in the code `co2_1960 <- co2_raw %>% filter(year >= 1960)`
+
+* What is the difference between `=`, `==`, and `<-` ?
+
+* Explain and improve `diamonds |> ggplot(aes(x = price, y = carat)) + geom_bin2d() + scale_x_log10()` (Example from Lesson 8.)
+
+## Explain more complex code
+
+From last class: _Explain the following code line by line_
+
+```
+diamonds |>
+  mutate(price_per_carat = price / carat) |>
+  group_by(color, clarity, cut) |>
+  summarise(median_price_per_carat = median(price_per_carat),
+            n = n(),
+            .groups = "drop") |>
+  arrange(-median_price_per_carat) |>
+  group_by(cut) |>
+  slice_head(n=2) |>
+  arrange(-median_price_per_carat)
+```
+
+## Generate code for you to think about
+
+* Ask the LLM to challenge you or give you some examples: _Give me some interesting calculations to make summary tables with group_by, mutate and summarize._
+
+* Help me improve the following code to make a scatter plot: `mpg |> ggplot() + geom_point(aes(displ, cty))`
+
+
+## Tutor me
+
+I'd like to reproduce Hans Rosling's life expectancy vs GDP figure, without animation using the tidyverse. I want to learn how to make the figure, so don't give me the code or an answer. Instead ask me questions to help me figure out what I need to know to solve this challenge.
+
+* I can get as far as: `gapminder |> ggplot() + geom_point(aes(gdpPerCapita, lifeExp))`. Can you help me with the size of the dots?
+
+* Keep going until you are happy with the result ...
+
+* Write in your journal
+
+## Start to think about data analysis projects
+
+* Help me find and summarize temperature data from Halifax, NS using R and the tidyverse.
+
+* Write tidyverse code to compute the distribution of the number of days in a row with a daily high temperature below freezing in Halifax
+
+## Prompting Strategies
 
 1.  **Provide Context:** "I am an R student using the tidyverse..."
 2.  **Be Specific:** Instead of "Fix my code," use "I have an error on line 4; explain why."
 3.  **Show Your Data:** Use `str()` or `head()` so the AI understands your variables.
 4.  **Chain of Thought:** Ask the AI to "Explain your reasoning step-by-step."
-
----
 
 ## The "Learning" vs. "Doing" Trap
 
@@ -47,43 +137,42 @@ format:
 If you copy-paste without understanding, you haven't learned.
 :::
 
-**The Solution: Read-Understand-Rewrite**
+**The Solution: Read-Understand-Revise**
 
 1.  **Read** the AI's code thoroughly.
 2.  **Understand** the logic (ask the AI to explain specific functions).
-3.  **Manually Type** the code into your project. **Do not copy-paste.**
+3.  **Revise and Adapt** the code to your own purposes
 
----
 
 ## Limitations & Hallucinations
 
-* **Hallucinations:** LLMs can confidently invent R packages that do not exist.
-* **Outdated Info:** They may suggest deprecated libraries or old syntax.
-* **No Critical Thinking:** They don't inherently know if a chart is "ethical" or "misleading."
-* **The Golden Rule:** Always run the code. If it doesn't run, the AI is wrong.
+* **Hallucinations:** LLMs will sometimes use R packages that do not exist.
+* **Outdated Info:** Suggestions may use outdated libraries or old syntax.
+* **No Critical Thinking:** LLMs don't assess if a chart is misleading or suitable for your purpose.
 
----
+## Testing LLM code
+
+* Perform manual calculation checks (count data, compute means) for a few examples to see if they match output of more complex code
+* Make simplified versions of a visualization that you draw yourself
+* Compare notes with friend -- did they use the same approach? did they get the same answer?
+* Think of alternative ways to get similar results and try both 
+* Read the LLM code line by line and ensure you really understand each line. _Caution: it's easy to deceive yourself_
+
 
 ## Ethical Use & Integrity
 
-* **Transparency:** Disclose when an LLM was used for analysis or code generation.
+* **Transparency:** Disclose when an LLM was used for analysis or code generation in an acknowledgements or citations section of your work.
 * **Originality:** The *story* and *interpretation* of the data must be yours.
 * **The Policy:** LLMs are tools for **assistance**, not **authorship**.
 
----
+* You will need to demonstrate your knowledge of course material on a written test without computer assistance, so be sure you check your understanding
 
-## Practical Exercise {background-color="#e7f3ff"}
+## Summary
 
-1.  Identify a "messy" piece of code or a concept you find confusing (e.g., `pivot_longer`).
-2.  **Prompt:** Ask the LLM to explain the concept and provide a minimal example.
-3.  **Review:** Does the explanation match the official R documentation?
-4.  **Apply:** Use the logic to solve a new, slightly different problem.
+* LLMs can be very useful for: getting started, learning new methods, finding and fixing errors
+* LLMs code can be more complex than what you are used to, creating barriers to understanding ("Simplify this code:")
+* LLM output can be completely or subtly wrong
+* You are responsible for ensuring your mind is engaged and you are learning
+* Reflect on the skills you are developing in the course and ask yourself what you can do with that knowledge
+* Learning to use LLMs to develop your own knowledge and skills is challenging but potentially very rewarding
 
----
-
-## Summary & Best Practices
-
-* **Treat it as a Mentor:** Ask "how" and "why."
-* **Verify Everything:** Check against official documentation.
-* **Stay in Control:** You are the designer; the LLM is the intern.
-* **Build AI Literacy:** Practice makes your prompting more effective.
