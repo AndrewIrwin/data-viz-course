@@ -147,7 +147,7 @@ Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  t
 
 1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
 
-### Using LLM to learn (Lesson 11) {.unnumbered}
+### Using LLM to learn (Lesson 11) {.unnumbered #task-llm}
 
 1. Practice getting an LLM to explain what R code does. Pick examples from the course notes. Type the word "explain" and paste in the code. Try several different pieces of code. Try the same code in different AI assistants to see if there is a answer you find easier to understand or more informative. 
 
@@ -262,7 +262,7 @@ Create and modify a Quarto presentation as described in the lesson. Ensure you k
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L23-presentation.qmd) presentation.
+File: [task-L24-presentation](https://github.com/Dalhousie-AndrewIrwin-Teaching/data-viz-course/blob/main/data-viz/tasks/task-L24-presentation.qmd) code and the [formatted](task-L24-presentation.qmd) presentation.
 
 ### Checking your work (Lesson 26) {.unnumbered}
 

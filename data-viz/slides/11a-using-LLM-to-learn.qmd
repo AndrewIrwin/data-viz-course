@@ -16,7 +16,7 @@ format:
 * Ensure the computer helps you extend and expand your knowledge, rather than just replacing your brain
 * Develop strategies for determining if the solutions provided by the computer are correct
 
-## Think about Course and Learning Goals
+## Think about Course and Learning goals
 
 * Learn to perform specific computing tasks
 * Develop confidence and fluency for the data visualization pipeline: examine data, summarize data, visualize data, interpret and describe your findings
@@ -144,11 +144,13 @@ If you copy-paste without understanding, you haven't learned.
 3.  **Revise and Adapt** the code to your own purposes
 
 
-## Limitations & Hallucinations
+## Limitations 
 
 * **Hallucinations:** LLMs will sometimes use R packages that do not exist.
 * **Outdated Info:** Suggestions may use outdated libraries or old syntax.
 * **No Critical Thinking:** LLMs don't assess if a chart is misleading or suitable for your purpose.
+* **Errors**: Code will sometimes be wrong or non-functional
+* **Sycophancy**: The LLM will compliment you, agree with you, admit to errors, but this "decorative" text doesn't mean anything.
 
 ## Testing LLM code
 
@@ -165,14 +167,13 @@ If you copy-paste without understanding, you haven't learned.
 * **Originality:** The *story* and *interpretation* of the data must be yours.
 * **The Policy:** LLMs are tools for **assistance**, not **authorship**.
 
-* You will need to demonstrate your knowledge of course material on a written test without computer assistance, so be sure you check your understanding
+_You will need to demonstrate your knowledge of course material on a written test without computer assistance, so be sure you check your understanding_
 
 ## Summary
 
 * LLMs can be very useful for: getting started, learning new methods, finding and fixing errors
 * LLMs code can be more complex than what you are used to, creating barriers to understanding ("Simplify this code:")
 * LLM output can be completely or subtly wrong
-* You are responsible for ensuring your mind is engaged and you are learning
 * Reflect on the skills you are developing in the course and ask yourself what you can do with that knowledge
 * Learning to use LLMs to develop your own knowledge and skills is challenging but potentially very rewarding
 
