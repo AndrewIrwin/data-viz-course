@@ -1,7 +1,7 @@
 ---
 title: "Table formatting demo"
 author: "A Irwin"
-date: "2024-02-08"
+date: "2026-02-05"
 output: html_document
 ---
 
@@ -19,7 +19,8 @@ Make a table of the number of penguins of each species observed on each island. 
 ```{r}
 penguins |> rename(Species = species) |>
   count(Species, island) |>
-  pivot_wider(names_from = island, values_from = n,
+  pivot_wider(names_from = island, 
+              values_from = n,
               values_fill = 0) |>
   kable(caption = "Number of individuals of each species observed on three island near the Antarctic peninsula.",
         # col.names = c("Species", "Biscoe", "Dream", "Torgersen")
@@ -32,6 +33,8 @@ penguins |> rename(Species = species) |>
 
 ## Bonus material
 
+Adapt the example above to work with tables of your design, for example using other datasets discussed in the class.
+
 ```{r}
 gapminder |>
     filter(country == "Canada" | country == "Iran") 
@@ -42,25 +45,3 @@ gapminder |>
 ```
 
 
-
-
-
-
-
-
-
-
-
-```{r}
-penguins |> count(species, island) |>
-  pivot_wider(names_from = island,
-              values_from = n,
-              values_fill = 0) |>
-  kable(caption = "Number of penguins observed on each island, by species",
-       col.names = c("Species", "Biscoe", "Dream", "Torgersen")) |>
-  add_header_above(c(" " = 1, "Island" = 3)) |>
-  kable_styling() 
-  
-
-
-```

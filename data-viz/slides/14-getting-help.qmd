@@ -1,7 +1,7 @@
 ---
 title: "Getting help"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-08"
+date: "2026-02-05"
 format:
   revealjs:
     slide-number: true
@@ -20,6 +20,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(gapminder)
 ```
+
+## Goals
+
+* Advice and suggestions for learning from the days before LLMs
 
 ## What to do when you are stuck?
 
@@ -182,7 +186,7 @@ I've made a [list](https://andrewirwin.github.io/data-viz-notes/lessons/499-revi
 
 * It gets easier with practice: posing questions, understanding the answers, and remembering how it all fits together
 
-## Task
+## Homework
 
 Assignment 2 asks you to learn some new skills and describe what you learned.
 

@@ -1,7 +1,7 @@
 ---
 title: "Displaying tables"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-08"
+date: "2026-02-05"
 format:
   revealjs:
     slide-number: true
@@ -32,6 +32,10 @@ After we collect, reshape, and summarize data, we want to display it!
 * Add captions
 
 * Consistent goal: make the table easy to interpret
+
+## Packages
+
+Tools we always use from `tidyverse` and table formatting tools from `kableExtra`
 
 ## Raw data
 
@@ -125,10 +129,6 @@ Other packages to consider:
 * `flextable` for working with Microsoft Office
 * Information about these and [more](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541)
 
-## Summary
-
-* Several ways to customize the formatting of a table
-
 
 ## Further reading
 
@@ -137,9 +137,7 @@ Other packages to consider:
 * `kableExtra` [vignette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
 
 
-## Task
 
-The lesson's Task has some exercises for practicing table presentation.
 
 
 

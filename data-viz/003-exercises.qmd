@@ -143,9 +143,26 @@ Work through the exercises to practice mutate, filter, group_by, and summarize p
 
 ### Facetted plots (Lesson 10) {#task-6 .unnumbered}
 
-Work through the instructions in [task-L10-facets](tasks/task-L10-facets.Rmd)  to practice making faceted plots.
-
 1. What is the difference between `facet_wrap` and `facet_grid`? Write an example using each.
+
+For the following questions, use the subset of the `diamonds` dataset defined as
+`diamonds_subset <- diamonds |> filter(clarity == "IF", carat > 0.5)`, or other data of your choosing.
+
+2. Make a scatter plot of price as a function of carat from the `diamonds_subset` data. Create a facet for each level of the `cut` categorical variable. Describe what you learn by looking at the different facets of the plot.
+
+
+3. When I drew the previous plot, I noticed a different pattern for diamonds smaller than 1 carat compared to diamonds 1 carat or larger. Create a new categorical variable to separate diamonds into these two groups. Use this categorical variable to create a two facet scatter plot and colour the points on your plot according to the `cut` variable. Show any variables you like on the plot.
+
+```
+diamonds_subset_1ct <- diamonds_subset |> 
+  mutate(one_carat = cut(carat, breaks = c(0, 1, Inf), 
+                         labels = c("Less than 1 ct", "1 ct or more")))
+```
+
+
+4. Make a scatter plot of the length and width of each diamond (the variables `x` and `y`) in the diamonds subset data. Create facets for each combination of `color` and `cut`.
+Describe what you learn by looking at the different facets of the plot.
+
 
 ### Using LLM to learn (Lesson 11) {.unnumbered #task-llm}
 
@@ -203,6 +220,7 @@ and ask an LLM to write tidyverse code to perform the calculation. Read the code
 
 5. Use `str_remove` to clean up the task number column to be just the number. Convert the number from text format to a numeric format.
 
+6. Data from the slides came from the `tidyr` package, specifically the `who` dataset (which is not tidy!) and the `population` dataset. Get the data from [here](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) and repeat the examples from the slides, with your own variations.
 
 ### Formatting tables (Lesson 14) {#task-8 .unnumbered}
 
