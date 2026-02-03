@@ -288,9 +288,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="task-6" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="task-6">Facetted plots (Lesson 10)</h3>
-<p>Work through the instructions in <a href="tasks/task-L10-facets.Rmd">task-L10-facets</a> to practice making faceted plots.</p>
 <ol type="1">
 <li>What is the difference between <code>facet_wrap</code> and <code>facet_grid</code>? Write an example using each.</li>
+</ol>
+<p>For the following questions, use the subset of the <code>diamonds</code> dataset defined as <code>diamonds_subset &lt;- diamonds |&gt; filter(clarity == "IF", carat &gt; 0.5)</code>, or other data of your choosing.</p>
+<ol start="2" type="1">
+<li><p>Make a scatter plot of price as a function of carat from the <code>diamonds_subset</code> data. Create a facet for each level of the <code>cut</code> categorical variable. Describe what you learn by looking at the different facets of the plot.</p></li>
+<li><p>When I drew the previous plot, I noticed a different pattern for diamonds smaller than 1 carat compared to diamonds 1 carat or larger. Create a new categorical variable to separate diamonds into these two groups. Use this categorical variable to create a two facet scatter plot and colour the points on your plot according to the <code>cut</code> variable. Show any variables you like on the plot.</p></li>
+</ol>
+<pre><code>diamonds_subset_1ct &lt;- diamonds_subset |&gt; 
+  mutate(one_carat = cut(carat, breaks = c(0, 1, Inf), 
+                         labels = c("Less than 1 ct", "1 ct or more")))</code></pre>
+<ol start="4" type="1">
+<li>Make a scatter plot of the length and width of each diamond (the variables <code>x</code> and <code>y</code>) in the diamonds subset data. Create facets for each combination of <code>color</code> and <code>cut</code>. Describe what you learn by looking at the different facets of the plot.</li>
 </ol>
 </section>
 <section id="task-llm" class="level3 unnumbered">
@@ -338,6 +348,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Make a wide table from the <code>gapminder</code> data. Use <code>filter</code> to include only countries from Oceania and only the years 1997, 2002, and 2007. Then use <code>pivot_wider</code> to make a wide table with countries in rows and population in the entries under the columns named with the year.</p></li>
 <li><p>Use separate on the results of question 2 to create two new columns: Task and Number, where Task is the word “Task” and Number is the task number as a numeric variable.</p></li>
 <li><p>Use <code>str_remove</code> to clean up the task number column to be just the number. Convert the number from text format to a numeric format.</p></li>
+<li><p>Data from the slides came from the <code>tidyr</code> package, specifically the <code>who</code> dataset (which is not tidy!) and the <code>population</code> dataset. Get the data from <a href="https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data">here</a> and repeat the examples from the slides, with your own variations.</p></li>
 </ol>
 </section>
 <section id="task-8" class="level3 unnumbered">

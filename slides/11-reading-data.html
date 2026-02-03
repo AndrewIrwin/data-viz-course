@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2024-02-06">
+<meta name="dcterms.date" content="2026-02-03">
 <title>data-viz – Reading data into R</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -207,12 +207,12 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2024-02-06</p>
+  <p class="date">2026-02-03</p>
 </section><section id="reading-data" class="slide level2"><h2>Reading data</h2>
 <ul>
 <li><p>Most data originates outside of R</p></li>
 <li>
-<p>To use the data with R, you must</p>
+<p>To use data with R, you must</p>
 <ul>
 <li><p>Obtain a copy of the data in some format</p></li>
 <li><p>Get R to “read” those data</p></li>
@@ -224,7 +224,7 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Spreadsheet (Excel, Google Sheets, Numbers, LibreOffice Calc)</p></li>
 <li><p>Text files (csv, tab separated, delimited)</p></li>
 <li><p>Binary formats (various)</p></li>
-<li><p>Self-documenting (NetCDF for geophysical data, specialized for astronomy)</p></li>
+<li><p>Self-documenting (NetCDF for geophysical data, specialized for astronomy, oceanography, computer model output)</p></li>
 <li><p>An almost infinite variety of custom formats</p></li>
 </ul></section><section id="examples" class="slide level2 smaller"><h2>Examples</h2>
 <ul>
@@ -327,7 +327,21 @@ Andrew Irwin, a.irwin@dal.ca
 </section><section id="rstudio-data-import-helper" class="slide level2"><h2>Rstudio data import helper</h2>
 <p>Flle &gt; Import dataset &gt; From text (readr) …</p>
 
-<img data-src="static/L11/import-wizard.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section><section id="things-to-watch-out-for" class="slide level2"><h2>Things to watch out for</h2>
+<img data-src="static/L11/import-wizard.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section><section id="cleaning-variable-names" class="slide level2"><h2>Cleaning variable names</h2>
+<ul>
+<li><p>Variable (column) names that contain spaces, brackets, arithmetic symbols, and other symbols</p></li>
+<li><p>These variable names must be enclosed in backticks (e.g., <code>`Max Temp (°C)`</code>)</p></li>
+<li><p><code>clean_names</code> in the <code>janitor</code> package transforms the names to make them easier to type</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Original names: Longitude (x), Date/Time, Max Temp (°C)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cleaned names: longitude_x, date_time, max_temp_c</code></pre>
+</div>
+</div>
+</section><section id="things-to-watch-out-for" class="slide level2"><h2>Things to watch out for</h2>
 <ul>
 <li><p>Multi-row headings, missing headings</p></li>
 <li><p>Extra rows at the top of the file</p></li>
@@ -342,12 +356,11 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Try the Rstudio data import tool. Notice the R code generated for you.</p></li>
 <li><p><strong>Always check your data table in R</strong></p></li>
 <li><p>Lots of ways for errors to arise</p></li>
-<li><p><em>Practice, practice, practice</em> and ask for help!</p></li>
+<li><p>Practice and ask for help if you have trouble</p></li>
 </ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
 <ul>
 <li>Lots more examples with different data in the course notes</li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
-<p>Practice these skills by performing the tasks in this lesson’s Task.</p>
+</ul>
 
 
 </section>
