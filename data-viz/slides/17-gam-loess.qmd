@@ -1,7 +1,7 @@
 ---
 title: "GAM and LOESS models"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-15"
+date: "2026-02-12"
 format:
   revealjs:
     slide-number: true
@@ -27,6 +27,10 @@ my_theme = theme_classic() +
 ```
 
 ##  GAM and LOESS models
+
+* GAM: generalized additive models
+
+* LOESS: locally estimated scatterplot smoothing (quadratic, distance weighted)
 
 * Describing, fitting, and using models
 
@@ -54,7 +58,7 @@ p
 
 ```{r, fig.height=5, fig.align="center"}
 library(mgcv)
-m1 <- gam( mean_temp ~ s(year_day, bs="cs"), data = hfx)
+m1 <- gam( mean_temp ~ s(year_day, bs="cc"), data = hfx)
 summary(m1)
 ```
 
@@ -93,6 +97,15 @@ confint(m1, "s(year_day)", level = 0.95) |>
   geom_line(aes(y=.estimate), size=2, color="red") + 
   geom_point(aes(y = mean_temp - mean(mean_temp)), data = hfx) + 
   my_theme
+```
+
+
+##  Residuals
+
+```{r, fig.height=5, fig.align="center"}
+augment(m1, se_fit = TRUE) |> 
+  ggplot(aes(x = .resid)) + 
+  geom_histogram(binwidth = 1) + my_theme
 ```
 
 ## LOESS smooths
@@ -151,11 +164,22 @@ augment(m3, newdata = new_data, se_fit = TRUE) |>
 ```
 
 
+##  Residuals
+
+```{r, fig.height=5, fig.align="center"}
+augment(m3, se_fit = TRUE) |> 
+  ggplot(aes(x = .resid)) + 
+  geom_histogram(binwidth = 1) + my_theme
+```
+
+
 ## Summary
 
 * Fitting GAM and LOESS smooths
 
 * No model coefficients to extract 
+
+* Model statistics available with `glance` for GAM (but not LOESS)
 
 * Computing predicted values with errors and residuals (compared to data)
 
