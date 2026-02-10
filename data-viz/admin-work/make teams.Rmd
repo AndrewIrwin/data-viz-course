@@ -18,8 +18,10 @@ Read requests for team memberships from google forms. Assume there are duplicate
 Strategy: make a table of name / email / github / team number.
 
 ```{r}
-requests <- read_csv("~/Downloads/Create a team for a term project.csv") |>
-  janitor::clean_names()
+# requests <- read_csv("~/Downloads/Create a team for a term project.csv") |>
+#   janitor::clean_names()
+requests <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/team-requests.csv") |> janitor::clean_names()
+
 clean_requests <- requests |> mutate(team = 1:n()) |>
   unite(col = "name_1", name_of_first_person:git_hub_id_of_first_person) |>
   unite(col = "name_2", name_of_second_person:git_hub_id_of_second_person) |>
@@ -36,24 +38,33 @@ clean_requests <- requests |> mutate(team = 1:n()) |>
   group_by(team) |>
   mutate(team_index = 1:n(),
          team_size = max(team_index),
-         group = cur_group_id())
-write_csv(clean_requests, "team-requests.csv")
+         group = cur_group_id(), 
+         github = basename(github)) |>
+  filter(!email == "na") |> # manual ad hoc cleanup
+  filter(team_size > 1) # clean up
+write_csv(clean_requests, "~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/team-requests-clean.csv")
 ```
 
 Remove singletons and clean up errors. Get list of registrations and remove students who have dropped.
 
 ```{r}
-teams <- read_csv("team-requests.csv")
-class_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/GitHub-User-Name.csv")
-registrations <- read_delim("~/Dropbox/Teaching/STAT 2430 Data Viz/2024W/Student-assignments/dalonline-classlist-2024-02-19.esv", delim = "=")
+teams <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/team-requests-clean.csv")
+class_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/GitHub-User-Name.csv")
+registrations <- read_delim("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/dalonline-classlist-2026-02-10.esv", delim = "=")
   # can't match; dont have banner ID; some students have used gmail addresses
   # match by hand....
-teams2 <- bind_rows(teams,
-                    class_list |> 
-                      filter(!(Github %in% teams$github)))
+# teams2 <- bind_rows(teams,
+#                     class_list |> rename(name = your_name, email = your_dalhousie_email_address, github = Github, id = your_student_number_starting_with_b0) |>
+                    # filter(!(github %in% teams$github)))
+#                    filter(!(email %in% teams$email)))
+
+teams2 <- full_join(class_list |> rename(name = your_name, email = your_dalhousie_email_address, github = Github, id = your_student_number_starting_with_b0),
+                    teams,
+                    by = c("email", "github"))
 teams3 <- full_join(registrations |> janitor::clean_names(),
           teams2 )
-write_csv(teams3, "teams-v1.csv", na = "") # check!
+write_csv(teams3, "~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/teams-v1.csv", na = "") # check!
+## needed a lot of clean up in 2026W
 ```
 
 Then merge in rest of class list and create random teams. Do data cleaning by hand.
@@ -64,7 +75,7 @@ Not sortable.
 
 ```{r}
 library(kableExtra)
-new_teams <- read_csv("teams-v1.csv")
+new_teams <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/teams-v1.csv")
 new_teams |> select(group, name, github, email) |>
   filter(!is.na(github)) |>
   kbl() |> kable_styling() |>
