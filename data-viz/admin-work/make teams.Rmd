@@ -64,7 +64,7 @@ Not sortable.
 
 ```{r}
 library(kableExtra)
-new_teams <- read_csv("teams-v1.csv")
+new_teams <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/teams-v1.csv")
 new_teams |> select(group, name, github, email) |>
   filter(!is.na(github)) |>
   kbl() |> kable_styling() |>
