@@ -1,0 +1,136 @@
+---
+title: "Figures with facets demo"
+author: "A Irwin"
+date: "2026-02-05"
+format:
+  html:
+    toc: true
+    toc-location: left       # 'right' (default) or 'left'
+    toc-float: true          # Ensures the TOC moves as you scroll
+    embed-resources: true    # Embeds images/css for a single file
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(gapminder)
+```
+
+Goals:
+
+* show how to make facets with one or more categorical variables
+* show how reshaping data with pivot_longer or pivot_wider changes how you can show data
+
+## Penguin example
+
+We will make one plot, using shape and colour for a categorical variable. 
+
+```{r}
+p1 <- penguins |> na.omit() |>
+  ggplot() +
+  geom_point(aes(body_mass_g, bill_length_mm, shape = island, color = species )) + 
+  theme_minimal()
+p1
+```
+
+The species are easy to see, partly because we used colour, and partly because they are clearly separated. But the island variable is harder to see. Breaking the plot into facets can highlight the effect of island.
+
+```{r}
+#| fig.height: 3
+#| fig.width: 8
+p1 + facet_wrap(~ island)
+```
+
+Or we could use species for the facets
+
+```{r}
+#| fig.height: 3
+#| fig.width: 8
+p1 + facet_wrap(~ species)
+p2 <- penguins |> na.omit() |>
+  ggplot() +
+  geom_point(aes(body_mass_g, bill_length_mm, shape = species, color = island )) + 
+  theme_minimal()
+p2 + facet_wrap(~ species)
+```
+
+There are two ways of using two categorical variables for facets.
+
+First, a grid of facets.
+
+```{r}
+p1 + facet_grid(species ~ island) + theme_bw()
+```
+
+Four of the facets have no data, so a wrapped linear layout may be more useful:
+
+```{r}
+p1 + facet_wrap( ~ species + island) + theme_bw()
+
+```
+
+## Effect of reshaping data
+
+The original data:
+
+```{r}
+df1 <- tribble(
+  ~country,~year, ~cases, ~population,
+"Afghanistan",  1999,    745,  19987071,
+"Afghanistan",  2000,   2666,   20595360,
+"Brazil",       1999,  37737,  172006362,
+"Brazil",       2000,  80488,  174504898,
+"China",        1999, 212258, 1272915272,
+"China",        2000, 213766, 1280428583,
+)
+```
+
+And a plot, where it is easy to connect year and country to aesthetics. We can use points for cases and a line for population.
+
+```{r}
+df1 |> ggplot() + 
+  geom_point(aes(factor(year), cases, color = country)) + 
+  theme_classic()
+```
+
+Can we add population to this graph? We need a different vertical scale. That requires some fiddling around with something called a secondary axis. Let's go ahead and put it on a log scale while we are making changes. (Change `scale_y_log10` to `scale_y_continuous` to see the linear scale.)
+
+```{r}
+df1 |> ggplot() + 
+  geom_point(aes(factor(year), cases, color = country)) + 
+  geom_line(aes(factor(year), population/1e4, group = country, color = country)) + 
+  scale_y_log10(sec.axis = sec_axis(transform = ~ .*1e4, name = "Population")) +
+  theme_classic()
+
+```
+
+Is there an easier way to show these data? Perhaps cases and population can be put in separate facets? To do that we need a variable that says if a number is a cases or population. So we pivot_longer!
+
+```{r}
+df1 |> pivot_longer(cases:population)
+```
+
+Now we plot:
+
+```{r}
+df1 |> pivot_longer(cases:population) |>
+  ggplot() + 
+  geom_point(aes(factor(year), value, color = country)) + 
+  facet_wrap(~ name) + 
+  theme_bw()
+```
+
+The default is to use the same scale for the y axis on both plots. That's usually what you want, but here we are plotting very different quantities, so we will let the facets have their own axes.
+
+```{r}
+#| fig.height: 3
+#| fig.width: 8
+df1 |> pivot_longer(cases:population) |>
+  ggplot() + 
+  geom_point(aes(factor(year), value, color = country)) + 
+  facet_wrap(~ name, scales = "free_y") + 
+  scale_y_log10() + 
+  theme_bw() + 
+  labs(x = "Year", y = "")
+```

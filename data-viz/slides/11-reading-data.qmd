@@ -1,7 +1,7 @@
 ---
 title: "Reading data into R"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-06"
+date: "2026-02-03"
 format:
   revealjs:
     slide-number: true
@@ -27,7 +27,7 @@ library(kableExtra)
 
 * Most data originates outside of R
 
-* To use the data with R, you must
+* To use data with R, you must
 
   * Obtain a copy of the data in some format
   
@@ -43,7 +43,7 @@ library(kableExtra)
 
 * Binary formats (various)
 
-* Self-documenting (NetCDF for geophysical data, specialized for astronomy)
+* Self-documenting (NetCDF for geophysical data, specialized for astronomy, oceanography, computer model output)
 
 * An almost infinite variety of custom formats 
 
@@ -118,6 +118,20 @@ Flle > Import dataset > From text (readr) ...
 knitr::include_graphics("static/L11/import-wizard.png")
 ```
 
+## Cleaning variable names
+
+* Variable (column) names that contain spaces, brackets, arithmetic symbols, and other symbols 
+
+* These variable names must be enclosed in backticks (e.g., ``` `Max Temp (°C)` ```)
+
+* `clean_names` in the `janitor` package transforms the names to make them easier to type
+
+```{r echo = FALSE}
+envcan <- read_csv("static/L11/en_climate_daily_NS_8202251_2020_P1D.csv", show_col_types = FALSE)
+cat("Original names:", paste(names(envcan)[c(1,5, 10)], collapse=", "))
+cat("Cleaned names:", paste(names(janitor::clean_names(envcan))[c(1,5,10)], collapse= ", "))
+```
+
 
 ## Things to watch out for
 
@@ -146,15 +160,9 @@ knitr::include_graphics("static/L11/import-wizard.png")
 
 * Lots of ways for errors to arise
 
-* _Practice, practice, practice_ and ask for help!
+* Practice and ask for help if you have trouble
 
 
 ## Further reading
 
 * Lots more examples with different data in the course notes
-
-
-## Task
-
-Practice these skills by performing the tasks in this lesson's Task.
-

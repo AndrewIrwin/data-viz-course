@@ -1,7 +1,7 @@
 ---
 title: "Splitting graphs into facets"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-01"
+date: "2026-02-03"
 format:
   revealjs:
     slide-number: true
@@ -115,7 +115,8 @@ gapminder |>
 gapminder |>
   ggplot(aes(x=year, y = lifeExp)) + 
   geom_line(aes(group = country), color = "gray40", linewidth=0.25) +
-  stat_summary(fun.data = "mean_cl_normal", color = "blue") + 
+  stat_summary(fun = mean, geom = "line",
+               color = "blue", linewidth = 1) +
   facet_grid( continent ~ . )
 ```
 
@@ -170,7 +171,4 @@ penguins |> filter(!is.na(bill_length_mm)) |>
 * Healy [Section 4.3](https://socviz.co/groupfacettx.html#facet-to-make-small-multiples)
 
 
-## Task
-
-Practice these skills by making the plots in the assigned Task.
 

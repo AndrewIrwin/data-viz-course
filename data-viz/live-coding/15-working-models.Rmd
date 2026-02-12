@@ -8,6 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 library(gapminder)
 library(tidyverse)
+library(mgcv)
+library(broom)
 ```
 
 
@@ -33,13 +35,14 @@ gapminder |> ggplot(aes(x = year, y = lifeExp)) +
 Use `geom_quantile` and `quantiles = ...` to do quantile regression.
 Try a polynomial instead of a straight line.
 
-```{r}
-gapminder |> ggplot(aes(x = year, y = lifeExp)) +
-  # geom_point() +
+```{r warning=FALSE}
+gapminder |> filter(continent != "Oceania") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  # geom_point(alpha = 0.25) +
   facet_wrap(~ continent) +
-  geom_quantile(method = "rqss", formula = y ~ x, quantiles = c(0.25, 0.75)) +
+  geom_quantile(method = "rqss", formula = y ~ x, quantiles = c(0.25, 0.75)) + 
   theme_bw()
-
+# ignore harmless warning messages
 ```
 
 
@@ -72,11 +75,11 @@ Plot full data and add a smooth.
 
 ```{r}
 co2 <- read_table("https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt",
-                  comment = "#", col_names = FALSE) |>
+                  comment = "#", col_names = FALSE, show_col_types = FALSE) |>
   rename(year = X1,
          decimal_year = X3, 
          co2 = X4)
-co2 |> ggplot(aes(decimal_year, co2)) + geom_line()
+co2 |> ggplot(aes(decimal_year, co2)) + geom_line() + theme_classic()
 ```
 
 
@@ -92,15 +95,62 @@ co2 |> group_by(year) |>
 co2 |> group_by(year) |>
   mutate(annual_mean = mean(co2),
          co2_season = co2 - annual_mean) |>
-  ggplot(aes(factor(decimal_year - year) , co2_season)) + 
-  geom_boxplot()
+  ggplot(aes(factor(decimal_year - year), co2_season)) + 
+  geom_boxplot() +
+  theme(axis.text.x.bottom = element_text(angle = 90))
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean,
+         year_part = round(decimal_year - year, 3)) |>
+  ggplot(aes(factor(year_part), co2_season)) + 
+  geom_boxplot() +
+  theme(axis.text.x.bottom = element_text(angle = 90))
 co2 |> group_by(year) |>
   mutate(annual_mean = mean(co2),
          co2_season = co2 - annual_mean) |>
   ggplot(aes(factor(X2) , co2_season)) + 
-  geom_boxplot()
+  geom_boxplot()  + labs(x = "Month")
 ```
 
+
+Add a periodic GAM to the CO2 data.
+
+```{r}
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean) |>
+  ggplot(aes(X2, co2_season)) + 
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cc")) + # try basis (bs) = cc, cs 
+  theme_minimal()
+```
+
+Facet by decade
+
+```{r}
+co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean,
+         decade = 10 * floor(year/10)) |>
+  ggplot(aes(X2, co2_season)) + 
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cc")) + # try basis (bs) = cc, cs 
+  facet_wrap(~ decade) + 
+  theme_minimal()
+```
+
+Try LOESS for de-seasoned data.
+
+```{r}
+co2_improved <- co2 |> group_by(year) |>
+  mutate(annual_mean = mean(co2),
+         co2_season = co2 - annual_mean) 
+m1 <- gam(co2_season ~ X2, data = co2_improved)
+augment(m1, co2_improved) |>
+  # ggplot(aes(decimal_year, X5)) +
+  ggplot(aes(decimal_year, co2 + .fitted)) + 
+  geom_point(alpha = 0.2) + 
+  geom_smooth(method = "loess", formula = y ~ x) + # try basis (bs) = cc, cs 
+  theme_minimal()
+```
 
 Try some boxplots, facet by decade, other variations.
 

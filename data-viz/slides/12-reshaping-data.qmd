@@ -1,7 +1,7 @@
 ---
 title: "Reshaping data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-06"
+date: "2026-02-03"
 format:
   revealjs:
     slide-number: true
@@ -40,7 +40,9 @@ library(kableExtra)
 
 * Each column is a different variable
 
-* There are many ways to organize data. A key idea behind tidy data is to standardize the way data are organized, to make working with data simpler
+* There are many ways to organize data. The main idea behind tidy data is to standardize the way data are organized, to make working with data simpler for you and others.
+
+* “Tidy datasets are all alike, but every messy dataset is messy in its own way.” (Wickham, following Tolstoy)
 
 ## Example 1 (tidy)
 
@@ -176,6 +178,7 @@ First make a long table.
 df1A |> pivot_longer(`1999`:`2000`, names_to = "year", values_to = "cases") |> 
   kable() |> kable_styling(full_width = FALSE)
 ```
+
 ## Another way to join tables
 
 Then join them together.

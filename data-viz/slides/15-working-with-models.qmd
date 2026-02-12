@@ -1,7 +1,7 @@
 ---
 title: "Working with models"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-13"
+date: "2026-02-10"
 format:
   revealjs:
     slide-number: true
@@ -83,6 +83,12 @@ p + geom_smooth(method = "lm", formula = y ~ x)
 p + geom_smooth(aes(color = factor(cyl)), method = "lm", formula = y ~ x)
 ```
 
+## Add one regression line, colour by group
+
+```{r, fig.height=5, fig.align="center"}
+p + geom_point(aes(color = factor(cyl))) + 
+  geom_smooth(method = "lm", formula = y ~ x) 
+```
 
 
 ##  Polynomial regression 
@@ -102,7 +108,7 @@ p + geom_quantile(method = "rqss", formula = y ~ x,
 Requires package `quantreg`
 :::
 
-## Generalized additive model 
+## Smoothing spline
 
 ```{r, fig.height=5, fig.align="center"}
 p + geom_smooth(method = "lm", 
@@ -162,8 +168,8 @@ p + geom_smooth(method = "loess", formula = y ~ x, orientation = "y")
 ## Modelling x as a function of y
 
 ```{r, fig.height=5, fig.align="center"}
-p + geom_smooth(method = "lm", formula = y ~ x, orientation = "y") +
-  geom_smooth(method = "lm", formula = y ~ x, color = "red")
+p + geom_smooth(method = "lm", formula = y ~ x, color = "red") + 
+  geom_smooth(method = "lm", formula = y ~ x, orientation = "y")
 ```
 
 ## Summary
@@ -172,7 +178,7 @@ p + geom_smooth(method = "lm", formula = y ~ x, orientation = "y") +
 
 * We are using smooths for their visual effect
 
-* Logical reasoning for the lines you draw is important (next lessons)
+* Next lesson: obtaining statistical properties of models, making quantative predictions
 
 ## Further reading
 

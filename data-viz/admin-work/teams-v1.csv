@@ -1,103 +1,86 @@
-id,last_name,first_name,email,name,github,group
-B00853225,Zhao                                                        ,Zeyu           ,zy203905@dal.ca,Zeyu Zhao,DoubleZyu,1
-B00901891,Yu                                                          ,Yifan          ,yf634683@dal.ca,Yifan Yu,yyfID,1
-B00926556,Chen                                                        ,Kaixun         ,kx303683@dal.ca,Kaixun Chen,Ckx20040305,1
-B00849636,Xu                                                          ,Draymond       ,zh945371@dal.ca,Draymond Xu,Draymond4,2
-B00898119,Sun                                                         ,Qiayi          ,qy967219@dal.ca,Qiayi Sun,QiayiS,2
-B00909776,Pan                                                         ,Yichao         ,yc380569@dal.ca,Yichao Pan,YichaoPan,3
-B00952399,Bao                                                         ,Jia            ,jz691838@dal.ca,Jia Bao,JiaBao2023,3
-B00870952,Feng                                                        ,Yushan         ,ys649868@dal.ca,Yushan Feng,LILYUshan,4
-B00879734,Fu                                                          ,Zhuang         ,zh960710@dal.ca,Zhuang FU,zhuangfu123,4
-B00927542,Bi                                                          ,Zhirui         ,zh305197@dal.ca,"Bi, Zhirui",bizhirui,4
-B00816215,Xie                                                         ,Xinyi          ,xn734320@dal.ca,Xinyi Xie,xiexinyi123,5
-B00824291,Liu                                                         ,Yuan           ,yn554501@dal.ca,Yuan Liu,StEvn0827,5
-B00876340,Yang                                                        ,Jiarui         ,jr754972@dal.ca,Jiarui Yang,Jiaruiyang6,5
-B00868571,He                                                          ,Jiayang        ,jy879183@dal.ca,Jiayang He,angelhe777777,6
-B00878031,Ye                                                          ,Enyu           ,en750279@dal.ca,Enyu Ye,EnyuYe,6
-B00911276,Wang                                                        ,Jinlin         ,zz939875@dal.ca,Jinlin Wang,Lucky-Yuan00,6
-B00861553,Ma                                                          ,Xianda         ,xn385713@dal.ca,Xianda Ma,XiandaMa0,7
-B00863028,Li                                                          ,Jingwen        ,jn217745@dal.ca,Jingwen Li,ingwenli,7
-B00871560,Man                                                         ,Haoran         ,hr379787@dal.ca,Haoran Man,HaoranMan,7
-B00849051,Case                                                        ,Jack           ,jc482293@dal.ca,Jack Case,jackcase12345,8
-B00919435,Reilly                                                      ,Nicholas       ,nc714769@dal.ca,Nicholas Reilly,nreilly9,8
-B00852642,Chen                                                        ,Junrui         ,jn817495@dal.ca,Junrui Chen,JUNRUICHEN,9
-B00869616,Yu                                                          ,Yihui          ,yh382654@dal.ca,Yihui Yu,yyh0920,9
-B00922148,Li                                                          ,Jiayi          ,jy547437@dal.ca,Jiayi Li,LiiJiayi,10
-B00935128,Xiao                                                        ,Ziyang         ,zy582053@dal.ca,Ziyang Xiao,Ziyanggggg,10
-B00892779,Qi                                                          ,Jihong         ,jh586734@dal.ca,Jihong Qi,JihongQi1,11
-B00892847,Zhang                                                       ,Jingyi         ,jn836791@dal.ca,Jingyi Zhang,JingyiZhang2,11
-B00863045,Wang                                                        ,Yufei          ,yf747608@dal.ca,Yufei Wang,YufeiWww,11
-B00915427,Jing                                                        ,Xiangfeng,xn937190@dal.ca,xiangfeng jing,xn937190,12
-B00901296,Yu                                                          ,Wenao          ,wn917462@dal.ca,wenao yu,WenaoYu,12
-B00901405,Li                                                          ,Jiarui         ,jr988967@dal.ca,jiarui li,jr0214,12
-B00803954,Lord                                                        ,Christopher    ,ch220016@dal.ca,Chris Lord,Chris-G-Lord,13
-B00830002,Platt                                                       ,Madeleine      ,md920149@dal.ca,Madeleine Platt,plattmadeleine,13
-B00838816,Burke                                                       ,Mackenzie      ,mc841487@dal.ca,Mackenzie Burke,mack-burke,13
-B00880553,Chen                                                        ,Yizhou         ,yz222022@dal.ca,Yizhou Chen,YZ921,14
-B00890485,Zhang                                                       ,Huaiyu         ,hy480517@dal.ca,Huaiyu Zhang,huaiyu7,14
-B00895538,Li                                                          ,Ruxi           ,rx527336@dal.ca,Ruxi Li,Xiaofupanghu,14
-B00860163,Hu                                                          ,Jinxu          ,jn461235@dal.ca,JInxu Hu,JinxuHu,15
-B00903351,Yan                                                         ,Shuaishuai     ,sh895405@dal.ca,Shuaishuai Yan,Jacky0702,15
-B00832924,Zhang                                                       ,Teng           ,tn202746@dal.ca,Teng Zhang,CommanderTTT,16
-B00910432,Peng                                                        ,Changjiayu     ,ch637334@dal.ca,"Changjiayu, Peng",changjiayupeng,16
-B00921540,Du                                                          ,Yuqiao         ,yq719644@dal.ca,"Yuqiao, Du",YuqiaoD,16
-B00872796,Yue                                                         ,Qijie          ,qj377896@dal.ca,Qijie Yue,QijieYue,17
-B00892564,Deng                                                        ,Siheng         ,sh245141@dal.ca,Siheng Deng,Siheng-Deng,17
-B00926125,Shui                                                        ,Jinyan         ,jn416673@dal.ca,Jinyan Shui,elik111,17
-B00826733,Duan                                                        ,Zhengfei       ,zh420799@dal.ca,Zhengfei Duan,MorrisDuanzf,18
-B00827761,Dong                                                        ,Zirui          ,zr289568@dal.ca,Zirui Dong,Rui-DD,18
-B00878207,Cui                                                         ,Chengyuan      ,ch811214@dal.ca,Chengyuan Cui,Magicalccy,18
-B00931294,Guo                                                         ,Simo           ,sm374951@dal.ca,Simo Guo,SimoGuo,19
-B00938778,Shang                                                       ,Zhiming        ,zh352715@dal.ca,Zhiming Shang,szm0101,19
-B00599781,Watt                                                        ,Lauren         ,lr908937@dal.ca,Lauren Watt,LaurenAWatt,20
-B00868209,McLean                                                      ,Emily          ,em382568@dal.ca,Emily McLean,emilymako,20
-B00901175,Girard                                                      ,Claire         ,cl988147@dal.ca,Claire Girard,girardch,20
-B00868582,Yan                                                         ,Weiyang        ,wy296560@dal.ca,Weiyang Yan,WeiyangYan,21
-B00902589,Bao                                                         ,Yuetong        ,yt454290@dal.ca,Yuetong Bao,YuetongBao,21
-B00869102,Yerramilli                                                  ,Abhiroop       ,ab845358@dal.ca,Abhiroop Yerramilli,crayonthree,22
-B00884668,Pandya                                                      ,Om             ,om670144@dal.ca,Om Pandya,0momom,22
-B00902963,Alavi                                                       ,Wasi           ,tl450948@dal.ca,Wasi Alavi,wasialavi7,22
-B00850597,Ma                                                          ,Yanyan         ,yn651461@dal.ca,Yanyan Ma,diaoyububuym,23
-B00862890,Guo                                                         ,Ruiying        ,ry276545@dal.ca,Ruiying Guo,Snowcake12,23
-B00901420,Zhang                                                       ,Hui            ,hz426952@dal.ca,Hui Zhang,mmia123,23
-B00830474,Bull                                                        ,Charlotte      ,ch207752@dal.ca,Charlotte Bull,charlottebull,24
-B00833325,Chauhan                                                     ,Yash           ,ys808196@dal.ca,Yash Chauhan,YashChauhan0001,24
-B00835180,Peng                                                        ,Wenxuan        ,jy769300@dal.ca,"Peng, Wenxuan",orca359,25
-B00844177,Hong                                                        ,Jianci         ,jn393447@dal.ca,Jianci Hong,JaneyHong,25
-B00845516,Mascini                                                     ,Max            ,mx860115@dal.ca,Max Mascini,MaxMascini,26
-B00915427,Jing                                                        ,JING           ,xn937190@dal.ca,Xiangfeng Jing,xn937190,26
-B00858875,Al Balushi                                                  ,Osama Abdul Ham,as462555@dal.ca,Osama Albalushi,OsamaAlbalushi,27
-B00859359,Keetch                                                      ,Lucas          ,lc268948@dal.ca,Lucas Keetch,LucasKee,27
-B00859846,Winter                                                      ,Noah           ,nh600292@dal.ca,Noah Winter,NoahSTAT2430,28
-B00859945,Yun                                                         ,Samuel         ,sh211373@dal.ca,Samuel Yun,shallwegitit,28
-B00860195,Lloyd                                                       ,Sylvie         ,sy553039@dal.ca,Sylvie Lloyd,sylvielloyd,29
-B00860274,Yeon                                                        ,Julia          ,th916074@dal.ca,Julia Yeon,juliayeon,29
-B00860387,Wang                                                        ,Zhenghao       ,zh705140@dal.ca,Zhenghao Wang,Zhenghaoooo,30
-B00869908,Tang                                                        ,Lei            ,lz356454@dal.ca,Lei Tang,WHOISTT,30
-B00870101,Li                                                          ,Junyang        ,jn205443@dal.ca,Junyang Li,JunyangLi1111,30
-B00869093,Vesuna                                                      ,Atarsh         ,at889044@dal.ca,Atarsh Vesuna,atarshyv,32
-B00871064,Tripathi                                                    ,Utkarsh        ,ut885930@dal.ca,Utkarsh Tripathi,utkarsh9985,32
-B00861141,Qi                                                          ,Chongan        ,ch257295@dal.ca,Chongan Qi,ChonganQi,33
-B00867497,Jin                                                         ,Yanchi         ,yn568249@dal.ca,Yanchi Jin,WGJason0831,33
-B00869905,Kerr                                                        ,Ian            ,in335268@dal.ca,Ian Kerr,ianskerr,33
-B00871229,Deng                                                        ,Yining         ,yn220576@dal.ca,Yining Deng,DddYNnnn,35
-B00871921,Hengel                                                      ,Zizo           ,ab607538@dal.ca,Zizo Hengel,ZizoHengel,35
-B00876452,Luo                                                         ,Jianhao        ,jn502718@dal.ca,Jianhao Luo,Jianhao133,36
-B00878717,Daly                                                        ,Daniel         ,dn514822@dal.ca,Daniel daly,dalydanny,36
-B00889285,Marsala                                                     ,Marin          ,mr819916@dal.ca,Marin Marsala,marinmarsala,37
-B00892382,Shala                                                       ,Alb            ,al878844@dal.ca,Alb Shala,Al873842,37
-B00897465,Ames                                                        ,Deanna         ,dn912025@dal.ca,Deanna Ames,deannaames,38
-B00907590,Jain                                                        ,Samkit         ,sm572831@dal.ca,Samkit Jain,SamkitCodes,38
-B00855422,Liu                                                         ,Xiangyu        ,xn726814@dal.ca,Xiangyu Liu,SwiftLiuu,39
-B00908217,Zhang                                                       ,Haoran         ,hr473038@dal.ca,Haoran Zhang,Andyzhang222,39
-B00920090,Lao                                                         ,Geoff          ,zh536906@dal.ca,Geoffrey Lao,geoffreylao,40
-B00920197,Crake                                                       ,Harrison       ,hr266509@dal.ca,Harrison Crake,HCrake48,40
-B00919642,Jin                                                         ,Nuoling        ,nl916044@dal.ca,Nuoling Jin,Nuoling9,41
-B00921585,Bhardwaj                                                    ,Vedika         ,vd765248@dal.ca,vedika Bhardwaj,vedika0808,41
-B00925877,MacNeil                                                     ,Jessica        ,js580918@dal.ca,Jessica MacNeil,jessica2430,41
-B00928265,Adams                                                       ,Max            ,mx298563@dal.ca,Max Adams,MACKSATOMS,43
-B00939597,Zhang                                                       ,Cindy          ,cn483845@dal.ca,Cindy Zhang,cindzh,43
-B00992230,Yu                                                          ,Haseon         ,HS880690@DAL.CA,Haseon Yu,HaseonYu,43
-B00865885,Law                                                         ,Yuki           ,yk717189@dal.ca,Yuki Law,Yuki-Law,38
-B00792609,Sun                                                         ,ezra           ,yz792930@dal.ca,Ezra Sun,YuSun123,44
-B00926527,Sun                                                         ,Yutong         ,yt277242@dal.ca,Yutong Sun,,44
+crn,p,subj,numb,sec,t,id,last_name,first_name,rg,en,degr,maj1,maj2,email,x16,x12,team,name,github,team_index,team_size,group,timestamp,your_student_number_starting_with_b0,github_account
+22975,1,STAT,2430 ,01 ,L,B00935281,Alsaidan                                                    ,Ahmad          ,RW,EL,BCSC  ,CSCI,    ,ah203375@dal.ca,,,,ahmad,ahmad3449,,,,2026-01-20T15:24:03Z,B00935281,https://github.com/ahmad3449
+22975,1,STAT,2430 ,01 ,L,B00916959,Al Wahaibi                                                  ,Arwa           ,RW,EL,BSC   ,PSYO,    ,ar418299@dal.ca,,,,Arwa Al Wahaibi,Arwa-26,,,,2026-01-22T12:41:17Z,B00916959,https://github.com/Arwa-26
+22975,1,STAT,2430 ,01 ,L,B00926379,Aly                                                         ,Yahia          ,RW,EL,BCSC  ,CSCI,    ,yh842517@dal.ca,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00929388,Arya                                                        ,Aryan          ,RW,EL,BCSC  ,CSCI,    ,ar301828@dal.ca,,,14,Aryan Arya,aryanarya95,2,2,12,,,
+22975,1,STAT,2430 ,01 ,L,B01011917,Baasankhuu                                                  ,Tumen-Erdene   ,RW,EL,BSC   ,ECON,    ,TM520469@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B01010299,Battogtokh                                                  ,Ulambayar      ,RW,EL,BSC   ,ECON,    ,UL509406@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00946963,Blaney                                                      ,Eric           ,RW,EL,BSC   ,UNDS,    ,ER491883@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00920523,Brannen                                                     ,Ethan          ,RW,EL,BSC   ,CHEM,    ,et881433@dal.ca,,,13,Ethan Brannen,EB-DAL,2,2,11,,,
+22975,1,STAT,2430 ,01 ,L,B00969638,Ceresne                                                     ,Dylan          ,RW,EL,BA    ,STAT,    ,dy214959@dal.ca,,,,Dylan Ceresne,dceresne17,,,,2026-01-21T16:22:53Z,B00969638,https://github.com/dceresne17
+22975,1,STAT,2430 ,01 ,L,B00980722,Chennu                                                      ,Venkat         ,RW,EL,BCSC  ,CSCI,    ,vn312003@dal.ca,,,2,Venkat Kumar Chennu,chennuvenkatkumar,1,2,2,,,
+22975,1,STAT,2430 ,01 ,L,B00941219,Dang                                                        ,Tan Hai Nam    ,RW,EL,BCSC  ,CSCI,    ,nm876103@dal.ca,,,14,Tan Hai Nam Dang,iLoveCoding17,1,2,12,,,
+22975,1,STAT,2430 ,01 ,L,B00861418,Duffus                                                      ,Carson         ,RW,EL,HDPHAR,PHAR,    ,cr969590@dal.ca,,,13,Carson Duffus,Carson-10,1,2,11,,,
+22975,1,STAT,2430 ,01 ,L,B00952101,El-Montasser                                                ,Nouhayla       ,RW,EL,BSC   ,PSYO,    ,nh906527@dal.ca,,,,Nouhayla El-Montasser,Nouhayla100,,,,2026-01-23T18:07:56Z,B00952101,https://github.com/Nouhayla100
+22975,1,STAT,2430 ,01 ,L,B00902984,Feng                                                        ,Tianci         ,RW,EL,BACSC ,APCS,    ,tn388816@dal.ca,,,1,Tianci Feng,Flanker,2,2,1,,,
+22975,1,STAT,2430 ,01 ,L,B00974382,Flake                                                       ,Emily          ,RW,EL,BSC   ,BIOL,    ,em467803@dal.ca,,,17,Emily Flake,EmilyFlake,2,2,15,,,
+22975,1,STAT,2430 ,01 ,L,B01077035,Fouron                                                      ,Fannie         ,RW,EL,BSC   ,UNDS,    ,EJ876740@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00906053,Fullerton                                                   ,Jessica        ,RW,EL,BSC   ,MARI,    ,js391057@dal.ca,,,8,Jessica Fullerton,Jessica8026,1,3,7,,,
+22975,1,STAT,2430 ,01 ,L,B00894474,Ge                                                          ,Jiajun         ,RW,EL,BSC   ,ECON,    ,jj438318@dal.ca,,,18,Jiajun Ge,Jiajun-Ge,2,2,16,,,
+22975,1,STAT,2430 ,01 ,L,B00891737,Gong                                                        ,Chenghao       ,RW,EL,BCSC  ,CSCI,    ,ch908950@dal.ca,,,1,Chenghao Gong,GongCS1,1,2,1,,,
+22975,1,STAT,2430 ,01 ,L,B00970319,Hu                                                          ,Xinkai         ,RW,EL,BCSC  ,CSCI,    ,xn795931@dal.ca,,,,Xinkai Hu,xianxian13,,,,2026-01-15T14:00:50Z,B00970319,https://github.com/xianxian13
+22975,1,STAT,2430 ,01 ,L,B01081462,Hyun                                                        ,Seoyoon        ,RW,EL,VSUG  ,ENGI,    ,CD781705@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00979362,Kaur                                                        ,Ushmeet        ,RW,CL,BSC   ,PSYO,    ,us519043@dal.ca,,,,Ushmeet Kaur,ushmeetkaur7-code,,,,2026-01-19T18:54:20Z,B00979362,https://github.com/ushmeetkaur7-code
+22975,1,STAT,2430 ,01 ,L,B00979362,Kaur                                                        ,Ushmeet        ,RW,CL,BSC   ,PSYO,    ,us519043@dal.ca,,,,Ushmeet Kaur,ushmeetkaur7-code,,,,2026-01-22T16:45:51Z,B00979362,https://github.com/ushmeetkaur7-code
+22975,1,STAT,2430 ,01 ,L,B00938160,Khare                                                       ,Aryan          ,RW,EL,BCSC  ,CSCI,    ,ar989505@dal.ca,,,,Aryan Khare,BluKnight21,,,,2026-01-29T16:21:55Z,B00938160,https://github.com/BluKnight21
+22975,1,STAT,2430 ,01 ,L,B01026484,Khishigdemberel                                             ,Unumunkh       ,RW,EL,BSC   ,ECON,    ,UN660146@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00933453,Kuti                                                        ,Samuel         ,RW,EL,BCSC  ,CSCI,    ,sm818585@dal.ca,,,15,Samuel Kuti,SamuelKuti,2,2,13,,,
+22975,1,STAT,2430 ,01 ,L,B00923326,Li                                                          ,Yuncheng       ,RW,EL,BCOM  ,ENTR,    ,yn466664@dal.ca,,,18,Yuncheng Li,YunchengLi466664,1,2,16,,,
+22975,1,STAT,2430 ,01 ,L,B01031029,MacDougall                                                  ,Colin          ,RW,EL,BSC   ,AUSC,    ,CL201723@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00966473,Mallard                                                     ,Adam           ,RW,EL,BCSC  ,CSCI,    ,ad888417@dal.ca,,,,Adam Mallard,majmallard,,,,2026-01-21T13:31:45Z,B00966473,https://github.com/majmallard
+22975,1,STAT,2430 ,01 ,L,B00980438,Mamidi                                                      ,Vaishnavi      ,RE,EL,BCSC  ,CSCI,    ,vs377655@dal.ca,,,2,Vaishnavi Mamidi,Vaishnavireddy1233,2,2,2,,,
+22975,1,STAT,2430 ,01 ,L,B00962471,McGeachy                                                    ,Aveen          ,RW,EL,BSC   ,MARI,    ,av726473@dal.ca,,,,Aveen McGeachy,Aveen47,,,,2026-01-20T16:24:50Z,B00962471,https://github.com/Aveen47
+22975,1,STAT,2430 ,01 ,L,B00892353,Millar                                                      ,Hannah         ,RW,EL,BSC   ,BIOL,NESC,hn856371@dal.ca,,,8,Hannah Millar,hannahjmilly,2,3,7,,,
+22975,1,STAT,2430 ,01 ,L,B00918546,Moxey                                                       ,Yoshi          ,RW,EL,BSC   ,AUSC,STAT,ys698914@dal.ca,,,6,Yoshi Moxey,ym-2430,1,2,6,,,
+22975,1,STAT,2430 ,01 ,L,B00925655,Pandey                                                      ,Aryaman        ,RW,EL,BCSC  ,CSCI,    ,ar359376@dal.ca,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00954889,Paquet                                                      ,Meredith       ,RW,EL,BMGT  ,MDAI,    ,mr246724@dal.ca,,,,Meredith Paquet,MeredithPaquet,,,,2026-01-18T17:04:41Z,B00954889,https://github.com/MeredithPaquet
+22975,1,STAT,2430 ,01 ,L,B01013591,Park                                                        ,Eunchan        ,RW,EL,BCSC  ,CSCI,    ,EN804597@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B01027438,Patel                                                       ,Shreya Piyushku,RW,EL,BSC   ,STAT,    ,SH869349@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B01013627,Paul                                                        ,Hannah Lily    ,RW,EL,BA    ,PHIL,    ,HN325040@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B01019332,Persaud                                                     ,Ruby           ,RW,EL,BSC   ,PSYO,    ,RB275556@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00895864,Powell                                                      ,Breagh         ,RW,EL,BSC   ,MARI,    ,BR278316@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00902020,Rice                                                        ,Carter         ,RW,EL,BSC   ,BIOL,    ,cr813876@dal.ca,,,17,Carter Rice,CarterRice1234,1,2,15,,,
+22975,1,STAT,2430 ,01 ,L,B00919527,Robertson                                                   ,Olivia         ,RW,EL,BSC   ,NESC,    ,ol794527@dal.ca,,,,Olivia Robertson,olivia-rob5,,,,2026-01-08T16:40:31Z,B00919527,https://github.com/olivia-rob5
+22975,1,STAT,2430 ,01 ,L,B01009811,Sabit                                                       ,Alamedin       ,RW,EL,BACSC ,APCS,    ,AL302280@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00983661,Sathish                                                     ,Sriram         ,RE,EL,BCSC  ,CSCI,    ,SR713981@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B01040378,Schifman                                                    ,Maya           ,RW,EL,BSC   ,UNDS,    ,AZ395977@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00895579,Scott                                                       ,Rhys           ,RW,EL,BSCK  ,KINE,    ,rh613508@dal.ca,,,,Rhys Scott,RhysS11,,,,2026-01-22T16:44:08Z,B00895579,https://github.com/RhysS11
+22975,1,STAT,2430 ,01 ,L,B00938177,Sharma                                                      ,Amogh          ,RW,EL,BCSC  ,CSCI,    ,am440087@dal.ca,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00919051,Smith                                                       ,Kayla          ,RW,EL,BSC   ,AUSC,STAT,ky753804@dal.ca,,,6,Kayla Smith,Kayl17,2,2,6,,,
+22975,1,STAT,2430 ,01 ,L,B00938841,Smith                                                       ,Scott          ,RW,EL,BSC   ,UNDS,    ,sc870079@dal.ca,,,,Scott Smith,scottdsmith2004-web,,,,2026-01-21T14:57:35Z,B00938841,https://github.com/scottdsmith2004-web
+22975,1,STAT,2430 ,01 ,L,B00918653,Spilman                                                     ,Elyssa         ,RW,EL,BSC   ,MICI,    ,el377735@dal.ca,,,,Elyssa Spilman,Elyssa-Spilman,,,,2026-01-22T16:58:44Z,B00918653,https://github.com/Elyssa-Spilman
+22975,1,STAT,2430 ,01 ,L,B00931555,Tapp                                                        ,Mackenzie      ,RW,EL,BCSC  ,CSCI,    ,mc295857@dal.ca,,,4,Mackenzie Tapp,steve040415,2,2,4,,,
+22975,1,STAT,2430 ,01 ,L,B00974339,Traudt                                                      ,Anya           ,RW,EL,BSC   ,UNDS,    ,an601064@dal.ca,,,,Anya Traudt,aktraudt,,,,2026-01-15T16:03:22Z,B00974339,https://github.com/aktraudt
+22975,1,STAT,2430 ,01 ,L,B00992835,Truong                                                      ,Minh Son       ,RW,EL,BCSC  ,CSCI,    ,MN581343@DAL.CA,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00970820,Wang                                                        ,Maximo         ,RW,EL,BSC   ,STAT,    ,zh784921@dal.ca,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00924457,White                                                       ,Charlotte      ,RW,EL,BSC   ,MARI,    ,ch486437@dal.ca,,,,Charlotte White,cwhite515,,,,2026-01-20T16:10:32Z,B00924457,https://github.com/cwhite515
+22975,1,STAT,2430 ,01 ,L,B00894778,Whiting                                                     ,Meg            ,RW,EL,BSC   ,BIOL,    ,mg472704@dal.ca,,,,,,,,,,,
+22975,1,STAT,2430 ,01 ,L,B00979207,XU                                                          ,Xingyuan       ,RW,EL,BSC   ,STAT,    ,xn859057@dal.ca,,,20,Xingyuan Xu,xingyuan523-hash,2,2,17,,,
+22975,1,STAT,2430 ,01 ,L,B00900034,Yang                                                        ,Jingyi         ,RW,EL,BCSC  ,CSCI,    ,jn839741@dal.ca,,,,Jingyi Yang,Jingyi531,,,,2026-01-22T17:23:39Z,B00900034,https://github.com/Jingyi531
+22975,1,STAT,2430 ,01 ,L,B00969260,Zhang                                                       ,Hao            ,RW,EL,BSC   ,ECON,    ,hz320629@dal.ca,,,20,Hao Zhang,dtk947623-ship-it,1,2,17,,,
+22975,1,STAT,2430 ,01 ,L,B00939192,Zhang                                                       ,Ziying         ,RW,EL,BCSC  ,CSCI,    ,zy783669@dal.ca,,,,Ziying Zhang,ZiyingZhang-Hailey,,,,2026-01-15T17:18:53Z,B00939192,https://github.com/ZiyingZhang-Hailey
+22975,1,STAT,2430 ,01 ,L,B00933727,Zheng                                                       ,Jiaqi          ,RW,EL,BCSC  ,CSCI,    ,jq971851@dal.ca,,,,Jiaqi Zheng,Jiaqi036,,,,2026-01-12T15:31:30Z,B00933727,https://github.com/Jiaqi036
+,,,,,,,,,,,,,,a.pandey@dal.ca,,,4,Aryaman Pandey,aryamanpandu,1,2,4,,,
+,,,,,,,,,,,,,,en804597@dal.ca,,,5,Eunchan Park,eunchanp,1,2,5,,,
+,,,,,,,,,,,,,,sr713981@dal.ca,,,5,Sriram Sathish,sr713981,2,2,5,,,
+,,,,,,,,,,,,,,tm520469@dal.ca,,,12,Tumen-Erdene Baasankhuu,Tumen-ErdeneBaasankhuu,1,3,10,,,
+,,,,,,,,,,,,,,ul509406@dal.ca,,,12,Ulambayar Battogtokh,UlambayarBattogtokh,2,3,10,,,
+,,,,,,,,,,,,,,un660146@dal.ca,,,12,Unumunkh Khishigdemberel,Onyx5555,3,3,10,,,
+,,,,,,,,,,,,,,yahia.aly@dal.ca,,,15,Yahia Aly,Yahia-Aly-dal,1,2,13,,,
+,,,,,,,,,,,,,,sh869349@dal.ca,,,16,Shreya Patel,spgalaxy9,1,2,14,,,
+,,,,,,,,,,,,,,cd781705@dal.ca,,,16,Seoyoon Hyun,SeoyoonHyun,2,2,14,,,
+,,,,,,,,,,,,,,megwhiting@dal.ca,,,,Meg Whiting,MegWhiting,,,,2026-01-13T18:33:15Z,B00894778,https://github.com/MegWhiting
+,,,,,,,,,,,,,,al302280@dal.ca,,,,Alamedin Sabit,amadi4web,,,,2026-01-15T09:17:06Z,B01009811,https://github.com/amadi4web
+,,,,,,,,,,,,,,Ar418299@dal.ca,,,,Arwa Al Wahaibi,Arwa-26,,,,2026-01-15T16:49:38Z,B00916959,https://github.com/Arwa-26
+,,,,,,,,,,,,,,B00992835,,,,Minh Son Truong,CodeVoyager2006,,,,2026-01-16T22:25:11Z,B00992835,https://github.com/CodeVoyager2006
+,,,,,,,,,,,,,,amogh.sharma@dal.ca,,,,Amogh Sharma,AmoghSharma27,,,,2026-01-18T02:20:49Z,B00938177,https://github.com/AmoghSharma27
+,,,,,,,,,,,,,,cl201723@dal.ca,,,,Colin MacDougall,Colin-macdougall1,,,,2026-01-19T12:16:56Z,B01031029,https://github.com/Colin-macdougall1
+,,,,,,,,,,,,,,MSchifman@dal.ca,,,,Maya Schifman,MSchifman1001,,,,2026-01-20T15:00:58Z,B01040378,https://github.com/MSchifman1001
+,,,,,,,,,,,,,,hn325040@dal.ca,,,,Hannah (Alex) Paul,yecreeper,,,,2026-01-20T16:07:04Z,B01013627,https://github.com/yecreeper
+,,,,,,,,,,,,,,"zh784921@dal,ca",,,,Maximo Wang,maximoYSN,,,,2026-01-20T16:09:32Z,B00970820,https://github.com/maximoYSN
+,,,,,,,,,,,,,,th376961@dal.ca,,,,Thomas,thomaswatchman,,,,2026-01-20T17:11:07Z,B00967605,https://github.com/thomaswatchman
+,,,,,,,,,,,,,,rb275556@dal.ca,,,,Ruby Persaud,rubyviola,,,,2026-01-21T11:37:03Z,B01019332,https://github.com/rubyviola
+,,,,,,,,,,,,,,ffouron@dal.ca,,,,Fannie Fouron,FannieFouron,,,,2026-01-22T12:52:33Z,B01077035,https://github.com/FannieFouron
+,,,,,,,,,,,,,,br278316@dal.ca,,,,Breagh Powell,breaghpowell,,,,2026-01-22T14:58:36Z,B00895864,https://github.com/breaghpowell
+,,,,,,,,,,,,,,er491883@dal.ca,,,,Eric Blaney,eric-blaney,,,,2026-01-23T11:51:55Z,B00946963,https://github.com/eric-blaney
+,,,,,,,,,,,,,,stat2430-student@mmab.ca,,,,Andrew Irwin,stat2430-student,,,,2026-02-10T14:40:40Z,B00123456,https://github.com/stat2430-student
