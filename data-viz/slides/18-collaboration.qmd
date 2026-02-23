@@ -1,7 +1,7 @@
 ---
 title: "Collaboration with GitHub"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-27"
+date: "2026-02-24"
 format:
   revealjs:
     slide-number: true
@@ -129,11 +129,11 @@ knitr::include_graphics("static/L18/collaboration-07-resolution.png")
 * [Resolving merge conflicts on GitHub](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line)
 
 
-## Task
+## Exercise
 
 * Work with your team on the project repository. Each team member should edit the proposal file.
   * Clone your project repository to your computer.
-  * Edit your project proposal. 
+  * Edit your project proposal. Just make a minor change like adding your name or a short sentence near the top.
   * Stage, commit, and push your changes.
   * Resolve any conflicts that arise -- for example, two people editing the same line of a markdown document.
 

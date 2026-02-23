@@ -1,7 +1,7 @@
 ---
 title: "Finding data"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-02-29"
+date: "2026-02-24"
 format:
   revealjs:
     slide-number: true
@@ -44,9 +44,9 @@ my_theme = theme_bw() +
 
 * Large repositories: Statistics Canada, OECD
 
-* Specialized repositories: Many COVID data repositories
+* Suggestions from prompts given to LLM/AI systems
 
-* Small collections made by individuals
+* Small data collections made by individuals, often on github or other data sites
 
 * Government "Open data"
 
@@ -181,7 +181,7 @@ data.frame(
 * An older but comprehensive guide to [importing data](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
 
 
-## Bonus Task
+## Exercise
 
   * Find data online that you have not used before from a source in this lesson or anywhere else.
   * Download the data to your computer. 

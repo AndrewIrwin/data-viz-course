@@ -291,16 +291,19 @@ Plot the population increase (`pop_incr`) as a function of the year. Use `filter
 
 Practice skills associated with collaborating on GitHub using the project repository for your team.
 
+1. Working with your teammates, make some deliberately independent or conflicting edits. For example, add your names in new lines near the top of the proposal document. Then make different changes to the same line of a file. Stage, commit, and push to GitHub. The first person will have no trouble, but the second should get a merge error. Resolve teh error. Repeat the whole process, but switch the order you push changes to GitHub. Clean up your file by removing all these experimental edits.
+
 ### Finding data (Lesson 20) {#task-b8 .unnumbered}
 
-Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
+1. Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
 You can use any data you like for this exercise. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
+2. Think of a question you want to answer. Write a prompt for an LLM to request data to answer your question and for code to read the data in R. Test the code to see if it works! Try to find documentation on the internet, not simply what is provided by the LLM, to confirm the source of the data and associated metadata.
+
 ### Reproducible Reports (Lesson 21) {#task-12 .unnumbered}
 
-We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options.
- File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
+We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options. See the course notes for suggestions.
 
 ### PCA (Lesson 22)
 
