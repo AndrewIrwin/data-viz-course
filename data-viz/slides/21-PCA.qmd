@@ -1,7 +1,7 @@
 ---
 title: "PCA: Principal Component Analysis"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-06"
+date: "2026-03-10"
 format:
   revealjs:
     slide-number: true
@@ -153,9 +153,13 @@ pca2 %>% tidy(matrix="loadings") |> # same as rotation
 * Consequences of scaling variables (or not scaling them)
 
 
-## Task
+## Exercises
 
-* Bonus task: Practice the PCA skills in this lesson 
+* Practice the PCA skills in this lesson 
+
+  * Both writing and fixing R code for a new dataset, and
+  * Interpreting and getting insight from the results
+  
 
 ## Penguin PCA code
 
