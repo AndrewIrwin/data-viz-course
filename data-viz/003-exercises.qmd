@@ -237,9 +237,22 @@ The material in this lesson should be helpful if you run into challenges while w
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
 
+1. Take any plot with two quantitative variables and add a smoothing line using `geom_smooth`. Experiment with different options: linear model (`method="lm"`), generalized additive model (gam), locally estimated scatterplot smoothing (loess). Try variations on `model = y ~ x` as appropriate.
+
+2. Develop an example using `geom_quantile`.
+
+3. Healy has an example `geom_smooth(method = MASS::rlm)`. What does that do? Compare to `method = "lm"`. Look at some examples you create and read the help page for MASS::rlm. For example, try `anscombe |> ggplot(aes(x3, y3)) + geom_point() + geom_smooth(method = MASS::rlm)`.
+
+4. Develop some rules for yourself to decide if lm (linear, polynomial), gam or loess is more appropriate to highlight patterns in different scatter plots. What questions could you answer with each?
+
+
 ### Linear models (Lesson 17) {#task-9 .unnumbered}
 
 Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
+
+1. Work through Healy section 6.4 to generate and draw "confidence ribbons".
+
+2. What is the difference between prediction and confidence intervals?
 
 ### GAM and LOESS (Lesson 18) {#task-10 .unnumbered}
 

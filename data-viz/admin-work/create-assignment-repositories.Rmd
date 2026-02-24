@@ -27,6 +27,7 @@ github <- github |>
           your_student_number_starting_with_b0 = "B00123456",
           github_account = "https://github.com/stat2430-student") |>
   mutate(Github = basename(github_account)) 
+write_csv(github, "~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/GitHub-User-Name.csv")
 ```
 
 
