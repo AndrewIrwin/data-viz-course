@@ -120,8 +120,21 @@ co2 |> group_by(year) |>
   mutate(annual_mean = mean(co2),
          co2_season = co2 - annual_mean) |>
   ggplot(aes(X2, co2_season)) + 
+  geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cc")) + # try basis (bs) = cc, cs 
   theme_minimal()
+```
+
+
+Fit a gam for both year and month.
+
+```{r}
+m_gam <- gam(co2 ~ s(year) + s(X2), data= co2)
+library(gratia)
+draw(m_gam)
+m_gam <- gam(co2 ~ poly(year,2) + s(X2), data= co2)
+draw(m_gam)
+summary(m_gam)
 ```
 
 Facet by decade

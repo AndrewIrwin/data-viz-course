@@ -56,8 +56,53 @@ create_repo <- function(team_number) {
                         source_repo = paste0(org_name, "/data-viz-project"),
                         private = TRUE)
 }
-tl <- unique(team_list$group) |> setdiff(1)
+tl <- unique(team_list$group) # |> setdiff(1)
 for (i in tl) create_repo(i)
 ```
 
+Somethign didn't work right. Teams exist/were created but were not added to the project repos.
 
+Try again to add teams to repos.
+Then try to add members to teams.
+
+```{r}
+repos <- org_repos(org_name, filter = "data-viz-project-.*") # student assignment repositories
+
+for (i in 1:length(repos)) {
+  repo <- repos[i]
+  team <- paste0("Team-", substring(repo, nchar(repo)-1))
+
+  repo_team_permission(  repo       = repo,
+                       team       = team,
+                       permission = "maintain", # or "admin", "triage", :maintain
+                       team_type  = "name")
+}
+
+```
+
+Add users to teams
+
+```{r}
+# read list again if necessary
+team_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/teams-v1.csv")
+team_list |> filter(is.na(group))
+team_list <- team_list |> mutate(full_project_repo = paste0(org_name, "/", "data-viz-project-", sprintf("%02d", group))) |>
+  mutate(project_repo = paste0("data-viz-project-",  sprintf("%02d", group))) |>
+  # filter(!(full_project_repo %in% repos)) |>
+  filter(!is.na(github))
+
+
+team_list
+
+for (i in 1:nrow(team_list)) {
+  team_name = paste0("Team-", sprintf("%02d", team_list$group[i]))
+  user = team_list$github[i]
+  # Invite the user to the team. 
+  team_invite(
+    org       = org_name,
+    user      = user,
+    team      = team_name,
+    team_type = "name"  # use "slug" if you pass the team's slug
+  )
+}
+```

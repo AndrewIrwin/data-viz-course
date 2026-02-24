@@ -254,24 +254,69 @@ Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear
 
 2. What is the difference between prediction and confidence intervals?
 
+3. Experiment with the `geom_pointrange` function to draw a point and error bar. Use the `tidy` output of a linear model to obtain the estimate and confidence interval for the slope of a linear model. Follow the example in Healy Chapter 6.5, then create your own example. (See Fig. 6.6 in [this section](https://socviz.co/modeling.html#tidy-model-objects-with-broom).)
+
+4. Compare a standard linear model, using `lm` with quantile regression using `rq` from the `quantreg` package. Use the `diamonds` dataset and make a scatter plot of price vs carat. Add a linear model and a quantile regression line for the 25th, 50th, and 75th percentiles. Describe what you learn from this plot about how price changes with carat size.
+
+5. Advanced example. Use `group_by` and `nest` from Healy [Chapter 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns) to make a set of regression lines. First repeat the example from the book. Then try to adapt it to generate coefficients for a linear model of price vs carat for each level of clarity in the diamonds data set.
+
+6. The `economics` dataset in the `ggplot2` package reports several economic indicators for the USA monthly from 1967-07-01 to 2015-04-01. The data include `pop` (total population, in thousands), `unemploy` (the number of unemployed persons, in thousands), `uempmed` (median duration of unemployment in weeks), and `psavert` (the personal savings rate). For more information, see the help page.
+
+Plot the personal savings rate as a function of time. Add a regression line (straight line, `y ~ x`).
+
+I have computed the time since the start of the time series and called it `years`. Use `lm` to create a straight line regression line. Display a table showing the intercept and slope of the regression line, with a confidence interval on these parameters.
+
+```
+my_econ <- economics %>% mutate(dd = decimal_date(date),
+                                years = dd - min(dd))
+```
+
+How well does a straight line represent this data? Describe any concerns you have about this representation of the data.
+
+7. Sometimes economists report a "seasonally adjusted" rate of unemployment, in recognition that there are seasonal patterns of employment in some sectors of the economy that cause regular, predictable fluctuations in employment and unemployment. Here I compute the day of the year for each observation (discarding the actual year) and the unemployment rate. Plot the unemployment rate as a function of the day of the year. Add quantile regression lines for the 25, 50, and 75th quantiles.
+
+```
+my_econ2 <- my_econ |> mutate(yday = yday(date),
+                              urate = unemploy/pop)
+```
+>>>>>>> 826dda54c57099bec4f50c51958bf324d573953c
+
 ### GAM and LOESS (Lesson 18) {#task-10 .unnumbered}
 
-Exercises on LOESS and GAM smooths. File: [task-L17-LOESS-GAM](tasks/task-L17-LOESS-GAM.Rmd).
+1. The `economics` dataset in the `ggplot2` package reports several economic indicators for the USA monthly from 1967-07-01 to 2015-04-01. The data include `pop` (total population, in thousands), `unemploy` (the number of unemployed persons, in thousands), `uempmed` (median duration of unemployment in weeks), and `psavert` (the personal savings rate).
+Plot the median duration of unemployment as a function of the date. Add a GAM or LOESS smooth to the data which you think captures the main trend in the data.
+Explain your preferred choice. (Why is GAM better than LOESS, or the reverse?) What is the main trend highlighted by your smooth?
+
+2. In the code block below I calculate the increase in population each year, relative to lowest population in the year. The first and last year in the dataset are outliers because there is less than a full year of data for those years.
+
+```
+my_econ3 <- economics |> mutate(year = year(date),
+                                 month = month(date)) |>
+              group_by(year) |>
+              mutate(pop_incr = (pop - min(pop))/min(pop)) |>
+              filter(pop_incr == max(pop_incr)) 
+```
+
+Plot the population increase (`pop_incr`) as a function of the year. Use `filter` to exclude the first and last years. Add a smooth curve to the graph. Summarize the trend in the annual rate of population increase in the USA in a sentence or two.
+
 
 ### Collaborating (Lesson 19) {#task-11 .unnumbered}
 
 Practice skills associated with collaborating on GitHub using the project repository for your team.
 
+1. Working with your teammates, make some deliberately independent or conflicting edits. For example, add your names in new lines near the top of the proposal document. Then make different changes to the same line of a file. Stage, commit, and push to GitHub. The first person will have no trouble, but the second should get a merge error. Resolve teh error. Repeat the whole process, but switch the order you push changes to GitHub. Clean up your file by removing all these experimental edits.
+
 ### Finding data (Lesson 20) {#task-b8 .unnumbered}
 
-Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
+1. Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
 
 You can use any data you like for this exercise. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
+2. Think of a question you want to answer. Write a prompt for an LLM to request data to answer your question and for code to read the data in R. Test the code to see if it works! Try to find documentation on the internet, not simply what is provided by the LLM, to confirm the source of the data and associated metadata.
+
 ### Reproducible Reports (Lesson 21) {#task-12 .unnumbered}
 
-We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options.
- File [task-L20-collaboration](tasks/task-L20-collaboration.Rmd).
+We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options. See the course notes for suggestions.
 
 ### PCA (Lesson 22)
 
