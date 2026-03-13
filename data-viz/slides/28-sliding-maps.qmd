@@ -1,7 +1,7 @@
 ---
 title: "Making sliding maps"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-21"
+date: "2026-03-26"
 format:
   revealjs:
     slide-number: true
@@ -77,34 +77,77 @@ m2 <- leaflet(data = cities) |>
 m2
 ```
 
-## Colour regions
+## Colour regions with names
 
 ```{r message=FALSE, eval=FALSE}
-# File missing; fix
-library(geojsonio)
+canada_map <- rnaturalearth::ne_states(country = "canada", returnclass = "sf")
+pal <- colorFactor(palette = "viridis", domain = canada_map$name)
+m3a <- leaflet(canada_map) |> 
+  addTiles() |>  # Standard OpenStreetMap background
+  addPolygons(
+    fillColor = ~pal(name),  # Fill based on province name
+    fillOpacity = 0.7, 
+    color = "white",         # Border color
+    weight = 1,              # Border thickness
+    highlightOptions = highlightOptions(
+      weight = 3,
+      color = "#666",
+      bringToFront = TRUE),
+    label = ~name            # Pop-up labels on hover
+  ) |> 
+  addLegend(
+    pal = pal, 
+    values = ~name, 
+    title = "Province", 
+    position = "bottomright"
+  )
+```
+
+## Colour regions with names
+
+```{r fig.align="center", out.width="90%", echo=FALSE}
+m3b
+```
+
+## Colour regions with numbers
+
+```{r}
 pal <- colorNumeric("viridis", NULL)  # make a viridis palette
-canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
 my_values = runif(13, 0, 10) # random numbers between 0 and 10
-m3 <- canada |>
-  leaflet() |>
-  addTiles() |>
-  addPolygons(fillColor = ~ pal(my_values),
-              weight = 1, color = "black") |>
-  addLegend(pal = pal, values = my_values, opacity = 1.0)
+m3b <- leaflet(canada_map) |> 
+  addTiles() |>  # Standard OpenStreetMap background
+  addPolygons(
+    fillColor = ~pal(my_values),  # Fill based on province name
+    fillOpacity = 0.7, 
+    color = "white",         # Border color
+    weight = 1,              # Border thickness
+    highlightOptions = highlightOptions(
+      weight = 3,
+      color = "#666",
+      bringToFront = TRUE),
+    label = ~name            # Pop-up labels on hover
+  ) |> 
+  addLegend(
+    pal = pal, 
+    values = ~my_values, 
+    title = "Province", 
+    position = "bottomright"
+  )
+
 ```
 
 
-## Colour regions
+## Colour regions with numbers
 
 ```{r fig.align="center", out.width="90%", echo=FALSE}
-# m3
+m3b
 ```
 
 ## Other tiled map services
 
 Google maps have more options, but you must sign up for an API key first. These examples are for anyone who wants to experiment with that option.
 
-```{r stamen, eval=FALSE, cache=TRUE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
+```{r stamen, eval=FALSE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
 mymap_terrain <- ggmap::get_googlemap(bbox = c(left = -130, bottom = 41, 
                                         right = -50, top = 66), 
                                zoom=5, maptype = "terrain")
@@ -115,6 +158,49 @@ See help for the package `ggmap` for more services (google maps, open street map
 
 Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don't burden yourself or a free service by downloading unnecessary data.)
 
+## Other free tiled maps
+
+
+```{r}
+library(tidyterra)
+library(maptiles)
+library(sf)
+
+bbox <- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4326)
+options(stadiamaps.key = "d652822b-6da3-4f0c-9cb5-d4e17f2a12d0") 
+bg_terrain <- get_tiles(bbox, provider = "Stadia.StamenTerrain", zoom = 5)
+
+ggplot() +
+  geom_spatraster_rgb(data = bg_terrain) +
+  theme_minimal() +
+  labs(title = "Terrain Map of North America",
+       caption = "Basemap: Stadia/Stamen Terrain")
+```
+
+
+```{r}
+# brew install proj gdal # on Mac; need homebrew too
+# Sys.setenv(PROJ_LIB = "/opt/homebrew/share/proj")
+# should just work on Windows
+library(maptiles)
+library(tidyterra)
+library(sf)
+
+# 1. Define your area (Halifax to a broader view of Canada)
+bbox_canada <- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4326)
+
+# 2. Get the tiles - "Esri.WorldTerrain" is high quality and key-free
+# You can also try "OpenTopoMap" for more of a topographic contour look
+terrain_tiles <- get_tiles(bbox_canada, provider = "Esri.WorldTerrain", zoom = 5)
+
+# 3. Plot using tidyterra for the best compatibility
+ggplot() +
+  geom_spatraster_rgb(data = terrain_tiles) +
+  theme_minimal() +
+  labs(title = "Zero-Key Terrain Background",
+       subtitle = "Using Esri World Terrain Tiles",
+       caption = "Data: Esri, USGS, NOAA")
+```
 
 ## Add text and points
 

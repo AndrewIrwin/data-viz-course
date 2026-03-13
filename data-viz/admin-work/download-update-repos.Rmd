@@ -58,6 +58,12 @@ for (repo in repo_dirs) {
 }
 ```
 
+```
+for DIR in *
+do
+   (cd $DIR; git pull --ff-only )
+done
+```
 
 ## Update files
 

@@ -1,7 +1,7 @@
 ---
 title: "Checking your work"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-12"
+date: "2026-03-19"
 format:
   revealjs:
     slide-number: true

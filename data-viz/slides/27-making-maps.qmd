@@ -1,7 +1,7 @@
 ---
 title: "Making outline maps"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-19"
+date: "2026-03-24"
 format:
   revealjs:
     slide-number: true
@@ -45,6 +45,7 @@ my_theme = theme_classic() +
 
 * Many other libraries 
   * `maps`
+  * `rnaturalearth` (see naturalearthdata.com)
   * `mapproj` for making projections of the Earth's surface
   * `mapdata` with maps of China and Japan
   * `leaflet` for drawing raster or tiled maps (next lesson)
@@ -57,9 +58,9 @@ my_theme = theme_classic() +
 
 * Points and filled regions on maps
 
-* How to represent latitude and longitude from a sphere on a screen?
-
 * Tiled maps
+
+How to represent latitude and longitude from a sphere on a flat screen? (Projections.)
 
 ## A basic map
 
@@ -225,9 +226,9 @@ m7
 * Use a different projection
 
 
-## Task
+## Exercises
 
-* Bonus task - make some simple maps based on course notes
+* Make some simple maps following the examples in these slides and the course notes
 
 
 

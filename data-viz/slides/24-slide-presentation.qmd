@@ -1,7 +1,7 @@
 ---
 title: "Making slide presentations"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-12"
+date: "2026-03-17"
 format:
   revealjs:
     slide-number: true
@@ -138,5 +138,5 @@ mpg |> count(class) |> ggplot(aes(x = class, y = n)) + geom_col() +
 
 * Use formatting (see lesson on [reproducible reports](20-reproducible-reports.qmd)) to control how code and visualizations are displayed
 
-* [A link to the full code for these slides](https://raw.githubusercontent.com/AndrewIrwin/data-viz-2022-course/main/data-viz/slides/24-slide-presentation.qmd) 
+* [A link to the full code for these slides](https://raw.githubusercontent.com/AndrewIrwin/data-viz-course/main/data-viz/slides/24-slide-presentation.qmd) 
 
