@@ -564,14 +564,14 @@
     "href": "slides/27-making-maps.html#map-libraries",
     "title": "Making outline maps",
     "section": "Map libraries",
-    "text": "Map libraries\n\nggmap (part of tidyverse)\n\nMany other libraries\n\nmaps\n\nmapproj for making projections of the Earth’s surface\n\nmapdata with maps of China and Japan\n\nleaflet for drawing raster or tiled maps (next lesson)"
+    "text": "Map libraries\n\nggmap (part of tidyverse)\n\nMany other libraries\n\nmaps\n\nrnaturalearth (see naturalearthdata.com)\n\nmapproj for making projections of the Earth’s surface\n\nmapdata with maps of China and Japan\n\nleaflet for drawing raster or tiled maps (next lesson)"
   },
   {
     "objectID": "slides/27-making-maps.html#kinds-of-maps",
     "href": "slides/27-making-maps.html#kinds-of-maps",
     "title": "Making outline maps",
     "section": "Kinds of maps",
-    "text": "Kinds of maps\n\nCoastlines and political boundaries\nNatural features (rivers, water bodies)\nPoints and filled regions on maps\nHow to represent latitude and longitude from a sphere on a screen?\nTiled maps"
+    "text": "Kinds of maps\n\nCoastlines and political boundaries\nNatural features (rivers, water bodies)\nPoints and filled regions on maps\nTiled maps\n\nHow to represent latitude and longitude from a sphere on a flat screen? (Projections.)"
   },
   {
     "objectID": "slides/27-making-maps.html#a-basic-map",
@@ -679,11 +679,11 @@
     "text": "Summary\n\nMake a basic map\nSelect all or some countries\nFill regions with colour\nAdd points and labels\nUse a different projection"
   },
   {
-    "objectID": "slides/27-making-maps.html#task",
-    "href": "slides/27-making-maps.html#task",
+    "objectID": "slides/27-making-maps.html#exercises",
+    "href": "slides/27-making-maps.html#exercises",
     "title": "Making outline maps",
-    "section": "Task",
-    "text": "Task\n\nBonus task - make some simple maps based on course notes"
+    "section": "Exercises",
+    "text": "Exercises\n\nMake some simple maps following the examples in these slides and the course notes"
   },
   {
     "objectID": "slides/25-testing.html#plan",
@@ -3633,18 +3633,32 @@
     "text": "Adding points"
   },
   {
-    "objectID": "slides/28-sliding-maps.html#colour-regions",
-    "href": "slides/28-sliding-maps.html#colour-regions",
+    "objectID": "slides/28-sliding-maps.html#colour-regions-with-names",
+    "href": "slides/28-sliding-maps.html#colour-regions-with-names",
     "title": "Making sliding maps",
-    "section": "Colour regions",
-    "text": "Colour regions\n\n# File missing; fix\nlibrary(geojsonio)\npal &lt;- colorNumeric(\"viridis\", NULL)  # make a viridis palette\ncanada &lt;- geojson_read(\"https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson\", what=\"sp\")\nmy_values = runif(13, 0, 10) # random numbers between 0 and 10\nm3 &lt;- canada |&gt;\n  leaflet() |&gt;\n  addTiles() |&gt;\n  addPolygons(fillColor = ~ pal(my_values),\n              weight = 1, color = \"black\") |&gt;\n  addLegend(pal = pal, values = my_values, opacity = 1.0)"
+    "section": "Colour regions with names",
+    "text": "Colour regions with names\n\ncanada_map &lt;- rnaturalearth::ne_states(country = \"canada\", returnclass = \"sf\")\npal &lt;- colorFactor(palette = \"viridis\", domain = canada_map$name)\nm3a &lt;- leaflet(canada_map) |&gt; \n  addTiles() |&gt;  # Standard OpenStreetMap background\n  addPolygons(\n    fillColor = ~pal(name),  # Fill based on province name\n    fillOpacity = 0.7, \n    color = \"white\",         # Border color\n    weight = 1,              # Border thickness\n    highlightOptions = highlightOptions(\n      weight = 3,\n      color = \"#666\",\n      bringToFront = TRUE),\n    label = ~name            # Pop-up labels on hover\n  ) |&gt; \n  addLegend(\n    pal = pal, \n    values = ~name, \n    title = \"Province\", \n    position = \"bottomright\"\n  )"
   },
   {
-    "objectID": "slides/28-sliding-maps.html#colour-regions-1",
-    "href": "slides/28-sliding-maps.html#colour-regions-1",
+    "objectID": "slides/28-sliding-maps.html#colour-regions-with-names-1",
+    "href": "slides/28-sliding-maps.html#colour-regions-with-names-1",
     "title": "Making sliding maps",
-    "section": "Colour regions",
-    "text": "Colour regions"
+    "section": "Colour regions with names",
+    "text": "Colour regions with names"
+  },
+  {
+    "objectID": "slides/28-sliding-maps.html#colour-regions-with-numbers",
+    "href": "slides/28-sliding-maps.html#colour-regions-with-numbers",
+    "title": "Making sliding maps",
+    "section": "Colour regions with numbers",
+    "text": "Colour regions with numbers\n\npal &lt;- colorNumeric(\"viridis\", NULL)  # make a viridis palette\nmy_values = runif(13, 0, 10) # random numbers between 0 and 10\nm3b &lt;- leaflet(canada_map) |&gt; \n  addTiles() |&gt;  # Standard OpenStreetMap background\n  addPolygons(\n    fillColor = ~pal(my_values),  # Fill based on province name\n    fillOpacity = 0.7, \n    color = \"white\",         # Border color\n    weight = 1,              # Border thickness\n    highlightOptions = highlightOptions(\n      weight = 3,\n      color = \"#666\",\n      bringToFront = TRUE),\n    label = ~name            # Pop-up labels on hover\n  ) |&gt; \n  addLegend(\n    pal = pal, \n    values = ~my_values, \n    title = \"Province\", \n    position = \"bottomright\"\n  )"
+  },
+  {
+    "objectID": "slides/28-sliding-maps.html#colour-regions-with-numbers-1",
+    "href": "slides/28-sliding-maps.html#colour-regions-with-numbers-1",
+    "title": "Making sliding maps",
+    "section": "Colour regions with numbers",
+    "text": "Colour regions with numbers"
   },
   {
     "objectID": "slides/28-sliding-maps.html#other-tiled-map-services",
@@ -3652,6 +3666,13 @@
     "title": "Making sliding maps",
     "section": "Other tiled map services",
     "text": "Other tiled map services\nGoogle maps have more options, but you must sign up for an API key first. These examples are for anyone who wants to experiment with that option.\n\nmymap_terrain &lt;- ggmap::get_googlemap(bbox = c(left = -130, bottom = 41, \n                                        right = -50, top = 66), \n                               zoom=5, maptype = \"terrain\")\nm4 &lt;- ggmap(mymap_terrain)  \n\nSee help for the package ggmap for more services (google maps, open street maps).\nStart with a small integer for zoom and increase it if your map is fuzzy. (Don’t burden yourself or a free service by downloading unnecessary data.)"
+  },
+  {
+    "objectID": "slides/28-sliding-maps.html#other-free-tiled-maps",
+    "href": "slides/28-sliding-maps.html#other-free-tiled-maps",
+    "title": "Making sliding maps",
+    "section": "Other free tiled maps",
+    "text": "Other free tiled maps\n\nlibrary(tidyterra)\nlibrary(maptiles)\nlibrary(sf)\n\nbbox &lt;- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4326)\noptions(stadiamaps.key = \"d652822b-6da3-4f0c-9cb5-d4e17f2a12d0\") \nbg_terrain &lt;- get_tiles(bbox, provider = \"Stadia.StamenTerrain\", zoom = 5)\n\nggplot() +\n  geom_spatraster_rgb(data = bg_terrain) +\n  theme_minimal() +\n  labs(title = \"Terrain Map of North America\",\n       caption = \"Basemap: Stadia/Stamen Terrain\")\n\n\n# brew install proj gdal # on Mac; need homebrew too\n# Sys.setenv(PROJ_LIB = \"/opt/homebrew/share/proj\")\n# should just work on Windows\nlibrary(maptiles)\nlibrary(tidyterra)\nlibrary(sf)\n\n# 1. Define your area (Halifax to a broader view of Canada)\nbbox_canada &lt;- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4326)\n\n# 2. Get the tiles - \"Esri.WorldTerrain\" is high quality and key-free\n# You can also try \"OpenTopoMap\" for more of a topographic contour look\nterrain_tiles &lt;- get_tiles(bbox_canada, provider = \"Esri.WorldTerrain\", zoom = 5)\n\n# 3. Plot using tidyterra for the best compatibility\nggplot() +\n  geom_spatraster_rgb(data = terrain_tiles) +\n  theme_minimal() +\n  labs(title = \"Zero-Key Terrain Background\",\n       subtitle = \"Using Esri World Terrain Tiles\",\n       caption = \"Data: Esri, USGS, NOAA\")"
   },
   {
     "objectID": "slides/28-sliding-maps.html#add-text-and-points",

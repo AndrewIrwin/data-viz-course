@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2024-03-19">
+<meta name="dcterms.date" content="2026-03-24">
 <title>data-viz – Making outline maps</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -205,7 +205,7 @@ Andrew Irwin, a.irwin@dal.ca
 </div>
 </div>
 
-  <p class="date">2024-03-19</p>
+  <p class="date">2026-03-24</p>
 </section><section id="plan" class="slide level2"><h2>Plan</h2>
 <ul>
 <li><p>Kinds of maps</p></li>
@@ -221,6 +221,8 @@ Andrew Irwin, a.irwin@dal.ca
 <ul>
 <li><code>maps</code></li>
 <li>
+<code>rnaturalearth</code> (see naturalearthdata.com)</li>
+<li>
 <code>mapproj</code> for making projections of the Earth’s surface</li>
 <li>
 <code>mapdata</code> with maps of China and Japan</li>
@@ -233,9 +235,10 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Coastlines and political boundaries</p></li>
 <li><p>Natural features (rivers, water bodies)</p></li>
 <li><p>Points and filled regions on maps</p></li>
-<li><p>How to represent latitude and longitude from a sphere on a screen?</p></li>
 <li><p>Tiled maps</p></li>
-</ul></section><section id="a-basic-map" class="slide level2"><h2>A basic map</h2>
+</ul>
+<p>How to represent latitude and longitude from a sphere on a flat screen? (Projections.)</p>
+</section><section id="a-basic-map" class="slide level2"><h2>A basic map</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a>WorldData <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">'world'</span>)  </span>
@@ -347,9 +350,9 @@ Andrew Irwin, a.irwin@dal.ca
 <li><p>Fill regions with colour</p></li>
 <li><p>Add points and labels</p></li>
 <li><p>Use a different projection</p></li>
-</ul></section><section id="task" class="slide level2"><h2>Task</h2>
+</ul></section><section id="exercises" class="slide level2"><h2>Exercises</h2>
 <ul>
-<li>Bonus task - make some simple maps based on course notes</li>
+<li>Make some simple maps following the examples in these slides and the course notes</li>
 </ul>
 
 
