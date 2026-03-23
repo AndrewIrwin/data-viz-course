@@ -42,9 +42,12 @@ library(kableExtra)
 
 * Static: `ggmap` (part of tidyverse, tiles from several services)
 
+* `maptiles`, `tidyterra`, `sf`
+
 * Both rely on internet services such as:
   * [OpenStreetMap](https://www.openstreetmap.org/#map=5/44.653/-63.413) 
   * [Google Maps](https://mapsplatform.google.com/maps-products/#static-maps)
+  * [Stadia Maps](https://stadiamaps.com/)
 
 ## A basic map
 
@@ -65,7 +68,7 @@ m  # Print the map
 
 ```{r message=FALSE, warning=FALSE}
 cities <- read_csv("static/L28/selected_cities.csv")
-head(cities) |> kable() |> kable_styling()
+head(cities, 4) |> kable() |> kable_styling()
 m2 <- leaflet(data = cities) |>
   addTiles() |>
   addCircleMarkers(~ lng, ~lat, label = ~city)
@@ -79,7 +82,7 @@ m2
 
 ## Colour regions with names
 
-```{r message=FALSE, eval=FALSE}
+```{r message=FALSE}
 canada_map <- rnaturalearth::ne_states(country = "canada", returnclass = "sf")
 pal <- colorFactor(palette = "viridis", domain = canada_map$name)
 m3a <- leaflet(canada_map) |> 
@@ -90,23 +93,20 @@ m3a <- leaflet(canada_map) |>
     color = "white",         # Border color
     weight = 1,              # Border thickness
     highlightOptions = highlightOptions(
-      weight = 3,
-      color = "#666",
+      weight = 3, color = "#666",
       bringToFront = TRUE),
     label = ~name            # Pop-up labels on hover
   ) |> 
   addLegend(
-    pal = pal, 
-    values = ~name, 
+    pal = pal, values = ~name, 
     title = "Province", 
-    position = "bottomright"
-  )
+    position = "bottomright"  )
 ```
 
 ## Colour regions with names
 
 ```{r fig.align="center", out.width="90%", echo=FALSE}
-m3b
+m3a
 ```
 
 ## Colour regions with numbers
@@ -122,17 +122,14 @@ m3b <- leaflet(canada_map) |>
     color = "white",         # Border color
     weight = 1,              # Border thickness
     highlightOptions = highlightOptions(
-      weight = 3,
-      color = "#666",
+      weight = 3, color = "#666",
       bringToFront = TRUE),
     label = ~name            # Pop-up labels on hover
   ) |> 
   addLegend(
-    pal = pal, 
-    values = ~my_values, 
+    pal = pal, values = ~my_values, 
     title = "Province", 
-    position = "bottomright"
-  )
+    position = "bottomright")
 
 ```
 
@@ -158,30 +155,10 @@ See help for the package `ggmap` for more services (google maps, open street map
 
 Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don't burden yourself or a free service by downloading unnecessary data.)
 
-## Other free tiled maps
 
+## ESRI maps
 
-```{r}
-library(tidyterra)
-library(maptiles)
-library(sf)
-
-bbox <- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4326)
-options(stadiamaps.key = "d652822b-6da3-4f0c-9cb5-d4e17f2a12d0") 
-bg_terrain <- get_tiles(bbox, provider = "Stadia.StamenTerrain", zoom = 5)
-
-ggplot() +
-  geom_spatraster_rgb(data = bg_terrain) +
-  theme_minimal() +
-  labs(title = "Terrain Map of North America",
-       caption = "Basemap: Stadia/Stamen Terrain")
-```
-
-
-```{r}
-# brew install proj gdal # on Mac; need homebrew too
-# Sys.setenv(PROJ_LIB = "/opt/homebrew/share/proj")
-# should just work on Windows
+```{r message=FALSE}
 library(maptiles)
 library(tidyterra)
 library(sf)
@@ -193,30 +170,40 @@ bbox_canada <- st_bbox(c(xmin = -130, ymin = 41, xmax = -50, ymax = 66), crs = 4
 # You can also try "OpenTopoMap" for more of a topographic contour look
 terrain_tiles <- get_tiles(bbox_canada, provider = "Esri.WorldTerrain", zoom = 5)
 
-# 3. Plot using tidyterra for the best compatibility
-ggplot() +
+m5a <- ggplot() +
   geom_spatraster_rgb(data = terrain_tiles) +
-  theme_minimal() +
-  labs(title = "Zero-Key Terrain Background",
-       subtitle = "Using Esri World Terrain Tiles",
-       caption = "Data: Esri, USGS, NOAA")
+  theme_minimal() 
+```
+
+---
+
+```{r echo=FALSE}
+m5a
 ```
 
 ## Add text and points
 
-```{r eval=FALSE, message=FALSE}
+```{r message=FALSE}
 my_points <- tibble(lat = c(43+57/60, 49+53/60),
                     lon = c(-59-55/60, -97-9/60),
                     label = c("Sable Is.", "Winnipeg")
-)
-m5 <- ggmap(mymap_terrain)  +
-  geom_point(data = my_points, color="brown") + 
-  geom_label(data = my_points, 
-            aes(label=label), 
-            fill = "#FFFFFF90",
-            color = "black", nudge_y = 1.5)
+) |> st_as_sf(coords = c("lon", "lat"), crs = 4326)
+
+m5 <- ggplot() +
+  geom_spatraster_rgb(data = terrain_tiles) +
+  geom_sf(data = my_points, color = "brown", size = 2) + 
+  geom_sf_label(data = my_points, 
+                aes(label = label), 
+                fill = "#FFFFFF90",
+                color = "black") + 
+  theme_minimal()
 ```
 
+---
+
+```{r echo=FALSE}
+m5
+```
 
 ## Summary
 

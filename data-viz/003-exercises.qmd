@@ -399,15 +399,24 @@ Practice making a map from the lesson
 
 ### More Maps (Lesson 29) {#task-15 .unnumbered}
 
-Make maps described in the file [task-L28-maps](tasks/task-L28-maps.Rmd).
+1. Make an outline (vector) map of any country or region except for Canada or the USA. Fill the country with any colour you like except for the default grey. Experiment with map projections, showing or hiding the grid lines, and showing or hiding axis labels.
+
+2. Pick a location on the Earth that you find interesting (e.g., a place you visited, where you lived for a long time, or a place you are interested in but have never been to). Find latitude and longitude coordinates for this location. One way to do this is to use google maps to find the location, then look in the address bar for the latitude and longitude. Make a leaflet (interactive, sliding) map centred on this area. Choose a level of zoom to show the detail you think is appropriate. Use the function `setView` to set the coordinates at the middle of the map and the zoom level. Add a point on the map at the place of interest.
+
 
 ### Map alternatives (Lesson 30) {#task-16 .unnumbered}
 
-Show geographic data without maps as described in [task-L29-map-alternatives](tasks/task-L29-map-alternatives.Rmd).
+1. Make a `statebins` map using some data from the USA. Why do you think this sort of map is not common for Canada? How would you display provice- and territory-level data for Canada?
+
+2. Get some UN data and display it on a map of the world with a square for each country. See Assignment 5 to get started.
+
 
 ### Factors and Dates (Lesson 31) {#task-17 .unnumbered}
 
-Exercises with strings, factors, dates, and times. See [task-L30-factors-dates](tasks/task-L30-factors-dates.Rmd).
+1.  Make a boxplot of the `diamonds` data. Show the distribution of the quantitative data carat for each of the levels of the cut categorical variable. Order the cut categorical variable using `fct_reorder` according to the median of the price.
+
+2. Make a boxplot using the `manufacturer` variable from `mpg`. Use `fct_lump_min` or `fct_lump_prop` to combine the less frequently recorded manufacturers into a single _other_ category.
+
 
 ### Colour (Lesson 32) {#task-b11 .unnumbered}
 
