@@ -20,17 +20,87 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Packages
 
-```{r}
+```{r message=FALSE}
 library(tidyverse, quietly = TRUE)
-library(ggmap)
-# library(rnaturalearth)
-# library(rnaturalearthdata) # devtools::install_github("ropensci/rnaturalearthdata")
-# library(rnaturalearthhires) # devtools::install_github("ropensci/rnaturalearthhires")
+# library(ggmap)
+library(rnaturalearth)
+library(rnaturalearthdata) # devtools::install_github("ropensci/rnaturalearthdata")
+library(rnaturalearthhires) # devtools::install_github("ropensci/rnaturalearthhires")
+library(sf) # simple features = map objects (points, lines, areas)
+library(ggrepel)
 ```
 
 Lots of other packages in examples (notes and wider internet): `sf` (simple features), `terra`, and many more.
 
-## Functions
+## Essential examples
+
+```{r}
+canada_sf <- st_as_sf(maps::map("world", "Canada", plot = FALSE, fill = TRUE))
+
+ggplot(data = canada_sf) +
+  geom_sf(fill = "#5C4033", color = "white", size = 0.2) +
+  # coord_sf using the official Canada Atlas Lambert projection (EPSG:3978)
+  coord_sf(crs = st_crs(3978)) +
+  theme(
+    panel.background = element_rect(fill = "#0022FF"),
+    panel.border = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()  ) +
+  labs(x = NULL, y = NULL)
+```
+
+### Map with cities
+
+Cities
+
+```{r}
+city_coords <- tribble( ~city, ~lat, ~long,
+  "Vancouver",    49.2827,    -123.1207,
+  "Calgary",  51.0447,    -114.0719,
+  "Edmonton", 53.5461,    -113.4938,
+  "Toronto",  43.6532,    -79.3832, 
+  "Ottawa",   45.4215,    -75.6972,
+  "Montreal", 45.5017,    -73.5673,
+  "Halifax", 44.6488, -63.5752) |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+```
+
+Map
+
+```{r}
+canada <- ne_states(country = "canada", returnclass = "sf")
+map1 <- canada |> ggplot() + 
+  geom_sf(fill = "lightgray", colour = "#7f7f7f") +
+  geom_sf(data = city_coords, color = "red") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "aliceblue"),
+    panel.grid = element_blank()
+  ) +
+    coord_sf(crs = st_crs(3978))  # Ask LLM for help
+map1 
+```
+
+Add labels
+
+
+```{r}
+map1 + geom_label_repel(
+    data = city_coords,
+    aes(label = city, geometry = geometry),
+    stat = "sf_coordinates",
+    min.segment.length = 0, # Always draw the line
+    colour = "black",
+    fill = "white",
+    alpha = 0.8,
+    nudge_y = 100000 # Shift labels up (in meters if using CRS 3347)
+  )
+```
+
+## More examples
+
+### Functions
 
 * `map_data` (get data for a map, part of ggplot2)
 * `geom_map` (draw a map)
@@ -38,7 +108,7 @@ Lots of other packages in examples (notes and wider internet): `sf` (simple feat
 * `expand_limits` (if part of your map is not showing)
 * `coord_map` (projections, Mercator is default)
 
-## Data for map
+### Data for map
 
 ```{r}
 m1 <- map_data("world")
