@@ -1,7 +1,7 @@
 ---
 title: "k-means clustering"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-07"
+date: "2026-03-12"
 format:
   revealjs:
     slide-number: true
@@ -240,9 +240,12 @@ kclust1 |> augment(penguins_scaled) |>
 * [How does k-means clustering work?](https://saturncloud.io/blog/what-is-k-means-clustering-and-how-does-its-algorithm-work/)
 
 
-## Task
+## Exercise
 
 * Practice k-means
+
+  * R code
+  * Interpreting results
 
 
 

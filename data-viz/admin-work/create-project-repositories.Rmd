@@ -17,6 +17,7 @@ library(ghclass)
 ```{r}
 team_list <- read_csv("~/Dropbox/Teaching/STAT 2430 Data Viz/2026W/Student-assignments/teams-v1.csv")
 team_list |> filter(is.na(group))
+team_list <- team_list |> filter(!is.na(group))
 ```
 
 

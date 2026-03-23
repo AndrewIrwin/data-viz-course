@@ -1,7 +1,7 @@
 ---
 title: "MDS: Multidimensional scaling"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-07"
+date: "2026-03-12"
 format:
   revealjs:
     slide-number: true
@@ -69,7 +69,7 @@ knitr::include_graphics("static/L22/unnamed-chunk-5-1.png")
 
 * Use latitude and longitude of cities to compute distance between each pair
 
-  * **How do we compute that distance? Euclidean? Great circle?**
+  * **How do we compute that distance? Euclidean distance from latitude and longitude? Great circle distance?**
   
 * Use MDS on distance matrix to reconstruct relative positions
 
@@ -90,7 +90,7 @@ knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
   
 * Columns are objects (sample locations, countries)
 
-* Be sure the observations (rows) are all measured in the same units
+* Be sure the variables (columns) are all measured in the same units
 
   * Abundance
   * Proportions
@@ -117,8 +117,11 @@ knitr::include_graphics("static/L22/unnamed-chunk-6-1.png")
   * Data and analysis shows combinations of dots and dashes that are likely to be misinterpreted by recipient
 
 
-## Task
+## Exercises
 
 * Practice PCA and MDS methods
+
+  * R code
+  * Interpreting results
 
 

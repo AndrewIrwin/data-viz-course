@@ -237,18 +237,30 @@ The material in this lesson should be helpful if you run into challenges while w
 
 Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Experiment with colors and facets. 
 
+1. Take any plot with two quantitative variables and add a smoothing line using `geom_smooth`. Experiment with different options: linear model (`method="lm"`), generalized additive model (gam), locally estimated scatterplot smoothing (loess). Try variations on `model = y ~ x` as appropriate.
+
+2. Develop an example using `geom_quantile`.
+
+3. Healy has an example `geom_smooth(method = MASS::rlm)`. What does that do? Compare to `method = "lm"`. Look at some examples you create and read the help page for MASS::rlm. For example, try `anscombe |> ggplot(aes(x3, y3)) + geom_point() + geom_smooth(method = MASS::rlm)`.
+
+4. Develop some rules for yourself to decide if lm (linear, polynomial), gam or loess is more appropriate to highlight patterns in different scatter plots. What questions could you answer with each?
+
+
 ### Linear models (Lesson 17) {#task-9 .unnumbered}
 
 Exercises on linear models. File: [task-L16-linear-models](tasks/task-L16-linear-models.Rmd).
 
+1. Work through Healy section 6.4 to generate and draw "confidence ribbons".
 
-4. Experiment with the `geom_pointrange` function to draw a point and error bar. Use the `tidy` output of a linear model to obtain the estimate and confidence interval for the slope of a linear model. Follow the example in Healy Chapter 6.5, then create your own example. (See Fig. 6.6 in [this section](https://socviz.co/modeling.html#tidy-model-objects-with-broom).)
+2. What is the difference between prediction and confidence intervals?
 
-5. Compare a standard linear model, using `lm` with quantile regression using `rq` from the `quantreg` package. Use the `diamonds` dataset and make a scatter plot of price vs carat. Add a linear model and a quantile regression line for the 25th, 50th, and 75th percentiles. Describe what you learn from this plot about how price changes with carat size.
+3. Experiment with the `geom_pointrange` function to draw a point and error bar. Use the `tidy` output of a linear model to obtain the estimate and confidence interval for the slope of a linear model. Follow the example in Healy Chapter 6.5, then create your own example. (See Fig. 6.6 in [this section](https://socviz.co/modeling.html#tidy-model-objects-with-broom).)
 
-6. Advanced example. Use `group_by` and `nest` from Healy [Chapter 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns) to make a set of regression lines. First repeat the example from the book. Then try to adapt it to generate coefficients for a linear model of price vs carat for each level of clarity in the diamonds data set.
+4. Compare a standard linear model, using `lm` with quantile regression using `rq` from the `quantreg` package. Use the `diamonds` dataset and make a scatter plot of price vs carat. Add a linear model and a quantile regression line for the 25th, 50th, and 75th percentiles. Describe what you learn from this plot about how price changes with carat size.
 
-7. The `economics` dataset in the `ggplot2` package reports several economic indicators for the USA monthly from 1967-07-01 to 2015-04-01. The data include `pop` (total population, in thousands), `unemploy` (the number of unemployed persons, in thousands), `uempmed` (median duration of unemployment in weeks), and `psavert` (the personal savings rate). For more information, see the help page.
+5. Advanced example. Use `group_by` and `nest` from Healy [Chapter 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns) to make a set of regression lines. First repeat the example from the book. Then try to adapt it to generate coefficients for a linear model of price vs carat for each level of clarity in the diamonds data set.
+
+6. The `economics` dataset in the `ggplot2` package reports several economic indicators for the USA monthly from 1967-07-01 to 2015-04-01. The data include `pop` (total population, in thousands), `unemploy` (the number of unemployed persons, in thousands), `uempmed` (median duration of unemployment in weeks), and `psavert` (the personal savings rate). For more information, see the help page.
 
 Plot the personal savings rate as a function of time. Add a regression line (straight line, `y ~ x`).
 
@@ -261,12 +273,13 @@ my_econ <- economics %>% mutate(dd = decimal_date(date),
 
 How well does a straight line represent this data? Describe any concerns you have about this representation of the data.
 
-8. Sometimes economists report a "seasonally adjusted" rate of unemployment, in recognition that there are seasonal patterns of employment in some sectors of the economy that cause regular, predictable fluctuations in employment and unemployment. Here I compute the day of the year for each observation (discarding the actual year) and the unemployment rate. Plot the unemployment rate as a function of the day of the year. Add quantile regression lines for the 25, 50, and 75th quantiles.
+7. Sometimes economists report a "seasonally adjusted" rate of unemployment, in recognition that there are seasonal patterns of employment in some sectors of the economy that cause regular, predictable fluctuations in employment and unemployment. Here I compute the day of the year for each observation (discarding the actual year) and the unemployment rate. Plot the unemployment rate as a function of the day of the year. Add quantile regression lines for the 25, 50, and 75th quantiles.
 
 ```
 my_econ2 <- my_econ |> mutate(yday = yday(date),
                               urate = unemploy/pop)
 ```
+>>>>>>> 826dda54c57099bec4f50c51958bf324d573953c
 
 ### GAM and LOESS (Lesson 18) {#task-10 .unnumbered}
 
@@ -305,17 +318,65 @@ You can use any data you like for this exercise. If you want a specific suggesti
 
 We've been using Quarto (or R markdown) to make reproducible reports throughout the course. In this exercise, practice using `here` and chunk options. See the course notes for suggestions.
 
-### PCA (Lesson 22)
+### PCA (Lesson 22) and MDS (Lesson 23) {#task-13 .unnumbered}
 
-The exercises for this lesson are grouped with the MDS exercises.
+The data frame `iris` is similar to the penguins data we have been using, except it is about iris plants.
 
-### MDS (Lesson 23) {#task-13 .unnumbered}
+1. Here is code for a pairs plot of four quantitative variables from this dataset. The diagonal shows the density of each variable. Below the diagonal is a scatter plot of pairs of variables. Above the diagonal is the Pearson correlation between pairs of variables. Colour is used to distinguish the three species.
 
-Create a PCA and MDS plot as described in the file [task-L22-mds](tasks/task-L22-mds.Rmd). 
+```
+library(GGally)
+iris |> ggpairs(aes(color=Species), columns=1:4, progress=FALSE)
+```
+
+Create a pairs plot for the Palmer penguins data.
+
+2. Use `prcomp` to create a PCA of the four quantitative variables in `iris` by modifying examples from lecture slides or notes.
+
+3. Use `autoplot` to create a "biplot" showing the data projected onto the first two principal components. Colour the points according to the species. (Note you have to spell colour with a "u" in this command, and you need to put the variable name 'Species' in quotation marks; this is different from the way most functions we've been using work.) Show the "loading" vectors with their labels.
+
+4. Use `augment` and `ggplot` to make your own customized biplot. You don't need to include the loading arrows, but you can if you like.
+
+5. Use the function `dist` to compute the distance between each plant (row) in the `iris` dataset. 
+
+```
+dist1 <- dist(iris |> select(-Species) |> scale() )
+```
+
+Then use `metaMDS` from the `vegan` package to perform multidimensional scaling on the iris data using this distance matrix.
+
+6. Use `ordiplot` to show the points as separated into the two dimensional ordination space.
+
+7. If the result of your MDS is stored in a variable called `mds1` you can get the MDS coordinates of each plant using `mds1$points` (change `mds1` to the name of the object you stored the MDS analysis in.) Below I also use the `as_tibble` function to convert the matrix to a tibble in preparation for our next step.
+
+```
+mds1$points |> as_tibble()
+```
+
+Use `bind_cols` to combine these points with the original `iris` dataset. Make a scatter plot using the MDS coordinates and colour the points using the Species variable.
+
+```
+bind_cols(iris, mds1$points |> as_tibble()) 
+```
+
+8. Make a scatterplot using any two of the original quantitative variables from `iris`. 
+Do the species form three separate clusters in your plot using the original data? Are the observations separated in the plane according to the species name in the MDS plot?
 
 ### K-means (Lesson 24) {#task-14 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the file [task-L23-k-means](tasks/task-L23-k-means.Rmd). 
+1. Continue working with the `iris` data. Use `k`-means clustering on scaled versions of the four quantitative variables to create 3 clusters.
+
+2. Use `tidy` to show the centres of the three clusters.
+
+3. Make a scatterplot of each observation using any two of the original quantitative variables. Colour the points according to the cluster. Use `augment` to combine the clustering results with the original data.
+
+4. Use `augment` to combine the cluster and original data again. Count the number of combinations of each pair of species name and cluster number using group_by and summarize (or just count).
+
+5. The four quantitative variables are all measured in cm and are all similar in magnitude. Perhaps the absolute values of the lengths should be retained. Repeat the cluster analysis (showing the plot and the table of species and cluster numbers) with data that are **not** scaled.
+
+Write a sentence or two that summarizes how well k-means clusters divide these three species into three clusters using these four variables. How do the results from scaled and un-scaled data differ? Is one approach clearly better?
+
+
 
 ### Presentations (Lesson 25) {#task-14a .unnumbered}
 

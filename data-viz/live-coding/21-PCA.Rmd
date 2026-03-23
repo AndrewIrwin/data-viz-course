@@ -104,7 +104,7 @@ autoplot(midwest_pca2, data = midwest_ss, loadings = TRUE,
 
 ## Scaling experiment
 
-Don't scale the variables. You rarely really want to do this!
+What happens if you don't scale the variables? You might choose to not scale data if all quantitiative variables are measured in the same units and the relative magnitudes of the values are important for qualitative analysis. You rarely want to do this!
 
 ```{r}
 midwest_ss <- midwest |> slice_sample(n = 100) |>

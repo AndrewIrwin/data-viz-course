@@ -158,7 +158,7 @@ Don't show your R code; the focus should be on your results and visualizations n
 Your presentation should convey what you learned from your analysis and the choices you made when constructing your visualizations.
 Be careful not to simply describe a list of visualizations and analyses ("then we did this, then we did this, etc."). You must tie the visualizations you show to the questions you are investigating.
 
-Presentation schedule: You should record your presentation in the last week of term and upload your recorded presentation to Brightspace before the last day of classes.
+Presentation schedule: You should record your presentation in the last week of term and upload your recorded presentation to Brightspace before the last day of classes. **Every member of the team should have a visible, speaking role in the presentation.** Only one member should upload the recording to Brightspace.
 
 *Assessment*. See the file `grade-presentation.Rmd` for the assessment guidelines.
 
