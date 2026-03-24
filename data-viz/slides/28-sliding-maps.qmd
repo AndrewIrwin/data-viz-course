@@ -79,7 +79,7 @@ m2
 
 ## Colour regions with names
 
-```{r message=FALSE, eval=FALSE}
+```{r message=FALSE}
 canada_map <- rnaturalearth::ne_states(country = "canada", returnclass = "sf")
 pal <- colorFactor(palette = "viridis", domain = canada_map$name)
 m3a <- leaflet(canada_map) |> 
@@ -106,7 +106,7 @@ m3a <- leaflet(canada_map) |>
 ## Colour regions with names
 
 ```{r fig.align="center", out.width="90%", echo=FALSE}
-m3b
+m3a
 ```
 
 ## Colour regions with numbers
@@ -161,7 +161,7 @@ Start with a small integer for `zoom` and increase it if your map is fuzzy. (Don
 ## Other free tiled maps
 
 
-```{r}
+```{r eval=FALSE}
 library(tidyterra)
 library(maptiles)
 library(sf)
@@ -178,7 +178,7 @@ ggplot() +
 ```
 
 
-```{r}
+```{r eval=FALSE}
 # brew install proj gdal # on Mac; need homebrew too
 # Sys.setenv(PROJ_LIB = "/opt/homebrew/share/proj")
 # should just work on Windows
