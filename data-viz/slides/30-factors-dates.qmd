@@ -1,7 +1,7 @@
 ---
 title: "Text & Factors<br>Dates & Times"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-26"
+date: "2026-03-31"
 format:
   revealjs:
     slide-number: true
@@ -41,6 +41,18 @@ knitr::opts_chunk$set(
 * Factors package `forcats` and functions `fct_*`
 
 * Date and time package: `lubridate` and functions `ymd`, `ymdhms`, `yday`, `decimal_date` and more
+
+## Packages
+
+Part of tidyverse: 
+
+* forcats
+* lubridate
+
+New packages today
+
+* glue
+* unglue
 
 
 ## Challenges that arise with text
@@ -118,14 +130,14 @@ penguins |> ggplot(aes(x = body_mass_g, y = species)) +
 
 ## Plot order {.smaller}
 
-Order from smallest to largest, top to bottom. Watch out for NAs.
+Order from smallest to largest, top to bottom. Watch out for NAs. `median` is the default function.
 
 ```{r fig.align="center", fig.asp=0.75, message=FALSE, warning=FALSE, dev='svglite', out.width="50%"}
 penguins |> na.omit() |>
   ggplot(aes(x = body_mass_g, 
-             y = fct_reorder(species, body_mass_g,
+             y = fct_reorder(species, body_mass_g, mean,
                              .desc=TRUE))) + 
-  stat_summary() + my_theme
+  stat_summary() + my_theme + labs(y="Species")
 ```
 
 
@@ -135,7 +147,7 @@ penguins |> na.omit() |>
 penguins |>
   ggplot(aes(x = body_mass_g, 
              y = fct_relevel(species, "Gentoo", "Adelie"))) + 
-  stat_summary() + my_theme
+  stat_summary() + my_theme + labs(y="Species")
 ```
 
 ## Ordering works for other aesthetics too
@@ -149,6 +161,44 @@ penguins |> na.omit() |>
   labs(color = "Species")
 ```
 
+## Grouping factors together
+
+```{r}
+mpg |> ggplot() +
+  geom_point(aes(cty, displ, color = manufacturer)) + 
+  theme_bw()
+```
+
+## Grouping factors together
+
+```{r}
+mpg |> 
+  mutate(manufact = fct_lump(manufacturer, n = 3)) |>
+  ggplot() +
+  geom_point(aes(cty, displ, color = manufact)) + 
+  theme_bw()
+```
+
+## Grouping factors together
+
+```{r}
+mpg |> 
+  mutate(manufact = fct_lump_prop(manufacturer, prop = 0.10)) |>
+  ggplot() +
+  geom_point(aes(cty, displ, color = manufact)) + 
+  theme_bw()
+```
+
+
+## Grouping factors together
+
+```{r}
+mpg |> 
+  mutate(manufact = fct_lump_min(manufacturer, min = 15)) |>
+  ggplot() +
+  geom_point(aes(cty, displ, color = manufact)) + 
+  theme_bw()
+```
 
 ## Challenges that arise with dates and times
 
@@ -213,6 +263,18 @@ ymd("2024/01/31") +
   duration(seq(0, 11, by = 1), units = "month")
 ```
 
+## Sequences of dates
+
+```{r}
+make_date(2026, 1:12, 1) # first day of each month
+# make a sequence of the last day of each month
+start_date <- as.Date("2026-01-01")
+end_date <- as.Date("2026-12-01")
+first_days_seq <- seq(ceiling_date(start_date, "month"), 
+                      ceiling_date(end_date, "month"), by = "month")
+first_days_seq - days(1)
+```
+
 ## More calendar arithmetic
 
 ```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
@@ -244,7 +306,8 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
        value = 1:4) |>
-  mutate(elapsed = dt - min(dt)) |> kable()
+  mutate(elapsed = dt - min(dt)) |> 
+  arrange(elapsed) |> kable()
 ```
 
 ## Time arithmetic

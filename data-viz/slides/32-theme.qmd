@@ -1,7 +1,7 @@
 ---
 title: "Theme"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-03-28"
+date: "2026-03-31"
 format:
   revealjs:
     slide-number: true
@@ -68,6 +68,18 @@ p1 + theme_bw()
 p1 + theme_classic()
 ```
 
+## Ready to use themes
+
+```{r}
+p1 + theme_minimal()
+```
+
+## Ready to use themes
+
+```{r}
+p1 + theme_void()
+```
+
 ## More themes
 
 * `theme_dark`, `theme_gray`, `theme_light`
@@ -77,7 +89,7 @@ p1 + theme_classic()
 ## All text larger
 
 ```{r}
-p1 + theme(text = element_text(size=22))
+p1 + theme_grey(base_size=20)
 ```
 
 ## Sizes for different elements

@@ -1,7 +1,7 @@
 ---
 title: "Recreating a plot step by step"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-04-04"
+date: "2026-04-06"
 format:
   revealjs:
     slide-number: true
@@ -432,6 +432,7 @@ world %>% filter(continent != "Antarctica") %>%
                      panel.background = element_rect(fill=NA),
                      plot.background = element_rect(fill=NA),
                      axis.text.x = element_text(color=NA),
+                     axis.text.y = element_blank(),
                      axis.ticks.length =  unit(0, "cm")) 
 ```
 
@@ -456,6 +457,7 @@ world %>% filter(continent != "Antarctica") %>%
                      panel.background = element_rect(fill=NA),
                      plot.background = element_rect(fill=NA),
                      axis.text.x = element_text(color=NA),
+                     axis.text.y = element_text(color=NA),
                      axis.ticks.length =  unit(0, "cm")) -> world_map
 print(world_map)
 ```
@@ -499,7 +501,7 @@ gapminder %>% filter(year == 2007) %>%
   ggtitle("Life Expectancy (2007)") +
   scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) +
   scale_size_area(max_size = 20) + 
-  annotation_custom(grob=ggplotGrob(world_map), xmin=12.3, ymin=35, ymax=50 ) +
+  annotation_custom(grob=ggplotGrob(world_map), xmin=4, ymin=65, ymax=80 ) +
   scale_x_continuous(trans = "log2") +
   theme(legend.position = "none")  -> final_plot
 print(final_plot)
@@ -541,7 +543,7 @@ gapminder %>% filter(year == 2007) %>%
                                 "yellow", "red")) +
   scale_size_area(max_size = 20) + 
   annotation_custom(grob=ggplotGrob(world_map), 
-                    xmin=12.3, ymin=40, ymax=55 ) +
+                    xmin=4, ymin=65, ymax=80) +
   scale_x_continuous(trans = "log2") +
   theme(legend.position = "none",
         text=element_text(size=16))  +
@@ -582,7 +584,7 @@ gapminder %>% filter(year == 2007) %>%
                                 "yellow", "red")) +
   scale_size_area(max_size = 20) + 
   annotation_custom(grob=ggplotGrob(world_map), 
-                  xmin=12.3, ymin=40, ymax=55 ) +
+                    xmin=4, ymin=65, ymax=80 ) +
   scale_x_continuous(trans = "log2") +
   theme(legend.position = "none",
         text=element_text(size=16))  +
@@ -609,6 +611,7 @@ world %>% filter(continent != "Antarctica") %>%
                      panel.background = element_rect(fill=NA),
                      plot.background = element_rect(fill=NA),
                      axis.text.x = element_text(color=NA),
+                     axis.text.y = element_blank(),
                      axis.ticks.length =  unit(0, "cm")) -> world_map
 ```
 

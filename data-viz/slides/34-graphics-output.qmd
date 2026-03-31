@@ -1,7 +1,7 @@
 ---
 title: "Graphics output"
 author: "Andrew Irwin, a.irwin@dal.ca"
-date: "2024-04-02"
+date: "2026-04-01"
 format:
   revealjs:
     slide-number: true
@@ -113,32 +113,12 @@ Chunk options: `dev='png', dpi=150`
 p1 
 ```
 
-## RAGG example
-
-Chunk options: `dev='ragg_png', dpi = 150`
-
-```{r dev='ragg_png', dpi = 150}
-p1 +
-  annotate("text", 1990, 45, label = "Tokyo") + 
-  labs(title = "Text in Japanese") 
-```
-
-
-## Fails with PNG
-
-Chunk options: `dev='png', dpi = 150`
-
-```{r dev='png', dpi = 150}
-p1 +
-  annotate("text", 1990, 60, label = "Tokyo") + 
-  labs(title = "Text in Japanese") 
-```
 
 ## JPEG example
 
-Chunk options: `dev='jpeg', dpi = 150`
+Chunk options: `dev='jpeg', dpi = 72`
 
-```{r dev='jpeg', dpi = 150}
+```{r dev='jpeg', dpi = 72}
 p1 
 ```
 
@@ -157,6 +137,7 @@ Use `ggsave`:
 ```{r eval=FALSE, echo=TRUE}
 ggsave("test-plot.pdf", p1, height = 4, width = 6)
 ggsave("test-plot.png", p1, dpi = 400)
+ggsave("test-plot.svg", p1)
 ```
 
 
