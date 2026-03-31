@@ -26,7 +26,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwzMjQuMDA=)'>
-<rect x='0.000000000000032' y='0.00' width='432.00' height='324.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+<rect x='0.00' y='0.00' width='432.00' height='324.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpMTIxLjkxfDQyNi41Mnw1LjQ4fDI2OS4xNQ=='>
@@ -48,17 +48,17 @@
 <polyline points='348.93,269.15 348.93,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='424.28,269.15 424.28,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <line x1='395.36' y1='219.72' x2='412.67' y2='219.72' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<line x1='135.75' y1='137.32' x2='150.05' y2='137.32' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<line x1='139.19' y1='54.92' x2='156.75' y2='54.92' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<line x1='139.19' y1='137.32' x2='156.75' y2='137.32' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<line x1='135.75' y1='54.92' x2='150.05' y2='54.92' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <circle cx='404.02' cy='219.72' r='2.84' style='stroke-width: 1.42; fill: #000000;' />
-<circle cx='142.90' cy='137.32' r='2.84' style='stroke-width: 1.42; fill: #000000;' />
-<circle cx='147.97' cy='54.92' r='2.84' style='stroke-width: 1.42; fill: #000000;' />
+<circle cx='147.97' cy='137.32' r='2.84' style='stroke-width: 1.42; fill: #000000;' />
+<circle cx='142.90' cy='54.92' r='2.84' style='stroke-width: 1.42; fill: #000000;' />
 <rect x='121.91' y='5.48' width='304.61' height='263.67' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwzMjQuMDA=)'>
 <text x='116.98' y='226.88' text-anchor='end' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='65.62px' lengthAdjust='spacingAndGlyphs'>Gentoo</text>
-<text x='116.98' y='144.48' text-anchor='end' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='55.59px' lengthAdjust='spacingAndGlyphs'>Adelie</text>
-<text x='116.98' y='62.08' text-anchor='end' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='85.59px' lengthAdjust='spacingAndGlyphs'>Chinstrap</text>
+<text x='116.98' y='144.48' text-anchor='end' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='85.59px' lengthAdjust='spacingAndGlyphs'>Chinstrap</text>
+<text x='116.98' y='62.08' text-anchor='end' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='55.59px' lengthAdjust='spacingAndGlyphs'>Adelie</text>
 <polyline points='119.17,219.72 121.91,219.72 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='119.17,137.32 121.91,137.32 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='119.17,54.92 121.91,54.92 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
@@ -73,7 +73,7 @@
 <text x='348.93' y='288.41' text-anchor='middle' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>4800</text>
 <text x='424.28' y='288.41' text-anchor='middle' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>5200</text>
 <text x='274.21' y='313.26' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='155.67px' lengthAdjust='spacingAndGlyphs'>body_mass_g</text>
-<text transform='translate(23.38,137.32) rotate(-90)' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='561.67px' lengthAdjust='spacingAndGlyphs'>fct_reorder(species, body_mass_g, .desc = TRUE)</text>
+<text transform='translate(23.38,137.32) rotate(-90)' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='88.94px' lengthAdjust='spacingAndGlyphs'>Species</text>
 </g>
 </g>
 </svg>

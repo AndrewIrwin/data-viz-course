@@ -26,7 +26,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwzMjQuMDA=)'>
-<rect x='0.000000000000032' y='0.00' width='432.00' height='324.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+<rect x='0.00' y='0.00' width='432.00' height='324.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpMTIxLjkxfDQyNi41Mnw1LjQ4fDI2OS4xNQ=='>
@@ -70,7 +70,7 @@
 <text x='275.66' y='288.41' text-anchor='middle' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>4400</text>
 <text x='351.62' y='288.41' text-anchor='middle' style='font-size: 20.00px;fill: #4D4D4D; font-family: "Arial";' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>4800</text>
 <text x='274.21' y='313.26' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='155.67px' lengthAdjust='spacingAndGlyphs'>body_mass_g</text>
-<text transform='translate(23.38,137.32) rotate(-90)' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='430.20px' lengthAdjust='spacingAndGlyphs'>fct_relevel(species, "Gentoo", "Adelie")</text>
+<text transform='translate(23.38,137.32) rotate(-90)' text-anchor='middle' style='font-size: 25.00px; font-family: "Arial";' textLength='88.94px' lengthAdjust='spacingAndGlyphs'>Species</text>
 </g>
 </g>
 </svg>
